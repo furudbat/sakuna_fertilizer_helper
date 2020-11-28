@@ -1,0 +1,23 @@
+table:
+  itemlist:
+    col_add_to_inventory: Add to Inv.
+    col_name: Name
+
+    col_fertilizer: Fertil.
+
+    col_yield_hp: Yield/ HP
+    col_taste_strength: Taste/ Str.
+    col_hardness_vitality: Hard./ Vital.
+    col_stickiness_gusto: Stick./ Gusto
+    col_aesthetic_luck: Aesth./ Luck
+    col_armor_magic: Armor/ Magic
+
+    col_immunity: Immu.
+    col_pesticide: Pest.
+    col_herbicide: Herb.
+
+    col_toxicity: Toxi.
+
+    col_expirable: Exp.
+footer: >-
+  I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

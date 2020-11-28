@@ -1,0 +1,807 @@
+[
+    {
+        "name": "Amber",
+        "category": "Currency",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Amazake",
+        "category": "Ingredients",
+        "found_in": "Processed\nCooking",
+        "source": "N/A",
+        "time_of_day": "N/A",
+        "fertilizer_bonus": {},
+        "food_bonus": {
+            "magic": 6,
+            "luck": 10
+        },
+        "used_in_recipes": "Sake Soaked Stir-Fry (Dried Pork)\nSake Soaked Stir-Fry (Dried Rabbit Meat)"
+    },
+    {
+        "name": "Bean",
+        "category": "Ingredients",
+        "found_in": "Den of Fangs\nBounteous Earth Grotto\nEggplant Hollow\nDragon's Tunnel\nGathering Area: Plain\nGathering Area: Spring",
+        "source": "Bushes",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {
+            "leaf_fertilizer": 10,
+            "herbicide": 1
+        },
+        "food_bonus": {},
+        "used_in_recipes": "Tofu\nNatto\nDumpling"
+    },
+    {
+        "name": "Doburoku",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Dried Boar Meat",
+        "category": "Ingredients",
+        "found_in": "Unknown",
+        "source": "Demon Boar",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Dried Boiled Rice",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed",
+        "time_of_day": "N/A",
+        "fertilizer_bonus": {},
+        "food_bonus": {
+            "swift_recovery_buff": 1
+        },
+        "used_in_recipes": "Dried Boiled Rice"
+    },
+    {
+        "name": "Dried Pork",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Dried Rabbit Meat",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Dried Salmon",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed\nCooking",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {
+            "strength": 9,
+            "magic": 5
+        },
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Fish Oil",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "leaf_fertilizer": 5
+        },
+        "food_bonus": {},
+        "used_in_recipes": "Oil"
+    },
+    {
+        "name": "Fullness Powder",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "stickiness_gusto": 20
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Grasshopper",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "! Marks",
+        "time_of_day": "Autumn",
+        "fertilizer_bonus": {
+            "hardness_vitality": 5
+        },
+        "food_bonus": {},
+        "used_in_recipes": "Roast Grasshopper"
+    },
+    {
+        "name": "Health Flakes",
+        "category": "Ingredients",
+        "found_in": "Bubbling Sandbar",
+        "source": "Chest?",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {
+            "yield_hp": 50
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Kuchikami Sake",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Magic Powder",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "armor_magic": 20
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Malt",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Medicinal Base",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "yield_hp": 25,
+            "taste_strength": 25,
+            "hardness_vitality": 25,
+            "stickiness_gusto": 25,
+            "aesthetic_luck": 25,
+            "armor_magic": 25
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Mochi",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Mushroom",
+        "category": "Ingredients",
+        "found_in": "Dragon's Tunnel\nBounteous Earth Grotto\nEggplant Hollow\nDancing Mushroom Woods\nHare's Nest Knoll\nFruitful Hassok\nForest of Supplication\nValley Passage\nMisty Tear Ridge\nValley of Illusive Water\nBubbling Sandbar\nRadiant River Gorge\nLucid Falls",
+        "source": "Bushes\nForaging",
+        "time_of_day": "N/A",
+        "fertilizer_bonus": {
+            "taste_strength": 3,
+            "herbicide": -1
+        },
+        "food_bonus": {},
+        "used_in_recipes": "Soup Stock"
+    },
+    {
+        "name": "Oil",
+        "category": "Ingredients",
+        "found_in": "Unknown",
+        "source": "Refined from other oils.",
+        "time_of_day": "Unknown",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "Tofu"
+    },
+    {
+        "name": "Pheasant Meat Sushi",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed",
+        "time_of_day": "N/A",
+        "fertilizer_bonus": {},
+        "food_bonus": {
+            "strength": 9,
+            "vitality": 4,
+            "magic": 5,
+            "luck": 4,
+            "natural_healing_buff": 1
+        },
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Pickled Chestnut",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Pickled Ginkgo Nut",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Pickled Mushroom",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Pickled Persimmon",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Pickled Taro",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Rice Bran",
+        "category": "Ingredients",
+        "found_in": "N/A",
+        "source": "Hulling Rice",
+        "time_of_day": "N/A",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 10,
+            "pesticide": -2,
+            "herbicide": 2
+        },
+        "food_bonus": {},
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Sanwa Millet",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "armor_magic": 5
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Soup Stock",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Spring Water",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "toxicity": -5
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Sweetfish",
+        "category": "Ingredients",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "Soup Stock"
+    },
+    {
+        "name": "Tea",
+        "category": "Ingredients",
+        "found_in": "Fruitful Hassok\nGathering Area: Spring",
+        "source": "Bushes\nForaging",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "Tea"
+    },
+    {
+        "name": "Turtle Meat Sushi",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Venison Sushi",
+        "category": "Ingredients",
+        "found_in": "Home",
+        "source": "Processed",
+        "time_of_day": "N/A",
+        "fertilizer_bonus": {},
+        "food_bonus": {
+            "strength": 9,
+            "vitality": 4,
+            "magic": 5,
+            "luck": 4,
+            "natural_healing_buff": 1
+        },
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Vinegar",
+        "category": "Ingredients",
+        "found_in": "Processed",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Wheat",
+        "category": "Ingredients",
+        "found_in": "Bounteous Earth Grotto\nCylindric Cavern\nGathering Area: Plain",
+        "source": "Bushes",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {
+            "stickiness_gusto": 3
+        },
+        "food_bonus": {},
+        "used_in_recipes": "{{{recipelist}}}"
+    },
+    {
+        "name": "White Rice",
+        "category": "Ingredients",
+        "found_in": "N/A",
+        "source": "Refined rice from hulling.",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "Vinegar"
+    },
+    {
+        "name": "Bamboo",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Bushes\nForaging",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "root_fertilizer": 5,
+            "yield_hp": 5,
+            "pesticide": -1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Beast Hide",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "yield_hp": 2
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Beast Hoof",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "leaf_fertilizer": 20
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Beast Manure",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 20
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Black Deer Leather",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Black Deer",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {
+            "taste_strength": 4,
+            "armor_magic": 1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Clay",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Mine Nodes",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {
+            "stickiness_gusto": 1,
+            "toxicity": 1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Copper Ore",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Mine Nodes",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "hardness_vitality": 2,
+            "toxicity": 2
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Cork Tree Branch",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Bushes\nForaging",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 5,
+            "aesthetic_luck": 2,
+            "immunity": -1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Demonic Pearl",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "armor_magic": 3
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Eradicating Remedy",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "pesticide": 10
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Fallen Leaves",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "root_fertilizer": 20
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Hemp",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Bushes\nForaging",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 5,
+            "armor_magic": 2
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "High Quality Oak",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Bushes\nForaging",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "root_fertilizer": 5,
+            "yield_hp": 3,
+            "pesticide": -1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Indigo Scale",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 5,
+            "aesthetic_luck": 5,
+            "pesticide": -2
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Iron Ore",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Mine Nodes",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Jade",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Mine Nodes",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "hardness_vitality": 3,
+            "toxicity": 1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Moonlit Stone",
+        "category": "Materials",
+        "found_in": "Cylindric Caverns\nSkipping Stone Hill\nDen of Fangs\nEggplant Hollow\nDragon's Tunnel",
+        "source": "Any Enemy",
+        "time_of_day": "Night",
+        "fertilizer_bonus": {
+            "toxicity": -20
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Murasaki Root",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 5,
+            "aesthetic_luck": 3,
+            "immunity": -1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Pheasant Feather",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "taste_strength": 3,
+            "aesthetic_luck": 1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Powder of Transformation",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Reducing Remedy",
+        "category": "Materials",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "herbicide": 10
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Rotten Food",
+        "category": "Materials",
+        "found_in": "Anywhere",
+        "source": "Spoiled food.",
+        "time_of_day": "Midnight",
+        "fertilizer_bonus": {
+            "yield_hp": 1,
+            "taste_strength": 1,
+            "hardness_vitality": 1,
+            "stickiness_gusto": 1,
+            "aesthetic_luck": 1,
+            "armor_magic": 1,
+            "pesticide": -2
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Sedge",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Bushes\nForaging",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {
+            "kernel_fertilizer": 5,
+            "armor_magic": 3
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Stone",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Stone Spikes\nBreakable Boulders\nUntilled Rice Paddy",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "hardness_vitality": 1,
+            "toxicity": 1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Wood",
+        "category": "Materials",
+        "found_in": "",
+        "source": "Breakable Wood Structures",
+        "time_of_day": "",
+        "fertilizer_bonus": {
+            "root_fertilizer": 5,
+            "yield_hp": 1,
+            "pesticide": -1
+        },
+        "food_bonus": {},
+        "used_in_recipes": ""
+    },
+    {
+        "name": "Counter",
+        "category": "Spirit Boughs",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Daredevil",
+        "category": "Spirit Boughs",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Disintegrating Strike",
+        "category": "Spirit Boughs",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Tycoon",
+        "category": "Spirit Boughs",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Oil Droplet",
+        "category": "Key Items",
+        "found_in": "Forest of Supplication",
+        "source": "Forest's Master",
+        "time_of_day": "Any",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": "N/A"
+    },
+    {
+        "name": "Scroll: Parrying",
+        "category": "Key Items",
+        "found_in": "",
+        "source": "",
+        "time_of_day": "",
+        "fertilizer_bonus": {},
+        "food_bonus": {},
+        "used_in_recipes": ""
+    }
+]

@@ -1,0 +1,146 @@
+<script type='text/javascript'>
+    {%- if site.options.useCache -%}
+    const USE_CACHE = true;
+    {%- else -%}
+    const USE_CACHE = false;
+    {%- endif -%}
+</script>
+
+<div class="row mt-2">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header text-center">
+                Fertilizer
+            </div>
+            <div class="card-body">
+                <div class="row mt-2">
+                    <div class="col-8">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                Soil nutrients
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Current Fertilizer</span>
+                                    </div>
+                                    <input type="number" aria-label="Leaf" placeholder="Leaf" class="form-control"
+                                        id="txtCurrentLeafFertilizer" min="0" max="100">
+                                    <input type="number" aria-label="Kernel" placeholder="Kernel" class="form-control"
+                                        id="txtCurrentKernelFertilizer" min="0" max="100">
+                                    <input type="number" aria-label="Root" placeholder="Root" class="form-control"
+                                        id="txtCurrentRootFertilizer" min="0" max="100">
+                                </div>
+                                <canvas class="soil-nutrients-chart" id="soilNutrientsChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-3 yield_hp-label text-right">Yield/HP</div>
+                            <div class="col-3 yield_hp text-left" id="fertilizerYieldHp">0</div>
+
+                            <div class="col-3 immunuity-label text-right">Immunuity</div>
+                            <div class="col-3 immunuity text-left" id="fertilizerImmunuity">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 taste-strength-label text-right">Taste/Strength</div>
+                            <div class="col-3 taste-strength text-left" id="fertilizerTasteStrength">0</div>
+
+                            <div class="col-3 pesticide-label text-right">Pesticide</div>
+                            <div class="col-3 pesticide text-left" id="fertilizerPesticide">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 hardness-vitality-label text-right">Hardness/Vitality</div>
+                            <div class="col-3 hardness-vitality text-left" id="fertilizerHardnessVitality">0</div>
+
+                            <div class="col-3 herbicide-label text-right">Herbicide</div>
+                            <div class="col-3 herbicide text-left" id="fertilizerHerbicide">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 stickiness-gusto-label text-right">Stickiness/Gusto</div>
+                            <div class="col-3 stickiness-gusto text-left" id="fertilizerStickinessGusto">0</div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-3 aesthetic-luck-label text-right">Aesthetic/Luck</div>
+                            <div class="col-3 aesthetic-luck text-left" id="fertilizerAestheticLuck">0</div>
+
+                            <div class="col-3 toxicity-label text-right">Toxicity</div>
+                            <div class="col-3 toxicity text-left" id="fertilizerToxicity">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 armor-magic-label text-right">Armor/Magic</div>
+                            <div class="col-3 armor-magic text-left" id="fertilizerArmorMagic">0</div>
+
+                        </div>
+                        <div class="row mt-2">
+                            <ul class="list-group" id="lstFertilizerHints"></ul>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                Components
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Amber</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                    <li class="list-group-item">-</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header text-center">
+                Additional Components (Inventory)
+            </div>
+            <div class="card-body p-0">
+                {% include add-to-fertilizer-itemlist-table.html id=tblInventory %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                Recommended
+            </div>
+            <div class="card-body p-0">
+                {% include add-to-fertilizer-itemlist-table.html id=tblInventoryRecommended %}
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                Expirables
+                <button type="button" class="btn btn-sm btn-secondary">Show items without nagative effect first</button>
+            </div>
+            <div class="card-body p-0">
+                {% include add-to-fertilizer-itemlist-table.html id=tblInventoryExpirables %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="mt-3">Materials</h2>
+<section id="itemsListMaterials">
+    {% assign materials_items = site.data.items | where: "category", "Materials" %}
+    {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
+    {% include itemlist-table.html items=materials_items items2=materials_ingredients_items id='tblItemsListMaterials' %}
+</section>

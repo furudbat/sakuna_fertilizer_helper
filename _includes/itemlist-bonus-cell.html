@@ -1,0 +1,15 @@
+{% if include.value %}
+{% if (not include.invertcolor and include.value > 0) or (include.invertcolor and include.value < 0) %}
+<td class="table-success text-center">
+{% else %} 
+<td class="table-danger text-center">
+{% endif %}
+    {% if include.value > 0 %}
+    <span class="text-center">+{{ include.value }}</span>
+    {% else %}
+    <span class="text-center">{{ include.value }}</span>
+    {% endif %}
+</td>
+{% else %} 
+<td>0</td>
+{% endif %}
