@@ -1,0 +1,60 @@
+<div class="row no-gutters mt-3">
+    <div class="col-12 ml-1">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab-spacing" role="tablist">
+                <a class="nav-link px-3 active" id="nav-spacing-a-little-apart-tab" data-toggle="tab" href="#nav-spacing-a-little-apart" role="tab" aria-controls="nav-spacing-a-little-apart" aria-selected="true">Little far apart</a>
+                <a class="nav-link px-3" id="nav-spacing-balanced-tab" data-toggle="tab" href="#nav-spacing-balanced" role="tab" aria-controls="nav-spacing-balanced" aria-selected="false">Balanced</a>
+                <a class="nav-link px-3" id="nav-spacing-circle-balanced-tab" data-toggle="tab" href="#nav-spacing-circle-balanced" role="tab" aria-controls="nav-spacing-circle-balanced" aria-selected="false">Circle</a>
+            </div>
+        </nav>
+    </div>
+    <div class="col-12 tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-spacing-a-little-apart" role="tabpanel" aria-labelledby="nav-spacing-a-little-apart-tab">
+            <div class="card">
+                <img class="img-fluid card-img-top px-4" src="{{ '/assets/img/1x2_4x4_little_far_apart.svg' | relative_url }}" alt="space-a-little-far-apart">
+                <div class="card-body">
+                    <h5 class="card-title">A little far apart</h5>
+                    <p class="card-text">
+                        Leave 1 square space in between 2 seedling.
+                    </p>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Stand at the <span class="text-red-line">red line</span> for <strong>1x1</strong> placements.</li>
+                    <li class="list-group-item">Stand at the <span class="text-skyblue-line">skyblue line</span> for <strong>2x1</strong> placements.<br/> <small>("Two by Two Planting"-Skill)</small></li>
+                    <li class="list-group-item">Stand at the <span class="text-springgreen-line">springgreen line</span> for <strong>4x4</strong> placements.<br/> <small>("Four Corner Planting"-Skill)</small></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-spacing-balanced" role="tabpanel" aria-labelledby="nav-spacing-balanced-tab">
+            <div class="card">
+                <img class="img-fluid card-img-top px-4" src="{{ '/assets/img/balanced.svg' | relative_url }}" alt="space-balanced">
+                <div class="card-body">
+                    <h5 class="card-title">Balanced</h5>
+                    <p class="card-text">
+                        Place seedling every square.
+                    </p>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Stand at the <span class="text-red-line">red line</span> for <strong>1x1</strong> placements.</li>
+                    <li class="list-group-item">Stand at the <span class="text-orange-line">orange line</span> for <strong>1x3</strong> placements.<br/> <small>("Three in a Row Planting"-Skill)</small></li>
+                    <li class="list-group-item">Stand at the <span class="text-skyblue-line">skyblue line</span> for <strong>2x1</strong> placements.<br/> <small>("Two by Two Planting"-Skill)</small></li>
+                    <li class="list-group-item">Stand at the <span class="text-springgreen-line">springgreen line</span> for <strong>2x2</strong> placements.<br/> <small>("Four Corner Planting"-Skill)</small></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-spacing-circle-balanced" role="tabpanel" aria-labelledby="nav-spacing-circle-balanced-tab">
+            <div class="card">
+                <img class="img-fluid card-img-top px-4" src="{{ '/assets/img/circle_balanced.svg' | relative_url }}" alt="space-circle_balanced">
+                <div class="card-body">
+                    <h5 class="card-title">Balanced (Circle)</h5>
+                    <p class="card-text">
+                        Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
+                    </p>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Stand at the <span class="text-violet-line">violet line</span> for <strong>circle</strong> placements.<br/> <small>("Well Rounded Planting"-Skill)</small></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

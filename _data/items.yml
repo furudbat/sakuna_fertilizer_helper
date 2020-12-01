@@ -1035,7 +1035,10 @@
   found_in: ''
   source: ''
   time_of_day: ''
-  fertilizer_bonus: {}
+  fertilizer_bonus: 
+    taste_strength: 5
+    hardness_vitality: 5
+    pesticide: -1
   food_bonus: {}
   used_in_recipes: ''
   expirable: true
@@ -1044,7 +1047,10 @@
   found_in: ''
   source: ''
   time_of_day: ''
-  fertilizer_bonus: {}
+  fertilizer_bonus: 
+    armor_magic: 2
+    aesthetic_luck: 2
+    pesticide: -1
   food_bonus: {}
   used_in_recipes: ''
   expirable: true
@@ -1173,15 +1179,6 @@
   time_of_day: ''
   fertilizer_bonus:
     herbicide: 10
-  food_bonus: {}
-  used_in_recipes: ''
-- name: Eradicating Remedy
-  category: Materials
-  found_in: ''
-  source: ''
-  time_of_day: ''
-  fertilizer_bonus:
-    pesticide: 10
   food_bonus: {}
   used_in_recipes: ''
 - name: Silk

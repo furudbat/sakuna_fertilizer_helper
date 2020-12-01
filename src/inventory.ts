@@ -1,49 +1,55 @@
-export interface ItemValueInventory extends ItemValue {
+export interface ItemInventoryData extends ItemData {
     // private _amount?: number;
 }
 
-export class InventoryData {
-    private _items_in_inventory: ItemValueInventory[] = [];
+export class Inventory {
+    private _items_in_inventory: ItemInventoryData[] = [];
 
     get items() {
         return this._items_in_inventory;
     }
 
-    set items(value: ItemValueInventory[]) {
+    set items(value: ItemInventoryData[]) {
         this._items_in_inventory = value;
     }
 
-    public add(item: ItemValue/*, amount: number = 1*/) {
+    public add(item: ItemData/*, amount: number = 1*/) {
         //if (amount < 1) {
-        //    return;
+        //    return false;
         //}
 
         const item_index = this._items_in_inventory.findIndex((it) => it.name == item.name);
         if(item_index >= 0) {
             //this._items_in_inventory.amount += amount;
-        } else {
-            let newitem: ItemValueInventory = item;
-            //newitem.amount = amount;
-            this._items_in_inventory.push(newitem);
+            return true;
         }
+
+        let newitem: ItemInventoryData = item;
+        //newitem.amount = amount;
+        this._items_in_inventory.push(newitem);
+        
+        return true;
     }
 
-    public remove(item: string | ItemValue/*, amount: number = 1*/) {
+    public remove(item: string | ItemData/*, amount: number = 1*/) {
         const item_name: string = ((): string => {
-            if ((item as ItemValue).name !== undefined) {
-                return (item as ItemValue).name;
+            if ((item as ItemData).name !== undefined) {
+                return (item as ItemData).name;
             }
 
             return item as string;
         })();
 
+        var ret = -1;
         this._items_in_inventory.forEach( (value, index) => {
             if(value.name == item_name) {
                 //this._items_in_inventory.amount -= amount;
                 //if (this._items_in_inventory.amount <= 0) {
                     this._items_in_inventory.splice(index, 1);
+                    ret = index;
                 //}
             }
         });
+        return ret;
     }
 }

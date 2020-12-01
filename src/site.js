@@ -101,8 +101,8 @@ Number.prototype.clamp = function(min, max) {
     return Math.min(Math.max(this, min), max);
 };
 
-function clamp (num, a, b) {
-    return Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b)); 
+function clamp (num, min, max) {
+    return Math.min(Math.max(num, min), max);
 }
 
 module.exports = {

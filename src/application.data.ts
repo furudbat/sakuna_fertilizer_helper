@@ -1,23 +1,22 @@
 import localForage from "localforage";
-import { FertilizerData } from "./fertilizer.data";
-import { InventoryData, ItemValueInventory } from "./inventory.data";
+import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components.data";
+import { Inventory, ItemInventoryData } from "./inventory";
 
 const STORAGE_KEY_ITEMS = 'items';
 const STORAGE_KEY_ITEMS_IN_INVENTORY = 'items_in_inventory';
-const STORAGE_KEY_CURRENT_LEAF_FERTILIZER = '_current_leaf_fertilizer';
-const STORAGE_KEY_CURRENT_KERNEL_FERTILIZER = '_current_kernel_fertilizer';
-const STORAGE_KEY_CURRENT_ROOT_FERTILIZER = '_current_root_fertilizer';
-const STORAGE_KEY_FERTILIZER = '_fertilizer';
+const STORAGE_KEY_CURRENT_LEAF_FERTILIZER = 'current_leaf_fertilizer';
+const STORAGE_KEY_CURRENT_KERNEL_FERTILIZER = 'current_kernel_fertilizer';
+const STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
+const STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 
 export class ApplicationData {
 
-    private _items: ItemValue[] = [];
-    private _inventory: InventoryData = new InventoryData();
+    private _items: ItemData[] = [];
+    private _inventory: Inventory = new Inventory();
     private _currentLeafFertilizer: number = 0;
     private _currentKernelFertilizer: number = 0;
     private _currentRootFertilizer: number = 0;
-    private _fertilizer: FertilizerData = new FertilizerData();
-    private _items_components: ItemValueInventory[] = [];
+    private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -30,15 +29,13 @@ export class ApplicationData {
         try {
             this._items = await this._storeSession.getItem(STORAGE_KEY_ITEMS) || this._items;
 
-            this._inventory = await this._storeSession.getItem<InventoryData>(STORAGE_KEY_ITEMS_IN_INVENTORY) || this._inventory;
+            this._inventory.items = await this._storeSession.getItem<ItemInventoryData[]>(STORAGE_KEY_ITEMS_IN_INVENTORY) || this._inventory.items;
             
             this._currentLeafFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER) || this._currentLeafFertilizer;
             this._currentKernelFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER) || this._currentKernelFertilizer;
             this._currentRootFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER) || this._currentRootFertilizer;
             
-            this._fertilizer = await this._storeSession.getItem<FertilizerData>(STORAGE_KEY_FERTILIZER) || this._fertilizer;
-
-            this._items_components = await this._storeSession.getItem<FertilizerData>(STORAGE_KEY_FERTILIZER) || this._items_components;
+            this._fertilizer_components.components = await this._storeSession.getItem<ItemFertilizerComponentData[]>(STORAGE_KEY_FERTILIZER_COMPONENTS) || this._fertilizer_components.components;
         } catch (err) {
             // This code runs if there were any errors.
             console.error('loadFromStorage', err);
@@ -54,18 +51,25 @@ export class ApplicationData {
         return this._items;
     }
 
-    set items(value: ItemValue[]) {
+    set items(value: ItemData[]) {
         this._items = value;
         this._storeSession.setItem(STORAGE_KEY_ITEMS, this._items);
     }
 
+    public getItemByName(name: string) {
+        return this._items.find((it) => it.name == name);
+    }
     
     get inventory() {
         return this._inventory;
     }
 
-    set inventory(value: InventoryData) {
+    set inventory(value: Inventory) {
         this._inventory = value;
+        this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
+    }
+
+    public saveInventory() {
         this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
     }
 
@@ -97,13 +101,17 @@ export class ApplicationData {
         this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, this._currentRootFertilizer);
     }
     
-
-    get fertilizer() {
-        return this._fertilizer;
+    
+    get fertilizer_components() {
+        return this._fertilizer_components;
     }
 
-    set fertilizer(value: FertilizerData) {
-        this._fertilizer = value;
-        this._storeSession.setItem(STORAGE_KEY_FERTILIZER, this._fertilizer);
+    set fertilizer_components(value: FertilizerComponents) {
+        this._fertilizer_components = value;
+        this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
+    }
+    
+    public saveFertilizerComponents() {
+        this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
     }
 }

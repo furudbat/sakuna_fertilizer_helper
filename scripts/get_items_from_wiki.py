@@ -1,4 +1,3 @@
-import json
 #! /usr/bin/python
 
 import os

@@ -19,5 +19,112 @@ table:
     col_toxicity: Toxi.
 
     col_expirable: Exp.
+guide:
+  tilling:
+    sort_rice:
+      lightly: >-
+        <i class="fas fa-sort"></i> 
+        Sort Rice with <strong>100% Mud</strong> (lightly)
+      thoroughly: >-
+        <i class="fas fa-sort"></i> 
+        Sort Rice with <strong>100% Salt</strong> (thoroughly)
+    sow_rice:
+      thinly: >-
+        <i class="fas fa-sort-amount-down-alt"></i> 
+        Sow Rice: <strong>Thinly</strong>
+      thickly: >-
+        <i class="fas fa-sort-amount-up-alt"></i> 
+        Sow Rice: <strong>Thickly</strong>
+    use_root_fertilizer: >-
+      <i class="fas fa-poop"></i> 
+      Use <strong>Root</strong> Fertilizer
+    fertilize_before_tilling: >-
+      <i class="fas fa-tractor"></i> 
+      Fertilize <strong>Before</strong> Tilling
+    fertilize_after_tilling: >-
+      <i class="fas fa-tractor"></i> 
+      Fertilize <strong>After</strong> Tilling
+  planting:
+    spacing:
+      little_far_apart: >-
+        <i class="fas fa-seedling"></i> 
+        Plant Spacing: <strong>Little far apart</strong>
+      balanced: >-
+        <i class="fas fa-seedling"></i> 
+        Plant Spacing: <strong>Balanced</strong>
+  water:
+    drain: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0%</strong>
+    dehydrate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0-10% (let dehydrate to 0%)</strong>
+    short_dehydrate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>5% (dehydrate for short time)</strong>
+    shallow: >-
+      <i class="fas fa-tint"></i> 
+      Water: <strong>15-20% (Shallow)</strong>
+    deep: >-
+      <i class="fas fa-tint"></i> 
+      Water: <strong>25-30% (Deep)</strong>
+    deep_flowing: >-
+      <i class="fas fa-tint"></i> 
+      Water: <strong>25-30% (Deep flowing, open both gates)</strong>
+  offshots_1_2:
+    use_kernel_fertilizer: >-
+      <i class="fas fa-poop"></i> 
+      Use <strong>Kernel</strong> Fertilizer (morning)
+    unleash_ducks: >-
+      <i class="fas fa-feather-alt"></i> 
+      <strong>Unleash ducks</strong>
+  temperature:
+    not_too_high: >-
+      <i class="fas fa-thermometer-half"></i> 
+      Temperature: <strong>Not too high</strong>
+    not_too_low: >-
+      <i class="fas fa-thermometer-half"></i> 
+      Temperature: <strong>Not too low</strong>
+  offshots_3:
+    lock_ducks: >-
+      <i class="fas fa-feather"></i> 
+      <strong>Lock ducks</strong>
+  sprouting:
+    use_leaf_fertilizer: >-
+      <i class="fas fa-poop"></i> 
+      Use <strong>Leaf</strong> Fertilizer
+  ripen:
+    weather:
+      pray_for_dry: >-
+        <i class="fas fa-cloud-sun"></i> 
+        Weather: <strong>Pray for dry</strong>
+      dry: >-
+        <i class="fas fa-sun"></i> 
+        Weather: <strong>Hot/Dry</strong>
+    harvest:
+      early: >-
+        <i class="fas fa-spa"></i> 
+        Harvest <strong>Early</strong> (right after water drained)
+      average: >-
+        <i class="fas fa-spa"></i> 
+        Harvest a day later
+    thresh:
+      when_cool: >-
+        <i class="fab fa-pagelines"></i> 
+        Thresh and Polish: <strong>Night/Morning</strong>
+    hulling:
+      white_rice: >-
+        <i class="fas fa-dharmachakra"></i> 
+        Hulling: <strong>White Rice</strong>
+      brown_or_white_rice: >-
+        <i class="fas fa-dharmachakra"></i> 
+        Hulling: <strong>Brown or White Rice</strong>
+      brown_rice: >-
+        <i class="fas fa-dharmachakra"></i> 
+        Hulling: <strong>Brown Rice</strong>
+    
+
+
+
 footer: >-
   I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

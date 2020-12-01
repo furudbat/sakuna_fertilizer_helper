@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-md-3">
+      <div class="nav flex-column nav-pills" id="farming-guild-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link mt-1 farming-guild-pills-balanced-nav-link active" id="farming-guild-pills-balanced-tab" data-toggle="pill" href="#farming-guild-pills-balanced" role="tab" aria-controls="farming-guild-pills-balanced" aria-selected="true" data-spacing="Little far apart">Balanced</a>
+        <a class="nav-link mt-1 farming-guild-pills-yield-nav-link" id="farming-guild-pills-yield-tab" data-toggle="pill" href="#farming-guild-pills-yield" role="tab" aria-controls="farming-guild-pills-yield" aria-selected="false" data-spacing="Balanced">Yield: HP (most amount of rice)</a>
+        <a class="nav-link mt-1 farming-guild-pills-heartiness-nav-link" id="farming-guild-pills-heartiness-tab" data-toggle="pill" href="#farming-guild-pills-heartiness" role="tab" aria-controls="farming-guild-pills-heartiness" aria-selected="false" data-spacing="Little far apart">Heartiness: Strength, Vitality and Gusto</a>
+        <a class="nav-link mt-1 farming-guild-pills-aesthic-nav-link" id="farming-guild-pills-aesthic-tab" data-toggle="pill" href="#farming-guild-pills-aesthic" role="tab" aria-controls="farming-guild-pills-aesthic" aria-selected="false" data-spacing="Little far apart">Aesthic: Luck</a>
+        <a class="nav-link mt-1 farming-guild-pills-aroma-nav-link" id="farming-guild-pills-aroma-tab" data-toggle="pill" href="#farming-guild-pills-aroma" role="tab" aria-controls="farming-guild-pills-aroma" aria-selected="false" data-spacing="Little far apart">Aroma: Magic</a>
+      </div>
+      {% include guide-space.html %}
+    </div>
+    <div class="col-md-9">
+      <div class="tab-content farming-guild-content" id="farming-guild-pills-tabContent">
+        <div class="tab-pane fade show active" id="farming-guild-pills-balanced" role="tabpanel" aria-labelledby="farming-guild-pills-balanced-tab">
+            {% include guide-balanced.html %}
+        </div>
+        <div class="tab-pane fade" id="farming-guild-pills-yield" role="tabpanel" aria-labelledby="farming-guild-pills-yield-tab">
+            {% include guide-yield.html %}
+        </div>
+        <div class="tab-pane fade" id="farming-guild-pills-heartiness" role="tabpanel" aria-labelledby="farming-guild-pills-heartiness-tab">
+            {% include guide-heartiness.html %}
+        </div>
+        <div class="tab-pane fade" id="farming-guild-pills-aesthic" role="tabpanel" aria-labelledby="farming-guild-pills-aesthic-tab">
+            {% include guide-aesthic.html %}
+        </div>
+        <div class="tab-pane fade" id="farming-guild-pills-aroma" role="tabpanel" aria-labelledby="farming-guild-pills-aroma-tab">
+            {% include guide-aroma.html %}
+        </div>
+      </div>
+      <ul class="list-group mt-2">
+        <li class="list-group-item">
+          <i class="fas fa-check"></i> 
+          Always check your Rice Status.
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-poop"></i> 
+          Use <strong>Anti-Toxicity (Spring/Renowed Water, Aqueous Droplet)</strong> Fertilizer to counter Salt Damage.
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-poop"></i> 
+          Use <strong>Presicide (Eradicating Remedy, Salt + Water, Fish Mint)</strong> Fertilizer to counter some Disease (Rice blight, Rice stripe virus).
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-poop"></i> 
+          Use <strong>Immunity (Revitalizing Remedy, Salt + Water, Aqueous Droplet)</strong> Fertilizer to counter some Disease (Rice Ragged Stunt Virus, Pecky Rice Disease).
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-poop"></i> 
+          Use <strong>Herbicide (Reducing Remedy, Aqueous Droplet, Rice Bran + Fish Mint)</strong> Fertilizer to counter Weeds and Herbs.
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-cloud-sun"></i> 
+          Weather: <strong>Pray for sunny weather</strong> to counter Spindly.
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-cloud-sun"></i> 
+          Weather: <strong>Pray for cool weather</strong> to counter Heat damage or open both gates.
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-poop"></i> 
+          Use <strong>Fertilizer</strong> with Rotten Food to boost Stats, Salt (to balanced out Presicide) and Spring/Renowed Water (to balanced out Toxicity) (beware of Salt damage).
+        </li>
+        <li class="list-group-item">
+          <i class="fas fa-poop"></i> 
+          Use <strong>Ingredients</strong> in your Fertilizer that expires and don't give negative effect like <strong>Acorns, Grasshopper or Bee Larva</strong>.
+        </li>
+      </ul>
+    </div>
+  </div>

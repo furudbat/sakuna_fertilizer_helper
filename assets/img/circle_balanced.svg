@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   preserveAspectRatio="xMidYMid meet"
+   viewBox="0 0 100 100"
+   width="100"
+   height="100"
+   id="svg305"
+   sodipodi:docname="circle_balanced.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <metadata
+     id="metadata309">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     id="namedview307"
+     showgrid="false"
+     inkscape:zoom="8.3"
+     inkscape:cx="50"
+     inkscape:cy="50"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg305" />
+  <defs
+     id="defs35">
+    <path
+       d="M75.5 100L75.5 88L87.5 88L87.5 100L75.5 100ZM88 100L88 88L100 88L100 100L88 100ZM25.56 100L25.56 88L37.56 88L37.56 100L25.56 100ZM38.06 100L38.06 88L50.06 88L50.06 100L38.06 100ZM0.56 100L0.56 88L12.56 88L12.56 100L0.56 100ZM13.06 100L13.06 88L25.06 88L25.06 100L13.06 100ZM63 100L63 88L75 88L75 100L63 100ZM50.5 100L50.5 88L62.5 88L62.5 100L50.5 100ZM75.44 87.5L75.44 75.5L87.44 75.5L87.44 87.5L75.44 87.5ZM87.94 87.5L87.94 75.5L99.94 75.5L99.94 87.5L87.94 87.5ZM25.5 87.5L25.5 75.5L37.5 75.5L37.5 87.5L25.5 87.5ZM38 87.5L38 75.5L50 75.5L50 87.5L38 87.5ZM0.5 87.5L0.5 75.5L12.5 75.5L12.5 87.5L0.5 87.5ZM13 87.5L13 75.5L25 75.5L25 87.5L13 87.5ZM62.94 87.5L62.94 75.5L74.94 75.5L74.94 87.5L62.94 87.5ZM50.44 87.5L50.44 75.5L62.44 75.5L62.44 87.5L50.44 87.5ZM50.5 75L50.5 63L62.5 63L62.5 75L50.5 75ZM63 75L63 63L75 63L75 75L63 75ZM13.06 75L13.06 63L25.06 63L25.06 75L13.06 75ZM0.56 75L0.56 63L12.56 63L12.56 75L0.56 75ZM38.06 75L38.06 63L50.06 63L50.06 75L38.06 75ZM25.56 75L25.56 63L37.56 63L37.56 75L25.56 75ZM88 75L88 63L100 63L100 75L88 75ZM75.5 75L75.5 63L87.5 63L87.5 75L75.5 75ZM50.44 62.5L50.44 50.5L62.44 50.5L62.44 62.5L50.44 62.5ZM62.94 62.5L62.94 50.5L74.94 50.5L74.94 62.5L62.94 62.5ZM13 62.5L13 50.5L25 50.5L25 62.5L13 62.5ZM0.5 62.5L0.5 50.5L12.5 50.5L12.5 62.5L0.5 62.5ZM38 62.5L38 50.5L50 50.5L50 62.5L38 62.5ZM25.5 62.5L25.5 50.5L37.5 50.5L37.5 62.5L25.5 62.5ZM87.94 62.5L87.94 50.5L99.94 50.5L99.94 62.5L87.94 62.5ZM75.44 62.5L75.44 50.5L87.44 50.5L87.44 62.5L75.44 62.5ZM75.5 50L75.5 38L87.5 38L87.5 50L75.5 50ZM88 50L88 38L100 38L100 50L88 50ZM25.56 50L25.56 38L37.56 38L37.56 50L25.56 50ZM38.06 50L38.06 38L50.06 38L50.06 50L38.06 50ZM0.56 50L0.56 38L12.56 38L12.56 50L0.56 50ZM13.06 50L13.06 38L25.06 38L25.06 50L13.06 50ZM63 50L63 38L75 38L75 50L63 50ZM50.5 50L50.5 38L62.5 38L62.5 50L50.5 50ZM75.44 37.5L75.44 25.5L87.44 25.5L87.44 37.5L75.44 37.5ZM87.94 37.5L87.94 25.5L99.94 25.5L99.94 37.5L87.94 37.5ZM25.5 37.5L25.5 25.5L37.5 25.5L37.5 37.5L25.5 37.5ZM38 37.5L38 25.5L50 25.5L50 37.5L38 37.5ZM0.5 37.5L0.5 25.5L12.5 25.5L12.5 37.5L0.5 37.5ZM13 37.5L13 25.5L25 25.5L25 37.5L13 37.5ZM62.94 37.5L62.94 25.5L74.94 25.5L74.94 37.5L62.94 37.5ZM50.44 37.5L50.44 25.5L62.44 25.5L62.44 37.5L50.44 37.5ZM75.5 25L75.5 13L87.5 13L87.5 25L75.5 25ZM88 25L88 13L100 13L100 25L88 25ZM25.56 25L25.56 13L37.56 13L37.56 25L25.56 25ZM38.06 25L38.06 13L50.06 13L50.06 25L38.06 25ZM0.56 25L0.56 13L12.56 13L12.56 25L0.56 25ZM13.06 25L13.06 13L25.06 13L25.06 25L13.06 25ZM63 25L63 13L75 13L75 25L63 25ZM50.5 25L50.5 13L62.5 13L62.5 25L50.5 25ZM75.44 12.5L75.44 0.5L87.44 0.5L87.44 12.5L75.44 12.5ZM87.94 12.5L87.94 0.5L99.94 0.5L99.94 12.5L87.94 12.5ZM25.5 12.5L25.5 0.5L37.5 0.5L37.5 12.5L25.5 12.5ZM38 12.5L38 0.5L50 0.5L50 12.5L38 12.5ZM0.5 12.5L0.5 0.5L12.5 0.5L12.5 12.5L0.5 12.5ZM13 12.5L13 0.5L25 0.5L25 12.5L13 12.5ZM62.94 12.5L62.94 0.5L74.94 0.5L74.94 12.5L62.94 12.5ZM50.44 12.5L50.44 0.5L62.44 0.5L62.44 12.5L50.44 12.5Z"
+       id="k1yBUesdFD" />
+    <path
+       d="M19.75 6.25C19.75 6.8 19.3 7.25 18.75 7.25C18.2 7.25 17.75 6.8 17.75 6.25C17.75 5.7 18.2 5.25 18.75 5.25C19.3 5.25 19.75 5.7 19.75 6.25Z"
+       id="c3s3TD11q" />
+    <path
+       d="M19.75 30C19.75 30.55 19.3 31 18.75 31C18.2 31 17.75 30.55 17.75 30C17.75 29.45 18.2 29 18.75 29C19.3 29 19.75 29.45 19.75 30Z"
+       id="b2bfEewD5" />
+    <path
+       d="M30.75 19.19C30.2 19.19 29.75 18.75 29.75 18.2C29.75 17.64 30.19 17.19 30.74 17.19C31.3 17.19 31.75 17.63 31.75 18.19C31.75 18.74 31.31 19.19 30.75 19.19Z"
+       id="cZwfUKMM" />
+    <path
+       d="M7.01 19.31C6.45 19.31 6 18.87 6 18.31C6 17.76 6.44 17.31 7 17.31C7.55 17.31 8 17.75 8 18.3C8 18.86 7.56 19.31 7.01 19.31Z"
+       id="f6fAWiyK9" />
+    <path
+       d="M28.16 11.65C27.77 12.03 27.13 12.02 26.75 11.62C26.37 11.22 26.38 10.59 26.78 10.21C27.18 9.82 27.81 9.84 28.19 10.23C28.57 10.63 28.56 11.27 28.16 11.65Z"
+       id="b4AUCgHtTJ" />
+    <path
+       d="M11.05 28.11C10.65 28.5 10.02 28.48 9.63 28.09C9.25 27.69 9.26 27.05 9.66 26.67C10.06 26.29 10.69 26.3 11.08 26.7C11.46 27.1 11.45 27.73 11.05 28.11Z"
+       id="b24ikpK95n" />
+    <path
+       d="M26.47 28.55C26.08 28.15 26.09 27.52 26.49 27.14C26.88 26.75 27.52 26.76 27.9 27.16C28.29 27.55 28.28 28.19 27.88 28.57C27.49 28.96 26.85 28.95 26.47 28.55Z"
+       id="a6ouCp7da" />
+    <path
+       d="M9.92 11.52C9.53 11.12 9.54 10.49 9.94 10.1C10.33 9.72 10.97 9.73 11.35 10.12C11.74 10.52 11.73 11.15 11.33 11.54C10.94 11.92 10.3 11.91 9.92 11.52Z"
+       id="claKNWiNh" />
+    <path
+       d="M19.88 44.38C19.88 44.93 19.43 45.38 18.88 45.38C18.32 45.38 17.88 44.93 17.88 44.38C17.88 43.82 18.32 43.38 18.88 43.38C19.43 43.38 19.88 43.82 19.88 44.38Z"
+       id="i1jUD5z6ND" />
+    <path
+       d="M19.88 68.13C19.88 68.68 19.43 69.13 18.88 69.13C18.32 69.13 17.88 68.68 17.88 68.13C17.88 67.57 18.32 67.13 18.88 67.13C19.43 67.13 19.88 67.57 19.88 68.13Z"
+       id="e3CbWald3Z" />
+    <path
+       d="M30.88 57.32C30.33 57.32 29.88 56.87 29.87 56.32C29.87 55.77 30.32 55.32 30.87 55.32C31.42 55.31 31.87 55.76 31.87 56.31C31.88 56.86 31.43 57.31 30.88 57.32Z"
+       id="dqvy8OgkE" />
+    <path
+       d="M7.13 57.43C6.58 57.44 6.13 56.99 6.13 56.44C6.12 55.89 6.57 55.44 7.12 55.43C7.67 55.43 8.12 55.88 8.13 56.43C8.13 56.98 7.68 57.43 7.13 57.43Z"
+       id="bwVK898K2" />
+    <path
+       d="M28.29 49.77C27.89 50.16 27.26 50.14 26.88 49.75C26.49 49.35 26.51 48.71 26.9 48.33C27.3 47.95 27.93 47.96 28.32 48.36C28.7 48.76 28.69 49.39 28.29 49.77Z"
+       id="a1K0edVJDU" />
+    <path
+       d="M11.17 66.24C10.78 66.62 10.14 66.61 9.76 66.21C9.38 65.81 9.39 65.18 9.79 64.8C10.19 64.41 10.82 64.43 11.2 64.82C11.58 65.22 11.57 65.86 11.17 66.24Z"
+       id="j6hkn4lS9K" />
+    <path
+       d="M26.59 66.68C26.21 66.28 26.22 65.65 26.61 65.26C27.01 64.88 27.64 64.89 28.03 65.28C28.41 65.68 28.4 66.31 28.01 66.7C27.61 67.08 26.98 67.07 26.59 66.68Z"
+       id="caw7aqaD1" />
+    <path
+       d="M10.04 49.64C9.66 49.25 9.67 48.61 10.06 48.23C10.46 47.84 11.09 47.85 11.48 48.25C11.86 48.64 11.85 49.28 11.46 49.66C11.06 50.05 10.43 50.04 10.04 49.64Z"
+       id="d5hGrPta4z" />
+    <path
+       d="M57 6.5C57 7.05 56.55 7.5 56 7.5C55.45 7.5 55 7.05 55 6.5C55 5.95 55.45 5.5 56 5.5C56.55 5.5 57 5.95 57 6.5Z"
+       id="hAWyoOXc" />
+    <path
+       d="M57 30.25C57 30.8 56.55 31.25 56 31.25C55.45 31.25 55 30.8 55 30.25C55 29.7 55.45 29.25 56 29.25C56.55 29.25 57 29.7 57 30.25Z"
+       id="b1a09HmG2I" />
+    <path
+       d="M68 19.44C67.45 19.44 67 19 67 18.45C67 17.89 67.44 17.44 67.99 17.44C68.55 17.44 69 17.88 69 18.44C69 18.99 68.56 19.44 68 19.44Z"
+       id="b1GdzSVFdH" />
+    <path
+       d="M44.26 19.56C43.7 19.56 43.25 19.12 43.25 18.56C43.25 18.01 43.69 17.56 44.25 17.56C44.8 17.56 45.25 18 45.25 18.55C45.25 19.11 44.81 19.56 44.26 19.56Z"
+       id="iPJfBEYNU" />
+    <path
+       d="M65.41 11.9C65.02 12.28 64.38 12.27 64 11.87C63.62 11.47 63.63 10.84 64.03 10.46C64.43 10.07 65.06 10.09 65.44 10.48C65.82 10.88 65.81 11.52 65.41 11.9Z"
+       id="b1Kc8fz1X" />
+    <path
+       d="M48.3 28.36C47.9 28.75 47.27 28.73 46.88 28.34C46.5 27.94 46.51 27.3 46.91 26.92C47.31 26.54 47.94 26.55 48.33 26.95C48.71 27.35 48.7 27.98 48.3 28.36Z"
+       id="c1p3DAHvM6" />
+    <path
+       d="M63.72 28.8C63.33 28.4 63.34 27.77 63.74 27.39C64.13 27 64.77 27.01 65.15 27.41C65.54 27.8 65.53 28.44 65.13 28.82C64.74 29.21 64.1 29.2 63.72 28.8Z"
+       id="a6XO652wBn" />
+    <path
+       d="M47.17 11.77C46.78 11.37 46.79 10.74 47.19 10.35C47.58 9.97 48.22 9.98 48.6 10.37C48.99 10.77 48.98 11.4 48.58 11.79C48.19 12.17 47.55 12.16 47.17 11.77Z"
+       id="bi6WARqWY" />
+    <path
+       d="M57.13 43.63C57.13 44.18 56.68 44.63 56.13 44.63C55.57 44.63 55.13 44.18 55.13 43.63C55.13 43.07 55.57 42.63 56.13 42.63C56.68 42.63 57.13 43.07 57.13 43.63Z"
+       id="atUG8seKM" />
+    <path
+       d="M57.13 67.38C57.13 67.93 56.68 68.38 56.13 68.38C55.57 68.38 55.13 67.93 55.13 67.38C55.13 66.82 55.57 66.38 56.13 66.38C56.68 66.38 57.13 66.82 57.13 67.38Z"
+       id="j79VdC37T" />
+    <path
+       d="M68.13 56.57C67.58 56.57 67.13 56.12 67.12 55.57C67.12 55.02 67.57 54.57 68.12 54.57C68.67 54.56 69.12 55.01 69.12 55.56C69.13 56.11 68.68 56.56 68.13 56.57Z"
+       id="a9tvGHcur" />
+    <path
+       d="M44.38 56.68C43.83 56.69 43.38 56.24 43.38 55.69C43.37 55.14 43.82 54.69 44.37 54.68C44.92 54.68 45.37 55.13 45.38 55.68C45.38 56.23 44.93 56.68 44.38 56.68Z"
+       id="a2G34XrIo1" />
+    <path
+       d="M65.54 49.02C65.14 49.41 64.51 49.39 64.13 49C63.74 48.6 63.76 47.96 64.15 47.58C64.55 47.2 65.18 47.21 65.57 47.61C65.95 48.01 65.94 48.64 65.54 49.02Z"
+       id="b1SEpRBMT" />
+    <path
+       d="M48.42 65.49C48.03 65.87 47.39 65.86 47.01 65.46C46.63 65.06 46.64 64.43 47.04 64.05C47.44 63.66 48.07 63.68 48.45 64.07C48.83 64.47 48.82 65.11 48.42 65.49Z"
+       id="a1okAYKneD" />
+    <path
+       d="M63.84 65.93C63.46 65.53 63.47 64.9 63.86 64.51C64.26 64.13 64.89 64.14 65.28 64.53C65.66 64.93 65.65 65.56 65.26 65.95C64.86 66.33 64.23 66.32 63.84 65.93Z"
+       id="aa0Det9r3" />
+    <path
+       d="M47.29 48.89C46.91 48.5 46.92 47.86 47.31 47.48C47.71 47.09 48.34 47.1 48.73 47.5C49.11 47.89 49.1 48.53 48.71 48.91C48.31 49.3 47.68 49.29 47.29 48.89Z"
+       id="gqc7k7YWL" />
+  </defs>
+  <g
+     id="g303">
+    <g
+       id="g301">
+      <g
+         id="g43">
+        <use
+           xlink:href="#k1yBUesdFD"
+           opacity="1"
+           fill="#2d78e0"
+           fill-opacity="1"
+           id="use37" />
+        <g
+           id="g41">
+          <use
+             xlink:href="#k1yBUesdFD"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#0318d7"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use39" />
+        </g>
+      </g>
+      <g
+         id="g51">
+        <use
+           xlink:href="#c3s3TD11q"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use45" />
+        <g
+           id="g49">
+          <use
+             xlink:href="#c3s3TD11q"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use47" />
+        </g>
+      </g>
+      <g
+         id="g59">
+        <use
+           xlink:href="#b2bfEewD5"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use53" />
+        <g
+           id="g57">
+          <use
+             xlink:href="#b2bfEewD5"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use55" />
+        </g>
+      </g>
+      <g
+         id="g67">
+        <use
+           xlink:href="#cZwfUKMM"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use61" />
+        <g
+           id="g65">
+          <use
+             xlink:href="#cZwfUKMM"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use63" />
+        </g>
+      </g>
+      <g
+         id="g75">
+        <use
+           xlink:href="#f6fAWiyK9"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use69" />
+        <g
+           id="g73">
+          <use
+             xlink:href="#f6fAWiyK9"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use71" />
+        </g>
+      </g>
+      <g
+         id="g83">
+        <use
+           xlink:href="#b4AUCgHtTJ"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use77" />
+        <g
+           id="g81">
+          <use
+             xlink:href="#b4AUCgHtTJ"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use79" />
+        </g>
+      </g>
+      <g
+         id="g91">
+        <use
+           xlink:href="#b24ikpK95n"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use85" />
+        <g
+           id="g89">
+          <use
+             xlink:href="#b24ikpK95n"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use87" />
+        </g>
+      </g>
+      <g
+         id="g99">
+        <use
+           xlink:href="#a6ouCp7da"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use93" />
+        <g
+           id="g97">
+          <use
+             xlink:href="#a6ouCp7da"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use95" />
+        </g>
+      </g>
+      <g
+         id="g107">
+        <use
+           xlink:href="#claKNWiNh"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use101" />
+        <g
+           id="g105">
+          <use
+             xlink:href="#claKNWiNh"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use103" />
+        </g>
+      </g>
+      <g
+         id="g115">
+        <use
+           xlink:href="#i1jUD5z6ND"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use109" />
+        <g
+           id="g113">
+          <use
+             xlink:href="#i1jUD5z6ND"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use111" />
+        </g>
+      </g>
+      <g
+         id="g123">
+        <use
+           xlink:href="#e3CbWald3Z"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use117" />
+        <g
+           id="g121">
+          <use
+             xlink:href="#e3CbWald3Z"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use119" />
+        </g>
+      </g>
+      <g
+         id="g131">
+        <use
+           xlink:href="#dqvy8OgkE"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use125" />
+        <g
+           id="g129">
+          <use
+             xlink:href="#dqvy8OgkE"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use127" />
+        </g>
+      </g>
+      <g
+         id="g139">
+        <use
+           xlink:href="#bwVK898K2"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use133" />
+        <g
+           id="g137">
+          <use
+             xlink:href="#bwVK898K2"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use135" />
+        </g>
+      </g>
+      <g
+         id="g147">
+        <use
+           xlink:href="#a1K0edVJDU"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use141" />
+        <g
+           id="g145">
+          <use
+             xlink:href="#a1K0edVJDU"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use143" />
+        </g>
+      </g>
+      <g
+         id="g155">
+        <use
+           xlink:href="#j6hkn4lS9K"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use149" />
+        <g
+           id="g153">
+          <use
+             xlink:href="#j6hkn4lS9K"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use151" />
+        </g>
+      </g>
+      <g
+         id="g163">
+        <use
+           xlink:href="#caw7aqaD1"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use157" />
+        <g
+           id="g161">
+          <use
+             xlink:href="#caw7aqaD1"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use159" />
+        </g>
+      </g>
+      <g
+         id="g171">
+        <use
+           xlink:href="#d5hGrPta4z"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use165" />
+        <g
+           id="g169">
+          <use
+             xlink:href="#d5hGrPta4z"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use167" />
+        </g>
+      </g>
+      <g
+         id="g179">
+        <use
+           xlink:href="#hAWyoOXc"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use173" />
+        <g
+           id="g177">
+          <use
+             xlink:href="#hAWyoOXc"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use175" />
+        </g>
+      </g>
+      <g
+         id="g187">
+        <use
+           xlink:href="#b1a09HmG2I"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use181" />
+        <g
+           id="g185">
+          <use
+             xlink:href="#b1a09HmG2I"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use183" />
+        </g>
+      </g>
+      <g
+         id="g195">
+        <use
+           xlink:href="#b1GdzSVFdH"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use189" />
+        <g
+           id="g193">
+          <use
+             xlink:href="#b1GdzSVFdH"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use191" />
+        </g>
+      </g>
+      <g
+         id="g203">
+        <use
+           xlink:href="#iPJfBEYNU"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use197" />
+        <g
+           id="g201">
+          <use
+             xlink:href="#iPJfBEYNU"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use199" />
+        </g>
+      </g>
+      <g
+         id="g211">
+        <use
+           xlink:href="#b1Kc8fz1X"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use205" />
+        <g
+           id="g209">
+          <use
+             xlink:href="#b1Kc8fz1X"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use207" />
+        </g>
+      </g>
+      <g
+         id="g219">
+        <use
+           xlink:href="#c1p3DAHvM6"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use213" />
+        <g
+           id="g217">
+          <use
+             xlink:href="#c1p3DAHvM6"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use215" />
+        </g>
+      </g>
+      <g
+         id="g227">
+        <use
+           xlink:href="#a6XO652wBn"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use221" />
+        <g
+           id="g225">
+          <use
+             xlink:href="#a6XO652wBn"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use223" />
+        </g>
+      </g>
+      <g
+         id="g235">
+        <use
+           xlink:href="#bi6WARqWY"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use229" />
+        <g
+           id="g233">
+          <use
+             xlink:href="#bi6WARqWY"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use231" />
+        </g>
+      </g>
+      <g
+         id="g243">
+        <use
+           xlink:href="#atUG8seKM"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use237" />
+        <g
+           id="g241">
+          <use
+             xlink:href="#atUG8seKM"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use239" />
+        </g>
+      </g>
+      <g
+         id="g251">
+        <use
+           xlink:href="#j79VdC37T"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use245" />
+        <g
+           id="g249">
+          <use
+             xlink:href="#j79VdC37T"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use247" />
+        </g>
+      </g>
+      <g
+         id="g259">
+        <use
+           xlink:href="#a9tvGHcur"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use253" />
+        <g
+           id="g257">
+          <use
+             xlink:href="#a9tvGHcur"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use255" />
+        </g>
+      </g>
+      <g
+         id="g267">
+        <use
+           xlink:href="#a2G34XrIo1"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use261" />
+        <g
+           id="g265">
+          <use
+             xlink:href="#a2G34XrIo1"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use263" />
+        </g>
+      </g>
+      <g
+         id="g275">
+        <use
+           xlink:href="#b1SEpRBMT"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use269" />
+        <g
+           id="g273">
+          <use
+             xlink:href="#b1SEpRBMT"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use271" />
+        </g>
+      </g>
+      <g
+         id="g283">
+        <use
+           xlink:href="#a1okAYKneD"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use277" />
+        <g
+           id="g281">
+          <use
+             xlink:href="#a1okAYKneD"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use279" />
+        </g>
+      </g>
+      <g
+         id="g291">
+        <use
+           xlink:href="#aa0Det9r3"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use285" />
+        <g
+           id="g289">
+          <use
+             xlink:href="#aa0Det9r3"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use287" />
+        </g>
+      </g>
+      <g
+         id="g299">
+        <use
+           xlink:href="#gqc7k7YWL"
+           opacity="1"
+           fill="#d1ec56"
+           fill-opacity="1"
+           id="use293" />
+        <g
+           id="g297">
+          <use
+             xlink:href="#gqc7k7YWL"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#e8e930"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use295" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <rect
+     style="fill:#ff00ff"
+     id="rect311"
+     width="6.3855424"
+     height="1.5662651"
+     x="15.66265"
+     y="35.060242" />
+  <rect
+     style="fill:#ff00ff"
+     id="rect311-7"
+     width="6.3855424"
+     height="1.5662651"
+     x="15.722891"
+     y="72.349396" />
+  <rect
+     style="fill:#ff00ff"
+     id="rect311-6"
+     width="6.3855424"
+     height="1.5662651"
+     x="53.072289"
+     y="72.349396" />
+  <rect
+     style="fill:#ff00ff"
+     id="rect311-73"
+     width="6.3855424"
+     height="1.5662651"
+     x="52.951805"
+     y="34.759033" />
+</svg>

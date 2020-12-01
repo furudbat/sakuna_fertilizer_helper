@@ -1,10 +1,13 @@
-import { updateLocale } from "moment";
+import { ApplicationListener } from "./application.listener";
+import { FertilizerComponents } from "./fertilizer-components.data";
 import { FertilizerData } from "./fertilizer.data";
 
 export class FertilizeAdapter {
+    private _app: ApplicationListener;
     private _data: FertilizerData = new FertilizerData();
 
-    constructor(data: FertilizerData) {
+    constructor(app: ApplicationListener, data: FertilizerData) {
+        this._app = app;
         this._data = data;
     }
 
@@ -20,5 +23,9 @@ export class FertilizeAdapter {
         if (this._data.is_yield_hp_overflow) {
             
         }
+    }
+
+    public updateFromComponents(components: FertilizerComponents) {
+        
     }
 }

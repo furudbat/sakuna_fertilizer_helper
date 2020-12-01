@@ -1,5 +1,5 @@
 
-interface FertilizerBonusValue {
+interface FertilizerBonusData {
     leaf_fertilizer?: number;
     kernel_fertilizer?: number;
     root_fertilizer?: number;
@@ -18,7 +18,7 @@ interface FertilizerBonusValue {
     toxicity?: number;
 }
 
-interface FoodBonusValue {
+interface FoodBonusData {
     hp?: number;
     sp?: number;
     strength?: number;
@@ -42,14 +42,14 @@ interface FoodBonusValue {
     spectral_scourge_buff?: number;
 }
 
-interface ItemValue {
+interface ItemData {
     name: string;
     category: string;
     found_in: string;
     source: string;
     time_of_day: string;
-    fertilizer_bonus: FertilizerBonusValue;
-    food_bonus: FoodBonusValue;
+    fertilizer_bonus: FertilizerBonusData;
+    food_bonus: FoodBonusData;
     used_in_recipes: string;
     expirable?: boolean;
 }

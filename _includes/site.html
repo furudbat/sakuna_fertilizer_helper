@@ -6,15 +6,25 @@
     {%- endif -%}
 </script>
 
+
+<h1 class="mt-2">Farming Guide</h1>
+<section id="sectionFarmingGuide">
+    {% include guide.html %}
+</section>
+
+
+
+<h1 class="mt-4">Fertilizer Helper</h1>
+<section id="sectionFertilizerHelper">
 <div class="row mt-2">
-    <div class="col-8">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-header text-center">
                 Fertilizer
             </div>
-            <div class="card-body">
+            <div class="card-body p-3">
                 <div class="row mt-2">
-                    <div class="col-8">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header text-center">
                                 Soil nutrients
@@ -32,59 +42,70 @@
                                         id="txtCurrentRootFertilizer" min="0" max="100">
                                 </div>
                                 <canvas class="soil-nutrients-chart" id="soilNutrientsChart"></canvas>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">with Components</span>
+                                    </div>
+                                    <input type="text" aria-label="Leaf" placeholder="Leaf" class="form-control"
+                                        id="txtLeafFertilizer" readonly>
+                                    <input type="text" aria-label="Kernel" placeholder="Kernel" class="form-control"
+                                        id="txtKernelFertilizer" readonly>
+                                    <input type="text" aria-label="Root" placeholder="Root" class="form-control"
+                                        id="txtRootFertilizer" readonly>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-3 yield_hp-label text-right">Yield/HP</div>
-                            <div class="col-3 yield_hp text-left" id="fertilizerYieldHp">0</div>
+                            <div class="col-4 yield_hp-label text-right">Yield/HP</div>
+                            <div class="col-2 yield_hp text-left" id="fertilizerYieldHp">0</div>
 
-                            <div class="col-3 immunuity-label text-right">Immunuity</div>
-                            <div class="col-3 immunuity text-left" id="fertilizerImmunuity">0</div>
+                            <div class="col-4 immunuity-label text-right">Immunuity</div>
+                            <div class="col-2 immunuity text-left" id="fertilizerImmunuity">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-3 taste-strength-label text-right">Taste/Strength</div>
-                            <div class="col-3 taste-strength text-left" id="fertilizerTasteStrength">0</div>
+                            <div class="col-4 taste-strength-label text-right">Taste/Strength</div>
+                            <div class="col-2 taste-strength text-left" id="fertilizerTasteStrength">0</div>
 
-                            <div class="col-3 pesticide-label text-right">Pesticide</div>
-                            <div class="col-3 pesticide text-left" id="fertilizerPesticide">0</div>
+                            <div class="col-4 pesticide-label text-right">Pesticide</div>
+                            <div class="col-2 pesticide text-left" id="fertilizerPesticide">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-3 hardness-vitality-label text-right">Hardness/Vitality</div>
-                            <div class="col-3 hardness-vitality text-left" id="fertilizerHardnessVitality">0</div>
+                            <div class="col-4 hardness-vitality-label text-right">Hardness/Vitality</div>
+                            <div class="col-2 hardness-vitality text-left" id="fertilizerHardnessVitality">0</div>
 
-                            <div class="col-3 herbicide-label text-right">Herbicide</div>
-                            <div class="col-3 herbicide text-left" id="fertilizerHerbicide">0</div>
+                            <div class="col-4 herbicide-label text-right">Herbicide</div>
+                            <div class="col-2 herbicide text-left" id="fertilizerHerbicide">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-3 stickiness-gusto-label text-right">Stickiness/Gusto</div>
-                            <div class="col-3 stickiness-gusto text-left" id="fertilizerStickinessGusto">0</div>
+                            <div class="col-4 stickiness-gusto-label text-right">Stickiness/Gusto</div>
+                            <div class="col-2 stickiness-gusto text-left" id="fertilizerStickinessGusto">0</div>
 
                         </div>
                         <div class="row">
-                            <div class="col-3 aesthetic-luck-label text-right">Aesthetic/Luck</div>
-                            <div class="col-3 aesthetic-luck text-left" id="fertilizerAestheticLuck">0</div>
+                            <div class="col-4 aesthetic-luck-label text-right">Aesthetic/Luck</div>
+                            <div class="col-2 aesthetic-luck text-left" id="fertilizerAestheticLuck">0</div>
 
-                            <div class="col-3 toxicity-label text-right">Toxicity</div>
-                            <div class="col-3 toxicity text-left" id="fertilizerToxicity">0</div>
+                            <div class="col-4 toxicity-label text-right">Toxicity</div>
+                            <div class="col-2 toxicity text-left" id="fertilizerToxicity">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-3 armor-magic-label text-right">Armor/Magic</div>
-                            <div class="col-3 armor-magic text-left" id="fertilizerArmorMagic">0</div>
+                            <div class="col-4 armor-magic-label text-right">Armor/Magic</div>
+                            <div class="col-2 armor-magic text-left" id="fertilizerArmorMagic">0</div>
 
                         </div>
                         <div class="row mt-2">
                             <ul class="list-group" id="lstFertilizerHints"></ul>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-header text-center">
                                 Components
                             </div>
                             <div class="card-body p-0">
                                 <ul class="list-group">
-                                    <li class="list-group-item">Amber</li>
+                                    <li class="list-group-item">-</li>
                                     <li class="list-group-item">-</li>
                                     <li class="list-group-item">-</li>
                                     <li class="list-group-item">-</li>
@@ -102,45 +123,39 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-6">
         <div class="card">
-            <div class="card-header text-center">
-                Additional Components (Inventory)
+            <div class="card-header text-center pb-0 pt-2">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active" id="nav-inventory-tab" data-toggle="tab" href="#nav-inventory" role="tab" aria-controls="nav-inventory" aria-selected="true">Additional Components (Inventory)</a>
+                        <a class="nav-link" id="nav-recommended-components-tab" data-toggle="tab" href="#nav-recommended-components" role="tab" aria-controls="nav-recommended-components" aria-selected="false">Recommended</a>
+                        <a class="nav-link" id="nav-expirable-components-tab" data-toggle="tab" href="#nav-expirable-components" role="tab" aria-controls="nav-expirable-components" aria-selected="false">Expirable</a>
+                    </div>
+                </nav>
             </div>
-            <div class="card-body p-0">
-                {% include add-to-fertilizer-itemlist-table.html id=tblInventory %}
+            <div class="card-body py-1 mt-1">
+                <div class="tab-content" id="nav-inventory-tabContent">
+                    <div class="tab-pane fade show active" id="nav-inventory" role="tabpanel" aria-labelledby="nav-inventory-tab">
+                        {% include add-to-fertilizer-itemlist-table.html id="tblInventory" %}
+                    </div>
+                    <div class="tab-pane fade" id="nav-recommended-components" role="tabpanel" aria-labelledby="nav-recommended-components-tab">
+                        {% include add-to-fertilizer-itemlist-table.html id="tblInventoryRecommended" %}
+                    </div>
+                    <div class="tab-pane fade" id="nav-expirable-components" role="tabpanel" aria-labelledby="nav-expirable-components-tab">
+                        {% include add-to-fertilizer-itemlist-table.html id="tblInventoryExpirables" %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+</section>
 
-<div class="row mt-2">
-    <div class="col-4">
-        <div class="card">
-            <div class="card-header">
-                Recommended
-            </div>
-            <div class="card-body p-0">
-                {% include add-to-fertilizer-itemlist-table.html id=tblInventoryRecommended %}
-            </div>
-        </div>
-    </div>
-    <div class="col-4">
-        <div class="card">
-            <div class="card-header">
-                Expirables
-                <button type="button" class="btn btn-sm btn-secondary">Show items without nagative effect first</button>
-            </div>
-            <div class="card-body p-0">
-                {% include add-to-fertilizer-itemlist-table.html id=tblInventoryExpirables %}
-            </div>
-        </div>
-    </div>
-</div>
-
-<h2 class="mt-3">Materials</h2>
-<section id="itemsListMaterials">
+<h1 class="mt-3">Items-List</h1>
+<section id="sectionItemList">
     {% assign materials_items = site.data.items | where: "category", "Materials" %}
     {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
-    {% include itemlist-table.html items=materials_items items2=materials_ingredients_items id='tblItemsListMaterials' %}
+    {% include itemlist-table.html items=materials_items items2=materials_ingredients_items id='tblItemsList' %}
 </section>
+

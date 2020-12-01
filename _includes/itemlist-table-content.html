@@ -1,9 +1,9 @@
 {% for item in include.items %}
-<tr data-name="{{item.name}}">
-  <td><button class="btn btn-primary btn-small add-item-to-inventory"><i class="fas fa-plus"></i></button></td>
+<tr data-name="{{ item.name }}">
+  <td><button class="btn btn-primary btn-small add-item-to-inventory" data-name="{{ item.name }}"><i class="fas fa-plus"></i></button></td>
 
-  <th scope="row">
-    <img class="rounded item-icon mx-auto" alt="{{ item.name }}" src="https://via.placeholder.com/16">
+  <th scope="row" class="text-left">
+    <!-- <img class="rounded item-icon mx-auto" alt="{{ item.name }}" src="https://via.placeholder.com/16"> -->
     <span class="ml-1">{{ item.name }}</span>
   </th>
 
@@ -60,11 +60,11 @@
   {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.pesticide %}
   {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.herbicide %}
 
-  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.toxicity invertcolor=true %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.toxicity invertcolor=1 %}
 
-  {% if item.expiry > 0 %}
+  {% if item.expirable %}
   <td class="table-warning">
-      {{ item.expiry }} <i class="fas fa-skull"></i>
+    In days <i class="fas fa-skull"></i>
   </td>
   {% else %} 
   <td>
