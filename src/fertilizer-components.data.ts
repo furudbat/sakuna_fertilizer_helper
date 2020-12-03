@@ -25,17 +25,23 @@ export class FertilizerComponents {
         this._components = value;
     }
 
+    get isFull() {
+        return this._components.length >= MAX_FERTILIZE_COMPONENTS;
+    }
+
     public add(item: ItemInventoryData/*, amount: number = 1*/) {
         //if (amount < 1) {
         //    return false;
         //}
-        if (this._components.length >= MAX_FERTILIZE_COMPONENTS) {
+        if (this.isFull) {
             return false;
         }
 
         const item_index = this._components.findIndex((it) => it.name == item.name);
+        console.log({item_index: item_index})
         if(item_index >= 0) {
             //this._components.in_fertelizer += amount;
+            return true;
         }
 
         let newitem: ItemInventoryData = item;

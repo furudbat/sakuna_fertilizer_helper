@@ -56,12 +56,6 @@ guide:
     drain: >-
       <i class="fas fa-tint-slash"></i> 
       Water: <strong>0%</strong>
-    dehydrate: >-
-      <i class="fas fa-tint-slash"></i> 
-      Water: <strong>0-10% (let dehydrate to 0%)</strong>
-    short_dehydrate: >-
-      <i class="fas fa-tint-slash"></i> 
-      Water: <strong>5% (dehydrate for short time)</strong>
     shallow: >-
       <i class="fas fa-tint"></i> 
       Water: <strong>15-20% (Shallow)</strong>
@@ -89,6 +83,12 @@ guide:
     lock_ducks: >-
       <i class="fas fa-feather"></i> 
       <strong>Lock ducks</strong>
+    dehydrate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0-5% (Sommer 2)</strong>
+    short_dehydrate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0-10% (Sommer 2)</strong>
   sprouting:
     use_leaf_fertilizer: >-
       <i class="fas fa-poop"></i> 

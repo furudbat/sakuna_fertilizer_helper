@@ -1489,12 +1489,22 @@
   food_bonus: {}
   used_in_recipes: ''
 - name: Genkonut
-  category: Materials8Ingredients
+  category: Materials/Ingredients
   found_in: ''
   source: ''
   time_of_day: ''
   fertilizer_bonus: 
     yield_hp: 5
     herbicide: -1
+  food_bonus: {}
+  used_in_recipes: ''
+- name: Garlic
+  category: Materials/Ingredients
+  found_in: ''
+  source: ''
+  time_of_day: ''
+  fertilizer_bonus: 
+    hardness_vitality: 3
+    pesticide: 5
   food_bonus: {}
   used_in_recipes: ''

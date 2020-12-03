@@ -8,20 +8,20 @@ function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] | null {
     return (o[propertyName] !== undefined)? o[propertyName] : null; // o[propertyName] is of type T[K]
 }
 
-function render_buff_bonus_html(value: number, invertcolor: boolean | null = null) {
+export function render_buff_bonus_html(value: number, invertcolor: boolean | null = null) {
     let valuestr = (value > 0)? `+${value}` : `${value}`; 
     if (invertcolor !== null) {
         if (!invertcolor) {
             if (value > 0) {
-                valuestr = `<span class="text-success">+${value}</span>`;
+                valuestr = `<span class="text-success">${valuestr}</span>`;
             } else if (value < 0) {
-                valuestr = `<span class="text-danger">${value}</span>`;
+                valuestr = `<span class="text-danger">${valuestr}</span>`;
             }
         } else {
             if (value < 0) {
-                valuestr = `<span class="text-success">+${value}</span>`;
+                valuestr = `<span class="text-success">${valuestr}</span>`;
             } else if (value > 0) {
-                valuestr = `<span class="text-danger">${value}</span>`;
+                valuestr = `<span class="text-danger">${valuestr}</span>`;
             }
         }
     }
@@ -29,7 +29,7 @@ function render_buff_bonus_html(value: number, invertcolor: boolean | null = nul
     return `<span class="text-center">${valuestr}</span>`;
 };
 
-function render_buff_bonus( property_name: string, invertcolor: boolean | null = null ) {
+export function render_buff_bonus( property_name: string, invertcolor: boolean | null = null ) {
     return function ( data: any, type: string, row: ItemInventoryData ) {
         const value = (hasProperty(data, property_name))? getProperty(data, property_name) : 0;
         if ( type === 'display' ) {
@@ -58,11 +58,14 @@ export class InventoryAdapter {
             order: [[ 1, "asc" ]],
             pageLength: 6,
             lengthChange: false,
+            createdRow: function (row: Node, data: any[] | object, dataIndex: number) {
+                $(row).data('name', (data as ItemInventoryData).name);
+            }, 
             columnDefs: [
                 { orderable: false, targets: [0] },
                 { orderable: true, 
                   targets: [1, 2, 3, 4, 5, 6],
-                  createdCell:  function (cell: Node, cellData: any, rowData: any, row: number, col: number) {
+                  createdCell: function (cell: Node, cellData: any, rowData: any, row: number, col: number) {
                     $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
                     
                     if (col == 2) {
@@ -257,13 +260,11 @@ export class InventoryAdapter {
         
         var that = this;
         this._table.on( 'draw.dt', function () {
-            $('.remove-item-from-inventory').on('click', function() {
-                const item_name = $(this).data('name');
-
-                that.remove(item_name);
-                that._app.updateInventory();
-            });
+            that._app.drawInventory(that._table_selector);
+            that.initEvents();
         });
+        
+        this.initEvents();
     }
 
     public update() {
@@ -273,18 +274,38 @@ export class InventoryAdapter {
         }
     }
 
-    public add(item: ItemInventoryData) {
-        if(this._data.add(item)){
+    public add(item: ItemData) {
+        const ret = this._data.add(item);
+        if(ret){
             this._table?.rows.add([item]).draw(false);
-            this._app.updateInventory();
+            this._app.addItemToInventory(item);
         }
+        return ret;
     }
     
     public remove(item_name: string) {
-        if(this._data.remove(item_name) >= 0) {
+        const ret = this._data.remove(item_name);
+        if(ret >= 0) {
             this._table?.row(`[data-name='${item_name}']`).remove();
             this._table?.draw(false);
             this._app.updateInventory();
         }
+        return ret;
+    }
+
+    private initEvents() {
+        var that = this;
+        $(this._table_selector).find('.add-item-to-fertilizer').on('click', function() {
+            const item_name = $(this).data('name');
+            const item = that._app.getItemByNameFromInventory(item_name);
+
+            if (item) {
+                that._app.addItemToFertilizer(item);
+            }
+        });
+        $(this._table_selector).find('.remove-item-from-inventory').on('click', function() {
+            const item_name = $(this).data('name');
+            that._app.removeItemFromInventory(item_name);
+        });
     }
 }

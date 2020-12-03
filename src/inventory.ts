@@ -1,3 +1,5 @@
+import { clear } from "localforage";
+
 export interface ItemInventoryData extends ItemData {
     // private _amount?: number;
 }
@@ -13,13 +15,21 @@ export class Inventory {
         this._items_in_inventory = value;
     }
 
+    public getItemByName(name: string) {
+        return this._items_in_inventory.find((it) => it.name == name);
+    }
+
+    public clear() {
+        this._items_in_inventory = [];
+    }
+
     public add(item: ItemData/*, amount: number = 1*/) {
         //if (amount < 1) {
         //    return false;
         //}
 
         const item_index = this._items_in_inventory.findIndex((it) => it.name == item.name);
-        if(item_index >= 0) {
+        if (item_index >= 0) {
             //this._items_in_inventory.amount += amount;
             return true;
         }
@@ -27,7 +37,7 @@ export class Inventory {
         let newitem: ItemInventoryData = item;
         //newitem.amount = amount;
         this._items_in_inventory.push(newitem);
-        
+
         return true;
     }
 
@@ -41,12 +51,12 @@ export class Inventory {
         })();
 
         var ret = -1;
-        this._items_in_inventory.forEach( (value, index) => {
-            if(value.name == item_name) {
+        this._items_in_inventory.forEach((value, index) => {
+            if (value.name == item_name) {
                 //this._items_in_inventory.amount -= amount;
                 //if (this._items_in_inventory.amount <= 0) {
-                    this._items_in_inventory.splice(index, 1);
-                    ret = index;
+                this._items_in_inventory.splice(index, 1);
+                ret = index;
                 //}
             }
         });

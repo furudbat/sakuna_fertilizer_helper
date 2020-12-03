@@ -1,13 +1,23 @@
+import { ItemInventoryData } from "./inventory";
+
 export interface ApplicationListener {
     getItemByName(name: string): ItemData | undefined;
+    getItemByNameFromInventory(name: string): ItemInventoryData | undefined;
+    addItemToInventory(item: ItemData): void;
+    addItemToFertilizer(item: ItemInventoryData): void;
+    removeItemFromFertilizer(item_name: string): void;
+    removeItemFromInventory(item_name: string): void;
 
-    updateSoilNutrientsChart(): void;
-    updateSoilNutrientsChartCurrentLeafFertilizer(value: number): void;
-    updateSoilNutrientsChartCurrentKernelFertilizer(value: number): void;
-    updateSoilNutrientsChartCurrentRootFertilizer(value: number): void;
-    updateSoilNutrientsChartLeafFertilizer(): void;
-    updateSoilNutrientsChartKernelFertilizer(): void;
-    updateSoilNutrientsChartRootFertilizer(): void;
+    updateSoilNutrientsChartUI(): void;
+    updateSoilNutrientsChartCurrentLeafFertilizerUI(): void;
+    updateSoilNutrientsChartCurrentKernelFertilizerUI(): void;
+    updateSoilNutrientsChartCurrentRootFertilizerUI(): void;
+    updateSoilNutrientsChartLeafFertilizerUI(): void;
+    updateSoilNutrientsChartKernelFertilizerUI(): void;
+    updateSoilNutrientsChartRootFertilizerUI(): void;
 
     updateInventory(): void;
+    drawInventory(table_selector: string): void;
+    updateFertilizer(): void;
+    updateFertilizerUI(): void;
 }

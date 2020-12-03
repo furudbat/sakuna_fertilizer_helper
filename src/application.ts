@@ -6,8 +6,8 @@ import { Chart } from 'chart.js'
 import { FertilizerData, MAX_FERTILIZER, MIN_FERTILIZER } from './fertilizer.data'
 import { FertilizeAdapter } from './Fertilize.adapter'
 import { FertilizeComponentsAdapter } from './fertilize-components.adapter'
-import { InventoryAdapter } from './inventory.adapter'
-import { Inventory } from './inventory'
+import { InventoryAdapter, render_buff_bonus_html } from './inventory.adapter'
+import { Inventory, ItemInventoryData } from './inventory'
 export class Application implements ApplicationListener {
 
     private _appData: ApplicationData = new ApplicationData();
@@ -46,13 +46,16 @@ export class Application implements ApplicationListener {
         });
 
         this._fertilizeAdapter = new FertilizeAdapter(this, this._fertilizer);
-        this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this, this._appData.fertilizer_components);
+        this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new InventoryAdapter(this, '#tblInventory', this._appData.inventory);
         this._recommendedInventoryAdapter = new InventoryAdapter(this, '#tblInventoryRecommended', this._recommendedInventory);
         this._expirablesInventoryAdapter = new InventoryAdapter(this, '#tblInventoryExpirables', this._expirablesInventory);
 
         this.initItemList().then(()=> {
             this.initInventory();
+            this._fertilizeComponentsAdapter?.init();
+            this._fertilizeAdapter?.init();
+            this._fertilizeAdapter?.updateFromComponents(this._appData.fertilizer_components);
         })
         this.initSoilNutrientsChart().then(() => {
             this._fertilizeAdapter?.init();
@@ -76,7 +79,6 @@ export class Application implements ApplicationListener {
                 const item = that._appData.getItemByName(item_name);
                 if(item) {
                     that._inventoryAdapter?.add(item);
-                    that.updateInventory();
                 }
             });
         });
@@ -85,6 +87,12 @@ export class Application implements ApplicationListener {
 
     private async initInventory() {
         this._inventoryAdapter?.init();
+        this._expirablesInventoryAdapter?.init();
+        this._recommendedInventoryAdapter?.init();
+
+        this.drawInventory('#tblInventory');
+        this.drawInventory('#tblInventoryRecommended');
+        this.drawInventory('#tblInventoryExpirables');
     }
 
     private async initSoilNutrientsChart() {
@@ -114,12 +122,12 @@ export class Application implements ApplicationListener {
                         pointStyle: 'rect',
                         borderWidth: 1
                     }, {
-                        label: 'with added fertilizer',
+                        label: 'with Components',
                         fill: true,
                         data: [
-                            this._fertilizer.leaf_fertilizer + this._appData.currentLeafFertilizer, 
-                            this._fertilizer.kernel_fertilizer + this._appData.currentKernelFertilizer, 
-                            this._fertilizer.root_fertilizer + this._appData.currentRootFertilizer
+                            this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, 
+                            this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, 
+                            this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer
                         ],
                         backgroundColor: 'rgba(160, 250, 255, 0.2)',
                         borderColor: 'rgba(160, 250, 255, 1)',
@@ -146,81 +154,77 @@ export class Application implements ApplicationListener {
         var that = this;
         $('#txtCurrentLeafFertilizer').on('change', function() { 
             that._appData.currentLeafFertilizer = $(this).val() as number; 
-            that.updateSoilNutrientsChartCurrentLeafFertilizer(that._appData.currentLeafFertilizer);
+            that.updateSoilNutrientsChartCurrentLeafFertilizerUI();
         });
         $('#txtCurrentKernelFertilizer').on('change', function() { 
             that._appData.currentKernelFertilizer = $(this).val() as number; 
-            that.updateSoilNutrientsChartCurrentKernelFertilizer(that._appData.currentKernelFertilizer);
+            that.updateSoilNutrientsChartCurrentKernelFertilizerUI();
         });
         $('#txtCurrentRootFertilizer').on('change', function() { 
             that._appData.currentRootFertilizer = $(this).val() as number;
-            that.updateSoilNutrientsChartCurrentRootFertilizer(that._appData.currentRootFertilizer);
+            that.updateSoilNutrientsChartCurrentRootFertilizerUI();
         });
 
-        this.updateSoilNutrientsChartLeafFertilizer();
-        this.updateSoilNutrientsChartKernelFertilizer();
-        this.updateSoilNutrientsChartRootFertilizer();
+        this.updateSoilNutrientsChartLeafFertilizerUI();
+        this.updateSoilNutrientsChartKernelFertilizerUI();
+        this.updateSoilNutrientsChartRootFertilizerUI();
     }
 
-    public updateSoilNutrientsChartCurrentLeafFertilizer(value: number) {
+    public updateSoilNutrientsChartCurrentLeafFertilizerUI() {
         if (this._soilNutrientsChart) {
-            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[0]) {
-                this._soilNutrientsChart.data.datasets[0].data[0] = clamp(value, MIN_FERTILIZER, MAX_FERTILIZER);
-            }
-            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[0]) {
-                this._soilNutrientsChart.data.datasets[1].data[0] = clamp(this._fertilizer.leaf_fertilizer + value, MIN_FERTILIZER, MAX_FERTILIZER);
-                $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
+            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[0] !== undefined) {
+                this._soilNutrientsChart.data.datasets[0].data[0] = clamp(this._appData.currentLeafFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
             }
         }
-        this.updateSoilNutrientsChartLeafFertilizer();
+        this.updateSoilNutrientsChartLeafFertilizerUI();
     }
-    public updateSoilNutrientsChartLeafFertilizer() {
+    public updateSoilNutrientsChartLeafFertilizerUI() {
         if (this._soilNutrientsChart) {
-            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[0] && this._soilNutrientsChart?.data.datasets?.[1].data?.[0]) {
-                this._soilNutrientsChart.data.datasets[1].data[0] = clamp(parseInt(this._soilNutrientsChart.data.datasets[0].data[0].toString()) as number + this._fertilizer.leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[0] !== undefined) {
+                this._soilNutrientsChart.data.datasets[1].data[0] = clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
             }
-            this.updateSoilNutrientsChart();
+            this.updateSoilNutrientsChartUI();
         }
     }
     
-    public updateSoilNutrientsChartCurrentKernelFertilizer(value: number) {
+    public updateSoilNutrientsChartCurrentKernelFertilizerUI() {
         if (this._soilNutrientsChart) {
-            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[1]) {
-                this._soilNutrientsChart.data.datasets[0].data[1] = clamp(value, MIN_FERTILIZER, MAX_FERTILIZER);
+            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[1] !== undefined) {
+                this._soilNutrientsChart.data.datasets[0].data[1] = clamp(this._appData.currentKernelFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
             }
         }
-        this.updateSoilNutrientsChartKernelFertilizer();
+        this.updateSoilNutrientsChartKernelFertilizerUI();
     }
-    public updateSoilNutrientsChartKernelFertilizer() {
+    public updateSoilNutrientsChartKernelFertilizerUI() {
         if (this._soilNutrientsChart) {
-            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[1] && this._soilNutrientsChart?.data.datasets?.[1].data?.[1]) {
-                this._soilNutrientsChart.data.datasets[1].data[1] = clamp(parseInt(this._soilNutrientsChart.data.datasets[0].data[1].toString()) + this._fertilizer.kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[1] !== undefined) {
+                this._soilNutrientsChart.data.datasets[1].data[1] = clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
             }
-            this.updateSoilNutrientsChart();
+            this.updateSoilNutrientsChartUI();
         }
     }
     
-    public updateSoilNutrientsChartCurrentRootFertilizer(value: number) {
+    public updateSoilNutrientsChartCurrentRootFertilizerUI() {
         if (this._soilNutrientsChart) {
-            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[2]) {
-                this._soilNutrientsChart.data.datasets[0].data[2] = clamp(value, MIN_FERTILIZER, MAX_FERTILIZER);
+            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[2] !== undefined) {
+                this._soilNutrientsChart.data.datasets[0].data[2] = clamp(this._appData.currentRootFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
             }
         }
-        this.updateSoilNutrientsChartRootFertilizer();
+        this.updateSoilNutrientsChartRootFertilizerUI();
     }
-    public updateSoilNutrientsChartRootFertilizer() {
+    public updateSoilNutrientsChartRootFertilizerUI() {
         if (this._soilNutrientsChart) {
-            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[2] && this._soilNutrientsChart?.data.datasets?.[1].data?.[2]) {
-                this._soilNutrientsChart.data.datasets[1].data[2] = clamp(parseInt(this._soilNutrientsChart.data.datasets[0].data[2].toString()) + this._fertilizer.kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[2] !== undefined) {
+                this._soilNutrientsChart.data.datasets[1].data[2] = clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
             }
-            this.updateSoilNutrientsChart();
+            this.updateSoilNutrientsChartUI();
         }
     }
 
-    public updateSoilNutrientsChart() {
+    public updateSoilNutrientsChartUI() {
         if (this._soilNutrientsChart) {
             this._soilNutrientsChart.update();
         }
@@ -230,10 +234,93 @@ export class Application implements ApplicationListener {
     public getItemByName(name: string) {
         return this._appData.getItemByName(name);
     }
+    
+    public getItemByNameFromInventory(name: string): ItemInventoryData | undefined {
+        return this._appData.inventory.getItemByName(name);
+    }
+
+    public addItemToFertilizer(item: ItemInventoryData) {
+        this._appData.saveFertilizerComponents();
+        this._fertilizeComponentsAdapter?.update();
+        this.updateFertilizer();
+    }
+
+    public removeItemFromFertilizer(item_name: string) {
+        this._appData.saveFertilizerComponents();
+        this._fertilizeComponentsAdapter?.update();
+        this.updateFertilizer();
+    }
+
+    public addItemToInventory(item: ItemData) {
+        this.updateInventory();
+    }
+
+    public removeItemFromInventory(item_name: string) {
+        this.updateInventory();
+    }
 
     public updateInventory() {
         this._appData.saveInventory();
 
-        console.log(this._appData.inventory);
+        this._recommendedInventory.clear();
+        this._expirablesInventory.clear();
+    }
+
+    public drawInventory(table_selector: string) {
+        var that = this;
+        $(table_selector).find('.add-item-to-fertilizer').each((index) => {
+            const item_name = $(this).data('name');
+            
+            $(this).prop('disabled', false);
+            if (that._fertilizeComponentsAdapter?.isFull) {
+                $(this).prop('disabled', true);
+                return;
+            }
+
+            const findItemInInventory = that._appData.inventory.getItemByName(item_name);
+            if (findItemInInventory) {
+                $(this).prop('disabled', true);
+                return;
+            }
+        });
+    }
+
+    public updateFertilizer() {
+        this._fertilizeAdapter?.updateFromComponents(this._appData.fertilizer_components);
+        this.updateFertilizerUI();
+    }
+    
+    public updateFertilizerUI() {
+        this.updateSoilNutrientsChartLeafFertilizerUI();
+        this.updateSoilNutrientsChartKernelFertilizerUI();
+        this.updateSoilNutrientsChartRootFertilizerUI();
+
+        console.log({ fertilizer: this._fertilizer });
+        
+        const yield_hp = render_buff_bonus_html((this._fertilizer.yield_hp)? this._fertilizer.yield_hp : 0, false);
+        const taste_strength = render_buff_bonus_html((this._fertilizer.taste_strength)? this._fertilizer.taste_strength : 0, false);
+        const hardness_vitality = render_buff_bonus_html((this._fertilizer.hardness_vitality)? this._fertilizer.hardness_vitality : 0, false);
+        const stickiness_gusto = render_buff_bonus_html((this._fertilizer.stickiness_gusto)? this._fertilizer.stickiness_gusto : 0, false);
+        const aesthetic_luck = render_buff_bonus_html((this._fertilizer.aesthetic_luck)? this._fertilizer.aesthetic_luck : 0, false);
+        const armor_magic = render_buff_bonus_html((this._fertilizer.armor_magic)? this._fertilizer.armor_magic : 0, false);
+
+        const immunity = render_buff_bonus_html((this._fertilizer.immunity)? this._fertilizer.immunity : 0, false);
+        const pesticide = render_buff_bonus_html((this._fertilizer.pesticide)? this._fertilizer.pesticide : 0, false);
+        const herbicide = render_buff_bonus_html((this._fertilizer.herbicide)? this._fertilizer.herbicide : 0, false);
+
+        const toxicity = render_buff_bonus_html((this._fertilizer.toxicity)? this._fertilizer.toxicity : 0, true);
+
+        $('#fertilizerYieldHp').html(yield_hp);
+        $('#fertilizerTasteStrength').html(taste_strength);
+        $('#fertilizerHardnessVitality').html(hardness_vitality);
+        $('#fertilizerStickinessGusto').html(stickiness_gusto);
+        $('#fertilizerAestheticLuck').html(aesthetic_luck);
+        $('#fertilizerArmorMagic').html(armor_magic);
+
+        $('#fertilizerImmunuity').html(immunity);
+        $('#fertilizerPesticide').html(pesticide);
+        $('#fertilizerHerbicide').html(herbicide);
+        
+        $('#fertilizerToxicity').html(toxicity);
     }
 }
