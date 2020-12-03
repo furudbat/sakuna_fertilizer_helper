@@ -53,7 +53,7 @@ export class InventoryAdapter {
         this._data = data;
     }
 
-    public init() {
+    public init(orderable: number[] = [1, 2, 3, 4, 5, 6], not_orderable: number[] = [0]) {
         this._table = $(this._table_selector).DataTable({
             order: [[ 1, "asc" ]],
             pageLength: 6,
@@ -62,9 +62,9 @@ export class InventoryAdapter {
                 $(row).data('name', (data as ItemInventoryData).name);
             }, 
             columnDefs: [
-                { orderable: false, targets: [0] },
+                { orderable: false, targets: not_orderable },
                 { orderable: true, 
-                  targets: [1, 2, 3, 4, 5, 6],
+                  targets: orderable,
                   createdCell: function (cell: Node, cellData: any, rowData: any, row: number, col: number) {
                     $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
                     
@@ -288,7 +288,7 @@ export class InventoryAdapter {
         if(ret >= 0) {
             this._table?.row(`[data-name='${item_name}']`).remove();
             this._table?.draw(false);
-            this._app.updateInventory();
+            this._app.removeItemFromInventory(item_name);
         }
         return ret;
     }
@@ -305,7 +305,7 @@ export class InventoryAdapter {
         });
         $(this._table_selector).find('.remove-item-from-inventory').on('click', function() {
             const item_name = $(this).data('name');
-            that._app.removeItemFromInventory(item_name);
+            that.remove(item_name);
         });
     }
 }

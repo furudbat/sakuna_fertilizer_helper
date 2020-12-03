@@ -29,6 +29,10 @@ export class FertilizerComponents {
         return this._components.length >= MAX_FERTILIZE_COMPONENTS;
     }
 
+    public getItemByName(name: string) {
+        return this._components.find((it) => it.name == name);
+    }
+
     public add(item: ItemInventoryData/*, amount: number = 1*/) {
         //if (amount < 1) {
         //    return false;
@@ -38,7 +42,6 @@ export class FertilizerComponents {
         }
 
         const item_index = this._components.findIndex((it) => it.name == item.name);
-        console.log({item_index: item_index})
         if(item_index >= 0) {
             //this._components.in_fertelizer += amount;
             return true;

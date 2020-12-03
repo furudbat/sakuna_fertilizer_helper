@@ -1508,3 +1508,4 @@
     pesticide: 5
   food_bonus: {}
   used_in_recipes: ''
+  expirable: true

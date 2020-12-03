@@ -8,6 +8,7 @@ const STORAGE_KEY_CURRENT_LEAF_FERTILIZER = 'current_leaf_fertilizer';
 const STORAGE_KEY_CURRENT_KERNEL_FERTILIZER = 'current_kernel_fertilizer';
 const STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 const STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
+const STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
 
 export class ApplicationData {
 
@@ -17,6 +18,7 @@ export class ApplicationData {
     private _currentKernelFertilizer: number = 0;
     private _currentRootFertilizer: number = 0;
     private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
+    private _currentGuide: string = 'balanced';
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -36,6 +38,8 @@ export class ApplicationData {
             this._currentRootFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER) || this._currentRootFertilizer;
             
             this._fertilizer_components.components = await this._storeSession.getItem<ItemFertilizerComponentData[]>(STORAGE_KEY_FERTILIZER_COMPONENTS) || this._fertilizer_components.components;
+            
+            this._currentGuide = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide;
         } catch (err) {
             // This code runs if there were any errors.
             console.error('loadFromStorage', err);
@@ -46,6 +50,15 @@ export class ApplicationData {
         this._storeSession.clear();
     }
 
+    
+    get currentGuide() {
+        return this._currentGuide;
+    }
+
+    set currentGuide(value: string) {
+        this._currentGuide = value;
+        this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
+    }
     
     get items() {
         return this._items;

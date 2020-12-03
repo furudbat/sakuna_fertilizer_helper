@@ -24,6 +24,10 @@ export class FertilizerData {
 
     private _toxicity: number = 0;
 
+    get no_negative_effect() {
+        return this._immunity >= 0 && this._pesticide >= 0 && this._herbicide >= 0 && this._toxicity <= 0;
+    }
+
     get leaf_fertilizer() {
         return clamp(this._leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
     }
