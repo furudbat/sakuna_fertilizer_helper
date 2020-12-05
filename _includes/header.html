@@ -4,21 +4,21 @@
       <span class="mx-1">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="mx-1"> - {{ site.short_description | escape }}</span> {%- endif -%}
     </a>
 
-    {%- assign page_paths = site.header_pages -%}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        {%- for path in page_paths -%}
-        {%- assign my_page = site.pages | where: "path", path | first -%}
-        {%- if my_page.title -%}
         <li class="nav-item">
-          <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+          <a class="nav-link" href="#sectionFarmingGuide">{{ site.data.strings.guide.title }}</a>
         </li>
-        {%- endif -%}
-        {% endfor -%}
+        <li class="nav-item">
+          <a class="nav-link" href="#sectionFertilizerHelper">{{ site.data.strings.fertilizer_helper.title }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sectionItemList">{{ site.data.strings.item_list.title }}</a>
+        </li>
       </ul>
     </div>
   </div>

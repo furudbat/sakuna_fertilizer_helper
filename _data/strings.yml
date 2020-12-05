@@ -211,10 +211,6 @@ fertilizer_helper:
       toxicity: Tox.
 item_list:
   title: Items-List
-
-    
-
-
-
+goto: go to
 footer: >-
   I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

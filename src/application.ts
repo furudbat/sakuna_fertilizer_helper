@@ -127,8 +127,8 @@ export class Application implements ApplicationListener {
             type: 'radar',
             data: {
                 labels: [
-                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label, 
-                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label, 
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
                     site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
                 ],
                 datasets: [
@@ -326,14 +326,16 @@ export class Application implements ApplicationListener {
             }
         })
 
-        $(`#${table_selector}_filter`).each(function () {
-            const table_selector_id = $(table_selector).attr('id');
-            
-            if($(this).parent().find('.dataTables_link_items').length === 0){
-                $(this).prepend(`<div id="${table_selector_id}_itemListLink" class="dataTables_link_items text-left">
+        const table_selector_id = $(table_selector).attr('id');
+        $(`#${table_selector_id}_filter`).each(function () {
+            $(this).addClass('float-right').addClass('text-right');
+
+            $(this).closest('.row').find('.col-md-6').first().each(function () {
+                $(this).html(`<div id="${table_selector_id}_itemListLink" class="dataTables_link_items float-left text-left">
                     <a href="#sectionItemList" class="btn btm-sm btn-link">[${site.data.strings.item_list.title}]</a>
                 </div>`);
-            }
+            });
+
         });
     }
 
@@ -473,7 +475,7 @@ export class Application implements ApplicationListener {
                 return -3 * (current_fertilizer - MAX_STATS) - points_fertilizer;
             } else if (current_fertilizer + points_fertilizer > MAX_STATS) {
                 return -2 * (current_fertilizer + points_fertilizer - MAX_STATS);
-            }else if (current_fertilizer < 0) {
+            } else if (current_fertilizer < 0) {
                 if (current_fertilizer + points_fertilizer > 0) {
                     return 4 * points_fertilizer;
                 } else if (current_fertilizer + points_fertilizer === 0) {

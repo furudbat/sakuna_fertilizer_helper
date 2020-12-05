@@ -13,10 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: sakuna_fertilizer_helper
+title: saKuwa
 email: "hircreacc@gmail.com"
 description: >- # this means to ignore newlines until "baseurl:"
-  Sakuna: Of Rice and Ruin Fertilizer Helper
+  Sakuna: Of Rice and Ruin Fertilizer Helper, Farming Guide and Items-List
 short_description: >-
   Sakuna: Of Rice and Ruin Fertilizer Helper
 baseurl: "/sakuna_fertilizer_helper" # the subpath of your site, e.g. /blog

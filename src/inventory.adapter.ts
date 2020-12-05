@@ -211,8 +211,8 @@ export class InventoryAdapter {
 
                             return `<div class="row no-gutters">
                                         <div col="col text-left">
-                                            <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
-                                                <span class="${data_color_class}">${data}</span>
+                                            <button class="btn btn-link text-left ${data_color_class}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                                ${data}
                                             </button>
                                         </div>
                                     </div>
