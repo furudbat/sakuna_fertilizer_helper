@@ -12,7 +12,6 @@ import { Inventory, ItemInventoryData } from './inventory'
 import { LoggerManager } from 'typescript-logger/build/loggerManager'
 
 const MAX_SHOW_RECOMMENDED_ITEMS = 12;
-
 export class Application implements ApplicationListener {
 
     private _appData: ApplicationData = new ApplicationData();
@@ -30,7 +29,9 @@ export class Application implements ApplicationListener {
     private log = LoggerManager.create('Application');
 
     public init() {
-        //LoggerManager.setProductionMode();
+        if (process.env.NODE_ENV !== "development") {
+            LoggerManager.setProductionMode();
+        }
         var that = this;
         this._appData.loadFromStorage().then(function () {
             if (that._appData.items.length <= 0 || !USE_CACHE) {
@@ -125,10 +126,14 @@ export class Application implements ApplicationListener {
         this._soilNutrientsChart = new Chart(canvas, {
             type: 'radar',
             data: {
-                labels: ['Leaf Fertilizer', 'Kernel Fertilizer', 'Root Fertilizer'],
+                labels: [
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label, 
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label, 
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
+                ],
                 datasets: [
                     {
-                        label: 'current',
+                        label: site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
                         fill: true,
                         data: [
                             this._appData.currentLeafFertilizer,
@@ -142,7 +147,7 @@ export class Application implements ApplicationListener {
                         pointStyle: 'rect',
                         borderWidth: 1
                     }, {
-                        label: 'with Components',
+                        label: site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
                         fill: true,
                         data: [
                             this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer,
@@ -155,7 +160,7 @@ export class Application implements ApplicationListener {
                         pointBackgroundColor: 'rgba(205, 215, 115, 1)',
                         pointStyle: 'rect',
                         borderWidth: 1
-                    },
+                    }
                 ]
             },
             options: {
@@ -319,17 +324,17 @@ export class Application implements ApplicationListener {
                 $(this).prop('disabled', true);
                 return;
             }
-        });
+        })
 
-        if ($(table_selector).find('.dataTables_link_items').length === 0) {
-            $(table_selector).find('.dataTables_filter').first().each(function () {
-                const table_selector_id = $(table_selector).attr('id');
-
-                $(this).prepend(`<div id="${table_selector_id}_filter" class="dataTables_link_items text-left">
-                    <a href="#sectionItemList" class="btn btm-sm btn-link">[Item-List]</a>
+        $(`#${table_selector}_filter`).each(function () {
+            const table_selector_id = $(table_selector).attr('id');
+            
+            if($(this).parent().find('.dataTables_link_items').length === 0){
+                $(this).prepend(`<div id="${table_selector_id}_itemListLink" class="dataTables_link_items text-left">
+                    <a href="#sectionItemList" class="btn btm-sm btn-link">[${site.data.strings.item_list.title}]</a>
                 </div>`);
-            });
-        }
+            }
+        });
     }
 
     public updateFertilizer() {

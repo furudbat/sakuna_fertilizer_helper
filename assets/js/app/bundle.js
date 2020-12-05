@@ -53383,6 +53383,9 @@ var Application = (function () {
         this.log = loggerManager_1.LoggerManager.create('Application');
     }
     Application.prototype.init = function () {
+        if ("development" !== "development") {
+            loggerManager_1.LoggerManager.setProductionMode();
+        }
         var that = this;
         this._appData.loadFromStorage().then(function () {
             if (that._appData.items.length <= 0 || !site_1.USE_CACHE) {
@@ -53486,10 +53489,14 @@ var Application = (function () {
                 this._soilNutrientsChart = new chart_js_1.Chart(canvas, {
                     type: 'radar',
                     data: {
-                        labels: ['Leaf Fertilizer', 'Kernel Fertilizer', 'Root Fertilizer'],
+                        labels: [
+                            site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
+                            site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
+                            site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
+                        ],
                         datasets: [
                             {
-                                label: 'current',
+                                label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
                                 fill: true,
                                 data: [
                                     this._appData.currentLeafFertilizer,
@@ -53503,7 +53510,7 @@ var Application = (function () {
                                 pointStyle: 'rect',
                                 borderWidth: 1
                             }, {
-                                label: 'with Components',
+                                label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
                                 fill: true,
                                 data: [
                                     this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer,
@@ -53516,7 +53523,7 @@ var Application = (function () {
                                 pointBackgroundColor: 'rgba(205, 215, 115, 1)',
                                 pointStyle: 'rect',
                                 borderWidth: 1
-                            },
+                            }
                         ]
                     },
                     options: {
@@ -53708,12 +53715,12 @@ var Application = (function () {
                 return;
             }
         });
-        if ($(table_selector).find('.dataTables_link_items').length === 0) {
-            $(table_selector).find('.dataTables_filter').first().each(function () {
-                var table_selector_id = $(table_selector).attr('id');
-                $(this).prepend("<div id=\"" + table_selector_id + "_filter\" class=\"dataTables_link_items text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[Item-List]</a>\n                </div>");
-            });
-        }
+        $("#" + table_selector + "_filter").each(function () {
+            var table_selector_id = $(table_selector).attr('id');
+            if ($(this).parent().find('.dataTables_link_items').length === 0) {
+                $(this).prepend("<div id=\"" + table_selector_id + "_itemListLink\" class=\"dataTables_link_items text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[" + site_1.site.data.strings.item_list.title + "]</a>\n                </div>");
+            }
+        });
     };
     Application.prototype.updateFertilizer = function () {
         var _a;
@@ -54484,6 +54491,7 @@ exports.FertilizerData = FertilizerData;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryAdapter = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
 var inventory_1 = require("./inventory");
+var site_1 = require("./site");
 function hasProperty(o, propertyName) {
     return o[propertyName] !== undefined;
 }
@@ -54637,17 +54645,17 @@ var InventoryAdapter = (function () {
                             if (row.fertilizer_bonus.leaf_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
                                 var sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>L:</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.leaf_fertilizer + "\n                                </p>";
+                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer + "</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.leaf_fertilizer + "\n                                </p>";
                             }
                             if (row.fertilizer_bonus.kernel_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
                                 var sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>K:</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.kernel_fertilizer + "\n                                </p>";
+                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer + "</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.kernel_fertilizer + "\n                                </p>";
                             }
                             if (row.fertilizer_bonus.root_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
                                 var sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>R:</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.root_fertilizer + "\n                                </p>";
+                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer + "</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.root_fertilizer + "\n                                </p>";
                             }
                             var yield_hp = render_buff_bonus_html(row.fertilizer_bonus.yield_hp, false);
                             var taste_strength = render_buff_bonus_html(row.fertilizer_bonus.taste_strength, false);
@@ -54678,7 +54686,7 @@ var InventoryAdapter = (function () {
                                     data_color_class = 'aroma-text';
                                     break;
                             }
-                            return "<div class=\"row no-gutters\">\n                                        <div col=\"col text-left\">\n                                            <button class=\"btn btn-link text-left\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                <span class=\"" + data_color_class + "\">" + data + "</span>\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">Remove from Inventory</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 yield_hp-label text-left\">HP</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 taste-strength-label text-left\">Str.</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">Vit.</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">Gus.</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">Luck</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 armor-magic-label text-left\">Magic</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 immunuity-label text-left\">Immu.</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 pesticide-label text-left\">Pest.</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 herbicide-label text-left\">Herb.</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 toxicity-label text-left\">Tox.</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            return "<div class=\"row no-gutters\">\n                                        <div col=\"col text-left\">\n                                            <button class=\"btn btn-link text-left\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                <span class=\"" + data_color_class + "\">" + data + "</span>\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -54784,7 +54792,7 @@ var InventoryAdapter = (function () {
     return InventoryAdapter;
 }());
 exports.InventoryAdapter = InventoryAdapter;
-},{"./inventory":20}],20:[function(require,module,exports){
+},{"./inventory":20,"./site":22}],20:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = void 0;

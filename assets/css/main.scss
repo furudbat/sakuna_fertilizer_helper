@@ -181,8 +181,8 @@ ul.pagination {
 .text-orange-line {
     color: orange;
 }
-.text-skyblue-line {
-    color: skyblue;
+.text-turquoise-line {
+    color: turquoise;
 }
 .text-springgreen-line {
     color: springgreen;
@@ -196,6 +196,9 @@ ul.pagination {
 }
 
 .table-inventory {
+    .table {
+        width: 100%;
+    }
     .dataTables_filter {
         padding-right: 16px;
     }
@@ -204,5 +207,11 @@ ul.pagination {
     }
     .dataTables_paginate {
         padding-right: 16px;
+    }
+}
+
+.table-item-list {
+    .table {
+        width: 100%;
     }
 }

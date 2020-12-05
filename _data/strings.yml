@@ -19,8 +19,21 @@ table:
     col_toxicity: Toxi.
 
     col_expirable: Exp.
+  inventory:
+    col_add_to_fertilizer: Add to Inv.
+    col_name: Name
+
+    col_immunity: Imm.
+    col_pesticide: Pes.
+    col_herbicide: Her.
+
+    col_toxicity: Tox.
+
+    col_expirable: Ex.
 guide:
+  title: Farming Guide
   tilling:
+    title: Before Planting/Tilling
     sort_rice:
       lightly: >-
         <i class="fas fa-sort"></i> 
@@ -45,6 +58,7 @@ guide:
       <i class="fas fa-tractor"></i> 
       Fertilize <strong>After</strong> Tilling
   planting:
+    title: Planting (Raising Seedlings)
     spacing:
       little_far_apart: >-
         <i class="fas fa-seedling"></i> 
@@ -52,6 +66,8 @@ guide:
       balanced: >-
         <i class="fas fa-seedling"></i> 
         Plant Spacing: <strong>Balanced</strong>
+  after_planting:
+    title: After Planting (Seedlings)
   water:
     drain: >-
       <i class="fas fa-tint-slash"></i> 
@@ -66,6 +82,7 @@ guide:
       <i class="fas fa-tint"></i> 
       Water: <strong>25-30% (Deep flowing, open both gates)</strong>
   offshots_1_2:
+    title: 1st/2nd Offshoots
     use_kernel_fertilizer: >-
       <i class="fas fa-poop"></i> 
       Use <strong>Kernel</strong> Fertilizer
@@ -80,16 +97,18 @@ guide:
       <i class="fas fa-thermometer-half"></i> 
       Temperature: <strong>Not too low</strong>
   offshots_3:
+    title: 3nd Offshoots
     lock_ducks: >-
       <i class="fas fa-feather"></i> 
       <strong>Lock ducks</strong>
     dehydrate: >-
       <i class="fas fa-tint-slash"></i> 
-      Water: <strong>0-5%</strong>
+      Water: <strong>0%</strong> (dehydrate)
     short_dehydrate: >-
       <i class="fas fa-tint-slash"></i> 
-      Water: <strong>0-10%</strong>
+      Water: <strong>0-5%</strong> (dehydrate, for a short time, evaporation to 0%)
   sprouting:
+    title: Sprouting
     use_leaf_fertilizer: >-
       <i class="fas fa-poop"></i> 
       Use <strong>Leaf</strong> Fertilizer
@@ -102,26 +121,97 @@ guide:
         <i class="fas fa-sun"></i> 
         Weather: <strong>Hot/Dry</strong>
     harvest:
+      title: Harvest (Ripen)
       early: >-
         <i class="fas fa-spa"></i> 
         Harvest <strong>Early</strong> (right after water drained)
       average: >-
         <i class="fas fa-spa"></i> 
         Harvest a day later
-    thresh:
-      when_cool: >-
-        <i class="fab fa-pagelines"></i> 
-        Thresh and Polish: <strong>Night/Morning</strong>
-    hulling:
-      white_rice: >-
-        <i class="fas fa-dharmachakra"></i> 
-        Hulling: <strong>White Rice</strong>
-      brown_or_white_rice: >-
-        <i class="fas fa-dharmachakra"></i> 
-        Hulling: <strong>Brown or White Rice</strong>
-      brown_rice: >-
-        <i class="fas fa-dharmachakra"></i> 
-        Hulling: <strong>Brown Rice</strong>
+    after_harvest:
+      title: After Harvest (Ripen)
+    rice_in_storehouse:
+      title: Rice in Storehouse (Ripen)
+      thresh:
+        when_cool: >-
+          <i class="fab fa-pagelines"></i> 
+          Thresh and Polish: <strong>Night/Morning</strong>
+      hulling:
+        white_rice: >-
+          <i class="fas fa-dharmachakra"></i> 
+          Hulling: <strong>White Rice</strong>
+        brown_or_white_rice: >-
+          <i class="fas fa-dharmachakra"></i> 
+          Hulling: <strong>Brown or White Rice</strong>
+        brown_rice: >-
+          <i class="fas fa-dharmachakra"></i> 
+          Hulling: <strong>Brown Rice</strong>
+fertilizer_helper:
+  title: Fertilizer Helper
+  fertilizer:
+    title: Fertilizer
+    soil_nutrients:
+      title: Soil nutrients
+      current_fertilizer: Current Fertilizer
+      current_fertilizer_short: Curr. Fert.
+      with_components: with Components
+      with_components_short: with Comp.
+      leaf: Leaf
+      kernel: Kernel
+      root: Root
+      leaf_label: Leaf Fertilizer
+      kernel_label: Kernel Fertilizer
+      root_label: Root Fertilizer
+    stats:
+      yield_hp: Yield/HP
+      yield_hp_short: Yield/ HP
+      taste_strength: Taste/Strength
+      taste_strength_short: Tas./ Str.
+      hardness_vitality: Hardness/Vitality
+      hardness_vitality_short: Hard./ Vit.
+      stickiness_gusto: Stickiness/Gusto
+      stickiness_gusto_short: Stick./Gus.
+      aesthetic_luck: Aesthetic/Luck
+      aesthetic_luck_short: Aest./ Luck
+      armor_magic: Armor/Magic
+      armor_magic_short: Armor/ Magic
+
+      immunity: Immunuity
+      immunity_short: Immu.
+      pesticide: Pesticide
+      pesticide_short: Pest.
+      herbicide: Herbicide
+      herbicide_short: Herb.
+
+      toxicity: Toxicity
+      toxicity_short: Toxi.
+    components:
+      title: Components
+  inventory:
+    additional_components:
+      title: Additional Components (Inventory)
+    recommended:
+      title: Recommended
+    expirable:
+      title: Expirable
+    remove_from_inventory: Remove from Inventory
+    stats:
+      leaf_fertilizer: 'L:'
+      kernel_fertilizer: 'K:'
+      root_fertilizer: 'R:'
+      yield_hp: HP
+      taste_strength: Str.
+      hardness_vitality: Vit.
+      stickiness_gusto: Gus.
+      aesthetic_luck: Luck
+      armor_magic: Magic
+      immunity: Immu.
+      pesticide: Pest.
+      herbicide: Herb.
+      toxicity: Tox.
+item_list:
+  title: Items-List
+
     
 
 

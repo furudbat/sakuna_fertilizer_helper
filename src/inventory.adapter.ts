@@ -1,5 +1,6 @@
 import { ApplicationListener } from "./application.listener";
 import { Inventory, ItemInventoryData } from "./inventory";
+import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
     return o[propertyName] !== undefined;
@@ -152,7 +153,7 @@ export class InventoryAdapter {
                             if (row.fertilizer_bonus.leaf_fertilizer) {
                                 const text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
                                 const sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>L:</strong> 
+                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer}</strong> 
                                     ${sign}
                                     ${row.fertilizer_bonus.leaf_fertilizer}
                                 </p>`;
@@ -160,7 +161,7 @@ export class InventoryAdapter {
                             if (row.fertilizer_bonus.kernel_fertilizer) {
                                 const text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
                                 const sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>K:</strong> 
+                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer}</strong> 
                                     ${sign}
                                     ${row.fertilizer_bonus.kernel_fertilizer}
                                 </p>`;
@@ -168,7 +169,7 @@ export class InventoryAdapter {
                             if (row.fertilizer_bonus.root_fertilizer) {
                                 const text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
                                 const sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>R:</strong> 
+                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer}</strong> 
                                     ${sign}
                                     ${row.fertilizer_bonus.root_fertilizer}
                                 </p>`;
@@ -218,7 +219,7 @@ export class InventoryAdapter {
                                     <div class="row no-gutters">
                                         <div class="col collapse" id="${collapse_id}">
                                             <div col="row no-gutters">
-                                                <button class="btn btn-danger btn-small remove-item-from-inventory" data-name="${data}">Remove from Inventory</button>
+                                                <button class="btn btn-danger btn-small remove-item-from-inventory" data-name="${data}">${site.data.strings.fertilizer_helper.inventory.remove_from_inventory}</button>
                                             </div>
 
                                             <div col="row no-gutters mt-1">
@@ -226,54 +227,54 @@ export class InventoryAdapter {
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 yield_hp-label text-left">HP</div>
+                                                <div class="col-7 yield_hp-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.yield_hp}</div>
                                                 <div class="col-4 offset-1 yield_hp text-left">${yield_hp}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 taste-strength-label text-left">Str.</div>
+                                                <div class="col-7 taste-strength-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.taste_strength}</div>
                                                 <div class="col-4 offset-1 taste-strength text-left">${taste_strength}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 hardness-vitality-label text-left">Vit.</div>
+                                                <div class="col-7 hardness-vitality-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality}</div>
                                                 <div class="col-4 offset-1 hardness-vitality text-left">${hardness_vitality}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 stickiness-gusto-label text-left">Gus.</div>
+                                                <div class="col-7 stickiness-gusto-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto}</div>
                                                 <div class="col-4 offset-1 stickiness-gusto text-left">${stickiness_gusto}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 aesthetic-luck-label text-left">Luck</div>
+                                                <div class="col-7 aesthetic-luck-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck}</div>
                                                 <div class="col-4 offset-1 aesthetic-luck text-left">${aesthetic_luck}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 armor-magic-label text-left">Magic</div>
+                                                <div class="col-7 armor-magic-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.armor_magic}</div>
                                                 <div class="col-4 offset-1 armor-magic text-left">${armor_magic}</div>
                                             </div>
 
 
                                             <div class="row no-gutters mt-1">
-                                                <div class="col-7 immunuity-label text-left">Immu.</div>
+                                                <div class="col-7 immunuity-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.immunity}</div>
                                                 <div class="col-4 offset-1 immunuity text-left">${immunity}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 pesticide-label text-left">Pest.</div>
+                                                <div class="col-7 pesticide-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.pesticide}</div>
                                                 <div class="col-4 offset-1 pesticide text-left">${pesticide}</div>
                                             </div>
 
                                             <div class="row no-gutters">
-                                                <div class="col-7 herbicide-label text-left">Herb.</div>
+                                                <div class="col-7 herbicide-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.herbicide}</div>
                                                 <div class="col-4 offset-1 herbicide text-left">${herbicide}</div>
                                             </div>
 
 
                                             <div class="row no-gutters mt-1">
-                                                <div class="col-7 toxicity-label text-left">Tox.</div>
+                                                <div class="col-7 toxicity-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.toxicity}</div>
                                                 <div class="col-4 offset-1 toxicity text-left">${toxicity}</div>
                                             </div>
                                         </div>
