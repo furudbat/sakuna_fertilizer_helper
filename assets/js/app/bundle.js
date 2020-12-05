@@ -16172,7 +16172,7 @@ return src;
 
 })));
 
-},{"moment":6}],2:[function(require,module,exports){
+},{"moment":8}],2:[function(require,module,exports){
 /*! DataTables Bootstrap 4 integration
  * ©2011-2017 SpryMedia Ltd - datatables.net/license
  */
@@ -16358,7 +16358,1570 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 return DataTable;
 }));
 
-},{"datatables.net":3}],3:[function(require,module,exports){
+},{"datatables.net":5}],3:[function(require,module,exports){
+/*! Bootstrap 4 integration for DataTables' Responsive
+ * ©2016 SpryMedia Ltd - datatables.net/license
+ */
+
+(function( factory ){
+	if ( typeof define === 'function' && define.amd ) {
+		// AMD
+		define( ['jquery', 'datatables.net-bs4', 'datatables.net-responsive'], function ( $ ) {
+			return factory( $, window, document );
+		} );
+	}
+	else if ( typeof exports === 'object' ) {
+		// CommonJS
+		module.exports = function (root, $) {
+			if ( ! root ) {
+				root = window;
+			}
+
+			if ( ! $ || ! $.fn.dataTable ) {
+				$ = require('datatables.net-bs4')(root, $).$;
+			}
+
+			if ( ! $.fn.dataTable.Responsive ) {
+				require('datatables.net-responsive')(root, $);
+			}
+
+			return factory( $, root, root.document );
+		};
+	}
+	else {
+		// Browser
+		factory( jQuery, window, document );
+	}
+}(function( $, window, document, undefined ) {
+'use strict';
+var DataTable = $.fn.dataTable;
+
+
+var _display = DataTable.Responsive.display;
+var _original = _display.modal;
+var _modal = $(
+	'<div class="modal fade dtr-bs-modal" role="dialog">'+
+		'<div class="modal-dialog" role="document">'+
+			'<div class="modal-content">'+
+				'<div class="modal-header">'+
+					'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+				'</div>'+
+				'<div class="modal-body"/>'+
+			'</div>'+
+		'</div>'+
+	'</div>'
+);
+
+_display.modal = function ( options ) {
+	return function ( row, update, render ) {
+		if ( ! $.fn.modal ) {
+			_original( row, update, render );
+		}
+		else {
+			if ( ! update ) {
+				if ( options && options.header ) {
+					var header = _modal.find('div.modal-header');
+					var button = header.find('button').detach();
+					
+					header
+						.empty()
+						.append( '<h4 class="modal-title">'+options.header( row )+'</h4>' )
+						.append( button );
+				}
+
+				_modal.find( 'div.modal-body' )
+					.empty()
+					.append( render() );
+
+				_modal
+					.appendTo( 'body' )
+					.modal();
+			}
+		}
+	};
+};
+
+
+return DataTable.Responsive;
+}));
+
+},{"datatables.net-bs4":2,"datatables.net-responsive":4}],4:[function(require,module,exports){
+/*! Responsive 2.2.6
+ * 2014-2020 SpryMedia Ltd - datatables.net/license
+ */
+
+/**
+ * @summary     Responsive
+ * @description Responsive tables plug-in for DataTables
+ * @version     2.2.6
+ * @file        dataTables.responsive.js
+ * @author      SpryMedia Ltd (www.sprymedia.co.uk)
+ * @contact     www.sprymedia.co.uk/contact
+ * @copyright   Copyright 2014-2020 SpryMedia Ltd.
+ *
+ * This source file is free software, available under the following license:
+ *   MIT license - http://datatables.net/license/mit
+ *
+ * This source file is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ *
+ * For details please refer to: http://www.datatables.net
+ */
+(function( factory ){
+	if ( typeof define === 'function' && define.amd ) {
+		// AMD
+		define( ['jquery', 'datatables.net'], function ( $ ) {
+			return factory( $, window, document );
+		} );
+	}
+	else if ( typeof exports === 'object' ) {
+		// CommonJS
+		module.exports = function (root, $) {
+			if ( ! root ) {
+				root = window;
+			}
+
+			if ( ! $ || ! $.fn.dataTable ) {
+				$ = require('datatables.net')(root, $).$;
+			}
+
+			return factory( $, root, root.document );
+		};
+	}
+	else {
+		// Browser
+		factory( jQuery, window, document );
+	}
+}(function( $, window, document, undefined ) {
+'use strict';
+var DataTable = $.fn.dataTable;
+
+
+/**
+ * Responsive is a plug-in for the DataTables library that makes use of
+ * DataTables' ability to change the visibility of columns, changing the
+ * visibility of columns so the displayed columns fit into the table container.
+ * The end result is that complex tables will be dynamically adjusted to fit
+ * into the viewport, be it on a desktop, tablet or mobile browser.
+ *
+ * Responsive for DataTables has two modes of operation, which can used
+ * individually or combined:
+ *
+ * * Class name based control - columns assigned class names that match the
+ *   breakpoint logic can be shown / hidden as required for each breakpoint.
+ * * Automatic control - columns are automatically hidden when there is no
+ *   room left to display them. Columns removed from the right.
+ *
+ * In additional to column visibility control, Responsive also has built into
+ * options to use DataTables' child row display to show / hide the information
+ * from the table that has been hidden. There are also two modes of operation
+ * for this child row display:
+ *
+ * * Inline - when the control element that the user can use to show / hide
+ *   child rows is displayed inside the first column of the table.
+ * * Column - where a whole column is dedicated to be the show / hide control.
+ *
+ * Initialisation of Responsive is performed by:
+ *
+ * * Adding the class `responsive` or `dt-responsive` to the table. In this case
+ *   Responsive will automatically be initialised with the default configuration
+ *   options when the DataTable is created.
+ * * Using the `responsive` option in the DataTables configuration options. This
+ *   can also be used to specify the configuration options, or simply set to
+ *   `true` to use the defaults.
+ *
+ *  @class
+ *  @param {object} settings DataTables settings object for the host table
+ *  @param {object} [opts] Configuration options
+ *  @requires jQuery 1.7+
+ *  @requires DataTables 1.10.3+
+ *
+ *  @example
+ *      $('#example').DataTable( {
+ *        responsive: true
+ *      } );
+ *    } );
+ */
+var Responsive = function ( settings, opts ) {
+	// Sanity check that we are using DataTables 1.10 or newer
+	if ( ! DataTable.versionCheck || ! DataTable.versionCheck( '1.10.10' ) ) {
+		throw 'DataTables Responsive requires DataTables 1.10.10 or newer';
+	}
+
+	this.s = {
+		dt: new DataTable.Api( settings ),
+		columns: [],
+		current: []
+	};
+
+	// Check if responsive has already been initialised on this table
+	if ( this.s.dt.settings()[0].responsive ) {
+		return;
+	}
+
+	// details is an object, but for simplicity the user can give it as a string
+	// or a boolean
+	if ( opts && typeof opts.details === 'string' ) {
+		opts.details = { type: opts.details };
+	}
+	else if ( opts && opts.details === false ) {
+		opts.details = { type: false };
+	}
+	else if ( opts && opts.details === true ) {
+		opts.details = { type: 'inline' };
+	}
+
+	this.c = $.extend( true, {}, Responsive.defaults, DataTable.defaults.responsive, opts );
+	settings.responsive = this;
+	this._constructor();
+};
+
+$.extend( Responsive.prototype, {
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * Constructor
+	 */
+
+	/**
+	 * Initialise the Responsive instance
+	 *
+	 * @private
+	 */
+	_constructor: function ()
+	{
+		var that = this;
+		var dt = this.s.dt;
+		var dtPrivateSettings = dt.settings()[0];
+		var oldWindowWidth = $(window).innerWidth();
+
+		dt.settings()[0]._responsive = this;
+
+		// Use DataTables' throttle function to avoid processor thrashing on
+		// resize
+		$(window).on( 'resize.dtr orientationchange.dtr', DataTable.util.throttle( function () {
+			// iOS has a bug whereby resize can fire when only scrolling
+			// See: http://stackoverflow.com/questions/8898412
+			var width = $(window).innerWidth();
+
+			if ( width !== oldWindowWidth ) {
+				that._resize();
+				oldWindowWidth = width;
+			}
+		} ) );
+
+		// DataTables doesn't currently trigger an event when a row is added, so
+		// we need to hook into its private API to enforce the hidden rows when
+		// new data is added
+		dtPrivateSettings.oApi._fnCallbackReg( dtPrivateSettings, 'aoRowCreatedCallback', function (tr, data, idx) {
+			if ( $.inArray( false, that.s.current ) !== -1 ) {
+				$('>td, >th', tr).each( function ( i ) {
+					var idx = dt.column.index( 'toData', i );
+
+					if ( that.s.current[idx] === false ) {
+						$(this).css('display', 'none');
+					}
+				} );
+			}
+		} );
+
+		// Destroy event handler
+		dt.on( 'destroy.dtr', function () {
+			dt.off( '.dtr' );
+			$( dt.table().body() ).off( '.dtr' );
+			$(window).off( 'resize.dtr orientationchange.dtr' );
+			dt.cells('.dtr-control').nodes().to$().removeClass('dtr-control');
+
+			// Restore the columns that we've hidden
+			$.each( that.s.current, function ( i, val ) {
+				if ( val === false ) {
+					that._setColumnVis( i, true );
+				}
+			} );
+		} );
+
+		// Reorder the breakpoints array here in case they have been added out
+		// of order
+		this.c.breakpoints.sort( function (a, b) {
+			return a.width < b.width ? 1 :
+				a.width > b.width ? -1 : 0;
+		} );
+
+		this._classLogic();
+		this._resizeAuto();
+
+		// Details handler
+		var details = this.c.details;
+
+		if ( details.type !== false ) {
+			that._detailsInit();
+
+			// DataTables will trigger this event on every column it shows and
+			// hides individually
+			dt.on( 'column-visibility.dtr', function () {
+				// Use a small debounce to allow multiple columns to be set together
+				if ( that._timer ) {
+					clearTimeout( that._timer );
+				}
+
+				that._timer = setTimeout( function () {
+					that._timer = null;
+
+					that._classLogic();
+					that._resizeAuto();
+					that._resize(true);
+
+					that._redrawChildren();
+				}, 100 );
+			} );
+
+			// Redraw the details box on each draw which will happen if the data
+			// has changed. This is used until DataTables implements a native
+			// `updated` event for rows
+			dt.on( 'draw.dtr', function () {
+				that._redrawChildren();
+			} );
+
+			$(dt.table().node()).addClass( 'dtr-'+details.type );
+		}
+
+		dt.on( 'column-reorder.dtr', function (e, settings, details) {
+			that._classLogic();
+			that._resizeAuto();
+			that._resize(true);
+		} );
+
+		// Change in column sizes means we need to calc
+		dt.on( 'column-sizing.dtr', function () {
+			that._resizeAuto();
+			that._resize();
+		});
+
+		// On Ajax reload we want to reopen any child rows which are displayed
+		// by responsive
+		dt.on( 'preXhr.dtr', function () {
+			var rowIds = [];
+			dt.rows().every( function () {
+				if ( this.child.isShown() ) {
+					rowIds.push( this.id(true) );
+				}
+			} );
+
+			dt.one( 'draw.dtr', function () {
+				that._resizeAuto();
+				that._resize();
+
+				dt.rows( rowIds ).every( function () {
+					that._detailsDisplay( this, false );
+				} );
+			} );
+		});
+
+		dt
+			.on( 'draw.dtr', function () {
+				that._controlClass();
+			})
+			.on( 'init.dtr', function (e, settings, details) {
+				if ( e.namespace !== 'dt' ) {
+					return;
+				}
+
+				that._resizeAuto();
+				that._resize();
+
+				// If columns were hidden, then DataTables needs to adjust the
+				// column sizing
+				if ( $.inArray( false, that.s.current ) ) {
+					dt.columns.adjust();
+				}
+			} );
+
+		// First pass - draw the table for the current viewport size
+		this._resize();
+	},
+
+
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * Private methods
+	 */
+
+	/**
+	 * Calculate the visibility for the columns in a table for a given
+	 * breakpoint. The result is pre-determined based on the class logic if
+	 * class names are used to control all columns, but the width of the table
+	 * is also used if there are columns which are to be automatically shown
+	 * and hidden.
+	 *
+	 * @param  {string} breakpoint Breakpoint name to use for the calculation
+	 * @return {array} Array of boolean values initiating the visibility of each
+	 *   column.
+	 *  @private
+	 */
+	_columnsVisiblity: function ( breakpoint )
+	{
+		var dt = this.s.dt;
+		var columns = this.s.columns;
+		var i, ien;
+
+		// Create an array that defines the column ordering based first on the
+		// column's priority, and secondly the column index. This allows the
+		// columns to be removed from the right if the priority matches
+		var order = columns
+			.map( function ( col, idx ) {
+				return {
+					columnIdx: idx,
+					priority: col.priority
+				};
+			} )
+			.sort( function ( a, b ) {
+				if ( a.priority !== b.priority ) {
+					return a.priority - b.priority;
+				}
+				return a.columnIdx - b.columnIdx;
+			} );
+
+		// Class logic - determine which columns are in this breakpoint based
+		// on the classes. If no class control (i.e. `auto`) then `-` is used
+		// to indicate this to the rest of the function
+		var display = $.map( columns, function ( col, i ) {
+			if ( dt.column(i).visible() === false ) {
+				return 'not-visible';
+			}
+			return col.auto && col.minWidth === null ?
+				false :
+				col.auto === true ?
+					'-' :
+					$.inArray( breakpoint, col.includeIn ) !== -1;
+		} );
+
+		// Auto column control - first pass: how much width is taken by the
+		// ones that must be included from the non-auto columns
+		var requiredWidth = 0;
+		for ( i=0, ien=display.length ; i<ien ; i++ ) {
+			if ( display[i] === true ) {
+				requiredWidth += columns[i].minWidth;
+			}
+		}
+
+		// Second pass, use up any remaining width for other columns. For
+		// scrolling tables we need to subtract the width of the scrollbar. It
+		// may not be requires which makes this sub-optimal, but it would
+		// require another full redraw to make complete use of those extra few
+		// pixels
+		var scrolling = dt.settings()[0].oScroll;
+		var bar = scrolling.sY || scrolling.sX ? scrolling.iBarWidth : 0;
+		var widthAvailable = dt.table().container().offsetWidth - bar;
+		var usedWidth = widthAvailable - requiredWidth;
+
+		// Control column needs to always be included. This makes it sub-
+		// optimal in terms of using the available with, but to stop layout
+		// thrashing or overflow. Also we need to account for the control column
+		// width first so we know how much width is available for the other
+		// columns, since the control column might not be the first one shown
+		for ( i=0, ien=display.length ; i<ien ; i++ ) {
+			if ( columns[i].control ) {
+				usedWidth -= columns[i].minWidth;
+			}
+		}
+
+		// Allow columns to be shown (counting by priority and then right to
+		// left) until we run out of room
+		var empty = false;
+		for ( i=0, ien=order.length ; i<ien ; i++ ) {
+			var colIdx = order[i].columnIdx;
+
+			if ( display[colIdx] === '-' && ! columns[colIdx].control && columns[colIdx].minWidth ) {
+				// Once we've found a column that won't fit we don't let any
+				// others display either, or columns might disappear in the
+				// middle of the table
+				if ( empty || usedWidth - columns[colIdx].minWidth < 0 ) {
+					empty = true;
+					display[colIdx] = false;
+				}
+				else {
+					display[colIdx] = true;
+				}
+
+				usedWidth -= columns[colIdx].minWidth;
+			}
+		}
+
+		// Determine if the 'control' column should be shown (if there is one).
+		// This is the case when there is a hidden column (that is not the
+		// control column). The two loops look inefficient here, but they are
+		// trivial and will fly through. We need to know the outcome from the
+		// first , before the action in the second can be taken
+		var showControl = false;
+
+		for ( i=0, ien=columns.length ; i<ien ; i++ ) {
+			if ( ! columns[i].control && ! columns[i].never && display[i] === false ) {
+				showControl = true;
+				break;
+			}
+		}
+
+		for ( i=0, ien=columns.length ; i<ien ; i++ ) {
+			if ( columns[i].control ) {
+				display[i] = showControl;
+			}
+
+			// Replace not visible string with false from the control column detection above
+			if ( display[i] === 'not-visible' ) {
+				display[i] = false;
+			}
+		}
+
+		// Finally we need to make sure that there is at least one column that
+		// is visible
+		if ( $.inArray( true, display ) === -1 ) {
+			display[0] = true;
+		}
+
+		return display;
+	},
+
+
+	/**
+	 * Create the internal `columns` array with information about the columns
+	 * for the table. This includes determining which breakpoints the column
+	 * will appear in, based upon class names in the column, which makes up the
+	 * vast majority of this method.
+	 *
+	 * @private
+	 */
+	_classLogic: function ()
+	{
+		var that = this;
+		var calc = {};
+		var breakpoints = this.c.breakpoints;
+		var dt = this.s.dt;
+		var columns = dt.columns().eq(0).map( function (i) {
+			var column = this.column(i);
+			var className = column.header().className;
+			var priority = dt.settings()[0].aoColumns[i].responsivePriority;
+			var dataPriority = column.header().getAttribute('data-priority');
+
+			if ( priority === undefined ) {
+				priority = dataPriority === undefined || dataPriority === null?
+					10000 :
+					dataPriority * 1;
+			}
+
+			return {
+				className: className,
+				includeIn: [],
+				auto:      false,
+				control:   false,
+				never:     className.match(/\bnever\b/) ? true : false,
+				priority:  priority
+			};
+		} );
+
+		// Simply add a breakpoint to `includeIn` array, ensuring that there are
+		// no duplicates
+		var add = function ( colIdx, name ) {
+			var includeIn = columns[ colIdx ].includeIn;
+
+			if ( $.inArray( name, includeIn ) === -1 ) {
+				includeIn.push( name );
+			}
+		};
+
+		var column = function ( colIdx, name, operator, matched ) {
+			var size, i, ien;
+
+			if ( ! operator ) {
+				columns[ colIdx ].includeIn.push( name );
+			}
+			else if ( operator === 'max-' ) {
+				// Add this breakpoint and all smaller
+				size = that._find( name ).width;
+
+				for ( i=0, ien=breakpoints.length ; i<ien ; i++ ) {
+					if ( breakpoints[i].width <= size ) {
+						add( colIdx, breakpoints[i].name );
+					}
+				}
+			}
+			else if ( operator === 'min-' ) {
+				// Add this breakpoint and all larger
+				size = that._find( name ).width;
+
+				for ( i=0, ien=breakpoints.length ; i<ien ; i++ ) {
+					if ( breakpoints[i].width >= size ) {
+						add( colIdx, breakpoints[i].name );
+					}
+				}
+			}
+			else if ( operator === 'not-' ) {
+				// Add all but this breakpoint
+				for ( i=0, ien=breakpoints.length ; i<ien ; i++ ) {
+					if ( breakpoints[i].name.indexOf( matched ) === -1 ) {
+						add( colIdx, breakpoints[i].name );
+					}
+				}
+			}
+		};
+
+		// Loop over each column and determine if it has a responsive control
+		// class
+		columns.each( function ( col, i ) {
+			var classNames = col.className.split(' ');
+			var hasClass = false;
+
+			// Split the class name up so multiple rules can be applied if needed
+			for ( var k=0, ken=classNames.length ; k<ken ; k++ ) {
+				var className = classNames[k].trim();
+
+				if ( className === 'all' ) {
+					// Include in all
+					hasClass = true;
+					col.includeIn = $.map( breakpoints, function (a) {
+						return a.name;
+					} );
+					return;
+				}
+				else if ( className === 'none' || col.never ) {
+					// Include in none (default) and no auto
+					hasClass = true;
+					return;
+				}
+				else if ( className === 'control' || className === 'dtr-control' ) {
+					// Special column that is only visible, when one of the other
+					// columns is hidden. This is used for the details control
+					hasClass = true;
+					col.control = true;
+					return;
+				}
+
+				$.each( breakpoints, function ( j, breakpoint ) {
+					// Does this column have a class that matches this breakpoint?
+					var brokenPoint = breakpoint.name.split('-');
+					var re = new RegExp( '(min\\-|max\\-|not\\-)?('+brokenPoint[0]+')(\\-[_a-zA-Z0-9])?' );
+					var match = className.match( re );
+
+					if ( match ) {
+						hasClass = true;
+
+						if ( match[2] === brokenPoint[0] && match[3] === '-'+brokenPoint[1] ) {
+							// Class name matches breakpoint name fully
+							column( i, breakpoint.name, match[1], match[2]+match[3] );
+						}
+						else if ( match[2] === brokenPoint[0] && ! match[3] ) {
+							// Class name matched primary breakpoint name with no qualifier
+							column( i, breakpoint.name, match[1], match[2] );
+						}
+					}
+				} );
+			}
+
+			// If there was no control class, then automatic sizing is used
+			if ( ! hasClass ) {
+				col.auto = true;
+			}
+		} );
+
+		this.s.columns = columns;
+	},
+
+	/**
+	 * Update the cells to show the correct control class / button
+	 * @private
+	 */
+	_controlClass: function ()
+	{
+		if ( this.c.details.type === 'inline' ) {
+			var dt = this.s.dt;
+			var columnsVis = this.s.current;
+			var firstVisible = $.inArray(true, columnsVis);
+
+			// Remove from any cells which shouldn't have it
+			dt.cells(
+				null,
+				function(idx) {
+					return idx !== firstVisible;
+				},
+				{page: 'current'}
+			)
+				.nodes()
+				.to$()
+				.filter('.dtr-control')
+				.removeClass('dtr-control');
+
+			dt.cells(null, firstVisible, {page: 'current'})
+				.nodes()
+				.to$()
+				.addClass('dtr-control');
+		}
+	},
+
+	/**
+	 * Show the details for the child row
+	 *
+	 * @param  {DataTables.Api} row    API instance for the row
+	 * @param  {boolean}        update Update flag
+	 * @private
+	 */
+	_detailsDisplay: function ( row, update )
+	{
+		var that = this;
+		var dt = this.s.dt;
+		var details = this.c.details;
+
+		if ( details && details.type !== false ) {
+			var res = details.display( row, update, function () {
+				return details.renderer(
+					dt, row[0], that._detailsObj(row[0])
+				);
+			} );
+
+			if ( res === true || res === false ) {
+				$(dt.table().node()).triggerHandler( 'responsive-display.dt', [dt, row, res, update] );
+			}
+		}
+	},
+
+
+	/**
+	 * Initialisation for the details handler
+	 *
+	 * @private
+	 */
+	_detailsInit: function ()
+	{
+		var that    = this;
+		var dt      = this.s.dt;
+		var details = this.c.details;
+
+		// The inline type always uses the first child as the target
+		if ( details.type === 'inline' ) {
+			details.target = 'td.dtr-control, th.dtr-control';
+		}
+
+		// Keyboard accessibility
+		dt.on( 'draw.dtr', function () {
+			that._tabIndexes();
+		} );
+		that._tabIndexes(); // Initial draw has already happened
+
+		$( dt.table().body() ).on( 'keyup.dtr', 'td, th', function (e) {
+			if ( e.keyCode === 13 && $(this).data('dtr-keyboard') ) {
+				$(this).click();
+			}
+		} );
+
+		// type.target can be a string jQuery selector or a column index
+		var target   = details.target;
+		var selector = typeof target === 'string' ? target : 'td, th';
+
+		if ( target !== undefined || target !== null ) {
+			// Click handler to show / hide the details rows when they are available
+			$( dt.table().body() )
+				.on( 'click.dtr mousedown.dtr mouseup.dtr', selector, function (e) {
+					// If the table is not collapsed (i.e. there is no hidden columns)
+					// then take no action
+					if ( ! $(dt.table().node()).hasClass('collapsed' ) ) {
+						return;
+					}
+
+					// Check that the row is actually a DataTable's controlled node
+					if ( $.inArray( $(this).closest('tr').get(0), dt.rows().nodes().toArray() ) === -1 ) {
+						return;
+					}
+
+					// For column index, we determine if we should act or not in the
+					// handler - otherwise it is already okay
+					if ( typeof target === 'number' ) {
+						var targetIdx = target < 0 ?
+							dt.columns().eq(0).length + target :
+							target;
+
+						if ( dt.cell( this ).index().column !== targetIdx ) {
+							return;
+						}
+					}
+
+					// $().closest() includes itself in its check
+					var row = dt.row( $(this).closest('tr') );
+
+					// Check event type to do an action
+					if ( e.type === 'click' ) {
+						// The renderer is given as a function so the caller can execute it
+						// only when they need (i.e. if hiding there is no point is running
+						// the renderer)
+						that._detailsDisplay( row, false );
+					}
+					else if ( e.type === 'mousedown' ) {
+						// For mouse users, prevent the focus ring from showing
+						$(this).css('outline', 'none');
+					}
+					else if ( e.type === 'mouseup' ) {
+						// And then re-allow at the end of the click
+						$(this).trigger('blur').css('outline', '');
+					}
+				} );
+		}
+	},
+
+
+	/**
+	 * Get the details to pass to a renderer for a row
+	 * @param  {int} rowIdx Row index
+	 * @private
+	 */
+	_detailsObj: function ( rowIdx )
+	{
+		var that = this;
+		var dt = this.s.dt;
+
+		return $.map( this.s.columns, function( col, i ) {
+			// Never and control columns should not be passed to the renderer
+			if ( col.never || col.control ) {
+				return;
+			}
+
+			var dtCol = dt.settings()[0].aoColumns[ i ];
+
+			return {
+				className:   dtCol.sClass,
+				columnIndex: i,
+				data:        dt.cell( rowIdx, i ).render( that.c.orthogonal ),
+				hidden:      dt.column( i ).visible() && !that.s.current[ i ],
+				rowIndex:    rowIdx,
+				title:       dtCol.sTitle !== null ?
+					dtCol.sTitle :
+					$(dt.column(i).header()).text()
+			};
+		} );
+	},
+
+
+	/**
+	 * Find a breakpoint object from a name
+	 *
+	 * @param  {string} name Breakpoint name to find
+	 * @return {object}      Breakpoint description object
+	 * @private
+	 */
+	_find: function ( name )
+	{
+		var breakpoints = this.c.breakpoints;
+
+		for ( var i=0, ien=breakpoints.length ; i<ien ; i++ ) {
+			if ( breakpoints[i].name === name ) {
+				return breakpoints[i];
+			}
+		}
+	},
+
+
+	/**
+	 * Re-create the contents of the child rows as the display has changed in
+	 * some way.
+	 *
+	 * @private
+	 */
+	_redrawChildren: function ()
+	{
+		var that = this;
+		var dt = this.s.dt;
+
+		dt.rows( {page: 'current'} ).iterator( 'row', function ( settings, idx ) {
+			var row = dt.row( idx );
+
+			that._detailsDisplay( dt.row( idx ), true );
+		} );
+	},
+
+
+	/**
+	 * Alter the table display for a resized viewport. This involves first
+	 * determining what breakpoint the window currently is in, getting the
+	 * column visibilities to apply and then setting them.
+	 *
+	 * @param  {boolean} forceRedraw Force a redraw
+	 * @private
+	 */
+	_resize: function (forceRedraw)
+	{
+		var that = this;
+		var dt = this.s.dt;
+		var width = $(window).innerWidth();
+		var breakpoints = this.c.breakpoints;
+		var breakpoint = breakpoints[0].name;
+		var columns = this.s.columns;
+		var i, ien;
+		var oldVis = this.s.current.slice();
+
+		// Determine what breakpoint we are currently at
+		for ( i=breakpoints.length-1 ; i>=0 ; i-- ) {
+			if ( width <= breakpoints[i].width ) {
+				breakpoint = breakpoints[i].name;
+				break;
+			}
+		}
+		
+		// Show the columns for that break point
+		var columnsVis = this._columnsVisiblity( breakpoint );
+		this.s.current = columnsVis;
+
+		// Set the class before the column visibility is changed so event
+		// listeners know what the state is. Need to determine if there are
+		// any columns that are not visible but can be shown
+		var collapsedClass = false;
+	
+		for ( i=0, ien=columns.length ; i<ien ; i++ ) {
+			if ( columnsVis[i] === false && ! columns[i].never && ! columns[i].control && ! dt.column(i).visible() === false ) {
+				collapsedClass = true;
+				break;
+			}
+		}
+
+		$( dt.table().node() ).toggleClass( 'collapsed', collapsedClass );
+
+		var changed = false;
+		var visible = 0;
+
+		dt.columns().eq(0).each( function ( colIdx, i ) {
+			if ( columnsVis[i] === true ) {
+				visible++;
+			}
+
+			if ( forceRedraw || columnsVis[i] !== oldVis[i] ) {
+				changed = true;
+				that._setColumnVis( colIdx, columnsVis[i] );
+			}
+		} );
+
+		if ( changed ) {
+			this._redrawChildren();
+
+			// Inform listeners of the change
+			$(dt.table().node()).trigger( 'responsive-resize.dt', [dt, this.s.current] );
+
+			// If no records, update the "No records" display element
+			if ( dt.page.info().recordsDisplay === 0 ) {
+				$('td', dt.table().body()).eq(0).attr('colspan', visible);
+			}
+		}
+
+		that._controlClass();
+	},
+
+
+	/**
+	 * Determine the width of each column in the table so the auto column hiding
+	 * has that information to work with. This method is never going to be 100%
+	 * perfect since column widths can change slightly per page, but without
+	 * seriously compromising performance this is quite effective.
+	 *
+	 * @private
+	 */
+	_resizeAuto: function ()
+	{
+		var dt = this.s.dt;
+		var columns = this.s.columns;
+
+		// Are we allowed to do auto sizing?
+		if ( ! this.c.auto ) {
+			return;
+		}
+
+		// Are there any columns that actually need auto-sizing, or do they all
+		// have classes defined
+		if ( $.inArray( true, $.map( columns, function (c) { return c.auto; } ) ) === -1 ) {
+			return;
+		}
+
+		// Need to restore all children. They will be reinstated by a re-render
+		if ( ! $.isEmptyObject( _childNodeStore ) ) {
+			$.each( _childNodeStore, function ( key ) {
+				var idx = key.split('-');
+
+				_childNodesRestore( dt, idx[0]*1, idx[1]*1 );
+			} );
+		}
+
+		// Clone the table with the current data in it
+		var tableWidth   = dt.table().node().offsetWidth;
+		var columnWidths = dt.columns;
+		var clonedTable  = dt.table().node().cloneNode( false );
+		var clonedHeader = $( dt.table().header().cloneNode( false ) ).appendTo( clonedTable );
+		var clonedBody   = $( dt.table().body() ).clone( false, false ).empty().appendTo( clonedTable ); // use jQuery because of IE8
+
+		clonedTable.style.width = 'auto';
+
+		// Header
+		var headerCells = dt.columns()
+			.header()
+			.filter( function (idx) {
+				return dt.column(idx).visible();
+			} )
+			.to$()
+			.clone( false )
+			.css( 'display', 'table-cell' )
+			.css( 'width', 'auto' )
+			.css( 'min-width', 0 );
+
+		// Body rows - we don't need to take account of DataTables' column
+		// visibility since we implement our own here (hence the `display` set)
+		$(clonedBody)
+			.append( $(dt.rows( { page: 'current' } ).nodes()).clone( false ) )
+			.find( 'th, td' ).css( 'display', '' );
+
+		// Footer
+		var footer = dt.table().footer();
+		if ( footer ) {
+			var clonedFooter = $( footer.cloneNode( false ) ).appendTo( clonedTable );
+			var footerCells = dt.columns()
+				.footer()
+				.filter( function (idx) {
+					return dt.column(idx).visible();
+				} )
+				.to$()
+				.clone( false )
+				.css( 'display', 'table-cell' );
+
+			$('<tr/>')
+				.append( footerCells )
+				.appendTo( clonedFooter );
+		}
+
+		$('<tr/>')
+			.append( headerCells )
+			.appendTo( clonedHeader );
+
+		// In the inline case extra padding is applied to the first column to
+		// give space for the show / hide icon. We need to use this in the
+		// calculation
+		if ( this.c.details.type === 'inline' ) {
+			$(clonedTable).addClass( 'dtr-inline collapsed' );
+		}
+		
+		// It is unsafe to insert elements with the same name into the DOM
+		// multiple times. For example, cloning and inserting a checked radio
+		// clears the chcecked state of the original radio.
+		$( clonedTable ).find( '[name]' ).removeAttr( 'name' );
+
+		// A position absolute table would take the table out of the flow of
+		// our container element, bypassing the height and width (Scroller)
+		$( clonedTable ).css( 'position', 'relative' )
+		
+		var inserted = $('<div/>')
+			.css( {
+				width: 1,
+				height: 1,
+				overflow: 'hidden',
+				clear: 'both'
+			} )
+			.append( clonedTable );
+
+		inserted.insertBefore( dt.table().node() );
+
+		// The cloned header now contains the smallest that each column can be
+		headerCells.each( function (i) {
+			var idx = dt.column.index( 'fromVisible', i );
+			columns[ idx ].minWidth =  this.offsetWidth || 0;
+		} );
+
+		inserted.remove();
+	},
+
+	/**
+	 * Get the state of the current hidden columns - controlled by Responsive only
+	 */
+	_responsiveOnlyHidden: function ()
+	{
+		var dt = this.s.dt;
+
+		return $.map( this.s.current, function (v, i) {
+			// If the column is hidden by DataTables then it can't be hidden by
+			// Responsive!
+			if ( dt.column(i).visible() === false ) {
+				return true;
+			}
+			return v;
+		} );
+	},
+
+	/**
+	 * Set a column's visibility.
+	 *
+	 * We don't use DataTables' column visibility controls in order to ensure
+	 * that column visibility can Responsive can no-exist. Since only IE8+ is
+	 * supported (and all evergreen browsers of course) the control of the
+	 * display attribute works well.
+	 *
+	 * @param {integer} col      Column index
+	 * @param {boolean} showHide Show or hide (true or false)
+	 * @private
+	 */
+	_setColumnVis: function ( col, showHide )
+	{
+		var dt = this.s.dt;
+		var display = showHide ? '' : 'none'; // empty string will remove the attr
+
+		$( dt.column( col ).header() ).css( 'display', display );
+		$( dt.column( col ).footer() ).css( 'display', display );
+		dt.column( col ).nodes().to$().css( 'display', display );
+
+		// If the are child nodes stored, we might need to reinsert them
+		if ( ! $.isEmptyObject( _childNodeStore ) ) {
+			dt.cells( null, col ).indexes().each( function (idx) {
+				_childNodesRestore( dt, idx.row, idx.column );
+			} );
+		}
+	},
+
+
+	/**
+	 * Update the cell tab indexes for keyboard accessibility. This is called on
+	 * every table draw - that is potentially inefficient, but also the least
+	 * complex option given that column visibility can change on the fly. Its a
+	 * shame user-focus was removed from CSS 3 UI, as it would have solved this
+	 * issue with a single CSS statement.
+	 *
+	 * @private
+	 */
+	_tabIndexes: function ()
+	{
+		var dt = this.s.dt;
+		var cells = dt.cells( { page: 'current' } ).nodes().to$();
+		var ctx = dt.settings()[0];
+		var target = this.c.details.target;
+
+		cells.filter( '[data-dtr-keyboard]' ).removeData( '[data-dtr-keyboard]' );
+
+		if ( typeof target === 'number' ) {
+			dt.cells( null, target, { page: 'current' } ).nodes().to$()
+				.attr( 'tabIndex', ctx.iTabIndex )
+				.data( 'dtr-keyboard', 1 );
+		}
+		else {
+			// This is a bit of a hack - we need to limit the selected nodes to just
+			// those of this table
+			if ( target === 'td:first-child, th:first-child' ) {
+				target = '>td:first-child, >th:first-child';
+			}
+
+			$( target, dt.rows( { page: 'current' } ).nodes() )
+				.attr( 'tabIndex', ctx.iTabIndex )
+				.data( 'dtr-keyboard', 1 );
+		}
+	}
+} );
+
+
+/**
+ * List of default breakpoints. Each item in the array is an object with two
+ * properties:
+ *
+ * * `name` - the breakpoint name.
+ * * `width` - the breakpoint width
+ *
+ * @name Responsive.breakpoints
+ * @static
+ */
+Responsive.breakpoints = [
+	{ name: 'desktop',  width: Infinity },
+	{ name: 'tablet-l', width: 1024 },
+	{ name: 'tablet-p', width: 768 },
+	{ name: 'mobile-l', width: 480 },
+	{ name: 'mobile-p', width: 320 }
+];
+
+
+/**
+ * Display methods - functions which define how the hidden data should be shown
+ * in the table.
+ *
+ * @namespace
+ * @name Responsive.defaults
+ * @static
+ */
+Responsive.display = {
+	childRow: function ( row, update, render ) {
+		if ( update ) {
+			if ( $(row.node()).hasClass('parent') ) {
+				row.child( render(), 'child' ).show();
+
+				return true;
+			}
+		}
+		else {
+			if ( ! row.child.isShown()  ) {
+				row.child( render(), 'child' ).show();
+				$( row.node() ).addClass( 'parent' );
+
+				return true;
+			}
+			else {
+				row.child( false );
+				$( row.node() ).removeClass( 'parent' );
+
+				return false;
+			}
+		}
+	},
+
+	childRowImmediate: function ( row, update, render ) {
+		if ( (! update && row.child.isShown()) || ! row.responsive.hasHidden() ) {
+			// User interaction and the row is show, or nothing to show
+			row.child( false );
+			$( row.node() ).removeClass( 'parent' );
+
+			return false;
+		}
+		else {
+			// Display
+			row.child( render(), 'child' ).show();
+			$( row.node() ).addClass( 'parent' );
+
+			return true;
+		}
+	},
+
+	// This is a wrapper so the modal options for Bootstrap and jQuery UI can
+	// have options passed into them. This specific one doesn't need to be a
+	// function but it is for consistency in the `modal` name
+	modal: function ( options ) {
+		return function ( row, update, render ) {
+			if ( ! update ) {
+				// Show a modal
+				var close = function () {
+					modal.remove(); // will tidy events for us
+					$(document).off( 'keypress.dtr' );
+				};
+
+				var modal = $('<div class="dtr-modal"/>')
+					.append( $('<div class="dtr-modal-display"/>')
+						.append( $('<div class="dtr-modal-content"/>')
+							.append( render() )
+						)
+						.append( $('<div class="dtr-modal-close">&times;</div>' )
+							.click( function () {
+								close();
+							} )
+						)
+					)
+					.append( $('<div class="dtr-modal-background"/>')
+						.click( function () {
+							close();
+						} )
+					)
+					.appendTo( 'body' );
+
+				$(document).on( 'keyup.dtr', function (e) {
+					if ( e.keyCode === 27 ) {
+						e.stopPropagation();
+
+						close();
+					}
+				} );
+			}
+			else {
+				$('div.dtr-modal-content')
+					.empty()
+					.append( render() );
+			}
+
+			if ( options && options.header ) {
+				$('div.dtr-modal-content').prepend(
+					'<h2>'+options.header( row )+'</h2>'
+				);
+			}
+		};
+	}
+};
+
+
+var _childNodeStore = {};
+
+function _childNodes( dt, row, col ) {
+	var name = row+'-'+col;
+
+	if ( _childNodeStore[ name ] ) {
+		return _childNodeStore[ name ];
+	}
+
+	// https://jsperf.com/childnodes-array-slice-vs-loop
+	var nodes = [];
+	var children = dt.cell( row, col ).node().childNodes;
+	for ( var i=0, ien=children.length ; i<ien ; i++ ) {
+		nodes.push( children[i] );
+	}
+
+	_childNodeStore[ name ] = nodes;
+
+	return nodes;
+}
+
+function _childNodesRestore( dt, row, col ) {
+	var name = row+'-'+col;
+
+	if ( ! _childNodeStore[ name ] ) {
+		return;
+	}
+
+	var node = dt.cell( row, col ).node();
+	var store = _childNodeStore[ name ];
+	var parent = store[0].parentNode;
+	var parentChildren = parent.childNodes;
+	var a = [];
+
+	for ( var i=0, ien=parentChildren.length ; i<ien ; i++ ) {
+		a.push( parentChildren[i] );
+	}
+
+	for ( var j=0, jen=a.length ; j<jen ; j++ ) {
+		node.appendChild( a[j] );
+	}
+
+	_childNodeStore[ name ] = undefined;
+}
+
+
+/**
+ * Display methods - functions which define how the hidden data should be shown
+ * in the table.
+ *
+ * @namespace
+ * @name Responsive.defaults
+ * @static
+ */
+Responsive.renderer = {
+	listHiddenNodes: function () {
+		return function ( api, rowIdx, columns ) {
+			var ul = $('<ul data-dtr-index="'+rowIdx+'" class="dtr-details"/>');
+			var found = false;
+
+			var data = $.each( columns, function ( i, col ) {
+				if ( col.hidden ) {
+					var klass = col.className ?
+						'class="'+ col.className +'"' :
+						'';
+	
+					$(
+						'<li '+klass+' data-dtr-index="'+col.columnIndex+'" data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+							'<span class="dtr-title">'+
+								col.title+
+							'</span> '+
+						'</li>'
+					)
+						.append( $('<span class="dtr-data"/>').append( _childNodes( api, col.rowIndex, col.columnIndex ) ) )// api.cell( col.rowIndex, col.columnIndex ).node().childNodes ) )
+						.appendTo( ul );
+
+					found = true;
+				}
+			} );
+
+			return found ?
+				ul :
+				false;
+		};
+	},
+
+	listHidden: function () {
+		return function ( api, rowIdx, columns ) {
+			var data = $.map( columns, function ( col ) {
+				var klass = col.className ?
+					'class="'+ col.className +'"' :
+					'';
+
+				return col.hidden ?
+					'<li '+klass+' data-dtr-index="'+col.columnIndex+'" data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+						'<span class="dtr-title">'+
+							col.title+
+						'</span> '+
+						'<span class="dtr-data">'+
+							col.data+
+						'</span>'+
+					'</li>' :
+					'';
+			} ).join('');
+
+			return data ?
+				$('<ul data-dtr-index="'+rowIdx+'" class="dtr-details"/>').append( data ) :
+				false;
+		}
+	},
+
+	tableAll: function ( options ) {
+		options = $.extend( {
+			tableClass: ''
+		}, options );
+
+		return function ( api, rowIdx, columns ) {
+			var data = $.map( columns, function ( col ) {
+				var klass = col.className ?
+					'class="'+ col.className +'"' :
+					'';
+
+				return '<tr '+klass+' data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+						'<td>'+col.title+':'+'</td> '+
+						'<td>'+col.data+'</td>'+
+					'</tr>';
+			} ).join('');
+
+			return $('<table class="'+options.tableClass+' dtr-details" width="100%"/>').append( data );
+		}
+	}
+};
+
+/**
+ * Responsive default settings for initialisation
+ *
+ * @namespace
+ * @name Responsive.defaults
+ * @static
+ */
+Responsive.defaults = {
+	/**
+	 * List of breakpoints for the instance. Note that this means that each
+	 * instance can have its own breakpoints. Additionally, the breakpoints
+	 * cannot be changed once an instance has been creased.
+	 *
+	 * @type {Array}
+	 * @default Takes the value of `Responsive.breakpoints`
+	 */
+	breakpoints: Responsive.breakpoints,
+
+	/**
+	 * Enable / disable auto hiding calculations. It can help to increase
+	 * performance slightly if you disable this option, but all columns would
+	 * need to have breakpoint classes assigned to them
+	 *
+	 * @type {Boolean}
+	 * @default  `true`
+	 */
+	auto: true,
+
+	/**
+	 * Details control. If given as a string value, the `type` property of the
+	 * default object is set to that value, and the defaults used for the rest
+	 * of the object - this is for ease of implementation.
+	 *
+	 * The object consists of the following properties:
+	 *
+	 * * `display` - A function that is used to show and hide the hidden details
+	 * * `renderer` - function that is called for display of the child row data.
+	 *   The default function will show the data from the hidden columns
+	 * * `target` - Used as the selector for what objects to attach the child
+	 *   open / close to
+	 * * `type` - `false` to disable the details display, `inline` or `column`
+	 *   for the two control types
+	 *
+	 * @type {Object|string}
+	 */
+	details: {
+		display: Responsive.display.childRow,
+
+		renderer: Responsive.renderer.listHidden(),
+
+		target: 0,
+
+		type: 'inline'
+	},
+
+	/**
+	 * Orthogonal data request option. This is used to define the data type
+	 * requested when Responsive gets the data to show in the child row.
+	 *
+	 * @type {String}
+	 */
+	orthogonal: 'display'
+};
+
+
+/*
+ * API
+ */
+var Api = $.fn.dataTable.Api;
+
+// Doesn't do anything - work around for a bug in DT... Not documented
+Api.register( 'responsive()', function () {
+	return this;
+} );
+
+Api.register( 'responsive.index()', function ( li ) {
+	li = $(li);
+
+	return {
+		column: li.data('dtr-index'),
+		row:    li.parent().data('dtr-index')
+	};
+} );
+
+Api.register( 'responsive.rebuild()', function () {
+	return this.iterator( 'table', function ( ctx ) {
+		if ( ctx._responsive ) {
+			ctx._responsive._classLogic();
+		}
+	} );
+} );
+
+Api.register( 'responsive.recalc()', function () {
+	return this.iterator( 'table', function ( ctx ) {
+		if ( ctx._responsive ) {
+			ctx._responsive._resizeAuto();
+			ctx._responsive._resize();
+		}
+	} );
+} );
+
+Api.register( 'responsive.hasHidden()', function () {
+	var ctx = this.context[0];
+
+	return ctx._responsive ?
+		$.inArray( false, ctx._responsive._responsiveOnlyHidden() ) !== -1 :
+		false;
+} );
+
+Api.registerPlural( 'columns().responsiveHidden()', 'column().responsiveHidden()', function () {
+	return this.iterator( 'column', function ( settings, column ) {
+		return settings._responsive ?
+			settings._responsive._responsiveOnlyHidden()[ column ] :
+			false;
+	}, 1 );
+} );
+
+
+/**
+ * Version information
+ *
+ * @name Responsive.version
+ * @static
+ */
+Responsive.version = '2.2.6';
+
+
+$.fn.dataTable.Responsive = Responsive;
+$.fn.DataTable.Responsive = Responsive;
+
+// Attach a listener to the document which listens for DataTables initialisation
+// events so we can automatically initialise
+$(document).on( 'preInit.dt.dtr', function (e, settings, json) {
+	if ( e.namespace !== 'dt' ) {
+		return;
+	}
+
+	if ( $(settings.nTable).hasClass( 'responsive' ) ||
+		 $(settings.nTable).hasClass( 'dt-responsive' ) ||
+		 settings.oInit.responsive ||
+		 DataTable.defaults.responsive
+	) {
+		var init = settings.oInit.responsive;
+
+		if ( init !== false ) {
+			new Responsive( settings, $.isPlainObject( init ) ? init : {}  );
+		}
+	}
+} );
+
+
+return Responsive;
+}));
+
+},{"datatables.net":5}],5:[function(require,module,exports){
 /*! DataTables 1.10.22
  * ©2008-2020 SpryMedia Ltd - datatables.net/license
  */
@@ -31747,7 +33310,7 @@ return DataTable;
 	return $.fn.dataTable;
 }));
 
-},{"jquery":4}],4:[function(require,module,exports){
+},{"jquery":6}],6:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
@@ -42621,7 +44184,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (global){(function (){
 /*!
     localForage -- Offline Storage, Improved
@@ -45427,7 +46990,7 @@ module.exports = localforage_js;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 //! moment.js
 //! version : 2.29.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -51099,7 +52662,7 @@ module.exports = localforage_js;
 
 })));
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var level_1 = require("./level");
@@ -51184,7 +52747,7 @@ var Display = /** @class */ (function () {
 }());
 exports.Display = Display;
 
-},{"./level":8,"./loggerManager":10}],8:[function(require,module,exports){
+},{"./level":10,"./loggerManager":12}],10:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -51214,7 +52777,7 @@ var Level;
     Level[Level["ERROR"] = 4] = "ERROR";
 })(Level = exports.Level || (exports.Level = {}));
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var level_1 = require("./level");
@@ -51316,7 +52879,7 @@ var Logger = /** @class */ (function () {
 }());
 exports.Logger = Logger;
 
-},{"./display":7,"./level":8}],10:[function(require,module,exports){
+},{"./display":9,"./level":10}],12:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("./logger");
@@ -51433,7 +52996,7 @@ var LoggerManager = /** @class */ (function () {
 }());
 exports.LoggerManager = LoggerManager;
 
-},{"./logger":9}],11:[function(require,module,exports){
+},{"./logger":11}],13:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeAdapter = void 0;
@@ -51463,113 +53026,100 @@ var FertilizeAdapter = (function () {
         this._app.updateFertilizerUI();
     };
     FertilizeAdapter.prototype.calcComponentLeafFertilizerValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.leaf_fertilizer; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.leaf_fertilizer) ? component.fertilizer_bonus.leaf_fertilizer : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentKernelFertilizerValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.kernel_fertilizer; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.kernel_fertilizer) ? component.fertilizer_bonus.kernel_fertilizer : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentRootFertilizerValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.root_fertilizer; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.root_fertilizer) ? component.fertilizer_bonus.root_fertilizer : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentYieldHPValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.yield_hp; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.yield_hp) ? component.fertilizer_bonus.yield_hp : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentTasteStrengthValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.taste_strength; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.taste_strength) ? component.fertilizer_bonus.taste_strength : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentHardnessVitalityValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.hardness_vitality; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.hardness_vitality) ? component.fertilizer_bonus.hardness_vitality : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentStickinessGustoValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.stickiness_gusto; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.stickiness_gusto) ? component.fertilizer_bonus.stickiness_gusto : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentAestheticLuckValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.aesthetic_luck; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.aesthetic_luck) ? component.fertilizer_bonus.aesthetic_luck : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentArmorMagicValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.armor_magic; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.armor_magic) ? component.fertilizer_bonus.armor_magic : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentImmunityValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.immunity; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.immunity) ? component.fertilizer_bonus.immunity : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentPesticideValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.pesticide; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.pesticide) ? component.fertilizer_bonus.pesticide : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentHerbicideValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.herbicide; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.herbicide) ? component.fertilizer_bonus.herbicide : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentToxicityValue = function (components) {
-        return components.map(function (component) { return component.fertilizer_bonus.toxicity; }).reduce(function (a, b, index) {
+        return components.map(function (component) { return (component.fertilizer_bonus.toxicity) ? component.fertilizer_bonus.toxicity : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var sum = (a) ? a : 0;
-            var value = (b) ? b : 0;
-            return sum + value;
+            var ret = sum + value;
+            return ret;
         }, 0);
     };
     return FertilizeAdapter;
 }());
 exports.FertilizeAdapter = FertilizeAdapter;
-},{"./fertilizer.data":16}],12:[function(require,module,exports){
+},{"./fertilizer.data":18}],14:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -51706,7 +53256,7 @@ var ApplicationData = (function () {
         configurable: true
     });
     ApplicationData.prototype.getItemByName = function (name) {
-        return this._items.find(function (it) { return it.name == name; });
+        return this._items.find(function (it) { return it.name === name; });
     };
     Object.defineProperty(ApplicationData.prototype, "inventory", {
         get: function () {
@@ -51772,7 +53322,7 @@ var ApplicationData = (function () {
     return ApplicationData;
 }());
 exports.ApplicationData = ApplicationData;
-},{"./fertilizer-components.data":15,"./inventory":18,"localforage":5}],13:[function(require,module,exports){
+},{"./fertilizer-components.data":17,"./inventory":20,"localforage":7}],15:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -51815,6 +53365,7 @@ exports.Application = void 0;
 var site_1 = require("./site");
 var application_data_1 = require("./application.data");
 require("datatables.net-bs4");
+require("datatables.net-responsive-bs4");
 var chart_js_1 = require("chart.js");
 var fertilizer_data_1 = require("./fertilizer.data");
 var Fertilize_adapter_1 = require("./Fertilize.adapter");
@@ -51822,6 +53373,7 @@ var fertilize_components_adapter_1 = require("./fertilize-components.adapter");
 var inventory_adapter_1 = require("./inventory.adapter");
 var inventory_1 = require("./inventory");
 var loggerManager_1 = require("typescript-logger/build/loggerManager");
+var MAX_SHOW_RECOMMENDED_ITEMS = 12;
 var Application = (function () {
     function Application() {
         this._appData = new application_data_1.ApplicationData();
@@ -51847,19 +53399,22 @@ var Application = (function () {
                 this.log.debug('init items', this._appData.items);
                 that = this;
                 $('#farming-guild-pills-tab a').each(function () {
-                    if (that._appData.currentGuide == $(this).data('name')) {
+                    if (that._appData.currentGuide === $(this).data('name')) {
                         $(this).tab('show');
                     }
                 });
                 $('#farming-guild-pills-tab a').on('show.bs.tab', function (e) {
                     var spacing = $(this).data('spacing').toLocaleLowerCase();
-                    if (spacing == 'little far apart') {
-                        $('#nav-spacing-a-little-apart-tab').tab('show');
-                    }
-                    else if (spacing == 'balanced') {
-                        $('#nav-spacing-balanced-tab').tab('show');
+                    switch (spacing) {
+                        case 'little far apart':
+                            $('#nav-spacing-a-little-apart-tab').tab('show');
+                            break;
+                        case 'balanced':
+                            $('#nav-spacing-balanced-tab').tab('show');
+                            break;
                     }
                     that._appData.currentGuide = $(this).data('name');
+                    that.updateRecommendedItems();
                 });
                 this._fertilizeAdapter = new Fertilize_adapter_1.FertilizeAdapter(this, this._fertilizer);
                 this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this, '#lstFertilizeComponents', this._appData.fertilizer_components);
@@ -51885,6 +53440,7 @@ var Application = (function () {
             return __generator(this, function (_a) {
                 this._itemList = $('#tblItemsList').DataTable({
                     order: [[1, "asc"]],
+                    responsive: true,
                     columnDefs: [
                         { orderable: false, targets: [0] },
                         { orderable: true, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
@@ -51910,8 +53466,8 @@ var Application = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_d) {
                 (_a = this._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.init();
-                (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6]);
-                (_c = this._recommendedInventoryAdapter) === null || _c === void 0 ? void 0 : _c.init([], [0, 1, 2, 3, 4, 5, 6]);
+                (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6], false);
+                (_c = this._recommendedInventoryAdapter) === null || _c === void 0 ? void 0 : _c.init([], [0, 1, 2, 3, 4, 5, 6], false);
                 this.drawInventory('#tblInventory');
                 this.drawInventory('#tblInventoryRecommended');
                 this.drawInventory('#tblInventoryExpirables');
@@ -52134,12 +53690,37 @@ var Application = (function () {
     };
     Application.prototype.drawInventory = function (table_selector) {
         this.log.debug('drawInventory', table_selector);
+        this.updateInventoryEvents(table_selector);
+    };
+    Application.prototype.updateInventoryEvents = function (table_selector) {
+        var that = this;
+        $(table_selector).find('.add-item-to-fertilizer').each(function (index) {
+            var _a;
+            var item_name = $(this).data('name');
+            $(this).prop('disabled', false);
+            if ((_a = that._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.isFull) {
+                $(this).prop('disabled', true);
+                return;
+            }
+            var findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
+            if (findItemInComponents) {
+                $(this).prop('disabled', true);
+                return;
+            }
+        });
+        if ($(table_selector).find('.dataTables_link_items').length === 0) {
+            $(table_selector).find('.dataTables_filter').first().each(function () {
+                var table_selector_id = $(table_selector).attr('id');
+                $(this).prepend("<div id=\"" + table_selector_id + "_filter\" class=\"dataTables_link_items text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[Item-List]</a>\n                </div>");
+            });
+        }
     };
     Application.prototype.updateFertilizer = function () {
         var _a;
         this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
         (_a = this._fertilizeAdapter) === null || _a === void 0 ? void 0 : _a.updateFromComponents(this._appData.fertilizer_components);
         this.updateFertilizerUI();
+        this.updateRecommendedItems();
     };
     Application.prototype.updateFertilizerUI = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -52149,16 +53730,16 @@ var Application = (function () {
                 this.updateSoilNutrientsChartLeafFertilizerUI();
                 this.updateSoilNutrientsChartKernelFertilizerUI();
                 this.updateSoilNutrientsChartRootFertilizerUI();
-                yield_hp = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.yield_hp) ? this._fertilizer.yield_hp : 0, false);
-                taste_strength = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.taste_strength) ? this._fertilizer.taste_strength : 0, false);
-                hardness_vitality = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.hardness_vitality) ? this._fertilizer.hardness_vitality : 0, false);
-                stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.stickiness_gusto) ? this._fertilizer.stickiness_gusto : 0, false);
-                aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.aesthetic_luck) ? this._fertilizer.aesthetic_luck : 0, false);
-                armor_magic = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.armor_magic) ? this._fertilizer.armor_magic : 0, false);
-                immunity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.immunity) ? this._fertilizer.immunity : 0, false);
-                pesticide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.pesticide) ? this._fertilizer.pesticide : 0, false);
-                herbicide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.herbicide) ? this._fertilizer.herbicide : 0, false);
-                toxicity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.toxicity) ? this._fertilizer.toxicity : 0, true);
+                yield_hp = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.yield_hp) ? this._fertilizer.yield_hp : 0, false, this._fertilizer.is_yield_hp_overflow);
+                taste_strength = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.taste_strength) ? this._fertilizer.taste_strength : 0, false, this._fertilizer.is_yield_hp_overflow);
+                hardness_vitality = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.hardness_vitality) ? this._fertilizer.hardness_vitality : 0, false, this._fertilizer.is_hardness_vitality_overflow);
+                stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.stickiness_gusto) ? this._fertilizer.stickiness_gusto : 0, false, this._fertilizer.is_stickiness_gusto_overflow);
+                aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.aesthetic_luck) ? this._fertilizer.aesthetic_luck : 0, false, this._fertilizer.is_aesthetic_luck_overflow);
+                armor_magic = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.armor_magic) ? this._fertilizer.armor_magic : 0, false, this._fertilizer.is_armor_magic_overflow);
+                immunity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.immunity) ? this._fertilizer.immunity : 0, false, this._fertilizer.is_immunity_overflow);
+                pesticide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.pesticide) ? this._fertilizer.pesticide : 0, false, this._fertilizer.is_pesticide_overflow);
+                herbicide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.herbicide) ? this._fertilizer.herbicide : 0, false, this._fertilizer.is_herbicide_overflow);
+                toxicity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.toxicity) ? this._fertilizer.toxicity : 0, true, this._fertilizer.is_toxicity_overflow);
                 $('#fertilizerYieldHp').html(yield_hp);
                 $('#fertilizerTasteStrength').html(taste_strength);
                 $('#fertilizerHardnessVitality').html(hardness_vitality);
@@ -52174,142 +53755,180 @@ var Application = (function () {
         });
     };
     Application.prototype.updateInventory = function () {
-        var _a, _b;
         this.log.debug('updateInventory');
+        this.updateInventoryEvents('#tblInventory');
+        this.updateRecommendedItems();
+    };
+    Application.prototype.updateRecommendedItems = function () {
+        var _this = this;
+        var _a, _b;
         this._recommendedInventory.clear();
         this._expirablesInventory.clear();
-        var inventory_items = this._appData.inventory.items;
+        var inventory_items = this._appData.inventory.items.filter(function (it) {
+            return _this._appData.fertilizer_components.components.filter(function (comp) { return comp.name === it.name; }).length === 0;
+        });
         var expirables_inventory_items = inventory_items.filter(function (it) { return it.expirable; });
         var recommended_inventory_items = inventory_items;
         expirables_inventory_items = this.sortRecommendedItems(expirables_inventory_items);
-        recommended_inventory_items = this.sortRecommendedItems(recommended_inventory_items);
+        recommended_inventory_items = this.sortRecommendedItems(recommended_inventory_items, true);
+        this.log.debug('updateRecommendedItems', { no_negative_effect: this._fertilizer.no_negative_effect, recommended_inventory_items: recommended_inventory_items });
+        this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
+        (_a = this._recommendedInventoryAdapter) === null || _a === void 0 ? void 0 : _a.update();
         this._expirablesInventory.items = expirables_inventory_items;
-        (_a = this._expirablesInventoryAdapter) === null || _a === void 0 ? void 0 : _a.update();
-        this._recommendedInventory.items = recommended_inventory_items.slice(0, 11);
-        (_b = this._recommendedInventoryAdapter) === null || _b === void 0 ? void 0 : _b.update();
-        var that = this;
-        $('.add-item-to-fertilizer').each(function (index) {
-            var _a;
-            var item_name = $(this).data('name');
-            $(this).prop('disabled', false);
-            if ((_a = that._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.isFull) {
-                $(this).prop('disabled', true);
-                return;
-            }
-            var findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
-            if (findItemInComponents) {
-                $(this).prop('disabled', true);
-                return;
-            }
-        });
+        (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.update();
+        this.updateInventoryEvents('#tblInventoryRecommended');
+        this.updateInventoryEvents('#tblInventoryExpirables');
     };
-    Application.prototype.sortRecommendedItems = function (items) {
-        var items_best_leaf_fertilizer = items.sort(function (a, b) { return b.fertilizer_bonus.leaf_fertilizer - a.fertilizer_bonus.leaf_fertilizer; });
-        var items_best_kernel_fertilizer = items.sort(function (a, b) { return b.fertilizer_bonus.kernel_fertilizer - a.fertilizer_bonus.kernel_fertilizer; });
-        var items_best_root_fertilizer = items.sort(function (a, b) { return b.fertilizer_bonus.root_fertilizer - a.fertilizer_bonus.root_fertilizer; });
-        var items_best_yield = items.sort(function (a, b) { return b.fertilizer_bonus.yield_hp - a.fertilizer_bonus.yield_hp; });
-        var items_best_heartiness = items.sort(function (a, b) {
-            var a_value = a.fertilizer_bonus.taste_strength +
-                a.fertilizer_bonus.hardness_vitality +
-                a.fertilizer_bonus.stickiness_gusto;
-            var b_value = b.fertilizer_bonus.taste_strength +
-                b.fertilizer_bonus.hardness_vitality +
-                b.fertilizer_bonus.stickiness_gusto;
-            return b_value - a_value;
-        });
-        var items_best_aesthetic = items.sort(function (a, b) { return b.fertilizer_bonus.aesthetic_luck - a.fertilizer_bonus.aesthetic_luck; });
-        var items_best_aroma = items.sort(function (a, b) { return b.fertilizer_bonus.armor_magic - a.fertilizer_bonus.armor_magic; });
-        var items_best_balanced = items.sort(function (a, b) {
-            var a_value = a.fertilizer_bonus.yield_hp +
-                a.fertilizer_bonus.taste_strength +
-                a.fertilizer_bonus.hardness_vitality +
-                a.fertilizer_bonus.stickiness_gusto +
-                a.fertilizer_bonus.aesthetic_luck +
-                a.fertilizer_bonus.armor_magic;
-            var b_value = b.fertilizer_bonus.yield_hp +
-                b.fertilizer_bonus.taste_strength +
-                b.fertilizer_bonus.hardness_vitality +
-                b.fertilizer_bonus.stickiness_gusto +
-                b.fertilizer_bonus.aesthetic_luck +
-                b.fertilizer_bonus.armor_magic;
-            return b_value - a_value;
-        });
-        var items_best_immunity = items.sort(function (a, b) { return b.fertilizer_bonus.immunity - a.fertilizer_bonus.immunity; });
-        var items_best_pesticide = items.sort(function (a, b) { return b.fertilizer_bonus.pesticide - a.fertilizer_bonus.pesticide; });
-        var items_best_herbicide = items.sort(function (a, b) { return b.fertilizer_bonus.herbicide - a.fertilizer_bonus.herbicide; });
-        var items_best_toxicity = items.sort(function (a, b) { return a.fertilizer_bonus.toxicity - b.fertilizer_bonus.toxicity; });
+    Application.prototype.sortRecommendedItems = function (items, expirable) {
+        if (expirable === void 0) { expirable = false; }
+        var get_leaf_fertilizer = function (item) { return (item.fertilizer_bonus.leaf_fertilizer) ? item.fertilizer_bonus.leaf_fertilizer : 0; };
+        var get_kernel_fertilizer = function (item) { return (item.fertilizer_bonus.kernel_fertilizer) ? item.fertilizer_bonus.kernel_fertilizer : 0; };
+        var get_root_fertilizer = function (item) { return (item.fertilizer_bonus.root_fertilizer) ? item.fertilizer_bonus.root_fertilizer : 0; };
+        var get_yield = function (item) { return (item.fertilizer_bonus.yield_hp) ? item.fertilizer_bonus.yield_hp : 0; };
+        var get_heartiness = function (item) {
+            return (((item.fertilizer_bonus.taste_strength) ? item.fertilizer_bonus.taste_strength : 0) +
+                ((item.fertilizer_bonus.hardness_vitality) ? item.fertilizer_bonus.hardness_vitality : 0) +
+                ((item.fertilizer_bonus.stickiness_gusto) ? item.fertilizer_bonus.stickiness_gusto : 0)) / 3;
+        };
+        var get_aesthetic = function (item) { return (item.fertilizer_bonus.aesthetic_luck) ? item.fertilizer_bonus.aesthetic_luck : 0; };
+        var get_aroma = function (item) { return (item.fertilizer_bonus.armor_magic) ? item.fertilizer_bonus.armor_magic : 0; };
+        var get_balanced = function (item) {
+            return ((item.fertilizer_bonus.yield_hp) ? item.fertilizer_bonus.yield_hp : 0) +
+                ((item.fertilizer_bonus.taste_strength) ? item.fertilizer_bonus.taste_strength : 0) +
+                ((item.fertilizer_bonus.hardness_vitality) ? item.fertilizer_bonus.hardness_vitality : 0) +
+                ((item.fertilizer_bonus.stickiness_gusto) ? item.fertilizer_bonus.stickiness_gusto : 0) +
+                ((item.fertilizer_bonus.aesthetic_luck) ? item.fertilizer_bonus.aesthetic_luck : 0) +
+                ((item.fertilizer_bonus.armor_magic) ? item.fertilizer_bonus.armor_magic : 0);
+        };
         var that = this;
         return items.map(function (it) {
-            var newitem = it;
-            newitem.points = 0;
-            newitem.points_fertilizer = new OrderFertilizerData();
-            var order_leaf_fertilizer = items_best_leaf_fertilizer.findIndex(function (it) { return it.name == newitem.name; });
-            var order_kernel_fertilizer = items_best_kernel_fertilizer.findIndex(function (it) { return it.name == newitem.name; });
-            var order_root_fertilizer = items_best_root_fertilizer.findIndex(function (it) { return it.name == newitem.name; });
-            var order_yield = items_best_yield.findIndex(function (it) { return it.name == newitem.name; });
-            var order_heartiness = items_best_heartiness.findIndex(function (it) { return it.name == newitem.name; });
-            var order_aesthetic = items_best_aesthetic.findIndex(function (it) { return it.name == newitem.name; });
-            var order_aroma = items_best_aroma.findIndex(function (it) { return it.name == newitem.name; });
-            var order_balanced = items_best_balanced.findIndex(function (it) { return it.name == newitem.name; });
-            var order_immunity = items_best_immunity.findIndex(function (it) { return it.name == newitem.name; });
-            var order_pesticide = items_best_pesticide.findIndex(function (it) { return it.name == newitem.name; });
-            var order_herbicide = items_best_herbicide.findIndex(function (it) { return it.name == newitem.name; });
-            var order_toxicity = items_best_toxicity.findIndex(function (it) { return it.name == newitem.name; });
-            newitem.points_fertilizer.leaf_fertilizer = (order_leaf_fertilizer >= 0) ? items_best_leaf_fertilizer.length - order_leaf_fertilizer : 0;
-            newitem.points_fertilizer.kernel_fertilizer = (order_kernel_fertilizer >= 0) ? items_best_kernel_fertilizer.length - order_kernel_fertilizer : 0;
-            newitem.points_fertilizer.root_fertilizer = (order_root_fertilizer >= 0) ? items_best_root_fertilizer.length - order_root_fertilizer : 0;
-            newitem.points_fertilizer.yield = (order_yield >= 0) ? items_best_yield.length - order_yield : 0;
-            newitem.points_fertilizer.heartiness = (order_heartiness >= 0) ? items_best_heartiness.length - order_heartiness : 0;
-            newitem.points_fertilizer.aesthetic = (order_aesthetic >= 0) ? items_best_aesthetic.length - order_aesthetic : 0;
-            newitem.points_fertilizer.aroma = (order_aroma >= 0) ? items_best_aroma.length - order_aroma : 0;
-            newitem.points_fertilizer.balanced = (order_balanced >= 0) ? items_best_balanced.length - order_balanced : 0;
-            newitem.points_fertilizer.immunity = (order_immunity >= 0) ? items_best_immunity.length - order_immunity : 0;
-            newitem.points_fertilizer.pesticide = (order_pesticide >= 0) ? items_best_pesticide.length - order_pesticide : 0;
-            newitem.points_fertilizer.herbicide = (order_herbicide >= 0) ? items_best_herbicide.length - order_herbicide : 0;
-            newitem.points_fertilizer.toxicity = (order_toxicity >= 0) ? items_best_toxicity.length - order_toxicity : 0;
-            var no_negative_effect = function (fertilizer_bonus) {
-                return fertilizer_bonus.immunity >= 0 && fertilizer_bonus.pesticide >= 0 && fertilizer_bonus.herbicide >= 0 && fertilizer_bonus.toxicity <= 0;
-            };
-            if (that._fertilizer.no_negative_effect) {
-                newitem.points += (newitem.expirable) ? 1 : 0;
-                if (that._appData.currentGuide == 'balanced') {
-                    newitem.points += newitem.points_fertilizer.balanced;
-                }
-                else if (that._appData.currentGuide == 'yield') {
-                    newitem.points += (newitem.points_fertilizer.balanced + newitem.points_fertilizer.yield) / 2;
-                }
-                else if (that._appData.currentGuide == 'heartiness') {
-                    newitem.points += (newitem.points_fertilizer.balanced + newitem.points_fertilizer.heartiness) / 2;
-                }
-                else if (that._appData.currentGuide == 'aroma') {
-                    newitem.points += (newitem.points_fertilizer.balanced + newitem.points_fertilizer.aroma) / 2;
-                }
-                newitem.points += ((no_negative_effect(newitem.fertilizer_bonus)) ? 2 : 1) * ((newitem.points_fertilizer.immunity + newitem.points_fertilizer.pesticide + newitem.points_fertilizer.herbicide) / 3);
-            }
-            else {
-                newitem.points += (newitem.expirable) ? 1 : 0;
-                newitem.points += ((newitem.points_fertilizer.immunity + newitem.points_fertilizer.pesticide + newitem.points_fertilizer.herbicide) / 3) / ((no_negative_effect(newitem.fertilizer_bonus)) ? 2 : 1);
-                if (that._appData.currentGuide == 'balanced') {
-                    newitem.points += newitem.points_fertilizer.balanced / 2;
-                }
-                else if (that._appData.currentGuide == 'yield') {
-                    newitem.points += (newitem.points_fertilizer.balanced + newitem.points_fertilizer.yield) / 4;
-                }
-                else if (that._appData.currentGuide == 'heartiness') {
-                    newitem.points += (newitem.points_fertilizer.balanced + newitem.points_fertilizer.heartiness) / 4;
-                }
-                else if (that._appData.currentGuide == 'aroma') {
-                    newitem.points += (newitem.points_fertilizer.balanced + newitem.points_fertilizer.aroma) / 4;
-                }
-            }
-            return newitem;
+            var item = it;
+            item.points = 0;
+            item.points_fertilizer = new RecommendedFertilizerData();
+            item.points_fertilizer.leaf_fertilizer = get_leaf_fertilizer(item);
+            item.points_fertilizer.kernel_fertilizer = get_kernel_fertilizer(item);
+            item.points_fertilizer.root_fertilizer = get_root_fertilizer(item);
+            item.points_fertilizer.yield = get_yield(item);
+            item.points_fertilizer.heartiness = get_heartiness(item);
+            item.points_fertilizer.aesthetic = get_aesthetic(item);
+            item.points_fertilizer.aroma = get_aroma(item);
+            item.points_fertilizer.balanced = get_balanced(item);
+            item.points_fertilizer.immunity = (item.fertilizer_bonus.immunity) ? item.fertilizer_bonus.immunity : 0;
+            item.points_fertilizer.pesticide = (item.fertilizer_bonus.pesticide) ? item.fertilizer_bonus.pesticide : 0;
+            item.points_fertilizer.herbicide = (item.fertilizer_bonus.herbicide) ? item.fertilizer_bonus.herbicide : 0;
+            item.points_fertilizer.toxicity = (item.fertilizer_bonus.toxicity) ? -item.fertilizer_bonus.toxicity : 0;
+            item.points = that.calcOrderItemPoints(item, expirable);
+            return item;
         }).sort(function (a, b) { return b.points - a.points; }).map(function (it) { return it; });
+    };
+    Application.prototype.calcOrderItemPoints = function (item, expirable) {
+        var _this = this;
+        if (expirable === void 0) { expirable = false; }
+        var ret = 0;
+        ret += (expirable && item.expirable) ? 1 : 0;
+        var calcPointsFer = function (points_fertilizer, current_fertilizer, max_or_overflow, invert_value) {
+            if (invert_value === void 0) { invert_value = false; }
+            current_fertilizer = current_fertilizer * ((invert_value) ? -1 : 1);
+            if (max_or_overflow) {
+                return -3 * (current_fertilizer - fertilizer_data_1.MAX_STATS) - points_fertilizer;
+            }
+            else if (current_fertilizer + points_fertilizer > fertilizer_data_1.MAX_STATS) {
+                return -2 * (current_fertilizer + points_fertilizer - fertilizer_data_1.MAX_STATS);
+            }
+            else if (current_fertilizer < 0) {
+                if (current_fertilizer + points_fertilizer > 0) {
+                    return 4 * points_fertilizer;
+                }
+                else if (current_fertilizer + points_fertilizer === 0) {
+                    return 2 * points_fertilizer;
+                }
+            }
+            else if (current_fertilizer > 0 && _this._fertilizer.no_negative_effect) {
+                return points_fertilizer / 4;
+            }
+            else if (current_fertilizer === 0 && _this._fertilizer.no_negative_effect) {
+                return points_fertilizer / 3;
+            }
+            else if (points_fertilizer > 0) {
+                if (current_fertilizer + points_fertilizer > 0) {
+                    return 3 * points_fertilizer;
+                }
+                else if (current_fertilizer + points_fertilizer === 0) {
+                    return points_fertilizer;
+                }
+            }
+            return 0;
+        };
+        if (this._fertilizer.no_negative_effect) {
+            ret += 2 * this.calcOrderItemPointsStats(item);
+        }
+        else {
+            ret += this.calcOrderItemPointsStats(item) / 5;
+        }
+        ret += calcPointsFer(item.points_fertilizer.immunity, this._fertilizer.immunity, this._fertilizer.is_immunity_max_or_overflow);
+        ret += calcPointsFer(item.points_fertilizer.pesticide, this._fertilizer.pesticide, this._fertilizer.is_pesticide_max_or_overflow);
+        ret += calcPointsFer(item.points_fertilizer.herbicide, this._fertilizer.herbicide, this._fertilizer.is_herbicide_max_or_overflow);
+        ret += calcPointsFer(item.points_fertilizer.toxicity, this._fertilizer.toxicity, this._fertilizer.is_toxicity_max_or_overflow, true);
+        return ret;
+    };
+    Application.prototype.calcOrderItemPointsStats = function (item) {
+        var ret = 0;
+        var calcPointsStats = function (fertilizer_bonus, current_fertilizer, max_or_overflow) {
+            if (fertilizer_bonus && max_or_overflow) {
+                return -3 * ((current_fertilizer - fertilizer_data_1.MAX_STATS) - fertilizer_bonus);
+            }
+            else if (fertilizer_bonus && current_fertilizer === 0) {
+                return 4 * fertilizer_bonus;
+            }
+            else if (fertilizer_bonus && fertilizer_bonus < 0) {
+                if (current_fertilizer <= 0) {
+                    return 4 * fertilizer_bonus;
+                }
+                else {
+                    return 2 * fertilizer_bonus;
+                }
+            }
+            else if (fertilizer_bonus && fertilizer_bonus > 0) {
+                return 3 * fertilizer_bonus;
+            }
+            return 0;
+        };
+        switch (this._appData.currentGuide) {
+            case 'balanced':
+                ret += item.points_fertilizer.balanced;
+                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, this._fertilizer.yield_hp, this._fertilizer.is_yield_hp_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, this._fertilizer.taste_strength, this._fertilizer.is_taste_strength_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, this._fertilizer.hardness_vitality, this._fertilizer.is_hardness_vitality_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, this._fertilizer.stickiness_gusto, this._fertilizer.is_stickiness_gusto_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, this._fertilizer.aesthetic_luck, this._fertilizer.is_aesthetic_luck_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, this._fertilizer.armor_magic, this._fertilizer.is_armor_magic_max_or_overflow);
+                break;
+            case 'heartiness':
+                ret += item.points_fertilizer.heartiness;
+                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, this._fertilizer.taste_strength, this._fertilizer.is_taste_strength_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, this._fertilizer.hardness_vitality, this._fertilizer.is_hardness_vitality_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, this._fertilizer.stickiness_gusto, this._fertilizer.is_stickiness_gusto_max_or_overflow);
+                break;
+            case 'yield':
+                ret += item.points_fertilizer.yield;
+                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, this._fertilizer.yield_hp, this._fertilizer.is_yield_hp_max_or_overflow);
+                break;
+            case 'aesthetic':
+                ret += item.points_fertilizer.aesthetic;
+                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, this._fertilizer.aesthetic_luck, this._fertilizer.is_aesthetic_luck_max_or_overflow);
+                break;
+            case 'aroma':
+                ret += item.points_fertilizer.aroma;
+                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, this._fertilizer.armor_magic, this._fertilizer.is_armor_magic_max_or_overflow);
+                break;
+        }
+        return ret;
     };
     return Application;
 }());
 exports.Application = Application;
-var OrderFertilizerData = (function () {
-    function OrderFertilizerData() {
+var RecommendedFertilizerData = (function () {
+    function RecommendedFertilizerData() {
         this.leaf_fertilizer = 0;
         this.kernel_fertilizer = 0;
         this.root_fertilizer = 0;
@@ -52323,9 +53942,9 @@ var OrderFertilizerData = (function () {
         this.herbicide = 0;
         this.toxicity = 0;
     }
-    return OrderFertilizerData;
+    return RecommendedFertilizerData;
 }());
-},{"./Fertilize.adapter":11,"./application.data":12,"./fertilize-components.adapter":14,"./fertilizer.data":16,"./inventory":18,"./inventory.adapter":17,"./site":20,"chart.js":1,"datatables.net-bs4":2,"typescript-logger/build/loggerManager":10}],14:[function(require,module,exports){
+},{"./Fertilize.adapter":13,"./application.data":14,"./fertilize-components.adapter":16,"./fertilizer.data":18,"./inventory":20,"./inventory.adapter":19,"./site":22,"chart.js":1,"datatables.net-bs4":2,"datatables.net-responsive-bs4":3,"typescript-logger/build/loggerManager":12}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
@@ -52400,7 +54019,7 @@ var FertilizeComponentsAdapter = (function () {
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components.data":15}],15:[function(require,module,exports){
+},{"./fertilizer-components.data":17}],17:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerComponents = exports.MAX_FERTILIZE_COMPONENTS = void 0;
@@ -52437,13 +54056,13 @@ var FertilizerComponents = (function () {
         configurable: true
     });
     FertilizerComponents.prototype.getItemByName = function (name) {
-        return this._components.find(function (it) { return it.name == name; });
+        return this._components.find(function (it) { return it.name === name; });
     };
     FertilizerComponents.prototype.add = function (item) {
         if (this.isFull) {
             return false;
         }
-        var item_index = this._components.findIndex(function (it) { return it.name == item.name; });
+        var item_index = this._components.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
             return true;
         }
@@ -52461,7 +54080,7 @@ var FertilizerComponents = (function () {
         })();
         var ret = -1;
         this._components.forEach(function (value, index) {
-            if (value.name == item_name) {
+            if (value.name === item_name) {
                 _this._components.splice(index, 1);
                 ret = index;
             }
@@ -52471,7 +54090,7 @@ var FertilizerComponents = (function () {
     return FertilizerComponents;
 }());
 exports.FertilizerComponents = FertilizerComponents;
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerData = exports.MAX_STATS = exports.MIN_STATS = exports.MAX_FERTILIZER = exports.MIN_FERTILIZER = void 0;
@@ -52524,6 +54143,13 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_leaf_fertilizer_max_or_overflow", {
+        get: function () {
+            return this._leaf_fertilizer === exports.MAX_STATS || this.is_leaf_fertilizer_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizerData.prototype, "kernel_fertilizer", {
         get: function () {
             return site_1.clamp(this._leaf_fertilizer, exports.MIN_FERTILIZER, exports.MAX_FERTILIZER);
@@ -52541,6 +54167,13 @@ var FertilizerData = (function () {
     Object.defineProperty(FertilizerData.prototype, "is_kernel_fertilizer_overflow", {
         get: function () {
             return this._kernel_fertilizer < exports.MIN_FERTILIZER || this._kernel_fertilizer > exports.MAX_FERTILIZER;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "is_kernel_fertilizer_max_or_overflow", {
+        get: function () {
+            return this._kernel_fertilizer === exports.MAX_STATS || this.is_kernel_fertilizer_overflow;
         },
         enumerable: false,
         configurable: true
@@ -52566,6 +54199,13 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_root_fertilizer_max_or_overflow", {
+        get: function () {
+            return this._root_fertilizer === exports.MAX_STATS || this.is_root_fertilizer_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizerData.prototype, "yield_hp", {
         get: function () {
             return site_1.clamp(this._yield_hp, exports.MIN_STATS, exports.MAX_STATS);
@@ -52582,6 +54222,13 @@ var FertilizerData = (function () {
     Object.defineProperty(FertilizerData.prototype, "is_yield_hp_overflow", {
         get: function () {
             return this._yield_hp < exports.MIN_STATS || this._yield_hp > exports.MAX_STATS;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "is_yield_hp_max_or_overflow", {
+        get: function () {
+            return this._yield_hp === exports.MAX_STATS || this.is_yield_hp_overflow;
         },
         enumerable: false,
         configurable: true
@@ -52606,6 +54253,13 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_taste_strength_max_or_overflow", {
+        get: function () {
+            return this._taste_strength === exports.MAX_STATS || this.is_taste_strength_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizerData.prototype, "hardness_vitality", {
         get: function () {
             return site_1.clamp(this._hardness_vitality, exports.MIN_STATS, exports.MAX_STATS);
@@ -52622,6 +54276,13 @@ var FertilizerData = (function () {
     Object.defineProperty(FertilizerData.prototype, "is_hardness_vitality_overflow", {
         get: function () {
             return this._hardness_vitality < exports.MIN_STATS || this._hardness_vitality > exports.MAX_STATS;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "is_hardness_vitality_max_or_overflow", {
+        get: function () {
+            return this._hardness_vitality === exports.MAX_STATS || this.is_hardness_vitality_overflow;
         },
         enumerable: false,
         configurable: true
@@ -52646,6 +54307,13 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_stickiness_gusto_max_or_overflow", {
+        get: function () {
+            return this._stickiness_gusto === exports.MAX_STATS || this.is_stickiness_gusto_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizerData.prototype, "aesthetic_luck", {
         get: function () {
             return site_1.clamp(this._aesthetic_luck, exports.MIN_STATS, exports.MAX_STATS);
@@ -52662,6 +54330,13 @@ var FertilizerData = (function () {
     Object.defineProperty(FertilizerData.prototype, "is_aesthetic_luck_overflow", {
         get: function () {
             return this._aesthetic_luck < exports.MIN_STATS || this._aesthetic_luck > exports.MAX_STATS;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "is_aesthetic_luck_max_or_overflow", {
+        get: function () {
+            return this._aesthetic_luck === exports.MAX_STATS || this.is_aesthetic_luck_overflow;
         },
         enumerable: false,
         configurable: true
@@ -52686,6 +54361,13 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_armor_magic_max_or_overflow", {
+        get: function () {
+            return this._armor_magic === exports.MAX_STATS || this.is_armor_magic_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizerData.prototype, "immunity", {
         get: function () {
             return site_1.clamp(this._immunity, exports.MIN_STATS, exports.MAX_STATS);
@@ -52702,6 +54384,13 @@ var FertilizerData = (function () {
     Object.defineProperty(FertilizerData.prototype, "is_immunity_overflow", {
         get: function () {
             return this._immunity < exports.MIN_STATS || this._immunity > exports.MAX_STATS;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "is_immunity_max_or_overflow", {
+        get: function () {
+            return this._immunity === exports.MAX_STATS || this.is_immunity_overflow;
         },
         enumerable: false,
         configurable: true
@@ -52726,6 +54415,13 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_pesticide_max_or_overflow", {
+        get: function () {
+            return this._pesticide === exports.MAX_STATS || this.is_pesticide_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizerData.prototype, "herbicide", {
         get: function () {
             return site_1.clamp(this._herbicide, exports.MIN_STATS, exports.MAX_STATS);
@@ -52742,6 +54438,13 @@ var FertilizerData = (function () {
     Object.defineProperty(FertilizerData.prototype, "is_herbicide_overflow", {
         get: function () {
             return this._herbicide < exports.MIN_STATS || this._herbicide > exports.MAX_STATS;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "is_herbicide_max_or_overflow", {
+        get: function () {
+            return this._herbicide === exports.MAX_STATS || this.is_herbicide_overflow;
         },
         enumerable: false,
         configurable: true
@@ -52766,10 +54469,17 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "is_toxicity_max_or_overflow", {
+        get: function () {
+            return this._toxicity === exports.MAX_STATS || this.is_toxicity_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
-},{"./site":20}],17:[function(require,module,exports){
+},{"./site":22}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryAdapter = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
@@ -52780,23 +54490,31 @@ function hasProperty(o, propertyName) {
 function getProperty(o, propertyName) {
     return (o[propertyName] !== undefined) ? o[propertyName] : null;
 }
-function render_buff_bonus_html(value, invertcolor) {
+function render_buff_bonus_html(value, invertcolor, overflow) {
     if (invertcolor === void 0) { invertcolor = null; }
-    var valuestr = (value > 0) ? "+" + value : "" + value;
+    if (overflow === void 0) { overflow = false; }
+    var valnumber = (value) ? value : 0;
+    var valuestr = (valnumber > 0) ? "+" + valnumber : "" + valnumber;
     if (invertcolor !== null) {
         if (!invertcolor) {
-            if (value > 0) {
+            if (overflow) {
+                valuestr = "<span class=\"text-warning\">" + valuestr + "+</span>";
+            }
+            else if (valnumber > 0) {
                 valuestr = "<span class=\"text-success\">" + valuestr + "</span>";
             }
-            else if (value < 0) {
+            if (valnumber < 0) {
                 valuestr = "<span class=\"text-danger\">" + valuestr + "</span>";
             }
         }
         else {
-            if (value < 0) {
+            if (overflow) {
+                valuestr = "<span class=\"text-warning\">" + valuestr + "+</span>";
+            }
+            else if (valnumber < 0) {
                 valuestr = "<span class=\"text-success\">" + valuestr + "</span>";
             }
-            else if (value > 0) {
+            if (valnumber > 0) {
                 valuestr = "<span class=\"text-danger\">" + valuestr + "</span>";
             }
         }
@@ -52805,18 +54523,20 @@ function render_buff_bonus_html(value, invertcolor) {
 }
 exports.render_buff_bonus_html = render_buff_bonus_html;
 ;
-function render_buff_bonus(property_name, invertcolor) {
+function render_buff_bonus(property_name, invertcolor, overflow) {
     if (invertcolor === void 0) { invertcolor = null; }
+    if (overflow === void 0) { overflow = false; }
     return function (data, type, row) {
         var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
         if (type === 'display') {
-            return render_buff_bonus_html(value, invertcolor);
+            return render_buff_bonus_html(value, invertcolor, overflow);
         }
         return value;
     };
 }
 exports.render_buff_bonus = render_buff_bonus;
 ;
+var INVENTORY_PAGE_LENGTH = 7;
 var InventoryAdapter = (function () {
     function InventoryAdapter(app, table_selector, data) {
         this._data = new inventory_1.Inventory();
@@ -52824,59 +54544,81 @@ var InventoryAdapter = (function () {
         this._table_selector = table_selector;
         this._data = data;
     }
-    InventoryAdapter.prototype.init = function (orderable, not_orderable) {
+    InventoryAdapter.prototype.init = function (orderable, not_orderable, ordering) {
         if (orderable === void 0) { orderable = [1, 2, 3, 4, 5, 6]; }
         if (not_orderable === void 0) { not_orderable = [0]; }
+        if (ordering === void 0) { ordering = undefined; }
+        var createdCell = function (cell, cellData, rowData, row, col) {
+            $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
+            switch (col) {
+                case 2:
+                    if (cellData.immunity) {
+                        if (cellData.immunity > 0) {
+                            $(cell).addClass('table-success');
+                        }
+                        else if (cellData.immunity < 0) {
+                            $(cell).addClass('table-danger');
+                        }
+                    }
+                    break;
+                case 3:
+                    if (cellData.pesticide) {
+                        if (cellData.pesticide > 0) {
+                            $(cell).addClass('table-success');
+                        }
+                        else if (cellData.pesticide < 0) {
+                            $(cell).addClass('table-danger');
+                        }
+                    }
+                    break;
+                case 4:
+                    if (cellData.herbicide) {
+                        if (cellData.herbicide > 0) {
+                            $(cell).addClass('table-success');
+                        }
+                        else if (cellData.herbicide < 0) {
+                            $(cell).addClass('table-danger');
+                        }
+                    }
+                    break;
+                case 5:
+                    if (cellData.toxicity) {
+                        if (cellData.toxicity > 0) {
+                            $(cell).addClass('table-danger');
+                        }
+                        else if (cellData.toxicity < 0) {
+                            $(cell).addClass('table-success');
+                        }
+                    }
+                    break;
+                case 6:
+                    if (rowData.expirable) {
+                        $(cell).addClass('table-warning');
+                    }
+                    break;
+            }
+        };
+        var that = this;
         this._table = $(this._table_selector).DataTable({
-            order: [[1, "asc"]],
-            pageLength: 6,
+            ordering: ordering,
+            order: (orderable.find(function (it) { return it === 1; })) ? [[1, "asc"]] : undefined,
+            pageLength: INVENTORY_PAGE_LENGTH,
+            autoWidth: false,
+            responsive: true,
             lengthChange: false,
             createdRow: function (row, data, dataIndex) {
                 $(row).data('name', data.name);
             },
             columnDefs: [
-                { orderable: false, targets: not_orderable },
-                { orderable: true,
-                    targets: orderable, createdCell: function (cell, cellData, rowData, row, col) {
-                        $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
-                        if (col == 2) {
-                            if (cellData.immunity > 0) {
-                                $(cell).addClass('table-success');
-                            }
-                            else if (cellData.immunity < 0) {
-                                $(cell).addClass('table-danger');
-                            }
-                        }
-                        else if (col == 3) {
-                            if (cellData.pesticide > 0) {
-                                $(cell).addClass('table-success');
-                            }
-                            else if (cellData.pesticide < 0) {
-                                $(cell).addClass('table-danger');
-                            }
-                        }
-                        else if (col == 4) {
-                            if (cellData.herbicide > 0) {
-                                $(cell).addClass('table-success');
-                            }
-                            else if (cellData.herbicide < 0) {
-                                $(cell).addClass('table-danger');
-                            }
-                        }
-                        else if (col == 5) {
-                            if (cellData.toxicity > 0) {
-                                $(cell).addClass('table-danger');
-                            }
-                            else if (cellData.toxicity < 0) {
-                                $(cell).addClass('table-success');
-                            }
-                        }
-                        else if (col == 6) {
-                            if (rowData.expirable) {
-                                $(cell).addClass('table-warning');
-                            }
-                        }
-                    }
+                {
+                    orderable: false,
+                    targets: not_orderable,
+                    createdCell: createdCell
+                },
+                {
+                    orderable: true,
+                    targets: orderable,
+                    createdCell: createdCell
                 }
             ],
             data: this._data.items,
@@ -52884,13 +54626,13 @@ var InventoryAdapter = (function () {
                 {
                     data: 'name',
                     render: function (data, type) {
-                        return (type == 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-arrow-left\"></i></button>" : '';
+                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-arrow-left\"></i></button>" : '';
                     }
                 },
                 {
                     data: 'name',
                     render: function (data, type, row) {
-                        if (type == 'display') {
+                        if (type === 'display') {
                             var fertilizer_bonus = '';
                             if (row.fertilizer_bonus.leaf_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
@@ -52907,18 +54649,36 @@ var InventoryAdapter = (function () {
                                 var sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
                                 fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>R:</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.root_fertilizer + "\n                                </p>";
                             }
-                            var yield_hp = render_buff_bonus_html((row.fertilizer_bonus.yield_hp) ? row.fertilizer_bonus.yield_hp : 0, false);
-                            var taste_strength = render_buff_bonus_html((row.fertilizer_bonus.taste_strength) ? row.fertilizer_bonus.taste_strength : 0, false);
-                            var hardness_vitality = render_buff_bonus_html((row.fertilizer_bonus.hardness_vitality) ? row.fertilizer_bonus.hardness_vitality : 0, false);
-                            var stickiness_gusto = render_buff_bonus_html((row.fertilizer_bonus.stickiness_gusto) ? row.fertilizer_bonus.stickiness_gusto : 0, false);
-                            var aesthetic_luck = render_buff_bonus_html((row.fertilizer_bonus.aesthetic_luck) ? row.fertilizer_bonus.aesthetic_luck : 0, false);
-                            var armor_magic = render_buff_bonus_html((row.fertilizer_bonus.armor_magic) ? row.fertilizer_bonus.armor_magic : 0, false);
-                            var immunity = render_buff_bonus_html((row.fertilizer_bonus.immunity) ? row.fertilizer_bonus.immunity : 0, false);
-                            var pesticide = render_buff_bonus_html((row.fertilizer_bonus.pesticide) ? row.fertilizer_bonus.pesticide : 0, false);
-                            var herbicide = render_buff_bonus_html((row.fertilizer_bonus.herbicide) ? row.fertilizer_bonus.herbicide : 0, false);
-                            var toxicity = render_buff_bonus_html((row.fertilizer_bonus.toxicity) ? row.fertilizer_bonus.toxicity : 0, true);
+                            var yield_hp = render_buff_bonus_html(row.fertilizer_bonus.yield_hp, false);
+                            var taste_strength = render_buff_bonus_html(row.fertilizer_bonus.taste_strength, false);
+                            var hardness_vitality = render_buff_bonus_html(row.fertilizer_bonus.hardness_vitality, false);
+                            var stickiness_gusto = render_buff_bonus_html(row.fertilizer_bonus.stickiness_gusto, false);
+                            var aesthetic_luck = render_buff_bonus_html(row.fertilizer_bonus.aesthetic_luck, false);
+                            var armor_magic = render_buff_bonus_html(row.fertilizer_bonus.armor_magic, false);
+                            var immunity = render_buff_bonus_html(row.fertilizer_bonus.immunity, false);
+                            var pesticide = render_buff_bonus_html(row.fertilizer_bonus.pesticide, false);
+                            var herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
+                            var toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
                             var collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
-                            return "<div class=\"row no-gutters\">\n                                        <div col=\"col text-left\">\n                                            <button class=\"btn btn-link text-left\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">Remove from Inventory</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 yield_hp-label text-left\">HP</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 taste-strength-label text-left\">Str.</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">Vit.</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">Gus.</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">Luck</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 armor-magic-label text-left\">Magic</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 immunuity-label text-left\">Immu.</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 pesticide-label text-left\">Pest.</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 herbicide-label text-left\">Herb.</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 toxicity-label text-left\">Tox.</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            var data_color_class = '';
+                            switch (that.getStatFocus(row.fertilizer_bonus)) {
+                                case "balanced":
+                                    data_color_class = 'balanced-text';
+                                    break;
+                                case "heartiness":
+                                    data_color_class = 'heartiness-text';
+                                    break;
+                                case "yield":
+                                    data_color_class = 'yield-text';
+                                    break;
+                                case "aesthetic":
+                                    data_color_class = 'aesthetic-text';
+                                    break;
+                                case "aroma":
+                                    data_color_class = 'aroma-text';
+                                    break;
+                            }
+                            return "<div class=\"row no-gutters\">\n                                        <div col=\"col text-left\">\n                                            <button class=\"btn btn-link text-left\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                <span class=\"" + data_color_class + "\">" + data + "</span>\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">Remove from Inventory</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 yield_hp-label text-left\">HP</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 taste-strength-label text-left\">Str.</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">Vit.</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">Gus.</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">Luck</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 armor-magic-label text-left\">Magic</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 immunuity-label text-left\">Immu.</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 pesticide-label text-left\">Pest.</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 herbicide-label text-left\">Herb.</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 toxicity-label text-left\">Tox.</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -52939,7 +54699,7 @@ var InventoryAdapter = (function () {
                 {
                     data: null,
                     render: function (data, type, row) {
-                        if (type == 'display') {
+                        if (type === 'display') {
                             if (row.expirable) {
                                 return '<i class="fas fa-skull"></i>';
                             }
@@ -52996,10 +54756,35 @@ var InventoryAdapter = (function () {
             that.remove(item_name);
         });
     };
+    InventoryAdapter.prototype.getStatFocus = function (fertilizer_bonus) {
+        if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0 &&
+            fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
+            fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
+            fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0 &&
+            fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0 &&
+            fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
+            return "balanced";
+        }
+        else if (fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
+            fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
+            fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0) {
+            return "heartiness";
+        }
+        else if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0) {
+            return "yield";
+        }
+        else if (fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0) {
+            return "aesthetic";
+        }
+        else if (fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
+            return "aroma";
+        }
+        return "balanced";
+    };
     return InventoryAdapter;
 }());
 exports.InventoryAdapter = InventoryAdapter;
-},{"./inventory":18}],18:[function(require,module,exports){
+},{"./inventory":20}],20:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = void 0;
@@ -53018,13 +54803,13 @@ var Inventory = (function () {
         configurable: true
     });
     Inventory.prototype.getItemByName = function (name) {
-        return this._items_in_inventory.find(function (it) { return it.name == name; });
+        return this._items_in_inventory.find(function (it) { return it.name === name; });
     };
     Inventory.prototype.clear = function () {
         this._items_in_inventory = [];
     };
     Inventory.prototype.add = function (item) {
-        var item_index = this._items_in_inventory.findIndex(function (it) { return it.name == item.name; });
+        var item_index = this._items_in_inventory.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
             return true;
         }
@@ -53042,7 +54827,7 @@ var Inventory = (function () {
         })();
         var ret = -1;
         this._items_in_inventory.forEach(function (value, index) {
-            if (value.name == item_name) {
+            if (value.name === item_name) {
                 _this._items_in_inventory.splice(index, 1);
                 ret = index;
             }
@@ -53052,7 +54837,7 @@ var Inventory = (function () {
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");
@@ -53061,7 +54846,7 @@ $(function () {
     var app = new application_1.Application();
     app.init();
 });
-},{"./application":13,"./site":20}],20:[function(require,module,exports){
+},{"./application":15,"./site":22}],22:[function(require,module,exports){
 'use strict';
 String.prototype.format = function () {
     var args = arguments;
@@ -53144,5 +54929,5 @@ module.exports = {
     makeDoubleClick: makeDoubleClick,
     clamp: clamp
 };
-},{}]},{},[19])
+},{}]},{},[21])
 //# sourceMappingURL=bundle.js.map

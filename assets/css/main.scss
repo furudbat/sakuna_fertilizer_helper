@@ -121,6 +121,10 @@ ul.pagination {
         background-color: lighten(#543cdb, 10) !important;
     }
 }
+.balanced-text {
+    color: #543cdb !important;
+}
+
 .farming-guild-pills-yield-nav-link {
     border: 1px solid #3cdb57 !important;
     &.active {
@@ -128,6 +132,10 @@ ul.pagination {
         background-color: lighten(#3cdb57, 10%) !important;
     }
 }
+.yield-text {
+    color: #3cdb57 !important;
+}
+
 .farming-guild-pills-heartiness-nav-link {
     border: 1px solid #db963c !important;
     &.active {
@@ -135,6 +143,10 @@ ul.pagination {
         background-color: lighten(#db963c, 10%) !important;
     }
 }
+.heartiness-text {
+    color: #db963c !important;
+}
+
 .farming-guild-pills-aesthic-nav-link {
     border: 1px solid #db3c3c !important;
     &.active {
@@ -142,12 +154,19 @@ ul.pagination {
         background-color: lighten(#db3c3c, 10%) !important;
     }
 }
+.aesthic-text {
+    color: #db3c3c !important;
+}
+
 .farming-guild-pills-aroma-nav-link {
     border: 1px solid #9b3cdb !important;
     &.active {
         color: black !important;
         background-color: lighten(#9b3cdb, 10%) !important;
     }
+}
+.pills-text {
+    color: #9b3cdb !important;
 }
 
 #nav-tab-spacing {
@@ -174,4 +193,16 @@ ul.pagination {
 
 .farming-guild-content {
     min-height: 700px;
+}
+
+.table-inventory {
+    .dataTables_filter {
+        padding-right: 16px;
+    }
+    .dataTables_info {
+        padding-left: 16px;
+    }
+    .dataTables_paginate {
+        padding-right: 16px;
+    }
 }

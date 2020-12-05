@@ -16,7 +16,7 @@ export class Inventory {
     }
 
     public getItemByName(name: string) {
-        return this._items_in_inventory.find((it) => it.name == name);
+        return this._items_in_inventory.find((it) => it.name === name);
     }
 
     public clear() {
@@ -28,7 +28,7 @@ export class Inventory {
         //    return false;
         //}
 
-        const item_index = this._items_in_inventory.findIndex((it) => it.name == item.name);
+        const item_index = this._items_in_inventory.findIndex((it) => it.name === item.name);
         if (item_index >= 0) {
             //this._items_in_inventory.amount += amount;
             return true;
@@ -52,7 +52,7 @@ export class Inventory {
 
         var ret = -1;
         this._items_in_inventory.forEach((value, index) => {
-            if (value.name == item_name) {
+            if (value.name === item_name) {
                 //this._items_in_inventory.amount -= amount;
                 //if (this._items_in_inventory.amount <= 0) {
                 this._items_in_inventory.splice(index, 1);

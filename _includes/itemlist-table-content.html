@@ -1,6 +1,10 @@
 {% for item in include.items %}
 <tr data-name="{{ item.name }}">
-  <td><button class="btn btn-primary btn-small add-item-to-inventory" data-name="{{ item.name }}"><i class="fas fa-plus"></i></button></td>
+  <td>
+    <button class="btn btn-primary btn-small add-item-to-inventory" data-name="{{ item.name }}">
+      <i class="fas fa-plus"></i>
+    </button>
+  </td>
 
   <th scope="row" class="text-left">
     <!-- <img class="rounded item-icon mx-auto" alt="{{ item.name }}" src="https://via.placeholder.com/16"> -->
@@ -15,7 +19,7 @@
     {% else %}
     {% assign fertilizer_bonus_color = "text-danger" %}
     {% endif %}
-    <p class="text-left {{fertilizer_bonus_color}}"><strong>L:</strong> 
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>L:</strong>
       {% if item.fertilizer_bonus.leaf_fertilizer > 0 %}+{% endif %}
       {{ item.fertilizer_bonus.leaf_fertilizer }}
     </p>
@@ -27,7 +31,7 @@
     {% else %}
     {% assign fertilizer_bonus_color = "text-danger" %}
     {% endif %}
-    <p class="text-left {{fertilizer_bonus_color}}"><strong>K:</strong> 
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>K:</strong>
       {% if item.fertilizer_bonus.kernel_fertilizer > 0 %}+{% endif %}
       {{ item.fertilizer_bonus.kernel_fertilizer }}
     </p>
@@ -39,13 +43,13 @@
     {% else %}
     {% assign fertilizer_bonus_color = "text-danger" %}
     {% endif %}
-    <p class="text-left {{fertilizer_bonus_color}}"><strong>R:</strong> 
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>R:</strong>
       {% if item.fertilizer_bonus.root_fertilizer > 0 %}+{% endif %}
       {{ item.fertilizer_bonus.root_fertilizer }}
-    </p>  
+    </p>
     {% endif %}
   </td>
-  {% else %} 
+  {% else %}
   <td></td>
   {% endif %}
 
@@ -66,9 +70,9 @@
   <td class="table-warning">
     In days <i class="fas fa-skull"></i>
   </td>
-  {% else %} 
+  {% else %}
   <td>
-      <i class="fas fa-infinity"></i>
+    <i class="fas fa-infinity"></i>
   </td>
   {% endif %}
 </tr>

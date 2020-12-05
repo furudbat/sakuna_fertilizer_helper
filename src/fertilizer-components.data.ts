@@ -30,7 +30,7 @@ export class FertilizerComponents {
     }
 
     public getItemByName(name: string) {
-        return this._components.find((it) => it.name == name);
+        return this._components.find((it) => it.name === name);
     }
 
     public add(item: ItemInventoryData/*, amount: number = 1*/) {
@@ -41,8 +41,8 @@ export class FertilizerComponents {
             return false;
         }
 
-        const item_index = this._components.findIndex((it) => it.name == item.name);
-        if(item_index >= 0) {
+        const item_index = this._components.findIndex((it) => it.name === item.name);
+        if (item_index >= 0) {
             //this._components.in_fertelizer += amount;
             return true;
         }
@@ -50,7 +50,7 @@ export class FertilizerComponents {
         let newitem: ItemInventoryData = item;
         //newitem.in_fertelizer = amount;
         this._components.push(newitem);
-        
+
         return true;
     }
 
@@ -64,12 +64,12 @@ export class FertilizerComponents {
         })();
 
         var ret = -1;
-        this._components.forEach( (value, index) => {
-            if(value.name == item_name) {
+        this._components.forEach((value, index) => {
+            if (value.name === item_name) {
                 //this._items_in_inventory.in_fertelizer -= amount;
                 //if (this._items_in_inventory.in_fertelizer <= 0) {
-                    this._components.splice(index, 1);
-                    ret = index;
+                this._components.splice(index, 1);
+                ret = index;
                 //}
             }
         });

@@ -41,7 +41,10 @@ export class FertilizerData {
     get is_leaf_fertilizer_overflow() {
         return this._leaf_fertilizer < MIN_FERTILIZER || this._leaf_fertilizer > MAX_FERTILIZER;
     }
-    
+    get is_leaf_fertilizer_max_or_overflow() {
+        return this._leaf_fertilizer === MAX_STATS || this.is_leaf_fertilizer_overflow;
+    }
+
     get kernel_fertilizer() {
         return clamp(this._leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
     }
@@ -55,7 +58,10 @@ export class FertilizerData {
     get is_kernel_fertilizer_overflow() {
         return this._kernel_fertilizer < MIN_FERTILIZER || this._kernel_fertilizer > MAX_FERTILIZER;
     }
-    
+    get is_kernel_fertilizer_max_or_overflow() {
+        return this._kernel_fertilizer === MAX_STATS || this.is_kernel_fertilizer_overflow;
+    }
+
     get root_fertilizer() {
         return clamp(this._leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
     }
@@ -69,8 +75,11 @@ export class FertilizerData {
     get is_root_fertilizer_overflow() {
         return this._root_fertilizer < MIN_FERTILIZER || this._root_fertilizer > MAX_FERTILIZER;
     }
+    get is_root_fertilizer_max_or_overflow() {
+        return this._root_fertilizer === MAX_STATS || this.is_root_fertilizer_overflow;
+    }
 
-    
+
     get yield_hp() {
         return clamp(this._yield_hp, MIN_STATS, MAX_STATS);
     }
@@ -83,7 +92,10 @@ export class FertilizerData {
     get is_yield_hp_overflow() {
         return this._yield_hp < MIN_STATS || this._yield_hp > MAX_STATS;
     }
-    
+    get is_yield_hp_max_or_overflow() {
+        return this._yield_hp === MAX_STATS || this.is_yield_hp_overflow;
+    }
+
     get taste_strength() {
         return clamp(this._taste_strength, MIN_STATS, MAX_STATS);
     }
@@ -96,7 +108,10 @@ export class FertilizerData {
     get is_taste_strength_overflow() {
         return this._taste_strength < MIN_STATS || this._taste_strength > MAX_STATS;
     }
-    
+    get is_taste_strength_max_or_overflow() {
+        return this._taste_strength === MAX_STATS || this.is_taste_strength_overflow;
+    }
+
     get hardness_vitality() {
         return clamp(this._hardness_vitality, MIN_STATS, MAX_STATS);
     }
@@ -109,7 +124,10 @@ export class FertilizerData {
     get is_hardness_vitality_overflow() {
         return this._hardness_vitality < MIN_STATS || this._hardness_vitality > MAX_STATS;
     }
-    
+    get is_hardness_vitality_max_or_overflow() {
+        return this._hardness_vitality === MAX_STATS || this.is_hardness_vitality_overflow;
+    }
+
     get stickiness_gusto() {
         return clamp(this._stickiness_gusto, MIN_STATS, MAX_STATS);
     }
@@ -122,7 +140,10 @@ export class FertilizerData {
     get is_stickiness_gusto_overflow() {
         return this._stickiness_gusto < MIN_STATS || this._stickiness_gusto > MAX_STATS;
     }
-    
+    get is_stickiness_gusto_max_or_overflow() {
+        return this._stickiness_gusto === MAX_STATS || this.is_stickiness_gusto_overflow;
+    }
+
     get aesthetic_luck() {
         return clamp(this._aesthetic_luck, MIN_STATS, MAX_STATS);
     }
@@ -135,7 +156,10 @@ export class FertilizerData {
     get is_aesthetic_luck_overflow() {
         return this._aesthetic_luck < MIN_STATS || this._aesthetic_luck > MAX_STATS;
     }
-    
+    get is_aesthetic_luck_max_or_overflow() {
+        return this._aesthetic_luck === MAX_STATS || this.is_aesthetic_luck_overflow;
+    }
+
     get armor_magic() {
         return clamp(this._armor_magic, MIN_STATS, MAX_STATS);
     }
@@ -148,8 +172,11 @@ export class FertilizerData {
     get is_armor_magic_overflow() {
         return this._armor_magic < MIN_STATS || this._armor_magic > MAX_STATS;
     }
-    
-    
+    get is_armor_magic_max_or_overflow() {
+        return this._armor_magic === MAX_STATS || this.is_armor_magic_overflow;
+    }
+
+
     get immunity() {
         return clamp(this._immunity, MIN_STATS, MAX_STATS);
     }
@@ -162,7 +189,10 @@ export class FertilizerData {
     get is_immunity_overflow() {
         return this._immunity < MIN_STATS || this._immunity > MAX_STATS;
     }
-    
+    get is_immunity_max_or_overflow() {
+        return this._immunity === MAX_STATS || this.is_immunity_overflow;
+    }
+
     get pesticide() {
         return clamp(this._pesticide, MIN_STATS, MAX_STATS);
     }
@@ -174,6 +204,9 @@ export class FertilizerData {
     }
     get is_pesticide_overflow() {
         return this._pesticide < MIN_STATS || this._pesticide > MAX_STATS;
+    }
+    get is_pesticide_max_or_overflow() {
+        return this._pesticide === MAX_STATS || this.is_pesticide_overflow;
     }
 
     get herbicide() {
@@ -188,8 +221,11 @@ export class FertilizerData {
     get is_herbicide_overflow() {
         return this._herbicide < MIN_STATS || this._herbicide > MAX_STATS;
     }
+    get is_herbicide_max_or_overflow() {
+        return this._herbicide === MAX_STATS || this.is_herbicide_overflow;
+    }
 
-    
+
     get toxicity() {
         return clamp(this._toxicity, MIN_STATS, MAX_STATS);
     }
@@ -201,5 +237,8 @@ export class FertilizerData {
     }
     get is_toxicity_overflow() {
         return this._toxicity < MIN_STATS || this._toxicity > MAX_STATS;
+    }
+    get is_toxicity_max_or_overflow() {
+        return this._toxicity === MAX_STATS || this.is_toxicity_overflow;
     }
 }

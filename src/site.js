@@ -97,11 +97,11 @@ var makeDoubleClick = function (element, doDoubleClickAction, doClickAction) {
  * @returns A number in the range [min, max]
  * @type Number
  */
-Number.prototype.clamp = function(min, max) {
+Number.prototype.clamp = function (min, max) {
     return Math.min(Math.max(this, min), max);
 };
 
-function clamp (num, min, max) {
+function clamp(num, min, max) {
     return Math.min(Math.max(num, min), max);
 }
 

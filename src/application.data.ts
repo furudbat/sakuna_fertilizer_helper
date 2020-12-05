@@ -32,13 +32,13 @@ export class ApplicationData {
             this._items = await this._storeSession.getItem(STORAGE_KEY_ITEMS) || this._items;
 
             this._inventory.items = await this._storeSession.getItem<ItemInventoryData[]>(STORAGE_KEY_ITEMS_IN_INVENTORY) || this._inventory.items;
-            
+
             this._currentLeafFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER) || this._currentLeafFertilizer;
             this._currentKernelFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER) || this._currentKernelFertilizer;
             this._currentRootFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER) || this._currentRootFertilizer;
-            
+
             this._fertilizer_components.components = await this._storeSession.getItem<ItemFertilizerComponentData[]>(STORAGE_KEY_FERTILIZER_COMPONENTS) || this._fertilizer_components.components;
-            
+
             this._currentGuide = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide;
         } catch (err) {
             // This code runs if there were any errors.
@@ -50,7 +50,7 @@ export class ApplicationData {
         this._storeSession.clear();
     }
 
-    
+
     get currentGuide() {
         return this._currentGuide;
     }
@@ -59,7 +59,7 @@ export class ApplicationData {
         this._currentGuide = value;
         this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
     }
-    
+
     get items() {
         return this._items;
     }
@@ -70,9 +70,9 @@ export class ApplicationData {
     }
 
     public getItemByName(name: string) {
-        return this._items.find((it) => it.name == name);
+        return this._items.find((it) => it.name === name);
     }
-    
+
     get inventory() {
         return this._inventory;
     }
@@ -86,7 +86,7 @@ export class ApplicationData {
         this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
     }
 
-    
+
     get currentLeafFertilizer() {
         return this._currentLeafFertilizer;
     }
@@ -95,7 +95,7 @@ export class ApplicationData {
         this._currentLeafFertilizer = value;
         this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, this._currentLeafFertilizer);
     }
-    
+
     get currentKernelFertilizer() {
         return this._currentKernelFertilizer;
     }
@@ -104,7 +104,7 @@ export class ApplicationData {
         this._currentKernelFertilizer = value;
         this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, this._currentKernelFertilizer);
     }
-    
+
     get currentRootFertilizer() {
         return this._currentRootFertilizer;
     }
@@ -113,8 +113,8 @@ export class ApplicationData {
         this._currentRootFertilizer = value;
         this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, this._currentRootFertilizer);
     }
-    
-    
+
+
     get fertilizer_components() {
         return this._fertilizer_components;
     }
@@ -123,7 +123,7 @@ export class ApplicationData {
         this._fertilizer_components = value;
         this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
     }
-    
+
     public saveFertilizerComponents() {
         this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
     }

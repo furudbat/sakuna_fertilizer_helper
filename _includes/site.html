@@ -17,22 +17,23 @@
 <h1 class="mt-4">Fertilizer Helper</h1>
 <section id="sectionFertilizerHelper">
 <div class="row mt-2">
-    <div class="col-md-6">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-header text-center">
                 Fertilizer
             </div>
-            <div class="card-body p-3">
+            <div class="card-body p-0 p-lg-3">
                 <div class="row mt-2">
-                    <div class="col-md-8">
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header text-center">
                                 Soil nutrients
                             </div>
                             <div class="card-body">
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Current Fertilizer</span>
+                                    <div class="input-group-prepend d-none d-sm-inline">
+                                        <span class="input-group-text d-sm-none">Curr. Fert.</span>
+                                        <span class="input-group-text d-none d-sm-flex">Current Fertilizer</span>
                                     </div>
                                     <input type="number" aria-label="Leaf" placeholder="Leaf" class="form-control"
                                         id="txtCurrentLeafFertilizer" min="0" max="100">
@@ -41,10 +42,13 @@
                                     <input type="number" aria-label="Root" placeholder="Root" class="form-control"
                                         id="txtCurrentRootFertilizer" min="0" max="100">
                                 </div>
-                                <canvas class="soil-nutrients-chart" id="soilNutrientsChart"></canvas>
+                                <div class="d-none d-sm-block">
+                                    <canvas class="soil-nutrients-chart" id="soilNutrientsChart"></canvas>
+                                </div>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">with Components</span>
+                                    <div class="input-group-prepend d-none d-sm-inline">
+                                        <span class="input-group-text d-sm-none">with Comp.</span>
+                                        <span class="input-group-text d-none d-sm-flex">with Components</span>
                                     </div>
                                     <input type="text" aria-label="Leaf" placeholder="Leaf" class="form-control"
                                         id="txtLeafFertilizer" readonly>
@@ -57,40 +61,70 @@
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-4 yield_hp-label text-right">Yield/HP</div>
+                            <div class="col-4 yield_hp-label text-right">
+                                <span class="d-sm-none">Yield/ HP</span>
+                                <span class="d-none d-sm-inline">Yield/HP</span>
+                            </div>
                             <div class="col-2 yield_hp text-left" id="fertilizerYieldHp">0</div>
 
-                            <div class="col-4 immunuity-label text-right">Immunuity</div>
+                            <div class="col-4 immunuity-label text-right">
+                                <span class="d-sm-none">Immu.</span>
+                                <span class="d-none d-sm-inline">Immunuity</span>
+                            </div>
                             <div class="col-2 immunuity text-left" id="fertilizerImmunuity">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-4 taste-strength-label text-right">Taste/Strength</div>
+                            <div class="col-4 taste-strength-label text-right">
+                                <span class="d-sm-none">Tas./ Str.</span>
+                                <span class="d-none d-sm-inline">Taste/Strength</span>
+                            </div>
                             <div class="col-2 taste-strength text-left" id="fertilizerTasteStrength">0</div>
 
-                            <div class="col-4 pesticide-label text-right">Pesticide</div>
+                            <div class="col-4 pesticide-label text-right">
+                                <span class="d-sm-none">Pest.</span>
+                                <span class="d-none d-sm-inline">Pesticide</span>
+                            </div>
                             <div class="col-2 pesticide text-left" id="fertilizerPesticide">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-4 hardness-vitality-label text-right">Hardness/Vitality</div>
+                            <div class="col-4 hardness-vitality-label text-right">
+                                <span class="d-sm-none">Hard./ Vit.</span>
+                                <span class="d-none d-sm-inline">Hardness/Vitality</span>
+                            </div>
                             <div class="col-2 hardness-vitality text-left" id="fertilizerHardnessVitality">0</div>
 
-                            <div class="col-4 herbicide-label text-right">Herbicide</div>
+                            <div class="col-4 herbicide-label text-right">
+                                <span class="d-sm-none">Herb.</span>
+                                <span class="d-none d-sm-inline">Herbicide</span>
+                            </div>
                             <div class="col-2 herbicide text-left" id="fertilizerHerbicide">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-4 stickiness-gusto-label text-right">Stickiness/Gusto</div>
+                            <div class="col-4 stickiness-gusto-label text-right">
+                                <span class="d-sm-none">Stick./Gus.</span>
+                                <span class="d-none d-sm-inline">Stickiness/Gusto</span>
+                            </div>
                             <div class="col-2 stickiness-gusto text-left" id="fertilizerStickinessGusto">0</div>
 
                         </div>
                         <div class="row">
-                            <div class="col-4 aesthetic-luck-label text-right">Aesthetic/Luck</div>
+                            <div class="col-4 aesthetic-luck-label text-right">
+                                <span class="d-sm-none">Aest./ Luck</span>
+                                <span class="d-none d-sm-inline">Aesthetic/Luck</span>
+                            </div>
                             <div class="col-2 aesthetic-luck text-left" id="fertilizerAestheticLuck">0</div>
 
-                            <div class="col-4 toxicity-label text-right">Toxicity</div>
+                            <div class="col-4 toxicity-label text-right">
+                                <span class="d-sm-none">Toxi.</span>
+                                <span class="d-none d-sm-inline">Toxicity</span>
+                            </div>
                             <div class="col-2 toxicity text-left" id="fertilizerToxicity">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-4 armor-magic-label text-right">Armor/Magic</div>
+                            <div class="col-4 armor-magic-label text-right">
+                                <span class="d-sm-none">Armor/ Magic</span>
+                                <span class="d-none d-sm-inline">Armor/Magic</span>
+                            </div>
                             <div class="col-2 armor-magic text-left" id="fertilizerArmorMagic">0</div>
 
                         </div>
@@ -98,7 +132,7 @@
                             <ul class="list-group" id="lstFertilizerHints"></ul>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header text-center">
                                 Components
@@ -123,7 +157,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-6">
         <div class="card">
             <div class="card-header text-center pb-0 pt-2">
                 <nav>
@@ -134,16 +168,22 @@
                     </div>
                 </nav>
             </div>
-            <div class="card-body py-1 mt-1">
+            <div class="card-body p-0 my-2 mt-3">
                 <div class="tab-content" id="nav-inventory-tabContent">
                     <div class="tab-pane fade show active" id="nav-inventory" role="tabpanel" aria-labelledby="nav-inventory-tab">
-                        {% include add-to-fertilizer-itemlist-table.html id="tblInventory" %}
+                        <div class="row no-gutters">
+                            {% include add-to-fertilizer-itemlist-table.html id="tblInventory" %}
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="nav-recommended-components" role="tabpanel" aria-labelledby="nav-recommended-components-tab">
-                        {% include add-to-fertilizer-itemlist-table.html id="tblInventoryRecommended" %}
+                        <div class="row no-gutters">
+                            {% include add-to-fertilizer-itemlist-table.html id="tblInventoryRecommended" %}
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="nav-expirable-components" role="tabpanel" aria-labelledby="nav-expirable-components-tab">
-                        {% include add-to-fertilizer-itemlist-table.html id="tblInventoryExpirables" %}
+                        <div class="row no-gutters">
+                            {% include add-to-fertilizer-itemlist-table.html id="tblInventoryExpirables" %}
+                        </div>
                     </div>
                 </div>
             </div>

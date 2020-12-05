@@ -1,25 +1,26 @@
-<table class="table table-bordered table-striped table-dark" id="{{include.id}}">
+<div class="table-item-list">
+  <table class="table table-bordered table-striped table-dark dt-responsive nowrap" id="{{include.id}}">
     <thead>
       <tr>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_add_to_inventory }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_name }}</th>
+        <th scope="col" data-priority="0">{{ site.data.strings.table.itemlist.col_add_to_inventory }}</th>
+        <th scope="col" data-priority="1">{{ site.data.strings.table.itemlist.col_name }}</th>
 
-        <th scope="col">{{ site.data.strings.table.itemlist.col_fertilizer }}</th>
+        <th scope="col" data-priority="12">{{ site.data.strings.table.itemlist.col_fertilizer }}</th>
 
-        <th scope="col">{{ site.data.strings.table.itemlist.col_yield_hp }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_taste_strength }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_hardness_vitality }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_stickiness_gusto }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_aesthetic_luck }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_armor_magic }}</th>
+        <th scope="col" data-priority="6">{{ site.data.strings.table.itemlist.col_yield_hp }}</th>
+        <th scope="col" data-priority="7">{{ site.data.strings.table.itemlist.col_taste_strength }}</th>
+        <th scope="col" data-priority="8">{{ site.data.strings.table.itemlist.col_hardness_vitality }}</th>
+        <th scope="col" data-priority="9">{{ site.data.strings.table.itemlist.col_stickiness_gusto }}</th>
+        <th scope="col" data-priority="10">{{ site.data.strings.table.itemlist.col_aesthetic_luck }}</th>
+        <th scope="col" data-priority="11">{{ site.data.strings.table.itemlist.col_armor_magic }}</th>
 
-        <th scope="col">{{ site.data.strings.table.itemlist.col_immunity }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_pesticide }}</th>
-        <th scope="col">{{ site.data.strings.table.itemlist.col_herbicide }}</th>
+        <th scope="col" data-priority="3">{{ site.data.strings.table.itemlist.col_immunity }}</th>
+        <th scope="col" data-priority="4">{{ site.data.strings.table.itemlist.col_pesticide }}</th>
+        <th scope="col" data-priority="5">{{ site.data.strings.table.itemlist.col_herbicide }}</th>
 
-        <th scope="col">{{ site.data.strings.table.itemlist.col_toxicity }}</th>
+        <th scope="col" data-priority="1">{{ site.data.strings.table.itemlist.col_toxicity }}</th>
 
-        <th scope="col">{{ site.data.strings.table.itemlist.col_expirable }}</th>
+        <th scope="col" data-priority="2">{{ site.data.strings.table.itemlist.col_expirable }}</th>
       </tr>
     </thead>
     <tbody>
@@ -32,3 +33,4 @@
       {% endif %}
     </tbody>
   </table>
+</div>

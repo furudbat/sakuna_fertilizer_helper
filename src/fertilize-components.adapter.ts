@@ -13,16 +13,16 @@ export class FertilizeComponentsAdapter {
         this._data = data;
     }
 
-    get isFull(){
+    get isFull() {
         return this._data.isFull;
     }
 
     public init() {
         this.update();
     }
-    
+
     public add(item: ItemInventoryData) {
-        if(this._data.add(item)){
+        if (this._data.add(item)) {
             let list = $(this._list_selector) as JQuery<HTMLUListElement>;
             let findElement = list.find(`li[data-name='']`).first();
             const index = findElement.data('index');
@@ -32,14 +32,14 @@ export class FertilizeComponentsAdapter {
             //this.update();
         }
     }
-    
+
     public remove(item_name: string) {
         this._data.remove(item_name);
 
         let list = $(this._list_selector) as JQuery<HTMLUListElement>;
         let findElement = list.find(`li[data-name='${item_name}']`).first();
         const index = findElement.data('index');
-        if(index <MAX_FERTILIZE_COMPONENTS ) {
+        if (index < MAX_FERTILIZE_COMPONENTS) {
             findElement.replaceWith(this.renderEmptyElementHtml(index));
         } else {
             findElement.remove();
@@ -53,12 +53,12 @@ export class FertilizeComponentsAdapter {
 
         list.html(''); // clear list
         for (let i = 0; i < MAX_FERTILIZE_COMPONENTS || i < this._data.components.length; i++) {
-            if(this._data.components[i]) {
+            if (this._data.components[i]) {
                 const item = this._data.components[i];
                 const item_name = item.name;
 
                 /// @TODO: add amount "current/max"
-                
+
                 list.append(this.renderItemElementHtml(i, item_name));
             } else {
                 list.append(this.renderEmptyElementHtml(i));
@@ -68,9 +68,9 @@ export class FertilizeComponentsAdapter {
         this.initEvents();
     }
 
-    private initEvents(){
+    private initEvents() {
         var that = this;
-        $('.remove-item-from-fertilizer').on('click', function(){
+        $('.remove-item-from-fertilizer').on('click', function () {
             const item_name = $(this).data('name');
             that.remove(item_name);
             that._app.removeItemFromFertilizer(item_name);

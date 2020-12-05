@@ -68,7 +68,7 @@ guide:
   offshots_1_2:
     use_kernel_fertilizer: >-
       <i class="fas fa-poop"></i> 
-      Use <strong>Kernel</strong> Fertilizer (morning)
+      Use <strong>Kernel</strong> Fertilizer
     unleash_ducks: >-
       <i class="fas fa-feather-alt"></i> 
       <strong>Unleash ducks</strong>
@@ -85,10 +85,10 @@ guide:
       <strong>Lock ducks</strong>
     dehydrate: >-
       <i class="fas fa-tint-slash"></i> 
-      Water: <strong>0-5% (Sommer 2)</strong>
+      Water: <strong>0-5%</strong>
     short_dehydrate: >-
       <i class="fas fa-tint-slash"></i> 
-      Water: <strong>0-10% (Sommer 2)</strong>
+      Water: <strong>0-10%</strong>
   sprouting:
     use_leaf_fertilizer: >-
       <i class="fas fa-poop"></i> 
