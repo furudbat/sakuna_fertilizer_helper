@@ -1,9 +1,13 @@
+import { assert } from "console";
 import { ItemInventoryData } from "./inventory";
+import { clamp } from "./site";
 
 export const MAX_FERTILIZE_COMPONENTS = 8;
+export const MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 1;
+export const MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 999;
 
 export interface ItemFertilizerComponentData extends ItemInventoryData {
-    // private in_fertelizer?: number;
+    in_fertelizer?: number;
 }
 
 export class FertilizerComponents {
@@ -33,28 +37,47 @@ export class FertilizerComponents {
         return this._components.find((it) => it.name === name);
     }
 
-    public add(item: ItemInventoryData/*, amount: number = 1*/) {
-        //if (amount < 1) {
-        //    return false;
-        //}
-        if (this.isFull) {
-            return false;
+    public setItemAmount(index: number, amount: number | undefined) {
+        if (index < this._components.length) {
+            this._components[index].in_fertelizer = amount;
+            this._components = this._components.filter(it => it.in_fertelizer === undefined || it.in_fertelizer > 0);
         }
+    }
+
+    public add(item: ItemInventoryData, amount: number | undefined = undefined) {
+        if (this.isFull) {
+            return undefined;
+        }
+        if (amount !== undefined && amount == 0) {
+            return undefined;
+        }
+        assert(amount === undefined || amount >= 0, "add item amount can't be negative");
 
         const item_index = this._components.findIndex((it) => it.name === item.name);
         if (item_index >= 0) {
-            //this._components.in_fertelizer += amount;
-            return true;
+            if (amount !== undefined) {
+                const in_fertelizer = (this._components[item_index].in_fertelizer !== undefined)? this._components[item_index].in_fertelizer as number : 0;
+                this._components[item_index].in_fertelizer = clamp(in_fertelizer + amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+            }
+            return undefined;
         }
 
-        let newitem: ItemInventoryData = item;
-        //newitem.in_fertelizer = amount;
+        let newitem: ItemFertilizerComponentData = item;
+        newitem.in_fertelizer = amount;
         this._components.push(newitem);
 
-        return true;
+        return this._components[this._components.length-1];
     }
 
-    public remove(item: string | ItemInventoryData/*, amount: number = 1*/) {
+    public remove(item: string | ItemInventoryData, amount: number | undefined = undefined) {
+        if (this._components.length == 0) {
+            return undefined;
+        }
+        if (amount !== undefined && amount == 0) {
+            return undefined;
+        }
+        assert(amount === undefined || amount >= 0, "remove item amount can't be negative");
+
         const item_name: string = ((): string => {
             if ((item as ItemInventoryData).name !== undefined) {
                 return (item as ItemInventoryData).name;
@@ -63,16 +86,25 @@ export class FertilizerComponents {
             return item as string;
         })();
 
-        var ret = -1;
+        var ret: ItemFertilizerComponentData | undefined = undefined;
         this._components.forEach((value, index) => {
             if (value.name === item_name) {
-                //this._items_in_inventory.in_fertelizer -= amount;
-                //if (this._items_in_inventory.in_fertelizer <= 0) {
-                this._components.splice(index, 1);
-                ret = index;
-                //}
+                if (amount === undefined) {
+                    ret = this._components[index];
+                    this._components.splice(index, 1);
+                    return;
+                }
+
+                const in_fertelizer = (this._components[index].in_fertelizer !== undefined)? this._components[index].in_fertelizer as number : 0;
+                this._components[index].in_fertelizer = in_fertelizer - amount;
+                const new_in_fertelizer = (this._components[index].in_fertelizer !== undefined)? this._components[index].in_fertelizer as number : 0;
+                if (new_in_fertelizer <= 0) {
+                    ret = this._components[index];
+                    this._components.splice(index, 1);
+                }
             }
         });
+
         return ret;
     }
 }

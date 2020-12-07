@@ -187,6 +187,7 @@ fertilizer_helper:
       toxicity_short: Toxi.
     components:
       title: Components
+      amount_placeholder: Amount
   inventory:
     additional_components:
       title: Additional Components (Inventory)
@@ -209,6 +210,7 @@ fertilizer_helper:
       pesticide: Pest.
       herbicide: Herb.
       toxicity: Tox.
+    amount_placeholder: Amount
 item_list:
   title: Items-List
 goto: go to

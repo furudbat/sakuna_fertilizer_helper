@@ -1,5 +1,5 @@
 import { ApplicationListener } from "./application.listener";
-import { Inventory, ItemInventoryData } from "./inventory";
+import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
@@ -147,7 +147,7 @@ export class InventoryAdapter {
                 },
                 {
                     data: 'name',
-                    render: function (data: string, type: string, row: ItemInventoryData) {
+                    render: function (data: string, type: string, row: ItemInventoryData, meta: any) {
                         if (type === 'display') {
                             let fertilizer_bonus = '';
                             if (row.fertilizer_bonus.leaf_fertilizer) {
@@ -209,8 +209,15 @@ export class InventoryAdapter {
                                     break;
                             }
 
+                            const item_name = row.name;
+                            const amount_value = row.amount ?? 1;
+                            const index = meta.row-1;
+
                             return `<div class="row no-gutters">
-                                        <div col="col text-left">
+                                        <div class="col-3 text-left">
+                                            <input type="number" value="${amount_value}" data-index="${index}" data-name="${item_name}" data-val="${amount_value}" class="form-control form-control-sm inventory-item-amount" placeholder="${site.data.strings.fertilizer_helper.inventory.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_INVENTORY}" max="${MAX_ITEMS_AMOUNT_INVENTORY}">
+                                        </div>
+                                        <div class="col-9 text-left">
                                             <button class="btn btn-link text-left ${data_color_class}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
                                                 ${data}
                                             </button>
@@ -331,23 +338,23 @@ export class InventoryAdapter {
         }
     }
 
-    public add(item: ItemData) {
-        const ret = this._data.add(item);
-        if (ret) {
+    public add(item: ItemData, amount: number = 1) {
+        const added = this._data.add(item, amount);
+        if (added) {
             this._table?.rows.add([item]).draw(false);
-            this._app.addItemToInventory(item);
+            this._app.addItemToInventory(item, amount, true);
         }
-        return ret;
+        return added;
     }
 
-    public remove(item_name: string) {
-        const ret = this._data.remove(item_name);
-        if (ret >= 0) {
+    public remove(item_name: string, amount: number | undefined = undefined) {
+        const removed = this._data.remove(item_name, amount);
+        if (removed) {
             this._table?.row(`[data-name='${item_name}']`).remove();
             this._table?.draw(false);
-            this._app.removeItemFromInventory(item_name);
+            this._app.removeItemFromInventory(item_name, amount, true);
         }
-        return ret;
+        return removed;
     }
 
     private initEvents() {
@@ -357,7 +364,7 @@ export class InventoryAdapter {
             const item = that._app.getItemByNameFromInventory(item_name);
 
             if (item) {
-                that._app.addItemToFertilizer(item);
+                that._app.addItemToFertilizer(item, 1, false);
             }
         });
         $(this._table_selector).find('.remove-item-from-inventory').on('click', function () {

@@ -8,7 +8,7 @@ import { FertilizerData, MAX_FERTILIZER, MAX_STATS, MIN_FERTILIZER } from './fer
 import { FertilizeAdapter } from './Fertilize.adapter'
 import { FertilizeComponentsAdapter } from './fertilize-components.adapter'
 import { InventoryAdapter, render_buff_bonus_html } from './inventory.adapter'
-import { Inventory, ItemInventoryData } from './inventory'
+import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY } from './inventory'
 import { LoggerManager } from 'typescript-logger/build/loggerManager'
 
 const MAX_SHOW_RECOMMENDED_ITEMS = 12;
@@ -164,13 +164,15 @@ export class Application implements ApplicationListener {
                 ]
             },
             options: {
+                responsive: true,
                 scale: {
                     angleLines: {
-                        display: true
+                        display: true,
+                        color: 'black'
                     },
                     ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 100
+                        min: MIN_FERTILIZER,
+                        max: MAX_FERTILIZER
                     }
                 }
             }
@@ -273,30 +275,39 @@ export class Application implements ApplicationListener {
         return this._appData.inventory.getItemByName(name);
     }
 
-    public addItemToFertilizer(item: ItemInventoryData) {
-        this._appData.fertilizer_components.add(item);
+    public addItemToFertilizer(item: ItemInventoryData, amount: number | undefined = 1, already_added: boolean = false) {
+        if (!already_added) {
+            this._appData.fertilizer_components.add(item, amount);
+        }
+
         this._appData.saveFertilizerComponents();
         this._fertilizeComponentsAdapter?.update();
         this.updateFertilizer();
         this.updateInventory();
     }
 
-    public removeItemFromFertilizer(item_name: string) {
-        this._appData.fertilizer_components.remove(item_name);
+    public removeItemFromFertilizer(item_name: string, amount: number | undefined = undefined, already_removed: boolean = false) {
+        if (!already_removed) {
+            this._appData.fertilizer_components.remove(item_name, amount);
+        }
         this._appData.saveFertilizerComponents();
         this._fertilizeComponentsAdapter?.update();
         this.updateFertilizer();
         this.updateInventory();
     }
 
-    public addItemToInventory(item: ItemData) {
-        this._appData.inventory.add(item);
+    public addItemToInventory(item: ItemData, amount: number = 1, already_added: boolean = false) {
+        if (!already_added) {
+            this._appData.inventory.add(item, amount);
+        }
         this._appData.saveInventory();
         this.updateInventory();
     }
 
-    public removeItemFromInventory(item_name: string) {
-        this._appData.inventory.remove(item_name);
+    public removeItemFromInventory(item_name: string, amount: number | undefined = undefined, already_removed: boolean = false) {
+        if (!already_removed) {
+            this._appData.inventory.remove(item_name, amount);
+        }
         this._appData.saveInventory();
         this.updateInventory();
     }
@@ -319,10 +330,21 @@ export class Application implements ApplicationListener {
                 return;
             }
 
+            const findItemInInventory = that._appData.inventory.getItemByName(item_name);
             const findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
+
             if (findItemInComponents) {
-                $(this).prop('disabled', true);
-                return;
+                if(findItemInComponents.in_fertelizer === undefined) {
+                    $(this).prop('disabled', true);
+                    return;
+                }
+
+                if (findItemInComponents && findItemInComponents.amount !== undefined) {
+                    if (findItemInComponents.in_fertelizer >= findItemInComponents.amount) {
+                        $(this).prop('disabled', true);
+                        return;
+                    }
+                }
             }
         })
 
