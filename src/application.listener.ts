@@ -17,6 +17,7 @@ export interface ApplicationListener {
     updateSoilNutrientsChartRootFertilizerUI(): void;
 
     updateInventory(): void;
+    updateAllInventoryEvents(): void;
     drawInventory(table_selector: string): void;
     updateFertilizer(): void;
     updateFertilizerUI(): void;

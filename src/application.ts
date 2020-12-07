@@ -213,7 +213,7 @@ export class Application implements ApplicationListener {
     public async updateSoilNutrientsChartLeafFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[1].data?.[0] !== undefined) {
-                this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
+                //this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
                 this._soilNutrientsChart.data.datasets[1].data[0] = clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
             }
@@ -232,7 +232,7 @@ export class Application implements ApplicationListener {
     public async updateSoilNutrientsChartKernelFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[1].data?.[1] !== undefined) {
-                this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
+                //this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
                 this._soilNutrientsChart.data.datasets[1].data[1] = clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
             }
@@ -251,7 +251,7 @@ export class Application implements ApplicationListener {
     public async updateSoilNutrientsChartRootFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[1].data?.[2] !== undefined) {
-                this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
+                //this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
                 this._soilNutrientsChart.data.datasets[1].data[2] = clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
             }
@@ -339,8 +339,8 @@ export class Application implements ApplicationListener {
                     return;
                 }
 
-                if (findItemInComponents && findItemInComponents.amount !== undefined) {
-                    if (findItemInComponents.in_fertelizer >= findItemInComponents.amount) {
+                if (findItemInComponents && findItemInComponents.amount !== undefined && findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
                         $(this).prop('disabled', true);
                         return;
                     }
@@ -363,7 +363,10 @@ export class Application implements ApplicationListener {
 
     public updateFertilizer() {
         this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
+
+        this._appData.saveFertilizerComponents();
         this._fertilizeAdapter?.updateFromComponents(this._appData.fertilizer_components);
+        this.updateAllInventoryEvents();
         this.updateFertilizerUI();
         this.updateRecommendedItems();
     }
@@ -402,6 +405,12 @@ export class Application implements ApplicationListener {
         $('#fertilizerToxicity').html(toxicity);
     }
 
+    public updateAllInventoryEvents() {
+        this.updateInventoryEvents('#tblInventory');
+        this.updateInventoryEvents('#tblInventoryRecommended');
+        this.updateInventoryEvents('#tblInventoryExpirables');
+    }
+
     public updateInventory() {
         this.log.debug('updateInventory');
         this.updateInventoryEvents('#tblInventory');
@@ -413,7 +422,23 @@ export class Application implements ApplicationListener {
         this._expirablesInventory.clear();
 
         const inventory_items = this._appData.inventory.items.filter(it => {
-            return this._appData.fertilizer_components.components.filter(comp => comp.name === it.name).length === 0;
+            const item_name = it.name;
+            const findItemInInventory = this._appData.inventory.getItemByName(item_name);
+            const findItemInComponents = this._appData.fertilizer_components.getItemByName(item_name);
+
+            if (findItemInComponents) {
+                if(findItemInComponents.in_fertelizer === undefined) {
+                    return false;
+                }
+
+                if (findItemInComponents && findItemInComponents.amount !== undefined && findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         });
         let expirables_inventory_items = inventory_items.filter(it => it.expirable);
         let recommended_inventory_items = inventory_items;
@@ -421,7 +446,7 @@ export class Application implements ApplicationListener {
         expirables_inventory_items = this.sortRecommendedItems(expirables_inventory_items);
         recommended_inventory_items = this.sortRecommendedItems(recommended_inventory_items, true);
 
-        this.log.debug('updateRecommendedItems', { no_negative_effect: this._fertilizer.no_negative_effect, recommended_inventory_items });
+        //this.log.debug('updateRecommendedItems', { no_negative_effect: this._fertilizer.no_negative_effect, recommended_inventory_items });
 
         this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
         this._recommendedInventoryAdapter?.update();

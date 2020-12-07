@@ -38,33 +38,36 @@ export class FertilizeAdapter {
     private calcComponentLeafFertilizerValue(components: ItemFertilizerComponentData[]): number {
         return components.map(component => (component.fertilizer_bonus.leaf_fertilizer) ? component.fertilizer_bonus.leaf_fertilizer : 0).reduce((sum, value, index) => {
             const component = components[index];
+            const amount_in_fertelizer = (component.in_fertelizer)? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
 
-            /// @TODO: calc right value with amount items
-            let ret: number = sum + value;
-
-            return ret;
+            return sum + amount_in_fertelizer*value;
         }, 0);
     }
 
     private calcComponentKernelFertilizerValue(components: ItemFertilizerComponentData[]): number {
         return components.map(component => (component.fertilizer_bonus.kernel_fertilizer) ? component.fertilizer_bonus.kernel_fertilizer : 0).reduce((sum, value, index) => {
             const component = components[index];
+            const amount_in_fertelizer = (component.in_fertelizer)? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
 
-            /// @TODO: calc right value with amount items
-            let ret: number = sum + value;
-
-            return ret;
+            return sum + amount_in_fertelizer*value;
         }, 0);
     }
 
     private calcComponentRootFertilizerValue(components: ItemFertilizerComponentData[]): number {
         return components.map(component => (component.fertilizer_bonus.root_fertilizer) ? component.fertilizer_bonus.root_fertilizer : 0).reduce((sum, value, index) => {
             const component = components[index];
+            const amount_in_fertelizer = (component.in_fertelizer)? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
 
-            /// @TODO: calc right value with amount items
-            let ret: number = sum + value;
-
-            return ret;
+            return sum + amount_in_fertelizer*value;
         }, 0);
     }
 
@@ -72,11 +75,20 @@ export class FertilizeAdapter {
     private calcComponentYieldHPValue(components: ItemFertilizerComponentData[]): number {
         return components.map(component => (component.fertilizer_bonus.yield_hp) ? component.fertilizer_bonus.yield_hp : 0).reduce((sum, value, index) => {
             const component = components[index];
+            const amount_in_fertelizer = (component.in_fertelizer)? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
 
-            /// @TODO: calc right value with amount items
-            let ret: number = sum + value;
+            let total_value = value;
+            let added_value = value;
+            for (let i = 2;i <= amount_in_fertelizer;i++) {
+                added_value = Math.max(Math.round(2 * added_value / 3), 1);
+                console.log('calcComponentYieldHPValue', {i, total_value, added_value});
+                total_value = total_value + added_value;
+            }
 
-            return ret;
+            return sum + total_value;
         }, 0);
     }
 

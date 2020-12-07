@@ -81,7 +81,7 @@ export class FertilizeComponentsAdapter {
         var that = this;
         $('.remove-item-from-fertilizer').on('click', function () {
             const item_name = $(this).data('name') as string;
-            that.remove(item_name);
+            that.remove(item_name, undefined);
             that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
         

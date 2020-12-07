@@ -55127,29 +55127,48 @@ var FertilizeAdapter = (function () {
     FertilizeAdapter.prototype.calcComponentLeafFertilizerValue = function (components) {
         return components.map(function (component) { return (component.fertilizer_bonus.leaf_fertilizer) ? component.fertilizer_bonus.leaf_fertilizer : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var ret = sum + value;
-            return ret;
+            var amount_in_fertelizer = (component.in_fertelizer) ? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
+            return sum + amount_in_fertelizer * value;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentKernelFertilizerValue = function (components) {
         return components.map(function (component) { return (component.fertilizer_bonus.kernel_fertilizer) ? component.fertilizer_bonus.kernel_fertilizer : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var ret = sum + value;
-            return ret;
+            var amount_in_fertelizer = (component.in_fertelizer) ? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
+            return sum + amount_in_fertelizer * value;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentRootFertilizerValue = function (components) {
         return components.map(function (component) { return (component.fertilizer_bonus.root_fertilizer) ? component.fertilizer_bonus.root_fertilizer : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var ret = sum + value;
-            return ret;
+            var amount_in_fertelizer = (component.in_fertelizer) ? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
+            return sum + amount_in_fertelizer * value;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentYieldHPValue = function (components) {
         return components.map(function (component) { return (component.fertilizer_bonus.yield_hp) ? component.fertilizer_bonus.yield_hp : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
-            var ret = sum + value;
-            return ret;
+            var amount_in_fertelizer = (component.in_fertelizer) ? component.in_fertelizer : 0;
+            if (amount_in_fertelizer <= 0) {
+                return 0;
+            }
+            var total_value = value;
+            var added_value = value;
+            for (var i = 2; i <= amount_in_fertelizer; i++) {
+                added_value = Math.max(Math.trunc(2 * added_value / 3), 1);
+                console.log('calcComponentYieldHPValue', { i: i, total_value: total_value, added_value: added_value, added_value_round: Math.round(2 * added_value / 3) });
+                total_value = total_value + added_value;
+            }
+            return sum + total_value;
         }, 0);
     };
     FertilizeAdapter.prototype.calcComponentTasteStrengthValue = function (components) {
@@ -55683,7 +55702,6 @@ var Application = (function () {
             return __generator(this, function (_d) {
                 if (this._soilNutrientsChart) {
                     if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
-                        this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
                         this._soilNutrientsChart.data.datasets[1].data[0] = site_1.clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
                         $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
                     }
@@ -55713,7 +55731,6 @@ var Application = (function () {
             return __generator(this, function (_d) {
                 if (this._soilNutrientsChart) {
                     if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
-                        this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
                         this._soilNutrientsChart.data.datasets[1].data[1] = site_1.clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
                         $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
                     }
@@ -55743,7 +55760,6 @@ var Application = (function () {
             return __generator(this, function (_d) {
                 if (this._soilNutrientsChart) {
                     if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
-                        this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
                         this._soilNutrientsChart.data.datasets[1].data[2] = site_1.clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
                         $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
                     }
@@ -55833,8 +55849,8 @@ var Application = (function () {
                     $(this).prop('disabled', true);
                     return;
                 }
-                if (findItemInComponents && findItemInComponents.amount !== undefined) {
-                    if (findItemInComponents.in_fertelizer >= findItemInComponents.amount) {
+                if (findItemInComponents && findItemInComponents.amount !== undefined && findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
                         $(this).prop('disabled', true);
                         return;
                     }
@@ -55852,7 +55868,9 @@ var Application = (function () {
     Application.prototype.updateFertilizer = function () {
         var _a;
         this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
+        this._appData.saveFertilizerComponents();
         (_a = this._fertilizeAdapter) === null || _a === void 0 ? void 0 : _a.updateFromComponents(this._appData.fertilizer_components);
+        this.updateAllInventoryEvents();
         this.updateFertilizerUI();
         this.updateRecommendedItems();
     };
@@ -55888,6 +55906,11 @@ var Application = (function () {
             });
         });
     };
+    Application.prototype.updateAllInventoryEvents = function () {
+        this.updateInventoryEvents('#tblInventory');
+        this.updateInventoryEvents('#tblInventoryRecommended');
+        this.updateInventoryEvents('#tblInventoryExpirables');
+    };
     Application.prototype.updateInventory = function () {
         this.log.debug('updateInventory');
         this.updateInventoryEvents('#tblInventory');
@@ -55899,13 +55922,25 @@ var Application = (function () {
         this._recommendedInventory.clear();
         this._expirablesInventory.clear();
         var inventory_items = this._appData.inventory.items.filter(function (it) {
-            return _this._appData.fertilizer_components.components.filter(function (comp) { return comp.name === it.name; }).length === 0;
+            var item_name = it.name;
+            var findItemInInventory = _this._appData.inventory.getItemByName(item_name);
+            var findItemInComponents = _this._appData.fertilizer_components.getItemByName(item_name);
+            if (findItemInComponents) {
+                if (findItemInComponents.in_fertelizer === undefined) {
+                    return false;
+                }
+                if (findItemInComponents && findItemInComponents.amount !== undefined && findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
+                        return false;
+                    }
+                }
+            }
+            return true;
         });
         var expirables_inventory_items = inventory_items.filter(function (it) { return it.expirable; });
         var recommended_inventory_items = inventory_items;
         expirables_inventory_items = this.sortRecommendedItems(expirables_inventory_items);
         recommended_inventory_items = this.sortRecommendedItems(recommended_inventory_items, true);
-        this.log.debug('updateRecommendedItems', { no_negative_effect: this._fertilizer.no_negative_effect, recommended_inventory_items: recommended_inventory_items });
         this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
         (_a = this._recommendedInventoryAdapter) === null || _a === void 0 ? void 0 : _a.update();
         this._expirablesInventory.items = expirables_inventory_items;
@@ -56156,7 +56191,7 @@ var FertilizeComponentsAdapter = (function () {
         var that = this;
         $('.remove-item-from-fertilizer').on('click', function () {
             var item_name = $(this).data('name');
-            that.remove(item_name);
+            that.remove(item_name, undefined);
             that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
         var list = $(that._list_selector);
@@ -56253,8 +56288,8 @@ var FertilizerComponents = (function () {
             if (amount !== undefined) {
                 var in_fertelizer = (this._components[item_index].in_fertelizer !== undefined) ? this._components[item_index].in_fertelizer : 0;
                 this._components[item_index].in_fertelizer = site_1.clamp(in_fertelizer + amount, exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                return undefined;
             }
-            return undefined;
         }
         var newitem = item;
         newitem.in_fertelizer = amount;
@@ -56836,13 +56871,13 @@ var InventoryAdapter = (function () {
                 {
                     data: 'name',
                     render: function (data, type) {
-                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-arrow-left\"></i></button>" : '';
+                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-plus\"></i></button>" : '';
                     }
                 },
                 {
                     data: 'name',
                     render: function (data, type, row, meta) {
-                        var _a;
+                        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
                         if (type === 'display') {
                             var fertilizer_bonus = '';
                             if (row.fertilizer_bonus.leaf_fertilizer) {
@@ -56871,6 +56906,16 @@ var InventoryAdapter = (function () {
                             var herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
                             var toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
                             var collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
+                            var show_yield_hp = (((_a = row.fertilizer_bonus.yield_hp) !== null && _a !== void 0 ? _a : 0) === 0) ? 'd-none' : 0;
+                            var show_taste_strength = (((_b = row.fertilizer_bonus.taste_strength) !== null && _b !== void 0 ? _b : 0) === 0) ? 'd-none' : 0;
+                            var show_hardness_vitality = (((_c = row.fertilizer_bonus.hardness_vitality) !== null && _c !== void 0 ? _c : 0) === 0) ? 'd-none' : 0;
+                            var show_stickiness_gusto = (((_d = row.fertilizer_bonus.stickiness_gusto) !== null && _d !== void 0 ? _d : 0) === 0) ? 'd-none' : 0;
+                            var show_aesthetic_luck = (((_e = row.fertilizer_bonus.aesthetic_luck) !== null && _e !== void 0 ? _e : 0) === 0) ? 'd-none' : 0;
+                            var show_armor_magic = (((_f = row.fertilizer_bonus.armor_magic) !== null && _f !== void 0 ? _f : 0) === 0) ? 'd-none' : 0;
+                            var show_immunity = (((_g = row.fertilizer_bonus.immunity) !== null && _g !== void 0 ? _g : 0) === 0) ? 'd-none' : 0;
+                            var show_pesticide = (((_h = row.fertilizer_bonus.pesticide) !== null && _h !== void 0 ? _h : 0) === 0) ? 'd-none' : 0;
+                            var show_herbicide = (((_j = row.fertilizer_bonus.herbicide) !== null && _j !== void 0 ? _j : 0) === 0) ? 'd-none' : 0;
+                            var show_toxicity = (((_k = row.fertilizer_bonus.toxicity) !== null && _k !== void 0 ? _k : 0) === 0) ? 'd-none' : 0;
                             var data_color_class = '';
                             switch (that.getStatFocus(row.fertilizer_bonus)) {
                                 case "balanced":
@@ -56890,9 +56935,9 @@ var InventoryAdapter = (function () {
                                     break;
                             }
                             var item_name = row.name;
-                            var amount_value = (_a = row.amount) !== null && _a !== void 0 ? _a : 1;
+                            var amount_value = (_l = row.amount) !== null && _l !== void 0 ? _l : 1;
                             var index = meta.row - 1;
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -56971,6 +57016,13 @@ var InventoryAdapter = (function () {
             var item_name = $(this).data('name');
             that.remove(item_name);
         });
+        $(this._table_selector).find('.inventory-item-amount').on('change', function () {
+            var index = parseInt($(this).data('index'));
+            var amount = parseInt($(this).val());
+            that._data.setItemAmount(index, amount);
+            that.initEvents();
+            that._app.updateAllInventoryEvents();
+        });
     };
     InventoryAdapter.prototype.getStatFocus = function (fertilizer_bonus) {
         if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0 &&
@@ -57025,6 +57077,12 @@ var Inventory = (function () {
     });
     Inventory.prototype.getItemByName = function (name) {
         return this._items_in_inventory.find(function (it) { return it.name === name; });
+    };
+    Inventory.prototype.setItemAmount = function (index, amount) {
+        if (index < this._items_in_inventory.length) {
+            this._items_in_inventory[index].amount = amount;
+            this._items_in_inventory = this._items_in_inventory.filter(function (it) { return it.amount === undefined || it.amount > 0; });
+        }
     };
     Inventory.prototype.clear = function () {
         this._items_in_inventory = [];

@@ -1,6 +1,6 @@
 table:
   itemlist:
-    col_add_to_inventory: Add to Inv.
+    col_add_to_inventory: Inv.
     col_name: Name
 
     col_fertilizer: Fertil.
@@ -20,7 +20,7 @@ table:
 
     col_expirable: Exp.
   inventory:
-    col_add_to_fertilizer: Add to Inv.
+    col_add_to_fertilizer: Inv.
     col_name: Name
 
     col_immunity: Imm.
