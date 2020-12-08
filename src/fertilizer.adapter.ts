@@ -1,11 +1,14 @@
 import { assert } from "console";
+import { LoggerManager } from "typescript-logger";
 import { ApplicationListener } from "./application.listener";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
 import { FertilizerData, MAX_STATS, MIN_STATS } from "./fertilizer.data";
 
-export class FertilizeAdapter {
+export class FertilizerAdapter {
     private _app: ApplicationListener;
     private _data: FertilizerData = new FertilizerData();
+
+    private log = LoggerManager.create('FertilizerAdapter');
 
     constructor(app: ApplicationListener, data: FertilizerData) {
         this._app = app;
@@ -255,7 +258,7 @@ export class FertilizeAdapter {
                     return add_value(data, pattern_add_data);
                 }
                 default: 
-                    console.warn('calcComponentTotalValue', `unknown value: ${value_abs}`);
+                    this.log.warn('calcComponentTotalValue', `unknown value: ${value_abs}`);
             }
         }
 

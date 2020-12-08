@@ -1,3 +1,4 @@
+import { LoggerManager } from "typescript-logger";
 import { FarmingFocus } from "./application.data";
 import { ApplicationListener } from "./application.listener";
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
@@ -59,6 +60,8 @@ export class InventoryAdapter {
     private _data: Inventory = new Inventory();
     private _table_selector: string;
     private _table?: DataTables.Api;
+
+    private log = LoggerManager.create('InventoryAdapter');
 
     constructor(app: ApplicationListener, table_selector: string, data: Inventory) {
         this._app = app;
@@ -351,6 +354,7 @@ export class InventoryAdapter {
     }
 
     public add(item: ItemData, amount: number | undefined = undefined) {
+        this.log.debug('add', {item, amount});
         const added = this._data.add(item, amount);
         if (added) {
             this._table?.rows.add([item]).draw(false);
@@ -360,6 +364,7 @@ export class InventoryAdapter {
     }
 
     public remove(item_name: string, amount: number | undefined = undefined) {
+        this.log.debug('remove', {item_name, amount});
         const removed = this._data.remove(item_name, amount);
         if (removed) {
             this._table?.row(`[data-name='${item_name}']`).remove();
@@ -378,9 +383,10 @@ export class InventoryAdapter {
     private initEvents() {
         var that = this;
         $(this._table_selector).find('.add-item-to-fertilizer').on('click', function () {
-            console.log('add-item-to-fertilizer');
             const item_name = $(this).data('name');
             const item = that._app.getItemByNameFromInventory(item_name);
+
+            that.log.debug('add-item-to-fertilizer', {item_name, item});
 
             if (item) {
                 that._app.addItemToFertilizer(item, 1, false);
@@ -388,6 +394,7 @@ export class InventoryAdapter {
         });
         $(this._table_selector).find('.remove-item-from-inventory').on('click', function () {
             const item_name = $(this).data('name');
+            that.log.debug('remove-item-from-inventory', {item_name});
             that.remove(item_name);
         });
         

@@ -5,7 +5,7 @@ import 'datatables.net-bs4'
 import 'datatables.net-responsive-bs4'
 import { Chart } from 'chart.js'
 import { FertilizerData, MAX_FERTILIZER, MAX_STATS, MIN_FERTILIZER } from './fertilizer.data'
-import { FertilizeAdapter } from './Fertilize.adapter'
+import { FertilizerAdapter } from './fertilizer.adapter'
 import { FertilizeComponentsAdapter } from './fertilize-components.adapter'
 import { InventoryAdapter, render_buff_bonus_html } from './inventory.adapter'
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY } from './inventory'
@@ -19,7 +19,7 @@ export class Application implements ApplicationListener {
     private _expirablesInventory = new Inventory();
     private _fertilizer: FertilizerData = new FertilizerData();
     private _soilNutrientsChart?: Chart;
-    private _fertilizeAdapter?: FertilizeAdapter;
+    private _fertilizerAdapter?: FertilizerAdapter;
     private _fertilizeComponentsAdapter?: FertilizeComponentsAdapter;
     private _inventoryAdapter?: InventoryAdapter;
     private _recommendedInventoryAdapter?: InventoryAdapter;
@@ -29,9 +29,6 @@ export class Application implements ApplicationListener {
     private log = LoggerManager.create('Application');
 
     public init() {
-        if (process.env.NODE_ENV !== "development") {
-            LoggerManager.setProductionMode();
-        }
         var that = this;
         this._appData.loadFromStorage().then(function () {
             if (that._appData.items.length <= 0 || !USE_CACHE) {
@@ -41,7 +38,7 @@ export class Application implements ApplicationListener {
         });
     }
 
-    private async initSite() {
+    private initSite() {
         this.log.debug('init items', this._appData.items);
 
         var that = this;
@@ -66,23 +63,22 @@ export class Application implements ApplicationListener {
             that.updateRecommendedItems();
         });
 
-        this._fertilizeAdapter = new FertilizeAdapter(this, this._fertilizer);
+        this._fertilizerAdapter = new FertilizerAdapter(this, this._fertilizer);
         this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new InventoryAdapter(this, '#tblInventory', this._appData.inventory);
         this._recommendedInventoryAdapter = new InventoryAdapter(this, '#tblInventoryRecommended', this._recommendedInventory);
         this._expirablesInventoryAdapter = new InventoryAdapter(this, '#tblInventoryExpirables', this._expirablesInventory);
 
-        this.initItemList().then(() => {
-            this.initInventory();
-        })
-        this.initSoilNutrientsChart().then(() => {
-            this._fertilizeComponentsAdapter?.init();
-            this._fertilizeAdapter?.init();
-            this._fertilizeAdapter?.updateFromComponents(this._appData.fertilizer_components);
-        })
+        this.initItemList();
+        this.initInventory();
+        
+        this.initSoilNutrientsChart();
+        this._fertilizeComponentsAdapter?.init();
+        this._fertilizerAdapter?.init();
+        this._fertilizerAdapter?.updateFromComponents(this._appData.fertilizer_components);
     }
 
-    private async initItemList() {
+    private initItemList() {
         this._itemList = $('#tblItemsList').DataTable({
             order: [[1, "asc"]],
             responsive: true,
@@ -99,20 +95,19 @@ export class Application implements ApplicationListener {
 
                 const item = that._appData.getItemByName(item_name);
                 if (item) {
-                    that._inventoryAdapter?.add(item);
+                    that._inventoryAdapter?.add(item, 1);
                 }
             });
         });
-
     }
 
-    private async initInventory() {
+    private initInventory() {
         this._inventoryAdapter?.init();
         this._expirablesInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
         this._recommendedInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
     }
 
-    private async initSoilNutrientsChart() {
+    private initSoilNutrientsChart() {
         const canvas = $('#soilNutrientsChart') as JQuery<HTMLCanvasElement>;
 
         $('#txtCurrentLeafFertilizer').val(this._appData.currentLeafFertilizer);
@@ -198,7 +193,7 @@ export class Application implements ApplicationListener {
         this.updateInventory();
     }
 
-    private async updateSoilNutrientsChartCurrentLeafFertilizerUI() {
+    private updateSoilNutrientsChartCurrentLeafFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[0].data?.[0] !== undefined) {
                 this._soilNutrientsChart.data.datasets[0].data[0] = clamp(this._appData.currentLeafFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
@@ -217,7 +212,7 @@ export class Application implements ApplicationListener {
         }
     }
 
-    private async updateSoilNutrientsChartCurrentKernelFertilizerUI() {
+    private updateSoilNutrientsChartCurrentKernelFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[0].data?.[1] !== undefined) {
                 this._soilNutrientsChart.data.datasets[0].data[1] = clamp(this._appData.currentKernelFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
@@ -236,7 +231,7 @@ export class Application implements ApplicationListener {
         }
     }
 
-    private async updateSoilNutrientsChartCurrentRootFertilizerUI() {
+    private updateSoilNutrientsChartCurrentRootFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[0].data?.[2] !== undefined) {
                 this._soilNutrientsChart.data.datasets[0].data[2] = clamp(this._appData.currentRootFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
@@ -264,6 +259,7 @@ export class Application implements ApplicationListener {
     }
 
     public addItemToFertilizer(item: ItemInventoryData, amount: number | undefined = 1, already_added: boolean = false) {
+        this.log.debug('addItemToFertilizer', {item, amount, already_added});
         if (!already_added) {
             this._appData.fertilizer_components.add(item, amount);
         }
@@ -275,6 +271,7 @@ export class Application implements ApplicationListener {
     }
 
     public removeItemFromFertilizer(item_name: string, amount: number | undefined = undefined, already_removed: boolean = false) {
+        this.log.debug('removeItemFromFertilizer', {item_name, amount, already_removed});
         if (!already_removed) {
             this._appData.fertilizer_components.remove(item_name, amount);
         }
@@ -285,6 +282,7 @@ export class Application implements ApplicationListener {
     }
 
     public addItemToInventory(item: ItemData, amount: number | undefined = undefined, already_added: boolean = false) {
+        this.log.debug('addItemToInventory', {item, amount, already_added});
         if (!already_added) {
             this._appData.inventory.add(item, amount);
         }
@@ -293,6 +291,7 @@ export class Application implements ApplicationListener {
     }
 
     public removeItemFromInventory(item_name: string, amount: number | undefined = undefined, already_removed: boolean = false) {
+        this.log.debug('removeItemFromInventory', {item_name, amount, already_removed});
         if (!already_removed) {
             this._appData.inventory.remove(item_name, amount);
         }
@@ -307,15 +306,17 @@ export class Application implements ApplicationListener {
     }
 
     private updateInventoryEvents(table_selector: string) {
-        that.log.debug('updateInventoryEvents', table_selector);
+        this.log.debug('updateInventoryEvents', table_selector);
 
         var that = this;
         $(table_selector).find('.add-item-to-fertilizer').each(function (index) {
             const item_name = $(this).data('name');
 
-            $(this).prop('disabled', false);
+            let disabled = false;
+
             if (that._fertilizeComponentsAdapter?.isFull) {
-                $(this).prop('disabled', true);
+                disabled = true;
+                $(this).prop('disabled', disabled);
                 return;
             }
 
@@ -323,20 +324,24 @@ export class Application implements ApplicationListener {
             const findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
 
             if (findItemInComponents) {
-                if(findItemInComponents.in_fertelizer === undefined) {
-                    $(this).prop('disabled', true);
-                    return;
+                if(findItemInInventory?.amount === undefined) {
+                    disabled = true;
                 }
 
-                if (findItemInComponents && findItemInComponents.amount !== undefined && 
+                if(findItemInComponents.in_fertelizer === undefined) {
+                    disabled = true;
+                }
+
+                if (findItemInComponents && findItemInComponents.in_fertelizer !== undefined && 
                     findItemInInventory && findItemInInventory.amount !== undefined) {
                     if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
-                        $(this).prop('disabled', true);
-                        return;
+                        disabled = true;
                     }
                 }
             }
-        })
+            
+            $(this).prop('disabled', disabled);
+        });
 
         const table_selector_id = $(table_selector).attr('id');
         $(`#${table_selector_id}_filter`).each(function () {
@@ -360,7 +365,7 @@ export class Application implements ApplicationListener {
         this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
 
         this._appData.saveFertilizerComponents();
-        this._fertilizeAdapter?.updateFromComponents(this._appData.fertilizer_components);
+        this._fertilizerAdapter?.updateFromComponents(this._appData.fertilizer_components);
         this.updateRecommendedItems();
         this.updateAllInventoryEvents();
     }
@@ -371,7 +376,7 @@ export class Application implements ApplicationListener {
         this.updateFertilizerUI();
     }
 
-    private async updateFertilizerUI() {
+    private updateFertilizerUI() {
         this.log.debug('updateFertilizerUI', { fertilizer: this._fertilizer });
 
         this.updateSoilNutrientsChartLeafFertilizerUI();
@@ -438,7 +443,8 @@ export class Application implements ApplicationListener {
                     return false;
                 }
 
-                if (findItemInComponents && findItemInComponents.amount !== undefined && findItemInInventory && findItemInInventory.amount !== undefined) {
+                if (findItemInComponents && findItemInComponents.in_fertelizer !== undefined && 
+                    findItemInInventory && findItemInInventory.amount !== undefined) {
                     if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
                         return false;
                     }
