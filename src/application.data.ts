@@ -9,6 +9,7 @@ const STORAGE_KEY_CURRENT_KERNEL_FERTILIZER = 'current_kernel_fertilizer';
 const STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 const STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 const STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
+const STORAGE_KEY_SETTINGS = 'settings';
 
 export enum FarmingFocus {
     Balanced = "balanced",
@@ -17,6 +18,11 @@ export enum FarmingFocus {
     Aesthetic = "aesthetic",
     Aroma = "aroma"
 }
+
+class Settings {
+    public no_inventory_restriction: boolean = false;
+}
+
 export class ApplicationData {
 
     private _items: ItemData[] = [];
@@ -26,6 +32,7 @@ export class ApplicationData {
     private _currentRootFertilizer: number = 0;
     private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
     private _currentGuide: FarmingFocus = FarmingFocus.Balanced;
+    private _settings: Settings = new Settings();
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -47,6 +54,8 @@ export class ApplicationData {
             this._fertilizer_components.components = await this._storeSession.getItem<ItemFertilizerComponentData[]>(STORAGE_KEY_FERTILIZER_COMPONENTS) || this._fertilizer_components.components;
 
             this._currentGuide = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide;
+
+            this._settings = await this._storeSession.getItem<Settings>(STORAGE_KEY_SETTINGS) || this._settings;
         } catch (err) {
             // This code runs if there were any errors.
             console.error('loadFromStorage', err);
@@ -66,6 +75,22 @@ export class ApplicationData {
         this._currentGuide = value;
         this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
     }
+
+
+    get settings() {
+        return this._settings;
+    }
+
+    set settings(value: Settings) {
+        this._settings = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+    }
+
+    public setSettingNoInventoryRestriction(value: boolean) {
+        this._settings.no_inventory_restriction = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+    }
+
 
     get items() {
         return this._items;

@@ -135,7 +135,7 @@ export class FertilizerAdapter {
 
 
     private calcNutrientComponentValue(component: ItemFertilizerComponentData, value: number) {
-        const amount_in_fertelizer = (component.in_fertelizer !== undefined)? component.in_fertelizer : 1;
+        const amount_in_fertelizer = (component.in_fertilizer !== undefined)? component.in_fertilizer : 1;
         if (amount_in_fertelizer <= 0) {
             return 0;
         }
@@ -144,7 +144,7 @@ export class FertilizerAdapter {
     }
 
     private calcStatComponentValue(component: ItemFertilizerComponentData, value: number) {
-        const amount_in_fertelizer = (component.in_fertelizer !== undefined)? component.in_fertelizer : 1;
+        const amount_in_fertelizer = (component.in_fertilizer !== undefined)? component.in_fertilizer : 1;
         if (amount_in_fertelizer <= 0) {
             return 0;
         }

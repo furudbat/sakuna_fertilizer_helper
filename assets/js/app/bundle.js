@@ -55162,6 +55162,7 @@ var STORAGE_KEY_CURRENT_KERNEL_FERTILIZER = 'current_kernel_fertilizer';
 var STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 var STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 var STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
+var STORAGE_KEY_SETTINGS = 'settings';
 var FarmingFocus;
 (function (FarmingFocus) {
     FarmingFocus["Balanced"] = "balanced";
@@ -55170,6 +55171,12 @@ var FarmingFocus;
     FarmingFocus["Aesthetic"] = "aesthetic";
     FarmingFocus["Aroma"] = "aroma";
 })(FarmingFocus = exports.FarmingFocus || (exports.FarmingFocus = {}));
+var Settings = (function () {
+    function Settings() {
+        this.no_inventory_restriction = false;
+    }
+    return Settings;
+}());
 var ApplicationData = (function () {
     function ApplicationData() {
         this._items = [];
@@ -55179,51 +55186,56 @@ var ApplicationData = (function () {
         this._currentRootFertilizer = 0;
         this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
         this._currentGuide = FarmingFocus.Balanced;
+        this._settings = new Settings();
         this._storeSession = localforage_1.default.createInstance({
             name: "session"
         });
     }
     ApplicationData.prototype.loadFromStorage = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, _c, _d, _e, _f, _g, err_1;
-            return __generator(this, function (_h) {
-                switch (_h.label) {
+            var _a, _b, _c, _d, _e, _f, _g, _h, err_1;
+            return __generator(this, function (_j) {
+                switch (_j.label) {
                     case 0:
-                        _h.trys.push([0, 8, , 9]);
+                        _j.trys.push([0, 9, , 10]);
                         _a = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS)];
                     case 1:
-                        _a._items = (_h.sent()) || this._items;
+                        _a._items = (_j.sent()) || this._items;
                         _b = this._inventory;
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS_IN_INVENTORY)];
                     case 2:
-                        _b.items = (_h.sent()) || this._inventory.items;
+                        _b.items = (_j.sent()) || this._inventory.items;
                         _c = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER)];
                     case 3:
-                        _c._currentLeafFertilizer = (_h.sent()) || this._currentLeafFertilizer;
+                        _c._currentLeafFertilizer = (_j.sent()) || this._currentLeafFertilizer;
                         _d = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER)];
                     case 4:
-                        _d._currentKernelFertilizer = (_h.sent()) || this._currentKernelFertilizer;
+                        _d._currentKernelFertilizer = (_j.sent()) || this._currentKernelFertilizer;
                         _e = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER)];
                     case 5:
-                        _e._currentRootFertilizer = (_h.sent()) || this._currentRootFertilizer;
+                        _e._currentRootFertilizer = (_j.sent()) || this._currentRootFertilizer;
                         _f = this._fertilizer_components;
                         return [4, this._storeSession.getItem(STORAGE_KEY_FERTILIZER_COMPONENTS)];
                     case 6:
-                        _f.components = (_h.sent()) || this._fertilizer_components.components;
+                        _f.components = (_j.sent()) || this._fertilizer_components.components;
                         _g = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE)];
                     case 7:
-                        _g._currentGuide = (_h.sent()) || this._currentGuide;
-                        return [3, 9];
+                        _g._currentGuide = (_j.sent()) || this._currentGuide;
+                        _h = this;
+                        return [4, this._storeSession.getItem(STORAGE_KEY_SETTINGS)];
                     case 8:
-                        err_1 = _h.sent();
+                        _h._settings = (_j.sent()) || this._settings;
+                        return [3, 10];
+                    case 9:
+                        err_1 = _j.sent();
                         console.error('loadFromStorage', err_1);
-                        return [3, 9];
-                    case 9: return [2];
+                        return [3, 10];
+                    case 10: return [2];
                 }
             });
         });
@@ -55242,6 +55254,21 @@ var ApplicationData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(ApplicationData.prototype, "settings", {
+        get: function () {
+            return this._settings;
+        },
+        set: function (value) {
+            this._settings = value;
+            this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    ApplicationData.prototype.setSettingNoInventoryRestriction = function (value) {
+        this._settings.no_inventory_restriction = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+    };
     Object.defineProperty(ApplicationData.prototype, "items", {
         get: function () {
             return this._items;
@@ -55380,6 +55407,7 @@ var Application = (function () {
         this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventory', this._appData.inventory);
         this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventoryRecommended', this._recommendedInventory);
         this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventoryExpirables', this._expirablesInventory);
+        this.initSettings();
         this.initItemList();
         this.initInventory();
         this.initSoilNutrientsChart();
@@ -55406,6 +55434,14 @@ var Application = (function () {
                     (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, 1);
                 }
             });
+        });
+    };
+    Application.prototype.initSettings = function () {
+        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
+        var that = this;
+        $('#chbSettingsNoInventoryRestriction').on('change', function () {
+            that._appData.setSettingNoInventoryRestriction(this.checked);
+            that.updateAllInventoryEvents();
         });
     };
     Application.prototype.initInventory = function () {
@@ -55622,18 +55658,24 @@ var Application = (function () {
                 $(this).prop('disabled', disabled);
                 return;
             }
+            if (that._appData.settings.no_inventory_restriction) {
+                disabled = false;
+                $(this).prop('disabled', disabled);
+                return;
+            }
             var findItemInInventory = that._appData.inventory.getItemByName(item_name);
             var findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
             if (findItemInComponents) {
                 if ((findItemInInventory === null || findItemInInventory === void 0 ? void 0 : findItemInInventory.amount) === undefined) {
                     disabled = true;
                 }
-                if (findItemInComponents.in_fertelizer === undefined) {
+                if (findItemInComponents.in_fertilizer === undefined) {
                     disabled = true;
                 }
-                if (findItemInComponents && findItemInComponents.in_fertelizer !== undefined &&
+                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
                     findItemInInventory && findItemInInventory.amount !== undefined) {
-                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
+                    findItemInComponents.in_inventory = findItemInInventory.amount;
+                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
                         disabled = true;
                     }
                 }
@@ -55714,12 +55756,13 @@ var Application = (function () {
             var findItemInInventory = _this._appData.inventory.getItemByName(item_name);
             var findItemInComponents = _this._appData.fertilizer_components.getItemByName(item_name);
             if (findItemInComponents) {
-                if (findItemInComponents.in_fertelizer === undefined) {
+                if (findItemInComponents.in_fertilizer === undefined) {
                     return false;
                 }
-                if (findItemInComponents && findItemInComponents.in_fertelizer !== undefined &&
+                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
                     findItemInInventory && findItemInInventory.amount !== undefined) {
-                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
+                    findItemInComponents.in_inventory = findItemInInventory.amount;
+                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
                         return false;
                     }
                 }
@@ -55925,8 +55968,9 @@ var FertilizeComponentsAdapter = (function () {
     FertilizeComponentsAdapter.prototype.init = function () {
         this.update();
     };
-    FertilizeComponentsAdapter.prototype.setItemAmount = function (index, amount) {
-        this._data.setItemAmount(index, amount);
+    FertilizeComponentsAdapter.prototype.setItemAmount = function (index, amount, item) {
+        if (item === void 0) { item = undefined; }
+        this._data.setItemAmount(index, amount, item);
         this._app.fertilizerItemAmountChanged(index);
     };
     FertilizeComponentsAdapter.prototype.add = function (item, amount) {
@@ -55936,7 +55980,7 @@ var FertilizeComponentsAdapter = (function () {
         if (added) {
             var findEmptyElement = list.find("li[data-name='']").first();
             var index = findEmptyElement.data('index');
-            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added.name, added.in_fertelizer));
+            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added.name, added.in_fertilizer, added.in_inventory));
             this.initEvents();
         }
         else {
@@ -55944,7 +55988,7 @@ var FertilizeComponentsAdapter = (function () {
             if (findElement.length) {
                 var index = (findElement.data('index')) ? parseInt(findElement.data('index')) : undefined;
                 if (index !== undefined && this._data.components[index]) {
-                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertelizer));
+                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertilizer, this._data.components[index].in_inventory));
                     this.initEvents();
                 }
             }
@@ -55962,7 +56006,7 @@ var FertilizeComponentsAdapter = (function () {
         else if (findElement.length) {
             var index = (findElement.data('index')) ? parseInt(findElement.data('index')) : undefined;
             if (index !== undefined && this._data.components[index]) {
-                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertelizer));
+                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertilizer, this._data.components[index].in_inventory));
                 this.initEvents();
             }
         }
@@ -55973,7 +56017,7 @@ var FertilizeComponentsAdapter = (function () {
         for (var i = 0; i < fertilizer_components_1.MAX_FERTILIZE_COMPONENTS || i < this._data.components.length; i++) {
             if (this._data.components[i]) {
                 var item = this._data.components[i];
-                list.append(this.renderItemElementHtml(i, item.name, item.in_fertelizer));
+                list.append(this.renderItemElementHtml(i, item.name, item.in_fertilizer, item.in_inventory));
             }
             else {
                 list.append(this.renderEmptyElementHtml(i));
@@ -55994,9 +56038,9 @@ var FertilizeComponentsAdapter = (function () {
             var index = parseInt($(this).data('index'));
             var amount = parseInt($(this).val());
             if (amount > 0 && that._data.components[index]) {
-                that._data.setItemAmount(index, amount);
+                that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
                 var item = that._data.components[index];
-                list.find("li[data-index='" + index + "']").replaceWith(that.renderItemElementHtml(index, item.name, item.in_fertelizer));
+                list.find("li[data-index='" + index + "']").replaceWith(that.renderItemElementHtml(index, item.name, item.in_fertilizer, item.in_inventory));
                 that.initEvents();
             }
             else {
@@ -56008,10 +56052,12 @@ var FertilizeComponentsAdapter = (function () {
             that._app.fertilizerItemAmountChanged(index);
         });
     };
-    FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item_name, in_fertelizer) {
+    FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item_name, in_fertelizer, in_inventory) {
         var readonly = (in_fertelizer === undefined) ? 'readonly' : '';
         var amount_value = (in_fertelizer !== undefined) ? in_fertelizer : 1;
-        return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item_name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item_name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item_name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
+        in_inventory = (in_inventory !== undefined) ? Math.min(in_inventory, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : in_inventory;
+        var max_attr = (in_inventory !== undefined) ? " max=\"" + in_inventory + "\"" : "max=\"" + fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\"";
+        return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item_name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" " + max_attr + " " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item_name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item_name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
     };
     FertilizeComponentsAdapter.prototype.renderEmptyElementHtml = function (index) {
         return "<li class=\"list-group-item list-group-item-light text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
@@ -56062,10 +56108,12 @@ var FertilizerComponents = (function () {
     FertilizerComponents.prototype.getItemByName = function (name) {
         return this._components.find(function (it) { return it.name === name; });
     };
-    FertilizerComponents.prototype.setItemAmount = function (index, amount) {
+    FertilizerComponents.prototype.setItemAmount = function (index, amount, item) {
+        if (item === void 0) { item = undefined; }
         if (index < this._components.length) {
-            this._components[index].in_fertelizer = amount;
-            this._components = this._components.filter(function (it) { return it.in_fertelizer === undefined || it.in_fertelizer > 0; });
+            this._components[index].in_fertilizer = amount;
+            this._components[index].in_inventory = (item !== undefined) ? item.amount : undefined;
+            this._components = this._components.filter(function (it) { return it.in_fertilizer === undefined || it.in_fertilizer > 0; });
         }
     };
     FertilizerComponents.prototype.add = function (item, amount) {
@@ -56079,16 +56127,18 @@ var FertilizerComponents = (function () {
         console_1.assert(amount === undefined || amount >= 0, "add fertilizer component, add item amount can't be negative");
         var item_index = this._components.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
-            if (this._components[item_index].in_fertelizer !== undefined || amount !== undefined) {
+            if (this._components[item_index].in_fertilizer !== undefined || amount !== undefined) {
                 var new_amount = (amount !== undefined) ? amount : 1;
-                var in_fertelizer = (this._components[item_index].in_fertelizer !== undefined) ? this._components[item_index].in_fertelizer : 0;
-                this._components[item_index].in_fertelizer = site_1.clamp(in_fertelizer + new_amount, exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                var in_fertilizer = (this._components[item_index].in_fertilizer !== undefined) ? this._components[item_index].in_fertilizer : 0;
+                this._components[item_index].in_fertilizer = site_1.clamp(in_fertilizer + new_amount, exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                this._components[item_index].in_inventory = item.amount;
             }
             return undefined;
         }
-        var newitem = item;
-        newitem.in_fertelizer = amount;
-        this._components.push(newitem);
+        var new_item = item;
+        new_item.in_fertilizer = amount;
+        new_item.in_inventory = item.amount;
+        this._components.push(new_item);
         return this._components[this._components.length - 1];
     };
     FertilizerComponents.prototype.remove = function (item, amount) {
@@ -56115,10 +56165,10 @@ var FertilizerComponents = (function () {
                     _this._components.splice(index, 1);
                     return;
                 }
-                var in_fertelizer = (_this._components[index].in_fertelizer !== undefined) ? _this._components[index].in_fertelizer : 0;
-                _this._components[index].in_fertelizer = in_fertelizer - amount;
-                var new_in_fertelizer = (_this._components[index].in_fertelizer !== undefined) ? _this._components[index].in_fertelizer : 0;
-                if (new_in_fertelizer <= 0) {
+                var in_fertilizer = (_this._components[index].in_fertilizer !== undefined) ? _this._components[index].in_fertilizer : 0;
+                _this._components[index].in_fertilizer = in_fertilizer - amount;
+                var new_in_fertilizer = (_this._components[index].in_fertilizer !== undefined) ? _this._components[index].in_fertilizer : 0;
+                if (new_in_fertilizer <= 0) {
                     ret = _this._components[index];
                     _this._components.splice(index, 1);
                 }
@@ -56253,14 +56303,14 @@ var FertilizerAdapter = (function () {
         }, 0);
     };
     FertilizerAdapter.prototype.calcNutrientComponentValue = function (component, value) {
-        var amount_in_fertelizer = (component.in_fertelizer !== undefined) ? component.in_fertelizer : 1;
+        var amount_in_fertelizer = (component.in_fertilizer !== undefined) ? component.in_fertilizer : 1;
         if (amount_in_fertelizer <= 0) {
             return 0;
         }
         return value * amount_in_fertelizer;
     };
     FertilizerAdapter.prototype.calcStatComponentValue = function (component, value) {
-        var amount_in_fertelizer = (component.in_fertelizer !== undefined) ? component.in_fertelizer : 1;
+        var amount_in_fertelizer = (component.in_fertilizer !== undefined) ? component.in_fertilizer : 1;
         if (amount_in_fertelizer <= 0) {
             return 0;
         }

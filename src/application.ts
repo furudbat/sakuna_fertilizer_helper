@@ -69,6 +69,8 @@ export class Application implements ApplicationListener {
         this._recommendedInventoryAdapter = new InventoryAdapter(this, '#tblInventoryRecommended', this._recommendedInventory);
         this._expirablesInventoryAdapter = new InventoryAdapter(this, '#tblInventoryExpirables', this._expirablesInventory);
 
+        this.initSettings();
+
         this.initItemList();
         this.initInventory();
         
@@ -98,6 +100,16 @@ export class Application implements ApplicationListener {
                     that._inventoryAdapter?.add(item, 1);
                 }
             });
+        });
+    }
+
+    private initSettings(){
+        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
+
+        var that = this;
+        $('#chbSettingsNoInventoryRestriction').on('change', function() {
+            that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
+            that.updateAllInventoryEvents();     
         });
     }
 
@@ -320,21 +332,28 @@ export class Application implements ApplicationListener {
                 return;
             }
 
+            if (that._appData.settings.no_inventory_restriction) {
+                disabled = false;
+                $(this).prop('disabled', disabled);
+                return;
+            }
+
             const findItemInInventory = that._appData.inventory.getItemByName(item_name);
-            const findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
+            let findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
 
             if (findItemInComponents) {
                 if(findItemInInventory?.amount === undefined) {
                     disabled = true;
                 }
 
-                if(findItemInComponents.in_fertelizer === undefined) {
+                if(findItemInComponents.in_fertilizer === undefined) {
                     disabled = true;
                 }
 
-                if (findItemInComponents && findItemInComponents.in_fertelizer !== undefined && 
+                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined && 
                     findItemInInventory && findItemInInventory.amount !== undefined) {
-                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
+                    findItemInComponents.in_inventory = findItemInInventory.amount;
+                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
                         disabled = true;
                     }
                 }
@@ -436,16 +455,17 @@ export class Application implements ApplicationListener {
         const inventory_items = this._appData.inventory.items.filter(it => {
             const item_name = it.name;
             const findItemInInventory = this._appData.inventory.getItemByName(item_name);
-            const findItemInComponents = this._appData.fertilizer_components.getItemByName(item_name);
+            let findItemInComponents = this._appData.fertilizer_components.getItemByName(item_name);
 
             if (findItemInComponents) {
-                if(findItemInComponents.in_fertelizer === undefined) {
+                if(findItemInComponents.in_fertilizer === undefined) {
                     return false;
                 }
 
-                if (findItemInComponents && findItemInComponents.in_fertelizer !== undefined && 
+                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined && 
                     findItemInInventory && findItemInInventory.amount !== undefined) {
-                    if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
+                    findItemInComponents.in_inventory = findItemInInventory.amount;
+                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
                         return false;
                     }
                 }

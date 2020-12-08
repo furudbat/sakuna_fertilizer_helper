@@ -4,12 +4,12 @@
             <div class="nav nav-tabs" id="nav-tab-spacing" role="tablist">
                 <a class="nav-link px-3 active" id="nav-spacing-a-little-apart-tab" data-toggle="tab"
                     href="#nav-spacing-a-little-apart" role="tab" aria-controls="nav-spacing-a-little-apart"
-                    aria-selected="true">Little far apart</a>
+                    aria-selected="true">{{ site.data.strings.guide.spacing.little_far_apart.tab }}</a>
                 <a class="nav-link px-3" id="nav-spacing-balanced-tab" data-toggle="tab" href="#nav-spacing-balanced"
-                    role="tab" aria-controls="nav-spacing-balanced" aria-selected="false">Balanced</a>
+                    role="tab" aria-controls="nav-spacing-balanced" aria-selected="false">{{ site.data.strings.guide.spacing.balanced.tab }}</a>
                 <a class="nav-link px-3" id="nav-spacing-circle-balanced-tab" data-toggle="tab"
                     href="#nav-spacing-circle-balanced" role="tab" aria-controls="nav-spacing-circle-balanced"
-                    aria-selected="false">Circle</a>
+                    aria-selected="false">{{ site.data.strings.guide.spacing.circle.tab }}</a>
             </div>
         </nav>
     </div>
@@ -21,18 +21,15 @@
                     src="{{ '/assets/img/1x2_4x4_little_far_apart.svg' | relative_url }}"
                     alt="space-a-little-far-apart">
                 <div class="card-body">
-                    <h5 class="card-title">A little far apart</h5>
+                    <h5 class="card-title">{{ site.data.strings.guide.spacing.little_far_apart.title }}</h5>
                     <p class="card-text">
-                        Leave 1 square space in between 2 seedling.
+                        {{ site.data.strings.guide.spacing.little_far_apart.description }}
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Stand at the <span class="text-red-line">red line</span> for
-                        <strong>1x1</strong> placements.</li>
-                    <li class="list-group-item">Stand at the <span class="text-turquoise-line">turquoise line</span> for
-                        <strong>2x1</strong> placements.<br /> <small>("Two by Two Planting"-Skill)</small></li>
-                    <li class="list-group-item">Stand at the <span class="text-springgreen-line">springgreen line</span>
-                        for <strong>4x4</strong> placements.<br /> <small>("Four Corner Planting"-Skill)</small></li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.1_1_placements }}</li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.2_1_placements }}</li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.4_4_placements }}</li>
                 </ul>
             </div>
         </div>
@@ -41,20 +38,16 @@
                 <img class="img-fluid card-img-top px-4" src="{{ '/assets/img/balanced.svg' | relative_url }}"
                     alt="space-balanced">
                 <div class="card-body">
-                    <h5 class="card-title">Balanced</h5>
+                    <h5 class="card-title">{{ site.data.strings.guide.spacing.balanced.title }}</h5>
                     <p class="card-text">
-                        Place seedling every square.
+                        {{ site.data.strings.guide.spacing.balanced.description }}
                     </p>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Stand at the <span class="text-red-line">red line</span> for
-                        <strong>1x1</strong> placements.</li>
-                    <li class="list-group-item">Stand at the <span class="text-orange-line">orange line</span> for
-                        <strong>1x3</strong> placements.<br /> <small>("Three in a Row Planting"-Skill)</small></li>
-                    <li class="list-group-item">Stand at the <span class="text-skyblue-line">skyblue line</span> for
-                        <strong>2x1</strong> placements.<br /> <small>("Two by Two Planting"-Skill)</small></li>
-                    <li class="list-group-item">Stand at the <span class="text-springgreen-line">springgreen line</span>
-                        for <strong>2x2</strong> placements.<br /> <small>("Four Corner Planting"-Skill)</small></li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.1_1_placements }}</li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.2_1_placements }}</li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.1_3_placements }}</li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.2_2_placements }}</li>
                 </ul>
             </div>
         </div>
@@ -64,14 +57,13 @@
                 <img class="img-fluid card-img-top px-4" src="{{ '/assets/img/circle_balanced.svg' | relative_url }}"
                     alt="space-circle_balanced">
                 <div class="card-body">
-                    <h5 class="card-title">Balanced (Circle)</h5>
+                    <h5 class="card-title">{{ site.data.strings.guide.spacing.circle.title }}</h5>
                     <p class="card-text">
-                        Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
+                        {{ site.data.strings.guide.spacing.circle.description }}
                     </p>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Stand at the <span class="text-violet-line">violet line</span> for
-                        <strong>circle</strong> placements.<br /> <small>("Well Rounded Planting"-Skill)</small></li>
+                    <li class="list-group-item">{{ site.data.strings.guide.spacing.circle_placements }}</li>
                 </ul>
             </div>
         </div>
