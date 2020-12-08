@@ -1,5 +1,5 @@
 import { assert } from "console";
-import { MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components.data";
+import { MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { clamp } from "./site";
 
 export const MIN_ITEMS_AMOUNT_INVENTORY = 1;
@@ -23,17 +23,30 @@ export class Inventory {
         return this._items_in_inventory.find((it) => it.name === name);
     }
 
+    public setItemAmount(index: number, amount: number | undefined) {
+        if (index < this._items_in_inventory.length) {
+            this._items_in_inventory[index].amount = amount;
+            this._items_in_inventory = this._items_in_inventory.filter(it => it.amount === undefined || it.amount > 0);
+        }
+    }
+
     public clear() {
         this._items_in_inventory = [];
     }
 
-    public add(item: ItemData, amount: number = 1) {
-        assert(amount >= 1, "add inventory, item amount can not be negative");
+    public add(item: ItemData, amount: number | undefined = undefined) {
+        if (amount !== undefined && amount === 0) {
+            return undefined;
+        }
+        assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
 
         const item_index = this._items_in_inventory.findIndex((it) => it.name === item.name);
-        if (item_index >= 0 && this._items_in_inventory[item_index].amount) {
-            const old_amount = (this._items_in_inventory[item_index].amount !== undefined)? this._items_in_inventory[item_index].amount as number : 0;
-            this._items_in_inventory[item_index].amount = clamp(old_amount + amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_INVENTORY);
+        if (item_index >= 0) {
+            if (this._items_in_inventory[item_index].amount !== undefined || amount !== undefined) {
+                const new_amount = (amount !== undefined)? amount as number : 1;
+                const old_amount = (this._items_in_inventory[item_index].amount !== undefined)? this._items_in_inventory[item_index].amount as number : 0;
+                this._items_in_inventory[item_index].amount = clamp(old_amount + new_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_INVENTORY);
+            }
             return undefined;
         }
 
@@ -45,6 +58,11 @@ export class Inventory {
     }
 
     public remove(item: string | ItemData, amount: number | undefined = undefined) {
+        if (amount !== undefined && amount === 0) {
+            return undefined;
+        }
+        assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
+
         const item_name: string = ((): string => {
             if ((item as ItemData).name !== undefined) {
                 return (item as ItemData).name;
@@ -71,6 +89,7 @@ export class Inventory {
                 }
             }
         });
+
         return ret;
     }
 }

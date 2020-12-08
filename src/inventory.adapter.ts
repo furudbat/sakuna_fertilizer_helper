@@ -1,3 +1,4 @@
+import { FarmingFocus } from "./application.data";
 import { ApplicationListener } from "./application.listener";
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
 import { site } from "./site";
@@ -142,7 +143,7 @@ export class InventoryAdapter {
                 {
                     data: 'name',
                     render: function (data: string, type: string) {
-                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}"><i class="fas fa-arrow-left"></i></button>` : '';
+                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}"><i class="fas fa-plus"></i></button>` : '';
                     }
                 },
                 {
@@ -190,21 +191,32 @@ export class InventoryAdapter {
 
                             const collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
 
+                            const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0)? 'd-none' : 0;
+                            const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0)? 'd-none' : 0;
+                            const show_hardness_vitality = ((row.fertilizer_bonus.hardness_vitality ?? 0) === 0)? 'd-none' : 0;
+                            const show_stickiness_gusto = ((row.fertilizer_bonus.stickiness_gusto ?? 0) === 0)? 'd-none' : 0;
+                            const show_aesthetic_luck = ((row.fertilizer_bonus.aesthetic_luck ?? 0) === 0)? 'd-none' : 0;
+                            const show_armor_magic = ((row.fertilizer_bonus.armor_magic ?? 0) === 0)? 'd-none' : 0;
+                            const show_immunity = ((row.fertilizer_bonus.immunity ?? 0) === 0)? 'd-none' : 0;
+                            const show_pesticide = ((row.fertilizer_bonus.pesticide ?? 0) === 0)? 'd-none' : 0;
+                            const show_herbicide = ((row.fertilizer_bonus.herbicide ?? 0) === 0)? 'd-none' : 0;
+                            const show_toxicity = ((row.fertilizer_bonus.toxicity ?? 0) === 0)? 'd-none' : 0;
+
                             let data_color_class = '';
                             switch (that.getStatFocus(row.fertilizer_bonus)) {
-                                case "balanced":
+                                case FarmingFocus.Balanced:
                                     data_color_class = 'balanced-text';
                                     break;
-                                case "heartiness":
+                                case FarmingFocus.Heartiness:
                                     data_color_class = 'heartiness-text';
                                     break;
-                                case "yield":
+                                case FarmingFocus.Yield:
                                     data_color_class = 'yield-text';
                                     break;
-                                case "aesthetic":
+                                case FarmingFocus.Aesthetic:
                                     data_color_class = 'aesthetic-text';
                                     break;
-                                case "aroma":
+                                case FarmingFocus.Aroma:
                                     data_color_class = 'aroma-text';
                                     break;
                             }
@@ -233,54 +245,54 @@ export class InventoryAdapter {
                                                 ${fertilizer_bonus}
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_yield_hp}">
                                                 <div class="col-7 yield_hp-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.yield_hp}</div>
                                                 <div class="col-4 offset-1 yield_hp text-left">${yield_hp}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_taste_strength}">
                                                 <div class="col-7 taste-strength-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.taste_strength}</div>
                                                 <div class="col-4 offset-1 taste-strength text-left">${taste_strength}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_hardness_vitality}">
                                                 <div class="col-7 hardness-vitality-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality}</div>
                                                 <div class="col-4 offset-1 hardness-vitality text-left">${hardness_vitality}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_stickiness_gusto}">
                                                 <div class="col-7 stickiness-gusto-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto}</div>
                                                 <div class="col-4 offset-1 stickiness-gusto text-left">${stickiness_gusto}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_aesthetic_luck}">
                                                 <div class="col-7 aesthetic-luck-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck}</div>
                                                 <div class="col-4 offset-1 aesthetic-luck text-left">${aesthetic_luck}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_armor_magic}">
                                                 <div class="col-7 armor-magic-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.armor_magic}</div>
                                                 <div class="col-4 offset-1 armor-magic text-left">${armor_magic}</div>
                                             </div>
 
 
-                                            <div class="row no-gutters mt-1">
+                                            <div class="row no-gutters mt-1 ${show_immunity}">
                                                 <div class="col-7 immunuity-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.immunity}</div>
                                                 <div class="col-4 offset-1 immunuity text-left">${immunity}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_pesticide}">
                                                 <div class="col-7 pesticide-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.pesticide}</div>
                                                 <div class="col-4 offset-1 pesticide text-left">${pesticide}</div>
                                             </div>
 
-                                            <div class="row no-gutters">
+                                            <div class="row no-gutters ${show_herbicide}">
                                                 <div class="col-7 herbicide-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.herbicide}</div>
                                                 <div class="col-4 offset-1 herbicide text-left">${herbicide}</div>
                                             </div>
 
 
-                                            <div class="row no-gutters mt-1">
+                                            <div class="row no-gutters mt-1 ${show_toxicity}">
                                                 <div class="col-7 toxicity-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.toxicity}</div>
                                                 <div class="col-4 offset-1 toxicity text-left">${toxicity}</div>
                                             </div>
@@ -324,7 +336,7 @@ export class InventoryAdapter {
 
         var that = this;
         this._table.on('draw.dt', function () {
-            that._app.drawInventory(that._table_selector);
+            that._app.drawnInventory(that._table_selector);
             that.initEvents();
         });
 
@@ -338,7 +350,7 @@ export class InventoryAdapter {
         }
     }
 
-    public add(item: ItemData, amount: number = 1) {
+    public add(item: ItemData, amount: number | undefined = undefined) {
         const added = this._data.add(item, amount);
         if (added) {
             this._table?.rows.add([item]).draw(false);
@@ -357,9 +369,16 @@ export class InventoryAdapter {
         return removed;
     }
 
+    public setAmount(index: number, amount: number | undefined){
+        this._data.setItemAmount(index, amount);
+        this._app.inventoryItemAmountChanged(index);
+
+    }
+
     private initEvents() {
         var that = this;
         $(this._table_selector).find('.add-item-to-fertilizer').on('click', function () {
+            console.log('add-item-to-fertilizer');
             const item_name = $(this).data('name');
             const item = that._app.getItemByNameFromInventory(item_name);
 
@@ -371,6 +390,15 @@ export class InventoryAdapter {
             const item_name = $(this).data('name');
             that.remove(item_name);
         });
+        
+        $(this._table_selector).find('.inventory-item-amount').on('change', function () {
+            //const item_name = $(this).data('name') as string;
+            const index = parseInt($(this).data('index') as string);
+            const amount = parseInt($(this).val() as string);
+            
+            that._data.setItemAmount(index, amount);
+            that._app.inventoryItemAmountChanged(index);
+        });
     }
 
     private getStatFocus(fertilizer_bonus: FertilizerBonusData) {
@@ -380,19 +408,19 @@ export class InventoryAdapter {
             fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0 &&
             fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0 &&
             fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return "balanced";
+            return FarmingFocus.Balanced;
         } else if (fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
             fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
             fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0) {
-            return "heartiness";
+            return FarmingFocus.Heartiness;
         } else if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0) {
-            return "yield";
+            return FarmingFocus.Yield;
         } else if (fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0) {
-            return "aesthetic";
+            return FarmingFocus.Aesthetic;
         } else if (fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return "aroma";
+            return FarmingFocus.Aroma;
         }
 
-        return "balanced";
+        return FarmingFocus.Balanced;
     }
 }

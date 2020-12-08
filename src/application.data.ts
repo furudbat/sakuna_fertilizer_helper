@@ -1,5 +1,5 @@
 import localForage from "localforage";
-import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components.data";
+import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
 import { Inventory, ItemInventoryData } from "./inventory";
 
 const STORAGE_KEY_ITEMS = 'items';
@@ -10,6 +10,13 @@ const STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 const STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 const STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
 
+export enum FarmingFocus {
+    Balanced = "balanced",
+    Heartiness = "heartiness",
+    Yield = "yield",
+    Aesthetic = "aesthetic",
+    Aroma = "aroma"
+}
 export class ApplicationData {
 
     private _items: ItemData[] = [];
@@ -18,7 +25,7 @@ export class ApplicationData {
     private _currentKernelFertilizer: number = 0;
     private _currentRootFertilizer: number = 0;
     private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
-    private _currentGuide: string = 'balanced';
+    private _currentGuide: FarmingFocus = FarmingFocus.Balanced;
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -55,7 +62,7 @@ export class ApplicationData {
         return this._currentGuide;
     }
 
-    set currentGuide(value: string) {
+    set currentGuide(value: FarmingFocus) {
         this._currentGuide = value;
         this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
     }

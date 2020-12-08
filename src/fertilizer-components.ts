@@ -51,13 +51,14 @@ export class FertilizerComponents {
         if (amount !== undefined && amount == 0) {
             return undefined;
         }
-        assert(amount === undefined || amount >= 0, "add item amount can't be negative");
+        assert(amount === undefined || amount >= 0, "add fertilizer component, add item amount can't be negative");
 
         const item_index = this._components.findIndex((it) => it.name === item.name);
         if (item_index >= 0) {
-            if (amount !== undefined) {
+            if (this._components[item_index].in_fertelizer !== undefined || amount !== undefined) {
+                const new_amount = (amount !== undefined)? amount as number : 1;
                 const in_fertelizer = (this._components[item_index].in_fertelizer !== undefined)? this._components[item_index].in_fertelizer as number : 0;
-                this._components[item_index].in_fertelizer = clamp(in_fertelizer + amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                this._components[item_index].in_fertelizer = clamp(in_fertelizer + new_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
             }
             return undefined;
         }

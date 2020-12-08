@@ -1,5 +1,5 @@
 import { site, clamp, USE_CACHE } from './site'
-import { ApplicationData } from './application.data'
+import { ApplicationData, FarmingFocus } from './application.data'
 import { ApplicationListener } from './application.listener'
 import 'datatables.net-bs4'
 import 'datatables.net-responsive-bs4'
@@ -110,10 +110,6 @@ export class Application implements ApplicationListener {
         this._inventoryAdapter?.init();
         this._expirablesInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
         this._recommendedInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
-
-        this.drawInventory('#tblInventory');
-        this.drawInventory('#tblInventoryRecommended');
-        this.drawInventory('#tblInventoryExpirables');
     }
 
     private async initSoilNutrientsChart() {
@@ -202,7 +198,7 @@ export class Application implements ApplicationListener {
         this.updateInventory();
     }
 
-    public async updateSoilNutrientsChartCurrentLeafFertilizerUI() {
+    private async updateSoilNutrientsChartCurrentLeafFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[0].data?.[0] !== undefined) {
                 this._soilNutrientsChart.data.datasets[0].data[0] = clamp(this._appData.currentLeafFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
@@ -210,18 +206,18 @@ export class Application implements ApplicationListener {
         }
         this.updateSoilNutrientsChartLeafFertilizerUI();
     }
-    public async updateSoilNutrientsChartLeafFertilizerUI() {
+    private updateSoilNutrientsChartLeafFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[1].data?.[0] !== undefined) {
-                //this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
+                this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
                 this._soilNutrientsChart.data.datasets[1].data[0] = clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
             }
-            this.updateSoilNutrientsChartUI();
+            this._soilNutrientsChart.update();
         }
     }
 
-    public async updateSoilNutrientsChartCurrentKernelFertilizerUI() {
+    private async updateSoilNutrientsChartCurrentKernelFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[0].data?.[1] !== undefined) {
                 this._soilNutrientsChart.data.datasets[0].data[1] = clamp(this._appData.currentKernelFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
@@ -229,18 +225,18 @@ export class Application implements ApplicationListener {
         }
         this.updateSoilNutrientsChartKernelFertilizerUI();
     }
-    public async updateSoilNutrientsChartKernelFertilizerUI() {
+    private updateSoilNutrientsChartKernelFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[1].data?.[1] !== undefined) {
-                //this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
+                this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
                 this._soilNutrientsChart.data.datasets[1].data[1] = clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
             }
-            this.updateSoilNutrientsChartUI();
+            this._soilNutrientsChart.update();
         }
     }
 
-    public async updateSoilNutrientsChartCurrentRootFertilizerUI() {
+    private async updateSoilNutrientsChartCurrentRootFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[0].data?.[2] !== undefined) {
                 this._soilNutrientsChart.data.datasets[0].data[2] = clamp(this._appData.currentRootFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
@@ -248,24 +244,16 @@ export class Application implements ApplicationListener {
         }
         this.updateSoilNutrientsChartRootFertilizerUI();
     }
-    public async updateSoilNutrientsChartRootFertilizerUI() {
+    private updateSoilNutrientsChartRootFertilizerUI() {
         if (this._soilNutrientsChart) {
             if (this._soilNutrientsChart?.data.datasets?.[1].data?.[2] !== undefined) {
-                //this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
+                this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
                 this._soilNutrientsChart.data.datasets[1].data[2] = clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
                 $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
             }
-            this.updateSoilNutrientsChartUI();
-        }
-    }
-
-    public async updateSoilNutrientsChartUI() {
-        if (this._soilNutrientsChart) {
-            this.log.debug('updateSoilNutrientsChartUI', { data: this._soilNutrientsChart.data.datasets })
             this._soilNutrientsChart.update();
         }
     }
-
 
     public getItemByName(name: string) {
         return this._appData.getItemByName(name);
@@ -296,7 +284,7 @@ export class Application implements ApplicationListener {
         this.updateInventory();
     }
 
-    public addItemToInventory(item: ItemData, amount: number = 1, already_added: boolean = false) {
+    public addItemToInventory(item: ItemData, amount: number | undefined = undefined, already_added: boolean = false) {
         if (!already_added) {
             this._appData.inventory.add(item, amount);
         }
@@ -312,17 +300,18 @@ export class Application implements ApplicationListener {
         this.updateInventory();
     }
 
-    public drawInventory(table_selector: string) {
+    public drawnInventory(table_selector: string) {
         this.log.debug('drawInventory', table_selector);
+
         this.updateInventoryEvents(table_selector);
     }
 
-    public updateInventoryEvents(table_selector: string) {
+    private updateInventoryEvents(table_selector: string) {
+        that.log.debug('updateInventoryEvents', table_selector);
+
         var that = this;
         $(table_selector).find('.add-item-to-fertilizer').each(function (index) {
             const item_name = $(this).data('name');
-
-            //that.log.debug('updateInventory .add-item-to-fertilizer', {item_name: item_name, index: index}, this);
 
             $(this).prop('disabled', false);
             if (that._fertilizeComponentsAdapter?.isFull) {
@@ -339,7 +328,8 @@ export class Application implements ApplicationListener {
                     return;
                 }
 
-                if (findItemInComponents && findItemInComponents.amount !== undefined && findItemInInventory && findItemInInventory.amount !== undefined) {
+                if (findItemInComponents && findItemInComponents.amount !== undefined && 
+                    findItemInInventory && findItemInInventory.amount !== undefined) {
                     if (findItemInComponents.in_fertelizer >= findItemInInventory.amount) {
                         $(this).prop('disabled', true);
                         return;
@@ -357,21 +347,31 @@ export class Application implements ApplicationListener {
                     <a href="#sectionItemList" class="btn btm-sm btn-link">[${site.data.strings.item_list.title}]</a>
                 </div>`);
             });
-
         });
     }
 
-    public updateFertilizer() {
+    public fertilizerItemAmountChanged(index : number) {
+        this.log.debug('fertilizerItemAmountChanged', index);
+
+        this.updateFertilizer();
+    }
+
+    private updateFertilizer() {
         this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
 
         this._appData.saveFertilizerComponents();
         this._fertilizeAdapter?.updateFromComponents(this._appData.fertilizer_components);
-        this.updateAllInventoryEvents();
-        this.updateFertilizerUI();
         this.updateRecommendedItems();
+        this.updateAllInventoryEvents();
     }
 
-    public async updateFertilizerUI() {
+    public updatedFertilizerComponents() {
+        this.log.debug('updateFertilizerComponents');
+
+        this.updateFertilizerUI();
+    }
+
+    private async updateFertilizerUI() {
         this.log.debug('updateFertilizerUI', { fertilizer: this._fertilizer });
 
         this.updateSoilNutrientsChartLeafFertilizerUI();
@@ -405,19 +405,26 @@ export class Application implements ApplicationListener {
         $('#fertilizerToxicity').html(toxicity);
     }
 
-    public updateAllInventoryEvents() {
+    private updateAllInventoryEvents() {
         this.updateInventoryEvents('#tblInventory');
         this.updateInventoryEvents('#tblInventoryRecommended');
         this.updateInventoryEvents('#tblInventoryExpirables');
     }
 
-    public updateInventory() {
-        this.log.debug('updateInventory');
-        this.updateInventoryEvents('#tblInventory');
-        this.updateRecommendedItems();
+    public inventoryItemAmountChanged(index: number) {
+        this.log.debug('inventoryItemAmountChanged', index);
+
+        this.updateInventory();
     }
 
-    public updateRecommendedItems() {
+    private updateInventory() {
+        this.log.debug('updateInventory');
+
+        this.updateRecommendedItems();
+        this.updateAllInventoryEvents();
+    }
+
+    private updateRecommendedItems() {
         this._recommendedInventory.clear();
         this._expirablesInventory.clear();
 
@@ -453,9 +460,6 @@ export class Application implements ApplicationListener {
 
         this._expirablesInventory.items = expirables_inventory_items;
         this._expirablesInventoryAdapter?.update();
-
-        this.updateInventoryEvents('#tblInventoryRecommended');
-        this.updateInventoryEvents('#tblInventoryExpirables');
     }
 
     private sortRecommendedItems(items: ItemInventoryData[], expirable: boolean = false): ItemInventoryData[] {
@@ -581,7 +585,7 @@ export class Application implements ApplicationListener {
         };
 
         switch (this._appData.currentGuide) {
-            case 'balanced':
+            case FarmingFocus.Balanced:
                 ret += item.points_fertilizer.balanced;
 
                 /// @TODO: refactor with "getPropertybyName" or something
@@ -592,24 +596,24 @@ export class Application implements ApplicationListener {
                 ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, this._fertilizer.aesthetic_luck, this._fertilizer.is_aesthetic_luck_max_or_overflow);
                 ret += calcPointsStats(item.fertilizer_bonus.armor_magic, this._fertilizer.armor_magic, this._fertilizer.is_armor_magic_max_or_overflow);
                 break;
-            case 'heartiness':
+            case FarmingFocus.Heartiness:
                 ret += item.points_fertilizer.heartiness;
 
                 ret += calcPointsStats(item.fertilizer_bonus.taste_strength, this._fertilizer.taste_strength, this._fertilizer.is_taste_strength_max_or_overflow);
                 ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, this._fertilizer.hardness_vitality, this._fertilizer.is_hardness_vitality_max_or_overflow);
                 ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, this._fertilizer.stickiness_gusto, this._fertilizer.is_stickiness_gusto_max_or_overflow);
                 break;
-            case 'yield':
+            case FarmingFocus.Yield:
                 ret += item.points_fertilizer.yield;
 
                 ret += calcPointsStats(item.fertilizer_bonus.yield_hp, this._fertilizer.yield_hp, this._fertilizer.is_yield_hp_max_or_overflow);
                 break;
-            case 'aesthetic':
+            case FarmingFocus.Aesthetic:
                 ret += item.points_fertilizer.aesthetic;
 
                 ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, this._fertilizer.aesthetic_luck, this._fertilizer.is_aesthetic_luck_max_or_overflow);
                 break;
-            case 'aroma':
+            case FarmingFocus.Aroma:
                 ret += item.points_fertilizer.aroma;
 
                 ret += calcPointsStats(item.fertilizer_bonus.armor_magic, this._fertilizer.armor_magic, this._fertilizer.is_armor_magic_max_or_overflow);

@@ -1,5 +1,5 @@
 import { ApplicationListener } from "./application.listener";
-import { FertilizerComponents, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components.data";
+import { FertilizerComponents, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { ItemInventoryData } from "./inventory";
 import { site } from "./site";
 
@@ -20,6 +20,11 @@ export class FertilizeComponentsAdapter {
 
     public init() {
         this.update();
+    }
+
+    public setItemAmount(index: number, amount: number | undefined) {
+        this._data.setItemAmount(index, amount);
+        this._app.fertilizerItemAmountChanged(index);
     }
 
     public add(item: ItemInventoryData, amount: number | undefined = undefined) {
@@ -52,10 +57,10 @@ export class FertilizeComponentsAdapter {
             findElement.remove();
             this.initEvents();
         } else if (findElement.length) {
-            
             const index = (findElement.data('index'))? parseInt(findElement.data('index') as string) : undefined;
             if (index !== undefined && this._data.components[index]) {
                 findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertelizer));
+                this.initEvents();
             }
         }
     }
@@ -79,13 +84,14 @@ export class FertilizeComponentsAdapter {
 
     private initEvents() {
         var that = this;
-        $('.remove-item-from-fertilizer').on('click', function () {
+        let list = $(that._list_selector) as JQuery<HTMLUListElement>;
+
+        list.find('.remove-item-from-fertilizer').on('click', function () {
             const item_name = $(this).data('name') as string;
             that.remove(item_name, undefined);
             that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
         
-        let list = $(that._list_selector) as JQuery<HTMLUListElement>;
         list.find('.fertilizer-item-amount').on('change', function () {
             const item_name = $(this).data('name') as string;
             const index = parseInt($(this).data('index') as string);
@@ -104,7 +110,7 @@ export class FertilizeComponentsAdapter {
                 list.find(`li[data-index='${index}']`).replaceWith(that.renderEmptyElementHtml(index));
             }
 
-            that._app.updateFertilizer();
+            that._app.fertilizerItemAmountChanged(index);
         });
     }
 
