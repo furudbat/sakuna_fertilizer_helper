@@ -109,8 +109,13 @@ export class Application implements ApplicationListener {
         var that = this;
         $('#chbSettingsNoInventoryRestriction').on('change', function() {
             that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
-            that.updateAllInventoryEvents();     
+            that._fertilizeComponentsAdapter?.update();
+            that.updateAllInventoryEvents(); 
         });
+    }
+
+    public getSettings() {
+        return this._appData.settings;
     }
 
     private initInventory() {
@@ -362,6 +367,16 @@ export class Application implements ApplicationListener {
             $(this).prop('disabled', disabled);
         });
 
+        
+        const hide_amount = (this._appData.settings.no_inventory_restriction)? 'd-none' : '';
+        const disabled_amount = (this._appData.settings.no_inventory_restriction)? 'disabled' : '';
+        $(table_selector).find('.inventory-item-amount-container').each(function(index) {
+            $(this).removeClass('d-none').addClass(hide_amount);
+            $(this).find('.inventory-item-amount').each(function(index) {
+                $(this).prop('disabled', disabled_amount);
+            });
+        });
+
         const table_selector_id = $(table_selector).attr('id');
         $(`#${table_selector_id}_filter`).each(function () {
             $(this).addClass('float-right').addClass('text-right');
@@ -376,6 +391,10 @@ export class Application implements ApplicationListener {
 
     public fertilizerItemAmountChanged(index : number) {
         this.log.debug('fertilizerItemAmountChanged', index);
+
+        if(this._appData.fertilizer_components.components[index]) {
+            this._appData.fertilizer_components.components[index].in_inventory = this.getItemByNameFromInventory(this._appData.fertilizer_components.components[index].name)?.amount;
+        }
 
         this.updateFertilizer();
     }
@@ -462,11 +481,13 @@ export class Application implements ApplicationListener {
                     return false;
                 }
 
-                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined && 
-                    findItemInInventory && findItemInInventory.amount !== undefined) {
-                    findItemInComponents.in_inventory = findItemInInventory.amount;
-                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
-                        return false;
+                if (!this._appData.settings.no_inventory_restriction) {
+                    if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined && 
+                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                        findItemInComponents.in_inventory = findItemInInventory.amount;
+                        if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
+                            return false;
+                        }
                     }
                 }
             }

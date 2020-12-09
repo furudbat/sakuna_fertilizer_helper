@@ -55151,7 +55151,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApplicationData = exports.FarmingFocus = void 0;
+exports.ApplicationData = exports.Settings = exports.FarmingFocus = void 0;
 var localforage_1 = __importDefault(require("localforage"));
 var fertilizer_components_1 = require("./fertilizer-components");
 var inventory_1 = require("./inventory");
@@ -55173,10 +55173,11 @@ var FarmingFocus;
 })(FarmingFocus = exports.FarmingFocus || (exports.FarmingFocus = {}));
 var Settings = (function () {
     function Settings() {
-        this.no_inventory_restriction = false;
+        this.no_inventory_restriction = true;
     }
     return Settings;
 }());
+exports.Settings = Settings;
 var ApplicationData = (function () {
     function ApplicationData() {
         this._items = [];
@@ -55440,9 +55441,14 @@ var Application = (function () {
         $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
         var that = this;
         $('#chbSettingsNoInventoryRestriction').on('change', function () {
+            var _a;
             that._appData.setSettingNoInventoryRestriction(this.checked);
+            (_a = that._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.update();
             that.updateAllInventoryEvents();
         });
+    };
+    Application.prototype.getSettings = function () {
+        return this._appData.settings;
     };
     Application.prototype.initInventory = function () {
         var _a, _b, _c;
@@ -55682,6 +55688,14 @@ var Application = (function () {
             }
             $(this).prop('disabled', disabled);
         });
+        var hide_amount = (this._appData.settings.no_inventory_restriction) ? 'd-none' : '';
+        var disabled_amount = (this._appData.settings.no_inventory_restriction) ? 'disabled' : '';
+        $(table_selector).find('.inventory-item-amount-container').each(function (index) {
+            $(this).removeClass('d-none').addClass(hide_amount);
+            $(this).find('.inventory-item-amount').each(function (index) {
+                $(this).prop('disabled', disabled_amount);
+            });
+        });
         var table_selector_id = $(table_selector).attr('id');
         $("#" + table_selector_id + "_filter").each(function () {
             $(this).addClass('float-right').addClass('text-right');
@@ -55742,7 +55756,11 @@ var Application = (function () {
         this.updateInventory();
     };
     Application.prototype.updateInventory = function () {
+        var _a;
         this.log.debug('updateInventory');
+        for (var i = 0; i < this._appData.fertilizer_components.components.length; i++) {
+            this._appData.fertilizer_components.components[i].in_inventory = (_a = this.getItemByNameFromInventory(this._appData.fertilizer_components.components[i].name)) === null || _a === void 0 ? void 0 : _a.amount;
+        }
         this.updateRecommendedItems();
         this.updateAllInventoryEvents();
     };
@@ -55759,11 +55777,13 @@ var Application = (function () {
                 if (findItemInComponents.in_fertilizer === undefined) {
                     return false;
                 }
-                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
-                    findItemInInventory && findItemInInventory.amount !== undefined) {
-                    findItemInComponents.in_inventory = findItemInInventory.amount;
-                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
-                        return false;
+                if (!_this._appData.settings.no_inventory_restriction) {
+                    if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
+                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                        findItemInComponents.in_inventory = findItemInInventory.amount;
+                        if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
+                            return false;
+                        }
                     }
                 }
             }
@@ -55980,7 +56000,7 @@ var FertilizeComponentsAdapter = (function () {
         if (added) {
             var findEmptyElement = list.find("li[data-name='']").first();
             var index = findEmptyElement.data('index');
-            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added.name, added.in_fertilizer, added.in_inventory));
+            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added));
             this.initEvents();
         }
         else {
@@ -55988,7 +56008,7 @@ var FertilizeComponentsAdapter = (function () {
             if (findElement.length) {
                 var index = (findElement.data('index')) ? parseInt(findElement.data('index')) : undefined;
                 if (index !== undefined && this._data.components[index]) {
-                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertilizer, this._data.components[index].in_inventory));
+                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
                     this.initEvents();
                 }
             }
@@ -56006,7 +56026,7 @@ var FertilizeComponentsAdapter = (function () {
         else if (findElement.length) {
             var index = (findElement.data('index')) ? parseInt(findElement.data('index')) : undefined;
             if (index !== undefined && this._data.components[index]) {
-                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertilizer, this._data.components[index].in_inventory));
+                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
                 this.initEvents();
             }
         }
@@ -56017,7 +56037,7 @@ var FertilizeComponentsAdapter = (function () {
         for (var i = 0; i < fertilizer_components_1.MAX_FERTILIZE_COMPONENTS || i < this._data.components.length; i++) {
             if (this._data.components[i]) {
                 var item = this._data.components[i];
-                list.append(this.renderItemElementHtml(i, item.name, item.in_fertilizer, item.in_inventory));
+                list.append(this.renderItemElementHtml(i, item));
             }
             else {
                 list.append(this.renderEmptyElementHtml(i));
@@ -56033,31 +56053,38 @@ var FertilizeComponentsAdapter = (function () {
             that.remove(item_name, undefined);
             that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
-        list.find('.fertilizer-item-amount').on('change', function () {
-            var item_name = $(this).data('name');
+        list.find('.fertilizer-item-amount').each(function () {
             var index = parseInt($(this).data('index'));
-            var amount = parseInt($(this).val());
-            if (amount > 0 && that._data.components[index]) {
-                that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
-                var item = that._data.components[index];
-                list.find("li[data-index='" + index + "']").replaceWith(that.renderItemElementHtml(index, item.name, item.in_fertilizer, item.in_inventory));
-                that.initEvents();
-            }
-            else {
-                if (that._data.components[index]) {
-                    that._data.remove(item_name);
+            var item = that._data.components[index];
+            var readonly = !that._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined;
+            var in_inventory = (!that._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined) ? Math.min(item.in_inventory, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
+            var max = (!that._app.getSettings().no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+            $(this).attr('max', max);
+            $(this).prop('readonly', readonly);
+            $(this).on('change', function () {
+                var item_name = $(this).data('name');
+                var index = parseInt($(this).data('index'));
+                var amount = parseInt($(this).val());
+                if (amount > 0 && that._data.components[index]) {
+                    that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
+                    list.find("li[data-index='" + index + "']").replaceWith(that.renderItemElementHtml(index, item));
+                    that.initEvents();
                 }
-                list.find("li[data-index='" + index + "']").replaceWith(that.renderEmptyElementHtml(index));
-            }
-            that._app.fertilizerItemAmountChanged(index);
+                else {
+                    if (that._data.components[index]) {
+                        that._data.remove(item_name);
+                    }
+                    list.find("li[data-index='" + index + "']").replaceWith(that.renderEmptyElementHtml(index));
+                }
+                that._app.fertilizerItemAmountChanged(index);
+            });
         });
     };
-    FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item_name, in_fertelizer, in_inventory) {
-        var readonly = (in_fertelizer === undefined) ? 'readonly' : '';
-        var amount_value = (in_fertelizer !== undefined) ? in_fertelizer : 1;
-        in_inventory = (in_inventory !== undefined) ? Math.min(in_inventory, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : in_inventory;
-        var max_attr = (in_inventory !== undefined) ? " max=\"" + in_inventory + "\"" : "max=\"" + fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\"";
-        return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item_name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" " + max_attr + " " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item_name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item_name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
+    FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item) {
+        var readonly = (!this._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
+        var in_inventory = (!this._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined) ? Math.min(item.in_inventory, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
+        var max = (!this._app.getSettings().no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+        return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item.name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
     };
     FertilizeComponentsAdapter.prototype.renderEmptyElementHtml = function (index) {
         return "<li class=\"list-group-item list-group-item-light text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
@@ -57020,7 +57047,9 @@ var InventoryAdapter = (function () {
                             var item_name = row.name;
                             var amount_value = (_l = row.amount) !== null && _l !== void 0 ? _l : 1;
                             var index = meta.row - 1;
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            var hide_amount = (that._app.getSettings().no_inventory_restriction) ? 'd-none' : '';
+                            var disabled_amount = (that._app.getSettings().no_inventory_restriction) ? 'disabled' : '';
+                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }

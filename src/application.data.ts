@@ -19,8 +19,8 @@ export enum FarmingFocus {
     Aroma = "aroma"
 }
 
-class Settings {
-    public no_inventory_restriction: boolean = false;
+export class Settings {
+    public no_inventory_restriction: boolean = true;
 }
 
 export class ApplicationData {

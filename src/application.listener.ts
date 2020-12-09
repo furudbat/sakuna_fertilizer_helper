@@ -1,3 +1,5 @@
+
+import { Settings } from "./application.data";
 import { ItemInventoryData } from "./inventory";
 
 export interface ApplicationListener {
@@ -14,4 +16,6 @@ export interface ApplicationListener {
     fertilizerItemAmountChanged(index: number): void;
 
     updatedFertilizerComponents(): void;
+
+    getSettings(): Settings;
 }

@@ -1,6 +1,6 @@
 import { LoggerManager } from "typescript-logger";
 import { ApplicationListener } from "./application.listener";
-import { FertilizerComponents, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
+import { FertilizerComponents, ItemFertilizerComponentData, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { ItemInventoryData } from "./inventory";
 import { site } from "./site";
 
@@ -37,14 +37,14 @@ export class FertilizeComponentsAdapter {
         if (added) {
             let findEmptyElement = list.find(`li[data-name='']`).first();
             const index = findEmptyElement.data('index');
-            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added.name, added.in_fertilizer, added.in_inventory));
+            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added));
             this.initEvents();
         } else {
             let findElement = list.find(`li[data-name='${item.name}']`).first();
             if (findElement.length) {
                 const index = (findElement.data('index'))? parseInt(findElement.data('index') as string) : undefined;
                 if (index !== undefined && this._data.components[index]) {
-                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertilizer, this._data.components[index].in_inventory));
+                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
                     this.initEvents();
                 }
             }
@@ -62,7 +62,7 @@ export class FertilizeComponentsAdapter {
         } else if (findElement.length) {
             const index = (findElement.data('index'))? parseInt(findElement.data('index') as string) : undefined;
             if (index !== undefined && this._data.components[index]) {
-                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index].name, this._data.components[index].in_fertilizer, this._data.components[index].in_inventory));
+                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
                 this.initEvents();
             }
         }
@@ -76,7 +76,7 @@ export class FertilizeComponentsAdapter {
             if (this._data.components[i]) {
                 const item = this._data.components[i];
 
-                list.append(this.renderItemElementHtml(i, item.name, item.in_fertilizer, item.in_inventory));
+                list.append(this.renderItemElementHtml(i, item));
             } else {
                 list.append(this.renderEmptyElementHtml(i));
             }
@@ -94,42 +94,50 @@ export class FertilizeComponentsAdapter {
             that.remove(item_name, undefined);
             that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
-        
-        list.find('.fertilizer-item-amount').on('change', function () {
-            const item_name = $(this).data('name') as string;
+
+        list.find('.fertilizer-item-amount').each(function(){
             const index = parseInt($(this).data('index') as string);
-            const amount = parseInt($(this).val() as string);
-            
-            if (amount > 0 && that._data.components[index]) {
-                that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
-                const item = that._data.components[index];
+            const item = that._data.components[index];
 
-                list.find(`li[data-index='${index}']`).replaceWith(that.renderItemElementHtml(index, item.name, item.in_fertilizer, item.in_inventory));
-                that.initEvents();
-            } else {
-                if (that._data.components[index]) {
-                    that._data.remove(item_name);
+            const readonly = !that._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined;
+            const in_inventory = (!that._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined)? Math.min(item.in_inventory, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
+            const max = (!that._app.getSettings().no_inventory_restriction && in_inventory !== undefined)? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+            $(this).attr('max', max);
+            $(this).prop('readonly', readonly);
+
+            $(this).on('change', function () {
+                const item_name = $(this).data('name') as string;
+                const index = parseInt($(this).data('index') as string);
+                const amount = parseInt($(this).val() as string);
+                if (amount > 0 && that._data.components[index]) {
+                    that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
+    
+                    list.find(`li[data-index='${index}']`).replaceWith(that.renderItemElementHtml(index, item));
+                    that.initEvents();
+                } else {
+                    if (that._data.components[index]) {
+                        that._data.remove(item_name);
+                    }
+                    list.find(`li[data-index='${index}']`).replaceWith(that.renderEmptyElementHtml(index));
                 }
-                list.find(`li[data-index='${index}']`).replaceWith(that.renderEmptyElementHtml(index));
-            }
-
-            that._app.fertilizerItemAmountChanged(index);
+    
+                that._app.fertilizerItemAmountChanged(index);
+            });
         });
     }
 
-    private renderItemElementHtml(index: number, item_name: string, in_fertelizer: number | undefined, in_inventory: number | undefined) {
-        const readonly = (in_fertelizer === undefined)? 'readonly' : '';
-        const amount_value = (in_fertelizer !== undefined)? in_fertelizer : 1;
-        in_inventory = (in_inventory !== undefined)? Math.min(in_inventory, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : in_inventory;
-        const max_attr = (in_inventory !== undefined)? ` max="${in_inventory}"` : `max="${MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}"`;
-
-        return `<li class="list-group-item list-group-item-light p-1" data-index="${index}" data-name="${item_name}">
+    private renderItemElementHtml(index: number, item: ItemFertilizerComponentData) {
+        const readonly = (!this._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined)? 'readonly' : '';
+        const in_inventory = (!this._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined)? Math.min(item.in_inventory, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
+        const max = (!this._app.getSettings().no_inventory_restriction && in_inventory !== undefined)? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+        
+        return `<li class="list-group-item list-group-item-light p-1" data-index="${index}" data-name="${item.name}">
             <div class="row no-gutters">
                 <div class="col-3 text-left py-2">
-                    <input type="number" value="${amount_value}" data-index="${index}" data-name="${item_name}" data-val="${amount_value}" class="form-control form-control-sm fertilizer-item-amount" placeholder="${site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}" ${max_attr} ${readonly}>
+                    <input type="number" value="${item.in_fertilizer}" data-index="${index}" data-name="${item.name}" data-val="${item.in_fertilizer}" class="form-control form-control-sm fertilizer-item-amount" placeholder="${site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}" max="${max}" ${readonly}>
                 </div>
-                <div class="col-6 py-2 pl-1 text-left">${item_name}</div>
-                <div class="col-3 py-1 text-right"><button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item_name}"><i class="fas fa-minus"></i></button></div>
+                <div class="col-6 py-2 pl-1 text-left">${item.name}</div>
+                <div class="col-3 py-1 text-right"><button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item.name}"><i class="fas fa-minus"></i></button></div>
             </div>
         </li>`;
     }

@@ -227,10 +227,12 @@ export class InventoryAdapter {
                             const item_name = row.name;
                             const amount_value = row.amount ?? 1;
                             const index = meta.row-1;
+                            const hide_amount = (that._app.getSettings().no_inventory_restriction)? 'd-none' : '';
+                            const disabled_amount = (that._app.getSettings().no_inventory_restriction)? 'disabled' : '';
 
                             return `<div class="row no-gutters">
-                                        <div class="col-3 text-left">
-                                            <input type="number" value="${amount_value}" data-index="${index}" data-name="${item_name}" data-val="${amount_value}" class="form-control form-control-sm inventory-item-amount" placeholder="${site.data.strings.fertilizer_helper.inventory.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_INVENTORY}" max="${MAX_ITEMS_AMOUNT_INVENTORY}">
+                                        <div class="col-3 text-left inventory-item-amount-container ${hide_amount}">
+                                            <input type="number" value="${amount_value}" data-index="${index}" data-name="${item_name}" data-val="${amount_value}" class="form-control form-control-sm inventory-item-amount" placeholder="${site.data.strings.fertilizer_helper.inventory.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_INVENTORY}" max="${MAX_ITEMS_AMOUNT_INVENTORY}" ${disabled_amount}>
                                         </div>
                                         <div class="col-9 text-left">
                                             <button class="btn btn-link text-left ${data_color_class}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
