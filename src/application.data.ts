@@ -27,13 +27,13 @@ export class Settings {
 export class ApplicationData {
 
     private _items: ItemData[] = [];
-    private _inventory: Inventory = new Inventory();
-    private _currentLeafFertilizer: number = 0;
-    private _currentKernelFertilizer: number = 0;
-    private _currentRootFertilizer: number = 0;
-    private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
-    private _currentGuide: FarmingFocus = FarmingFocus.Balanced;
+    private _currentLeafFertilizer: DataSubject<number> = new DataSubject<number>(0);
+    private _currentKernelFertilizer: DataSubject<number> = new DataSubject<number>(0);
+    private _currentRootFertilizer: DataSubject<number> = new DataSubject<number>(0);
+    private _currentGuide: DataSubject<FarmingFocus> = new DataSubject<FarmingFocus>(FarmingFocus.Balanced);
     private _settings: DataSubject<Settings> = new DataSubject<Settings>(new Settings());
+    private _inventory: Inventory = new Inventory();
+    private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -48,13 +48,13 @@ export class ApplicationData {
 
             this._inventory.items = await this._storeSession.getItem<ItemInventoryData[]>(STORAGE_KEY_ITEMS_IN_INVENTORY) || this._inventory.items;
 
-            this._currentLeafFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER) || this._currentLeafFertilizer;
-            this._currentKernelFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER) || this._currentKernelFertilizer;
-            this._currentRootFertilizer = await this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER) || this._currentRootFertilizer;
+            this._currentLeafFertilizer.data = await this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER) || this._currentLeafFertilizer.data;
+            this._currentKernelFertilizer.data = await this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER) || this._currentKernelFertilizer.data;
+            this._currentRootFertilizer.data = await this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER) || this._currentRootFertilizer.data;
 
             this._fertilizer_components.components = await this._storeSession.getItem<ItemFertilizerComponentData[]>(STORAGE_KEY_FERTILIZER_COMPONENTS) || this._fertilizer_components.components;
 
-            this._currentGuide = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide;
+            this._currentGuide.data = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide.data;
 
             this._settings.data = await this._storeSession.getItem<Settings>(STORAGE_KEY_SETTINGS) || this._settings.data;
         } catch (err) {
@@ -68,29 +68,38 @@ export class ApplicationData {
     }
 
 
-    get currentGuide() {
+    get currentGuideObservable() {
         return this._currentGuide;
     }
 
-    set currentGuide(value: FarmingFocus) {
-        this._currentGuide = value;
-        this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
+    get currentGuide() {
+        return this._currentGuide.data;
     }
 
+    set currentGuide(value: FarmingFocus) {
+        this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, value);
+        this._currentGuide.data = value;
+    }
+
+
+    get settingsObservable() {
+        return this._settings;
+    }
 
     get settings() {
         return this._settings.data;
     }
 
     set settings(value: Settings) {
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, value);
         this._settings.data = value;
-        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings.data);
     }
 
     public setSettingNoInventoryRestriction(value: boolean) {
-        let newsettings = this._settings.data;
-        this._storeSession.setItem(STORAGE_KEY_SETTINGS, newsettings);
-        this._settings.data = newsettings;
+        let new_settings = this._settings.data;
+        new_settings.no_inventory_restriction = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, new_settings);
+        this._settings.data = new_settings;
     }
 
 
@@ -121,31 +130,45 @@ export class ApplicationData {
     }
 
 
-    get currentLeafFertilizer() {
+    get currentLeafFertilizerObservable() {
         return this._currentLeafFertilizer;
     }
 
-    set currentLeafFertilizer(value: number) {
-        this._currentLeafFertilizer = value;
-        this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, this._currentLeafFertilizer);
+    get currentLeafFertilizer() {
+        return this._currentLeafFertilizer.data;
     }
 
-    get currentKernelFertilizer() {
+    set currentLeafFertilizer(value: number) {
+        this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, value);
+        this._currentLeafFertilizer.data = value;
+    }
+
+
+    get currentKernelFertilizerObservable() {
         return this._currentKernelFertilizer;
     }
 
-    set currentKernelFertilizer(value: number) {
-        this._currentKernelFertilizer = value;
-        this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, this._currentKernelFertilizer);
+    get currentKernelFertilizer() {
+        return this._currentKernelFertilizer.data;
     }
 
-    get currentRootFertilizer() {
+    set currentKernelFertilizer(value: number) {
+        this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, value);
+        this._currentKernelFertilizer.data = value;
+    }
+
+
+    get currentRootFertilizerObservable() {
         return this._currentRootFertilizer;
     }
 
+    get currentRootFertilizer() {
+        return this._currentRootFertilizer.data;
+    }
+
     set currentRootFertilizer(value: number) {
-        this._currentRootFertilizer = value;
-        this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, this._currentRootFertilizer);
+        this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, value);
+        this._currentRootFertilizer.data = value;
     }
 
 

@@ -55147,6 +55147,265 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DataListSubject = exports.DataSubject = void 0;
+var typescript_logger_1 = require("typescript-logger");
+var DataSubject = (function () {
+    function DataSubject(value) {
+        this.observers = [];
+        this.log = typescript_logger_1.LoggerManager.create("Observer:DataSubject");
+        this._state = value;
+    }
+    Object.defineProperty(DataSubject.prototype, "data", {
+        get: function () {
+            return this._state;
+        },
+        set: function (value) {
+            this._state = value;
+            this.notify();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    DataSubject.prototype.let = function (lets) {
+        this._state = lets(this._state);
+        this.notify();
+        return this._state;
+    };
+    DataSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist) {
+            this.log.warn('Subject: Observer has been attached already.');
+            return;
+        }
+        this.log.debug('Subject: Attached an observer.', observer);
+        this.observers.push(observer);
+    };
+    DataSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            this.log.warn('Subject: Nonexistent observer.');
+            return;
+        }
+        this.observers.splice(observerIndex, 1);
+        this.log.debug('Subject: Detached an observer.', observer);
+    };
+    DataSubject.prototype.notify = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _i, _a, observer;
+            return __generator(this, function (_b) {
+                this.log.debug('Subject: Notifying observers...', this._state);
+                for (_i = 0, _a = this.observers; _i < _a.length; _i++) {
+                    observer = _a[_i];
+                    observer.update(this);
+                }
+                return [2];
+            });
+        });
+    };
+    return DataSubject;
+}());
+exports.DataSubject = DataSubject;
+var DataListSubject = (function () {
+    function DataListSubject(value) {
+        if (value === void 0) { value = []; }
+        this._state = [];
+        this.observers = [];
+        this.log = typescript_logger_1.LoggerManager.create("Observer:ListDataSubject");
+        this._state = value;
+    }
+    Object.defineProperty(DataListSubject.prototype, "data", {
+        get: function () {
+            return this._state;
+        },
+        set: function (value) {
+            this._state = value;
+            this.notify();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(DataListSubject.prototype, "length", {
+        get: function () {
+            return this._state.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    DataListSubject.prototype.clear = function () {
+        this.data = [];
+    };
+    DataListSubject.prototype.last = function () {
+        return (this._state.length > 0) ? this._state[this._state.length - 1] : undefined;
+    };
+    DataListSubject.prototype.get = function (index) {
+        return this._state[index];
+    };
+    DataListSubject.prototype.find = function (predicate, thisArg) {
+        return this._state.find(predicate);
+    };
+    DataListSubject.prototype.findIndex = function (predicate, thisArg) {
+        return this._state.findIndex(predicate);
+    };
+    DataListSubject.prototype.let = function (index, lets) {
+        if (index < this._state.length) {
+            var new_item = lets(this._state[index], index);
+            if (new_item !== undefined) {
+                this._state[index] = new_item;
+                this.notifyItem(new_item, index);
+            }
+            else {
+                var old_item = this._state[index];
+                this._state.slice(index, 1);
+                this.notifyRemovedItem(old_item);
+            }
+        }
+    };
+    DataListSubject.prototype.lets = function (lets) {
+        if (this._state.length > 0) {
+            for (var i = 0; i < this._state.length; i++) {
+                var new_item = lets(this._state[i], i);
+                if (new_item !== undefined) {
+                    this._state[i] = new_item;
+                }
+                else {
+                    this._state.slice(i, 1);
+                }
+            }
+            this.notify();
+        }
+    };
+    DataListSubject.prototype.forEach = function (callbackfn, thisArg) {
+        this._state.forEach(callbackfn, thisArg);
+    };
+    DataListSubject.prototype.set = function (index, value) {
+        if (index < this._state.length) {
+            this._state[index] = value;
+            this.notifyItem(value, index);
+        }
+    };
+    DataListSubject.prototype.push = function (value) {
+        this._state.push(value);
+        this.notifyAddedItem(this._state[this._state.length - 1]);
+    };
+    DataListSubject.prototype.remove = function (index) {
+        if (index < this._state.length) {
+            var item = this._state[index];
+            this._state.splice(index, 1);
+            this.notifyRemovedItem(item);
+        }
+    };
+    DataListSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist) {
+            this.log.warn('Subject: Observer has been attached already.');
+            return;
+        }
+        this.log.debug('Subject: Attached an observer.', observer);
+        this.observers.push(observer);
+    };
+    DataListSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            this.log.warn('Subject: Nonexistent observer.');
+            return;
+        }
+        this.observers.splice(observerIndex, 1);
+        this.log.debug('Subject: Detached an observer.', observer);
+    };
+    DataListSubject.prototype.notify = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _i, _a, observer;
+            return __generator(this, function (_b) {
+                this.log.debug('Subject: Notifying observers...', this._state);
+                for (_i = 0, _a = this.observers; _i < _a.length; _i++) {
+                    observer = _a[_i];
+                    observer.update(this);
+                }
+                return [2];
+            });
+        });
+    };
+    DataListSubject.prototype.notifyItem = function (item, index) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _i, _a, observer;
+            return __generator(this, function (_b) {
+                this.log.debug('Subject: Notifying observers, Item...', this._state, index);
+                for (_i = 0, _a = this.observers; _i < _a.length; _i++) {
+                    observer = _a[_i];
+                    observer.updateItem(this, item, index);
+                }
+                return [2];
+            });
+        });
+    };
+    DataListSubject.prototype.notifyAddedItem = function (added) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _i, _a, observer;
+            return __generator(this, function (_b) {
+                this.log.debug('Subject: Notifying observers, AddedItem...', this._state, added);
+                for (_i = 0, _a = this.observers; _i < _a.length; _i++) {
+                    observer = _a[_i];
+                    observer.updateAddedItem(this, added);
+                }
+                return [2];
+            });
+        });
+    };
+    DataListSubject.prototype.notifyRemovedItem = function (removed) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _i, _a, observer;
+            return __generator(this, function (_b) {
+                this.log.debug('Subject: Notifying observers, RemovedItem...', this._state, removed);
+                for (_i = 0, _a = this.observers; _i < _a.length; _i++) {
+                    observer = _a[_i];
+                    observer.updateRemovedItem(this, removed);
+                }
+                return [2];
+            });
+        });
+    };
+    return DataListSubject;
+}());
+exports.DataListSubject = DataListSubject;
+},{"typescript-logger":17}],25:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -55155,6 +55414,7 @@ exports.ApplicationData = exports.Settings = exports.FarmingFocus = void 0;
 var localforage_1 = __importDefault(require("localforage"));
 var fertilizer_components_1 = require("./fertilizer-components");
 var inventory_1 = require("./inventory");
+var Observer_1 = require("./Observer");
 var STORAGE_KEY_ITEMS = 'items';
 var STORAGE_KEY_ITEMS_IN_INVENTORY = 'items_in_inventory';
 var STORAGE_KEY_CURRENT_LEAF_FERTILIZER = 'current_leaf_fertilizer';
@@ -55181,13 +55441,13 @@ exports.Settings = Settings;
 var ApplicationData = (function () {
     function ApplicationData() {
         this._items = [];
+        this._currentLeafFertilizer = new Observer_1.DataSubject(0);
+        this._currentKernelFertilizer = new Observer_1.DataSubject(0);
+        this._currentRootFertilizer = new Observer_1.DataSubject(0);
+        this._currentGuide = new Observer_1.DataSubject(FarmingFocus.Balanced);
+        this._settings = new Observer_1.DataSubject(new Settings());
         this._inventory = new inventory_1.Inventory();
-        this._currentLeafFertilizer = 0;
-        this._currentKernelFertilizer = 0;
-        this._currentRootFertilizer = 0;
         this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
-        this._currentGuide = FarmingFocus.Balanced;
-        this._settings = new Settings();
         this._storeSession = localforage_1.default.createInstance({
             name: "session"
         });
@@ -55207,30 +55467,30 @@ var ApplicationData = (function () {
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS_IN_INVENTORY)];
                     case 2:
                         _b.items = (_j.sent()) || this._inventory.items;
-                        _c = this;
+                        _c = this._currentLeafFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER)];
                     case 3:
-                        _c._currentLeafFertilizer = (_j.sent()) || this._currentLeafFertilizer;
-                        _d = this;
+                        _c.data = (_j.sent()) || this._currentLeafFertilizer.data;
+                        _d = this._currentKernelFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER)];
                     case 4:
-                        _d._currentKernelFertilizer = (_j.sent()) || this._currentKernelFertilizer;
-                        _e = this;
+                        _d.data = (_j.sent()) || this._currentKernelFertilizer.data;
+                        _e = this._currentRootFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER)];
                     case 5:
-                        _e._currentRootFertilizer = (_j.sent()) || this._currentRootFertilizer;
+                        _e.data = (_j.sent()) || this._currentRootFertilizer.data;
                         _f = this._fertilizer_components;
                         return [4, this._storeSession.getItem(STORAGE_KEY_FERTILIZER_COMPONENTS)];
                     case 6:
                         _f.components = (_j.sent()) || this._fertilizer_components.components;
-                        _g = this;
+                        _g = this._currentGuide;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE)];
                     case 7:
-                        _g._currentGuide = (_j.sent()) || this._currentGuide;
-                        _h = this;
+                        _g.data = (_j.sent()) || this._currentGuide.data;
+                        _h = this._settings;
                         return [4, this._storeSession.getItem(STORAGE_KEY_SETTINGS)];
                     case 8:
-                        _h._settings = (_j.sent()) || this._settings;
+                        _h.data = (_j.sent()) || this._settings.data;
                         return [3, 10];
                     case 9:
                         err_1 = _j.sent();
@@ -55244,31 +55504,47 @@ var ApplicationData = (function () {
     ApplicationData.prototype.clearSessionStorage = function () {
         this._storeSession.clear();
     };
-    Object.defineProperty(ApplicationData.prototype, "currentGuide", {
+    Object.defineProperty(ApplicationData.prototype, "currentGuideObservable", {
         get: function () {
             return this._currentGuide;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentGuide", {
+        get: function () {
+            return this._currentGuide.data;
+        },
         set: function (value) {
-            this._currentGuide = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, value);
+            this._currentGuide.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "settingsObservable", {
+        get: function () {
+            return this._settings;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(ApplicationData.prototype, "settings", {
         get: function () {
-            return this._settings;
+            return this._settings.data;
         },
         set: function (value) {
-            this._settings = value;
-            this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+            this._storeSession.setItem(STORAGE_KEY_SETTINGS, value);
+            this._settings.data = value;
         },
         enumerable: false,
         configurable: true
     });
     ApplicationData.prototype.setSettingNoInventoryRestriction = function (value) {
-        this._settings.no_inventory_restriction = value;
-        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+        var new_settings = this._settings.data;
+        new_settings.no_inventory_restriction = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, new_settings);
+        this._settings.data = new_settings;
     };
     Object.defineProperty(ApplicationData.prototype, "items", {
         get: function () {
@@ -55289,8 +55565,8 @@ var ApplicationData = (function () {
             return this._inventory;
         },
         set: function (value) {
-            this._inventory = value;
-            this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
+            this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, value.items);
+            this._inventory.items = value.items;
         },
         enumerable: false,
         configurable: true
@@ -55298,35 +55574,56 @@ var ApplicationData = (function () {
     ApplicationData.prototype.saveInventory = function () {
         this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
     };
-    Object.defineProperty(ApplicationData.prototype, "currentLeafFertilizer", {
+    Object.defineProperty(ApplicationData.prototype, "currentLeafFertilizerObservable", {
         get: function () {
             return this._currentLeafFertilizer;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentLeafFertilizer", {
+        get: function () {
+            return this._currentLeafFertilizer.data;
+        },
         set: function (value) {
-            this._currentLeafFertilizer = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, this._currentLeafFertilizer);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, value);
+            this._currentLeafFertilizer.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentKernelFertilizerObservable", {
+        get: function () {
+            return this._currentKernelFertilizer;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(ApplicationData.prototype, "currentKernelFertilizer", {
         get: function () {
-            return this._currentKernelFertilizer;
+            return this._currentKernelFertilizer.data;
         },
         set: function (value) {
-            this._currentKernelFertilizer = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, this._currentKernelFertilizer);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, value);
+            this._currentKernelFertilizer.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentRootFertilizerObservable", {
+        get: function () {
+            return this._currentRootFertilizer;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(ApplicationData.prototype, "currentRootFertilizer", {
         get: function () {
-            return this._currentRootFertilizer;
+            return this._currentRootFertilizer.data;
         },
         set: function (value) {
-            this._currentRootFertilizer = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, this._currentRootFertilizer);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, value);
+            this._currentRootFertilizer.data = value;
         },
         enumerable: false,
         configurable: true
@@ -55336,8 +55633,8 @@ var ApplicationData = (function () {
             return this._fertilizer_components;
         },
         set: function (value) {
-            this._fertilizer_components = value;
-            this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
+            this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, value.components);
+            this._fertilizer_components.components = value.components;
         },
         enumerable: false,
         configurable: true
@@ -55348,7 +55645,7 @@ var ApplicationData = (function () {
     return ApplicationData;
 }());
 exports.ApplicationData = ApplicationData;
-},{"./fertilizer-components":27,"./inventory":31,"localforage":12}],25:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer-components":28,"./inventory":32,"localforage":12}],26:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
@@ -55356,7 +55653,6 @@ var site_1 = require("./site");
 var application_data_1 = require("./application.data");
 require("datatables.net-bs4");
 require("datatables.net-responsive-bs4");
-var chart_js_1 = require("chart.js");
 var fertilizer_data_1 = require("./fertilizer.data");
 var fertilizer_adapter_1 = require("./fertilizer.adapter");
 var fertilize_components_adapter_1 = require("./fertilize-components.adapter");
@@ -55401,20 +55697,19 @@ var Application = (function () {
                     break;
             }
             that._appData.currentGuide = $(this).data('name');
-            that.updateRecommendedItems();
         });
-        this._fertilizerAdapter = new fertilizer_adapter_1.FertilizerAdapter(this, this._fertilizer);
-        this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this, '#lstFertilizeComponents', this._appData.fertilizer_components);
-        this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventory', this._appData.inventory);
-        this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventoryRecommended', this._recommendedInventory);
-        this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventoryExpirables', this._expirablesInventory);
-        this.initSettings();
+        this._fertilizerAdapter = new fertilizer_adapter_1.FertilizerAdapter(this._appData, this._fertilizer);
+        this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
+        this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
+        this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory);
+        this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory);
         this.initItemList();
+        this.initSettings();
         this.initInventory();
-        this.initSoilNutrientsChart();
         (_a = this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.init();
         (_b = this._fertilizerAdapter) === null || _b === void 0 ? void 0 : _b.init();
         (_c = this._fertilizerAdapter) === null || _c === void 0 ? void 0 : _c.updateFromComponents(this._appData.fertilizer_components);
+        this.initObservers();
     };
     Application.prototype.initItemList = function () {
         this._itemList = $('#tblItemsList').DataTable({
@@ -55427,28 +55722,28 @@ var Application = (function () {
         });
         var that = this;
         this._itemList.on('draw.dt', function () {
-            $('.add-item-to-inventory').on('click', function () {
-                var _a;
-                var item_name = $(this).data('name');
-                var item = that._appData.getItemByName(item_name);
-                if (item) {
-                    (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, 1);
-                }
-            });
+            that.initItemListEvents();
+        });
+        this.initItemListEvents();
+    };
+    Application.prototype.initItemListEvents = function () {
+        var that = this;
+        $('.add-item-to-inventory').on('click', function () {
+            var _a;
+            var item_name = $(this).data('name');
+            var item = that._appData.getItemByName(item_name);
+            that.log.debug('.add-item-to-inventory', item);
+            if (item !== undefined) {
+                (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, 1);
+            }
         });
     };
     Application.prototype.initSettings = function () {
         $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
         var that = this;
         $('#chbSettingsNoInventoryRestriction').on('change', function () {
-            var _a;
             that._appData.setSettingNoInventoryRestriction(this.checked);
-            (_a = that._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.update();
-            that.updateAllInventoryEvents();
         });
-    };
-    Application.prototype.getSettings = function () {
-        return this._appData.settings;
     };
     Application.prototype.initInventory = function () {
         var _a, _b, _c;
@@ -55456,319 +55751,45 @@ var Application = (function () {
         (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6], false);
         (_c = this._recommendedInventoryAdapter) === null || _c === void 0 ? void 0 : _c.init([], [0, 1, 2, 3, 4, 5, 6], false);
     };
-    Application.prototype.initSoilNutrientsChart = function () {
-        var canvas = $('#soilNutrientsChart');
-        $('#txtCurrentLeafFertilizer').val(this._appData.currentLeafFertilizer);
-        $('#txtCurrentKernelFertilizer').val(this._appData.currentKernelFertilizer);
-        $('#txtCurrentRootFertilizer').val(this._appData.currentRootFertilizer);
-        this._soilNutrientsChart = new chart_js_1.Chart(canvas, {
-            type: 'radar',
-            data: {
-                labels: [
-                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
-                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
-                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
-                ],
-                datasets: [
-                    {
-                        label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
-                        fill: true,
-                        data: [
-                            this._appData.currentLeafFertilizer,
-                            this._appData.currentKernelFertilizer,
-                            this._appData.currentRootFertilizer
-                        ],
-                        backgroundColor: 'rgba(147, 247, 141, 0.2)',
-                        borderColor: 'rgba(147, 247, 141, 1)',
-                        pointBorderColor: 'rgba(147, 247, 141, 0.5)',
-                        pointBackgroundColor: 'rgba(147, 247, 141, 0.5)',
-                        pointStyle: 'rect',
-                        borderWidth: 1
-                    }, {
-                        label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
-                        fill: true,
-                        data: [
-                            this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer,
-                            this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer,
-                            this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer
-                        ],
-                        backgroundColor: 'rgba(160, 250, 255, 0.2)',
-                        borderColor: 'rgba(160, 250, 255, 1)',
-                        pointBorderColor: 'rgba(205, 215, 115, 1)',
-                        pointBackgroundColor: 'rgba(205, 215, 115, 1)',
-                        pointStyle: 'rect',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scale: {
-                    angleLines: {
-                        display: true,
-                        color: 'black'
-                    },
-                    ticks: {
-                        min: fertilizer_data_1.MIN_FERTILIZER,
-                        max: fertilizer_data_1.MAX_FERTILIZER
-                    }
-                }
-            }
-        });
+    Application.prototype.initObservers = function () {
+        var _a, _b;
         var that = this;
-        $('#txtCurrentLeafFertilizer').on('change', function () {
-            that.log.debug('txtCurrentLeafFertilizer', $(this).val());
-            that._appData.currentLeafFertilizer = parseInt($(this).val());
-            that.updateSoilNutrientsChartCurrentLeafFertilizerUI();
-        });
-        $('#txtCurrentKernelFertilizer').on('change', function () {
-            that.log.debug('txtCurrentKernelFertilizer', $(this).val());
-            that._appData.currentKernelFertilizer = parseInt($(this).val());
-            that.updateSoilNutrientsChartCurrentKernelFertilizerUI();
-        });
-        $('#txtCurrentRootFertilizer').on('change', function () {
-            that.log.debug('txtCurrentRootFertilizer', $(this).val());
-            that._appData.currentRootFertilizer = parseInt($(this).val());
-            that.updateSoilNutrientsChartCurrentRootFertilizerUI();
-        });
-        this.updateSoilNutrientsChartLeafFertilizerUI();
-        this.updateSoilNutrientsChartKernelFertilizerUI();
-        this.updateSoilNutrientsChartRootFertilizerUI();
-        this.updateInventory();
-    };
-    Application.prototype.updateSoilNutrientsChartCurrentLeafFertilizerUI = function () {
-        var _a, _b, _c;
-        if (this._soilNutrientsChart) {
-            if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
-                this._soilNutrientsChart.data.datasets[0].data[0] = site_1.clamp(this._appData.currentLeafFertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+        this._appData.currentGuideObservable.attach(new (function () {
+            function class_1() {
             }
-        }
-        this.updateSoilNutrientsChartLeafFertilizerUI();
-    };
-    Application.prototype.updateSoilNutrientsChartLeafFertilizerUI = function () {
-        var _a, _b, _c;
-        if (this._soilNutrientsChart) {
-            if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
-                this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
-                this._soilNutrientsChart.data.datasets[1].data[0] = site_1.clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
+            class_1.prototype.update = function (subject) {
+                that.updateRecommendedItems();
+            };
+            return class_1;
+        }()));
+        (_a = this._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.observable.attach(new (function () {
+            function class_2() {
             }
-            this._soilNutrientsChart.update();
-        }
-    };
-    Application.prototype.updateSoilNutrientsChartCurrentKernelFertilizerUI = function () {
-        var _a, _b, _c;
-        if (this._soilNutrientsChart) {
-            if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
-                this._soilNutrientsChart.data.datasets[0].data[1] = site_1.clamp(this._appData.currentKernelFertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            class_2.prototype.update = function (subject) {
+                that.updateRecommendedItems();
+            };
+            class_2.prototype.updateItem = function (subject, updated, index) {
+                that.updateRecommendedItems();
+            };
+            class_2.prototype.updateAddedItem = function (subject, added) {
+                that.updateRecommendedItems();
+            };
+            class_2.prototype.updateRemovedItem = function (subject, removed) {
+                that.updateRecommendedItems();
+            };
+            return class_2;
+        }()));
+        (_b = this._fertilizerAdapter) === null || _b === void 0 ? void 0 : _b.observable.attach(new (function () {
+            function class_3() {
             }
-        }
-        this.updateSoilNutrientsChartKernelFertilizerUI();
-    };
-    Application.prototype.updateSoilNutrientsChartKernelFertilizerUI = function () {
-        var _a, _b, _c;
-        if (this._soilNutrientsChart) {
-            if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
-                this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
-                this._soilNutrientsChart.data.datasets[1].data[1] = site_1.clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
-            }
-            this._soilNutrientsChart.update();
-        }
-    };
-    Application.prototype.updateSoilNutrientsChartCurrentRootFertilizerUI = function () {
-        var _a, _b, _c;
-        if (this._soilNutrientsChart) {
-            if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
-                this._soilNutrientsChart.data.datasets[0].data[2] = site_1.clamp(this._appData.currentRootFertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-            }
-        }
-        this.updateSoilNutrientsChartRootFertilizerUI();
-    };
-    Application.prototype.updateSoilNutrientsChartRootFertilizerUI = function () {
-        var _a, _b, _c;
-        if (this._soilNutrientsChart) {
-            if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
-                this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
-                this._soilNutrientsChart.data.datasets[1].data[2] = site_1.clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
-            }
-            this._soilNutrientsChart.update();
-        }
-    };
-    Application.prototype.getItemByName = function (name) {
-        return this._appData.getItemByName(name);
-    };
-    Application.prototype.getItemByNameFromInventory = function (name) {
-        return this._appData.inventory.getItemByName(name);
-    };
-    Application.prototype.addItemToFertilizer = function (item, amount, already_added) {
-        var _a;
-        if (amount === void 0) { amount = 1; }
-        if (already_added === void 0) { already_added = false; }
-        this.log.debug('addItemToFertilizer', { item: item, amount: amount, already_added: already_added });
-        if (!already_added) {
-            this._appData.fertilizer_components.add(item, amount);
-        }
-        this._appData.saveFertilizerComponents();
-        (_a = this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.update();
-        this.updateFertilizer();
-        this.updateInventory();
-    };
-    Application.prototype.removeItemFromFertilizer = function (item_name, amount, already_removed) {
-        var _a;
-        if (amount === void 0) { amount = undefined; }
-        if (already_removed === void 0) { already_removed = false; }
-        this.log.debug('removeItemFromFertilizer', { item_name: item_name, amount: amount, already_removed: already_removed });
-        if (!already_removed) {
-            this._appData.fertilizer_components.remove(item_name, amount);
-        }
-        this._appData.saveFertilizerComponents();
-        (_a = this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.update();
-        this.updateFertilizer();
-        this.updateInventory();
-    };
-    Application.prototype.addItemToInventory = function (item, amount, already_added) {
-        if (amount === void 0) { amount = undefined; }
-        if (already_added === void 0) { already_added = false; }
-        this.log.debug('addItemToInventory', { item: item, amount: amount, already_added: already_added });
-        if (!already_added) {
-            this._appData.inventory.add(item, amount);
-        }
-        this._appData.saveInventory();
-        this.updateInventory();
-    };
-    Application.prototype.removeItemFromInventory = function (item_name, amount, already_removed) {
-        if (amount === void 0) { amount = undefined; }
-        if (already_removed === void 0) { already_removed = false; }
-        this.log.debug('removeItemFromInventory', { item_name: item_name, amount: amount, already_removed: already_removed });
-        if (!already_removed) {
-            this._appData.inventory.remove(item_name, amount);
-        }
-        this._appData.saveInventory();
-        this.updateInventory();
-    };
-    Application.prototype.drawnInventory = function (table_selector) {
-        this.log.debug('drawInventory', table_selector);
-        this.updateInventoryEvents(table_selector);
-    };
-    Application.prototype.updateInventoryEvents = function (table_selector) {
-        this.log.debug('updateInventoryEvents', table_selector);
-        var that = this;
-        $(table_selector).find('.add-item-to-fertilizer').each(function (index) {
-            var _a;
-            var item_name = $(this).data('name');
-            var disabled = false;
-            if ((_a = that._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.isFull) {
-                disabled = true;
-                $(this).prop('disabled', disabled);
-                return;
-            }
-            if (that._appData.settings.no_inventory_restriction) {
-                disabled = false;
-                $(this).prop('disabled', disabled);
-                return;
-            }
-            var findItemInInventory = that._appData.inventory.getItemByName(item_name);
-            var findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
-            if (findItemInComponents) {
-                if ((findItemInInventory === null || findItemInInventory === void 0 ? void 0 : findItemInInventory.amount) === undefined) {
-                    disabled = true;
-                }
-                if (findItemInComponents.in_fertilizer === undefined) {
-                    disabled = true;
-                }
-                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
-                    findItemInInventory && findItemInInventory.amount !== undefined) {
-                    findItemInComponents.in_inventory = findItemInInventory.amount;
-                    if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
-                        disabled = true;
-                    }
-                }
-            }
-            $(this).prop('disabled', disabled);
-        });
-        var hide_amount = (this._appData.settings.no_inventory_restriction) ? 'd-none' : '';
-        var disabled_amount = (this._appData.settings.no_inventory_restriction) ? 'disabled' : '';
-        $(table_selector).find('.inventory-item-amount-container').each(function (index) {
-            $(this).removeClass('d-none').addClass(hide_amount);
-            $(this).find('.inventory-item-amount').each(function (index) {
-                $(this).prop('disabled', disabled_amount);
-            });
-        });
-        var table_selector_id = $(table_selector).attr('id');
-        $("#" + table_selector_id + "_filter").each(function () {
-            $(this).addClass('float-right').addClass('text-right');
-            $(this).closest('.row').find('.col-md-6').first().each(function () {
-                $(this).html("<div id=\"" + table_selector_id + "_itemListLink\" class=\"dataTables_link_items float-left text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[" + site_1.site.data.strings.item_list.title + "]</a>\n                </div>");
-            });
-        });
-    };
-    Application.prototype.fertilizerItemAmountChanged = function (index) {
-        this.log.debug('fertilizerItemAmountChanged', index);
-        this.updateFertilizer();
-    };
-    Application.prototype.updateFertilizer = function () {
-        var _a;
-        this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
-        this._appData.saveFertilizerComponents();
-        (_a = this._fertilizerAdapter) === null || _a === void 0 ? void 0 : _a.updateFromComponents(this._appData.fertilizer_components);
-        this.updateRecommendedItems();
-        this.updateAllInventoryEvents();
-    };
-    Application.prototype.updatedFertilizerComponents = function () {
-        this.log.debug('updateFertilizerComponents');
-        this.updateFertilizerUI();
-    };
-    Application.prototype.updateFertilizerUI = function () {
-        this.log.debug('updateFertilizerUI', { fertilizer: this._fertilizer });
-        this.updateSoilNutrientsChartLeafFertilizerUI();
-        this.updateSoilNutrientsChartKernelFertilizerUI();
-        this.updateSoilNutrientsChartRootFertilizerUI();
-        var yield_hp = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.yield_hp) ? this._fertilizer.yield_hp : 0, false, this._fertilizer.is_yield_hp_overflow);
-        var taste_strength = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.taste_strength) ? this._fertilizer.taste_strength : 0, false, this._fertilizer.is_yield_hp_overflow);
-        var hardness_vitality = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.hardness_vitality) ? this._fertilizer.hardness_vitality : 0, false, this._fertilizer.is_hardness_vitality_overflow);
-        var stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.stickiness_gusto) ? this._fertilizer.stickiness_gusto : 0, false, this._fertilizer.is_stickiness_gusto_overflow);
-        var aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.aesthetic_luck) ? this._fertilizer.aesthetic_luck : 0, false, this._fertilizer.is_aesthetic_luck_overflow);
-        var armor_magic = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.armor_magic) ? this._fertilizer.armor_magic : 0, false, this._fertilizer.is_armor_magic_overflow);
-        var immunity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.immunity) ? this._fertilizer.immunity : 0, false, this._fertilizer.is_immunity_overflow);
-        var pesticide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.pesticide) ? this._fertilizer.pesticide : 0, false, this._fertilizer.is_pesticide_overflow);
-        var herbicide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.herbicide) ? this._fertilizer.herbicide : 0, false, this._fertilizer.is_herbicide_overflow);
-        var toxicity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.toxicity) ? this._fertilizer.toxicity : 0, true, this._fertilizer.is_toxicity_overflow);
-        $('#fertilizerYieldHp').html(yield_hp);
-        $('#fertilizerTasteStrength').html(taste_strength);
-        $('#fertilizerHardnessVitality').html(hardness_vitality);
-        $('#fertilizerStickinessGusto').html(stickiness_gusto);
-        $('#fertilizerAestheticLuck').html(aesthetic_luck);
-        $('#fertilizerArmorMagic').html(armor_magic);
-        $('#fertilizerImmunuity').html(immunity);
-        $('#fertilizerPesticide').html(pesticide);
-        $('#fertilizerHerbicide').html(herbicide);
-        $('#fertilizerToxicity').html(toxicity);
-    };
-    Application.prototype.updateAllInventoryEvents = function () {
-        this.updateInventoryEvents('#tblInventory');
-        this.updateInventoryEvents('#tblInventoryRecommended');
-        this.updateInventoryEvents('#tblInventoryExpirables');
-    };
-    Application.prototype.inventoryItemAmountChanged = function (index) {
-        this.log.debug('inventoryItemAmountChanged', index);
-        this.updateInventory();
-    };
-    Application.prototype.updateInventory = function () {
-        var _a;
-        this.log.debug('updateInventory');
-        for (var i = 0; i < this._appData.fertilizer_components.components.length; i++) {
-            this._appData.fertilizer_components.components[i].in_inventory = (_a = this.getItemByNameFromInventory(this._appData.fertilizer_components.components[i].name)) === null || _a === void 0 ? void 0 : _a.amount;
-        }
-        this.updateRecommendedItems();
-        this.updateAllInventoryEvents();
+            class_3.prototype.update = function (subject) {
+                that.updateRecommendedItems();
+            };
+            return class_3;
+        }()));
     };
     Application.prototype.updateRecommendedItems = function () {
         var _this = this;
-        var _a, _b;
-        this._recommendedInventory.clear();
-        this._expirablesInventory.clear();
         var inventory_items = this._appData.inventory.items.filter(function (it) {
             var item_name = it.name;
             var findItemInInventory = _this._appData.inventory.getItemByName(item_name);
@@ -55780,8 +55801,7 @@ var Application = (function () {
                 if (!_this._appData.settings.no_inventory_restriction) {
                     if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
                         findItemInInventory && findItemInInventory.amount !== undefined) {
-                        findItemInComponents.in_inventory = findItemInInventory.amount;
-                        if (findItemInComponents.in_fertilizer >= findItemInComponents.in_inventory) {
+                        if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
                             return false;
                         }
                     }
@@ -55794,9 +55814,7 @@ var Application = (function () {
         expirables_inventory_items = this.sortRecommendedItems(expirables_inventory_items);
         recommended_inventory_items = this.sortRecommendedItems(recommended_inventory_items, true);
         this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
-        (_a = this._recommendedInventoryAdapter) === null || _a === void 0 ? void 0 : _a.update();
         this._expirablesInventory.items = expirables_inventory_items;
-        (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.update();
     };
     Application.prototype.sortRecommendedItems = function (items, expirable) {
         if (expirable === void 0) { expirable = false; }
@@ -55963,7 +55981,7 @@ var RecommendedFertilizerData = (function () {
     }
     return RecommendedFertilizerData;
 }());
-},{"./application.data":24,"./fertilize-components.adapter":26,"./fertilizer.adapter":28,"./fertilizer.data":29,"./inventory":31,"./inventory.adapter":30,"./site":33,"chart.js":5,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],26:[function(require,module,exports){
+},{"./application.data":25,"./fertilize-components.adapter":27,"./fertilizer.adapter":29,"./fertilizer.data":30,"./inventory":32,"./inventory.adapter":31,"./site":34,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
@@ -55971,13 +55989,21 @@ var typescript_logger_1 = require("typescript-logger");
 var fertilizer_components_1 = require("./fertilizer-components");
 var site_1 = require("./site");
 var FertilizeComponentsAdapter = (function () {
-    function FertilizeComponentsAdapter(app, list_selector, data) {
+    function FertilizeComponentsAdapter(settings, inventory, list_selector, data) {
         this._data = new fertilizer_components_1.FertilizerComponents();
         this.log = typescript_logger_1.LoggerManager.create('FertilizeComponentsAdapter');
-        this._app = app;
+        this._settings = settings;
+        this._inventory = inventory;
         this._list_selector = list_selector;
         this._data = data;
     }
+    Object.defineProperty(FertilizeComponentsAdapter.prototype, "observable", {
+        get: function () {
+            return this._data.observable;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizeComponentsAdapter.prototype, "isFull", {
         get: function () {
             return this._data.isFull;
@@ -55986,52 +56012,97 @@ var FertilizeComponentsAdapter = (function () {
         configurable: true
     });
     FertilizeComponentsAdapter.prototype.init = function () {
-        this.update();
+        this.initObservers();
+        this.updateUI();
     };
     FertilizeComponentsAdapter.prototype.setItemAmount = function (index, amount, item) {
         if (item === void 0) { item = undefined; }
         this._data.setItemAmount(index, amount, item);
-        this._app.fertilizerItemAmountChanged(index);
+    };
+    FertilizeComponentsAdapter.prototype.initObservers = function () {
+        var that = this;
+        var list = $(this._list_selector);
+        this._data.observable.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                that.updateUIElements(list);
+            };
+            class_1.prototype.updateItem = function (subject, updated, index) {
+                var findElement = list.find("li[data-index='" + index + "']").first();
+                if (findElement.length) {
+                    if (index !== undefined && updated) {
+                        if (updated.in_fertilizer !== undefined && updated.in_fertilizer <= 0) {
+                            findElement.remove();
+                            return;
+                        }
+                        findElement.replaceWith(that.renderItemElementHtml(index, updated));
+                        that.updateUIElements(findElement);
+                    }
+                }
+            };
+            class_1.prototype.updateAddedItem = function (subject, added) {
+                var findEmptyElement = list.find("li[data-name='']").first();
+                var index = findEmptyElement.data('index');
+                findEmptyElement.replaceWith(that.renderItemElementHtml(index, added));
+                that.updateUIElements(list.find("li[data-name='" + added.name + "']"));
+            };
+            class_1.prototype.updateRemovedItem = function (subject, removed) {
+                var findElement = list.find("li[data-name='" + removed.name + "']");
+                findElement.remove();
+            };
+            return class_1;
+        }()));
+        this._inventory.observable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                that._data.lets(function (item, index) {
+                    var inventory_item = subject.find(function (it) { return it.name == item.name; });
+                    if (inventory_item !== undefined) {
+                        item.in_fertilizer = inventory_item.amount;
+                    }
+                    return item;
+                });
+            };
+            class_2.prototype.updateItem = function (subject, updated, index) {
+                var component_index = that._data.components.findIndex(function (it) { return updated.name; });
+                if (component_index >= 0) {
+                    that._data.setInInventoryAmount(component_index, updated.amount);
+                }
+            };
+            class_2.prototype.updateAddedItem = function (subject, added) {
+                var component_index = that._data.components.findIndex(function (it) { return added.name; });
+                if (component_index >= 0) {
+                    that._data.setInInventoryAmount(component_index, added.amount);
+                }
+            };
+            class_2.prototype.updateRemovedItem = function (subject, removed) {
+                var component_index = that._data.components.findIndex(function (it) { return removed.name; });
+                if (component_index >= 0) {
+                    that._data.setInInventoryAmount(component_index, removed.amount);
+                }
+            };
+            return class_2;
+        }()));
+        this._settings.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                that.updateUIElements(list);
+            };
+            return class_3;
+        }()));
     };
     FertilizeComponentsAdapter.prototype.add = function (item, amount) {
         if (amount === void 0) { amount = undefined; }
-        var added = this._data.add(item, amount);
-        var list = $(this._list_selector);
-        if (added) {
-            var findEmptyElement = list.find("li[data-name='']").first();
-            var index = findEmptyElement.data('index');
-            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added));
-            this.initEvents();
-        }
-        else {
-            var findElement = list.find("li[data-name='" + item.name + "']").first();
-            if (findElement.length) {
-                var index = (findElement.data('index')) ? parseInt(findElement.data('index')) : undefined;
-                if (index !== undefined && this._data.components[index]) {
-                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
-                    this.initEvents();
-                }
-            }
-        }
+        return this._data.add(item, amount);
     };
     FertilizeComponentsAdapter.prototype.remove = function (item_name, amount) {
         if (amount === void 0) { amount = undefined; }
-        var removed = this._data.remove(item_name, amount);
-        var list = $(this._list_selector);
-        var findElement = list.find("li[data-name='" + item_name + "']").first();
-        if (removed) {
-            findElement.remove();
-            this.initEvents();
-        }
-        else if (findElement.length) {
-            var index = (findElement.data('index')) ? parseInt(findElement.data('index')) : undefined;
-            if (index !== undefined && this._data.components[index]) {
-                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
-                this.initEvents();
-            }
-        }
+        return this._data.remove(item_name, amount);
     };
-    FertilizeComponentsAdapter.prototype.update = function () {
+    FertilizeComponentsAdapter.prototype.updateUI = function () {
         var list = $(this._list_selector);
         list.html('');
         for (var i = 0; i < fertilizer_components_1.MAX_FERTILIZE_COMPONENTS || i < this._data.components.length; i++) {
@@ -56043,22 +56114,20 @@ var FertilizeComponentsAdapter = (function () {
                 list.append(this.renderEmptyElementHtml(i));
             }
         }
-        this.initEvents();
+        this.updateUIElements(list);
     };
-    FertilizeComponentsAdapter.prototype.initEvents = function () {
+    FertilizeComponentsAdapter.prototype.updateUIElements = function (parent) {
         var that = this;
-        var list = $(that._list_selector);
-        list.find('.remove-item-from-fertilizer').on('click', function () {
+        parent.find('.remove-item-from-fertilizer').on('click', function () {
             var item_name = $(this).data('name');
             that.remove(item_name, undefined);
-            that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
-        list.find('.fertilizer-item-amount').each(function () {
+        parent.find('.fertilizer-item-amount').each(function () {
             var index = parseInt($(this).data('index'));
             var item = that._data.components[index];
-            var readonly = !that._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined;
-            var in_inventory = (!that._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined) ? Math.min(item.in_inventory, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
-            var max = (!that._app.getSettings().no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+            var readonly = !that._settings.data.no_inventory_restriction && item.in_fertilizer === undefined;
+            var in_inventory = (!that._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.amount;
+            var max = (!that._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
             $(this).attr('max', max);
             $(this).prop('readonly', readonly);
             $(this).on('change', function () {
@@ -56066,24 +56135,20 @@ var FertilizeComponentsAdapter = (function () {
                 var index = parseInt($(this).data('index'));
                 var amount = parseInt($(this).val());
                 if (amount > 0 && that._data.components[index]) {
-                    that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
-                    list.find("li[data-index='" + index + "']").replaceWith(that.renderItemElementHtml(index, item));
-                    that.initEvents();
+                    that._data.setItemAmount(index, amount, that._inventory.getItemByName(item_name));
                 }
                 else {
                     if (that._data.components[index]) {
                         that._data.remove(item_name);
                     }
-                    list.find("li[data-index='" + index + "']").replaceWith(that.renderEmptyElementHtml(index));
                 }
-                that._app.fertilizerItemAmountChanged(index);
             });
         });
     };
     FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item) {
-        var readonly = (!this._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
-        var in_inventory = (!this._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined) ? Math.min(item.in_inventory, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
-        var max = (!this._app.getSettings().no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+        var readonly = (!this._settings.data.no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
+        var in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.amount;
+        var max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
         return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item.name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
     };
     FertilizeComponentsAdapter.prototype.renderEmptyElementHtml = function (index) {
@@ -56092,35 +56157,43 @@ var FertilizeComponentsAdapter = (function () {
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components":27,"./site":33,"typescript-logger":17}],27:[function(require,module,exports){
+},{"./fertilizer-components":28,"./site":34,"typescript-logger":17}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerComponents = exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MAX_FERTILIZE_COMPONENTS = void 0;
 var console_1 = require("console");
+var Observer_1 = require("./Observer");
 var site_1 = require("./site");
 exports.MAX_FERTILIZE_COMPONENTS = 8;
 exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 1;
 exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 999;
 var FertilizerComponents = (function () {
     function FertilizerComponents() {
-        this._components = [];
+        this._components = new Observer_1.DataListSubject();
     }
-    Object.defineProperty(FertilizerComponents.prototype, "items", {
+    Object.defineProperty(FertilizerComponents.prototype, "observable", {
         get: function () {
             return this._components;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerComponents.prototype, "items", {
+        get: function () {
+            return this._components.data;
+        },
         set: function (value) {
-            this._components = value;
+            this._components.data = value;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(FertilizerComponents.prototype, "components", {
         get: function () {
-            return this._components;
+            return this._components.data;
         },
         set: function (value) {
-            this._components = value;
+            this._components.data = value;
         },
         enumerable: false,
         configurable: true
@@ -56135,13 +56208,22 @@ var FertilizerComponents = (function () {
     FertilizerComponents.prototype.getItemByName = function (name) {
         return this._components.find(function (it) { return it.name === name; });
     };
-    FertilizerComponents.prototype.setItemAmount = function (index, amount, item) {
-        if (item === void 0) { item = undefined; }
-        if (index < this._components.length) {
-            this._components[index].in_fertilizer = amount;
-            this._components[index].in_inventory = (item !== undefined) ? item.amount : undefined;
-            this._components = this._components.filter(function (it) { return it.in_fertilizer === undefined || it.in_fertilizer > 0; });
-        }
+    FertilizerComponents.prototype.setInInventoryAmount = function (index, amount) {
+        this._components.let(index, function (item) {
+            item.amount = amount;
+            return item;
+        });
+    };
+    FertilizerComponents.prototype.setItemAmount = function (index, amount, item_inventory) {
+        if (item_inventory === void 0) { item_inventory = undefined; }
+        this._components.let(index, function (item) {
+            item.in_fertilizer = amount;
+            item.amount = (item_inventory !== undefined) ? item_inventory.amount : undefined;
+            return (item.in_fertilizer === undefined || item.in_fertilizer > 0) ? item : undefined;
+        });
+    };
+    FertilizerComponents.prototype.lets = function (lets) {
+        return this._components.lets(lets);
     };
     FertilizerComponents.prototype.add = function (item, amount) {
         if (amount === void 0) { amount = undefined; }
@@ -56154,22 +56236,24 @@ var FertilizerComponents = (function () {
         console_1.assert(amount === undefined || amount >= 0, "add fertilizer component, add item amount can't be negative");
         var item_index = this._components.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
-            if (this._components[item_index].in_fertilizer !== undefined || amount !== undefined) {
-                var new_amount = (amount !== undefined) ? amount : 1;
-                var in_fertilizer = (this._components[item_index].in_fertilizer !== undefined) ? this._components[item_index].in_fertilizer : 0;
-                this._components[item_index].in_fertilizer = site_1.clamp(in_fertilizer + new_amount, exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
-                this._components[item_index].in_inventory = item.amount;
-            }
+            this._components.let(item_index, function (item_component) {
+                if (item_component.in_fertilizer !== undefined || amount !== undefined) {
+                    var add_in_fertilizer_amount = (amount !== undefined) ? amount : 1;
+                    var in_fertilizer = (item_component.in_fertilizer !== undefined) ? item_component.in_fertilizer : 0;
+                    item_component.in_fertilizer = site_1.clamp(in_fertilizer + add_in_fertilizer_amount, exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                    item_component.amount = item.amount;
+                }
+                return item_component;
+            });
             return undefined;
         }
         var new_item = item;
         new_item.in_fertilizer = amount;
-        new_item.in_inventory = item.amount;
+        new_item.amount = item.amount;
         this._components.push(new_item);
-        return this._components[this._components.length - 1];
+        return this._components.last();
     };
     FertilizerComponents.prototype.remove = function (item, amount) {
-        var _this = this;
         if (amount === void 0) { amount = undefined; }
         if (this._components.length == 0) {
             return undefined;
@@ -56185,58 +56269,255 @@ var FertilizerComponents = (function () {
             return item;
         })();
         var ret = undefined;
-        this._components.forEach(function (value, index) {
-            if (value.name === item_name) {
-                if (amount === undefined) {
-                    ret = _this._components[index];
-                    _this._components.splice(index, 1);
-                    return;
+        var item_component_index = this._components.findIndex(function (it) { return it.name === item_name; });
+        if (item_component_index >= 0) {
+            this._components.let(item_component_index, function (item_component) {
+                if (item_component.in_fertilizer !== undefined || amount !== undefined) {
+                    var add_in_fertilizer_amount = (amount !== undefined) ? amount : 1;
+                    var in_fertilizer = (item_component.in_fertilizer !== undefined) ? item_component.in_fertilizer : 0;
+                    item_component.in_fertilizer = site_1.clamp(in_fertilizer - add_in_fertilizer_amount, 0, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                    if (item_component.in_fertilizer <= 0) {
+                        ret = item_component;
+                        return undefined;
+                    }
                 }
-                var in_fertilizer = (_this._components[index].in_fertilizer !== undefined) ? _this._components[index].in_fertilizer : 0;
-                _this._components[index].in_fertilizer = in_fertilizer - amount;
-                var new_in_fertilizer = (_this._components[index].in_fertilizer !== undefined) ? _this._components[index].in_fertilizer : 0;
-                if (new_in_fertilizer <= 0) {
-                    ret = _this._components[index];
-                    _this._components.splice(index, 1);
-                }
-            }
-        });
+                return item_component;
+            });
+        }
         return ret;
     };
     return FertilizerComponents;
 }());
 exports.FertilizerComponents = FertilizerComponents;
-},{"./site":33,"console":6}],28:[function(require,module,exports){
+},{"./Observer":24,"./site":34,"console":6}],29:[function(require,module,exports){
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerAdapter = void 0;
 var console_1 = require("console");
 var typescript_logger_1 = require("typescript-logger");
 var fertilizer_data_1 = require("./fertilizer.data");
+var inventory_adapter_1 = require("./inventory.adapter");
+var Observer_1 = require("./Observer");
+var chart_js_1 = __importDefault(require("chart.js"));
+var site_1 = require("./site");
 var FertilizerAdapter = (function () {
-    function FertilizerAdapter(app, data) {
-        this._data = new fertilizer_data_1.FertilizerData();
+    function FertilizerAdapter(appData, data) {
+        this._data = new Observer_1.DataSubject(new fertilizer_data_1.FertilizerData());
         this.log = typescript_logger_1.LoggerManager.create('FertilizerAdapter');
-        this._app = app;
-        this._data = data;
+        this._appData = appData;
+        this._data.data = data;
     }
+    Object.defineProperty(FertilizerAdapter.prototype, "observable", {
+        get: function () {
+            return this._data;
+        },
+        enumerable: false,
+        configurable: true
+    });
     FertilizerAdapter.prototype.init = function () {
+        this.initSoilNutrientsChart();
+        $('#txtCurrentLeafFertilizer').val(this._appData.currentLeafFertilizer);
+        $('#txtCurrentKernelFertilizer').val(this._appData.currentKernelFertilizer);
+        $('#txtCurrentRootFertilizer').val(this._appData.currentRootFertilizer);
+        this.initEvents();
+        this.initObservers();
     };
     FertilizerAdapter.prototype.updateFromComponents = function (components) {
-        this._data.leaf_fertilizer = this.calcComponentLeafFertilizerValue(components.components);
-        this._data.kernel_fertilizer = this.calcComponentKernelFertilizerValue(components.components);
-        this._data.root_fertilizer = this.calcComponentRootFertilizerValue(components.components);
-        this._data.yield_hp = this.calcComponentYieldHPValue(components.components);
-        this._data.taste_strength = this.calcComponentTasteStrengthValue(components.components);
-        this._data.hardness_vitality = this.calcComponentHardnessVitalityValue(components.components);
-        this._data.stickiness_gusto = this.calcComponentStickinessGustoValue(components.components);
-        this._data.aesthetic_luck = this.calcComponentAestheticLuckValue(components.components);
-        this._data.armor_magic = this.calcComponentArmorMagicValue(components.components);
-        this._data.immunity = this.calcComponentImmunityValue(components.components);
-        this._data.pesticide = this.calcComponentPesticideValue(components.components);
-        this._data.herbicide = this.calcComponentHerbicideValue(components.components);
-        this._data.toxicity = this.calcComponentToxicityValue(components.components);
-        this._app.updatedFertilizerComponents();
+        var _this = this;
+        this._data.let(function (data) {
+            data.leaf_fertilizer = _this.calcComponentLeafFertilizerValue(components.components);
+            data.kernel_fertilizer = _this.calcComponentKernelFertilizerValue(components.components);
+            data.root_fertilizer = _this.calcComponentRootFertilizerValue(components.components);
+            data.yield_hp = _this.calcComponentYieldHPValue(components.components);
+            data.taste_strength = _this.calcComponentTasteStrengthValue(components.components);
+            data.hardness_vitality = _this.calcComponentHardnessVitalityValue(components.components);
+            data.stickiness_gusto = _this.calcComponentStickinessGustoValue(components.components);
+            data.aesthetic_luck = _this.calcComponentAestheticLuckValue(components.components);
+            data.armor_magic = _this.calcComponentArmorMagicValue(components.components);
+            data.immunity = _this.calcComponentImmunityValue(components.components);
+            data.pesticide = _this.calcComponentPesticideValue(components.components);
+            data.herbicide = _this.calcComponentHerbicideValue(components.components);
+            data.toxicity = _this.calcComponentToxicityValue(components.components);
+            return data;
+        });
+    };
+    FertilizerAdapter.prototype.initObservers = function () {
+        var that = this;
+        this._data.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                var _a;
+                var fertilizer = subject.data;
+                that.updateSoilNutrientsChartLeafFertilizer();
+                that.updateSoilNutrientsChartKernelFertilizer();
+                that.updateSoilNutrientsChartRootFertilizer();
+                (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.update();
+                var yield_hp = inventory_adapter_1.render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
+                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_yield_hp_overflow);
+                var hardness_vitality = inventory_adapter_1.render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
+                var stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
+                var aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
+                var armor_magic = inventory_adapter_1.render_buff_bonus_html((fertilizer.armor_magic) ? fertilizer.armor_magic : 0, false, fertilizer.is_armor_magic_overflow);
+                var immunity = inventory_adapter_1.render_buff_bonus_html((fertilizer.immunity) ? fertilizer.immunity : 0, false, fertilizer.is_immunity_overflow);
+                var pesticide = inventory_adapter_1.render_buff_bonus_html((fertilizer.pesticide) ? fertilizer.pesticide : 0, false, fertilizer.is_pesticide_overflow);
+                var herbicide = inventory_adapter_1.render_buff_bonus_html((fertilizer.herbicide) ? fertilizer.herbicide : 0, false, fertilizer.is_herbicide_overflow);
+                var toxicity = inventory_adapter_1.render_buff_bonus_html((fertilizer.toxicity) ? fertilizer.toxicity : 0, true, fertilizer.is_toxicity_overflow);
+                $('#fertilizerYieldHp').html(yield_hp);
+                $('#fertilizerTasteStrength').html(taste_strength);
+                $('#fertilizerHardnessVitality').html(hardness_vitality);
+                $('#fertilizerStickinessGusto').html(stickiness_gusto);
+                $('#fertilizerAestheticLuck').html(aesthetic_luck);
+                $('#fertilizerArmorMagic').html(armor_magic);
+                $('#fertilizerImmunity').html(immunity);
+                $('#fertilizerPesticide').html(pesticide);
+                $('#fertilizerHerbicide').html(herbicide);
+                $('#fertilizerToxicity').html(toxicity);
+            };
+            return class_1;
+        }()));
+        this._appData.currentLeafFertilizerObservable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                var _a, _b, _c, _d;
+                if (that._soilNutrientsChart) {
+                    if (((_c = (_b = (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
+                        that._soilNutrientsChart.data.datasets[0].data[0] = site_1.clamp(subject.data, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+                    }
+                }
+                that.updateSoilNutrientsChartLeafFertilizer();
+                (_d = that._soilNutrientsChart) === null || _d === void 0 ? void 0 : _d.update();
+            };
+            return class_2;
+        }()));
+        this._appData.currentKernelFertilizerObservable.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                var _a, _b, _c, _d;
+                if (that._soilNutrientsChart) {
+                    if (((_c = (_b = (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
+                        that._soilNutrientsChart.data.datasets[0].data[1] = site_1.clamp(subject.data, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+                    }
+                }
+                that.updateSoilNutrientsChartKernelFertilizer();
+                (_d = that._soilNutrientsChart) === null || _d === void 0 ? void 0 : _d.update();
+            };
+            return class_3;
+        }()));
+        this._appData.currentRootFertilizerObservable.attach(new (function () {
+            function class_4() {
+            }
+            class_4.prototype.update = function (subject) {
+                var _a, _b, _c, _d;
+                if (that._soilNutrientsChart) {
+                    if (((_c = (_b = (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
+                        that._soilNutrientsChart.data.datasets[0].data[2] = site_1.clamp(subject.data, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+                    }
+                }
+                that.updateSoilNutrientsChartRootFertilizer();
+                (_d = that._soilNutrientsChart) === null || _d === void 0 ? void 0 : _d.update();
+            };
+            return class_4;
+        }()));
+    };
+    FertilizerAdapter.prototype.initEvents = function () {
+        var that = this;
+        $('#txtCurrentLeafFertilizer').on('change', function () {
+            that._appData.currentLeafFertilizer = parseInt($(this).val());
+        });
+        $('#txtCurrentKernelFertilizer').on('change', function () {
+            that._appData.currentKernelFertilizer = parseInt($(this).val());
+        });
+        $('#txtCurrentRootFertilizer').on('change', function () {
+            that._appData.currentRootFertilizer = parseInt($(this).val());
+        });
+    };
+    FertilizerAdapter.prototype.initSoilNutrientsChart = function () {
+        var canvas = $('#soilNutrientsChart');
+        this._soilNutrientsChart = new chart_js_1.default(canvas, {
+            type: 'radar',
+            data: {
+                labels: [
+                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
+                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
+                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
+                ],
+                datasets: [
+                    {
+                        label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
+                        fill: true,
+                        data: [
+                            this._appData.currentLeafFertilizer,
+                            this._appData.currentKernelFertilizer,
+                            this._appData.currentRootFertilizer
+                        ],
+                        backgroundColor: 'rgba(147, 247, 141, 0.2)',
+                        borderColor: 'rgba(147, 247, 141, 1)',
+                        pointBorderColor: 'rgba(147, 247, 141, 0.5)',
+                        pointBackgroundColor: 'rgba(147, 247, 141, 0.5)',
+                        pointStyle: 'rect',
+                        borderWidth: 1
+                    }, {
+                        label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
+                        fill: true,
+                        data: [
+                            this._appData.currentLeafFertilizer + this._data.data.leaf_fertilizer,
+                            this._appData.currentKernelFertilizer + this._data.data.kernel_fertilizer,
+                            this._appData.currentRootFertilizer + this._data.data.root_fertilizer
+                        ],
+                        backgroundColor: 'rgba(160, 250, 255, 0.2)',
+                        borderColor: 'rgba(160, 250, 255, 1)',
+                        pointBorderColor: 'rgba(205, 215, 115, 1)',
+                        pointBackgroundColor: 'rgba(205, 215, 115, 1)',
+                        pointStyle: 'rect',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scale: {
+                    angleLines: {
+                        display: true,
+                        color: 'black'
+                    },
+                    ticks: {
+                        min: fertilizer_data_1.MIN_FERTILIZER,
+                        max: fertilizer_data_1.MAX_FERTILIZER
+                    }
+                }
+            }
+        });
+        this.updateSoilNutrientsChartLeafFertilizer();
+        this.updateSoilNutrientsChartKernelFertilizer();
+        this.updateSoilNutrientsChartRootFertilizer();
+        this._soilNutrientsChart.update();
+    };
+    FertilizerAdapter.prototype.updateSoilNutrientsChartLeafFertilizer = function () {
+        var _a, _b, _c;
+        if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
+            this._soilNutrientsChart.data.datasets[1].data[0] = site_1.clamp(this._appData.currentLeafFertilizer + this._data.data.leaf_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
+        }
+    };
+    FertilizerAdapter.prototype.updateSoilNutrientsChartKernelFertilizer = function () {
+        var _a, _b, _c;
+        if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
+            this._soilNutrientsChart.data.datasets[1].data[1] = site_1.clamp(this._appData.currentKernelFertilizer + this._data.data.kernel_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
+        }
+    };
+    FertilizerAdapter.prototype.updateSoilNutrientsChartRootFertilizer = function () {
+        var _a, _b, _c;
+        if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
+            this._soilNutrientsChart.data.datasets[1].data[2] = site_1.clamp(this._appData.currentRootFertilizer + this._data.data.root_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
+        }
     };
     FertilizerAdapter.prototype.calcComponentLeafFertilizerValue = function (components) {
         var _this = this;
@@ -56441,7 +56722,7 @@ var FertilizerAdapter = (function () {
     return FertilizerAdapter;
 }());
 exports.FertilizerAdapter = FertilizerAdapter;
-},{"./fertilizer.data":29,"console":6,"typescript-logger":17}],29:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer.data":30,"./inventory.adapter":31,"./site":34,"chart.js":5,"console":6,"typescript-logger":17}],30:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerData = exports.MAX_STATS = exports.MIN_STATS = exports.MAX_FERTILIZER = exports.MIN_FERTILIZER = void 0;
@@ -56830,7 +57111,7 @@ var FertilizerData = (function () {
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
-},{"./site":33}],30:[function(require,module,exports){
+},{"./site":34}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryAdapter = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
@@ -56844,46 +57125,46 @@ function hasProperty(o, propertyName) {
 function getProperty(o, propertyName) {
     return (o[propertyName] !== undefined) ? o[propertyName] : null;
 }
-function render_buff_bonus_html(value, invertcolor, overflow) {
-    if (invertcolor === void 0) { invertcolor = null; }
+function render_buff_bonus_html(value, invert_color, overflow) {
+    if (invert_color === void 0) { invert_color = undefined; }
     if (overflow === void 0) { overflow = false; }
-    var valnumber = (value) ? value : 0;
-    var valuestr = (valnumber > 0) ? "+" + valnumber : "" + valnumber;
-    if (invertcolor !== null) {
-        if (!invertcolor) {
+    var val_number = (value) ? value : 0;
+    var val_str = (val_number > 0) ? "+" + val_number : "" + val_number;
+    if (invert_color !== undefined) {
+        if (!invert_color) {
             if (overflow) {
-                valuestr = "<span class=\"text-warning\">" + valuestr + "+</span>";
+                val_str = "<span class=\"text-warning\">" + val_str + "+</span>";
             }
-            else if (valnumber > 0) {
-                valuestr = "<span class=\"text-success\">" + valuestr + "</span>";
+            else if (val_number > 0) {
+                val_str = "<span class=\"text-success\">" + val_str + "</span>";
             }
-            if (valnumber < 0) {
-                valuestr = "<span class=\"text-danger\">" + valuestr + "</span>";
+            if (val_number < 0) {
+                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
             }
         }
         else {
             if (overflow) {
-                valuestr = "<span class=\"text-warning\">" + valuestr + "+</span>";
+                val_str = "<span class=\"text-warning\">" + val_str + "+</span>";
             }
-            else if (valnumber < 0) {
-                valuestr = "<span class=\"text-success\">" + valuestr + "</span>";
+            else if (val_number < 0) {
+                val_str = "<span class=\"text-success\">" + val_str + "</span>";
             }
-            if (valnumber > 0) {
-                valuestr = "<span class=\"text-danger\">" + valuestr + "</span>";
+            if (val_number > 0) {
+                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
             }
         }
     }
-    return "<span class=\"text-center\">" + valuestr + "</span>";
+    return "<span class=\"text-center\">" + val_str + "</span>";
 }
 exports.render_buff_bonus_html = render_buff_bonus_html;
 ;
-function render_buff_bonus(property_name, invertcolor, overflow) {
-    if (invertcolor === void 0) { invertcolor = null; }
+function render_buff_bonus(property_name, invert_color, overflow) {
+    if (invert_color === void 0) { invert_color = undefined; }
     if (overflow === void 0) { overflow = false; }
     return function (data, type, row) {
         var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
         if (type === 'display') {
-            return render_buff_bonus_html(value, invertcolor, overflow);
+            return render_buff_bonus_html(value, invert_color, overflow);
         }
         return value;
     };
@@ -56892,13 +57173,20 @@ exports.render_buff_bonus = render_buff_bonus;
 ;
 var INVENTORY_PAGE_LENGTH = 7;
 var InventoryAdapter = (function () {
-    function InventoryAdapter(app, table_selector, data) {
-        this._data = new inventory_1.Inventory();
+    function InventoryAdapter(settings, fertilizer_components, table_selector, data) {
         this.log = typescript_logger_1.LoggerManager.create('InventoryAdapter');
-        this._app = app;
+        this._settings = settings;
+        this._fertilizer_components = fertilizer_components;
         this._table_selector = table_selector;
         this._data = data;
     }
+    Object.defineProperty(InventoryAdapter.prototype, "observable", {
+        get: function () {
+            return this._data.observable;
+        },
+        enumerable: false,
+        configurable: true
+    });
     InventoryAdapter.prototype.init = function (orderable, not_orderable, ordering) {
         if (orderable === void 0) { orderable = [1, 2, 3, 4, 5, 6]; }
         if (not_orderable === void 0) { not_orderable = [0]; }
@@ -56962,7 +57250,8 @@ var InventoryAdapter = (function () {
             responsive: true,
             lengthChange: false,
             createdRow: function (row, data, dataIndex) {
-                $(row).data('name', data.name);
+                $(row).attr('data-name', data.name);
+                $(row).attr('data-index', dataIndex);
             },
             columnDefs: [
                 {
@@ -57047,9 +57336,9 @@ var InventoryAdapter = (function () {
                             var item_name = row.name;
                             var amount_value = (_l = row.amount) !== null && _l !== void 0 ? _l : 1;
                             var index = meta.row - 1;
-                            var hide_amount = (that._app.getSettings().no_inventory_restriction) ? 'd-none' : '';
-                            var disabled_amount = (that._app.getSettings().no_inventory_restriction) ? 'disabled' : '';
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            var hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
+                            var disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
+                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -57081,66 +57370,168 @@ var InventoryAdapter = (function () {
                 }
             ]
         });
+        this.updateUIElements($(this._table_selector));
         var that = this;
         this._table.on('draw.dt', function () {
-            that._app.drawnInventory(that._table_selector);
-            that.initEvents();
+            that.updateUIElements($(that._table_selector));
         });
-        this.initEvents();
+        this.initObservers();
     };
-    InventoryAdapter.prototype.update = function () {
-        if (this._table) {
-            this._table.clear();
-            this._table.rows.add(this._data.items).draw(false);
-        }
+    InventoryAdapter.prototype.initObservers = function () {
+        var that = this;
+        this._data.observable.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                that._fertilizer_components.lets(function (item_component, index) {
+                    var item_inventory = subject.find(function (it) { return it.name == item_component.name; });
+                    if (item_inventory !== undefined) {
+                        item_component.amount = item_inventory.amount;
+                    }
+                    return item_component;
+                });
+            };
+            class_1.prototype.updateItem = function (subject, updated, index) {
+                that._fertilizer_components.lets(function (item_component, index) {
+                    if (updated.name === item_component.name) {
+                        item_component.amount = updated.amount;
+                    }
+                    return item_component;
+                });
+            };
+            class_1.prototype.updateAddedItem = function (subject, added) {
+                that._fertilizer_components.lets(function (item_component, index) {
+                    if (added.name === item_component.name) {
+                        item_component.amount = added.amount;
+                    }
+                    return item_component;
+                });
+            };
+            class_1.prototype.updateRemovedItem = function (subject, removed) {
+                that._fertilizer_components.lets(function (item_component, index) {
+                    if (removed.name === item_component.name) {
+                        item_component.amount = 0;
+                    }
+                    return item_component;
+                });
+            };
+            return class_1;
+        }()));
+        this._data.observable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                var _a, _b;
+                (_a = that._table) === null || _a === void 0 ? void 0 : _a.clear();
+                (_b = that._table) === null || _b === void 0 ? void 0 : _b.rows.add(that._data.items).draw(false);
+            };
+            class_2.prototype.updateItem = function (subject, updated, index) {
+                var _a, _b;
+                if (updated.amount !== undefined && updated.amount <= 0) {
+                    (_a = that._table) === null || _a === void 0 ? void 0 : _a.row("[data-index='" + index + "']").remove();
+                    (_b = that._table) === null || _b === void 0 ? void 0 : _b.draw(false);
+                    return;
+                }
+                that.updateUIElements($(that._table_selector).find("tr[data-index='" + index + "']"));
+            };
+            class_2.prototype.updateAddedItem = function (subject, added) {
+                var _a;
+                (_a = that._table) === null || _a === void 0 ? void 0 : _a.rows.add([added]).draw(false);
+            };
+            class_2.prototype.updateRemovedItem = function (subject, removed) {
+                var _a, _b;
+                (_a = that._table) === null || _a === void 0 ? void 0 : _a.row("[data-name='" + removed.name + "']").remove();
+                (_b = that._table) === null || _b === void 0 ? void 0 : _b.draw(false);
+            };
+            return class_2;
+        }()));
+        this._settings.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                that.updateUIElements($(that._table_selector));
+            };
+            return class_3;
+        }()));
     };
     InventoryAdapter.prototype.add = function (item, amount) {
-        var _a;
         if (amount === void 0) { amount = undefined; }
         this.log.debug('add', { item: item, amount: amount });
-        var added = this._data.add(item, amount);
-        if (added) {
-            (_a = this._table) === null || _a === void 0 ? void 0 : _a.rows.add([item]).draw(false);
-            this._app.addItemToInventory(item, amount, true);
-        }
-        return added;
+        return this._data.add(item, amount);
     };
     InventoryAdapter.prototype.remove = function (item_name, amount) {
-        var _a, _b;
         if (amount === void 0) { amount = undefined; }
         this.log.debug('remove', { item_name: item_name, amount: amount });
-        var removed = this._data.remove(item_name, amount);
-        if (removed) {
-            (_a = this._table) === null || _a === void 0 ? void 0 : _a.row("[data-name='" + item_name + "']").remove();
-            (_b = this._table) === null || _b === void 0 ? void 0 : _b.draw(false);
-            this._app.removeItemFromInventory(item_name, amount, true);
-        }
-        return removed;
+        return this._data.remove(item_name, amount);
     };
     InventoryAdapter.prototype.setAmount = function (index, amount) {
         this._data.setItemAmount(index, amount);
-        this._app.inventoryItemAmountChanged(index);
     };
-    InventoryAdapter.prototype.initEvents = function () {
+    InventoryAdapter.prototype.updateUIElements = function (parent) {
         var that = this;
-        $(this._table_selector).find('.add-item-to-fertilizer').on('click', function () {
+        parent.find('.add-item-to-fertilizer').each(function (index) {
             var item_name = $(this).data('name');
-            var item = that._app.getItemByNameFromInventory(item_name);
-            that.log.debug('add-item-to-fertilizer', { item_name: item_name, item: item });
-            if (item) {
-                that._app.addItemToFertilizer(item, 1, false);
+            var disabled = false;
+            if (that._fertilizer_components.isFull) {
+                disabled = true;
+                $(this).prop('disabled', disabled);
+                return;
             }
+            if (that._settings.data.no_inventory_restriction) {
+                disabled = false;
+                $(this).prop('disabled', disabled);
+                return;
+            }
+            var findItemInInventory = that._data.getItemByName(item_name);
+            var findItemInComponents = that._fertilizer_components.getItemByName(item_name);
+            if (findItemInComponents) {
+                if ((findItemInInventory === null || findItemInInventory === void 0 ? void 0 : findItemInInventory.amount) === undefined) {
+                    disabled = true;
+                }
+                if (findItemInComponents.in_fertilizer === undefined) {
+                    disabled = true;
+                }
+                if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
+                    findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
+                        disabled = true;
+                    }
+                }
+            }
+            $(this).prop('disabled', disabled);
+            $(this).on('click', function () {
+                var item_name = $(this).data('name');
+                var item = that._data.getItemByName(item_name);
+                that.log.debug('add-item-to-fertilizer', { item_name: item_name, item: item });
+                if (item) {
+                    that._fertilizer_components.add(item, 1);
+                }
+            });
         });
-        $(this._table_selector).find('.remove-item-from-inventory').on('click', function () {
+        parent.find('.remove-item-from-inventory').on('click', function () {
             var item_name = $(this).data('name');
             that.log.debug('remove-item-from-inventory', { item_name: item_name });
             that.remove(item_name);
         });
-        $(this._table_selector).find('.inventory-item-amount').on('change', function () {
+        parent.find('.inventory-item-amount').on('change', function () {
             var index = parseInt($(this).data('index'));
             var amount = parseInt($(this).val());
             that._data.setItemAmount(index, amount);
-            that._app.inventoryItemAmountChanged(index);
+        });
+        var hide_amount = (this._settings.data.no_inventory_restriction) ? 'd-none' : '';
+        var disabled_amount = (this._settings.data.no_inventory_restriction) ? 'disabled' : '';
+        parent.find('.inventory-item-amount-container').each(function (index) {
+            $(this).removeClass('d-none').addClass(hide_amount);
+            $(this).find('.inventory-item-amount').each(function (index) {
+                $(this).prop('disabled', disabled_amount);
+            });
+        });
+        var table_selector_id = $(this._table_selector).attr('id');
+        $("#" + table_selector_id + "_filter").each(function () {
+            $(this).addClass('float-right').addClass('text-right');
+            $(this).closest('.row').find('.col-md-6').first().each(function () {
+                $(this).html("<div id=\"" + table_selector_id + "_itemListLink\" class=\"dataTables_link_items float-left text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[" + site_1.site.data.strings.item_list.title + "]</a>\n                </div>");
+            });
         });
     };
     InventoryAdapter.prototype.getStatFocus = function (fertilizer_bonus) {
@@ -57171,40 +57562,48 @@ var InventoryAdapter = (function () {
     return InventoryAdapter;
 }());
 exports.InventoryAdapter = InventoryAdapter;
-},{"./application.data":24,"./inventory":31,"./site":33,"typescript-logger":17}],31:[function(require,module,exports){
+},{"./application.data":25,"./inventory":32,"./site":34,"typescript-logger":17}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = exports.MAX_ITEMS_AMOUNT_INVENTORY = exports.MIN_ITEMS_AMOUNT_INVENTORY = void 0;
 var console_1 = require("console");
 var fertilizer_components_1 = require("./fertilizer-components");
+var Observer_1 = require("./Observer");
 var site_1 = require("./site");
 exports.MIN_ITEMS_AMOUNT_INVENTORY = 1;
 exports.MAX_ITEMS_AMOUNT_INVENTORY = 999;
 var Inventory = (function () {
     function Inventory() {
-        this._items_in_inventory = [];
+        this._items_in_inventory = new Observer_1.DataListSubject();
     }
-    Object.defineProperty(Inventory.prototype, "items", {
+    Object.defineProperty(Inventory.prototype, "observable", {
         get: function () {
             return this._items_in_inventory;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Inventory.prototype, "items", {
+        get: function () {
+            return this._items_in_inventory.data;
+        },
         set: function (value) {
-            this._items_in_inventory = value;
+            this._items_in_inventory.data = value;
         },
         enumerable: false,
         configurable: true
     });
     Inventory.prototype.getItemByName = function (name) {
-        return this._items_in_inventory.find(function (it) { return it.name === name; });
+        return this._items_in_inventory.data.find(function (it) { return it.name === name; });
     };
     Inventory.prototype.setItemAmount = function (index, amount) {
-        if (index < this._items_in_inventory.length) {
-            this._items_in_inventory[index].amount = amount;
-            this._items_in_inventory = this._items_in_inventory.filter(function (it) { return it.amount === undefined || it.amount > 0; });
-        }
+        this._items_in_inventory.let(index, function (item) {
+            item.amount = amount;
+            return (item.amount === undefined || item.amount > 0) ? item : undefined;
+        });
     };
     Inventory.prototype.clear = function () {
-        this._items_in_inventory = [];
+        this._items_in_inventory.clear();
     };
     Inventory.prototype.add = function (item, amount) {
         if (amount === void 0) { amount = undefined; }
@@ -57214,20 +57613,23 @@ var Inventory = (function () {
         console_1.assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
         var item_index = this._items_in_inventory.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
-            if (this._items_in_inventory[item_index].amount !== undefined || amount !== undefined) {
-                var new_amount = (amount !== undefined) ? amount : 1;
-                var old_amount = (this._items_in_inventory[item_index].amount !== undefined) ? this._items_in_inventory[item_index].amount : 0;
-                this._items_in_inventory[item_index].amount = site_1.clamp(old_amount + new_amount, fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_INVENTORY);
+            var item_amount = this._items_in_inventory.get(item_index).amount;
+            if (item_amount !== undefined || amount !== undefined) {
+                var new_amount_1 = (amount !== undefined) ? amount : 1;
+                var old_amount_1 = (item_amount !== undefined) ? item_amount : 0;
+                this._items_in_inventory.let(item_index, function (value) {
+                    value.amount = site_1.clamp(old_amount_1 + new_amount_1, fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_INVENTORY);
+                    return value;
+                });
             }
             return undefined;
         }
-        var newitem = item;
-        newitem.amount = amount;
-        this._items_in_inventory.push(newitem);
-        return this._items_in_inventory[this._items_in_inventory.length - 1];
+        var new_item = item;
+        new_item.amount = amount;
+        this._items_in_inventory.push(new_item);
+        return this._items_in_inventory.last();
     };
     Inventory.prototype.remove = function (item, amount) {
-        var _this = this;
         if (amount === void 0) { amount = undefined; }
         if (amount !== undefined && amount === 0) {
             return undefined;
@@ -57240,27 +57642,27 @@ var Inventory = (function () {
             return item;
         })();
         var ret = undefined;
-        this._items_in_inventory.forEach(function (item, index) {
+        this._items_in_inventory.lets(function (item, index) {
             if (item.name === item_name) {
                 if (amount === undefined) {
                     ret = item;
-                    _this._items_in_inventory.splice(index, 1);
-                    return;
+                    return undefined;
                 }
                 var old_amount = (item.amount !== undefined) ? item.amount : 0;
-                _this._items_in_inventory[index].amount = site_1.clamp(old_amount - amount, 0, exports.MAX_ITEMS_AMOUNT_INVENTORY);
-                if (_this._items_in_inventory[index].amount === undefined || _this._items_in_inventory[index].amount <= 0) {
+                item.amount = site_1.clamp(old_amount - amount, 0, exports.MAX_ITEMS_AMOUNT_INVENTORY);
+                if (item.amount === undefined || item.amount <= 0) {
                     ret = item;
-                    _this._items_in_inventory.splice(index, 1);
+                    return undefined;
                 }
             }
+            return item;
         });
         return ret;
     };
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{"./fertilizer-components":27,"./site":33,"console":6}],32:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer-components":28,"./site":34,"console":6}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");
@@ -57273,7 +57675,7 @@ $(function () {
     var app = new application_1.Application();
     app.init();
 });
-},{"./application":25,"./site":33,"typescript-logger":17}],33:[function(require,module,exports){
+},{"./application":26,"./site":34,"typescript-logger":17}],34:[function(require,module,exports){
 'use strict';
 String.prototype.format = function () {
     var args = arguments;
@@ -57356,5 +57758,5 @@ module.exports = {
     makeDoubleClick: makeDoubleClick,
     clamp: clamp
 };
-},{}]},{},[32])
+},{}]},{},[33])
 //# sourceMappingURL=bundle.js.map

@@ -9,14 +9,17 @@ export const MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 999;
 
 export interface ItemFertilizerComponentData extends ItemInventoryData {
     in_fertilizer?: number;
-    in_inventory?: number;
 }
 
 export class FertilizerComponents {
     private _components: DataListSubject<ItemFertilizerComponentData> = new DataListSubject<ItemFertilizerComponentData>();
 
-    get items() {
+    get observable() {
         return this._components;
+    }
+
+    get items() {
+        return this._components.data;
     }
 
     set items(value: ItemFertilizerComponentData[]) {
@@ -39,12 +42,23 @@ export class FertilizerComponents {
         return this._components.find((it) => it.name === name);
     }
 
-    public setItemAmount(index: number, amount: number | undefined, item: ItemInventoryData | undefined = undefined) {
+    public setInInventoryAmount(index: number, amount: number | undefined) {
+        this._components.let(index, (item: ItemFertilizerComponentData) => {
+            item.amount = amount;
+            return item;
+        });
+    }
+
+    public setItemAmount(index: number, amount: number | undefined, item_inventory: ItemInventoryData | undefined = undefined) {
         this._components.let(index, (item: ItemFertilizerComponentData) => {
             item.in_fertilizer = amount;
-            item.in_inventory = (item !== undefined)? item.amount : undefined;
+            item.amount = (item_inventory !== undefined)? item_inventory.amount : undefined;
             return (item.in_fertilizer === undefined || item.in_fertilizer > 0)? item : undefined;
         });
+    }
+
+    public lets(lets: (value: ItemInventoryData, index: number) => ItemInventoryData | undefined) {
+        return this._components.lets(lets);
     }
 
     public add(item: ItemInventoryData, amount: number | undefined = undefined) {
@@ -58,15 +72,15 @@ export class FertilizerComponents {
 
         const item_index = this._components.findIndex((it) => it.name === item.name);
         if (item_index >= 0) {
-            this._components.let(item_index, (item: ItemFertilizerComponentData) => {
-                if (item.in_fertilizer !== undefined || amount !== undefined) {
-                    const new_amount = (amount !== undefined)? amount as number : 1;
-                    const in_fertilizer = (item.in_fertilizer !== undefined)? item.in_fertilizer as number : 0;
-                    item.in_fertilizer = clamp(in_fertilizer + new_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
-                    item.in_inventory = item.amount;
+            this._components.let(item_index, (item_component: ItemFertilizerComponentData) => {
+                if (item_component.in_fertilizer !== undefined || amount !== undefined) {
+                    const add_in_fertilizer_amount = (amount !== undefined)? amount as number : 1;
+                    const in_fertilizer = (item_component.in_fertilizer !== undefined)? item_component.in_fertilizer as number : 0;
+                    item_component.in_fertilizer = clamp(in_fertilizer + add_in_fertilizer_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                    item_component.amount = item.amount;
                 }
 
-                return item;
+                return item_component;
             });
             
             return undefined;
@@ -74,7 +88,7 @@ export class FertilizerComponents {
 
         let new_item: ItemFertilizerComponentData = item;
         new_item.in_fertilizer = amount;
-        new_item.in_inventory = item.amount;
+        new_item.amount = item.amount;
         this._components.push(new_item);
 
         return this._components.last();
@@ -98,23 +112,23 @@ export class FertilizerComponents {
         })();
 
         var ret: ItemFertilizerComponentData | undefined = undefined;
-        this._components.forEach((value, index) => {
-            if (value.name === item_name) {
-                if (amount === undefined) {
-                    ret = this._components[index];
-                    this._components.splice(index, 1);
-                    return;
+        const item_component_index = this._components.findIndex((it) => it.name === item_name);
+        if (item_component_index >= 0) {
+            this._components.let(item_component_index, (item_component: ItemFertilizerComponentData) => {
+                if (item_component.in_fertilizer !== undefined || amount !== undefined) {
+                    const add_in_fertilizer_amount = (amount !== undefined)? amount as number : 1;
+                    const in_fertilizer = (item_component.in_fertilizer !== undefined)? item_component.in_fertilizer as number : 0;
+                    item_component.in_fertilizer = clamp(in_fertilizer - add_in_fertilizer_amount, 0, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+
+                    if (item_component.in_fertilizer <= 0) {
+                        ret = item_component;
+                        return undefined;
+                    }
                 }
 
-                const in_fertilizer = (this._components[index].in_fertilizer !== undefined)? this._components[index].in_fertilizer as number : 0;
-                this._components[index].in_fertilizer = in_fertilizer - amount;
-                const new_in_fertilizer = (this._components[index].in_fertilizer !== undefined)? this._components[index].in_fertilizer as number : 0;
-                if (new_in_fertilizer <= 0) {
-                    ret = this._components[index];
-                    this._components.splice(index, 1);
-                }
-            }
-        });
+                return item_component;
+            });
+        }
 
         return ret;
     }

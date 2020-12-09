@@ -1,20 +1,28 @@
 import { LoggerManager } from "typescript-logger";
-import { ApplicationListener } from "./application";
+import { Application } from "./application";
+import { Settings } from "./application.data";
 import { FertilizerComponents, ItemFertilizerComponentData, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
-import { ItemInventoryData } from "./inventory";
+import { Inventory, ItemInventoryData } from "./inventory";
+import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./Observer";
 import { site } from "./site";
 
 export class FertilizeComponentsAdapter {
-    private _app: ApplicationListener;
-    private _data: FertilizerComponents = new FertilizerComponents();
+    private _settings: DataSubject<Settings>;
+    private _inventory: Inventory;
     private _list_selector: string;
+    private _data: FertilizerComponents = new FertilizerComponents();
 
     private log = LoggerManager.create('FertilizeComponentsAdapter');
 
-    constructor(app: ApplicationListener, list_selector: string, data: FertilizerComponents) {
-        this._app = app;
+    constructor(settings: DataSubject<Settings>, inventory: Inventory, list_selector: string, data: FertilizerComponents) {
+        this._settings = settings;
+        this._inventory = inventory;
         this._list_selector = list_selector;
         this._data = data;
+    }
+
+    get observable() {
+        return this._data.observable;
     }
 
     get isFull() {
@@ -22,52 +30,93 @@ export class FertilizeComponentsAdapter {
     }
 
     public init() {
-        this.update();
+        this.initObservers();
+        this.updateUI();
     }
 
     public setItemAmount(index: number, amount: number | undefined, item: ItemInventoryData | undefined = undefined) {
         this._data.setItemAmount(index, amount, item);
     }
 
-    public add(item: ItemInventoryData, amount: number | undefined = undefined) {
-        const added = this._data.add(item, amount);
-        
+    private initObservers() {
+        var that = this;
         let list = $(this._list_selector) as JQuery<HTMLUListElement>;
-        if (added) {
-            let findEmptyElement = list.find(`li[data-name='']`).first();
-            const index = findEmptyElement.data('index');
-            findEmptyElement.replaceWith(this.renderItemElementHtml(index, added));
-            this.initEvents();
-        } else {
-            let findElement = list.find(`li[data-name='${item.name}']`).first();
-            if (findElement.length) {
-                const index = (findElement.data('index'))? parseInt(findElement.data('index') as string) : undefined;
-                if (index !== undefined && this._data.components[index]) {
-                    findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
-                    this.initEvents();
+        this._data.observable.attach(new class implements DataListObserver<ItemFertilizerComponentData>{
+            update(subject: DataListSubject<ItemFertilizerComponentData>): void {
+                that.updateUIElements(list);
+            }
+            updateItem(subject: DataListSubject<ItemFertilizerComponentData>, updated: ItemFertilizerComponentData, index: number): void {
+                let findElement = list.find(`li[data-index='${index}']`).first();
+                if (findElement.length) {
+                    if (index !== undefined && updated) {
+                        if (updated.in_fertilizer !== undefined && updated.in_fertilizer <= 0) {
+                            findElement.remove();
+                            return;
+                        }
+
+                        findElement.replaceWith(that.renderItemElementHtml(index, updated));
+                        that.updateUIElements(findElement);
+                    }
                 }
             }
-        }
+            updateAddedItem(subject: DataListSubject<ItemFertilizerComponentData>, added: ItemFertilizerComponentData): void {
+                let findEmptyElement = list.find(`li[data-name='']`).first();
+                const index = findEmptyElement.data('index');
+                findEmptyElement.replaceWith(that.renderItemElementHtml(index, added));
+                that.updateUIElements(list.find(`li[data-name='${added.name}']`));
+            }
+            updateRemovedItem(subject: DataListSubject<ItemFertilizerComponentData>, removed: ItemFertilizerComponentData): void {
+                let findElement = list.find(`li[data-name='${removed.name}']`);
+                findElement.remove();
+            }
+        });
+
+        this._inventory.observable.attach(new class implements DataListObserver<ItemInventoryData> {
+            update(subject: DataListSubject<ItemInventoryData>): void {
+                that._data.lets((item: ItemFertilizerComponentData, index: number) => {
+                    const inventory_item = subject.find(it => it.name == item.name);
+                    if (inventory_item !== undefined) {
+                        item.in_fertilizer = inventory_item.amount;
+                    }
+                    return item;
+                });
+            }
+            updateItem(subject: DataListSubject<ItemInventoryData>, updated: ItemInventoryData, index: number): void {
+                const component_index = that._data.components.findIndex(it => updated.name);
+                if (component_index >= 0) {
+                    that._data.setInInventoryAmount(component_index, updated.amount);
+                }
+            }
+            updateAddedItem(subject: DataListSubject<ItemInventoryData>, added: ItemInventoryData): void {
+                const component_index = that._data.components.findIndex(it => added.name);
+                if (component_index >= 0) {
+                    that._data.setInInventoryAmount(component_index, added.amount);
+                }
+            }
+            updateRemovedItem(subject: DataListSubject<ItemInventoryData>, removed: ItemInventoryData): void {
+                const component_index = that._data.components.findIndex(it => removed.name);
+                if (component_index >= 0) {
+                    that._data.setInInventoryAmount(component_index, removed.amount);
+                }
+            }
+        });
+        
+        this._settings.attach(new class implements DataObserver<Settings>{
+            update(subject: DataSubject<Settings>): void {
+                that.updateUIElements(list);
+            }
+        });
+    }
+
+    public add(item: ItemInventoryData, amount: number | undefined = undefined) {
+        return this._data.add(item, amount);
     }
 
     public remove(item_name: string, amount: number | undefined = undefined) {
-        const removed = this._data.remove(item_name, amount);
-
-        let list = $(this._list_selector) as JQuery<HTMLUListElement>;
-        let findElement = list.find(`li[data-name='${item_name}']`).first();
-        if(removed) {
-            findElement.remove();
-            this.initEvents();
-        } else if (findElement.length) {
-            const index = (findElement.data('index'))? parseInt(findElement.data('index') as string) : undefined;
-            if (index !== undefined && this._data.components[index]) {
-                findElement.replaceWith(this.renderItemElementHtml(index, this._data.components[index]));
-                this.initEvents();
-            }
-        }
+        return this._data.remove(item_name, amount);
     }
 
-    public update() {
+    public updateUI() {
         let list = $(this._list_selector) as JQuery<HTMLUListElement>;
 
         list.html(''); // clear list
@@ -81,26 +130,24 @@ export class FertilizeComponentsAdapter {
             }
         }
 
-        this.initEvents();
+        this.updateUIElements(list);
     }
 
-    private initEvents() {
+    private updateUIElements(parent: JQuery<HTMLElement>) {
         var that = this;
-        let list = $(that._list_selector) as JQuery<HTMLUListElement>;
 
-        list.find('.remove-item-from-fertilizer').on('click', function () {
+        parent.find('.remove-item-from-fertilizer').on('click', function () {
             const item_name = $(this).data('name') as string;
             that.remove(item_name, undefined);
-            that._app.removeItemFromFertilizer(item_name, undefined, true);
         });
 
-        list.find('.fertilizer-item-amount').each(function(){
+        parent.find('.fertilizer-item-amount').each(function(){
             const index = parseInt($(this).data('index') as string);
             const item = that._data.components[index];
 
-            const readonly = !that._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined;
-            const in_inventory = (!that._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined)? Math.min(item.in_inventory, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
-            const max = (!that._app.getSettings().no_inventory_restriction && in_inventory !== undefined)? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+            const readonly = !that._settings.data.no_inventory_restriction && item.in_fertilizer === undefined;
+            const in_inventory = (!that._settings.data.no_inventory_restriction && item.amount !== undefined)? Math.min(item.amount, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.amount;
+            const max = (!that._settings.data.no_inventory_restriction && in_inventory !== undefined)? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
             $(this).attr('max', max);
             $(this).prop('readonly', readonly);
 
@@ -108,27 +155,22 @@ export class FertilizeComponentsAdapter {
                 const item_name = $(this).data('name') as string;
                 const index = parseInt($(this).data('index') as string);
                 const amount = parseInt($(this).val() as string);
+
                 if (amount > 0 && that._data.components[index]) {
-                    that._data.setItemAmount(index, amount, that._app.getItemByNameFromInventory(item_name));
-    
-                    list.find(`li[data-index='${index}']`).replaceWith(that.renderItemElementHtml(index, item));
-                    that.initEvents();
+                    that._data.setItemAmount(index, amount, that._inventory.getItemByName(item_name));
                 } else {
                     if (that._data.components[index]) {
                         that._data.remove(item_name);
                     }
-                    list.find(`li[data-index='${index}']`).replaceWith(that.renderEmptyElementHtml(index));
                 }
-    
-                that._app.fertilizerItemAmountChanged(index);
             });
         });
     }
 
     private renderItemElementHtml(index: number, item: ItemFertilizerComponentData) {
-        const readonly = (!this._app.getSettings().no_inventory_restriction && item.in_fertilizer === undefined)? 'readonly' : '';
-        const in_inventory = (!this._app.getSettings().no_inventory_restriction && item.in_inventory !== undefined)? Math.min(item.in_inventory, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.in_inventory;
-        const max = (!this._app.getSettings().no_inventory_restriction && in_inventory !== undefined)? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+        const readonly = (!this._settings.data.no_inventory_restriction && item.in_fertilizer === undefined)? 'readonly' : '';
+        const in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined)? Math.min(item.amount, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : item.amount;
+        const max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined)? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
         
         return `<li class="list-group-item list-group-item-light p-1" data-index="${index}" data-name="${item.name}">
             <div class="row no-gutters">

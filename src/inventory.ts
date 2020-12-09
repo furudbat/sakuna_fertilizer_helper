@@ -62,9 +62,9 @@ export class Inventory {
             return undefined;
         }
 
-        let newitem: ItemInventoryData = item;
-        newitem.amount = amount;
-        this._items_in_inventory.push(newitem);
+        let new_item: ItemInventoryData = item;
+        new_item.amount = amount;
+        this._items_in_inventory.push(new_item);
 
         return this._items_in_inventory.last();
     }
