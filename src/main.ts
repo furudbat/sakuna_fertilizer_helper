@@ -1,5 +1,5 @@
 import './site'
-import { Application } from "./application";
+import { Application } from "./application.impl";
 import { LoggerManager } from 'typescript-logger';
 
 $(function () {

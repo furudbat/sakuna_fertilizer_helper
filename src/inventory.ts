@@ -1,5 +1,6 @@
 import { assert } from "console";
 import { MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
+import { DataListSubject } from "./Observer";
 import { clamp } from "./site";
 
 export const MIN_ITEMS_AMOUNT_INVENTORY = 1;
@@ -9,29 +10,33 @@ export interface ItemInventoryData extends ItemData {
 }
 
 export class Inventory {
-    private _items_in_inventory: ItemInventoryData[] = [];
+    private _items_in_inventory: DataListSubject<ItemInventoryData> = new DataListSubject<ItemInventoryData>();
 
-    get items() {
+    get observable() {
         return this._items_in_inventory;
     }
 
+    get items() {
+        return this._items_in_inventory.data;
+    }
+
     set items(value: ItemInventoryData[]) {
-        this._items_in_inventory = value;
+        this._items_in_inventory.data = value;
     }
 
     public getItemByName(name: string) {
-        return this._items_in_inventory.find((it) => it.name === name);
+        return this._items_in_inventory.data.find((it) => it.name === name);
     }
 
     public setItemAmount(index: number, amount: number | undefined) {
-        if (index < this._items_in_inventory.length) {
-            this._items_in_inventory[index].amount = amount;
-            this._items_in_inventory = this._items_in_inventory.filter(it => it.amount === undefined || it.amount > 0);
-        }
+        this._items_in_inventory.let(index, (item: ItemInventoryData) => {
+            item.amount = amount;
+            return (item.amount === undefined || item.amount > 0)? item : undefined;
+        });
     }
 
     public clear() {
-        this._items_in_inventory = [];
+        this._items_in_inventory.clear();
     }
 
     public add(item: ItemData, amount: number | undefined = undefined) {
@@ -42,11 +47,18 @@ export class Inventory {
 
         const item_index = this._items_in_inventory.findIndex((it) => it.name === item.name);
         if (item_index >= 0) {
-            if (this._items_in_inventory[item_index].amount !== undefined || amount !== undefined) {
+            const item_amount = this._items_in_inventory.get(item_index).amount;
+
+            if (item_amount !== undefined || amount !== undefined) {
                 const new_amount = (amount !== undefined)? amount as number : 1;
-                const old_amount = (this._items_in_inventory[item_index].amount !== undefined)? this._items_in_inventory[item_index].amount as number : 0;
-                this._items_in_inventory[item_index].amount = clamp(old_amount + new_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_INVENTORY);
+                const old_amount = (item_amount !== undefined)? item_amount as number : 0;
+
+                this._items_in_inventory.let(item_index, (value) => {
+                    value.amount = clamp(old_amount + new_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_INVENTORY);
+                    return value;
+                });
             }
+            
             return undefined;
         }
 
@@ -54,7 +66,7 @@ export class Inventory {
         newitem.amount = amount;
         this._items_in_inventory.push(newitem);
 
-        return this._items_in_inventory[this._items_in_inventory.length-1];
+        return this._items_in_inventory.last();
     }
 
     public remove(item: string | ItemData, amount: number | undefined = undefined) {
@@ -72,22 +84,23 @@ export class Inventory {
         })();
 
         var ret: ItemInventoryData | undefined = undefined;
-        this._items_in_inventory.forEach((item, index) => {
+        this._items_in_inventory.lets((item: ItemInventoryData, index: number) => {
             if (item.name === item_name) {
                 if (amount === undefined) {
                     ret = item;
-                    this._items_in_inventory.splice(index, 1);
-                    return;
+                    return undefined;
                 }
                 
                 const old_amount = (item.amount !== undefined)? item.amount as number : 0;
-                this._items_in_inventory[index].amount = clamp(old_amount - amount as number, 0, MAX_ITEMS_AMOUNT_INVENTORY);
+                item.amount = clamp(old_amount - amount as number, 0, MAX_ITEMS_AMOUNT_INVENTORY);
             
-                if (this._items_in_inventory[index].amount === undefined || this._items_in_inventory[index].amount as number <= 0) {
+                if (item.amount === undefined || item.amount as number <= 0) {
                     ret = item;
-                    this._items_in_inventory.splice(index, 1);
+                    return undefined;
                 }
             }
+
+            return item;
         });
 
         return ret;

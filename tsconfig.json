@@ -21,8 +21,8 @@
   },
   "files": [
     "./src/application.data.ts",
-    "./src/application.listener.ts",
-    "./src/application.ts",
+    "src/application.ts",
+    "src/application.impl.ts",
     "./src/config.editor.ts",
     "./src/configs.ts",
     "./src/css.editor.ts",

@@ -1,6 +1,7 @@
 import localForage from "localforage";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
 import { Inventory, ItemInventoryData } from "./inventory";
+import { DataListSubject, DataSubject } from "./Observer";
 
 const STORAGE_KEY_ITEMS = 'items';
 const STORAGE_KEY_ITEMS_IN_INVENTORY = 'items_in_inventory';
@@ -32,7 +33,7 @@ export class ApplicationData {
     private _currentRootFertilizer: number = 0;
     private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
     private _currentGuide: FarmingFocus = FarmingFocus.Balanced;
-    private _settings: Settings = new Settings();
+    private _settings: DataSubject<Settings> = new DataSubject<Settings>(new Settings());
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -55,7 +56,7 @@ export class ApplicationData {
 
             this._currentGuide = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide;
 
-            this._settings = await this._storeSession.getItem<Settings>(STORAGE_KEY_SETTINGS) || this._settings;
+            this._settings.data = await this._storeSession.getItem<Settings>(STORAGE_KEY_SETTINGS) || this._settings.data;
         } catch (err) {
             // This code runs if there were any errors.
             console.error('loadFromStorage', err);
@@ -78,17 +79,18 @@ export class ApplicationData {
 
 
     get settings() {
-        return this._settings;
+        return this._settings.data;
     }
 
     set settings(value: Settings) {
-        this._settings = value;
-        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+        this._settings.data = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings.data);
     }
 
     public setSettingNoInventoryRestriction(value: boolean) {
-        this._settings.no_inventory_restriction = value;
-        this._storeSession.setItem(STORAGE_KEY_SETTINGS, this._settings);
+        let newsettings = this._settings.data;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, newsettings);
+        this._settings.data = newsettings;
     }
 
 
@@ -110,8 +112,8 @@ export class ApplicationData {
     }
 
     set inventory(value: Inventory) {
-        this._inventory = value;
-        this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
+        this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, value.items);
+        this._inventory.items = value.items;
     }
 
     public saveInventory() {
@@ -152,8 +154,8 @@ export class ApplicationData {
     }
 
     set fertilizer_components(value: FertilizerComponents) {
-        this._fertilizer_components = value;
-        this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
+        this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, value.components);
+        this._fertilizer_components.components = value.components;
     }
 
     public saveFertilizerComponents() {

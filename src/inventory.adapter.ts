@@ -1,8 +1,9 @@
 import { LoggerManager } from "typescript-logger";
 import { FarmingFocus } from "./application.data";
-import { ApplicationListener } from "./application.listener";
+import { ApplicationListener } from "./application";
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
 import { site } from "./site";
+import { DataListObserver, DataListSubject } from "./observer"
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
     return o[propertyName] !== undefined;
@@ -128,6 +129,7 @@ export class InventoryAdapter {
             lengthChange: false,
             createdRow: function (row: Node, data: any[] | object, dataIndex: number) {
                 $(row).data('name', (data as ItemInventoryData).name);
+                $(row).data('index', dataIndex);
             },
             columnDefs: [
                 { 
@@ -338,75 +340,75 @@ export class InventoryAdapter {
                 }
             ]
         });
+        this.initEvents($(this._table_selector));
 
         var that = this;
         this._table.on('draw.dt', function () {
             that._app.drawnInventory(that._table_selector);
-            that.initEvents();
+            that.initEvents($(that._table_selector));
         });
 
-        this.initEvents();
+        this.initObservers();
     }
 
-    public update() {
-        if (this._table) {
-            this._table.clear();
-            this._table.rows.add(this._data.items).draw(false);
-        }
+    public initObservers() {
+        var that = this;
+        this._data.observable.attach(new class implements DataListObserver<ItemInventoryData> {
+            update(subject: DataListSubject<ItemInventoryData>): void {
+                that._table?.clear();
+                that._table?.rows.add(that._data.items).draw(false);
+            }
+            updateItem(subject: DataListSubject<ItemInventoryData>, updated: ItemInventoryData, index: number): void {
+                that.initEvents($(that._table_selector).find(`tr[data-index='${index}']`));
+            }
+            updateAddedItem(subject: DataListSubject<ItemInventoryData>, added: ItemInventoryData): void {
+                that._table?.rows.add([added]).draw(false);
+            }
+            updateRemovedItem(subject: DataListSubject<ItemInventoryData>, removed: ItemInventoryData): void {
+                that._table?.row(`[data-name='${removed.name}']`).remove();
+                that._table?.draw(false);
+            }
+        });
     }
 
     public add(item: ItemData, amount: number | undefined = undefined) {
         this.log.debug('add', {item, amount});
-        const added = this._data.add(item, amount);
-        if (added) {
-            this._table?.rows.add([item]).draw(false);
-            this._app.addItemToInventory(item, amount, true);
-        }
-        return added;
+        return this._data.add(item, amount);
     }
 
     public remove(item_name: string, amount: number | undefined = undefined) {
         this.log.debug('remove', {item_name, amount});
-        const removed = this._data.remove(item_name, amount);
-        if (removed) {
-            this._table?.row(`[data-name='${item_name}']`).remove();
-            this._table?.draw(false);
-            this._app.removeItemFromInventory(item_name, amount, true);
-        }
-        return removed;
+        return this._data.remove(item_name, amount);
     }
 
     public setAmount(index: number, amount: number | undefined){
         this._data.setItemAmount(index, amount);
-        this._app.inventoryItemAmountChanged(index);
-
     }
 
-    private initEvents() {
+    private initEvents(parent: JQuery<HTMLElement>) {
         var that = this;
-        $(this._table_selector).find('.add-item-to-fertilizer').on('click', function () {
+        parent.find('.add-item-to-fertilizer').on('click', function () {
             const item_name = $(this).data('name');
             const item = that._app.getItemByNameFromInventory(item_name);
 
             that.log.debug('add-item-to-fertilizer', {item_name, item});
 
             if (item) {
-                that._app.addItemToFertilizer(item, 1, false);
+                that._app.addItemToFertilizer(item, 1);
             }
         });
-        $(this._table_selector).find('.remove-item-from-inventory').on('click', function () {
+        parent.find('.remove-item-from-inventory').on('click', function () {
             const item_name = $(this).data('name');
             that.log.debug('remove-item-from-inventory', {item_name});
             that.remove(item_name);
         });
         
-        $(this._table_selector).find('.inventory-item-amount').on('change', function () {
+        parent.find('.inventory-item-amount').on('change', function () {
             //const item_name = $(this).data('name') as string;
             const index = parseInt($(this).data('index') as string);
             const amount = parseInt($(this).val() as string);
             
             that._data.setItemAmount(index, amount);
-            that._app.inventoryItemAmountChanged(index);
         });
     }
 

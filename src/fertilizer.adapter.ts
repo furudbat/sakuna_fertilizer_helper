@@ -1,42 +1,227 @@
 import { assert } from "console";
 import { LoggerManager } from "typescript-logger";
-import { ApplicationListener } from "./application.listener";
+import { ApplicationData } from "./application.data";
+import { ApplicationListener } from "./application";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
 import { FertilizerData, MAX_STATS, MIN_STATS } from "./fertilizer.data";
+import { render_buff_bonus_html } from "./inventory.adapter";
+import { DataObserver, DataSubject } from "./Observer";
 
 export class FertilizerAdapter {
-    private _app: ApplicationListener;
-    private _data: FertilizerData = new FertilizerData();
+    private _soilNutrientsChart?: Chart;
+    private _appData: ApplicationData;
+    private _data: DataSubject<FertilizerData> = new DataSubject<FertilizerData>(new FertilizerData());
 
     private log = LoggerManager.create('FertilizerAdapter');
 
     constructor(app: ApplicationListener, data: FertilizerData) {
         this._app = app;
-        this._data = data;
+        this._data.data = data;
     }
 
     public init() {
+        this.initObservers();
+    }
+
+    private initObservers() {
+        this._data.attach(new class implements DataObserver<FertilizerData> {
+            update(subject: DataSubject<FertilizerData>): void {
+                const fertilizer = subject.data;
+                
+                const yield_hp = render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
+                const taste_strength = render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_yield_hp_overflow);
+                const hardness_vitality = render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
+                const stickiness_gusto = render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
+                const aesthetic_luck = render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
+                const armor_magic = render_buff_bonus_html((fertilizer.armor_magic) ? fertilizer.armor_magic : 0, false, fertilizer.is_armor_magic_overflow);
+        
+                const immunity = render_buff_bonus_html((fertilizer.immunity) ? fertilizer.immunity : 0, false, fertilizer.is_immunity_overflow);
+                const pesticide = render_buff_bonus_html((fertilizer.pesticide) ? fertilizer.pesticide : 0, false, fertilizer.is_pesticide_overflow);
+                const herbicide = render_buff_bonus_html((fertilizer.herbicide) ? fertilizer.herbicide : 0, false, fertilizer.is_herbicide_overflow);
+        
+                const toxicity = render_buff_bonus_html((fertilizer.toxicity) ? fertilizer.toxicity : 0, true, fertilizer.is_toxicity_overflow);
+        
+                $('#fertilizerYieldHp').html(yield_hp);
+                $('#fertilizerTasteStrength').html(taste_strength);
+                $('#fertilizerHardnessVitality').html(hardness_vitality);
+                $('#fertilizerStickinessGusto').html(stickiness_gusto);
+                $('#fertilizerAestheticLuck').html(aesthetic_luck);
+                $('#fertilizerArmorMagic').html(armor_magic);
+        
+                $('#fertilizerImmunuity').html(immunity);
+                $('#fertilizerPesticide').html(pesticide);
+                $('#fertilizerHerbicide').html(herbicide);
+        
+                $('#fertilizerToxicity').html(toxicity);
+            }
+        });
     }
 
     public updateFromComponents(components: FertilizerComponents) {
-        this._data.leaf_fertilizer = this.calcComponentLeafFertilizerValue(components.components);
-        this._data.kernel_fertilizer = this.calcComponentKernelFertilizerValue(components.components);
-        this._data.root_fertilizer = this.calcComponentRootFertilizerValue(components.components);
+        this._data.let(data => {
+            data.leaf_fertilizer = this.calcComponentLeafFertilizerValue(components.components);
+            data.kernel_fertilizer = this.calcComponentKernelFertilizerValue(components.components);
+            data.root_fertilizer = this.calcComponentRootFertilizerValue(components.components);
+    
+            data.yield_hp = this.calcComponentYieldHPValue(components.components);
+            data.taste_strength = this.calcComponentTasteStrengthValue(components.components);
+            data.hardness_vitality = this.calcComponentHardnessVitalityValue(components.components);
+            data.stickiness_gusto = this.calcComponentStickinessGustoValue(components.components);
+            data.aesthetic_luck = this.calcComponentAestheticLuckValue(components.components);
+            data.armor_magic = this.calcComponentArmorMagicValue(components.components);
+    
+            data.immunity = this.calcComponentImmunityValue(components.components);
+            data.pesticide = this.calcComponentPesticideValue(components.components);
+            data.herbicide = this.calcComponentHerbicideValue(components.components);
+    
+            data.toxicity = this.calcComponentToxicityValue(components.components);
 
-        this._data.yield_hp = this.calcComponentYieldHPValue(components.components);
-        this._data.taste_strength = this.calcComponentTasteStrengthValue(components.components);
-        this._data.hardness_vitality = this.calcComponentHardnessVitalityValue(components.components);
-        this._data.stickiness_gusto = this.calcComponentStickinessGustoValue(components.components);
-        this._data.aesthetic_luck = this.calcComponentAestheticLuckValue(components.components);
-        this._data.armor_magic = this.calcComponentArmorMagicValue(components.components);
+            return data;
+        });
+    }
 
-        this._data.immunity = this.calcComponentImmunityValue(components.components);
-        this._data.pesticide = this.calcComponentPesticideValue(components.components);
-        this._data.herbicide = this.calcComponentHerbicideValue(components.components);
+    
+    private initSoilNutrientsChart() {
+        const canvas = $('#soilNutrientsChart') as JQuery<HTMLCanvasElement>;
 
-        this._data.toxicity = this.calcComponentToxicityValue(components.components);
+        $('#txtCurrentLeafFertilizer').val(this.getAppData().currentLeafFertilizer);
+        $('#txtCurrentKernelFertilizer').val(this._appData.currentKernelFertilizer);
+        $('#txtCurrentRootFertilizer').val(this._appData.currentRootFertilizer);
 
-        this._app.updatedFertilizerComponents();
+        this._soilNutrientsChart = new Chart(canvas, {
+            type: 'radar',
+            data: {
+                labels: [
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
+                    site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
+                ],
+                datasets: [
+                    {
+                        label: site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
+                        fill: true,
+                        data: [
+                            this._appData.currentLeafFertilizer,
+                            this._appData.currentKernelFertilizer,
+                            this._appData.currentRootFertilizer
+                        ],
+                        backgroundColor: 'rgba(147, 247, 141, 0.2)',
+                        borderColor: 'rgba(147, 247, 141, 1)',
+                        pointBorderColor: 'rgba(147, 247, 141, 0.5)',
+                        pointBackgroundColor: 'rgba(147, 247, 141, 0.5)',
+                        pointStyle: 'rect',
+                        borderWidth: 1
+                    }, {
+                        label: site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
+                        fill: true,
+                        data: [
+                            this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer,
+                            this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer,
+                            this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer
+                        ],
+                        backgroundColor: 'rgba(160, 250, 255, 0.2)',
+                        borderColor: 'rgba(160, 250, 255, 1)',
+                        pointBorderColor: 'rgba(205, 215, 115, 1)',
+                        pointBackgroundColor: 'rgba(205, 215, 115, 1)',
+                        pointStyle: 'rect',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scale: {
+                    angleLines: {
+                        display: true,
+                        color: 'black'
+                    },
+                    ticks: {
+                        min: MIN_FERTILIZER,
+                        max: MAX_FERTILIZER
+                    }
+                }
+            }
+        });
+
+        var that = this;
+        $('#txtCurrentLeafFertilizer').on('change', function () {
+            that.log.debug('txtCurrentLeafFertilizer', $(this).val());
+            that._appData.currentLeafFertilizer = parseInt($(this).val() as string);
+            that.updateSoilNutrientsChartCurrentLeafFertilizerUI();
+        });
+        $('#txtCurrentKernelFertilizer').on('change', function () {
+            that.log.debug('txtCurrentKernelFertilizer', $(this).val());
+            that._appData.currentKernelFertilizer = parseInt($(this).val() as string);
+            that.updateSoilNutrientsChartCurrentKernelFertilizerUI();
+        });
+        $('#txtCurrentRootFertilizer').on('change', function () {
+            that.log.debug('txtCurrentRootFertilizer', $(this).val());
+            that._appData.currentRootFertilizer = parseInt($(this).val() as string);
+            that.updateSoilNutrientsChartCurrentRootFertilizerUI();
+        });
+
+        this.updateSoilNutrientsChartLeafFertilizerUI();
+        this.updateSoilNutrientsChartKernelFertilizerUI();
+        this.updateSoilNutrientsChartRootFertilizerUI();
+
+        this.updateInventory();
+    }
+
+    private updateSoilNutrientsChartCurrentLeafFertilizerUI() {
+        if (this._soilNutrientsChart) {
+            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[0] !== undefined) {
+                this._soilNutrientsChart.data.datasets[0].data[0] = clamp(this._appData.currentLeafFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+            }
+        }
+        this.updateSoilNutrientsChartLeafFertilizerUI();
+    }
+    private updateSoilNutrientsChartLeafFertilizerUI() {
+        if (this._soilNutrientsChart) {
+            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[0] !== undefined) {
+                this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
+                this._soilNutrientsChart.data.datasets[1].data[0] = clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+                $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
+            }
+            this._soilNutrientsChart.update();
+        }
+    }
+
+    private updateSoilNutrientsChartCurrentKernelFertilizerUI() {
+        if (this._soilNutrientsChart) {
+            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[1] !== undefined) {
+                this._soilNutrientsChart.data.datasets[0].data[1] = clamp(this._appData.currentKernelFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+            }
+        }
+        this.updateSoilNutrientsChartKernelFertilizerUI();
+    }
+    private updateSoilNutrientsChartKernelFertilizerUI() {
+        if (this._soilNutrientsChart) {
+            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[1] !== undefined) {
+                this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
+                this._soilNutrientsChart.data.datasets[1].data[1] = clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+                $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
+            }
+            this._soilNutrientsChart.update();
+        }
+    }
+
+    private updateSoilNutrientsChartCurrentRootFertilizerUI() {
+        if (this._soilNutrientsChart) {
+            if (this._soilNutrientsChart?.data.datasets?.[0].data?.[2] !== undefined) {
+                this._soilNutrientsChart.data.datasets[0].data[2] = clamp(this._appData.currentRootFertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+            }
+        }
+        this.updateSoilNutrientsChartRootFertilizerUI();
+    }
+    private updateSoilNutrientsChartRootFertilizerUI() {
+        if (this._soilNutrientsChart) {
+            if (this._soilNutrientsChart?.data.datasets?.[1].data?.[2] !== undefined) {
+                this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
+                this._soilNutrientsChart.data.datasets[1].data[2] = clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+                $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
+            }
+            this._soilNutrientsChart.update();
+        }
     }
 
     private calcComponentLeafFertilizerValue(components: ItemFertilizerComponentData[]): number {

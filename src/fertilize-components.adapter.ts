@@ -1,5 +1,5 @@
 import { LoggerManager } from "typescript-logger";
-import { ApplicationListener } from "./application.listener";
+import { ApplicationListener } from "./application";
 import { FertilizerComponents, ItemFertilizerComponentData, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { ItemInventoryData } from "./inventory";
 import { site } from "./site";
@@ -27,7 +27,6 @@ export class FertilizeComponentsAdapter {
 
     public setItemAmount(index: number, amount: number | undefined, item: ItemInventoryData | undefined = undefined) {
         this._data.setItemAmount(index, amount, item);
-        this._app.fertilizerItemAmountChanged(index);
     }
 
     public add(item: ItemInventoryData, amount: number | undefined = undefined) {
