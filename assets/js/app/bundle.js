@@ -1,4 +1,1138 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+(function (global){(function (){
+'use strict';
+
+var objectAssign = require('object-assign');
+
+// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
+// original notice:
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+function compare(a, b) {
+  if (a === b) {
+    return 0;
+  }
+
+  var x = a.length;
+  var y = b.length;
+
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i];
+      y = b[i];
+      break;
+    }
+  }
+
+  if (x < y) {
+    return -1;
+  }
+  if (y < x) {
+    return 1;
+  }
+  return 0;
+}
+function isBuffer(b) {
+  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
+    return global.Buffer.isBuffer(b);
+  }
+  return !!(b != null && b._isBuffer);
+}
+
+// based on node assert, original notice:
+// NB: The URL to the CommonJS spec is kept just for tradition.
+//     node-assert has evolved a lot since then, both in API and behavior.
+
+// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
+//
+// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
+//
+// Originally from narwhal.js (http://narwhaljs.org)
+// Copyright (c) 2009 Thomas Robinson <280north.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the 'Software'), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = require('util/');
+var hasOwn = Object.prototype.hasOwnProperty;
+var pSlice = Array.prototype.slice;
+var functionsHaveNames = (function () {
+  return function foo() {}.name === 'foo';
+}());
+function pToString (obj) {
+  return Object.prototype.toString.call(obj);
+}
+function isView(arrbuf) {
+  if (isBuffer(arrbuf)) {
+    return false;
+  }
+  if (typeof global.ArrayBuffer !== 'function') {
+    return false;
+  }
+  if (typeof ArrayBuffer.isView === 'function') {
+    return ArrayBuffer.isView(arrbuf);
+  }
+  if (!arrbuf) {
+    return false;
+  }
+  if (arrbuf instanceof DataView) {
+    return true;
+  }
+  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
+    return true;
+  }
+  return false;
+}
+// 1. The assert module provides functions that throw
+// AssertionError's when particular conditions are not met. The
+// assert module must conform to the following interface.
+
+var assert = module.exports = ok;
+
+// 2. The AssertionError is defined in assert.
+// new assert.AssertionError({ message: message,
+//                             actual: actual,
+//                             expected: expected })
+
+var regex = /\s*function\s+([^\(\s]*)\s*/;
+// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
+function getName(func) {
+  if (!util.isFunction(func)) {
+    return;
+  }
+  if (functionsHaveNames) {
+    return func.name;
+  }
+  var str = func.toString();
+  var match = str.match(regex);
+  return match && match[1];
+}
+assert.AssertionError = function AssertionError(options) {
+  this.name = 'AssertionError';
+  this.actual = options.actual;
+  this.expected = options.expected;
+  this.operator = options.operator;
+  if (options.message) {
+    this.message = options.message;
+    this.generatedMessage = false;
+  } else {
+    this.message = getMessage(this);
+    this.generatedMessage = true;
+  }
+  var stackStartFunction = options.stackStartFunction || fail;
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, stackStartFunction);
+  } else {
+    // non v8 browsers so we can have a stacktrace
+    var err = new Error();
+    if (err.stack) {
+      var out = err.stack;
+
+      // try to strip useless frames
+      var fn_name = getName(stackStartFunction);
+      var idx = out.indexOf('\n' + fn_name);
+      if (idx >= 0) {
+        // once we have located the function frame
+        // we need to strip out everything before it (and its line)
+        var next_line = out.indexOf('\n', idx + 1);
+        out = out.substring(next_line + 1);
+      }
+
+      this.stack = out;
+    }
+  }
+};
+
+// assert.AssertionError instanceof Error
+util.inherits(assert.AssertionError, Error);
+
+function truncate(s, n) {
+  if (typeof s === 'string') {
+    return s.length < n ? s : s.slice(0, n);
+  } else {
+    return s;
+  }
+}
+function inspect(something) {
+  if (functionsHaveNames || !util.isFunction(something)) {
+    return util.inspect(something);
+  }
+  var rawname = getName(something);
+  var name = rawname ? ': ' + rawname : '';
+  return '[Function' +  name + ']';
+}
+function getMessage(self) {
+  return truncate(inspect(self.actual), 128) + ' ' +
+         self.operator + ' ' +
+         truncate(inspect(self.expected), 128);
+}
+
+// At present only the three keys mentioned above are used and
+// understood by the spec. Implementations or sub modules can pass
+// other keys to the AssertionError's constructor - they will be
+// ignored.
+
+// 3. All of the following functions must throw an AssertionError
+// when a corresponding condition is not met, with a message that
+// may be undefined if not provided.  All assertion methods provide
+// both the actual and expected values to the assertion error for
+// display purposes.
+
+function fail(actual, expected, message, operator, stackStartFunction) {
+  throw new assert.AssertionError({
+    message: message,
+    actual: actual,
+    expected: expected,
+    operator: operator,
+    stackStartFunction: stackStartFunction
+  });
+}
+
+// EXTENSION! allows for well behaved errors defined elsewhere.
+assert.fail = fail;
+
+// 4. Pure assertion tests whether a value is truthy, as determined
+// by !!guard.
+// assert.ok(guard, message_opt);
+// This statement is equivalent to assert.equal(true, !!guard,
+// message_opt);. To test strictly for the value true, use
+// assert.strictEqual(true, guard, message_opt);.
+
+function ok(value, message) {
+  if (!value) fail(value, true, message, '==', assert.ok);
+}
+assert.ok = ok;
+
+// 5. The equality assertion tests shallow, coercive equality with
+// ==.
+// assert.equal(actual, expected, message_opt);
+
+assert.equal = function equal(actual, expected, message) {
+  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
+};
+
+// 6. The non-equality assertion tests for whether two objects are not equal
+// with != assert.notEqual(actual, expected, message_opt);
+
+assert.notEqual = function notEqual(actual, expected, message) {
+  if (actual == expected) {
+    fail(actual, expected, message, '!=', assert.notEqual);
+  }
+};
+
+// 7. The equivalence assertion tests a deep equality relation.
+// assert.deepEqual(actual, expected, message_opt);
+
+assert.deepEqual = function deepEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
+  }
+};
+
+assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
+  }
+};
+
+function _deepEqual(actual, expected, strict, memos) {
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+  } else if (isBuffer(actual) && isBuffer(expected)) {
+    return compare(actual, expected) === 0;
+
+  // 7.2. If the expected value is a Date object, the actual value is
+  // equivalent if it is also a Date object that refers to the same time.
+  } else if (util.isDate(actual) && util.isDate(expected)) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3 If the expected value is a RegExp object, the actual value is
+  // equivalent if it is also a RegExp object with the same source and
+  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
+  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
+    return actual.source === expected.source &&
+           actual.global === expected.global &&
+           actual.multiline === expected.multiline &&
+           actual.lastIndex === expected.lastIndex &&
+           actual.ignoreCase === expected.ignoreCase;
+
+  // 7.4. Other pairs that do not both pass typeof value == 'object',
+  // equivalence is determined by ==.
+  } else if ((actual === null || typeof actual !== 'object') &&
+             (expected === null || typeof expected !== 'object')) {
+    return strict ? actual === expected : actual == expected;
+
+  // If both values are instances of typed arrays, wrap their underlying
+  // ArrayBuffers in a Buffer each to increase performance
+  // This optimization requires the arrays to have the same type as checked by
+  // Object.prototype.toString (aka pToString). Never perform binary
+  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
+  // bit patterns are not identical.
+  } else if (isView(actual) && isView(expected) &&
+             pToString(actual) === pToString(expected) &&
+             !(actual instanceof Float32Array ||
+               actual instanceof Float64Array)) {
+    return compare(new Uint8Array(actual.buffer),
+                   new Uint8Array(expected.buffer)) === 0;
+
+  // 7.5 For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical 'prototype' property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else if (isBuffer(actual) !== isBuffer(expected)) {
+    return false;
+  } else {
+    memos = memos || {actual: [], expected: []};
+
+    var actualIndex = memos.actual.indexOf(actual);
+    if (actualIndex !== -1) {
+      if (actualIndex === memos.expected.indexOf(expected)) {
+        return true;
+      }
+    }
+
+    memos.actual.push(actual);
+    memos.expected.push(expected);
+
+    return objEquiv(actual, expected, strict, memos);
+  }
+}
+
+function isArguments(object) {
+  return Object.prototype.toString.call(object) == '[object Arguments]';
+}
+
+function objEquiv(a, b, strict, actualVisitedObjects) {
+  if (a === null || a === undefined || b === null || b === undefined)
+    return false;
+  // if one is a primitive, the other must be same
+  if (util.isPrimitive(a) || util.isPrimitive(b))
+    return a === b;
+  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
+    return false;
+  var aIsArgs = isArguments(a);
+  var bIsArgs = isArguments(b);
+  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
+    return false;
+  if (aIsArgs) {
+    a = pSlice.call(a);
+    b = pSlice.call(b);
+    return _deepEqual(a, b, strict);
+  }
+  var ka = objectKeys(a);
+  var kb = objectKeys(b);
+  var key, i;
+  // having the same number of owned properties (keys incorporates
+  // hasOwnProperty)
+  if (ka.length !== kb.length)
+    return false;
+  //the same set of keys (although not necessarily the same order),
+  ka.sort();
+  kb.sort();
+  //~~~cheap key test
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] !== kb[i])
+      return false;
+  }
+  //equivalent values for every corresponding key, and
+  //~~~possibly expensive deep test
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
+      return false;
+  }
+  return true;
+}
+
+// 8. The non-equivalence assertion tests for any deep inequality.
+// assert.notDeepEqual(actual, expected, message_opt);
+
+assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
+  }
+};
+
+assert.notDeepStrictEqual = notDeepStrictEqual;
+function notDeepStrictEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
+  }
+}
+
+
+// 9. The strict equality assertion tests strict equality, as determined by ===.
+// assert.strictEqual(actual, expected, message_opt);
+
+assert.strictEqual = function strictEqual(actual, expected, message) {
+  if (actual !== expected) {
+    fail(actual, expected, message, '===', assert.strictEqual);
+  }
+};
+
+// 10. The strict non-equality assertion tests for strict inequality, as
+// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
+
+assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
+  if (actual === expected) {
+    fail(actual, expected, message, '!==', assert.notStrictEqual);
+  }
+};
+
+function expectedException(actual, expected) {
+  if (!actual || !expected) {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
+    return expected.test(actual);
+  }
+
+  try {
+    if (actual instanceof expected) {
+      return true;
+    }
+  } catch (e) {
+    // Ignore.  The instanceof check doesn't work for arrow functions.
+  }
+
+  if (Error.isPrototypeOf(expected)) {
+    return false;
+  }
+
+  return expected.call({}, actual) === true;
+}
+
+function _tryBlock(block) {
+  var error;
+  try {
+    block();
+  } catch (e) {
+    error = e;
+  }
+  return error;
+}
+
+function _throws(shouldThrow, block, expected, message) {
+  var actual;
+
+  if (typeof block !== 'function') {
+    throw new TypeError('"block" argument must be a function');
+  }
+
+  if (typeof expected === 'string') {
+    message = expected;
+    expected = null;
+  }
+
+  actual = _tryBlock(block);
+
+  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
+            (message ? ' ' + message : '.');
+
+  if (shouldThrow && !actual) {
+    fail(actual, expected, 'Missing expected exception' + message);
+  }
+
+  var userProvidedMessage = typeof message === 'string';
+  var isUnwantedException = !shouldThrow && util.isError(actual);
+  var isUnexpectedException = !shouldThrow && actual && !expected;
+
+  if ((isUnwantedException &&
+      userProvidedMessage &&
+      expectedException(actual, expected)) ||
+      isUnexpectedException) {
+    fail(actual, expected, 'Got unwanted exception' + message);
+  }
+
+  if ((shouldThrow && actual && expected &&
+      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
+    throw actual;
+  }
+}
+
+// 11. Expected to throw an error:
+// assert.throws(block, Error_opt, message_opt);
+
+assert.throws = function(block, /*optional*/error, /*optional*/message) {
+  _throws(true, block, error, message);
+};
+
+// EXTENSION! This is annoying to write outside this module.
+assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
+  _throws(false, block, error, message);
+};
+
+assert.ifError = function(err) { if (err) throw err; };
+
+// Expose a strict only variant of assert
+function strict(value, message) {
+  if (!value) fail(value, true, message, '==', strict);
+}
+assert.strict = objectAssign(strict, assert, {
+  equal: assert.strictEqual,
+  deepEqual: assert.deepStrictEqual,
+  notEqual: assert.notStrictEqual,
+  notDeepEqual: assert.notDeepStrictEqual
+});
+assert.strict.strict = assert.strict;
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    if (hasOwn.call(obj, key)) keys.push(key);
+  }
+  return keys;
+};
+
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"object-assign":14,"util/":4}],2:[function(require,module,exports){
+if (typeof Object.create === 'function') {
+  // implementation from standard node.js 'util' module
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+  };
+} else {
+  // old school shim for old browsers
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
+  }
+}
+
+},{}],3:[function(require,module,exports){
+module.exports = function isBuffer(arg) {
+  return arg && typeof arg === 'object'
+    && typeof arg.copy === 'function'
+    && typeof arg.fill === 'function'
+    && typeof arg.readUInt8 === 'function';
+}
+},{}],4:[function(require,module,exports){
+(function (process,global){(function (){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var formatRegExp = /%[sdj%]/g;
+exports.format = function(f) {
+  if (!isString(f)) {
+    var objects = [];
+    for (var i = 0; i < arguments.length; i++) {
+      objects.push(inspect(arguments[i]));
+    }
+    return objects.join(' ');
+  }
+
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  var str = String(f).replace(formatRegExp, function(x) {
+    if (x === '%%') return '%';
+    if (i >= len) return x;
+    switch (x) {
+      case '%s': return String(args[i++]);
+      case '%d': return Number(args[i++]);
+      case '%j':
+        try {
+          return JSON.stringify(args[i++]);
+        } catch (_) {
+          return '[Circular]';
+        }
+      default:
+        return x;
+    }
+  });
+  for (var x = args[i]; i < len; x = args[++i]) {
+    if (isNull(x) || !isObject(x)) {
+      str += ' ' + x;
+    } else {
+      str += ' ' + inspect(x);
+    }
+  }
+  return str;
+};
+
+
+// Mark that a method should not be used.
+// Returns a modified function which warns once by default.
+// If --no-deprecation is set, then it is a no-op.
+exports.deprecate = function(fn, msg) {
+  // Allow for deprecating things in the process of starting up.
+  if (isUndefined(global.process)) {
+    return function() {
+      return exports.deprecate(fn, msg).apply(this, arguments);
+    };
+  }
+
+  if (process.noDeprecation === true) {
+    return fn;
+  }
+
+  var warned = false;
+  function deprecated() {
+    if (!warned) {
+      if (process.throwDeprecation) {
+        throw new Error(msg);
+      } else if (process.traceDeprecation) {
+        console.trace(msg);
+      } else {
+        console.error(msg);
+      }
+      warned = true;
+    }
+    return fn.apply(this, arguments);
+  }
+
+  return deprecated;
+};
+
+
+var debugs = {};
+var debugEnviron;
+exports.debuglog = function(set) {
+  if (isUndefined(debugEnviron))
+    debugEnviron = process.env.NODE_DEBUG || '';
+  set = set.toUpperCase();
+  if (!debugs[set]) {
+    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
+      var pid = process.pid;
+      debugs[set] = function() {
+        var msg = exports.format.apply(exports, arguments);
+        console.error('%s %d: %s', set, pid, msg);
+      };
+    } else {
+      debugs[set] = function() {};
+    }
+  }
+  return debugs[set];
+};
+
+
+/**
+ * Echos the value of a value. Trys to print the value out
+ * in the best way possible given the different types.
+ *
+ * @param {Object} obj The object to print out.
+ * @param {Object} opts Optional options object that alters the output.
+ */
+/* legacy: obj, showHidden, depth, colors*/
+function inspect(obj, opts) {
+  // default options
+  var ctx = {
+    seen: [],
+    stylize: stylizeNoColor
+  };
+  // legacy...
+  if (arguments.length >= 3) ctx.depth = arguments[2];
+  if (arguments.length >= 4) ctx.colors = arguments[3];
+  if (isBoolean(opts)) {
+    // legacy...
+    ctx.showHidden = opts;
+  } else if (opts) {
+    // got an "options" object
+    exports._extend(ctx, opts);
+  }
+  // set default options
+  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+  if (isUndefined(ctx.depth)) ctx.depth = 2;
+  if (isUndefined(ctx.colors)) ctx.colors = false;
+  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+  if (ctx.colors) ctx.stylize = stylizeWithColor;
+  return formatValue(ctx, obj, ctx.depth);
+}
+exports.inspect = inspect;
+
+
+// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+inspect.colors = {
+  'bold' : [1, 22],
+  'italic' : [3, 23],
+  'underline' : [4, 24],
+  'inverse' : [7, 27],
+  'white' : [37, 39],
+  'grey' : [90, 39],
+  'black' : [30, 39],
+  'blue' : [34, 39],
+  'cyan' : [36, 39],
+  'green' : [32, 39],
+  'magenta' : [35, 39],
+  'red' : [31, 39],
+  'yellow' : [33, 39]
+};
+
+// Don't use 'blue' not visible on cmd.exe
+inspect.styles = {
+  'special': 'cyan',
+  'number': 'yellow',
+  'boolean': 'yellow',
+  'undefined': 'grey',
+  'null': 'bold',
+  'string': 'green',
+  'date': 'magenta',
+  // "name": intentionally not styling
+  'regexp': 'red'
+};
+
+
+function stylizeWithColor(str, styleType) {
+  var style = inspect.styles[styleType];
+
+  if (style) {
+    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
+           '\u001b[' + inspect.colors[style][1] + 'm';
+  } else {
+    return str;
+  }
+}
+
+
+function stylizeNoColor(str, styleType) {
+  return str;
+}
+
+
+function arrayToHash(array) {
+  var hash = {};
+
+  array.forEach(function(val, idx) {
+    hash[val] = true;
+  });
+
+  return hash;
+}
+
+
+function formatValue(ctx, value, recurseTimes) {
+  // Provide a hook for user-specified inspect functions.
+  // Check that value is an object with an inspect function on it
+  if (ctx.customInspect &&
+      value &&
+      isFunction(value.inspect) &&
+      // Filter out the util module, it's inspect function is special
+      value.inspect !== exports.inspect &&
+      // Also filter out any prototype objects using the circular check.
+      !(value.constructor && value.constructor.prototype === value)) {
+    var ret = value.inspect(recurseTimes, ctx);
+    if (!isString(ret)) {
+      ret = formatValue(ctx, ret, recurseTimes);
+    }
+    return ret;
+  }
+
+  // Primitive types cannot have properties
+  var primitive = formatPrimitive(ctx, value);
+  if (primitive) {
+    return primitive;
+  }
+
+  // Look up the keys of the object.
+  var keys = Object.keys(value);
+  var visibleKeys = arrayToHash(keys);
+
+  if (ctx.showHidden) {
+    keys = Object.getOwnPropertyNames(value);
+  }
+
+  // IE doesn't make error fields non-enumerable
+  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
+  if (isError(value)
+      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+    return formatError(value);
+  }
+
+  // Some type of object without properties can be shortcutted.
+  if (keys.length === 0) {
+    if (isFunction(value)) {
+      var name = value.name ? ': ' + value.name : '';
+      return ctx.stylize('[Function' + name + ']', 'special');
+    }
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    }
+    if (isDate(value)) {
+      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+    }
+    if (isError(value)) {
+      return formatError(value);
+    }
+  }
+
+  var base = '', array = false, braces = ['{', '}'];
+
+  // Make Array say that they are Array
+  if (isArray(value)) {
+    array = true;
+    braces = ['[', ']'];
+  }
+
+  // Make functions say that they are functions
+  if (isFunction(value)) {
+    var n = value.name ? ': ' + value.name : '';
+    base = ' [Function' + n + ']';
+  }
+
+  // Make RegExps say that they are RegExps
+  if (isRegExp(value)) {
+    base = ' ' + RegExp.prototype.toString.call(value);
+  }
+
+  // Make dates with properties first say the date
+  if (isDate(value)) {
+    base = ' ' + Date.prototype.toUTCString.call(value);
+  }
+
+  // Make error with message first say the error
+  if (isError(value)) {
+    base = ' ' + formatError(value);
+  }
+
+  if (keys.length === 0 && (!array || value.length == 0)) {
+    return braces[0] + base + braces[1];
+  }
+
+  if (recurseTimes < 0) {
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    } else {
+      return ctx.stylize('[Object]', 'special');
+    }
+  }
+
+  ctx.seen.push(value);
+
+  var output;
+  if (array) {
+    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+  } else {
+    output = keys.map(function(key) {
+      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+    });
+  }
+
+  ctx.seen.pop();
+
+  return reduceToSingleString(output, base, braces);
+}
+
+
+function formatPrimitive(ctx, value) {
+  if (isUndefined(value))
+    return ctx.stylize('undefined', 'undefined');
+  if (isString(value)) {
+    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+                                             .replace(/'/g, "\\'")
+                                             .replace(/\\"/g, '"') + '\'';
+    return ctx.stylize(simple, 'string');
+  }
+  if (isNumber(value))
+    return ctx.stylize('' + value, 'number');
+  if (isBoolean(value))
+    return ctx.stylize('' + value, 'boolean');
+  // For some reason typeof null is "object", so special case here.
+  if (isNull(value))
+    return ctx.stylize('null', 'null');
+}
+
+
+function formatError(value) {
+  return '[' + Error.prototype.toString.call(value) + ']';
+}
+
+
+function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+  var output = [];
+  for (var i = 0, l = value.length; i < l; ++i) {
+    if (hasOwnProperty(value, String(i))) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          String(i), true));
+    } else {
+      output.push('');
+    }
+  }
+  keys.forEach(function(key) {
+    if (!key.match(/^\d+$/)) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          key, true));
+    }
+  });
+  return output;
+}
+
+
+function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+  var name, str, desc;
+  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+  if (desc.get) {
+    if (desc.set) {
+      str = ctx.stylize('[Getter/Setter]', 'special');
+    } else {
+      str = ctx.stylize('[Getter]', 'special');
+    }
+  } else {
+    if (desc.set) {
+      str = ctx.stylize('[Setter]', 'special');
+    }
+  }
+  if (!hasOwnProperty(visibleKeys, key)) {
+    name = '[' + key + ']';
+  }
+  if (!str) {
+    if (ctx.seen.indexOf(desc.value) < 0) {
+      if (isNull(recurseTimes)) {
+        str = formatValue(ctx, desc.value, null);
+      } else {
+        str = formatValue(ctx, desc.value, recurseTimes - 1);
+      }
+      if (str.indexOf('\n') > -1) {
+        if (array) {
+          str = str.split('\n').map(function(line) {
+            return '  ' + line;
+          }).join('\n').substr(2);
+        } else {
+          str = '\n' + str.split('\n').map(function(line) {
+            return '   ' + line;
+          }).join('\n');
+        }
+      }
+    } else {
+      str = ctx.stylize('[Circular]', 'special');
+    }
+  }
+  if (isUndefined(name)) {
+    if (array && key.match(/^\d+$/)) {
+      return str;
+    }
+    name = JSON.stringify('' + key);
+    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+      name = name.substr(1, name.length - 2);
+      name = ctx.stylize(name, 'name');
+    } else {
+      name = name.replace(/'/g, "\\'")
+                 .replace(/\\"/g, '"')
+                 .replace(/(^"|"$)/g, "'");
+      name = ctx.stylize(name, 'string');
+    }
+  }
+
+  return name + ': ' + str;
+}
+
+
+function reduceToSingleString(output, base, braces) {
+  var numLinesEst = 0;
+  var length = output.reduce(function(prev, cur) {
+    numLinesEst++;
+    if (cur.indexOf('\n') >= 0) numLinesEst++;
+    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+  }, 0);
+
+  if (length > 60) {
+    return braces[0] +
+           (base === '' ? '' : base + '\n ') +
+           ' ' +
+           output.join(',\n  ') +
+           ' ' +
+           braces[1];
+  }
+
+  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+
+// NOTE: These type checking functions intentionally don't use `instanceof`
+// because it is fragile and can be easily faked with `Object.create()`.
+function isArray(ar) {
+  return Array.isArray(ar);
+}
+exports.isArray = isArray;
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+exports.isBoolean = isBoolean;
+
+function isNull(arg) {
+  return arg === null;
+}
+exports.isNull = isNull;
+
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+exports.isNullOrUndefined = isNullOrUndefined;
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+exports.isNumber = isNumber;
+
+function isString(arg) {
+  return typeof arg === 'string';
+}
+exports.isString = isString;
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+exports.isSymbol = isSymbol;
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+exports.isUndefined = isUndefined;
+
+function isRegExp(re) {
+  return isObject(re) && objectToString(re) === '[object RegExp]';
+}
+exports.isRegExp = isRegExp;
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+exports.isObject = isObject;
+
+function isDate(d) {
+  return isObject(d) && objectToString(d) === '[object Date]';
+}
+exports.isDate = isDate;
+
+function isError(e) {
+  return isObject(e) &&
+      (objectToString(e) === '[object Error]' || e instanceof Error);
+}
+exports.isError = isError;
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+exports.isFunction = isFunction;
+
+function isPrimitive(arg) {
+  return arg === null ||
+         typeof arg === 'boolean' ||
+         typeof arg === 'number' ||
+         typeof arg === 'string' ||
+         typeof arg === 'symbol' ||  // ES6 symbol
+         typeof arg === 'undefined';
+}
+exports.isPrimitive = isPrimitive;
+
+exports.isBuffer = require('./support/isBuffer');
+
+function objectToString(o) {
+  return Object.prototype.toString.call(o);
+}
+
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+// 26 Feb 16:19:34
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
+
+// log is just a thin wrapper to console.log that prepends a timestamp
+exports.log = function() {
+  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+};
+
+
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * The Function.prototype.inherits from lang.js rewritten as a standalone
+ * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * during bootstrapping this function needs to be rewritten using some native
+ * functions as prototype setup using normal JavaScript does not work as
+ * expected during bootstrapping (see mirror.js in r114903).
+ *
+ * @param {function} ctor Constructor function which needs to inherit the
+ *     prototype.
+ * @param {function} superCtor Constructor function to inherit prototype from.
+ */
+exports.inherits = require('inherits');
+
+exports._extend = function(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = Object.keys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
+};
+
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+}).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"./support/isBuffer":3,"_process":15,"inherits":2}],5:[function(require,module,exports){
 /*!
  * Chart.js v2.9.4
  * https://www.chartjs.org
@@ -16172,7 +17306,99 @@ return src;
 
 })));
 
-},{"moment":8}],2:[function(require,module,exports){
+},{"moment":13}],6:[function(require,module,exports){
+(function (global){(function (){
+/*global window, global*/
+var util = require("util")
+var assert = require("assert")
+function now() { return new Date().getTime() }
+
+var slice = Array.prototype.slice
+var console
+var times = {}
+
+if (typeof global !== "undefined" && global.console) {
+    console = global.console
+} else if (typeof window !== "undefined" && window.console) {
+    console = window.console
+} else {
+    console = {}
+}
+
+var functions = [
+    [log, "log"],
+    [info, "info"],
+    [warn, "warn"],
+    [error, "error"],
+    [time, "time"],
+    [timeEnd, "timeEnd"],
+    [trace, "trace"],
+    [dir, "dir"],
+    [consoleAssert, "assert"]
+]
+
+for (var i = 0; i < functions.length; i++) {
+    var tuple = functions[i]
+    var f = tuple[0]
+    var name = tuple[1]
+
+    if (!console[name]) {
+        console[name] = f
+    }
+}
+
+module.exports = console
+
+function log() {}
+
+function info() {
+    console.log.apply(console, arguments)
+}
+
+function warn() {
+    console.log.apply(console, arguments)
+}
+
+function error() {
+    console.warn.apply(console, arguments)
+}
+
+function time(label) {
+    times[label] = now()
+}
+
+function timeEnd(label) {
+    var time = times[label]
+    if (!time) {
+        throw new Error("No such label: " + label)
+    }
+
+    delete times[label]
+    var duration = now() - time
+    console.log(label + ": " + duration + "ms")
+}
+
+function trace() {
+    var err = new Error()
+    err.name = "Trace"
+    err.message = util.format.apply(null, arguments)
+    console.error(err.stack)
+}
+
+function dir(object) {
+    console.log(util.inspect(object) + "\n")
+}
+
+function consoleAssert(expression) {
+    if (!expression) {
+        var arr = slice.call(arguments, 1)
+        assert.ok(false, util.format.apply(null, arr))
+    }
+}
+
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"assert":1,"util":23}],7:[function(require,module,exports){
 /*! DataTables Bootstrap 4 integration
  * ©2011-2017 SpryMedia Ltd - datatables.net/license
  */
@@ -16358,7 +17584,7 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 return DataTable;
 }));
 
-},{"datatables.net":5}],3:[function(require,module,exports){
+},{"datatables.net":10}],8:[function(require,module,exports){
 /*! Bootstrap 4 integration for DataTables' Responsive
  * ©2016 SpryMedia Ltd - datatables.net/license
  */
@@ -16445,7 +17671,7 @@ _display.modal = function ( options ) {
 return DataTable.Responsive;
 }));
 
-},{"datatables.net-bs4":2,"datatables.net-responsive":4}],4:[function(require,module,exports){
+},{"datatables.net-bs4":7,"datatables.net-responsive":9}],9:[function(require,module,exports){
 /*! Responsive 2.2.6
  * 2014-2020 SpryMedia Ltd - datatables.net/license
  */
@@ -17921,7 +19147,7 @@ $(document).on( 'preInit.dt.dtr', function (e, settings, json) {
 return Responsive;
 }));
 
-},{"datatables.net":5}],5:[function(require,module,exports){
+},{"datatables.net":10}],10:[function(require,module,exports){
 /*! DataTables 1.10.22
  * ©2008-2020 SpryMedia Ltd - datatables.net/license
  */
@@ -33310,7 +34536,7 @@ return Responsive;
 	return $.fn.dataTable;
 }));
 
-},{"jquery":6}],6:[function(require,module,exports){
+},{"jquery":11}],11:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
@@ -44184,7 +45410,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{}],7:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (global){(function (){
 /*!
     localForage -- Offline Storage, Improved
@@ -46990,7 +48216,7 @@ module.exports = localforage_js;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],8:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 //! moment.js
 //! version : 2.29.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -52662,7 +53888,285 @@ module.exports = localforage_js;
 
 })));
 
-},{}],9:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+'use strict';
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+},{}],15:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],16:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var level_1 = require("./level");
@@ -52747,7 +54251,21 @@ var Display = /** @class */ (function () {
 }());
 exports.Display = Display;
 
-},{"./level":10,"./loggerManager":12}],10:[function(require,module,exports){
+},{"./level":18,"./loggerManager":20}],17:[function(require,module,exports){
+"use strict";
+/**
+ * @file Automatically generated by barrelsby.
+ */
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(require("./display"));
+__export(require("./level"));
+__export(require("./logger"));
+__export(require("./loggerManager"));
+
+},{"./display":16,"./level":18,"./logger":19,"./loggerManager":20}],18:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
@@ -52777,7 +54295,7 @@ var Level;
     Level[Level["ERROR"] = 4] = "ERROR";
 })(Level = exports.Level || (exports.Level = {}));
 
-},{}],11:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var level_1 = require("./level");
@@ -52879,7 +54397,7 @@ var Logger = /** @class */ (function () {
 }());
 exports.Logger = Logger;
 
-},{"./display":9,"./level":10}],12:[function(require,module,exports){
+},{"./display":16,"./level":18}],20:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var logger_1 = require("./logger");
@@ -52996,130 +54514,789 @@ var LoggerManager = /** @class */ (function () {
 }());
 exports.LoggerManager = LoggerManager;
 
-},{"./logger":11}],13:[function(require,module,exports){
+},{"./logger":19}],21:[function(require,module,exports){
+arguments[4][2][0].apply(exports,arguments)
+},{"dup":2}],22:[function(require,module,exports){
+arguments[4][3][0].apply(exports,arguments)
+},{"dup":3}],23:[function(require,module,exports){
+(function (process,global){(function (){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var formatRegExp = /%[sdj%]/g;
+exports.format = function(f) {
+  if (!isString(f)) {
+    var objects = [];
+    for (var i = 0; i < arguments.length; i++) {
+      objects.push(inspect(arguments[i]));
+    }
+    return objects.join(' ');
+  }
+
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  var str = String(f).replace(formatRegExp, function(x) {
+    if (x === '%%') return '%';
+    if (i >= len) return x;
+    switch (x) {
+      case '%s': return String(args[i++]);
+      case '%d': return Number(args[i++]);
+      case '%j':
+        try {
+          return JSON.stringify(args[i++]);
+        } catch (_) {
+          return '[Circular]';
+        }
+      default:
+        return x;
+    }
+  });
+  for (var x = args[i]; i < len; x = args[++i]) {
+    if (isNull(x) || !isObject(x)) {
+      str += ' ' + x;
+    } else {
+      str += ' ' + inspect(x);
+    }
+  }
+  return str;
+};
+
+
+// Mark that a method should not be used.
+// Returns a modified function which warns once by default.
+// If --no-deprecation is set, then it is a no-op.
+exports.deprecate = function(fn, msg) {
+  // Allow for deprecating things in the process of starting up.
+  if (isUndefined(global.process)) {
+    return function() {
+      return exports.deprecate(fn, msg).apply(this, arguments);
+    };
+  }
+
+  if (process.noDeprecation === true) {
+    return fn;
+  }
+
+  var warned = false;
+  function deprecated() {
+    if (!warned) {
+      if (process.throwDeprecation) {
+        throw new Error(msg);
+      } else if (process.traceDeprecation) {
+        console.trace(msg);
+      } else {
+        console.error(msg);
+      }
+      warned = true;
+    }
+    return fn.apply(this, arguments);
+  }
+
+  return deprecated;
+};
+
+
+var debugs = {};
+var debugEnviron;
+exports.debuglog = function(set) {
+  if (isUndefined(debugEnviron))
+    debugEnviron = process.env.NODE_DEBUG || '';
+  set = set.toUpperCase();
+  if (!debugs[set]) {
+    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
+      var pid = process.pid;
+      debugs[set] = function() {
+        var msg = exports.format.apply(exports, arguments);
+        console.error('%s %d: %s', set, pid, msg);
+      };
+    } else {
+      debugs[set] = function() {};
+    }
+  }
+  return debugs[set];
+};
+
+
+/**
+ * Echos the value of a value. Trys to print the value out
+ * in the best way possible given the different types.
+ *
+ * @param {Object} obj The object to print out.
+ * @param {Object} opts Optional options object that alters the output.
+ */
+/* legacy: obj, showHidden, depth, colors*/
+function inspect(obj, opts) {
+  // default options
+  var ctx = {
+    seen: [],
+    stylize: stylizeNoColor
+  };
+  // legacy...
+  if (arguments.length >= 3) ctx.depth = arguments[2];
+  if (arguments.length >= 4) ctx.colors = arguments[3];
+  if (isBoolean(opts)) {
+    // legacy...
+    ctx.showHidden = opts;
+  } else if (opts) {
+    // got an "options" object
+    exports._extend(ctx, opts);
+  }
+  // set default options
+  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+  if (isUndefined(ctx.depth)) ctx.depth = 2;
+  if (isUndefined(ctx.colors)) ctx.colors = false;
+  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+  if (ctx.colors) ctx.stylize = stylizeWithColor;
+  return formatValue(ctx, obj, ctx.depth);
+}
+exports.inspect = inspect;
+
+
+// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+inspect.colors = {
+  'bold' : [1, 22],
+  'italic' : [3, 23],
+  'underline' : [4, 24],
+  'inverse' : [7, 27],
+  'white' : [37, 39],
+  'grey' : [90, 39],
+  'black' : [30, 39],
+  'blue' : [34, 39],
+  'cyan' : [36, 39],
+  'green' : [32, 39],
+  'magenta' : [35, 39],
+  'red' : [31, 39],
+  'yellow' : [33, 39]
+};
+
+// Don't use 'blue' not visible on cmd.exe
+inspect.styles = {
+  'special': 'cyan',
+  'number': 'yellow',
+  'boolean': 'yellow',
+  'undefined': 'grey',
+  'null': 'bold',
+  'string': 'green',
+  'date': 'magenta',
+  // "name": intentionally not styling
+  'regexp': 'red'
+};
+
+
+function stylizeWithColor(str, styleType) {
+  var style = inspect.styles[styleType];
+
+  if (style) {
+    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
+           '\u001b[' + inspect.colors[style][1] + 'm';
+  } else {
+    return str;
+  }
+}
+
+
+function stylizeNoColor(str, styleType) {
+  return str;
+}
+
+
+function arrayToHash(array) {
+  var hash = {};
+
+  array.forEach(function(val, idx) {
+    hash[val] = true;
+  });
+
+  return hash;
+}
+
+
+function formatValue(ctx, value, recurseTimes) {
+  // Provide a hook for user-specified inspect functions.
+  // Check that value is an object with an inspect function on it
+  if (ctx.customInspect &&
+      value &&
+      isFunction(value.inspect) &&
+      // Filter out the util module, it's inspect function is special
+      value.inspect !== exports.inspect &&
+      // Also filter out any prototype objects using the circular check.
+      !(value.constructor && value.constructor.prototype === value)) {
+    var ret = value.inspect(recurseTimes, ctx);
+    if (!isString(ret)) {
+      ret = formatValue(ctx, ret, recurseTimes);
+    }
+    return ret;
+  }
+
+  // Primitive types cannot have properties
+  var primitive = formatPrimitive(ctx, value);
+  if (primitive) {
+    return primitive;
+  }
+
+  // Look up the keys of the object.
+  var keys = Object.keys(value);
+  var visibleKeys = arrayToHash(keys);
+
+  if (ctx.showHidden) {
+    keys = Object.getOwnPropertyNames(value);
+  }
+
+  // IE doesn't make error fields non-enumerable
+  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
+  if (isError(value)
+      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
+    return formatError(value);
+  }
+
+  // Some type of object without properties can be shortcutted.
+  if (keys.length === 0) {
+    if (isFunction(value)) {
+      var name = value.name ? ': ' + value.name : '';
+      return ctx.stylize('[Function' + name + ']', 'special');
+    }
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    }
+    if (isDate(value)) {
+      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+    }
+    if (isError(value)) {
+      return formatError(value);
+    }
+  }
+
+  var base = '', array = false, braces = ['{', '}'];
+
+  // Make Array say that they are Array
+  if (isArray(value)) {
+    array = true;
+    braces = ['[', ']'];
+  }
+
+  // Make functions say that they are functions
+  if (isFunction(value)) {
+    var n = value.name ? ': ' + value.name : '';
+    base = ' [Function' + n + ']';
+  }
+
+  // Make RegExps say that they are RegExps
+  if (isRegExp(value)) {
+    base = ' ' + RegExp.prototype.toString.call(value);
+  }
+
+  // Make dates with properties first say the date
+  if (isDate(value)) {
+    base = ' ' + Date.prototype.toUTCString.call(value);
+  }
+
+  // Make error with message first say the error
+  if (isError(value)) {
+    base = ' ' + formatError(value);
+  }
+
+  if (keys.length === 0 && (!array || value.length == 0)) {
+    return braces[0] + base + braces[1];
+  }
+
+  if (recurseTimes < 0) {
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    } else {
+      return ctx.stylize('[Object]', 'special');
+    }
+  }
+
+  ctx.seen.push(value);
+
+  var output;
+  if (array) {
+    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+  } else {
+    output = keys.map(function(key) {
+      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+    });
+  }
+
+  ctx.seen.pop();
+
+  return reduceToSingleString(output, base, braces);
+}
+
+
+function formatPrimitive(ctx, value) {
+  if (isUndefined(value))
+    return ctx.stylize('undefined', 'undefined');
+  if (isString(value)) {
+    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+                                             .replace(/'/g, "\\'")
+                                             .replace(/\\"/g, '"') + '\'';
+    return ctx.stylize(simple, 'string');
+  }
+  if (isNumber(value))
+    return ctx.stylize('' + value, 'number');
+  if (isBoolean(value))
+    return ctx.stylize('' + value, 'boolean');
+  // For some reason typeof null is "object", so special case here.
+  if (isNull(value))
+    return ctx.stylize('null', 'null');
+}
+
+
+function formatError(value) {
+  return '[' + Error.prototype.toString.call(value) + ']';
+}
+
+
+function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+  var output = [];
+  for (var i = 0, l = value.length; i < l; ++i) {
+    if (hasOwnProperty(value, String(i))) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          String(i), true));
+    } else {
+      output.push('');
+    }
+  }
+  keys.forEach(function(key) {
+    if (!key.match(/^\d+$/)) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          key, true));
+    }
+  });
+  return output;
+}
+
+
+function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+  var name, str, desc;
+  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+  if (desc.get) {
+    if (desc.set) {
+      str = ctx.stylize('[Getter/Setter]', 'special');
+    } else {
+      str = ctx.stylize('[Getter]', 'special');
+    }
+  } else {
+    if (desc.set) {
+      str = ctx.stylize('[Setter]', 'special');
+    }
+  }
+  if (!hasOwnProperty(visibleKeys, key)) {
+    name = '[' + key + ']';
+  }
+  if (!str) {
+    if (ctx.seen.indexOf(desc.value) < 0) {
+      if (isNull(recurseTimes)) {
+        str = formatValue(ctx, desc.value, null);
+      } else {
+        str = formatValue(ctx, desc.value, recurseTimes - 1);
+      }
+      if (str.indexOf('\n') > -1) {
+        if (array) {
+          str = str.split('\n').map(function(line) {
+            return '  ' + line;
+          }).join('\n').substr(2);
+        } else {
+          str = '\n' + str.split('\n').map(function(line) {
+            return '   ' + line;
+          }).join('\n');
+        }
+      }
+    } else {
+      str = ctx.stylize('[Circular]', 'special');
+    }
+  }
+  if (isUndefined(name)) {
+    if (array && key.match(/^\d+$/)) {
+      return str;
+    }
+    name = JSON.stringify('' + key);
+    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+      name = name.substr(1, name.length - 2);
+      name = ctx.stylize(name, 'name');
+    } else {
+      name = name.replace(/'/g, "\\'")
+                 .replace(/\\"/g, '"')
+                 .replace(/(^"|"$)/g, "'");
+      name = ctx.stylize(name, 'string');
+    }
+  }
+
+  return name + ': ' + str;
+}
+
+
+function reduceToSingleString(output, base, braces) {
+  var numLinesEst = 0;
+  var length = output.reduce(function(prev, cur) {
+    numLinesEst++;
+    if (cur.indexOf('\n') >= 0) numLinesEst++;
+    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+  }, 0);
+
+  if (length > 60) {
+    return braces[0] +
+           (base === '' ? '' : base + '\n ') +
+           ' ' +
+           output.join(',\n  ') +
+           ' ' +
+           braces[1];
+  }
+
+  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+
+// NOTE: These type checking functions intentionally don't use `instanceof`
+// because it is fragile and can be easily faked with `Object.create()`.
+function isArray(ar) {
+  return Array.isArray(ar);
+}
+exports.isArray = isArray;
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+exports.isBoolean = isBoolean;
+
+function isNull(arg) {
+  return arg === null;
+}
+exports.isNull = isNull;
+
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+exports.isNullOrUndefined = isNullOrUndefined;
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+exports.isNumber = isNumber;
+
+function isString(arg) {
+  return typeof arg === 'string';
+}
+exports.isString = isString;
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+exports.isSymbol = isSymbol;
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+exports.isUndefined = isUndefined;
+
+function isRegExp(re) {
+  return isObject(re) && objectToString(re) === '[object RegExp]';
+}
+exports.isRegExp = isRegExp;
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+exports.isObject = isObject;
+
+function isDate(d) {
+  return isObject(d) && objectToString(d) === '[object Date]';
+}
+exports.isDate = isDate;
+
+function isError(e) {
+  return isObject(e) &&
+      (objectToString(e) === '[object Error]' || e instanceof Error);
+}
+exports.isError = isError;
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+exports.isFunction = isFunction;
+
+function isPrimitive(arg) {
+  return arg === null ||
+         typeof arg === 'boolean' ||
+         typeof arg === 'number' ||
+         typeof arg === 'string' ||
+         typeof arg === 'symbol' ||  // ES6 symbol
+         typeof arg === 'undefined';
+}
+exports.isPrimitive = isPrimitive;
+
+exports.isBuffer = require('./support/isBuffer');
+
+function objectToString(o) {
+  return Object.prototype.toString.call(o);
+}
+
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+// 26 Feb 16:19:34
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
+
+// log is just a thin wrapper to console.log that prepends a timestamp
+exports.log = function() {
+  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+};
+
+
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * The Function.prototype.inherits from lang.js rewritten as a standalone
+ * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * during bootstrapping this function needs to be rewritten using some native
+ * functions as prototype setup using normal JavaScript does not work as
+ * expected during bootstrapping (see mirror.js in r114903).
+ *
+ * @param {function} ctor Constructor function which needs to inherit the
+ *     prototype.
+ * @param {function} superCtor Constructor function to inherit prototype from.
+ */
+exports.inherits = require('inherits');
+
+exports._extend = function(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = Object.keys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
+};
+
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+}).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"./support/isBuffer":22,"_process":15,"inherits":21}],24:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FertilizeAdapter = void 0;
-var fertilizer_data_1 = require("./fertilizer.data");
-var FertilizeAdapter = (function () {
-    function FertilizeAdapter(app, data) {
-        this._data = new fertilizer_data_1.FertilizerData();
-        this._app = app;
-        this._data = data;
+exports.DataListSubject = exports.DataSubject = void 0;
+var typescript_logger_1 = require("typescript-logger");
+var DataSubject = (function () {
+    function DataSubject(value) {
+        this.observers = [];
+        this.log = typescript_logger_1.LoggerManager.create("Observer:DataSubject");
+        this._state = value;
     }
-    FertilizeAdapter.prototype.init = function () {
+    Object.defineProperty(DataSubject.prototype, "data", {
+        get: function () {
+            return this._state;
+        },
+        set: function (value) {
+            this._state = value;
+            this.notify();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    DataSubject.prototype.let = function (lets) {
+        this._state = lets(this._state);
+        this.notify();
+        return this._state;
     };
-    FertilizeAdapter.prototype.updateFromComponents = function (components) {
-        this._data.leaf_fertilizer = this.calcComponentLeafFertilizerValue(components.components);
-        this._data.kernel_fertilizer = this.calcComponentKernelFertilizerValue(components.components);
-        this._data.root_fertilizer = this.calcComponentRootFertilizerValue(components.components);
-        this._data.yield_hp = this.calcComponentYieldHPValue(components.components);
-        this._data.taste_strength = this.calcComponentTasteStrengthValue(components.components);
-        this._data.hardness_vitality = this.calcComponentHardnessVitalityValue(components.components);
-        this._data.stickiness_gusto = this.calcComponentStickinessGustoValue(components.components);
-        this._data.aesthetic_luck = this.calcComponentAestheticLuckValue(components.components);
-        this._data.armor_magic = this.calcComponentArmorMagicValue(components.components);
-        this._data.immunity = this.calcComponentImmunityValue(components.components);
-        this._data.pesticide = this.calcComponentPesticideValue(components.components);
-        this._data.herbicide = this.calcComponentHerbicideValue(components.components);
-        this._data.toxicity = this.calcComponentToxicityValue(components.components);
-        this._app.updateFertilizerUI();
+    DataSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist) {
+            this.log.warn('Subject: Observer has been attached already.');
+            return;
+        }
+        this.log.debug('Subject: Attached an observer.', observer);
+        this.observers.push(observer);
     };
-    FertilizeAdapter.prototype.calcComponentLeafFertilizerValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.leaf_fertilizer) ? component.fertilizer_bonus.leaf_fertilizer : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
+    DataSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            this.log.warn('Subject: Nonexistent observer.');
+            return;
+        }
+        this.observers = this.observers.splice(observerIndex, 1);
+        this.log.debug('Subject: Detached an observer.', observer);
     };
-    FertilizeAdapter.prototype.calcComponentKernelFertilizerValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.kernel_fertilizer) ? component.fertilizer_bonus.kernel_fertilizer : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
+    DataSubject.prototype.notify = function () {
+        this.log.debug('Subject: Notifying observers...', this._state);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.update(this);
+        }
     };
-    FertilizeAdapter.prototype.calcComponentRootFertilizerValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.root_fertilizer) ? component.fertilizer_bonus.root_fertilizer : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentYieldHPValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.yield_hp) ? component.fertilizer_bonus.yield_hp : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentTasteStrengthValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.taste_strength) ? component.fertilizer_bonus.taste_strength : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentHardnessVitalityValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.hardness_vitality) ? component.fertilizer_bonus.hardness_vitality : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentStickinessGustoValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.stickiness_gusto) ? component.fertilizer_bonus.stickiness_gusto : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentAestheticLuckValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.aesthetic_luck) ? component.fertilizer_bonus.aesthetic_luck : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentArmorMagicValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.armor_magic) ? component.fertilizer_bonus.armor_magic : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentImmunityValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.immunity) ? component.fertilizer_bonus.immunity : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentPesticideValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.pesticide) ? component.fertilizer_bonus.pesticide : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentHerbicideValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.herbicide) ? component.fertilizer_bonus.herbicide : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    FertilizeAdapter.prototype.calcComponentToxicityValue = function (components) {
-        return components.map(function (component) { return (component.fertilizer_bonus.toxicity) ? component.fertilizer_bonus.toxicity : 0; }).reduce(function (sum, value, index) {
-            var component = components[index];
-            var ret = sum + value;
-            return ret;
-        }, 0);
-    };
-    return FertilizeAdapter;
+    return DataSubject;
 }());
-exports.FertilizeAdapter = FertilizeAdapter;
-},{"./fertilizer.data":18}],14:[function(require,module,exports){
+exports.DataSubject = DataSubject;
+var DataListSubject = (function () {
+    function DataListSubject(value) {
+        if (value === void 0) { value = []; }
+        this._state = [];
+        this.observers = [];
+        this.log = typescript_logger_1.LoggerManager.create("Observer:ListDataSubject");
+        this._state = value;
+    }
+    Object.defineProperty(DataListSubject.prototype, "data", {
+        get: function () {
+            return this._state;
+        },
+        set: function (value) {
+            this._state = value;
+            this.notify();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(DataListSubject.prototype, "length", {
+        get: function () {
+            return this._state.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    DataListSubject.prototype.clear = function () {
+        this.data = [];
+    };
+    DataListSubject.prototype.last = function () {
+        return (this._state.length > 0) ? this._state[this._state.length - 1] : undefined;
+    };
+    DataListSubject.prototype.get = function (index) {
+        return this._state[index];
+    };
+    DataListSubject.prototype.find = function (predicate, thisArg) {
+        return this._state.find(predicate, thisArg);
+    };
+    DataListSubject.prototype.findIndex = function (predicate, thisArg) {
+        return this._state.findIndex(predicate, thisArg);
+    };
+    DataListSubject.prototype.let = function (index, lets) {
+        if (index >= 0 && index < this._state.length && this._state[index] !== undefined) {
+            var new_item = lets(this._state[index], index);
+            if (new_item !== undefined) {
+                this._state[index] = new_item;
+                this.notifyItem(new_item, index);
+            }
+            else {
+                var old_item = this._state[index];
+                this._state.splice(index, 1);
+                this.notifyRemovedItem(old_item);
+            }
+        }
+    };
+    DataListSubject.prototype.lets = function (lets) {
+        if (this._state.length > 0) {
+            this._state = this._state
+                .map(function (it, index) { return lets(it, index); })
+                .filter(function (it) { return it !== undefined; });
+            this.notify();
+        }
+    };
+    DataListSubject.prototype.forEach = function (callbackfn, thisArg) {
+        this._state.forEach(callbackfn, thisArg);
+    };
+    DataListSubject.prototype.set = function (index, value) {
+        if (index >= 0 && index < this._state.length) {
+            this._state[index] = value;
+            this.notifyItem(value, index);
+        }
+    };
+    DataListSubject.prototype.push = function (value) {
+        this._state.push(value);
+        this.notifyAddedItem(this._state[this._state.length - 1]);
+    };
+    DataListSubject.prototype.remove = function (index) {
+        if (index >= 0 && index < this._state.length) {
+            var item = this._state[index];
+            this._state.splice(index, 1);
+            this.notifyRemovedItem(item);
+        }
+    };
+    DataListSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist) {
+            this.log.warn('Subject: Observer has been attached already.');
+            return;
+        }
+        this.log.debug('Subject: Attached an observer.', observer);
+        this.observers.push(observer);
+    };
+    DataListSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            this.log.warn('Subject: Nonexistent observer.');
+            return;
+        }
+        this.observers = this.observers.splice(observerIndex, 1);
+        this.log.debug('Subject: Detached an observer.', observer);
+    };
+    DataListSubject.prototype.notify = function () {
+        this.log.debug('Subject: Notifying observers...', this._state);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.update(this);
+        }
+    };
+    DataListSubject.prototype.notifyItem = function (item, index) {
+        this.log.debug('Subject: Notifying observers, Item...', this._state, index);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.updateItem(this, item, index);
+        }
+    };
+    DataListSubject.prototype.notifyAddedItem = function (added) {
+        this.log.debug('Subject: Notifying observers, AddedItem...', this._state, added);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.updateAddedItem(this, added);
+        }
+    };
+    DataListSubject.prototype.notifyRemovedItem = function (removed) {
+        this.log.debug('Subject: Notifying observers, RemovedItem...', this._state, removed);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.updateRemovedItem(this, removed);
+        }
+    };
+    return DataListSubject;
+}());
+exports.DataListSubject = DataListSubject;
+},{"typescript-logger":17}],25:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -53161,10 +55338,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApplicationData = void 0;
+exports.ApplicationData = exports.Settings = exports.FarmingFocus = void 0;
 var localforage_1 = __importDefault(require("localforage"));
-var fertilizer_components_data_1 = require("./fertilizer-components.data");
+var fertilizer_components_1 = require("./fertilizer-components");
 var inventory_1 = require("./inventory");
+var Observer_1 = require("./Observer");
 var STORAGE_KEY_ITEMS = 'items';
 var STORAGE_KEY_ITEMS_IN_INVENTORY = 'items_in_inventory';
 var STORAGE_KEY_CURRENT_LEAF_FERTILIZER = 'current_leaf_fertilizer';
@@ -53172,60 +55350,81 @@ var STORAGE_KEY_CURRENT_KERNEL_FERTILIZER = 'current_kernel_fertilizer';
 var STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 var STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 var STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
+var STORAGE_KEY_SETTINGS = 'settings';
+var FarmingFocus;
+(function (FarmingFocus) {
+    FarmingFocus["Balanced"] = "balanced";
+    FarmingFocus["Heartiness"] = "heartiness";
+    FarmingFocus["Yield"] = "yield";
+    FarmingFocus["Aesthetic"] = "aesthetic";
+    FarmingFocus["Aroma"] = "aroma";
+})(FarmingFocus = exports.FarmingFocus || (exports.FarmingFocus = {}));
+var Settings = (function () {
+    function Settings() {
+        this.no_inventory_restriction = true;
+    }
+    return Settings;
+}());
+exports.Settings = Settings;
 var ApplicationData = (function () {
     function ApplicationData() {
         this._items = [];
+        this._currentLeafFertilizer = new Observer_1.DataSubject(0);
+        this._currentKernelFertilizer = new Observer_1.DataSubject(0);
+        this._currentRootFertilizer = new Observer_1.DataSubject(0);
+        this._currentGuide = new Observer_1.DataSubject(FarmingFocus.Balanced);
+        this._settings = new Observer_1.DataSubject(new Settings());
         this._inventory = new inventory_1.Inventory();
-        this._currentLeafFertilizer = 0;
-        this._currentKernelFertilizer = 0;
-        this._currentRootFertilizer = 0;
-        this._fertilizer_components = new fertilizer_components_data_1.FertilizerComponents();
-        this._currentGuide = 'balanced';
+        this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
         this._storeSession = localforage_1.default.createInstance({
             name: "session"
         });
     }
     ApplicationData.prototype.loadFromStorage = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, _c, _d, _e, _f, _g, err_1;
-            return __generator(this, function (_h) {
-                switch (_h.label) {
+            var _a, _b, _c, _d, _e, _f, _g, _h, err_1;
+            return __generator(this, function (_j) {
+                switch (_j.label) {
                     case 0:
-                        _h.trys.push([0, 8, , 9]);
+                        _j.trys.push([0, 9, , 10]);
                         _a = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS)];
                     case 1:
-                        _a._items = (_h.sent()) || this._items;
+                        _a._items = (_j.sent()) || this._items;
                         _b = this._inventory;
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS_IN_INVENTORY)];
                     case 2:
-                        _b.items = (_h.sent()) || this._inventory.items;
-                        _c = this;
+                        _b.items = (_j.sent()) || this._inventory.items;
+                        _c = this._currentLeafFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER)];
                     case 3:
-                        _c._currentLeafFertilizer = (_h.sent()) || this._currentLeafFertilizer;
-                        _d = this;
+                        _c.data = (_j.sent()) || this._currentLeafFertilizer.data;
+                        _d = this._currentKernelFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER)];
                     case 4:
-                        _d._currentKernelFertilizer = (_h.sent()) || this._currentKernelFertilizer;
-                        _e = this;
+                        _d.data = (_j.sent()) || this._currentKernelFertilizer.data;
+                        _e = this._currentRootFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER)];
                     case 5:
-                        _e._currentRootFertilizer = (_h.sent()) || this._currentRootFertilizer;
+                        _e.data = (_j.sent()) || this._currentRootFertilizer.data;
                         _f = this._fertilizer_components;
                         return [4, this._storeSession.getItem(STORAGE_KEY_FERTILIZER_COMPONENTS)];
                     case 6:
-                        _f.components = (_h.sent()) || this._fertilizer_components.components;
-                        _g = this;
+                        _f.components = (_j.sent()) || this._fertilizer_components.components;
+                        _g = this._currentGuide;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE)];
                     case 7:
-                        _g._currentGuide = (_h.sent()) || this._currentGuide;
-                        return [3, 9];
+                        _g.data = (_j.sent()) || this._currentGuide.data;
+                        _h = this._settings;
+                        return [4, this._storeSession.getItem(STORAGE_KEY_SETTINGS)];
                     case 8:
-                        err_1 = _h.sent();
+                        _h.data = (_j.sent()) || this._settings.data;
+                        return [3, 10];
+                    case 9:
+                        err_1 = _j.sent();
                         console.error('loadFromStorage', err_1);
-                        return [3, 9];
-                    case 9: return [2];
+                        return [3, 10];
+                    case 10: return [2];
                 }
             });
         });
@@ -53233,17 +55432,48 @@ var ApplicationData = (function () {
     ApplicationData.prototype.clearSessionStorage = function () {
         this._storeSession.clear();
     };
-    Object.defineProperty(ApplicationData.prototype, "currentGuide", {
+    Object.defineProperty(ApplicationData.prototype, "currentGuideObservable", {
         get: function () {
             return this._currentGuide;
-        },
-        set: function (value) {
-            this._currentGuide = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, this._currentGuide);
         },
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(ApplicationData.prototype, "currentGuide", {
+        get: function () {
+            return this._currentGuide.data;
+        },
+        set: function (value) {
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_GUIDE, value);
+            this._currentGuide.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "settingsObservable", {
+        get: function () {
+            return this._settings;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "settings", {
+        get: function () {
+            return this._settings.data;
+        },
+        set: function (value) {
+            this._storeSession.setItem(STORAGE_KEY_SETTINGS, value);
+            this._settings.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    ApplicationData.prototype.setSettingNoInventoryRestriction = function (value) {
+        var new_settings = this._settings.data;
+        new_settings.no_inventory_restriction = value;
+        this._storeSession.setItem(STORAGE_KEY_SETTINGS, new_settings);
+        this._settings.data = new_settings;
+    };
     Object.defineProperty(ApplicationData.prototype, "items", {
         get: function () {
             return this._items;
@@ -53263,8 +55493,8 @@ var ApplicationData = (function () {
             return this._inventory;
         },
         set: function (value) {
-            this._inventory = value;
-            this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
+            this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, value.items);
+            this._inventory.items = value.items;
         },
         enumerable: false,
         configurable: true
@@ -53272,35 +55502,56 @@ var ApplicationData = (function () {
     ApplicationData.prototype.saveInventory = function () {
         this._storeSession.setItem(STORAGE_KEY_ITEMS_IN_INVENTORY, this._inventory.items);
     };
-    Object.defineProperty(ApplicationData.prototype, "currentLeafFertilizer", {
+    Object.defineProperty(ApplicationData.prototype, "currentLeafFertilizerObservable", {
         get: function () {
             return this._currentLeafFertilizer;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentLeafFertilizer", {
+        get: function () {
+            return this._currentLeafFertilizer.data;
+        },
         set: function (value) {
-            this._currentLeafFertilizer = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, this._currentLeafFertilizer);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER, value);
+            this._currentLeafFertilizer.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentKernelFertilizerObservable", {
+        get: function () {
+            return this._currentKernelFertilizer;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(ApplicationData.prototype, "currentKernelFertilizer", {
         get: function () {
-            return this._currentKernelFertilizer;
+            return this._currentKernelFertilizer.data;
         },
         set: function (value) {
-            this._currentKernelFertilizer = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, this._currentKernelFertilizer);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER, value);
+            this._currentKernelFertilizer.data = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ApplicationData.prototype, "currentRootFertilizerObservable", {
+        get: function () {
+            return this._currentRootFertilizer;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(ApplicationData.prototype, "currentRootFertilizer", {
         get: function () {
-            return this._currentRootFertilizer;
+            return this._currentRootFertilizer.data;
         },
         set: function (value) {
-            this._currentRootFertilizer = value;
-            this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, this._currentRootFertilizer);
+            this._storeSession.setItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER, value);
+            this._currentRootFertilizer.data = value;
         },
         enumerable: false,
         configurable: true
@@ -53310,8 +55561,8 @@ var ApplicationData = (function () {
             return this._fertilizer_components;
         },
         set: function (value) {
-            this._fertilizer_components = value;
-            this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, this._fertilizer_components.components);
+            this._storeSession.setItem(STORAGE_KEY_FERTILIZER_COMPONENTS, value.components);
+            this._fertilizer_components.components = value.components;
         },
         enumerable: false,
         configurable: true
@@ -53322,53 +55573,16 @@ var ApplicationData = (function () {
     return ApplicationData;
 }());
 exports.ApplicationData = ApplicationData;
-},{"./fertilizer-components.data":17,"./inventory":20,"localforage":7}],15:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer-components":28,"./inventory":32,"localforage":12}],26:[function(require,module,exports){
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
 var site_1 = require("./site");
 var application_data_1 = require("./application.data");
 require("datatables.net-bs4");
 require("datatables.net-responsive-bs4");
-var chart_js_1 = require("chart.js");
 var fertilizer_data_1 = require("./fertilizer.data");
-var Fertilize_adapter_1 = require("./Fertilize.adapter");
+var fertilizer_adapter_1 = require("./fertilizer.adapter");
 var fertilize_components_adapter_1 = require("./fertilize-components.adapter");
 var inventory_adapter_1 = require("./inventory.adapter");
 var inventory_1 = require("./inventory");
@@ -53379,13 +55593,9 @@ var Application = (function () {
         this._appData = new application_data_1.ApplicationData();
         this._recommendedInventory = new inventory_1.Inventory();
         this._expirablesInventory = new inventory_1.Inventory();
-        this._fertilizer = new fertilizer_data_1.FertilizerData();
         this.log = loggerManager_1.LoggerManager.create('Application');
     }
     Application.prototype.init = function () {
-        if ("development" !== "development") {
-            loggerManager_1.LoggerManager.setProductionMode();
-        }
         var that = this;
         this._appData.loadFromStorage().then(function () {
             if (that._appData.items.length <= 0 || !site_1.USE_CACHE) {
@@ -53395,399 +55605,187 @@ var Application = (function () {
         });
     };
     Application.prototype.initSite = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var that;
-            var _this = this;
-            return __generator(this, function (_a) {
-                this.log.debug('init items', this._appData.items);
-                that = this;
-                $('#farming-guild-pills-tab a').each(function () {
-                    if (that._appData.currentGuide === $(this).data('name')) {
-                        $(this).tab('show');
-                    }
-                });
-                $('#farming-guild-pills-tab a').on('show.bs.tab', function (e) {
-                    var spacing = $(this).data('spacing').toLocaleLowerCase();
-                    switch (spacing) {
-                        case 'little far apart':
-                            $('#nav-spacing-a-little-apart-tab').tab('show');
-                            break;
-                        case 'balanced':
-                            $('#nav-spacing-balanced-tab').tab('show');
-                            break;
-                    }
-                    that._appData.currentGuide = $(this).data('name');
-                    that.updateRecommendedItems();
-                });
-                this._fertilizeAdapter = new Fertilize_adapter_1.FertilizeAdapter(this, this._fertilizer);
-                this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this, '#lstFertilizeComponents', this._appData.fertilizer_components);
-                this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventory', this._appData.inventory);
-                this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventoryRecommended', this._recommendedInventory);
-                this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this, '#tblInventoryExpirables', this._expirablesInventory);
-                this.initItemList().then(function () {
-                    _this.initInventory();
-                });
-                this.initSoilNutrientsChart().then(function () {
-                    var _a, _b, _c;
-                    (_a = _this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.init();
-                    (_b = _this._fertilizeAdapter) === null || _b === void 0 ? void 0 : _b.init();
-                    (_c = _this._fertilizeAdapter) === null || _c === void 0 ? void 0 : _c.updateFromComponents(_this._appData.fertilizer_components);
-                });
-                return [2];
-            });
+        var _a, _b;
+        this.log.debug('init items', this._appData.items);
+        var that = this;
+        $('#farming-guild-pills-tab a').each(function () {
+            if (that._appData.currentGuide === $(this).data('name')) {
+                $(this).tab('show');
+            }
         });
+        $('#farming-guild-pills-tab a').on('show.bs.tab', function (e) {
+            var spacing = $(this).data('spacing').toLocaleLowerCase();
+            switch (spacing) {
+                case 'little far apart':
+                    $('#nav-spacing-a-little-apart-tab').tab('show');
+                    break;
+                case 'balanced':
+                    $('#nav-spacing-balanced-tab').tab('show');
+                    break;
+            }
+            that._appData.currentGuide = $(this).data('name');
+        });
+        this._fertilizerAdapter = new fertilizer_adapter_1.FertilizerAdapter(this._appData);
+        this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
+        this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
+        this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory);
+        this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory);
+        this.initItemList();
+        this.initSettings();
+        this.initInventory();
+        (_a = this._fertilizerAdapter) === null || _a === void 0 ? void 0 : _a.init();
+        (_b = this._fertilizeComponentsAdapter) === null || _b === void 0 ? void 0 : _b.init();
+        this.initObservers();
     };
     Application.prototype.initItemList = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var that;
-            return __generator(this, function (_a) {
-                this._itemList = $('#tblItemsList').DataTable({
-                    order: [[1, "asc"]],
-                    responsive: true,
-                    columnDefs: [
-                        { orderable: false, targets: [0] },
-                        { orderable: true, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
-                    ]
-                });
-                that = this;
-                this._itemList.on('draw.dt', function () {
-                    $('.add-item-to-inventory').on('click', function () {
-                        var _a;
-                        var item_name = $(this).data('name');
-                        var item = that._appData.getItemByName(item_name);
-                        if (item) {
-                            (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item);
-                        }
-                    });
-                });
-                return [2];
-            });
+        this._itemList = $('#tblItemsList').DataTable({
+            order: [[1, "asc"]],
+            responsive: true,
+            columnDefs: [
+                { orderable: false, targets: [0] },
+                { orderable: true, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
+            ]
+        });
+        var that = this;
+        this._itemList.on('draw.dt', function () {
+            that.updateItemListEvents();
+        });
+        this.updateItemListEvents();
+    };
+    Application.prototype.updateItemListEvents = function () {
+        var that = this;
+        $('.add-item-to-inventory').off('click').on('click', function () {
+            var _a;
+            var item_name = $(this).data('name');
+            var item = that._appData.getItemByName(item_name);
+            if (item !== undefined) {
+                (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, 1);
+            }
+        });
+    };
+    Application.prototype.initSettings = function () {
+        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
+        var that = this;
+        $('#chbSettingsNoInventoryRestriction').on('change', function () {
+            that._appData.setSettingNoInventoryRestriction(this.checked);
         });
     };
     Application.prototype.initInventory = function () {
         var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                (_a = this._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.init();
-                (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6], false);
-                (_c = this._recommendedInventoryAdapter) === null || _c === void 0 ? void 0 : _c.init([], [0, 1, 2, 3, 4, 5, 6], false);
-                this.drawInventory('#tblInventory');
-                this.drawInventory('#tblInventoryRecommended');
-                this.drawInventory('#tblInventoryExpirables');
-                return [2];
-            });
-        });
+        (_a = this._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.init();
+        (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6], false);
+        (_c = this._recommendedInventoryAdapter) === null || _c === void 0 ? void 0 : _c.init([], [0, 1, 2, 3, 4, 5, 6], false);
     };
-    Application.prototype.initSoilNutrientsChart = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var canvas, that;
-            return __generator(this, function (_a) {
-                canvas = $('#soilNutrientsChart');
-                $('#txtCurrentLeafFertilizer').val(this._appData.currentLeafFertilizer);
-                $('#txtCurrentKernelFertilizer').val(this._appData.currentKernelFertilizer);
-                $('#txtCurrentRootFertilizer').val(this._appData.currentRootFertilizer);
-                this._soilNutrientsChart = new chart_js_1.Chart(canvas, {
-                    type: 'radar',
-                    data: {
-                        labels: [
-                            site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
-                            site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
-                            site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
-                        ],
-                        datasets: [
-                            {
-                                label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
-                                fill: true,
-                                data: [
-                                    this._appData.currentLeafFertilizer,
-                                    this._appData.currentKernelFertilizer,
-                                    this._appData.currentRootFertilizer
-                                ],
-                                backgroundColor: 'rgba(147, 247, 141, 0.2)',
-                                borderColor: 'rgba(147, 247, 141, 1)',
-                                pointBorderColor: 'rgba(147, 247, 141, 0.5)',
-                                pointBackgroundColor: 'rgba(147, 247, 141, 0.5)',
-                                pointStyle: 'rect',
-                                borderWidth: 1
-                            }, {
-                                label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
-                                fill: true,
-                                data: [
-                                    this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer,
-                                    this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer,
-                                    this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer
-                                ],
-                                backgroundColor: 'rgba(160, 250, 255, 0.2)',
-                                borderColor: 'rgba(160, 250, 255, 1)',
-                                pointBorderColor: 'rgba(205, 215, 115, 1)',
-                                pointBackgroundColor: 'rgba(205, 215, 115, 1)',
-                                pointStyle: 'rect',
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: {
-                        scale: {
-                            angleLines: {
-                                display: true
-                            },
-                            ticks: {
-                                suggestedMin: 0,
-                                suggestedMax: 100
-                            }
+    Application.prototype.initObservers = function () {
+        var _a, _b, _c, _d;
+        var that = this;
+        this._appData.currentGuideObservable.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                if (that._fertilizerAdapter !== undefined) {
+                    that.updateRecommendedItems(that._fertilizerAdapter.data);
+                }
+            };
+            return class_1;
+        }()));
+        (_a = this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.observable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                that._appData.saveFertilizerComponents();
+            };
+            class_2.prototype.updateItem = function (subject, updated, index) {
+                that._appData.saveFertilizerComponents();
+            };
+            class_2.prototype.updateAddedItem = function (subject, added) {
+                that._appData.saveFertilizerComponents();
+            };
+            class_2.prototype.updateRemovedItem = function (subject, removed) {
+                that._appData.saveFertilizerComponents();
+            };
+            return class_2;
+        }()));
+        (_b = this._inventoryAdapter) === null || _b === void 0 ? void 0 : _b.observable.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                that._appData.saveInventory();
+            };
+            class_3.prototype.updateItem = function (subject, updated, index) {
+                that._appData.saveInventory();
+            };
+            class_3.prototype.updateAddedItem = function (subject, added) {
+                that._appData.saveInventory();
+            };
+            class_3.prototype.updateRemovedItem = function (subject, removed) {
+                that._appData.saveInventory();
+            };
+            return class_3;
+        }()));
+        (_c = this._inventoryAdapter) === null || _c === void 0 ? void 0 : _c.observable.attach(new (function () {
+            function class_4() {
+            }
+            class_4.prototype.update = function (subject) {
+                if (that._fertilizerAdapter !== undefined) {
+                    that.updateRecommendedItems(that._fertilizerAdapter.data);
+                }
+            };
+            class_4.prototype.updateItem = function (subject, updated, index) {
+                if (that._fertilizerAdapter !== undefined) {
+                    that.updateRecommendedItems(that._fertilizerAdapter.data);
+                }
+            };
+            class_4.prototype.updateAddedItem = function (subject, added) {
+                if (that._fertilizerAdapter !== undefined) {
+                    that.updateRecommendedItems(that._fertilizerAdapter.data);
+                }
+            };
+            class_4.prototype.updateRemovedItem = function (subject, removed) {
+                if (that._fertilizerAdapter !== undefined) {
+                    that.updateRecommendedItems(that._fertilizerAdapter.data);
+                }
+            };
+            return class_4;
+        }()));
+        (_d = this._fertilizerAdapter) === null || _d === void 0 ? void 0 : _d.observable.attach(new (function () {
+            function class_5() {
+            }
+            class_5.prototype.update = function (subject) {
+                that.updateRecommendedItems(subject.data);
+            };
+            return class_5;
+        }()));
+    };
+    Application.prototype.updateRecommendedItems = function (fertilizer) {
+        var _this = this;
+        var inventory_items = this._appData.inventory.items.filter(function (it) {
+            var item_name = it.name;
+            var findItemInInventory = _this._appData.inventory.getItemByName(item_name);
+            var findItemInComponents = _this._appData.fertilizer_components.getItemByName(item_name);
+            if (findItemInComponents) {
+                if (findItemInComponents.in_fertilizer === undefined) {
+                    return false;
+                }
+                if (!_this._appData.settings.no_inventory_restriction) {
+                    if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
+                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                        if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
+                            return false;
                         }
                     }
-                });
-                that = this;
-                $('#txtCurrentLeafFertilizer').on('change', function () {
-                    that.log.debug('txtCurrentLeafFertilizer', $(this).val());
-                    that._appData.currentLeafFertilizer = parseInt($(this).val());
-                    that.updateSoilNutrientsChartCurrentLeafFertilizerUI();
-                });
-                $('#txtCurrentKernelFertilizer').on('change', function () {
-                    that.log.debug('txtCurrentKernelFertilizer', $(this).val());
-                    that._appData.currentKernelFertilizer = parseInt($(this).val());
-                    that.updateSoilNutrientsChartCurrentKernelFertilizerUI();
-                });
-                $('#txtCurrentRootFertilizer').on('change', function () {
-                    that.log.debug('txtCurrentRootFertilizer', $(this).val());
-                    that._appData.currentRootFertilizer = parseInt($(this).val());
-                    that.updateSoilNutrientsChartCurrentRootFertilizerUI();
-                });
-                this.updateSoilNutrientsChartLeafFertilizerUI();
-                this.updateSoilNutrientsChartKernelFertilizerUI();
-                this.updateSoilNutrientsChartRootFertilizerUI();
-                this.updateInventory();
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartCurrentLeafFertilizerUI = function () {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                if (this._soilNutrientsChart) {
-                    if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
-                        this._soilNutrientsChart.data.datasets[0].data[0] = site_1.clamp(this._appData.currentLeafFertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                    }
                 }
-                this.updateSoilNutrientsChartLeafFertilizerUI();
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartLeafFertilizerUI = function () {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                if (this._soilNutrientsChart) {
-                    if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
-                        this.log.debug('updateSoilNutrientsChartLeafFertilizerUI', this._appData.currentLeafFertilizer, this._fertilizer.leaf_fertilizer);
-                        this._soilNutrientsChart.data.datasets[1].data[0] = site_1.clamp(this._appData.currentLeafFertilizer + this._fertilizer.leaf_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                        $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
-                    }
-                    this.updateSoilNutrientsChartUI();
-                }
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartCurrentKernelFertilizerUI = function () {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                if (this._soilNutrientsChart) {
-                    if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
-                        this._soilNutrientsChart.data.datasets[0].data[1] = site_1.clamp(this._appData.currentKernelFertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                    }
-                }
-                this.updateSoilNutrientsChartKernelFertilizerUI();
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartKernelFertilizerUI = function () {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                if (this._soilNutrientsChart) {
-                    if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
-                        this.log.debug('updateSoilNutrientsChartKernelFertilizerUI', this._appData.currentKernelFertilizer, this._fertilizer.kernel_fertilizer);
-                        this._soilNutrientsChart.data.datasets[1].data[1] = site_1.clamp(this._appData.currentKernelFertilizer + this._fertilizer.kernel_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                        $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
-                    }
-                    this.updateSoilNutrientsChartUI();
-                }
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartCurrentRootFertilizerUI = function () {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                if (this._soilNutrientsChart) {
-                    if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
-                        this._soilNutrientsChart.data.datasets[0].data[2] = site_1.clamp(this._appData.currentRootFertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                    }
-                }
-                this.updateSoilNutrientsChartRootFertilizerUI();
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartRootFertilizerUI = function () {
-        var _a, _b, _c;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_d) {
-                if (this._soilNutrientsChart) {
-                    if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
-                        this.log.debug('updateSoilNutrientsChartRootFertilizerUI', this._appData.currentRootFertilizer, this._fertilizer.root_fertilizer);
-                        this._soilNutrientsChart.data.datasets[1].data[2] = site_1.clamp(this._appData.currentRootFertilizer + this._fertilizer.root_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
-                        $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
-                    }
-                    this.updateSoilNutrientsChartUI();
-                }
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateSoilNutrientsChartUI = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                if (this._soilNutrientsChart) {
-                    this.log.debug('updateSoilNutrientsChartUI', { data: this._soilNutrientsChart.data.datasets });
-                    this._soilNutrientsChart.update();
-                }
-                return [2];
-            });
-        });
-    };
-    Application.prototype.getItemByName = function (name) {
-        return this._appData.getItemByName(name);
-    };
-    Application.prototype.getItemByNameFromInventory = function (name) {
-        return this._appData.inventory.getItemByName(name);
-    };
-    Application.prototype.addItemToFertilizer = function (item) {
-        var _a;
-        this._appData.fertilizer_components.add(item);
-        this._appData.saveFertilizerComponents();
-        (_a = this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.update();
-        this.updateFertilizer();
-        this.updateInventory();
-    };
-    Application.prototype.removeItemFromFertilizer = function (item_name) {
-        var _a;
-        this._appData.fertilizer_components.remove(item_name);
-        this._appData.saveFertilizerComponents();
-        (_a = this._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.update();
-        this.updateFertilizer();
-        this.updateInventory();
-    };
-    Application.prototype.addItemToInventory = function (item) {
-        this._appData.inventory.add(item);
-        this._appData.saveInventory();
-        this.updateInventory();
-    };
-    Application.prototype.removeItemFromInventory = function (item_name) {
-        this._appData.inventory.remove(item_name);
-        this._appData.saveInventory();
-        this.updateInventory();
-    };
-    Application.prototype.drawInventory = function (table_selector) {
-        this.log.debug('drawInventory', table_selector);
-        this.updateInventoryEvents(table_selector);
-    };
-    Application.prototype.updateInventoryEvents = function (table_selector) {
-        var that = this;
-        $(table_selector).find('.add-item-to-fertilizer').each(function (index) {
-            var _a;
-            var item_name = $(this).data('name');
-            $(this).prop('disabled', false);
-            if ((_a = that._fertilizeComponentsAdapter) === null || _a === void 0 ? void 0 : _a.isFull) {
-                $(this).prop('disabled', true);
-                return;
             }
-            var findItemInComponents = that._appData.fertilizer_components.getItemByName(item_name);
-            if (findItemInComponents) {
-                $(this).prop('disabled', true);
-                return;
-            }
-        });
-        var table_selector_id = $(table_selector).attr('id');
-        $("#" + table_selector_id + "_filter").each(function () {
-            $(this).addClass('float-right').addClass('text-right');
-            $(this).closest('.row').find('.col-md-6').first().each(function () {
-                $(this).html("<div id=\"" + table_selector_id + "_itemListLink\" class=\"dataTables_link_items float-left text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[" + site_1.site.data.strings.item_list.title + "]</a>\n                </div>");
-            });
-        });
-    };
-    Application.prototype.updateFertilizer = function () {
-        var _a;
-        this.log.debug('updateFertilizer', { fertilizer_components: this._appData.fertilizer_components });
-        (_a = this._fertilizeAdapter) === null || _a === void 0 ? void 0 : _a.updateFromComponents(this._appData.fertilizer_components);
-        this.updateFertilizerUI();
-        this.updateRecommendedItems();
-    };
-    Application.prototype.updateFertilizerUI = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var yield_hp, taste_strength, hardness_vitality, stickiness_gusto, aesthetic_luck, armor_magic, immunity, pesticide, herbicide, toxicity;
-            return __generator(this, function (_a) {
-                this.log.debug('updateFertilizerUI', { fertilizer: this._fertilizer });
-                this.updateSoilNutrientsChartLeafFertilizerUI();
-                this.updateSoilNutrientsChartKernelFertilizerUI();
-                this.updateSoilNutrientsChartRootFertilizerUI();
-                yield_hp = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.yield_hp) ? this._fertilizer.yield_hp : 0, false, this._fertilizer.is_yield_hp_overflow);
-                taste_strength = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.taste_strength) ? this._fertilizer.taste_strength : 0, false, this._fertilizer.is_yield_hp_overflow);
-                hardness_vitality = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.hardness_vitality) ? this._fertilizer.hardness_vitality : 0, false, this._fertilizer.is_hardness_vitality_overflow);
-                stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.stickiness_gusto) ? this._fertilizer.stickiness_gusto : 0, false, this._fertilizer.is_stickiness_gusto_overflow);
-                aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.aesthetic_luck) ? this._fertilizer.aesthetic_luck : 0, false, this._fertilizer.is_aesthetic_luck_overflow);
-                armor_magic = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.armor_magic) ? this._fertilizer.armor_magic : 0, false, this._fertilizer.is_armor_magic_overflow);
-                immunity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.immunity) ? this._fertilizer.immunity : 0, false, this._fertilizer.is_immunity_overflow);
-                pesticide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.pesticide) ? this._fertilizer.pesticide : 0, false, this._fertilizer.is_pesticide_overflow);
-                herbicide = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.herbicide) ? this._fertilizer.herbicide : 0, false, this._fertilizer.is_herbicide_overflow);
-                toxicity = inventory_adapter_1.render_buff_bonus_html((this._fertilizer.toxicity) ? this._fertilizer.toxicity : 0, true, this._fertilizer.is_toxicity_overflow);
-                $('#fertilizerYieldHp').html(yield_hp);
-                $('#fertilizerTasteStrength').html(taste_strength);
-                $('#fertilizerHardnessVitality').html(hardness_vitality);
-                $('#fertilizerStickinessGusto').html(stickiness_gusto);
-                $('#fertilizerAestheticLuck').html(aesthetic_luck);
-                $('#fertilizerArmorMagic').html(armor_magic);
-                $('#fertilizerImmunuity').html(immunity);
-                $('#fertilizerPesticide').html(pesticide);
-                $('#fertilizerHerbicide').html(herbicide);
-                $('#fertilizerToxicity').html(toxicity);
-                return [2];
-            });
-        });
-    };
-    Application.prototype.updateInventory = function () {
-        this.log.debug('updateInventory');
-        this.updateInventoryEvents('#tblInventory');
-        this.updateRecommendedItems();
-    };
-    Application.prototype.updateRecommendedItems = function () {
-        var _this = this;
-        var _a, _b;
-        this._recommendedInventory.clear();
-        this._expirablesInventory.clear();
-        var inventory_items = this._appData.inventory.items.filter(function (it) {
-            return _this._appData.fertilizer_components.components.filter(function (comp) { return comp.name === it.name; }).length === 0;
+            return true;
         });
         var expirables_inventory_items = inventory_items.filter(function (it) { return it.expirable; });
         var recommended_inventory_items = inventory_items;
-        expirables_inventory_items = this.sortRecommendedItems(expirables_inventory_items);
-        recommended_inventory_items = this.sortRecommendedItems(recommended_inventory_items, true);
-        this.log.debug('updateRecommendedItems', { no_negative_effect: this._fertilizer.no_negative_effect, recommended_inventory_items: recommended_inventory_items });
+        expirables_inventory_items = this.sortRecommendedItems(fertilizer, expirables_inventory_items);
+        recommended_inventory_items = this.sortRecommendedItems(fertilizer, recommended_inventory_items, true);
         this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
-        (_a = this._recommendedInventoryAdapter) === null || _a === void 0 ? void 0 : _a.update();
         this._expirablesInventory.items = expirables_inventory_items;
-        (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.update();
-        this.updateInventoryEvents('#tblInventoryRecommended');
-        this.updateInventoryEvents('#tblInventoryExpirables');
     };
-    Application.prototype.sortRecommendedItems = function (items, expirable) {
+    Application.prototype.sortRecommendedItems = function (fertilizer, items, expirable) {
         if (expirable === void 0) { expirable = false; }
         var get_leaf_fertilizer = function (item) { return (item.fertilizer_bonus.leaf_fertilizer) ? item.fertilizer_bonus.leaf_fertilizer : 0; };
         var get_kernel_fertilizer = function (item) { return (item.fertilizer_bonus.kernel_fertilizer) ? item.fertilizer_bonus.kernel_fertilizer : 0; };
@@ -53825,12 +55823,11 @@ var Application = (function () {
             item.points_fertilizer.pesticide = (item.fertilizer_bonus.pesticide) ? item.fertilizer_bonus.pesticide : 0;
             item.points_fertilizer.herbicide = (item.fertilizer_bonus.herbicide) ? item.fertilizer_bonus.herbicide : 0;
             item.points_fertilizer.toxicity = (item.fertilizer_bonus.toxicity) ? -item.fertilizer_bonus.toxicity : 0;
-            item.points = that.calcOrderItemPoints(item, expirable);
+            item.points = that.calcOrderItemPoints(fertilizer, item, expirable);
             return item;
         }).sort(function (a, b) { return b.points - a.points; }).map(function (it) { return it; });
     };
-    Application.prototype.calcOrderItemPoints = function (item, expirable) {
-        var _this = this;
+    Application.prototype.calcOrderItemPoints = function (fertilizer, item, expirable) {
         if (expirable === void 0) { expirable = false; }
         var ret = 0;
         ret += (expirable && item.expirable) ? 1 : 0;
@@ -53851,10 +55848,10 @@ var Application = (function () {
                     return 2 * points_fertilizer;
                 }
             }
-            else if (current_fertilizer > 0 && _this._fertilizer.no_negative_effect) {
+            else if (current_fertilizer > 0 && fertilizer.no_negative_effect) {
                 return points_fertilizer / 4;
             }
-            else if (current_fertilizer === 0 && _this._fertilizer.no_negative_effect) {
+            else if (current_fertilizer === 0 && fertilizer.no_negative_effect) {
                 return points_fertilizer / 3;
             }
             else if (points_fertilizer > 0) {
@@ -53867,19 +55864,19 @@ var Application = (function () {
             }
             return 0;
         };
-        if (this._fertilizer.no_negative_effect) {
-            ret += 2 * this.calcOrderItemPointsStats(item);
+        if (fertilizer.no_negative_effect) {
+            ret += 2 * this.calcOrderItemPointsStats(fertilizer, item);
         }
         else {
-            ret += this.calcOrderItemPointsStats(item) / 5;
+            ret += this.calcOrderItemPointsStats(fertilizer, item) / 5;
         }
-        ret += calcPointsFer(item.points_fertilizer.immunity, this._fertilizer.immunity, this._fertilizer.is_immunity_max_or_overflow);
-        ret += calcPointsFer(item.points_fertilizer.pesticide, this._fertilizer.pesticide, this._fertilizer.is_pesticide_max_or_overflow);
-        ret += calcPointsFer(item.points_fertilizer.herbicide, this._fertilizer.herbicide, this._fertilizer.is_herbicide_max_or_overflow);
-        ret += calcPointsFer(item.points_fertilizer.toxicity, this._fertilizer.toxicity, this._fertilizer.is_toxicity_max_or_overflow, true);
+        ret += calcPointsFer(item.points_fertilizer.immunity, fertilizer.immunity, fertilizer.is_immunity_max_or_overflow);
+        ret += calcPointsFer(item.points_fertilizer.pesticide, fertilizer.pesticide, fertilizer.is_pesticide_max_or_overflow);
+        ret += calcPointsFer(item.points_fertilizer.herbicide, fertilizer.herbicide, fertilizer.is_herbicide_max_or_overflow);
+        ret += calcPointsFer(item.points_fertilizer.toxicity, fertilizer.toxicity, fertilizer.is_toxicity_max_or_overflow, true);
         return ret;
     };
-    Application.prototype.calcOrderItemPointsStats = function (item) {
+    Application.prototype.calcOrderItemPointsStats = function (fertilizer, item) {
         var ret = 0;
         var calcPointsStats = function (fertilizer_bonus, current_fertilizer, max_or_overflow) {
             if (fertilizer_bonus && max_or_overflow) {
@@ -53902,32 +55899,32 @@ var Application = (function () {
             return 0;
         };
         switch (this._appData.currentGuide) {
-            case 'balanced':
+            case application_data_1.FarmingFocus.Balanced:
                 ret += item.points_fertilizer.balanced;
-                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, this._fertilizer.yield_hp, this._fertilizer.is_yield_hp_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, this._fertilizer.taste_strength, this._fertilizer.is_taste_strength_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, this._fertilizer.hardness_vitality, this._fertilizer.is_hardness_vitality_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, this._fertilizer.stickiness_gusto, this._fertilizer.is_stickiness_gusto_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, this._fertilizer.aesthetic_luck, this._fertilizer.is_aesthetic_luck_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, this._fertilizer.armor_magic, this._fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, fertilizer.yield_hp, fertilizer.is_yield_hp_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, fertilizer.taste_strength, fertilizer.is_taste_strength_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
                 break;
-            case 'heartiness':
+            case application_data_1.FarmingFocus.Heartiness:
                 ret += item.points_fertilizer.heartiness;
-                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, this._fertilizer.taste_strength, this._fertilizer.is_taste_strength_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, this._fertilizer.hardness_vitality, this._fertilizer.is_hardness_vitality_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, this._fertilizer.stickiness_gusto, this._fertilizer.is_stickiness_gusto_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, fertilizer.taste_strength, fertilizer.is_taste_strength_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
                 break;
-            case 'yield':
+            case application_data_1.FarmingFocus.Yield:
                 ret += item.points_fertilizer.yield;
-                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, this._fertilizer.yield_hp, this._fertilizer.is_yield_hp_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, fertilizer.yield_hp, fertilizer.is_yield_hp_max_or_overflow);
                 break;
-            case 'aesthetic':
+            case application_data_1.FarmingFocus.Aesthetic:
                 ret += item.points_fertilizer.aesthetic;
-                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, this._fertilizer.aesthetic_luck, this._fertilizer.is_aesthetic_luck_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
                 break;
-            case 'aroma':
+            case application_data_1.FarmingFocus.Aroma:
                 ret += item.points_fertilizer.aroma;
-                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, this._fertilizer.armor_magic, this._fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
                 break;
         }
         return ret;
@@ -53952,18 +55949,29 @@ var RecommendedFertilizerData = (function () {
     }
     return RecommendedFertilizerData;
 }());
-},{"./Fertilize.adapter":13,"./application.data":14,"./fertilize-components.adapter":16,"./fertilizer.data":18,"./inventory":20,"./inventory.adapter":19,"./site":22,"chart.js":1,"datatables.net-bs4":2,"datatables.net-responsive-bs4":3,"typescript-logger/build/loggerManager":12}],16:[function(require,module,exports){
+},{"./application.data":25,"./fertilize-components.adapter":27,"./fertilizer.adapter":29,"./fertilizer.data":30,"./inventory":32,"./inventory.adapter":31,"./site":34,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
-var fertilizer_components_data_1 = require("./fertilizer-components.data");
+var typescript_logger_1 = require("typescript-logger");
+var fertilizer_components_1 = require("./fertilizer-components");
+var site_1 = require("./site");
 var FertilizeComponentsAdapter = (function () {
-    function FertilizeComponentsAdapter(app, list_selector, data) {
-        this._data = new fertilizer_components_data_1.FertilizerComponents();
-        this._app = app;
+    function FertilizeComponentsAdapter(settings, inventory, list_selector, data) {
+        this._data = new fertilizer_components_1.FertilizerComponents();
+        this.log = typescript_logger_1.LoggerManager.create('FertilizeComponentsAdapter');
+        this._settings = settings;
+        this._inventory = inventory;
         this._list_selector = list_selector;
         this._data = data;
     }
+    Object.defineProperty(FertilizeComponentsAdapter.prototype, "observable", {
+        get: function () {
+            return this._data.observable;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(FertilizeComponentsAdapter.prototype, "isFull", {
         get: function () {
             return this._data.isFull;
@@ -53972,86 +55980,184 @@ var FertilizeComponentsAdapter = (function () {
         configurable: true
     });
     FertilizeComponentsAdapter.prototype.init = function () {
-        this.update();
+        this.initObservers();
+        this.updateUI();
     };
-    FertilizeComponentsAdapter.prototype.add = function (item) {
-        if (this._data.add(item)) {
-            var list = $(this._list_selector);
-            var findElement = list.find("li[data-name='']").first();
-            var index = findElement.data('index');
-            findElement.replaceWith(this.renderItemElementHtml(index, item.name));
-            this.initEvents();
-        }
+    FertilizeComponentsAdapter.prototype.setItemAmount = function (index, amount, item) {
+        if (item === void 0) { item = undefined; }
+        this._data.setItemAmount(index, amount, item);
     };
-    FertilizeComponentsAdapter.prototype.remove = function (item_name) {
-        this._data.remove(item_name);
+    FertilizeComponentsAdapter.prototype.initObservers = function () {
+        var that = this;
         var list = $(this._list_selector);
-        var findElement = list.find("li[data-name='" + item_name + "']").first();
-        var index = findElement.data('index');
-        if (index < fertilizer_components_data_1.MAX_FERTILIZE_COMPONENTS) {
-            findElement.replaceWith(this.renderEmptyElementHtml(index));
-        }
-        else {
-            findElement.remove();
-        }
+        this._data.observable.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                that.updateUI();
+            };
+            class_1.prototype.updateItem = function (subject, updated, index) {
+                var findElement = list.find("li[data-index='" + index + "']").first();
+                if (findElement.length > 0) {
+                    if (updated.in_fertilizer === undefined || updated.in_fertilizer <= 0) {
+                        that.updateUI();
+                        return;
+                    }
+                    findElement.replaceWith(that.newItemElementHtml(index, updated));
+                }
+            };
+            class_1.prototype.updateAddedItem = function (subject, added) {
+                var findEmptyElement = list.find("li[data-name='']").first();
+                var index = findEmptyElement.data('index');
+                findEmptyElement.replaceWith(that.newItemElementHtml(index, added));
+            };
+            class_1.prototype.updateRemovedItem = function (subject, removed) {
+                that.updateUI();
+            };
+            return class_1;
+        }()));
+        this._inventory.observable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                subject.data.forEach(function (item_inventory) {
+                    var component_index = that._data.components.findIndex(function (it) { return it.name == item_inventory.name; });
+                    if (component_index >= 0 && that._data.components[component_index].amount !== item_inventory.amount) {
+                        that._data.setInInventoryAmount(component_index, item_inventory.amount);
+                    }
+                });
+            };
+            class_2.prototype.updateItem = function (subject, updated, index) {
+                var component_index = that._data.components.findIndex(function (it) { return it.name == updated.name; });
+                if (component_index >= 0 && that._data.components[component_index].amount !== updated.amount) {
+                    that._data.setInInventoryAmount(component_index, updated.amount);
+                }
+            };
+            class_2.prototype.updateAddedItem = function (subject, added) {
+                var component_index = that._data.components.findIndex(function (it) { return it.name == added.name; });
+                if (component_index >= 0 && that._data.components[component_index].amount !== added.amount) {
+                    that._data.setInInventoryAmount(component_index, added.amount);
+                }
+            };
+            class_2.prototype.updateRemovedItem = function (subject, removed) {
+                var component_index = that._data.components.findIndex(function (it) { return it.name == removed.name; });
+                if (component_index >= 0 && that._data.components[component_index].amount !== removed.amount) {
+                    that._data.setInInventoryAmount(component_index, removed.amount);
+                }
+            };
+            return class_2;
+        }()));
+        this._settings.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                that.updateUI();
+            };
+            return class_3;
+        }()));
     };
-    FertilizeComponentsAdapter.prototype.update = function () {
+    FertilizeComponentsAdapter.prototype.add = function (item, amount) {
+        if (amount === void 0) { amount = undefined; }
+        return this._data.add(item, amount);
+    };
+    FertilizeComponentsAdapter.prototype.remove = function (item_name, amount) {
+        if (amount === void 0) { amount = undefined; }
+        return this._data.remove(item_name, amount);
+    };
+    FertilizeComponentsAdapter.prototype.updateUI = function () {
         var list = $(this._list_selector);
         list.html('');
-        for (var i = 0; i < fertilizer_components_data_1.MAX_FERTILIZE_COMPONENTS || i < this._data.components.length; i++) {
+        for (var i = 0; i < fertilizer_components_1.MAX_FERTILIZE_COMPONENTS || i < this._data.components.length; i++) {
             if (this._data.components[i]) {
                 var item = this._data.components[i];
-                var item_name = item.name;
-                list.append(this.renderItemElementHtml(i, item_name));
+                list.append(this.newItemElementHtml(i, item));
             }
             else {
                 list.append(this.renderEmptyElementHtml(i));
             }
         }
-        this.initEvents();
     };
-    FertilizeComponentsAdapter.prototype.initEvents = function () {
+    FertilizeComponentsAdapter.prototype.newItemElementHtml = function (index, item) {
         var that = this;
-        $('.remove-item-from-fertilizer').on('click', function () {
-            var item_name = $(this).data('name');
-            that.remove(item_name);
-            that._app.removeItemFromFertilizer(item_name);
+        var element = $(this.renderItemElementHtml(index, item));
+        element.find('.fertilizer-item-amount').each(function () {
+            var index = parseInt($(this).data('index'));
+            var item = that._data.components[index];
+            var readonly = !that._settings.data.no_inventory_restriction && item.in_fertilizer === undefined;
+            var in_inventory = (!that._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
+            var max = (!that._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+            $(this).attr('max', max);
+            $(this).prop('readonly', readonly);
         });
+        element.find('.remove-item-from-fertilizer').off('click').on('click', function () {
+            var item_name = $(this).data('name');
+            that.remove(item_name, undefined);
+        });
+        element.find('.fertilizer-item-amount').off('change').on('change', function () {
+            var item_name = $(this).data('name');
+            var index = parseInt($(this).data('index'));
+            var amount = parseInt($(this).val());
+            that.log.debug('.fertilizer-item-amount change', { index: index, item_name: item_name, amount: amount, parent: parent });
+            if (amount > 0 && that._data.components[index] !== undefined) {
+                that._data.setItemAmount(index, amount, that._inventory.getItemByName(item_name));
+            }
+            else {
+                if (that._data.components[index] !== undefined) {
+                    that._data.remove(that._data.components[index]);
+                }
+            }
+        });
+        return element;
     };
-    FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item_name) {
-        return "<li class=\"list-group-item\" data-index=\"" + index + "\" data-name=\"" + item_name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-10 text-left\">" + item_name + "</div>\n                <div class=\"col-2 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item_name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
+    FertilizeComponentsAdapter.prototype.renderItemElementHtml = function (index, item) {
+        var readonly = (!this._settings.data.no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
+        var in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
+        var max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+        return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item.name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
     };
     FertilizeComponentsAdapter.prototype.renderEmptyElementHtml = function (index) {
-        return "<li class=\"list-group-item text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
+        return "<li class=\"list-group-item list-group-item-light text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
     };
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components.data":17}],17:[function(require,module,exports){
+},{"./fertilizer-components":28,"./site":34,"typescript-logger":17}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FertilizerComponents = exports.MAX_FERTILIZE_COMPONENTS = void 0;
+exports.FertilizerComponents = exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MAX_FERTILIZE_COMPONENTS = void 0;
+var console_1 = require("console");
+var Observer_1 = require("./Observer");
+var site_1 = require("./site");
 exports.MAX_FERTILIZE_COMPONENTS = 8;
+exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 1;
+exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 999;
 var FertilizerComponents = (function () {
     function FertilizerComponents() {
-        this._components = [];
+        this._components = new Observer_1.DataListSubject();
     }
-    Object.defineProperty(FertilizerComponents.prototype, "items", {
+    Object.defineProperty(FertilizerComponents.prototype, "observable", {
         get: function () {
             return this._components;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerComponents.prototype, "items", {
+        get: function () {
+            return this._components.data;
+        },
         set: function (value) {
-            this._components = value;
+            this._components.data = value;
         },
         enumerable: false,
         configurable: true
     });
     Object.defineProperty(FertilizerComponents.prototype, "components", {
         get: function () {
-            return this._components;
+            return this._components.data;
         },
         set: function (value) {
-            this._components = value;
+            this._components.data = value;
         },
         enumerable: false,
         configurable: true
@@ -54066,39 +56172,549 @@ var FertilizerComponents = (function () {
     FertilizerComponents.prototype.getItemByName = function (name) {
         return this._components.find(function (it) { return it.name === name; });
     };
-    FertilizerComponents.prototype.add = function (item) {
+    FertilizerComponents.prototype.setInInventoryAmount = function (index, amount) {
+        this._components.let(index, function (item) {
+            item.amount = amount;
+            return item;
+        });
+    };
+    FertilizerComponents.prototype.setItemAmount = function (index, amount, item_inventory) {
+        if (item_inventory === void 0) { item_inventory = undefined; }
+        this._components.let(index, function (item) {
+            item.in_fertilizer = amount;
+            item.amount = (item_inventory !== undefined) ? item_inventory.amount : undefined;
+            return (item.in_fertilizer === undefined || item.in_fertilizer > 0) ? item : undefined;
+        });
+    };
+    FertilizerComponents.prototype.lets = function (lets) {
+        return this._components.lets(lets);
+    };
+    FertilizerComponents.prototype.add = function (item, amount) {
+        if (amount === void 0) { amount = undefined; }
         if (this.isFull) {
-            return false;
+            return undefined;
         }
+        if (amount !== undefined && amount == 0) {
+            return undefined;
+        }
+        console_1.assert(amount === undefined || amount >= 0, "add fertilizer component, add item amount can't be negative");
         var item_index = this._components.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
-            return true;
+            this._components.let(item_index, function (item_component) {
+                if (item_component.in_fertilizer !== undefined || amount !== undefined) {
+                    var add_in_fertilizer_amount = (amount !== undefined) ? amount : 1;
+                    var in_fertilizer = (item_component.in_fertilizer !== undefined) ? item_component.in_fertilizer : 0;
+                    item_component.in_fertilizer = site_1.clamp(in_fertilizer + add_in_fertilizer_amount, exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                    item_component.amount = item.amount;
+                }
+                return item_component;
+            });
+            return undefined;
         }
-        var newitem = item;
-        this._components.push(newitem);
-        return true;
+        var new_item = item;
+        new_item.in_fertilizer = amount;
+        new_item.amount = item.amount;
+        this._components.push(new_item);
+        return this._components.last();
     };
-    FertilizerComponents.prototype.remove = function (item) {
-        var _this = this;
+    FertilizerComponents.prototype.remove = function (item, amount) {
+        if (amount === void 0) { amount = undefined; }
+        if (this._components.length == 0) {
+            return undefined;
+        }
+        if (amount !== undefined && amount == 0) {
+            return undefined;
+        }
+        console_1.assert(amount === undefined || amount >= 0, "remove item amount can't be negative");
         var item_name = (function () {
             if (item.name !== undefined) {
                 return item.name;
             }
             return item;
         })();
-        var ret = -1;
-        this._components.forEach(function (value, index) {
-            if (value.name === item_name) {
-                _this._components.splice(index, 1);
-                ret = index;
-            }
-        });
+        var ret = undefined;
+        var item_component_index = this._components.findIndex(function (it) { return it.name === item_name; });
+        if (item_component_index >= 0) {
+            this._components.let(item_component_index, function (item_component) {
+                if (amount === undefined) {
+                    item_component.in_fertilizer = amount;
+                    ret = item_component;
+                    return undefined;
+                }
+                var remove_from_fertilizer_amount = amount;
+                var in_fertilizer = (item_component.in_fertilizer !== undefined) ? item_component.in_fertilizer : 0;
+                item_component.in_fertilizer = site_1.clamp(in_fertilizer - remove_from_fertilizer_amount, 0, exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS);
+                if (item_component.in_fertilizer === undefined || item_component.in_fertilizer <= 0) {
+                    ret = item_component;
+                    return undefined;
+                }
+                return item_component;
+            });
+        }
         return ret;
     };
     return FertilizerComponents;
 }());
 exports.FertilizerComponents = FertilizerComponents;
-},{}],18:[function(require,module,exports){
+},{"./Observer":24,"./site":34,"console":6}],29:[function(require,module,exports){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FertilizerAdapter = void 0;
+var console_1 = require("console");
+var typescript_logger_1 = require("typescript-logger");
+var fertilizer_data_1 = require("./fertilizer.data");
+var inventory_adapter_1 = require("./inventory.adapter");
+var Observer_1 = require("./Observer");
+var chart_js_1 = __importDefault(require("chart.js"));
+var site_1 = require("./site");
+var FertilizerAdapter = (function () {
+    function FertilizerAdapter(appData) {
+        this._data = new Observer_1.DataSubject(new fertilizer_data_1.FertilizerData());
+        this.log = typescript_logger_1.LoggerManager.create('FertilizerAdapter');
+        this._appData = appData;
+    }
+    Object.defineProperty(FertilizerAdapter.prototype, "observable", {
+        get: function () {
+            return this._data;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerAdapter.prototype, "data", {
+        get: function () {
+            return this._data.data;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    FertilizerAdapter.prototype.init = function () {
+        this.initSoilNutrientsChart();
+        $('#txtCurrentLeafFertilizer').val(this._appData.currentLeafFertilizer);
+        $('#txtCurrentKernelFertilizer').val(this._appData.currentKernelFertilizer);
+        $('#txtCurrentRootFertilizer').val(this._appData.currentRootFertilizer);
+        this.initEvents();
+        this.initObservers();
+        this.updateFromComponents(this._appData.fertilizer_components.components);
+    };
+    FertilizerAdapter.prototype.initObservers = function () {
+        var that = this;
+        this._data.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                var _a;
+                var fertilizer = subject.data;
+                that.updateSoilNutrientsChartLeafFertilizer();
+                that.updateSoilNutrientsChartKernelFertilizer();
+                that.updateSoilNutrientsChartRootFertilizer();
+                (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.update();
+                var yield_hp = inventory_adapter_1.render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
+                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_yield_hp_overflow);
+                var hardness_vitality = inventory_adapter_1.render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
+                var stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
+                var aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
+                var armor_magic = inventory_adapter_1.render_buff_bonus_html((fertilizer.armor_magic) ? fertilizer.armor_magic : 0, false, fertilizer.is_armor_magic_overflow);
+                var immunity = inventory_adapter_1.render_buff_bonus_html((fertilizer.immunity) ? fertilizer.immunity : 0, false, fertilizer.is_immunity_overflow);
+                var pesticide = inventory_adapter_1.render_buff_bonus_html((fertilizer.pesticide) ? fertilizer.pesticide : 0, false, fertilizer.is_pesticide_overflow);
+                var herbicide = inventory_adapter_1.render_buff_bonus_html((fertilizer.herbicide) ? fertilizer.herbicide : 0, false, fertilizer.is_herbicide_overflow);
+                var toxicity = inventory_adapter_1.render_buff_bonus_html((fertilizer.toxicity) ? fertilizer.toxicity : 0, true, fertilizer.is_toxicity_overflow);
+                $('#fertilizerYieldHp').html(yield_hp);
+                $('#fertilizerTasteStrength').html(taste_strength);
+                $('#fertilizerHardnessVitality').html(hardness_vitality);
+                $('#fertilizerStickinessGusto').html(stickiness_gusto);
+                $('#fertilizerAestheticLuck').html(aesthetic_luck);
+                $('#fertilizerArmorMagic').html(armor_magic);
+                $('#fertilizerImmunity').html(immunity);
+                $('#fertilizerPesticide').html(pesticide);
+                $('#fertilizerHerbicide').html(herbicide);
+                $('#fertilizerToxicity').html(toxicity);
+            };
+            return class_1;
+        }()));
+        this._appData.currentLeafFertilizerObservable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                var _a, _b, _c, _d;
+                if (that._soilNutrientsChart) {
+                    if (((_c = (_b = (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
+                        that._soilNutrientsChart.data.datasets[0].data[0] = site_1.clamp(subject.data, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+                    }
+                }
+                that.updateSoilNutrientsChartLeafFertilizer();
+                (_d = that._soilNutrientsChart) === null || _d === void 0 ? void 0 : _d.update();
+            };
+            return class_2;
+        }()));
+        this._appData.currentKernelFertilizerObservable.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                var _a, _b, _c, _d;
+                if (that._soilNutrientsChart) {
+                    if (((_c = (_b = (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
+                        that._soilNutrientsChart.data.datasets[0].data[1] = site_1.clamp(subject.data, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+                    }
+                }
+                that.updateSoilNutrientsChartKernelFertilizer();
+                (_d = that._soilNutrientsChart) === null || _d === void 0 ? void 0 : _d.update();
+            };
+            return class_3;
+        }()));
+        this._appData.currentRootFertilizerObservable.attach(new (function () {
+            function class_4() {
+            }
+            class_4.prototype.update = function (subject) {
+                var _a, _b, _c, _d;
+                if (that._soilNutrientsChart) {
+                    if (((_c = (_b = (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[0].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
+                        that._soilNutrientsChart.data.datasets[0].data[2] = site_1.clamp(subject.data, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+                    }
+                }
+                that.updateSoilNutrientsChartRootFertilizer();
+                (_d = that._soilNutrientsChart) === null || _d === void 0 ? void 0 : _d.update();
+            };
+            return class_4;
+        }()));
+        this._appData.fertilizer_components.observable.attach(new (function () {
+            function class_5() {
+            }
+            class_5.prototype.update = function (subject) {
+                that.updateFromComponents(subject.data);
+            };
+            class_5.prototype.updateItem = function (subject, updated, index) {
+                that.updateFromComponents(subject.data);
+            };
+            class_5.prototype.updateAddedItem = function (subject, added) {
+                that.updateFromComponents(subject.data);
+            };
+            class_5.prototype.updateRemovedItem = function (subject, removed) {
+                that.updateFromComponents(subject.data);
+            };
+            return class_5;
+        }()));
+    };
+    FertilizerAdapter.prototype.updateFromComponents = function (components) {
+        var _this = this;
+        this.log.debug('updateFromComponents', components);
+        this._data.let(function (data) {
+            data.leaf_fertilizer = _this.calcComponentLeafFertilizerValue(components);
+            data.kernel_fertilizer = _this.calcComponentKernelFertilizerValue(components);
+            data.root_fertilizer = _this.calcComponentRootFertilizerValue(components);
+            data.yield_hp = _this.calcComponentYieldHPValue(components);
+            data.taste_strength = _this.calcComponentTasteStrengthValue(components);
+            data.hardness_vitality = _this.calcComponentHardnessVitalityValue(components);
+            data.stickiness_gusto = _this.calcComponentStickinessGustoValue(components);
+            data.aesthetic_luck = _this.calcComponentAestheticLuckValue(components);
+            data.armor_magic = _this.calcComponentArmorMagicValue(components);
+            data.immunity = _this.calcComponentImmunityValue(components);
+            data.pesticide = _this.calcComponentPesticideValue(components);
+            data.herbicide = _this.calcComponentHerbicideValue(components);
+            data.toxicity = _this.calcComponentToxicityValue(components);
+            return data;
+        });
+    };
+    FertilizerAdapter.prototype.initEvents = function () {
+        var that = this;
+        $('#txtCurrentLeafFertilizer').on('change', function () {
+            that._appData.currentLeafFertilizer = parseInt($(this).val());
+        });
+        $('#txtCurrentKernelFertilizer').on('change', function () {
+            that._appData.currentKernelFertilizer = parseInt($(this).val());
+        });
+        $('#txtCurrentRootFertilizer').on('change', function () {
+            that._appData.currentRootFertilizer = parseInt($(this).val());
+        });
+    };
+    FertilizerAdapter.prototype.initSoilNutrientsChart = function () {
+        var canvas = $('#soilNutrientsChart');
+        this._soilNutrientsChart = new chart_js_1.default(canvas, {
+            type: 'radar',
+            data: {
+                labels: [
+                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.leaf_label,
+                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.kernel_label,
+                    site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.root_label
+                ],
+                datasets: [
+                    {
+                        label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer,
+                        fill: true,
+                        data: [
+                            this._appData.currentLeafFertilizer,
+                            this._appData.currentKernelFertilizer,
+                            this._appData.currentRootFertilizer
+                        ],
+                        backgroundColor: 'rgba(147, 247, 141, 0.2)',
+                        borderColor: 'rgba(147, 247, 141, 1)',
+                        pointBorderColor: 'rgba(147, 247, 141, 0.5)',
+                        pointBackgroundColor: 'rgba(147, 247, 141, 0.5)',
+                        pointStyle: 'rect',
+                        borderWidth: 1
+                    }, {
+                        label: site_1.site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components,
+                        fill: true,
+                        data: [
+                            this._appData.currentLeafFertilizer + this._data.data.leaf_fertilizer,
+                            this._appData.currentKernelFertilizer + this._data.data.kernel_fertilizer,
+                            this._appData.currentRootFertilizer + this._data.data.root_fertilizer
+                        ],
+                        backgroundColor: 'rgba(160, 250, 255, 0.2)',
+                        borderColor: 'rgba(160, 250, 255, 1)',
+                        pointBorderColor: 'rgba(205, 215, 115, 1)',
+                        pointBackgroundColor: 'rgba(205, 215, 115, 1)',
+                        pointStyle: 'rect',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scale: {
+                    angleLines: {
+                        display: true,
+                        color: 'black'
+                    },
+                    ticks: {
+                        min: fertilizer_data_1.MIN_FERTILIZER,
+                        max: fertilizer_data_1.MAX_FERTILIZER
+                    }
+                }
+            }
+        });
+        this.updateSoilNutrientsChartLeafFertilizer();
+        this.updateSoilNutrientsChartKernelFertilizer();
+        this.updateSoilNutrientsChartRootFertilizer();
+        this._soilNutrientsChart.update();
+    };
+    FertilizerAdapter.prototype.updateSoilNutrientsChartLeafFertilizer = function () {
+        var _a, _b, _c;
+        if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[0]) !== undefined) {
+            this._soilNutrientsChart.data.datasets[1].data[0] = site_1.clamp(this._appData.currentLeafFertilizer + this._data.data.leaf_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            $('#txtLeafFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[0]);
+        }
+    };
+    FertilizerAdapter.prototype.updateSoilNutrientsChartKernelFertilizer = function () {
+        var _a, _b, _c;
+        if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[1]) !== undefined) {
+            this._soilNutrientsChart.data.datasets[1].data[1] = site_1.clamp(this._appData.currentKernelFertilizer + this._data.data.kernel_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            $('#txtKernelFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[1]);
+        }
+    };
+    FertilizerAdapter.prototype.updateSoilNutrientsChartRootFertilizer = function () {
+        var _a, _b, _c;
+        if (((_c = (_b = (_a = this._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.data.datasets) === null || _b === void 0 ? void 0 : _b[1].data) === null || _c === void 0 ? void 0 : _c[2]) !== undefined) {
+            this._soilNutrientsChart.data.datasets[1].data[2] = site_1.clamp(this._appData.currentRootFertilizer + this._data.data.root_fertilizer, fertilizer_data_1.MIN_FERTILIZER, fertilizer_data_1.MAX_FERTILIZER);
+            $('#txtRootFertilizer').val(this._soilNutrientsChart.data.datasets[1].data[2]);
+        }
+    };
+    FertilizerAdapter.prototype.calcComponentLeafFertilizerValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.leaf_fertilizer) ? component.fertilizer_bonus.leaf_fertilizer : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcNutrientComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentKernelFertilizerValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.kernel_fertilizer) ? component.fertilizer_bonus.kernel_fertilizer : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcNutrientComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentRootFertilizerValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.root_fertilizer) ? component.fertilizer_bonus.root_fertilizer : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcNutrientComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentYieldHPValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.yield_hp) ? component.fertilizer_bonus.yield_hp : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentTasteStrengthValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.taste_strength) ? component.fertilizer_bonus.taste_strength : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentHardnessVitalityValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.hardness_vitality) ? component.fertilizer_bonus.hardness_vitality : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentStickinessGustoValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.stickiness_gusto) ? component.fertilizer_bonus.stickiness_gusto : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentAestheticLuckValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.aesthetic_luck) ? component.fertilizer_bonus.aesthetic_luck : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentArmorMagicValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.armor_magic) ? component.fertilizer_bonus.armor_magic : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentImmunityValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.immunity) ? component.fertilizer_bonus.immunity : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentPesticideValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.pesticide) ? component.fertilizer_bonus.pesticide : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentHerbicideValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.herbicide) ? component.fertilizer_bonus.herbicide : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcComponentToxicityValue = function (components) {
+        var _this = this;
+        return components.map(function (component) { return (component.fertilizer_bonus.toxicity) ? component.fertilizer_bonus.toxicity : 0; }).reduce(function (sum, value, index) {
+            var component = components[index];
+            return sum + _this.calcStatComponentValue(component, value);
+        }, 0);
+    };
+    FertilizerAdapter.prototype.calcNutrientComponentValue = function (component, value) {
+        var amount_in_fertelizer = (component.in_fertilizer !== undefined) ? component.in_fertilizer : 1;
+        if (amount_in_fertelizer <= 0) {
+            return 0;
+        }
+        return value * amount_in_fertelizer;
+    };
+    FertilizerAdapter.prototype.calcStatComponentValue = function (component, value) {
+        var amount_in_fertelizer = (component.in_fertilizer !== undefined) ? component.in_fertilizer : 1;
+        if (amount_in_fertelizer <= 0) {
+            return 0;
+        }
+        return this.calcStatComponentTotalValue(value, amount_in_fertelizer);
+    };
+    FertilizerAdapter.prototype.calcStatComponentTotalValue = function (value, amount_in_fertelizer) {
+        if (amount_in_fertelizer <= 0) {
+            return 0;
+        }
+        var factor = (value >= 0) ? 1 : -1;
+        var is_buff = value >= 0;
+        var is_debuff = value < 0;
+        var value_abs = Math.abs(value);
+        var add_value = function (data, pattern_add_data) {
+            console_1.assert(data.length > 0, 'calcStatComponentTotalValue: data can not be empty');
+            console_1.assert(pattern_add_data.length > 0, 'calcStatComponentTotalValue: pattern_add_data can not be empty');
+            if (amount_in_fertelizer > 0 && amount_in_fertelizer - 1 < data.length) {
+                return data[amount_in_fertelizer - 1] * factor;
+            }
+            var newvalue = data[data.length - 1] * factor;
+            var oldvalue = newvalue;
+            for (var i = data.length + 1, j = 0; i <= amount_in_fertelizer; i++) {
+                oldvalue = newvalue;
+                newvalue = newvalue + pattern_add_data[j] * factor;
+                if (i == amount_in_fertelizer) {
+                    if (is_buff && oldvalue < fertilizer_data_1.MAX_STATS && newvalue > fertilizer_data_1.MAX_STATS) {
+                        return fertilizer_data_1.MAX_STATS;
+                    }
+                    else if (is_buff && oldvalue >= fertilizer_data_1.MAX_STATS) {
+                        return newvalue;
+                    }
+                    if (is_debuff && oldvalue > fertilizer_data_1.MIN_STATS && newvalue <= fertilizer_data_1.MIN_STATS) {
+                        return fertilizer_data_1.MIN_STATS;
+                    }
+                    else if (is_debuff && oldvalue <= fertilizer_data_1.MIN_STATS) {
+                        return newvalue;
+                    }
+                }
+                j = (j + 1) % pattern_add_data.length;
+            }
+            return newvalue;
+        };
+        if (value_abs > 0) {
+            switch (value_abs) {
+                case 1: {
+                    var data = [1, 2, 2, 3, 3, 4, 4];
+                    var pattern_add_data = [1, 0, 0, 0];
+                    return add_value(data, pattern_add_data);
+                }
+                case 2: {
+                    var data = [2, 3, 5, 6, 7, 8, 8, 9];
+                    var pattern_add_data = [1, 0];
+                    return add_value(data, pattern_add_data);
+                }
+                case 3: {
+                    var data = [3, 5, 7, 9, 10, 12, 13, 14, 15];
+                    var pattern_add_data = [1, 0, 1, 1];
+                    return add_value(data, pattern_add_data);
+                }
+                case 4: {
+                    var data = [4, 7, 9, 11, 13, 15, 17, 18, 19, 21];
+                    var pattern_add_data = [1];
+                    return add_value(data, pattern_add_data);
+                }
+                case 5: {
+                    var data = [5, 8, 12, 14, 17, 19, 21, 23, 24];
+                    var pattern_add_data = [2, 1, 1, 2];
+                    return add_value(data, pattern_add_data);
+                }
+                case 8: {
+                    var data = [8, 13, 19, 23, 27, 31, 33, 36, 39, 41];
+                    var pattern_add_data = [2];
+                    return add_value(data, pattern_add_data);
+                }
+                case 10: {
+                    var data = [10, 17, 23, 28, 33, 38, 42, 45, 48, 52];
+                    var pattern_add_data = [2, 3];
+                    return add_value(data, pattern_add_data);
+                }
+                case 20: {
+                    var data = [20, 33, 47, 57, 67, 77, 83];
+                    var pattern_add_data = [7];
+                    return add_value(data, pattern_add_data);
+                }
+                case 25: {
+                    var data = [25, 42, 58, 71, 83, 96, 100];
+                    var pattern_add_data = [16];
+                    return add_value(data, pattern_add_data);
+                }
+                case 50: {
+                    var data = [50, 83, 100];
+                    var pattern_add_data = [16];
+                    return add_value(data, pattern_add_data);
+                }
+                default:
+                    this.log.warn('calcComponentTotalValue', "unknown value: " + value_abs);
+            }
+        }
+        return value;
+    };
+    return FertilizerAdapter;
+}());
+exports.FertilizerAdapter = FertilizerAdapter;
+},{"./Observer":24,"./fertilizer.data":30,"./inventory.adapter":31,"./site":34,"chart.js":5,"console":6,"typescript-logger":17}],30:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerData = exports.MAX_STATS = exports.MIN_STATS = exports.MAX_FERTILIZER = exports.MIN_FERTILIZER = void 0;
@@ -54487,10 +57103,12 @@ var FertilizerData = (function () {
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
-},{"./site":22}],19:[function(require,module,exports){
+},{"./site":34}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryAdapter = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
+var typescript_logger_1 = require("typescript-logger");
+var application_data_1 = require("./application.data");
 var inventory_1 = require("./inventory");
 var site_1 = require("./site");
 function hasProperty(o, propertyName) {
@@ -54499,46 +57117,46 @@ function hasProperty(o, propertyName) {
 function getProperty(o, propertyName) {
     return (o[propertyName] !== undefined) ? o[propertyName] : null;
 }
-function render_buff_bonus_html(value, invertcolor, overflow) {
-    if (invertcolor === void 0) { invertcolor = null; }
+function render_buff_bonus_html(value, invert_color, overflow) {
+    if (invert_color === void 0) { invert_color = undefined; }
     if (overflow === void 0) { overflow = false; }
-    var valnumber = (value) ? value : 0;
-    var valuestr = (valnumber > 0) ? "+" + valnumber : "" + valnumber;
-    if (invertcolor !== null) {
-        if (!invertcolor) {
+    var val_number = (value) ? value : 0;
+    var val_str = (val_number > 0) ? "+" + val_number : "" + val_number;
+    if (invert_color !== undefined) {
+        if (!invert_color) {
             if (overflow) {
-                valuestr = "<span class=\"text-warning\">" + valuestr + "+</span>";
+                val_str = "<span class=\"text-warning\">" + val_str + "+</span>";
             }
-            else if (valnumber > 0) {
-                valuestr = "<span class=\"text-success\">" + valuestr + "</span>";
+            else if (val_number > 0) {
+                val_str = "<span class=\"text-success\">" + val_str + "</span>";
             }
-            if (valnumber < 0) {
-                valuestr = "<span class=\"text-danger\">" + valuestr + "</span>";
+            if (val_number < 0) {
+                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
             }
         }
         else {
             if (overflow) {
-                valuestr = "<span class=\"text-warning\">" + valuestr + "+</span>";
+                val_str = "<span class=\"text-warning\">" + val_str + "+</span>";
             }
-            else if (valnumber < 0) {
-                valuestr = "<span class=\"text-success\">" + valuestr + "</span>";
+            else if (val_number < 0) {
+                val_str = "<span class=\"text-success\">" + val_str + "</span>";
             }
-            if (valnumber > 0) {
-                valuestr = "<span class=\"text-danger\">" + valuestr + "</span>";
+            if (val_number > 0) {
+                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
             }
         }
     }
-    return "<span class=\"text-center\">" + valuestr + "</span>";
+    return "<span class=\"text-center\">" + val_str + "</span>";
 }
 exports.render_buff_bonus_html = render_buff_bonus_html;
 ;
-function render_buff_bonus(property_name, invertcolor, overflow) {
-    if (invertcolor === void 0) { invertcolor = null; }
+function render_buff_bonus(property_name, invert_color, overflow) {
+    if (invert_color === void 0) { invert_color = undefined; }
     if (overflow === void 0) { overflow = false; }
     return function (data, type, row) {
         var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
         if (type === 'display') {
-            return render_buff_bonus_html(value, invertcolor, overflow);
+            return render_buff_bonus_html(value, invert_color, overflow);
         }
         return value;
     };
@@ -54547,12 +57165,20 @@ exports.render_buff_bonus = render_buff_bonus;
 ;
 var INVENTORY_PAGE_LENGTH = 7;
 var InventoryAdapter = (function () {
-    function InventoryAdapter(app, table_selector, data) {
-        this._data = new inventory_1.Inventory();
-        this._app = app;
+    function InventoryAdapter(settings, fertilizer_components, table_selector, data) {
+        this.log = typescript_logger_1.LoggerManager.create('InventoryAdapter');
+        this._settings = settings;
+        this._fertilizer_components = fertilizer_components;
         this._table_selector = table_selector;
         this._data = data;
     }
+    Object.defineProperty(InventoryAdapter.prototype, "observable", {
+        get: function () {
+            return this._data.observable;
+        },
+        enumerable: false,
+        configurable: true
+    });
     InventoryAdapter.prototype.init = function (orderable, not_orderable, ordering) {
         if (orderable === void 0) { orderable = [1, 2, 3, 4, 5, 6]; }
         if (not_orderable === void 0) { not_orderable = [0]; }
@@ -54616,7 +57242,8 @@ var InventoryAdapter = (function () {
             responsive: true,
             lengthChange: false,
             createdRow: function (row, data, dataIndex) {
-                $(row).data('name', data.name);
+                $(row).attr('data-name', data.name);
+                $(row).attr('data-index', dataIndex);
             },
             columnDefs: [
                 {
@@ -54635,12 +57262,13 @@ var InventoryAdapter = (function () {
                 {
                     data: 'name',
                     render: function (data, type) {
-                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-arrow-left\"></i></button>" : '';
+                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-plus\"></i></button>" : '';
                     }
                 },
                 {
                     data: 'name',
-                    render: function (data, type, row) {
+                    render: function (data, type, row, meta) {
+                        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
                         if (type === 'display') {
                             var fertilizer_bonus = '';
                             if (row.fertilizer_bonus.leaf_fertilizer) {
@@ -54669,25 +57297,40 @@ var InventoryAdapter = (function () {
                             var herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
                             var toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
                             var collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
+                            var show_yield_hp = (((_a = row.fertilizer_bonus.yield_hp) !== null && _a !== void 0 ? _a : 0) === 0) ? 'd-none' : 0;
+                            var show_taste_strength = (((_b = row.fertilizer_bonus.taste_strength) !== null && _b !== void 0 ? _b : 0) === 0) ? 'd-none' : 0;
+                            var show_hardness_vitality = (((_c = row.fertilizer_bonus.hardness_vitality) !== null && _c !== void 0 ? _c : 0) === 0) ? 'd-none' : 0;
+                            var show_stickiness_gusto = (((_d = row.fertilizer_bonus.stickiness_gusto) !== null && _d !== void 0 ? _d : 0) === 0) ? 'd-none' : 0;
+                            var show_aesthetic_luck = (((_e = row.fertilizer_bonus.aesthetic_luck) !== null && _e !== void 0 ? _e : 0) === 0) ? 'd-none' : 0;
+                            var show_armor_magic = (((_f = row.fertilizer_bonus.armor_magic) !== null && _f !== void 0 ? _f : 0) === 0) ? 'd-none' : 0;
+                            var show_immunity = (((_g = row.fertilizer_bonus.immunity) !== null && _g !== void 0 ? _g : 0) === 0) ? 'd-none' : 0;
+                            var show_pesticide = (((_h = row.fertilizer_bonus.pesticide) !== null && _h !== void 0 ? _h : 0) === 0) ? 'd-none' : 0;
+                            var show_herbicide = (((_j = row.fertilizer_bonus.herbicide) !== null && _j !== void 0 ? _j : 0) === 0) ? 'd-none' : 0;
+                            var show_toxicity = (((_k = row.fertilizer_bonus.toxicity) !== null && _k !== void 0 ? _k : 0) === 0) ? 'd-none' : 0;
                             var data_color_class = '';
                             switch (that.getStatFocus(row.fertilizer_bonus)) {
-                                case "balanced":
+                                case application_data_1.FarmingFocus.Balanced:
                                     data_color_class = 'balanced-text';
                                     break;
-                                case "heartiness":
+                                case application_data_1.FarmingFocus.Heartiness:
                                     data_color_class = 'heartiness-text';
                                     break;
-                                case "yield":
+                                case application_data_1.FarmingFocus.Yield:
                                     data_color_class = 'yield-text';
                                     break;
-                                case "aesthetic":
+                                case application_data_1.FarmingFocus.Aesthetic:
                                     data_color_class = 'aesthetic-text';
                                     break;
-                                case "aroma":
+                                case application_data_1.FarmingFocus.Aroma:
                                     data_color_class = 'aroma-text';
                                     break;
                             }
-                            return "<div class=\"row no-gutters\">\n                                        <div col=\"col text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + data + "\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "</button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 immunuity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunuity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            var item_name_1 = row.name;
+                            var amount_value = (_l = row.amount) !== null && _l !== void 0 ? _l : 1;
+                            var index = that._data.items.findIndex(function (it) { return it.name == item_name_1; });
+                            var hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
+                            var disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
+                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name_1 + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + item_name_1 + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + item_name_1 + "\" data-index=\"" + index + "\">\n                                                    " + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "\n                                                </button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -54719,50 +57362,190 @@ var InventoryAdapter = (function () {
                 }
             ]
         });
+        var table_selector_id = $(this._table_selector).attr('id');
+        $("#" + table_selector_id + "_filter").each(function () {
+            $(this).addClass('float-right').addClass('text-right');
+            $(this).closest('.row').find('.col-md-6').first().each(function () {
+                $(this).html("<div id=\"" + table_selector_id + "_itemListLink\" class=\"dataTables_link_items float-left text-left\">\n                    <a href=\"#sectionItemList\" class=\"btn btm-sm btn-link\">[" + site_1.site.data.strings.item_list.title + "]</a>\n                </div>");
+            });
+        });
+        this.initObservers();
+        this.updateUI();
         var that = this;
         this._table.on('draw.dt', function () {
-            that._app.drawInventory(that._table_selector);
-            that.initEvents();
+            that.updateUI();
+        });
+    };
+    InventoryAdapter.prototype.initObservers = function () {
+        var that = this;
+        this._data.observable.attach(new (function () {
+            function class_1() {
+            }
+            class_1.prototype.update = function (subject) {
+                that._fertilizer_components.observable.forEach(function (item_component, index) {
+                    var item_inventory = subject.find(function (it) { return it.name == item_component.name; });
+                    if (item_inventory !== undefined && item_component.amount !== item_inventory.amount) {
+                        that._fertilizer_components.setInInventoryAmount(index, item_inventory.amount);
+                    }
+                });
+            };
+            class_1.prototype.updateItem = function (subject, updated, index) {
+                that._fertilizer_components.observable.forEach(function (item_component, index) {
+                    if (item_component.amount !== updated.amount) {
+                        that._fertilizer_components.setInInventoryAmount(index, updated.amount);
+                    }
+                });
+            };
+            class_1.prototype.updateAddedItem = function (subject, added) {
+                that._fertilizer_components.observable.forEach(function (item_component, index) {
+                    if (item_component.amount !== added.amount) {
+                        that._fertilizer_components.setInInventoryAmount(index, added.amount);
+                    }
+                });
+            };
+            class_1.prototype.updateRemovedItem = function (subject, removed) {
+                that._fertilizer_components.observable.forEach(function (item_component, index) {
+                    if (item_component.amount !== removed.amount) {
+                        that._fertilizer_components.setInInventoryAmount(index, removed.amount);
+                    }
+                });
+            };
+            return class_1;
+        }()));
+        this._data.observable.attach(new (function () {
+            function class_2() {
+            }
+            class_2.prototype.update = function (subject) {
+                var _a, _b;
+                (_a = that._table) === null || _a === void 0 ? void 0 : _a.clear();
+                (_b = that._table) === null || _b === void 0 ? void 0 : _b.rows.add(subject.data).draw(false);
+            };
+            class_2.prototype.updateItem = function (subject, updated, index) {
+                var _a, _b;
+                if (updated.amount !== undefined && updated.amount <= 0) {
+                    (_a = that._table) === null || _a === void 0 ? void 0 : _a.row("[data-index='" + index + "']").remove();
+                    (_b = that._table) === null || _b === void 0 ? void 0 : _b.draw(false);
+                    return;
+                }
+                that.updateUI();
+            };
+            class_2.prototype.updateAddedItem = function (subject, added) {
+                var _a;
+                (_a = that._table) === null || _a === void 0 ? void 0 : _a.rows.add([added]).draw(false);
+            };
+            class_2.prototype.updateRemovedItem = function (subject, removed) {
+                var _a, _b;
+                (_a = that._table) === null || _a === void 0 ? void 0 : _a.row("[data-name='" + removed.name + "']").remove();
+                (_b = that._table) === null || _b === void 0 ? void 0 : _b.draw(false);
+            };
+            return class_2;
+        }()));
+        this._fertilizer_components.observable.attach(new (function () {
+            function class_3() {
+            }
+            class_3.prototype.update = function (subject) {
+                that.updateUI();
+            };
+            class_3.prototype.updateItem = function (subject, updated, index) {
+                that.updateUI();
+            };
+            class_3.prototype.updateAddedItem = function (subject, added) {
+                that.updateUI();
+            };
+            class_3.prototype.updateRemovedItem = function (subject, removed) {
+                that.updateUI();
+            };
+            return class_3;
+        }()));
+        this._settings.attach(new (function () {
+            function class_4() {
+            }
+            class_4.prototype.update = function (subject) {
+                that.updateUI();
+            };
+            return class_4;
+        }()));
+    };
+    InventoryAdapter.prototype.add = function (item, amount) {
+        if (amount === void 0) { amount = undefined; }
+        this.log.debug('add', { item: item, amount: amount });
+        return this._data.add(item, amount);
+    };
+    InventoryAdapter.prototype.remove = function (item_name, amount) {
+        if (amount === void 0) { amount = undefined; }
+        this.log.debug('remove', { item_name: item_name, amount: amount });
+        return this._data.remove(item_name, amount);
+    };
+    InventoryAdapter.prototype.setAmount = function (index, amount) {
+        this._data.setItemAmount(index, amount);
+    };
+    InventoryAdapter.prototype.updateUI = function () {
+        var that = this;
+        $(that._table_selector).find('.add-item-to-fertilizer').each(function (index) {
+            var item_name = $(this).data('name');
+            var disabled = false;
+            if (that._fertilizer_components.isFull) {
+                disabled = true;
+            }
+            else if (that._settings.data.no_inventory_restriction) {
+                disabled = false;
+            }
+            else {
+                var findItemInInventory = that._data.getItemByName(item_name);
+                var findItemInComponents = that._fertilizer_components.getItemByName(item_name);
+                if (findItemInComponents) {
+                    if ((findItemInInventory === null || findItemInInventory === void 0 ? void 0 : findItemInInventory.amount) === undefined) {
+                        disabled = true;
+                    }
+                    else if (findItemInComponents.in_fertilizer === undefined) {
+                        disabled = true;
+                    }
+                    else if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
+                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                        if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
+                            disabled = true;
+                        }
+                    }
+                }
+            }
+            $(this).prop('disabled', disabled);
+        });
+        var hide_amount = (this._settings.data.no_inventory_restriction) ? 'd-none' : '';
+        var disabled_amount = this._settings.data.no_inventory_restriction;
+        $(that._table_selector).find('.inventory-item-amount-container').each(function (index) {
+            $(this).removeClass('d-none').addClass(hide_amount);
+            $(this).find('.inventory-item-amount').each(function (index) {
+                $(this).prop('disabled', disabled_amount);
+            });
         });
         this.initEvents();
     };
-    InventoryAdapter.prototype.update = function () {
-        if (this._table) {
-            this._table.clear();
-            this._table.rows.add(this._data.items).draw(false);
-        }
-    };
-    InventoryAdapter.prototype.add = function (item) {
-        var _a;
-        var ret = this._data.add(item);
-        if (ret) {
-            (_a = this._table) === null || _a === void 0 ? void 0 : _a.rows.add([item]).draw(false);
-            this._app.addItemToInventory(item);
-        }
-        return ret;
-    };
-    InventoryAdapter.prototype.remove = function (item_name) {
-        var _a, _b;
-        var ret = this._data.remove(item_name);
-        if (ret >= 0) {
-            (_a = this._table) === null || _a === void 0 ? void 0 : _a.row("[data-name='" + item_name + "']").remove();
-            (_b = this._table) === null || _b === void 0 ? void 0 : _b.draw(false);
-            this._app.removeItemFromInventory(item_name);
-        }
-        return ret;
-    };
     InventoryAdapter.prototype.initEvents = function () {
         var that = this;
-        $(this._table_selector).find('.add-item-to-fertilizer').on('click', function () {
+        $(this._table_selector).find('.add-item-to-fertilizer').off('click').on('click', function () {
             var item_name = $(this).data('name');
-            var item = that._app.getItemByNameFromInventory(item_name);
-            if (item) {
-                that._app.addItemToFertilizer(item);
+            var item = that._data.getItemByName(item_name);
+            if (item !== undefined) {
+                that._fertilizer_components.add(item, 1);
             }
         });
-        $(this._table_selector).find('.remove-item-from-inventory').on('click', function () {
+        $(this._table_selector).find('.remove-item-from-inventory').off('click').on('click', function () {
             var item_name = $(this).data('name');
+            that.log.debug('remove-item-from-inventory', { item_name: item_name });
             that.remove(item_name);
+        });
+        $(this._table_selector).find('.inventory-item-amount').off('change').on('change', function () {
+            var index = parseInt($(this).data('index'));
+            var amount = parseInt($(this).val());
+            that.log.debug('.fertilizer-item-amount change', { index: index, amount: amount, parent: parent });
+            if (amount > 0 && that._data.items[index] !== undefined) {
+                that._data.setItemAmount(index, amount);
+            }
+            else {
+                if (that._data.items[index] !== undefined) {
+                    that._data.remove(that._data.items[index], undefined);
+                }
+            }
         });
     };
     InventoryAdapter.prototype.getStatFocus = function (fertilizer_bonus) {
@@ -54772,90 +57555,142 @@ var InventoryAdapter = (function () {
             fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0 &&
             fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0 &&
             fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return "balanced";
+            return application_data_1.FarmingFocus.Balanced;
         }
         else if (fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
             fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
             fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0) {
-            return "heartiness";
+            return application_data_1.FarmingFocus.Heartiness;
         }
         else if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0) {
-            return "yield";
+            return application_data_1.FarmingFocus.Yield;
         }
         else if (fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0) {
-            return "aesthetic";
+            return application_data_1.FarmingFocus.Aesthetic;
         }
         else if (fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return "aroma";
+            return application_data_1.FarmingFocus.Aroma;
         }
-        return "balanced";
+        return application_data_1.FarmingFocus.Balanced;
     };
     return InventoryAdapter;
 }());
 exports.InventoryAdapter = InventoryAdapter;
-},{"./inventory":20,"./site":22}],20:[function(require,module,exports){
+},{"./application.data":25,"./inventory":32,"./site":34,"typescript-logger":17}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Inventory = void 0;
+exports.Inventory = exports.MAX_ITEMS_AMOUNT_INVENTORY = exports.MIN_ITEMS_AMOUNT_INVENTORY = void 0;
+var console_1 = require("console");
+var fertilizer_components_1 = require("./fertilizer-components");
+var Observer_1 = require("./Observer");
+var site_1 = require("./site");
+exports.MIN_ITEMS_AMOUNT_INVENTORY = 1;
+exports.MAX_ITEMS_AMOUNT_INVENTORY = 999;
 var Inventory = (function () {
     function Inventory() {
-        this._items_in_inventory = [];
+        this._items_in_inventory = new Observer_1.DataListSubject();
     }
-    Object.defineProperty(Inventory.prototype, "items", {
+    Object.defineProperty(Inventory.prototype, "observable", {
         get: function () {
             return this._items_in_inventory;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Inventory.prototype, "items", {
+        get: function () {
+            return this._items_in_inventory.data;
+        },
         set: function (value) {
-            this._items_in_inventory = value;
+            this._items_in_inventory.data = value;
         },
         enumerable: false,
         configurable: true
     });
     Inventory.prototype.getItemByName = function (name) {
-        return this._items_in_inventory.find(function (it) { return it.name === name; });
+        return this._items_in_inventory.data.find(function (it) { return it.name === name; });
+    };
+    Inventory.prototype.setItemAmount = function (index, amount) {
+        this._items_in_inventory.let(index, function (item) {
+            item.amount = amount;
+            return (item.amount === undefined || item.amount > 0) ? item : undefined;
+        });
     };
     Inventory.prototype.clear = function () {
-        this._items_in_inventory = [];
+        this._items_in_inventory.clear();
     };
-    Inventory.prototype.add = function (item) {
+    Inventory.prototype.add = function (item, amount) {
+        if (amount === void 0) { amount = undefined; }
+        if (amount !== undefined && amount === 0) {
+            return undefined;
+        }
+        console_1.assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
         var item_index = this._items_in_inventory.findIndex(function (it) { return it.name === item.name; });
         if (item_index >= 0) {
-            return true;
+            var item_amount = this._items_in_inventory.get(item_index).amount;
+            if (item_amount !== undefined || amount !== undefined) {
+                var new_amount_1 = (amount !== undefined) ? amount : 1;
+                var old_amount_1 = (item_amount !== undefined) ? item_amount : 0;
+                this._items_in_inventory.let(item_index, function (value) {
+                    value.amount = site_1.clamp(old_amount_1 + new_amount_1, fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, exports.MAX_ITEMS_AMOUNT_INVENTORY);
+                    return value;
+                });
+            }
+            return undefined;
         }
-        var newitem = item;
-        this._items_in_inventory.push(newitem);
-        return true;
+        var new_item = item;
+        new_item.amount = amount;
+        this._items_in_inventory.push(new_item);
+        return this._items_in_inventory.last();
     };
-    Inventory.prototype.remove = function (item) {
-        var _this = this;
+    Inventory.prototype.remove = function (item, amount) {
+        if (amount === void 0) { amount = undefined; }
+        if (amount !== undefined && amount === 0) {
+            return undefined;
+        }
+        console_1.assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
         var item_name = (function () {
             if (item.name !== undefined) {
                 return item.name;
             }
             return item;
         })();
-        var ret = -1;
-        this._items_in_inventory.forEach(function (value, index) {
-            if (value.name === item_name) {
-                _this._items_in_inventory.splice(index, 1);
-                ret = index;
+        var ret = undefined;
+        this._items_in_inventory.lets(function (item, index) {
+            if (item.name === item_name) {
+                if (amount === undefined) {
+                    item.amount = amount;
+                    ret = item;
+                    return undefined;
+                }
+                var old_amount = (item.amount !== undefined) ? item.amount : 0;
+                item.amount = site_1.clamp(old_amount - amount, 0, exports.MAX_ITEMS_AMOUNT_INVENTORY);
+                if (item.amount === undefined || item.amount <= 0) {
+                    ret = item;
+                    return undefined;
+                }
             }
+            return item;
         });
         return ret;
     };
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{}],21:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer-components":28,"./site":34,"console":6}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");
 var application_1 = require("./application");
+var typescript_logger_1 = require("typescript-logger");
 $(function () {
+    if ("development" !== "development") {
+        typescript_logger_1.LoggerManager.setProductionMode();
+    }
     var app = new application_1.Application();
     app.init();
 });
-},{"./application":15,"./site":22}],22:[function(require,module,exports){
+},{"./application":26,"./site":34,"typescript-logger":17}],34:[function(require,module,exports){
 'use strict';
 String.prototype.format = function () {
     var args = arguments;
@@ -54938,5 +57773,5 @@ module.exports = {
     makeDoubleClick: makeDoubleClick,
     clamp: clamp
 };
-},{}]},{},[21])
+},{}]},{},[33])
 //# sourceMappingURL=bundle.js.map

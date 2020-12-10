@@ -1,6 +1,6 @@
 table:
   itemlist:
-    col_add_to_inventory: Add to Inv.
+    col_add_to_inventory: Inv.
     col_name: Name
 
     col_fertilizer: Fertil.
@@ -20,7 +20,7 @@ table:
 
     col_expirable: Exp.
   inventory:
-    col_add_to_fertilizer: Add to Inv.
+    col_add_to_fertilizer: Inv.
     col_name: Name
 
     col_immunity: Imm.
@@ -117,6 +117,9 @@ guide:
       pray_for_dry: >-
         <i class="fas fa-cloud-sun"></i> 
         Weather: <strong>Pray for dry</strong>
+      pray_for_coolness: >-
+        <i class="fas fa-cloud-moon"></i>
+        Weather: <strong>Pray for coolness</strong>
       dry: >-
         <i class="fas fa-sun"></i> 
         Weather: <strong>Hot/Dry</strong>
@@ -135,7 +138,7 @@ guide:
       thresh:
         when_cool: >-
           <i class="fab fa-pagelines"></i> 
-          Thresh and Polish: <strong>Night/Morning</strong>
+          Thresh and Polish: <strong>When cool</strong> (Night/Morning)
       hulling:
         white_rice: >-
           <i class="fas fa-dharmachakra"></i> 
@@ -146,10 +149,41 @@ guide:
         brown_rice: >-
           <i class="fas fa-dharmachakra"></i> 
           Hulling: <strong>Brown Rice</strong>
+  spacing:
+    little_far_apart: 
+      tab: Little far apart
+      title: A little far apart
+      description: Leave 1 square space in between 2 seedling.
+    balanced: 
+      tab: Balanced
+      title: Balanced
+      description: Place seedling every square.
+    circle: 
+      tab: Circle
+      title: Balanced (Circle)
+      description: Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
+    1_1_placements: >-
+      Stand at the <span class="text-red-line">red line</span> for <strong>1x1</strong> placements.
+    2_1_placements: >-
+      Stand at the <span class="text-turquoise-line">turquoise line</span> for <strong>2x1</strong> placements.<br />
+      <small>("Two by Two Planting"-Skill)</small>
+    1_3_placements: >-
+      Stand at the <span class="text-orange-line">orange line</span> for <strong>1x3</strong> placements.<br /> 
+      <small>("Three in a Row Planting"-Skill)</small>
+    2_2_placements: >-
+      Stand at the <span class="text-skyblue-line">skyblue line</span> for <strong>2x2</strong> placements.<br /> 
+      <small>("Two by Two Planting"-Skill)</small>
+    4_4_placements: >-
+      Stand at the <span class="text-springgreen-line">springgreen line</span> for <strong>4x4</strong> placements.<br /> 
+      <small>("Four Corner Planting"-Skill)</small>
+    circle_placements: >-
+      Stand at the <span class="text-violet-line">violet line</span> for <strong>circle</strong> placements.<br /> 
+      <small>("Well Rounded Planting"-Skill)</small>
 fertilizer_helper:
   title: Fertilizer Helper
   fertilizer:
     title: Fertilizer
+    settings_no_inventory_restriction_label: No Inventory Restriction
     soil_nutrients:
       title: Soil nutrients
       current_fertilizer: Current Fertilizer
@@ -176,7 +210,7 @@ fertilizer_helper:
       armor_magic: Armor/Magic
       armor_magic_short: Armor/ Magic
 
-      immunity: Immunuity
+      immunity: Immunity
       immunity_short: Immu.
       pesticide: Pesticide
       pesticide_short: Pest.
@@ -187,6 +221,7 @@ fertilizer_helper:
       toxicity_short: Toxi.
     components:
       title: Components
+      amount_placeholder: Amount
   inventory:
     additional_components:
       title: Additional Components (Inventory)
@@ -209,6 +244,7 @@ fertilizer_helper:
       pesticide: Pest.
       herbicide: Herb.
       toxicity: Tox.
+    amount_placeholder: Amount
 item_list:
   title: Items-List
 goto: go to

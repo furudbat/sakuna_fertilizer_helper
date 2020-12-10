@@ -7,19 +7,19 @@
 </script>
 
 
-<h1 class="mt-4">{{ site.data.strings.guide.title }} <a href="#sectionItemList">{{ site.data.strings.goto }} [{{ site.data.strings.item_list.title }}]</a></h1>
+<h1 class="mt-4">{{ site.data.strings.guide.title }}</h1>
 <section id="sectionFarmingGuide">
     {% include guide.html %}
 </section>
 
 
-<h1 class="mt-4">{{ site.data.strings.fertilizer_helper.title }} <a href="#sectionItemList">{{ site.data.strings.goto }} [{{ site.data.strings.item_list.title }}]</a></h1>
+<h1 class="mt-4">{{ site.data.strings.fertilizer_helper.title }}</h1>
 <section id="sectionFertilizerHelper">
     {% include fertilizer_helper.html %}
 </section>
 
 
-<h1 class="mt-4">{{ site.data.strings.item_list.title }} <a href="#sectionFertilizerHelper">{{ site.data.strings.goto }} [{{ site.data.strings.fertilizer_helper.title }}]</a></h1>
+<h1 class="mt-4">{{ site.data.strings.item_list.title }}</h1>
 <section id="sectionItemList">
     {% assign materials_items = site.data.items | where: "category", "Materials" %}
     {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
