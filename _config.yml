@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: saKuwa
+title: Tauemons Lost Fertilizer Scrolls
 email: "hircreacc@gmail.com"
 description: >- # this means to ignore newlines until "baseurl:"
   Sakuna: Of Rice and Ruin Fertilizer Helper, Farming Guide and Items-List
