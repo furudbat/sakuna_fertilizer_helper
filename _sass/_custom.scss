@@ -1,0 +1,267 @@
+$nav-tabs-bg-color: #C8CDC9;
+
+ul.pagination {
+    a.page {
+        position: relative;
+        display: block;
+        padding: $pagination-padding-y $pagination-padding-x;
+        margin-left: -$pagination-border-width;
+        line-height: $pagination-line-height;
+        color: $pagination-color;
+        text-decoration: if($link-decoration==none, null, none);
+        background-color: $pagination-bg;
+        border: $pagination-border-width solid $pagination-border-color;
+
+        &:hover {
+            z-index: 2;
+            color: $pagination-hover-color;
+            text-decoration: none;
+            background-color: $pagination-hover-bg;
+            border-color: $pagination-hover-border-color;
+        }
+
+        &:focus {
+            z-index: 3;
+            outline: $pagination-focus-outline;
+            box-shadow: $pagination-focus-box-shadow;
+        }
+    }
+
+    li {
+        &:first-child {
+            a.page {
+                margin-left: 0;
+                @include border-left-radius($border-radius);
+            }
+        }
+
+        &:last-child {
+            a.page {
+                @include border-right-radius($border-radius);
+            }
+        }
+
+        &.active a.page {
+            z-index: 3;
+            color: $pagination-active-color;
+            background-color: $pagination-active-bg;
+            border-color: $pagination-active-border-color;
+        }
+
+        &.disabled a.page {
+            color: $pagination-disabled-color;
+            pointer-events: none;
+            // Opinionated: remove the "hand" cursor set previously for .page-link
+            cursor: auto;
+            background-color: $pagination-disabled-bg;
+            border-color: $pagination-disabled-border-color;
+        }
+    }
+}
+
+.nav-tabs {
+    background-color: $nav-tabs-bg-color;
+    border: $border-width solid $black;
+    border-radius: $border-radius;
+
+    .nav-link,
+    .nav-link.active {
+        color: $black;
+        //text-shadow: -1px 0 $white, 0 1px $white, 1px 0 $white, 0 -1px $white;
+    }
+
+    .nav-link,
+    .nav-link.active,
+    .nav-link.active:focus,
+    .nav-link.active:hover,
+    .nav-item.open .nav-link,
+    .nav-item.open .nav-link:focus,
+    .nav-item.open .nav-link:hover,
+    .nav-pills .nav-link,
+    .nav-pills .nav-link.active,
+    .nav-pills .nav-link.active:focus,
+    .nav-pills .nav-link.active:hover,
+    .nav-pills .nav-item.open .nav-link,
+    .nav-pills .nav-item.open .nav-link:focus,
+    .nav-pills .nav-item.open .nav-link:hover {
+        color: $black !important;
+        //text-shadow: -1px 0 $white, 0 1px $white, 1px 0 $white, 0 -1px $white;
+    }
+}
+
+.card {
+    .list-group-item-light {
+        color: $card-color;
+        background-color: $card-bg;
+    }
+
+    .card-header-nav-tabs {
+        padding: 7px 0 0 0;
+
+        .nav-tabs {
+            background-color: $card-cap-bg;
+            border: 0;
+        }
+    }
+}
+
+.card-dark { 
+    color: $white;
+    background-color: $gray-800;
+    
+    .card-body {
+        color: $white;
+    }
+}
+
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.w-item-icon {
+    width: 32px;
+}
+.item-icon {
+    width: 32px;
+    height: 32px;
+}
+.w-expiry {
+    width: 64px;
+}
+.soil-nutrients-chart {
+    height: 210px;
+}
+
+.farming-guide-winter { 
+    background-color: skyblue;
+    .card-header {
+        color: black;
+        background-color: skyblue;
+    }
+}
+.farming-guide-spring { 
+    background-color: greenyellow;
+    .card-header {
+        color: black;
+        background-color: greenyellow;
+    }
+}
+.farming-guide-summer { 
+    background-color: lightyellow;
+    .card-header {
+        color: black;
+        background-color: lightyellow;
+    }
+}
+.farming-guide-autumn { 
+    background-color: lightsalmon;
+    .card-header {
+        color: black;
+        background-color: lightsalmon;
+    }
+}
+
+.farming-guild-pills-balanced-nav-link {
+    border: 1px solid #543cdb !important;
+    &.active {
+        color: black !important;
+        background-color: lighten(#543cdb, 10) !important;
+    }
+}
+.balanced-text {
+    color: #543cdb !important;
+}
+
+.farming-guild-pills-yield-nav-link {
+    border: 1px solid #3cdb57 !important;
+    &.active {
+        color: black !important;
+        background-color: lighten(#3cdb57, 10%) !important;
+    }
+}
+.yield-text {
+    color: #3cdb57 !important;
+}
+
+.farming-guild-pills-heartiness-nav-link {
+    border: 1px solid #db963c !important;
+    &.active {
+        color: black !important;
+        background-color: lighten(#db963c, 10%) !important;
+    }
+}
+.heartiness-text {
+    color: #db963c !important;
+}
+
+.farming-guild-pills-aesthic-nav-link {
+    border: 1px solid #db3c3c !important;
+    &.active {
+        color: black !important;
+        background-color: lighten(#db3c3c, 10%) !important;
+    }
+}
+.aesthic-text {
+    color: #db3c3c !important;
+}
+
+.farming-guild-pills-aroma-nav-link {
+    border: 1px solid #9b3cdb !important;
+    &.active {
+        color: black !important;
+        background-color: lighten(#9b3cdb, 10%) !important;
+    }
+}
+.aroma-text {
+    color: #9b3cdb !important;
+}
+
+.text-red-line {
+    color: red;
+}
+.text-orange-line {
+    color: orange;
+}
+.text-turquoise-line {
+    color: turquoise;
+}
+.text-springgreen-line {
+    color: springgreen;
+}
+.text-violet-line {
+    color: violet;
+}
+
+.farming-guild-content {
+    min-height: 700px;
+}
+
+.table-inventory {
+    td {
+        padding: 0.5rem;
+    }
+    .table {
+        width: 100%;
+    }
+    .dataTables_filter {
+        padding-right: 1rem;
+    }
+    .dataTables_info {
+        padding-left: 1rem;
+    }
+    .dataTables_paginate {
+        padding-right: 1rem;
+    }
+}
+
+.table-item-list {
+    .table {
+        width: 100%;
+    }
+}
+
+.soil-nutrients-chart-container {
+    background-color: lighten($card-cap-bg, 10%);
+    border: $border-width solid $card-cap-bg;
+}
