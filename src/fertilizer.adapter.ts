@@ -1,10 +1,10 @@
 import { assert } from "console";
 import { LoggerManager } from "typescript-logger";
 import { ApplicationData } from "./application.data";
-import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
+import { ItemFertilizerComponentData } from "./fertilizer-components";
 import { FertilizerData, MAX_FERTILIZER, MAX_STATS, MIN_FERTILIZER, MIN_STATS } from "./fertilizer.data";
 import { render_buff_bonus_html } from "./inventory.adapter";
-import { DataObserver, DataSubject } from "./Observer";
+import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./Observer";
 import Chart from "chart.js";
 import { clamp, site } from "./site";
 
@@ -15,13 +15,16 @@ export class FertilizerAdapter {
 
     private log = LoggerManager.create('FertilizerAdapter');
 
-    constructor(appData: ApplicationData, data: FertilizerData) {
+    constructor(appData: ApplicationData) {
         this._appData = appData;
-        this._data.data = data;
     }
 
     get observable() {
         return this._data;
+    }
+
+    get data() {
+        return this._data.data;
     }
 
     public init() {
@@ -33,31 +36,9 @@ export class FertilizerAdapter {
 
         this.initEvents();
         this.initObservers();
+        
+        this.updateFromComponents(this._appData.fertilizer_components.components);
     }
-
-    public updateFromComponents(components: FertilizerComponents) {
-        this._data.let(data => {
-            data.leaf_fertilizer = this.calcComponentLeafFertilizerValue(components.components);
-            data.kernel_fertilizer = this.calcComponentKernelFertilizerValue(components.components);
-            data.root_fertilizer = this.calcComponentRootFertilizerValue(components.components);
-
-            data.yield_hp = this.calcComponentYieldHPValue(components.components);
-            data.taste_strength = this.calcComponentTasteStrengthValue(components.components);
-            data.hardness_vitality = this.calcComponentHardnessVitalityValue(components.components);
-            data.stickiness_gusto = this.calcComponentStickinessGustoValue(components.components);
-            data.aesthetic_luck = this.calcComponentAestheticLuckValue(components.components);
-            data.armor_magic = this.calcComponentArmorMagicValue(components.components);
-
-            data.immunity = this.calcComponentImmunityValue(components.components);
-            data.pesticide = this.calcComponentPesticideValue(components.components);
-            data.herbicide = this.calcComponentHerbicideValue(components.components);
-
-            data.toxicity = this.calcComponentToxicityValue(components.components);
-
-            return data;
-        });
-    }
-
 
     private initObservers() {
         var that = this;
@@ -134,6 +115,45 @@ export class FertilizerAdapter {
                 that.updateSoilNutrientsChartRootFertilizer();
                 that._soilNutrientsChart?.update();
             }
+        });
+
+        this._appData.fertilizer_components.observable.attach(new class implements DataListObserver<ItemFertilizerComponentData>{
+            update(subject: DataListSubject<ItemFertilizerComponentData>): void {
+                that.updateFromComponents(subject.data);
+            }
+            updateItem(subject: DataListSubject<ItemFertilizerComponentData>, updated: ItemFertilizerComponentData, index: number): void {
+                that.updateFromComponents(subject.data);
+            }
+            updateAddedItem(subject: DataListSubject<ItemFertilizerComponentData>, added: ItemFertilizerComponentData): void {
+                that.updateFromComponents(subject.data);
+            }
+            updateRemovedItem(subject: DataListSubject<ItemFertilizerComponentData>, removed: ItemFertilizerComponentData): void {
+                that.updateFromComponents(subject.data);
+            }
+        });
+    }
+
+    private updateFromComponents(components: ItemFertilizerComponentData[]) {
+        this.log.debug('updateFromComponents', components);
+        this._data.let(data => {
+            data.leaf_fertilizer = this.calcComponentLeafFertilizerValue(components);
+            data.kernel_fertilizer = this.calcComponentKernelFertilizerValue(components);
+            data.root_fertilizer = this.calcComponentRootFertilizerValue(components);
+
+            data.yield_hp = this.calcComponentYieldHPValue(components);
+            data.taste_strength = this.calcComponentTasteStrengthValue(components);
+            data.hardness_vitality = this.calcComponentHardnessVitalityValue(components);
+            data.stickiness_gusto = this.calcComponentStickinessGustoValue(components);
+            data.aesthetic_luck = this.calcComponentAestheticLuckValue(components);
+            data.armor_magic = this.calcComponentArmorMagicValue(components);
+
+            data.immunity = this.calcComponentImmunityValue(components);
+            data.pesticide = this.calcComponentPesticideValue(components);
+            data.herbicide = this.calcComponentHerbicideValue(components);
+
+            data.toxicity = this.calcComponentToxicityValue(components);
+
+            return data;
         });
     }
 
@@ -285,7 +305,7 @@ export class FertilizerAdapter {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
-    }
+    } 
 
     private calcComponentAestheticLuckValue(components: ItemFertilizerComponentData[]): number {
         return components.map(component => (component.fertilizer_bonus.aesthetic_luck) ? component.fertilizer_bonus.aesthetic_luck : 0).reduce((sum, value, index) => {

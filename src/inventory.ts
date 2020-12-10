@@ -31,7 +31,7 @@ export class Inventory {
     public setItemAmount(index: number, amount: number | undefined) {
         this._items_in_inventory.let(index, (item: ItemInventoryData) => {
             item.amount = amount;
-            return (item.amount === undefined || item.amount > 0)? item : undefined;
+            return (item.amount === undefined || item.amount > 0) ? item : undefined;
         });
     }
 
@@ -50,15 +50,15 @@ export class Inventory {
             const item_amount = this._items_in_inventory.get(item_index).amount;
 
             if (item_amount !== undefined || amount !== undefined) {
-                const new_amount = (amount !== undefined)? amount as number : 1;
-                const old_amount = (item_amount !== undefined)? item_amount as number : 0;
+                const new_amount = (amount !== undefined) ? amount as number : 1;
+                const old_amount = (item_amount !== undefined) ? item_amount as number : 0;
 
                 this._items_in_inventory.let(item_index, (value) => {
                     value.amount = clamp(old_amount + new_amount, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_INVENTORY);
                     return value;
                 });
             }
-            
+
             return undefined;
         }
 
@@ -87,13 +87,14 @@ export class Inventory {
         this._items_in_inventory.lets((item: ItemInventoryData, index: number) => {
             if (item.name === item_name) {
                 if (amount === undefined) {
+                    item.amount = amount;
                     ret = item;
                     return undefined;
                 }
-                
-                const old_amount = (item.amount !== undefined)? item.amount as number : 0;
+
+                const old_amount = (item.amount !== undefined) ? item.amount as number : 0;
                 item.amount = clamp(old_amount - amount as number, 0, MAX_ITEMS_AMOUNT_INVENTORY);
-            
+
                 if (item.amount === undefined || item.amount as number <= 0) {
                     ret = item;
                     return undefined;

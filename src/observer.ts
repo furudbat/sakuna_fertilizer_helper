@@ -13,7 +13,7 @@ export interface Subject {
     detach(observer: Observer): void;
 
     // Notify all observers about an event.
-    notify(): Promise<void>;
+    notify(): void;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface ListSubject {
     detach(observer: Observer): void;
 
     // Notify all observers about an event.
-    notify(): Promise<void>;
+    notify(): void;
 }
 
 /**
@@ -124,14 +124,14 @@ export class DataSubject<T> implements Subject {
             return;
         }
 
-        this.observers.splice(observerIndex, 1);
+        this.observers = this.observers.splice(observerIndex, 1);
         this.log.debug('Subject: Detached an observer.', observer);
     }
 
     /**
      * Trigger an update in each subscriber.
      */
-    public async notify() {
+    public notify() {
         this.log.debug('Subject: Notifying observers...', this._state);
         for (const observer of this.observers) {
             observer.update(this);
@@ -186,22 +186,23 @@ export class DataListSubject<T> implements ListSubject {
     
 
     public find(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): T | undefined {
-        return this._state.find(predicate);
+        return this._state.find(predicate, thisArg);
     }
     public findIndex(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): number {
-        return this._state.findIndex(predicate);
+        return this._state.findIndex(predicate, thisArg);
     }
 
     public let(index: number, lets: (value: T, index: number) => T | undefined) {
-        if (index < this._state.length) {
+        if (index >= 0 && index < this._state.length && this._state[index] !== undefined) {
             let new_item = lets(this._state[index], index);
+            //this.log.debug('let', {index, new_item, state: this._state});
 
             if (new_item !== undefined) {
                 this._state[index] = new_item;
                 this.notifyItem(new_item, index);
             } else {
                 let old_item = this._state[index];
-                this._state.slice(index, 1);
+                this._state.splice(index, 1);
                 this.notifyRemovedItem(old_item);
             }
         }
@@ -209,14 +210,10 @@ export class DataListSubject<T> implements ListSubject {
     
     public lets(lets: (value: T, index: number) => T | undefined) {
         if (this._state.length > 0) {
-            for(let i = 0;i < this._state.length;i++) {
-                let new_item = lets(this._state[i], i);
-                if (new_item !== undefined) {
-                    this._state[i] = new_item;
-                } else {
-                    this._state.slice(i, 1);
-                }
-            }
+            this._state = this._state
+                .map((it, index) => lets(it, index))
+                .filter(it => it !== undefined) as T[];
+            //this.log.debug('lets', {state: this._state});
             this.notify();
         }
     }
@@ -226,7 +223,7 @@ export class DataListSubject<T> implements ListSubject {
     }
 
     public set(index: number, value: T) {
-        if (index < this._state.length) {
+        if (index >= 0 && index < this._state.length) {
             this._state[index] = value;
             this.notifyItem(value, index);
         }
@@ -238,7 +235,7 @@ export class DataListSubject<T> implements ListSubject {
     }
     
     public remove(index: number) {
-        if (index < this._state.length) {
+        if (index >= 0 && index < this._state.length) {
             const item = this._state[index];
             this._state.splice(index, 1);
             this.notifyRemovedItem(item);
@@ -266,7 +263,7 @@ export class DataListSubject<T> implements ListSubject {
             return;
         }
 
-        this.observers.splice(observerIndex, 1);
+        this.observers = this.observers.splice(observerIndex, 1);
         this.log.debug('Subject: Detached an observer.', observer);
     }
 
@@ -274,7 +271,7 @@ export class DataListSubject<T> implements ListSubject {
     /**
      * Trigger an update in each subscriber.
      */
-    public async notify() {
+    public notify() {
         this.log.debug('Subject: Notifying observers...', this._state);
         for (const observer of this.observers) {
             observer.update(this);
@@ -284,21 +281,21 @@ export class DataListSubject<T> implements ListSubject {
     /**
      * Trigger an update in each subscriber.
      */
-    public async notifyItem(item: T, index: number) {
+    public notifyItem(item: T, index: number) {
         this.log.debug('Subject: Notifying observers, Item...', this._state, index);
         for (const observer of this.observers) {
             observer.updateItem(this, item, index);
         }
     }
 
-    public async notifyAddedItem(added: T) {
+    public notifyAddedItem(added: T) {
         this.log.debug('Subject: Notifying observers, AddedItem...', this._state, added);
         for (const observer of this.observers) {
             observer.updateAddedItem(this, added);
         }
     }
     
-    public async notifyRemovedItem(removed: T) {
+    public notifyRemovedItem(removed: T) {
         this.log.debug('Subject: Notifying observers, RemovedItem...', this._state, removed);
         for (const observer of this.observers) {
             observer.updateRemovedItem(this, removed);
