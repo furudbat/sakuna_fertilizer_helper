@@ -1,5 +1,5 @@
 import { site, USE_CACHE } from './site'
-import { ApplicationData, FarmingFocus } from './application.data'
+import { ApplicationData, FarmingFocus, Theme } from './application.data'
 import 'datatables.net-bs4'
 import 'datatables.net-responsive-bs4'
 import { FertilizerData, MAX_STATS } from './fertilizer.data'
@@ -63,8 +63,8 @@ export class Application {
         this._fertilizerAdapter = new FertilizerAdapter(this._appData);
         this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
-        this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory);
-        this._expirablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory);
+        this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
+        this._expirablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory, { can_remove_from_inventory: false });
 
         this.initItemList();
         this.initSettings();
@@ -72,6 +72,7 @@ export class Application {
         this.initInventory();
         this._fertilizerAdapter?.init();
         this._fertilizeComponentsAdapter?.init();
+        this.updateRecommendedItems(this._fertilizerAdapter.data);
         
         this.initObservers();
     }
@@ -113,6 +114,30 @@ export class Application {
         $('#chbSettingsNoInventoryRestriction').on('change', function() {
             that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
         });
+
+        $('body').removeAttr('data-theme');
+        switch(that._appData.theme) {
+            case Theme.Dark:
+                $('#chbDarkTheme').bootstrapToggle('on');
+                $('body').attr('data-theme', 'dark');
+                break;
+            case Theme.Light:
+            default:
+                $('#chbDarkTheme').bootstrapToggle('off');
+                $('body').attr('data-theme', 'light');
+                break;
+        }
+
+        $('#chbDarkTheme').on('change', function() {
+            $('body').removeAttr('data-theme');
+            if($(this).prop('checked')) {
+                $('body').attr('data-theme', 'dark');
+                that._appData.theme = Theme.Dark;
+            } else {
+                $('body').attr('data-theme', 'light');
+                that._appData.theme = Theme.Light;
+            }
+        })
     }
 
     private initInventory() {
@@ -192,19 +217,24 @@ export class Application {
         const inventory_items = this._appData.inventory.items.filter(it => {
             const item_name = it.name;
             const findItemInInventory = this._appData.inventory.getItemByName(item_name);
-            let findItemInComponents = this._appData.fertilizer_components.getItemByName(item_name);
+            const findItemInComponents = this._appData.fertilizer_components.getItemByName(item_name);
 
-            if (findItemInComponents) {
-                if(findItemInComponents.in_fertilizer === undefined) {
-                    return false;
-                }
-
+            if (findItemInInventory != undefined && findItemInComponents !== undefined) {
                 if (!this._appData.settings.no_inventory_restriction) {
-                    if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined && 
-                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if(findItemInComponents.in_fertilizer === undefined) {
+                        return false;
+                    }
+
+                    if (findItemInComponents.in_fertilizer !== undefined && 
+                        findItemInInventory.amount !== undefined) {
                         if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
                             return false;
                         }
+                    }
+                } else {
+                    if (findItemInComponents !== undefined && 
+                        findItemInInventory !== undefined) {
+                            return false;
                     }
                 }
             }

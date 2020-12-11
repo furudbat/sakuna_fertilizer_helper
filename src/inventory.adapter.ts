@@ -19,7 +19,7 @@ export function render_buff_bonus_html(value: number | undefined, invert_color: 
     if (invert_color !== undefined) {
         if (!invert_color) {
             if (overflow) {
-                val_str = `<span class="text-warning">${val_str}+</span>`;
+                val_str = `<span class="text-warning">${val_str}*</span>`;
             } else if (val_number > 0) {
                 val_str = `<span class="text-success">${val_str}</span>`;
             }
@@ -29,7 +29,7 @@ export function render_buff_bonus_html(value: number | undefined, invert_color: 
             }
         } else {
             if (overflow) {
-                val_str = `<span class="text-warning">${val_str}+</span>`;
+                val_str = `<span class="text-warning">${val_str}*</span>`;
             } else if (val_number < 0) {
                 val_str = `<span class="text-success">${val_str}</span>`;
             }
@@ -56,20 +56,27 @@ export function render_buff_bonus(property_name: string, invert_color: boolean |
 };
 
 const INVENTORY_PAGE_LENGTH = 7;
+
+export interface InventoryAdapterSettings {
+    can_remove_from_inventory: boolean;
+}
+
 export class InventoryAdapter {
     private _settings: DataSubject<Settings>;
     private _fertilizer_components: FertilizerComponents;
     private _table_selector: string;
     private _data: Inventory;
     private _table?: DataTables.Api;
+    private _adapter_settings?: InventoryAdapterSettings;
 
     private log = LoggerManager.create('InventoryAdapter');
 
-    constructor(settings: DataSubject<Settings>, fertilizer_components: FertilizerComponents, table_selector: string, data: Inventory) {
+    constructor(settings: DataSubject<Settings>, fertilizer_components: FertilizerComponents, table_selector: string, data: Inventory, adapter_settings: InventoryAdapterSettings | undefined = undefined) {
         this._settings = settings;
         this._fertilizer_components = fertilizer_components;
         this._table_selector = table_selector;
         this._data = data;
+        this._adapter_settings = adapter_settings;
     }
 
     get observable() {
@@ -213,30 +220,15 @@ export class InventoryAdapter {
                             const show_herbicide = ((row.fertilizer_bonus.herbicide ?? 0) === 0) ? 'd-none' : 0;
                             const show_toxicity = ((row.fertilizer_bonus.toxicity ?? 0) === 0) ? 'd-none' : 0;
 
-                            let data_color_class = '';
-                            switch (that.getStatFocus(row.fertilizer_bonus)) {
-                                case FarmingFocus.Balanced:
-                                    data_color_class = 'balanced-text';
-                                    break;
-                                case FarmingFocus.Heartiness:
-                                    data_color_class = 'heartiness-text';
-                                    break;
-                                case FarmingFocus.Yield:
-                                    data_color_class = 'yield-text';
-                                    break;
-                                case FarmingFocus.Aesthetic:
-                                    data_color_class = 'aesthetic-text';
-                                    break;
-                                case FarmingFocus.Aroma:
-                                    data_color_class = 'aroma-text';
-                                    break;
-                            }
+                            const data_color_class = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
 
                             const item_name = row.name;
                             const amount_value = row.amount ?? 1;
                             const index = that._data.items.findIndex(it => it.name == item_name);
                             const hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
                             const disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
+                            
+                            const show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false)? 'd-none' : '';
 
                             return `<div class="row no-gutters">
                                         <div class="col-3 text-left inventory-item-amount-container ${hide_amount}">
@@ -248,15 +240,15 @@ export class InventoryAdapter {
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="row no-gutters">
+                                    <div class="row mt-1">
                                         <div class="col collapse" id="${collapse_id}">
-                                            <div col="row no-gutters">
+                                            <div class="row my-1 mt-2 ${show_remove_from_inventory}">
                                                 <button class="btn btn-danger btn-small remove-item-from-inventory" data-name="${item_name}" data-index="${index}">
                                                     ${site.data.strings.fertilizer_helper.inventory.remove_from_inventory}
                                                 </button>
                                             </div>
 
-                                            <div col="row no-gutters mt-1">
+                                            <div class="row my-1">
                                                 ${fertilizer_bonus}
                                             </div>
 
@@ -459,28 +451,29 @@ export class InventoryAdapter {
     public setAmount(index: number, amount: number | undefined) {
         this._data.setItemAmount(index, amount);
     }
-    
+
     private updateUI() {
         var that = this;
         $(that._table_selector).find('.add-item-to-fertilizer').each(function (index) {
             const item_name = $(this).data('name');
+            const findItemInInventory = that._data.getItemByName(item_name);
+            const findItemInComponents = that._fertilizer_components.getItemByName(item_name);
 
             let disabled = false;
             if (that._fertilizer_components.isFull) {
-                disabled = true;
-            } else if (that._settings.data.no_inventory_restriction) {
-                disabled = false;
-            } else {
-                const findItemInInventory = that._data.getItemByName(item_name);
-                let findItemInComponents = that._fertilizer_components.getItemByName(item_name);
+                if (findItemInInventory !== undefined && findItemInComponents === undefined) {
+                    disabled = true;
+                }
+            }
 
-                if (findItemInComponents) {
+            if (!that._settings.data.no_inventory_restriction) {
+                if (findItemInComponents !== undefined && findItemInComponents !== undefined) {
                     if (findItemInInventory?.amount === undefined) {
                         disabled = true;
                     } else if (findItemInComponents.in_fertilizer === undefined) {
                         disabled = true;
-                    } else if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
-                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                    } else if (findItemInComponents.in_fertilizer !== undefined &&
+                        findItemInInventory.amount !== undefined) {
                         if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
                             disabled = true;
                         }
@@ -514,7 +507,7 @@ export class InventoryAdapter {
                 that._fertilizer_components.add(item, 1);
             }
         });
-        
+
         $(this._table_selector).find('.remove-item-from-inventory').off('click').on('click', function () {
             const item_name = $(this).data('name');
             that.log.debug('remove-item-from-inventory', { item_name });
@@ -526,7 +519,7 @@ export class InventoryAdapter {
             const index = parseInt($(this).data('index') as string);
             const amount = parseInt($(this).val() as string);
 
-            that.log.debug('.fertilizer-item-amount change', {index, amount, parent});
+            that.log.debug('.fertilizer-item-amount change', { index, amount, parent });
 
             if (amount > 0 && that._data.items[index] !== undefined) {
                 that._data.setItemAmount(index, amount);
@@ -536,29 +529,5 @@ export class InventoryAdapter {
                 }
             }
         });
-    }
-
-
-    private getStatFocus(fertilizer_bonus: FertilizerBonusData) {
-        if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0 &&
-            fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
-            fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
-            fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0 &&
-            fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0 &&
-            fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return FarmingFocus.Balanced;
-        } else if (fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
-            fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
-            fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0) {
-            return FarmingFocus.Heartiness;
-        } else if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0) {
-            return FarmingFocus.Yield;
-        } else if (fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0) {
-            return FarmingFocus.Aesthetic;
-        } else if (fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return FarmingFocus.Aroma;
-        }
-
-        return FarmingFocus.Balanced;
     }
 }

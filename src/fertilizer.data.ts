@@ -241,4 +241,19 @@ export class FertilizerData {
     get is_toxicity_max_or_overflow() {
         return this._toxicity === MAX_STATS || this.is_toxicity_overflow;
     }
+
+    get are_state_overflow(){
+        return this.is_yield_hp_overflow ||
+            this.is_taste_strength_overflow ||
+            this.is_hardness_vitality_overflow ||
+            this.is_stickiness_gusto_overflow ||
+            this.is_aesthetic_luck_overflow ||
+            this.is_armor_magic_overflow;
+    }
+
+    get are_soil_nutrients_max_or_overflow() {
+        return this.is_leaf_fertilizer_max_or_overflow ||
+            this.is_kernel_fertilizer_max_or_overflow ||
+            this.is_root_fertilizer_max_or_overflow;
+    }
 }

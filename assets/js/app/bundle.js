@@ -55338,7 +55338,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApplicationData = exports.Settings = exports.FarmingFocus = void 0;
+exports.ApplicationData = exports.Settings = exports.Theme = exports.FarmingFocus = void 0;
 var localforage_1 = __importDefault(require("localforage"));
 var fertilizer_components_1 = require("./fertilizer-components");
 var inventory_1 = require("./inventory");
@@ -55351,6 +55351,7 @@ var STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 var STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 var STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
 var STORAGE_KEY_SETTINGS = 'settings';
+var STORAGE_KEY_THEME = 'theme';
 var FarmingFocus;
 (function (FarmingFocus) {
     FarmingFocus["Balanced"] = "balanced";
@@ -55358,7 +55359,13 @@ var FarmingFocus;
     FarmingFocus["Yield"] = "yield";
     FarmingFocus["Aesthetic"] = "aesthetic";
     FarmingFocus["Aroma"] = "aroma";
+    FarmingFocus["Neutral"] = "";
 })(FarmingFocus = exports.FarmingFocus || (exports.FarmingFocus = {}));
+var Theme;
+(function (Theme) {
+    Theme["Light"] = "";
+    Theme["Dark"] = "dark";
+})(Theme = exports.Theme || (exports.Theme = {}));
 var Settings = (function () {
     function Settings() {
         this.no_inventory_restriction = true;
@@ -55376,55 +55383,60 @@ var ApplicationData = (function () {
         this._settings = new Observer_1.DataSubject(new Settings());
         this._inventory = new inventory_1.Inventory();
         this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
+        this._theme = Theme.Light;
         this._storeSession = localforage_1.default.createInstance({
             name: "session"
         });
     }
     ApplicationData.prototype.loadFromStorage = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, _c, _d, _e, _f, _g, _h, err_1;
-            return __generator(this, function (_j) {
-                switch (_j.label) {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j, err_1;
+            return __generator(this, function (_k) {
+                switch (_k.label) {
                     case 0:
-                        _j.trys.push([0, 9, , 10]);
+                        _k.trys.push([0, 10, , 11]);
                         _a = this;
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS)];
                     case 1:
-                        _a._items = (_j.sent()) || this._items;
+                        _a._items = (_k.sent()) || this._items;
                         _b = this._inventory;
                         return [4, this._storeSession.getItem(STORAGE_KEY_ITEMS_IN_INVENTORY)];
                     case 2:
-                        _b.items = (_j.sent()) || this._inventory.items;
+                        _b.items = (_k.sent()) || this._inventory.items;
                         _c = this._currentLeafFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_LEAF_FERTILIZER)];
                     case 3:
-                        _c.data = (_j.sent()) || this._currentLeafFertilizer.data;
+                        _c.data = (_k.sent()) || this._currentLeafFertilizer.data;
                         _d = this._currentKernelFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_KERNEL_FERTILIZER)];
                     case 4:
-                        _d.data = (_j.sent()) || this._currentKernelFertilizer.data;
+                        _d.data = (_k.sent()) || this._currentKernelFertilizer.data;
                         _e = this._currentRootFertilizer;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_ROOT_FERTILIZER)];
                     case 5:
-                        _e.data = (_j.sent()) || this._currentRootFertilizer.data;
+                        _e.data = (_k.sent()) || this._currentRootFertilizer.data;
                         _f = this._fertilizer_components;
                         return [4, this._storeSession.getItem(STORAGE_KEY_FERTILIZER_COMPONENTS)];
                     case 6:
-                        _f.components = (_j.sent()) || this._fertilizer_components.components;
+                        _f.components = (_k.sent()) || this._fertilizer_components.components;
                         _g = this._currentGuide;
                         return [4, this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE)];
                     case 7:
-                        _g.data = (_j.sent()) || this._currentGuide.data;
+                        _g.data = (_k.sent()) || this._currentGuide.data;
                         _h = this._settings;
                         return [4, this._storeSession.getItem(STORAGE_KEY_SETTINGS)];
                     case 8:
-                        _h.data = (_j.sent()) || this._settings.data;
-                        return [3, 10];
+                        _h.data = (_k.sent()) || this._settings.data;
+                        _j = this;
+                        return [4, this._storeSession.getItem(STORAGE_KEY_THEME)];
                     case 9:
-                        err_1 = _j.sent();
+                        _j._theme = (_k.sent()) || this._theme;
+                        return [3, 11];
+                    case 10:
+                        err_1 = _k.sent();
                         console.error('loadFromStorage', err_1);
-                        return [3, 10];
-                    case 10: return [2];
+                        return [3, 11];
+                    case 11: return [2];
                 }
             });
         });
@@ -55432,6 +55444,17 @@ var ApplicationData = (function () {
     ApplicationData.prototype.clearSessionStorage = function () {
         this._storeSession.clear();
     };
+    Object.defineProperty(ApplicationData.prototype, "theme", {
+        get: function () {
+            return this._theme;
+        },
+        set: function (value) {
+            this._theme = value;
+            this._storeSession.setItem(STORAGE_KEY_THEME, value);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(ApplicationData.prototype, "currentGuideObservable", {
         get: function () {
             return this._currentGuide;
@@ -55628,13 +55651,14 @@ var Application = (function () {
         this._fertilizerAdapter = new fertilizer_adapter_1.FertilizerAdapter(this._appData);
         this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
-        this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory);
-        this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory);
+        this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
+        this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory, { can_remove_from_inventory: false });
         this.initItemList();
         this.initSettings();
         this.initInventory();
         (_a = this._fertilizerAdapter) === null || _a === void 0 ? void 0 : _a.init();
         (_b = this._fertilizeComponentsAdapter) === null || _b === void 0 ? void 0 : _b.init();
+        this.updateRecommendedItems(this._fertilizerAdapter.data);
         this.initObservers();
     };
     Application.prototype.initItemList = function () {
@@ -55668,6 +55692,29 @@ var Application = (function () {
         var that = this;
         $('#chbSettingsNoInventoryRestriction').on('change', function () {
             that._appData.setSettingNoInventoryRestriction(this.checked);
+        });
+        $('body').removeAttr('data-theme');
+        switch (that._appData.theme) {
+            case application_data_1.Theme.Dark:
+                $('#chbDarkTheme').bootstrapToggle('on');
+                $('body').attr('data-theme', 'dark');
+                break;
+            case application_data_1.Theme.Light:
+            default:
+                $('#chbDarkTheme').bootstrapToggle('off');
+                $('body').attr('data-theme', 'light');
+                break;
+        }
+        $('#chbDarkTheme').on('change', function () {
+            $('body').removeAttr('data-theme');
+            if ($(this).prop('checked')) {
+                $('body').attr('data-theme', 'dark');
+                that._appData.theme = application_data_1.Theme.Dark;
+            }
+            else {
+                $('body').attr('data-theme', 'light');
+                that._appData.theme = application_data_1.Theme.Light;
+            }
         });
     };
     Application.prototype.initInventory = function () {
@@ -55763,16 +55810,22 @@ var Application = (function () {
             var item_name = it.name;
             var findItemInInventory = _this._appData.inventory.getItemByName(item_name);
             var findItemInComponents = _this._appData.fertilizer_components.getItemByName(item_name);
-            if (findItemInComponents) {
-                if (findItemInComponents.in_fertilizer === undefined) {
-                    return false;
-                }
+            if (findItemInInventory != undefined && findItemInComponents !== undefined) {
                 if (!_this._appData.settings.no_inventory_restriction) {
-                    if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
-                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                    if (findItemInComponents.in_fertilizer === undefined) {
+                        return false;
+                    }
+                    if (findItemInComponents.in_fertilizer !== undefined &&
+                        findItemInInventory.amount !== undefined) {
                         if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
                             return false;
                         }
+                    }
+                }
+                else {
+                    if (findItemInComponents !== undefined &&
+                        findItemInInventory !== undefined) {
+                        return false;
                     }
                 }
             }
@@ -55955,6 +56008,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
 var typescript_logger_1 = require("typescript-logger");
 var fertilizer_components_1 = require("./fertilizer-components");
+var inventory_1 = require("./inventory");
 var site_1 = require("./site");
 var FertilizeComponentsAdapter = (function () {
     function FertilizeComponentsAdapter(settings, inventory, list_selector, data) {
@@ -56113,15 +56167,16 @@ var FertilizeComponentsAdapter = (function () {
         var readonly = (!this._settings.data.no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
         var in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
         var max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
-        return "<li class=\"list-group-item list-group-item-light p-1\" data-index=\"" + index + "\" data-name=\"" + item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left\">" + item.name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
+        var color = inventory_1.Inventory.getStateFocusTextColor(item.fertilizer_bonus);
+        return "<li class=\"list-group-item list-group-item p-1\" data-index=\"" + index + "\" data-name=\"" + item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left " + color + "\">" + item.name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
     };
     FertilizeComponentsAdapter.prototype.renderEmptyElementHtml = function (index) {
-        return "<li class=\"list-group-item list-group-item-light text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
+        return "<li class=\"list-group-item list-group-item text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
     };
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components":28,"./site":34,"typescript-logger":17}],28:[function(require,module,exports){
+},{"./fertilizer-components":28,"./inventory":32,"./site":34,"typescript-logger":17}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerComponents = exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MAX_FERTILIZE_COMPONENTS = void 0;
@@ -56331,6 +56386,7 @@ var FertilizerAdapter = (function () {
                 $('#fertilizerPesticide').html(pesticide);
                 $('#fertilizerHerbicide').html(herbicide);
                 $('#fertilizerToxicity').html(toxicity);
+                that.updateHints();
             };
             return class_1;
         }()));
@@ -56473,14 +56529,26 @@ var FertilizerAdapter = (function () {
             },
             options: {
                 responsive: true,
+                defaultColor: 'black',
+                title: {
+                    fontColor: 'black'
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
                 scale: {
                     angleLines: {
-                        display: true,
-                        color: 'black'
+                        display: true
                     },
                     ticks: {
+                        fontColor: 'black',
                         min: fertilizer_data_1.MIN_FERTILIZER,
                         max: fertilizer_data_1.MAX_FERTILIZER
+                    },
+                    pointLabels: {
+                        fontColor: 'black'
                     }
                 }
             }
@@ -56489,6 +56557,19 @@ var FertilizerAdapter = (function () {
         this.updateSoilNutrientsChartKernelFertilizer();
         this.updateSoilNutrientsChartRootFertilizer();
         this._soilNutrientsChart.update();
+    };
+    FertilizerAdapter.prototype.updateHints = function () {
+        var renderHint = function (text) {
+            return "<li class=\"list-group-item list-group-item text-left p-2\">" + text + "</li>";
+        };
+        var list = $('#lstFertilizerHints');
+        list.html('');
+        if (this._data.data.are_soil_nutrients_max_or_overflow) {
+            list.append(renderHint(site_1.site.data.strings.fertilizer_helper.hints.soil_nutrients_fertilizer_overflow));
+        }
+        if (this._data.data.are_state_overflow) {
+            list.append(renderHint(site_1.site.data.strings.fertilizer_helper.hints.state_overflow));
+        }
     };
     FertilizerAdapter.prototype.updateSoilNutrientsChartLeafFertilizer = function () {
         var _a, _b, _c;
@@ -57100,6 +57181,27 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(FertilizerData.prototype, "are_state_overflow", {
+        get: function () {
+            return this.is_yield_hp_overflow ||
+                this.is_taste_strength_overflow ||
+                this.is_hardness_vitality_overflow ||
+                this.is_stickiness_gusto_overflow ||
+                this.is_aesthetic_luck_overflow ||
+                this.is_armor_magic_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(FertilizerData.prototype, "are_soil_nutrients_max_or_overflow", {
+        get: function () {
+            return this.is_leaf_fertilizer_max_or_overflow ||
+                this.is_kernel_fertilizer_max_or_overflow ||
+                this.is_root_fertilizer_max_or_overflow;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
@@ -57108,7 +57210,6 @@ exports.FertilizerData = FertilizerData;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryAdapter = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
 var typescript_logger_1 = require("typescript-logger");
-var application_data_1 = require("./application.data");
 var inventory_1 = require("./inventory");
 var site_1 = require("./site");
 function hasProperty(o, propertyName) {
@@ -57125,7 +57226,7 @@ function render_buff_bonus_html(value, invert_color, overflow) {
     if (invert_color !== undefined) {
         if (!invert_color) {
             if (overflow) {
-                val_str = "<span class=\"text-warning\">" + val_str + "+</span>";
+                val_str = "<span class=\"text-warning\">" + val_str + "*</span>";
             }
             else if (val_number > 0) {
                 val_str = "<span class=\"text-success\">" + val_str + "</span>";
@@ -57136,7 +57237,7 @@ function render_buff_bonus_html(value, invert_color, overflow) {
         }
         else {
             if (overflow) {
-                val_str = "<span class=\"text-warning\">" + val_str + "+</span>";
+                val_str = "<span class=\"text-warning\">" + val_str + "*</span>";
             }
             else if (val_number < 0) {
                 val_str = "<span class=\"text-success\">" + val_str + "</span>";
@@ -57165,12 +57266,14 @@ exports.render_buff_bonus = render_buff_bonus;
 ;
 var INVENTORY_PAGE_LENGTH = 7;
 var InventoryAdapter = (function () {
-    function InventoryAdapter(settings, fertilizer_components, table_selector, data) {
+    function InventoryAdapter(settings, fertilizer_components, table_selector, data, adapter_settings) {
+        if (adapter_settings === void 0) { adapter_settings = undefined; }
         this.log = typescript_logger_1.LoggerManager.create('InventoryAdapter');
         this._settings = settings;
         this._fertilizer_components = fertilizer_components;
         this._table_selector = table_selector;
         this._data = data;
+        this._adapter_settings = adapter_settings;
     }
     Object.defineProperty(InventoryAdapter.prototype, "observable", {
         get: function () {
@@ -57307,30 +57410,14 @@ var InventoryAdapter = (function () {
                             var show_pesticide = (((_h = row.fertilizer_bonus.pesticide) !== null && _h !== void 0 ? _h : 0) === 0) ? 'd-none' : 0;
                             var show_herbicide = (((_j = row.fertilizer_bonus.herbicide) !== null && _j !== void 0 ? _j : 0) === 0) ? 'd-none' : 0;
                             var show_toxicity = (((_k = row.fertilizer_bonus.toxicity) !== null && _k !== void 0 ? _k : 0) === 0) ? 'd-none' : 0;
-                            var data_color_class = '';
-                            switch (that.getStatFocus(row.fertilizer_bonus)) {
-                                case application_data_1.FarmingFocus.Balanced:
-                                    data_color_class = 'balanced-text';
-                                    break;
-                                case application_data_1.FarmingFocus.Heartiness:
-                                    data_color_class = 'heartiness-text';
-                                    break;
-                                case application_data_1.FarmingFocus.Yield:
-                                    data_color_class = 'yield-text';
-                                    break;
-                                case application_data_1.FarmingFocus.Aesthetic:
-                                    data_color_class = 'aesthetic-text';
-                                    break;
-                                case application_data_1.FarmingFocus.Aroma:
-                                    data_color_class = 'aroma-text';
-                                    break;
-                            }
+                            var data_color_class = inventory_1.Inventory.getStateFocusTextColor(row.fertilizer_bonus);
                             var item_name_1 = row.name;
                             var amount_value = (_l = row.amount) !== null && _l !== void 0 ? _l : 1;
                             var index = that._data.items.findIndex(function (it) { return it.name == item_name_1; });
                             var hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
                             var disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name_1 + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + item_name_1 + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row no-gutters\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div col=\"row no-gutters\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + item_name_1 + "\" data-index=\"" + index + "\">\n                                                    " + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "\n                                                </button>\n                                            </div>\n\n                                            <div col=\"row no-gutters mt-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            var show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false) ? 'd-none' : '';
+                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name_1 + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + data_color_class + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + item_name_1 + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row mt-1\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div class=\"row my-1 mt-2 " + show_remove_from_inventory + "\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + item_name_1 + "\" data-index=\"" + index + "\">\n                                                    " + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "\n                                                </button>\n                                            </div>\n\n                                            <div class=\"row my-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -57483,25 +57570,24 @@ var InventoryAdapter = (function () {
         var that = this;
         $(that._table_selector).find('.add-item-to-fertilizer').each(function (index) {
             var item_name = $(this).data('name');
+            var findItemInInventory = that._data.getItemByName(item_name);
+            var findItemInComponents = that._fertilizer_components.getItemByName(item_name);
             var disabled = false;
             if (that._fertilizer_components.isFull) {
-                disabled = true;
+                if (findItemInInventory !== undefined && findItemInComponents === undefined) {
+                    disabled = true;
+                }
             }
-            else if (that._settings.data.no_inventory_restriction) {
-                disabled = false;
-            }
-            else {
-                var findItemInInventory = that._data.getItemByName(item_name);
-                var findItemInComponents = that._fertilizer_components.getItemByName(item_name);
-                if (findItemInComponents) {
+            if (!that._settings.data.no_inventory_restriction) {
+                if (findItemInComponents !== undefined && findItemInComponents !== undefined) {
                     if ((findItemInInventory === null || findItemInInventory === void 0 ? void 0 : findItemInInventory.amount) === undefined) {
                         disabled = true;
                     }
                     else if (findItemInComponents.in_fertilizer === undefined) {
                         disabled = true;
                     }
-                    else if (findItemInComponents && findItemInComponents.in_fertilizer !== undefined &&
-                        findItemInInventory && findItemInInventory.amount !== undefined) {
+                    else if (findItemInComponents.in_fertilizer !== undefined &&
+                        findItemInInventory.amount !== undefined) {
                         if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
                             disabled = true;
                         }
@@ -57548,39 +57634,15 @@ var InventoryAdapter = (function () {
             }
         });
     };
-    InventoryAdapter.prototype.getStatFocus = function (fertilizer_bonus) {
-        if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0 &&
-            fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
-            fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
-            fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0 &&
-            fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0 &&
-            fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return application_data_1.FarmingFocus.Balanced;
-        }
-        else if (fertilizer_bonus.taste_strength && fertilizer_bonus.taste_strength != 0 &&
-            fertilizer_bonus.hardness_vitality && fertilizer_bonus.hardness_vitality != 0 &&
-            fertilizer_bonus.stickiness_gusto && fertilizer_bonus.stickiness_gusto != 0) {
-            return application_data_1.FarmingFocus.Heartiness;
-        }
-        else if (fertilizer_bonus.yield_hp && fertilizer_bonus.yield_hp != 0) {
-            return application_data_1.FarmingFocus.Yield;
-        }
-        else if (fertilizer_bonus.aesthetic_luck && fertilizer_bonus.aesthetic_luck != 0) {
-            return application_data_1.FarmingFocus.Aesthetic;
-        }
-        else if (fertilizer_bonus.armor_magic && fertilizer_bonus.armor_magic != 0) {
-            return application_data_1.FarmingFocus.Aroma;
-        }
-        return application_data_1.FarmingFocus.Balanced;
-    };
     return InventoryAdapter;
 }());
 exports.InventoryAdapter = InventoryAdapter;
-},{"./application.data":25,"./inventory":32,"./site":34,"typescript-logger":17}],32:[function(require,module,exports){
+},{"./inventory":32,"./site":34,"typescript-logger":17}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = exports.MAX_ITEMS_AMOUNT_INVENTORY = exports.MIN_ITEMS_AMOUNT_INVENTORY = void 0;
 var console_1 = require("console");
+var application_data_1 = require("./application.data");
 var fertilizer_components_1 = require("./fertilizer-components");
 var Observer_1 = require("./Observer");
 var site_1 = require("./site");
@@ -57674,10 +57736,63 @@ var Inventory = (function () {
         });
         return ret;
     };
+    Inventory.getStateFocusTextColor = function (fertilizer_bonus) {
+        switch (this.getStateFocus(fertilizer_bonus)) {
+            case application_data_1.FarmingFocus.Balanced:
+                return 'text-balanced';
+            case application_data_1.FarmingFocus.Heartiness:
+                return 'text-heartiness';
+            case application_data_1.FarmingFocus.Yield:
+                return 'text-yield';
+            case application_data_1.FarmingFocus.Aesthetic:
+                return 'text-aesthetic';
+            case application_data_1.FarmingFocus.Aroma:
+                return 'text-aroma';
+            case application_data_1.FarmingFocus.Neutral:
+                return 'text-neutral';
+        }
+        return '';
+    };
+    Inventory.getStateFocus = function (fertilizer_bonus) {
+        if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 &&
+            fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 &&
+            fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 &&
+            fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 &&
+            fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 &&
+            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            return application_data_1.FarmingFocus.Balanced;
+        }
+        else if ((fertilizer_bonus.yield_hp === undefined || fertilizer_bonus.yield_hp === 0) &&
+            (fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
+                fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
+                fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0) &&
+            (fertilizer_bonus.aesthetic_luck === undefined || fertilizer_bonus.aesthetic_luck === 0) &&
+            (fertilizer_bonus.armor_magic === undefined || fertilizer_bonus.armor_magic === 0)) {
+            return application_data_1.FarmingFocus.Heartiness;
+        }
+        else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0) {
+            return application_data_1.FarmingFocus.Yield;
+        }
+        else if (fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0) {
+            return application_data_1.FarmingFocus.Aesthetic;
+        }
+        else if (fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            return application_data_1.FarmingFocus.Aroma;
+        }
+        else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 ||
+            fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
+            fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
+            fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 ||
+            fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 ||
+            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            return application_data_1.FarmingFocus.Balanced;
+        }
+        return application_data_1.FarmingFocus.Neutral;
+    };
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{"./Observer":24,"./fertilizer-components":28,"./site":34,"console":6}],33:[function(require,module,exports){
+},{"./Observer":24,"./application.data":25,"./fertilizer-components":28,"./site":34,"console":6}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");

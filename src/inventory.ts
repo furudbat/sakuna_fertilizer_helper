@@ -1,4 +1,5 @@
 import { assert } from "console";
+import { FarmingFocus } from "./application.data";
 import { MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { DataListSubject } from "./Observer";
 import { clamp } from "./site";
@@ -8,7 +9,6 @@ export const MAX_ITEMS_AMOUNT_INVENTORY = 999;
 export interface ItemInventoryData extends ItemData {
     amount?: number;
 }
-
 export class Inventory {
     private _items_in_inventory: DataListSubject<ItemInventoryData> = new DataListSubject<ItemInventoryData>();
 
@@ -105,5 +105,58 @@ export class Inventory {
         });
 
         return ret;
+    }
+
+
+    static getStateFocusTextColor(fertilizer_bonus: FertilizerBonusData) {
+        switch (this.getStateFocus(fertilizer_bonus)) {
+            case FarmingFocus.Balanced:
+                return 'text-balanced';
+            case FarmingFocus.Heartiness:
+                return 'text-heartiness';
+            case FarmingFocus.Yield:
+                return 'text-yield';
+            case FarmingFocus.Aesthetic:
+                return 'text-aesthetic';
+            case FarmingFocus.Aroma:
+                return 'text-aroma';
+            case FarmingFocus.Neutral:
+                return 'text-neutral';
+        }
+
+        return '';
+    }
+
+    static getStateFocus(fertilizer_bonus: FertilizerBonusData) {
+        if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 &&
+            fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 &&
+            fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 &&
+            fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 &&
+            fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 &&
+            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            return FarmingFocus.Balanced;
+        } else if ((fertilizer_bonus.yield_hp === undefined || fertilizer_bonus.yield_hp === 0) &&
+            (fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
+            fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
+            fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0) &&
+            (fertilizer_bonus.aesthetic_luck === undefined || fertilizer_bonus.aesthetic_luck === 0) &&
+            (fertilizer_bonus.armor_magic === undefined || fertilizer_bonus.armor_magic === 0)) {
+            return FarmingFocus.Heartiness;
+        } else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0) {
+            return FarmingFocus.Yield;
+        } else if (fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0) {
+            return FarmingFocus.Aesthetic;
+        } else if (fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            return FarmingFocus.Aroma;
+        } else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 ||
+            fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
+            fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
+            fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 ||
+            fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 ||
+            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            return FarmingFocus.Balanced;
+        }
+
+        return FarmingFocus.Neutral;
     }
 }

@@ -11,15 +11,21 @@ const STORAGE_KEY_CURRENT_ROOT_FERTILIZER = 'current_root_fertilizer';
 const STORAGE_KEY_FERTILIZER_COMPONENTS = 'fertilizer_components';
 const STORAGE_KEY_CURRENT_GUIDE = 'current_guide';
 const STORAGE_KEY_SETTINGS = 'settings';
+const STORAGE_KEY_THEME = 'theme';
 
 export enum FarmingFocus {
     Balanced = "balanced",
     Heartiness = "heartiness",
     Yield = "yield",
     Aesthetic = "aesthetic",
-    Aroma = "aroma"
+    Aroma = "aroma",
+    Neutral = ""
 }
 
+export enum Theme {
+    Light = "",
+    Dark = "dark"
+}
 export class Settings {
     public no_inventory_restriction: boolean = true;
 }
@@ -34,6 +40,7 @@ export class ApplicationData {
     private _settings: DataSubject<Settings> = new DataSubject<Settings>(new Settings());
     private _inventory: Inventory = new Inventory();
     private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
+    private _theme: Theme = Theme.Light;
 
     private _storeSession = localForage.createInstance({
         name: "session"
@@ -57,6 +64,8 @@ export class ApplicationData {
             this._currentGuide.data = await this._storeSession.getItem(STORAGE_KEY_CURRENT_GUIDE) || this._currentGuide.data;
 
             this._settings.data = await this._storeSession.getItem<Settings>(STORAGE_KEY_SETTINGS) || this._settings.data;
+
+            this._theme = await this._storeSession.getItem(STORAGE_KEY_THEME) || this._theme;
         } catch (err) {
             // This code runs if there were any errors.
             console.error('loadFromStorage', err);
@@ -67,6 +76,14 @@ export class ApplicationData {
         this._storeSession.clear();
     }
 
+    get theme() {
+        return this._theme;
+    }
+
+    set theme(value: Theme) {
+        this._theme = value;
+        this._storeSession.setItem(STORAGE_KEY_THEME, value);
+    }
 
     get currentGuideObservable() {
         return this._currentGuide;

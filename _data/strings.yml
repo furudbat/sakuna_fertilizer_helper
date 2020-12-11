@@ -32,6 +32,11 @@ table:
     col_expirable: Ex.
 guide:
   title: Farming Guide
+  balanced: Balanced
+  yield: 'Yield: HP (most amount of rice)'
+  heartiness: 'Heartiness: Strength, Vitality and Gusto'
+  aesthetic: 'Aesthetic: Luck'
+  aroma: 'Aroma: Magic'
   tilling:
     title: Before Planting/Tilling
     sort_rice:
@@ -163,21 +168,21 @@ guide:
       title: Balanced (Circle)
       description: Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
     1_1_placements: >-
-      Stand at the <span class="text-red-line">red line</span> for <strong>1x1</strong> placements.
+      Stand at the <span class="text-placements-1-1-color"><i class="fas fa-circle"></i></span> for <strong>1x1</strong> placements.
     2_1_placements: >-
-      Stand at the <span class="text-turquoise-line">turquoise line</span> for <strong>2x1</strong> placements.<br />
+      Stand at the <span class="text-placements-2-1-color"><i class="fas fa-heart"></i></span> for <strong>2x1</strong> placements.<br />
       <small>("Two by Two Planting"-Skill)</small>
     1_3_placements: >-
-      Stand at the <span class="text-orange-line">orange line</span> for <strong>1x3</strong> placements.<br /> 
+      Stand at the <span class="text-placements-1-3-color"><i class="fas fa-minus"></i></span> for <strong>1x3</strong> placements.<br /> 
       <small>("Three in a Row Planting"-Skill)</small>
     2_2_placements: >-
-      Stand at the <span class="text-skyblue-line">skyblue line</span> for <strong>2x2</strong> placements.<br /> 
+      Stand at the <span class="text-placements-2-2-color"><i class="fas fa-times"></i></span> for <strong>2x2</strong> placements.<br /> 
       <small>("Two by Two Planting"-Skill)</small>
     4_4_placements: >-
-      Stand at the <span class="text-springgreen-line">springgreen line</span> for <strong>4x4</strong> placements.<br /> 
+      Stand at the <span class="text-placements-4-4-color"><i class="fas fa-star"></i></span> for <strong>4x4</strong> placements.<br /> 
       <small>("Four Corner Planting"-Skill)</small>
     circle_placements: >-
-      Stand at the <span class="text-violet-line">violet line</span> for <strong>circle</strong> placements.<br /> 
+      Stand at the <span class="text-placements-circle-color"><i class="fas fa-circle"></i></span> for <strong>circle</strong> placements.<br /> 
       <small>("Well Rounded Planting"-Skill)</small>
 fertilizer_helper:
   title: Fertilizer Helper
@@ -229,7 +234,7 @@ fertilizer_helper:
       title: Recommended
     expirable:
       title: Expirable
-    remove_from_inventory: Remove from Inventory
+    remove_from_inventory: Remove from Inv.
     stats:
       leaf_fertilizer: 'L:'
       kernel_fertilizer: 'K:'
@@ -245,6 +250,11 @@ fertilizer_helper:
       herbicide: Herb.
       toxicity: Tox.
     amount_placeholder: Amount
+  hints:
+    soil_nutrients_fertilizer_overflow: >-
+      <span class="text-info">Your soil nutrients are reach max value, you don't need to put more items to boost soil nutrients.</span>
+    state_overflow: >-
+      <span class="text-warning">* reach max value, you don't need to add more items for this stat to boost</span>
 item_list:
   title: Items-List
 goto: go to
