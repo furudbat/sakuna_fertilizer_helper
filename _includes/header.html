@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" rel="author" href="{{ '/' | relative_url }}">
-      <span class="mx-1">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="mx-1"> - {{ site.short_description | escape }}</span> {%- endif -%}
+      <i class="fas fa-scroll"></i><span class="mx-1">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="mx-1"> - {{ site.short_description | escape }}</span> {%- endif -%}
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,6 +18,14 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#sectionItemList">{{ site.data.strings.item_list.title }}</a>
+        </li>
+        <li class="nav-item">
+          <div class="checkbox mx-3 mt-1">
+            <input type="checkbox" data-toggle="toggle" id="chbDarkTheme" 
+              data-on='<i class="fas fa-moon"></i>' 
+              data-off='<i class="fas fa-sun"></i>'
+              data-onstyle="dark" data-offstyle="light">
+          </div>
         </li>
       </ul>
     </div>

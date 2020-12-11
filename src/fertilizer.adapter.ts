@@ -77,6 +77,8 @@ export class FertilizerAdapter {
                 $('#fertilizerHerbicide').html(herbicide);
 
                 $('#fertilizerToxicity').html(toxicity);
+
+                that.updateHints();
             }
         });
 
@@ -214,14 +216,26 @@ export class FertilizerAdapter {
             },
             options: {
                 responsive: true,
+                defaultColor: 'black',
+                title: {
+                    fontColor: 'black'
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
                 scale: {
                     angleLines: {
-                        display: true,
-                        color: 'black'
+                        display: true
                     },
                     ticks: {
+                        fontColor: 'black',
                         min: MIN_FERTILIZER,
                         max: MAX_FERTILIZER
+                    },
+                    pointLabels: {
+                        fontColor: 'black'
                     }
                 }
             }
@@ -231,6 +245,23 @@ export class FertilizerAdapter {
         this.updateSoilNutrientsChartKernelFertilizer();
         this.updateSoilNutrientsChartRootFertilizer();
         this._soilNutrientsChart.update();
+    }
+
+    private updateHints() {
+        const renderHint = function(text: string) {
+            return `<li class="list-group-item list-group-item text-left p-2">${text}</li>`;
+        };
+
+        let list = $('#lstFertilizerHints') as JQuery<HTMLUListElement>;
+        list.html('');
+
+        if (this._data.data.are_soil_nutrients_max_or_overflow) {
+            list.append(renderHint(site.data.strings.fertilizer_helper.hints.soil_nutrients_fertilizer_overflow));
+        }
+
+        if (this._data.data.are_state_overflow) {
+            list.append(renderHint(site.data.strings.fertilizer_helper.hints.state_overflow));
+        }
     }
 
     private updateSoilNutrientsChartLeafFertilizer() {

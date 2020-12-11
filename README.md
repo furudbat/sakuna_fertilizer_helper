@@ -13,7 +13,7 @@ In "Recommended" (Items) you find Items for your current build like boosting yie
 
 # Features
   * Farming Guide
-    - Balanced-, Yield-, Heartiness-, Aesthic- and Aroma-Harvest with Seasons
+    - Balanced-, Yield-, Heartiness-, Aesthetic- and Aroma-Harvest with Seasons
     - Planting space
  * Fertilizer Mixer
    - shows additional Stats and Item-Effects

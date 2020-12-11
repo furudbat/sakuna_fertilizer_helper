@@ -2,7 +2,7 @@ import { LoggerManager } from "typescript-logger";
 import { Settings } from "./application.data";
 import { FertilizerComponents, ItemFertilizerComponentData, MAX_FERTILIZE_COMPONENTS, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS, MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { Inventory, ItemInventoryData } from "./inventory";
-import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./Observer";
+import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./observer";
 import { site } from "./site";
 
 export class FertilizeComponentsAdapter {
@@ -168,19 +168,21 @@ export class FertilizeComponentsAdapter {
         const readonly = (!this._settings.data.no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
         const in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
         const max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
+        
+        const color = Inventory.getStateFocusTextColor(item.fertilizer_bonus);
 
-        return `<li class="list-group-item list-group-item-light p-1" data-index="${index}" data-name="${item.name}">
+        return `<li class="list-group-item list-group-item p-1" data-index="${index}" data-name="${item.name}">
             <div class="row no-gutters">
                 <div class="col-3 text-left py-2">
                     <input type="number" value="${item.in_fertilizer}" data-index="${index}" data-name="${item.name}" data-val="${item.in_fertilizer}" class="form-control form-control-sm fertilizer-item-amount" placeholder="${site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}" max="${max}" ${readonly}>
                 </div>
-                <div class="col-6 py-2 pl-1 text-left">${item.name}</div>
+                <div class="col-6 py-2 pl-1 text-left ${color}">${item.name}</div>
                 <div class="col-3 py-1 text-right"><button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item.name}"><i class="fas fa-minus"></i></button></div>
             </div>
         </li>`;
     }
 
     private renderEmptyElementHtml(index: number) {
-        return `<li class="list-group-item list-group-item-light text-center" data-index="${index}" data-name="">-</li>`;
+        return `<li class="list-group-item list-group-item text-center" data-index="${index}" data-name="">-</li>`;
     }
 }

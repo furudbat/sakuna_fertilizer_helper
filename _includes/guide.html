@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-3">
       <div class="nav flex-column nav-pills" id="farming-guild-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link mt-1 farming-guild-pills-balanced-nav-link active" id="farming-guild-pills-balanced-tab" data-toggle="pill" href="#farming-guild-pills-balanced" role="tab" aria-controls="farming-guild-pills-balanced" aria-selected="true" data-spacing="Little far apart" data-name="balanced">Balanced</a>
-        <a class="nav-link mt-1 farming-guild-pills-yield-nav-link" id="farming-guild-pills-yield-tab" data-toggle="pill" href="#farming-guild-pills-yield" role="tab" aria-controls="farming-guild-pills-yield" aria-selected="false" data-spacing="Balanced" data-name="yield">Yield: HP (most amount of rice)</a>
-        <a class="nav-link mt-1 farming-guild-pills-heartiness-nav-link" id="farming-guild-pills-heartiness-tab" data-toggle="pill" href="#farming-guild-pills-heartiness" role="tab" aria-controls="farming-guild-pills-heartiness" aria-selected="false" data-spacing="Little far apart" data-name="heartiness">Heartiness: Strength, Vitality and Gusto</a>
-        <a class="nav-link mt-1 farming-guild-pills-aesthic-nav-link" id="farming-guild-pills-aesthic-tab" data-toggle="pill" href="#farming-guild-pills-aesthic" role="tab" aria-controls="farming-guild-pills-aesthic" aria-selected="false" data-spacing="Little far apart" data-name="aesthic">Aesthic: Luck</a>
-        <a class="nav-link mt-1 farming-guild-pills-aroma-nav-link" id="farming-guild-pills-aroma-tab" data-toggle="pill" href="#farming-guild-pills-aroma" role="tab" aria-controls="farming-guild-pills-aroma" aria-selected="false" data-spacing="Little far apart" data-name="aroma">Aroma: Magic</a>
+        <a class="nav-link mt-1 farming-guild-pills-balanced-nav-link active" id="farming-guild-pills-balanced-tab" data-toggle="pill" href="#farming-guild-pills-balanced" role="tab" aria-controls="farming-guild-pills-balanced" aria-selected="true" data-spacing="Little far apart" data-name="balanced">{{ site.data.strings.guide.balanced }}</a>
+        <a class="nav-link mt-1 farming-guild-pills-yield-nav-link" id="farming-guild-pills-yield-tab" data-toggle="pill" href="#farming-guild-pills-yield" role="tab" aria-controls="farming-guild-pills-yield" aria-selected="false" data-spacing="Balanced" data-name="yield">{{ site.data.strings.guide.yield }}</a>
+        <a class="nav-link mt-1 farming-guild-pills-heartiness-nav-link" id="farming-guild-pills-heartiness-tab" data-toggle="pill" href="#farming-guild-pills-heartiness" role="tab" aria-controls="farming-guild-pills-heartiness" aria-selected="false" data-spacing="Little far apart" data-name="heartiness">{{ site.data.strings.guide.heartiness }}</a>
+        <a class="nav-link mt-1 farming-guild-pills-aesthetic-nav-link" id="farming-guild-pills-aesthetic-tab" data-toggle="pill" href="#farming-guild-pills-aesthetic" role="tab" aria-controls="farming-guild-pills-aesthetic" aria-selected="false" data-spacing="Little far apart" data-name="aesthetic">{{ site.data.strings.guide.aesthetic }}</a>
+        <a class="nav-link mt-1 farming-guild-pills-aroma-nav-link" id="farming-guild-pills-aroma-tab" data-toggle="pill" href="#farming-guild-pills-aroma" role="tab" aria-controls="farming-guild-pills-aroma" aria-selected="false" data-spacing="Little far apart" data-name="aroma">{{ site.data.strings.guide.aroma }}</a>
       </div>
       {% include guide-space.html %}
     </div>
@@ -20,8 +20,8 @@
         <div class="tab-pane fade" id="farming-guild-pills-heartiness" role="tabpanel" aria-labelledby="farming-guild-pills-heartiness-tab">
             {% include guide-heartiness.html %}
         </div>
-        <div class="tab-pane fade" id="farming-guild-pills-aesthic" role="tabpanel" aria-labelledby="farming-guild-pills-aesthic-tab">
-            {% include guide-aesthic.html %}
+        <div class="tab-pane fade" id="farming-guild-pills-aesthetic" role="tabpanel" aria-labelledby="farming-guild-pills-aesthetic-tab">
+            {% include guide-aesthetic.html %}
         </div>
         <div class="tab-pane fade" id="farming-guild-pills-aroma" role="tabpanel" aria-labelledby="farming-guild-pills-aroma-tab">
             {% include guide-aroma.html %}
