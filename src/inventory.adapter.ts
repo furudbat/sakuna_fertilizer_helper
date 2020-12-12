@@ -204,7 +204,7 @@ export class InventoryAdapter {
 
                             const toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
 
-                            const collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
+                            const collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
 
                             const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0) ? 'd-none' : 0;
                             const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0) ? 'd-none' : 0;

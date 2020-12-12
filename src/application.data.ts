@@ -40,7 +40,7 @@ export class ApplicationData {
     private _settings: DataSubject<Settings> = new DataSubject<Settings>(new Settings());
     private _inventory: Inventory = new Inventory();
     private _fertilizer_components: FertilizerComponents = new FertilizerComponents();
-    private _theme: Theme = Theme.Light;
+    private _theme: Theme = Theme.Dark;
 
     private _storeSession = localForage.createInstance({
         name: "session"

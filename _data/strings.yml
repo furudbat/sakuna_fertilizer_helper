@@ -253,7 +253,7 @@ fertilizer_helper:
     state_overflow: >-
       <span class="text-warning">* reach max value, you don't need to add more items for this stat to boost</span>
 item_list:
-  title: Items-List
+  title: Item-List
 goto: go to
 footer: >-
   I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

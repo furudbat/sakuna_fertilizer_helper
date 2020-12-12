@@ -55383,7 +55383,7 @@ var ApplicationData = (function () {
         this._settings = new Observer_1.DataSubject(new Settings());
         this._inventory = new inventory_1.Inventory();
         this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
-        this._theme = Theme.Light;
+        this._theme = Theme.Dark;
         this._storeSession = localforage_1.default.createInstance({
             name: "session"
         });
@@ -56367,7 +56367,7 @@ var FertilizerAdapter = (function () {
                 that.updateSoilNutrientsChartRootFertilizer();
                 (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.update();
                 var yield_hp = inventory_adapter_1.render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
-                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_yield_hp_overflow);
+                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_taste_strength_overflow);
                 var hardness_vitality = inventory_adapter_1.render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
                 var stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
                 var aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
@@ -57399,7 +57399,7 @@ var InventoryAdapter = (function () {
                             var pesticide = render_buff_bonus_html(row.fertilizer_bonus.pesticide, false);
                             var herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
                             var toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
-                            var collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
+                            var collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
                             var show_yield_hp = (((_a = row.fertilizer_bonus.yield_hp) !== null && _a !== void 0 ? _a : 0) === 0) ? 'd-none' : 0;
                             var show_taste_strength = (((_b = row.fertilizer_bonus.taste_strength) !== null && _b !== void 0 ? _b : 0) === 0) ? 'd-none' : 0;
                             var show_hardness_vitality = (((_c = row.fertilizer_bonus.hardness_vitality) !== null && _c !== void 0 ? _c : 0) === 0) ? 'd-none' : 0;

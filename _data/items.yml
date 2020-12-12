@@ -633,7 +633,7 @@
   sub_category: Material
   time_of_day: ''
   used_in_recipes: []
-- category: Materials
+- category: Materials/Misc
   description: This is a throwing needle of the Ashigumo tribe, who you mercifully
     defeated. Even now, it holdsa lingering manifestation of their loyal spirits.
   fertilizer_bonus: {}
@@ -1241,7 +1241,10 @@
 - category: Materials/Ingredients
   description: A drink made by pouring boiling water over driedtea leaves. No matter
     what flavor of tea is used,it always enhances the taste of any meal.
-  fertilizer_bonus: {}
+  fertilizer_bonus: 
+    leaf_fertilizer: 5
+    pesticide: 1
+    herbicide: 1
   food_bonus:
     luck: 2
   found_in:

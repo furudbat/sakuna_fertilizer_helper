@@ -156,8 +156,8 @@ def main():
         'Medicinal Base'
     ]
 
-    meat_seadfood = meats
-    meat_seadfood.extend(seafood)
+    meat_seafood = meats
+    meat_seafood.extend(seafood)
 
     with open('items.yml') as f:
         # use safe_load instead load
@@ -190,6 +190,11 @@ def main():
                     new_item['sub_category'] = row['SubCategory'] if row['SubCategory'] != '-' else ''
                     new_item = setFertilizerBonus(new_item, row)
                     new_item['description'] = row['CommentEn'].replace('\\1', ',').replace('\n', '')
+
+                    # hotfixes
+                    if name == 'Ashigumo Shuriken':
+                        new_item['category'] = 'Materials/Misc'
+
                     materials_map[name] = new_item
 
     with open('Food.csv', encoding="utf8") as read_obj:
@@ -231,6 +236,12 @@ def main():
 
                 new_item = setFertilizerBonus(new_item, row)
                 new_item = setFoodBonus(new_item, row)
+
+                # hotfixes
+                if name == 'Tea':
+                    item['fertilizer_bonus']['leaf_fertilizer'] = 5
+                    item['fertilizer_bonus']['herbicide'] = 1
+                    item['fertilizer_bonus']['pesticide'] = 1
 
                 auto_list = None
                 if '_*Meat|Seafood' in row['Code']:
