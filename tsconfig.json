@@ -1,0 +1,41 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "./assets/js/app",
+    "allowJs": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "esModuleInterop": true,
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es6"
+    ]
+  },
+  "files": [
+    "./src/application.data.ts",
+    "src/application.ts",
+    "src/application.ts",
+    "./src/config.editor.ts",
+    "./src/configs.ts",
+    "./src/css.editor.ts",
+    "./src/layouts.ts",
+    "./src/preview.ts",
+    "./src/preview.editor.ts",
+    "./src/template.editor.ts",
+    "./src/main.ts"
+  ],
+
+  "include": [
+    "src/**/*",
+    "lib/**/*"
+  ],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

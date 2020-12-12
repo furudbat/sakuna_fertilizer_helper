@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+---
+layout: home
+---
 
-You can use the [editor on GitHub](https://github.com/furudbat/sakuna_fertilizer_helper/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+# Sakuna: Of Rice and Ruin Fertilizer Helper
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Sakuna: Of Rice and Ruin is an awesome game and the farming management is fun, but while mixing the fertilizer it can be very tedious to find out what item you need for remove toxicity, pesticide or other negative effects or even boost specific stats.  
+So I made this Site to provide you help while mixing your "optimal" fertilizer and also providing you a Farming Guide.
 
-### Markdown
+### How to use
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/furudbat/sakuna_fertilizer_helper/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+1. Select a build you want to focus on (like Balanced, HP or Luck) in the [Farming Guide](#sectionFarmingGuide).  
+2. You can add Items into the Inventory from the [Item-List](#sectionItemList).  
+   Manage the Inventory list how ever you want, Items only you have in your games inventory, items you only want to use in fertilizer or just what you need.
+3. Go to the [Fertilizer Helper](#sectionFertilizerHelper) and add Items into the **Fertilizer Components**.
+   In _Recommended_ (Items) you find Items for your current build like boosting yield (HP), Aroma (Magic) or Heartiness.  
+   It's not perfect, but close enough :)

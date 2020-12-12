@@ -1,0 +1,1907 @@
+- category: Materials
+  description: This is a base component of Leaf Fertilizer.When making fertilizer,
+    you'll start with this before deciding what other nutrients to add.
+  fertilizer_bonus:
+    leaf_fertilizer: 20
+  food_bonus: {}
+  found_in: []
+  name: Beast Hoof
+  source: []
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is a base component of Kernel Fertilizer.When making fertilizer,
+    you'll start with this before deciding what other nutrients to add.
+  fertilizer_bonus:
+    kernel_fertilizer: 20
+  food_bonus: {}
+  found_in: []
+  name: Beast Manure
+  source: []
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is a base component of Root Fertilizer.When making fertilizer,
+    you'll start with this before deciding what other nutrients to add.
+  fertilizer_bonus:
+    root_fertilizer: 20
+  food_bonus: {}
+  found_in: []
+  name: Fallen Leaves
+  source: []
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is a base component for any fertilizer.When making fertilizer,
+    you'll start with this before deciding what other nutrients to add.
+  fertilizer_bonus:
+    kernel_fertilizer: 8
+    leaf_fertilizer: 10
+    root_fertilizer: 8
+  food_bonus: {}
+  found_in: []
+  name: Oil Cake
+  source: []
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Ah, how rare! This powder alters the flow of time, allowing fertilizer
+    to be completed immediately.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Powder of Transformation
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A divine fruit grown from the Tree of Creation.Its very essence is
+    ripe with spiritual energy.How shall we put its power to use, Princess?
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Orb of Transformation
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A chemical that revitalizes life, returning plants from their weakened
+    state. If you mix it in withfertilizer, it will cure some rice disorders.
+  fertilizer_bonus:
+    immunity: 10
+  food_bonus: {}
+  found_in: []
+  name: Revitalizing Remedy
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A chemical that reduces excess, restoring plantsto their proper balance.
+    If you mix it in withfertilizer, it will cure some rice disorders.
+  fertilizer_bonus:
+    herbicide: 10
+  food_bonus: {}
+  found_in: []
+  name: Reducing Remedy
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A chemical that wards off pests, saving plants from invasive insects.
+    If you mix it in withfertilizer, it will cure some rice disorders.
+  fertilizer_bonus:
+    pesticide: 10
+  food_bonus: {}
+  found_in: []
+  name: Eradicating Remedy
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Health Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Health's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Skill Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Skill's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Fullness Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Fullness' Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Strength Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Strength's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Vitality Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Vitality's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Magic Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Magic's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Luck Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Luck's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Power that was lost when demons ruined our fields.Spread it as fertilizer
+    and your powers shall be restored , purifying the land of Gusto Pollution.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Gusto's Bounty
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Hoho! It seems this uneaten food has spoiled.However, we can still
+    use this as fertilizer.
+  fertilizer_bonus:
+    aesthetic_luck: 1
+    armor_magic: 1
+    hardness_vitality: 1
+    pesticide: -2
+    stickiness_gusto: 1
+    taste_strength: 1
+    yield_hp: 1
+  food_bonus: {}
+  found_in:
+  - Anywhere
+  name: Rotten Food
+  source:
+  - Spoiled food.
+  sub_category: Material
+  time_of_day: Midnight
+  used_in_recipes: []
+- category: Materials
+  description: This earth is soft, viscous, and easy to process.
+  fertilizer_bonus:
+    stickiness_gusto: 1
+    toxicity: 1
+  food_bonus: {}
+  found_in: []
+  name: Clay
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: Any
+  used_in_recipes: []
+- category: Materials
+  description: A stone chunk that could be used for almost anything.Unfortunately,
+    its quality leaves much to be desired.
+  fertilizer_bonus:
+    hardness_vitality: 1
+    toxicity: 1
+  food_bonus: {}
+  found_in: []
+  name: Stone
+  source:
+  - Stone Spikes
+  - Breakable Boulders
+  - Untilled Rice Paddy
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This ore has long been used as a material to craftcertain metals.
+  fertilizer_bonus:
+    hardness_vitality: 2
+    toxicity: 2
+  food_bonus: {}
+  found_in: []
+  name: Copper Ore
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A strong, pliable metal. In shaping it, apprenticesmiths shape themselves
+    into masters of the craft.
+  fertilizer_bonus:
+    hardness_vitality: 5
+    toxicity: 1
+  food_bonus: {}
+  found_in: []
+  name: Iron Ore
+  source:
+  - Mine Nodes
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Jade is known to have miraculous powers. Not onlyis it used as currency,
+    but it is revered by manyas a ceremonial implement as well.
+  fertilizer_bonus:
+    armor_magic: 5
+    hardness_vitality: 3
+    toxicity: 1
+  food_bonus: {}
+  found_in: []
+  name: Jade
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Iridescent obsidian such as this is said to beexceptionally rare. No
+    doubt it would make for finecrafting material.
+  fertilizer_bonus:
+    armor_magic: 3
+    hardness_vitality: 5
+    toxicity: 1
+  food_bonus: {}
+  found_in: []
+  name: Obsidian
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: The glister of gold is the spark which ignitesthe flames of war. Do
+    be careful not to becometoo enthralled by it, Princess.
+  fertilizer_bonus:
+    hardness_vitality: 10
+    toxicity: 3
+  food_bonus: {}
+  found_in: []
+  name: Gold Ore
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is steel from Dharka, a country that lies farto the west, and
+    it's supposedly impervious to rust.I must say, its striped pattern is quite beautiful.
+  fertilizer_bonus:
+    hardness_vitality: 25
+    toxicity: 5
+  food_bonus: {}
+  found_in: []
+  name: Stainless Steel
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A jewel formed from the dense Clouds of Beginning, which separate the
+    two realms. Just one of thesecontains enough power to create a small island.
+  fertilizer_bonus:
+    aesthetic_luck: 25
+    armor_magic: 25
+    hardness_vitality: 25
+    stickiness_gusto: 25
+    taste_strength: 25
+    yield_hp: 25
+  food_bonus: {}
+  found_in: []
+  name: Cloudy Crystal
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This wood can be used in various ways.Unfortunately, its quality leaves
+    much to be desired.
+  fertilizer_bonus:
+    pesticide: -1
+    root_fertilizer: 5
+    yield_hp: 1
+  food_bonus: {}
+  found_in: []
+  name: Wood
+  source:
+  - Breakable Wood Structures
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is hard, sturdy wood. I wager it could be crafted into a fine
+    tool.
+  fertilizer_bonus:
+    pesticide: -1
+    root_fertilizer: 5
+    yield_hp: 3
+  food_bonus: {}
+  found_in: []
+  name: High Quality Oak
+  source:
+  - Bushes
+  - Foraging
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A plant that is neither tree nor grass. Indeed, it is difficult to
+    classify... Nevertheless, bamboo is quite flexible and easy to process.
+  fertilizer_bonus:
+    pesticide: -1
+    root_fertilizer: 5
+    yield_hp: 5
+  food_bonus: {}
+  found_in: []
+  name: Bamboo
+  source:
+  - Bushes
+  - Foraging
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This wood is not only hard, but resistant to water, meaning that it
+    is slow to rot. Thus, its appellation is well deserved.
+  fertilizer_bonus:
+    hardness_vitality: 5
+    pesticide: -2
+    root_fertilizer: 5
+    yield_hp: 8
+  food_bonus: {}
+  found_in: []
+  name: Ironwood
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: The origin of all Yanato elm trees, nearly as old as the Lofty Realm
+    itself. The quality of its woodis unsurpassed, but it's as rare as it is ancient.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Elder Elm
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This grass fiber is indispensable for weaving.
+  fertilizer_bonus:
+    armor_magic: 2
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Hemp
+  source:
+  - Bushes
+  - Foraging
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This plant is often used to craft straw hats and raincoats. I have
+    heard that it is easierto raise in humid climes.
+  fertilizer_bonus:
+    armor_magic: 3
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Sedge
+  source:
+  - Bushes
+  - Foraging
+  sub_category: Material
+  time_of_day: Any
+  used_in_recipes: []
+- category: Materials
+  description: Bark imported from a southern country.It rivals straw in its ease of
+    use.
+  fertilizer_bonus:
+    armor_magic: 5
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Hemp Palm
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Aha, so you found an untainted leaf from Hinoe'sTree of Creation? If
+    you can gather enough to useas materials, I imagine you'll gain untold power.
+  fertilizer_bonus:
+    herbicide: -50
+    kernel_fertilizer: 100
+    leaf_fertilizer: 100
+    pesticide: -50
+    root_fertilizer: 100
+    toxicity: 50
+  food_bonus: {}
+  found_in: []
+  name: Leaf of Creation
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This golden tree branch can be used to createa stunning yellow dye.
+    Strip the bark and seeits brilliant hue for yourself!
+  fertilizer_bonus:
+    aesthetic_luck: 2
+    immunity: -1
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Cork Tree Branch
+  source:
+  - Bushes
+  - Foraging
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This plant root can be used to create purple dye.It thrives in soil
+    that gets regular runoff exposure.
+  fertilizer_bonus:
+    aesthetic_luck: 3
+    immunity: -1
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Murasaki Root
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A root which is used to make red dyes. It can befound in the mountainous
+    regions of this island.
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    immunity: -1
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Madder
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A fish scale that can be turned into a bluish-purpledye, if it's crushed
+    and mixed with the right plants.
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    kernel_fertilizer: 5
+    leaf_fertilizer: 5
+    pesticide: -2
+  food_bonus: {}
+  found_in: []
+  name: Indigo Scale
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is a fiber produced by the thread of silkworms, which were brought
+    over from the country of Ouka.
+  fertilizer_bonus:
+    armor_magic: 10
+    pesticide: -2
+  food_bonus: {}
+  found_in: []
+  name: Silk
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A miraculous thread selected from the finest silk.It is both a delight
+    to the eyes and strong enoughto repel blades. It should make an excellent outfit.
+  fertilizer_bonus:
+    armor_magic: 20
+    pesticide: -5
+  food_bonus: {}
+  found_in: []
+  name: Spirit Thread
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Yanato's highest quality paper, said to lastfor a thousand years. In
+    fact, it's strongenough you can even make clothes out if it.
+  fertilizer_bonus:
+    armor_magic: 8
+    hardness_vitality: 8
+    pesticide: -3
+  food_bonus: {}
+  found_in: []
+  name: Washi Paper
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: How ominous... This cord appears to have been wovenwith the accursed
+    power of a multitude of demons.May we find a way to bring some good out of it.
+  fertilizer_bonus:
+    armor_magic: -10
+    taste_strength: 20
+  food_bonus: {}
+  found_in: []
+  name: Demonic Braid
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A cord that is used to tie up kimono sleeves.This one contains the
+    power of lightning, the ultimate expression of wood energy.
+  fertilizer_bonus:
+    armor_magic: 20
+    hardness_vitality: -10
+  food_bonus: {}
+  found_in: []
+  name: Thunderous Tasuki
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: The skinned hide of a most ferocious demon.It can be tanned into durable
+    leather.
+  fertilizer_bonus:
+    yield_hp: 2
+  food_bonus: {}
+  found_in: []
+  name: Beast Hide
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Taken from the skull of a deer demon. It can be usedin its current
+    state, or processed into an evenhigher-quality material.
+  fertilizer_bonus:
+    armor_magic: 5
+    leaf_fertilizer: 10
+  food_bonus: {}
+  found_in: []
+  name: Deer Antler
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A jewel formed inside the shell of a demon clam.Apparently its devolution
+    into demonhood has onlyserved to increase the quality of its pearl.
+  fertilizer_bonus:
+    armor_magic: 3
+  food_bonus: {}
+  found_in: []
+  name: Demonic Pearl
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: This is a throwing needle of the Ashigumo tribe, who you mercifully
+    defeated. Even now, it holdsa lingering manifestation of their loyal spirits.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Ashigumo Shuriken
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: The resilient hide of a black deer demon.When I close my eyes, I can
+    still vividlysee your fierce battle with the beast!
+  fertilizer_bonus:
+    armor_magic: 1
+    taste_strength: 4
+  food_bonus: {}
+  found_in: []
+  name: Black Deer Leather
+  source: Black Deer
+  sub_category: Material
+  time_of_day: Any
+  used_in_recipes: []
+- category: Materials
+  description: A silver feather plucked from a demon pheasant.Faint light emanates
+    from it.
+  fertilizer_bonus:
+    aesthetic_luck: 1
+    taste_strength: 3
+  food_bonus: {}
+  found_in: []
+  name: Pheasant Feather
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A tremendous tusk, taken from a boar that hadtransformed into a mighty
+    demon.
+  fertilizer_bonus:
+    leaf_fertilizer: 10
+    taste_strength: 5
+  food_bonus: {}
+  found_in: []
+  name: Boar Tusk
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Ah, was this attached to a demon badger's forehead?It's teeming with
+    magical power. They must be moreselective in choosing their leaves than I thought.
+  fertilizer_bonus:
+    armor_magic: 5
+    root_fertilizer: 10
+  food_bonus: {}
+  found_in: []
+  name: Badger Leaf
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Oho, the hide of a demon bear. Even in this form, it exudes power and
+    seems difficult to work with.It will certainly make for a high-quality material.
+  fertilizer_bonus:
+    hardness_vitality: 1
+    taste_strength: 4
+  food_bonus: {}
+  found_in: []
+  name: Bear Hide
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A feather belonging to Yui, an exceptionally rarespirit crane. If turned
+    into thread, it could be woveninto an unparalleled garment.
+  fertilizer_bonus:
+    armor_magic: 50
+    toxicity: -50
+  food_bonus: {}
+  found_in: []
+  name: Crane Feather
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A vertebra once belonging to Omizuchi, gifted to usby Lady Kamuhitsuki.
+    If we combine it with the Edgeof Hoshidama, it shall create an all-powerful weapon.
+  fertilizer_bonus:
+    immunity: 50
+    kernel_fertilizer: 50
+    taste_strength: 50
+  food_bonus: {}
+  found_in: []
+  name: Dragon Bone
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Oho, a scale taken from the great Omizuchi himself.It appears to be
+    hard enough to deflect any weapon.
+  fertilizer_bonus:
+    hardness_vitality: 50
+    kernel_fertilizer: 50
+    pesticide: 50
+  food_bonus: {}
+  found_in: []
+  name: Dragon Scale
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A stone that has been exposed to moonlightfor an incredibly long time.
+    Perhaps we canextract its inner earth energy for ourselves.
+  fertilizer_bonus:
+    toxicity: -20
+  food_bonus: {}
+  found_in:
+  - Cylindric Caverns
+  - Skipping Stone Hill
+  - Den of Fangs
+  - Eggplant Hollow
+  - Dragon's Tunnel
+  name: Moonlit Stone
+  source:
+  - Any Enemy
+  sub_category: Material
+  time_of_day: Night
+  used_in_recipes: []
+- category: Materials
+  description: This flower only blooms at night on mighty treesthat have absorbed
+    an abundance of wood energy.
+  fertilizer_bonus:
+    immunity: 20
+  food_bonus: {}
+  found_in: []
+  name: Branching Flower
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A semi-solid drop of condensed water energy, anchored in place amidst
+    the sundering flow.
+  fertilizer_bonus:
+    herbicide: 5
+    immunity: 5
+    pesticide: 5
+    toxicity: -5
+  food_bonus: {}
+  found_in: []
+  name: Aqueous Droplet
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: A glowing red fragment of hardened lava that holdsa wealth of fire
+    energy deep in its molten core.
+  fertilizer_bonus:
+    pesticide: 20
+  food_bonus: {}
+  found_in: []
+  name: Flaming Core
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials
+  description: Sand that was ground down into miniscule particlesover the ages. It
+    would take a god of the forgeto extract the metal energy radiating within it.
+  fertilizer_bonus:
+    herbicide: 20
+  food_bonus: {}
+  found_in: []
+  name: Metallic Sand
+  source: []
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: []
+- &id001
+  category: Ingredients
+  description: Pickled and salted Salmon put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
+    convinced.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Rabbit Meat Sushi
+  price: 1
+  source: []
+  sub_category: Sushi
+  time_of_day: ''
+  used_in_recipes: []
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- category: Ingredients
+  description: These fish can be found in nearly every river in Yanato.Flavor notwithstanding,
+    they certainly fill you up.
+  expiable: true
+  fertilizer_bonus:
+    stickiness_gusto: 3
+  food_bonus:
+    fullness: 4
+  found_in: []
+  life: 2
+  name: Crucian Carp
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id001
+- *id001
+- category: Ingredients
+  description: It is rare indeed to see these fish come all the way downfrom the northern
+    sea. The delectable fat of their meatis certain to increase your spiritual abilities.
+  expiable: true
+  fertilizer_bonus:
+    kernel_fertilizer: 5
+    leaf_fertilizer: 10
+    pesticide: -1
+  food_bonus:
+    fullness: 3
+    magic: 3
+  found_in: []
+  life: 2
+  name: Herring
+  price: 3
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id001
+- *id001
+- category: Materials/Ingredients
+  description: A hard-shelled bird egg. Not only will it expand yourcooking repertoire,
+    but I have heard that it has manyhealth benefits as well.
+  expiable: true
+  fertilizer_bonus:
+    pesticide: -1
+    stickiness_gusto: 2
+  food_bonus:
+    luck: 2
+    magic: 2
+    strength: 2
+    vitality: 2
+  found_in: []
+  life: 2
+  name: Egg
+  price: 1
+  source: []
+  sub_category: Bird
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: While this pest may feast on our ears of rice,as an ingredient it imparts
+    vitality to dishes.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+  food_bonus:
+    vitality: 3
+  found_in:
+  - Home
+  life: 2
+  name: Grasshopper
+  price: 1
+  source:
+  - '! Marks'
+  sub_category: ''
+  time_of_day: Autumn
+  used_in_recipes: Roast Grasshopper
+- category: Ingredients
+  description: This insect is prized for its health and vitalityboosting properties.
+    As for its appearance...Well, one can get used to anything, I suppose.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 2
+    yield_hp: 3
+  food_bonus:
+    hp: 2
+    vitality: 3
+  found_in: []
+  life: 2
+  name: Bee Larva
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- &id002
+  category: Ingredients
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: White Rice Shochu
+  price: 1
+  source: []
+  sub_category: SakeSyouchu
+  time_of_day: ''
+  used_in_recipes: []
+- *id002
+- *id002
+- category: Ingredients
+  description: Though it is counted among the five grains, the wheatharvested on this
+    island is not suited for cultivation.You are certainly free to use it as an ingredient,
+    however.
+  fertilizer_bonus:
+    stickiness_gusto: 3
+  food_bonus:
+    fullness: 10
+  found_in:
+  - Bounteous Earth Grotto
+  - Cylindric Cavern
+  - 'Gathering Area: Plain'
+  name: Wheat
+  price: 1
+  source: Bushes
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes: []
+- *id002
+- category: Ingredients
+  description: One of the five grains, and one of the most popular cropsproduced in
+    Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint
+    of spiritual energy.
+  fertilizer_bonus:
+    armor_magic: 5
+  food_bonus:
+    fullness: 5
+    magic: 2
+  found_in: []
+  name: Sanwa Millet
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: One of the five grains, and a source of great strength.It is also used
+    as an ingredient in many magnificentcondiments, such as miso and soy sauce.
+  fertilizer_bonus:
+    herbicide: 1
+    leaf_fertilizer: 10
+  food_bonus:
+    fullness: 5
+    strength: 2
+  found_in:
+  - Den of Fangs
+  - Bounteous Earth Grotto
+  - Eggplant Hollow
+  - Dragon's Tunnel
+  - 'Gathering Area: Plain'
+  - 'Gathering Area: Spring'
+  name: Bean
+  price: 3
+  source:
+  - Bushes
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes:
+  - Tofu
+  - Natto
+  - Dumpling
+- *id002
+- category: Ingredients
+  description: Even though the roots of this hardy plant are poisonous,it can be consumed
+    after being crushed and soaked in water.Many farmers plant these in preparation
+    for poor harvests.
+  fertilizer_bonus:
+    toxicity: 5
+  food_bonus: {}
+  found_in: []
+  name: Tekusari
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- &id003
+  category: Ingredients
+  description: Maize that has been pickled in salted rice bran.Its potent flavor will
+    wash over you with just one bite.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Pickled Potato
+  price: 1
+  source: []
+  sub_category: Nukazuke
+  time_of_day: ''
+  used_in_recipes: []
+- *id003
+- *id003
+- *id003
+- category: Ingredients
+  description: A fern that is immensely bitter and frequently growsin the wilds of
+    nearby settlements. Its acute flavormay give you the capacity to perform additional
+    skills.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  food_bonus:
+    sp: 4
+  found_in: []
+  life: 2
+  name: Warabi
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id003
+- *id003
+- *id003
+- category: Ingredients
+  description: Burdock, carrots, radishes, and the like are all delectableand abounding
+    in nutrients. Whether or not you enjoy theirtaste, eating them will certainly
+    make you more healthy.
+  expiable: true
+  fertilizer_bonus:
+    herbicide: -1
+    yield_hp: 3
+  food_bonus:
+    hp: 2
+  found_in: []
+  life: 2
+  name: Root Crops
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id003
+- *id003
+- *id003
+- category: Ingredients
+  description: My word... This mushroom is known to be exceedingly rare!You must boast
+    incredibly good fortune to have found it.Maybe eating it will bring even more
+    luck into your life.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 50
+    herbicide: -1
+  food_bonus:
+    luck: 50
+  found_in: []
+  life: 2
+  name: Matsutake
+  price: 30
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id003
+- category: Ingredients
+  description: These nuts come from the seeds of ginkgo trees. The femaletrees produce
+    ovules said to bestow health and long life.
+  expiable: true
+  fertilizer_bonus:
+    yield_hp: 5
+  food_bonus:
+    hp: 4
+  found_in: []
+  life: 2
+  name: Ginkgo Nut
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id003
+- category: Ingredients
+  description: A wild plant that packs quite a punch. Its vigorous flavordoes wonders
+    for your vitality...less so for your breath.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 3
+    pesticide: 5
+  food_bonus:
+    vitality: 2
+  found_in: []
+  life: 2
+  name: Garlic
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: This wild plant frequently grows by clear streams and isused as a seasoning.
+    Its excessive spiciness will clear outyour sinuses and get your spiritual powers
+    pumping.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 5
+    pesticide: 5
+  food_bonus:
+    magic: 2
+  found_in: []
+  life: 2
+  name: Wasabi
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: A root that has long been used both to stifle stenchesand season suppers.
+    Guaranteed to warm you up, bolsteryour strength, and boost your capacity for using
+    skills.
+  expiable: true
+  fertilizer_bonus:
+    pesticide: 5
+    taste_strength: 5
+  food_bonus:
+    sp: 2
+    strength: 2
+  found_in: []
+  life: 2
+  name: Ginger
+  price: 3
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Eaten raw, it is spicy and crisp, but cooking it willbring out its
+    inner sweetness. It also has medicinal uses,and is even known to raise one's skilfulness
+    in battle.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 2
+    pesticide: 5
+    stickiness_gusto: 5
+  food_bonus:
+    sp: 4
+  found_in: []
+  life: 2
+  name: Green Onion
+  price: 3
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: The hint of sweetness hidden within its acutely sour tasteis like a
+    metaphor for raising children. Unlike parenthood,eating it may also prove to be
+    beneficial to your health.
+  expiable: true
+  fertilizer_bonus:
+    yield_hp: 5
+  food_bonus:
+    hp: 2
+  found_in: []
+  life: 2
+  name: Plum
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: Salt is a mineral that is indispensable as a preservativenot only for
+    food, but also for your mind and body. It isknown to have the power to cleanse
+    all sorts of impurities.
+  fertilizer_bonus:
+    herbicide: 10
+    immunity: 10
+    pesticide: 10
+    toxicity: 5
+  food_bonus: {}
+  found_in: []
+  name: Salt
+  price: 3
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A sweetener harvested from sugarcane grown on an islandin the southern
+    sea. It is of high quality, but has beenspreading as of late; even commoners can
+    enjoy it now.
+  fertilizer_bonus:
+    stickiness_gusto: 1
+    toxicity: 1
+  food_bonus: {}
+  found_in: []
+  name: Sugar
+  price: 6
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: The seed of a flowering plant that is used to seasonmany a dish. It
+    has been cherished since ancient times,and is also abounding in nutrients.
+  fertilizer_bonus:
+    toxicity: -5
+  food_bonus: {}
+  found_in: []
+  name: Sesame
+  price: 6
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A type of seaweed that has been long beloved in Yanatoas the base of
+    a soup stock and as a general ingredient.
+  fertilizer_bonus:
+    root_fertilizer: 10
+  food_bonus: {}
+  found_in: []
+  name: Kombu Kelp
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A drink made by pouring boiling water over driedtea leaves. No matter
+    what flavor of tea is used,it always enhances the taste of any meal.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 2
+  found_in:
+  - Fruitful Hassok
+  - 'Gathering Area: Spring'
+  name: Tea
+  price: 1
+  source:
+  - Bushes
+  - Foraging
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes: Tea
+- category: Ingredients
+  description: A medicinal herb effective against a variety of ailments.It can be
+    particularly useful as a remedy for poison...not to mention quite delectable when
+    made into tempura.
+  fertilizer_bonus:
+    pesticide: 3
+  food_bonus: {}
+  found_in: []
+  name: Fish Mint
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Made from ingredients that are boiled to bring outtheir flavor. A culinary
+    necessity in any kitchen.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Soup Stock
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: A paste made by mixing and then fermenting crushed beans,malt, and
+    salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient
+    could not exist!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Miso
+  price: 6
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: A liquid seasoning made from fermented soybean paste.Use it to enliven
+    noodle dishes like udon and soba.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Soy Sauce
+  price: 6
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: Refined oil, with the dregs carefully filtered out. A lifeof luxury
+    is incomplete without this invaluable substance.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: ''
+  name: Oil
+  price: 5
+  source:
+  - Refined from other oils.
+  sub_category: ''
+  time_of_day: Unknown
+  used_in_recipes: Tofu
+- category: Ingredients
+  description: A raw oil extracted from perilla seeds and the like.It contains dregs
+    and is rather pungent, making itdifficult to use in this form.
+  fertilizer_bonus:
+    leaf_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Vegetable Oil
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: Oil
+- category: Materials/Ingredients
+  description: A raw oil extracted from fish. It contains dregs and israther pungent,
+    making it difficult to use in this form.
+  fertilizer_bonus:
+    leaf_fertilizer: 5
+  food_bonus: {}
+  found_in: []
+  name: Fish Oil
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: Oil
+- category: Ingredients
+  description: Renowned water that has been frozen in some frigid place.It keeps foodstuffs
+    cool and prevents them from rotting...until it melts, that is.
+  expiable: true
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  life: 1
+  name: Ice
+  price: 10
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A seasoning produced by fermenting malted rice to createacetic acid.
+    Its sour flavor relieves exhaustion.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in:
+  - Processed
+  name: Vinegar
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourhealth. Dissolve
+    it in water to partake of it.
+  fertilizer_bonus:
+    yield_hp: 20
+  food_bonus: {}
+  found_in: []
+  name: Health Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourskill capacity.
+    Dissolve it in water to partake of it.
+  fertilizer_bonus:
+    aesthetic_luck: 10
+    stickiness_gusto: 10
+  food_bonus: {}
+  found_in: []
+  name: Skill Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourstrength. Dissolve
+    it in water to partake of it.
+  fertilizer_bonus:
+    taste_strength: 20
+  food_bonus: {}
+  found_in: []
+  name: Strength Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourvitality. Dissolve
+    it in water to partake of it.
+  fertilizer_bonus:
+    hardness_vitality: 20
+  food_bonus: {}
+  found_in: []
+  name: Vitality Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourmagic. Dissolve
+    it in water to partake of it.
+  fertilizer_bonus:
+    armor_magic: 20
+  food_bonus: {}
+  found_in: []
+  name: Magic Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourluck. Dissolve
+    it in water to partake of it.
+  fertilizer_bonus:
+    aesthetic_luck: 20
+  food_bonus: {}
+  found_in: []
+  name: Luck Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A powdered medicine that will temporarily increase yourfullness. Dissolve
+    it in water to partake of it.
+  fertilizer_bonus:
+    stickiness_gusto: 20
+  food_bonus: {}
+  found_in: []
+  name: Fullness Powder
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: When combined with a medicinal base, these flakeswill serve to increase
+    your base health.
+  fertilizer_bonus:
+    yield_hp: 50
+  food_bonus: {}
+  found_in: Bubbling Sandbar
+  name: Health Flakes
+  price: 1
+  source:
+  - Chest?
+  sub_category: ''
+  time_of_day: Any
+- category: Materials/Ingredients
+  description: When combined with a medicinal base, these flakeswill serve to increase
+    your base strength.
+  fertilizer_bonus:
+    taste_strength: 50
+  food_bonus: {}
+  found_in: []
+  name: Strength Flakes
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: When combined with a medicinal base, these flakeswill serve to increase
+    your base vitality.
+  fertilizer_bonus:
+    hardness_vitality: 50
+  food_bonus: {}
+  found_in: []
+  name: Vitality Flakes
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: When combined with a medicinal base, these flakeswill serve to increase
+    your base magic.
+  fertilizer_bonus:
+    armor_magic: 50
+  food_bonus: {}
+  found_in: []
+  name: Magic Flakes
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: When combined with a medicinal base, these flakeswill serve to increase
+    your base luck.
+  fertilizer_bonus:
+    aesthetic_luck: 50
+  food_bonus: {}
+  found_in: []
+  name: Luck Flakes
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: When combined with a medicinal base, these flakeswill serve to increase
+    your base gusto.
+  fertilizer_bonus:
+    stickiness_gusto: 50
+  food_bonus: {}
+  found_in: []
+  name: Gusto Flakes
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: When combined with flakes, this medicinal basewill increase your various
+    capabilities.
+  fertilizer_bonus:
+    aesthetic_luck: 25
+    armor_magic: 25
+    hardness_vitality: 25
+    stickiness_gusto: 25
+    taste_strength: 25
+    yield_hp: 25
+  food_bonus: {}
+  found_in: []
+  name: Medicinal Base
+  price: 20
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: A thick, syrupy substance made of steamed and fermentedrice. It is
+    the basis of many recipes and seasonings.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Malt
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A collection of dregs left over from the hulling process,including
+    the shells and sprouts. It is very functional,ready to be used for cleaning in
+    addition to cooking.
+  fertilizer_bonus:
+    herbicide: 2
+    kernel_fertilizer: 10
+    pesticide: -2
+  food_bonus: {}
+  found_in: ''
+  name: Rice Bran
+  price: 1
+  source: Hulling Rice
+  sub_category: ''
+  time_of_day: ''
+- category: Ingredients
+  description: A kind of cake made by adding water to rice, pounding it,and letting
+    it harden. It is delightful both when boiledand toasted. What's more, it's extremely
+    easy to preserve!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Mochi
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: This bean curd is made by combining soybean juicewith a salt solution
+    and letting the mixture harden.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Tofu
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: This rice has been mixed with water, pounded, and moldedinto a round
+    shape. In the olden days, the children of menused to regularly present these as
+    an offering to the gods.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Rice Cake
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- *id001
+- *id003
+- *id003
+- category: Ingredients
+  description: A dairy product that is widely adored in western lands.Perhaps it could
+    be compared to Yanato's condensed milk.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Cheese
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: This appears to be herring that was preserved with herbs,vinegar, and
+    salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
+    entirely unlike sushi.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Dried Herring
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Dried cooked rice that has been rehydratedwith boiling water. It has
+    a rather lightflavor, similar to porridge.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    swift_recovery: 1
+  found_in: Home
+  name: Dried Boiled Rice
+  price: 1
+  source:
+  - Processed
+  sub_category: ''
+  time_of_day: N/A
+  used_in_recipes: Dried Boiled Rice
+- category: Ingredients
+  description: Salmon that has been soaked in salt water and driedin the sea breeze.
+    This pairs wondrously with sake!Though do take care not to gorge yourself.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+    strength: 4
+  found_in:
+  - Home
+  name: Dried Salmon
+  price: 1
+  source:
+  - Processed
+  - Cooking
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: The dried stem of a taro plant, woven into a cord.Often carried by
+    soldiers headed to the battlefield.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Dried Taro Stem
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: A persimmon hung under the eave of a house and dried untildeveloping
+    a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is
+    autumn's finest treasure.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Dried Persimmon
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little
+    too well. Be wary not to drink too much.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Pickled Wasabi
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: A plum that has been pickled in salt. Not only is it usedfor battle
+    rations, but also as a medicine to cure poisons.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Pickled Dried Plum
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: Oho! Water from the springs of the valley.It is quite clear and extremely
+    refreshing.
+  fertilizer_bonus:
+    toxicity: -5
+  food_bonus:
+    luck: 2
+  found_in: []
+  name: Spring Water
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Water that is renowned for its purity, which has beenmelted down from
+    solid ice. I imagine it is the highestquality water that we can hope to find on
+    this island.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Renowned Water
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
+    horribly unsanitary. Only thetruly courageous are bold enough to consume it.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 6
+  found_in: Home
+  name: Kuchikami Sake
+  price: 1
+  source: Processed
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Cloudy white sake that is completely unfiltered.A blend of piercing
+    sourness and potent rice flavor.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+    sp: 5
+  found_in: Home
+  name: Doburoku
+  price: 1
+  source: Processed
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: 'A beverage made by converting rice into sugar.Be fooled not by its
+    name: this draught containsno alcohol. It is gently sweet and energizing.'
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 5
+    magic: 5
+    sommer_magic_buff: 2
+  found_in:
+  - Processed
+  - Cooking
+  name: Amazake
+  price: 1
+  sub_category: Sake
+  time_of_day: N/A
+  used_in_recipes:
+  - Sake Soaked Stir-Fry (Dried Pork)
+  - Sake Soaked Stir-Fry (Dried Rabbit Meat)
+- category: Ingredients
+  description: A clear alcohol that has been filtered and heated.Has a rich flavor
+    with a hint of sweetness.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Refined Sake
+  price: 1
+  source: []
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Highly nutritious roots and leaves have been added to thissake to make
+    it medicinal. As bitter as it tastes, at leastit will make you hardy enough to
+    resist most poisons.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Medicinal Sake
+  price: 1
+  source: []
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: An alcohol made by refining polished rice and fermenting it over low
+    heat.Smooth, palatable, and incredibly fragrant.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Ginjo Sake
+  price: 1
+  source: []
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: An alcohol made by carefully selecting only the best grains of riceand
+    polishing them to perfection. Its translucence and superlativefragrance certify
+    its status as a true work of art.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Daiginjo Sake
+  price: 1
+  source: []
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- *id002
+- category: Ingredients
+  description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
+    It seems that her faithdoes not forbid the consumption of spirits...
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Beer
+  price: 1
+  source: []
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []

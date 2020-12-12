@@ -1,0 +1,58 @@
+{
+  "name": "sakuna_fertilizer_helper",
+  "description": "Sakuna: Of Rice and Ruin Fertilizer Helper",
+  "version": "0.1.0",
+  "license": "GPLv3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/furudbat/sakuna_fertilizer_helper.git"
+  },
+  "scripts": {
+    "build": "browserify src/main.ts -p [ tsify ] -t [ envify --NODE_ENV production ] -t unassertify -t uglifyify -p common-shakeify | uglifyjs -cm > ./assets/js/app/bundle.min.js",
+    "build-dev": "browserify src/main.ts --debug -p [ tsify ] -t [ envify --NODE_ENV development ] | exorcist ./assets/js/app/bundle.js.map > ./assets/js/app/bundle.js",
+    "start": "bundle exec jekyll serve"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-toggle": "^2.2.2",
+    "chart.js": "^2.9.4",
+    "datatables.net-bs4": "^1.10.22",
+    "datatables.net-responsive-bs4": "^2.2.6",
+    "debug": "^4.3.1",
+    "jquery": "^3.5.1",
+    "jquery-ui": "^1.12.1",
+    "json-parse-better-errors": "^1.0.2",
+    "localforage": "^1.9.0",
+    "typescript-logger": "^2.0.1"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/bootstrap": "^4.5.0",
+    "@types/bootstrap-toggle": "^2.2.1",
+    "@types/chart.js": "^2.9.28",
+    "@types/datatables.net": "^1.10.19",
+    "@types/envify": "0.0.30",
+    "@types/jquery": "^3.5.1",
+    "@types/jqueryui": "^1.12.13",
+    "@types/json-parse-better-errors": "^1.0.0",
+    "@types/localforage": "0.0.34",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.14.10",
+    "bracket-template": "^1.1.4",
+    "browser-pack-flat": "^3.4.2",
+    "browserify": "^16.5.2",
+    "common-shakeify": "^0.6.2",
+    "envify": "^4.1.0",
+    "exorcist": "^1.0.1",
+    "semver": "^6.3.0",
+    "should": "*",
+    "ts-loader": "^8.0.3",
+    "tsify": "^5.0.2",
+    "typescript": "^4.0.2",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.10.2",
+    "uglifyify": "^5.0.2",
+    "unassertify": "^2.1.1"
+  }
+}

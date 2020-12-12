@@ -1,0 +1,1425 @@
+- category: Food
+  description: Firm and fragrant brown rice, boiled to perfection.Eat up before it
+    gets cold.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    hp: 5
+    sp: 1
+    strength: 8
+  found_in: []
+  name: Cooked Brown Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: This mixed rice is boiled to perfection.Every bite is rich in flavor
+    and nutrients.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    hp: 5
+    strength: 3
+  found_in: []
+  name: Cooked Mixed Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: White rice boiled to perfection. Each glisteninggrain is your reward
+    for months of painstaking toil.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+  found_in: []
+  name: Cooked White Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: White rice that has been steamed with sake,amplifying its natural sweetness.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    magic: 2
+    strength: 5
+  found_in: []
+  name: Steamed Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Rice that has been steamed with sake and mixedwith wild vegetables.
+    The rustic, crispy crunchof this dish will make one's heart sing.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    sp: 4
+    strength: 5
+  found_in: []
+  name: Sansai Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Rice that has been steamed with sake and mixed withchestnuts. The steaming
+    enhances the chestnuts'natural sweetness to create a dish for any palate.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    magic: 4
+    strength: 5
+  found_in: []
+  name: Chestnut Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Rice that has been steamed with sake and mixed withginkgo nuts. Savor
+    the ingredient's enhanced flavor.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    hp: 4
+    strength: 5
+  found_in: []
+  name: Ginkgo Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Boiled rice that has been fried in a splashof soy sauce. Both its fragrance
+    and textureare simply irresistable.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    vitality: 5
+  found_in: []
+  name: Fried Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Red rice that has been steamed in a vat.A fascinating blend of salty
+    and sweetthat calls to mind a celebratory mood.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    luck: 4
+    magic: 6
+  found_in: []
+  name: Sekihan
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Five types of rice that have been mixed and steamedtogether. A highly
+    nutritious meal, its five colorsguarantee ever-changing flavor with every bite.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    hp: 3
+    magic: 3
+    sp: 3
+    strength: 3
+    vitality: 3
+  found_in: []
+  name: Mixed Grain Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A meal made of cooked ~SourceMain~.Satisfying, but it doesn't compareto
+    the piquant taste of rice.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+  found_in: []
+  name: Cooked ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Dried cooked rice that has been rehydratedwith boiling water. It has
+    a rather lightflavor, similar to porridge.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    swift_recovery: 1
+  found_in: Home
+  name: Dried Boiled Rice
+  price: 1
+  source:
+  - Processed
+  sub_category: ''
+  time_of_day: N/A
+  used_in_recipes: Dried Boiled Rice
+- category: Food
+  description: A meal made of boiled ~SourceMain~.It's mushy and easy to digest, making
+    ita perfect meal for the bedridden.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    sp: 2
+  found_in: []
+  name: ~SourceMain~ Porridge
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    luck: 10
+    sp: 2
+  found_in: []
+  name: Seven Herb Porridge
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A meal made of ~SourceMain~ boiledwith rice. It is bound to warm youto
+    the core on chilly evenings.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    sp: 2
+  found_in: []
+  name: ~SourceMain~ Zosui
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: White rice soaked in tea and sprinkled withsoy sauce. Silky smooth
+    for easy digestion,with an irresistably invigorating aftertaste.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    hp: 2
+    sp: 2
+  found_in: []
+  name: ~SourceMain~ Chazuke
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Chazuke bedecked with mouth-wateringly good,bite-sized pieces of savory
+    salted salmon.A match made in the Lofty Realm!
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    hp: 2
+    luck: 2
+    magic: 5
+    sp: 2
+    strength: 4
+    vitality: 2
+  found_in: []
+  name: Salmon Chazuke
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Chazuke garnished with matsutake mushrooms,which are a rare delicacy
+    on Hinoe Island.How decadent! What lies beyond this luxury?
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    hp: 2
+    luck: 50
+    magic: 2
+    sp: 2
+    strength: 2
+    vitality: 2
+  found_in: []
+  name: Matsutake Chazuke
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enticingly aromatic, puffy mochi that has beentoasted over a fire.
+    You may be tempted to digright in, but do be careful! It's quite hot.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 30
+  found_in: []
+  name: Aburi Mochi
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Top a bowl of rice with a bit of sauce and some~SourceMain~ to create
+    a truly delectable meal!Yanato's culinary ingenuity never ceases to amaze.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    sp: 2
+  found_in: []
+  name: ~SourceMain~ Bowl
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Grilled duck meat and fluffy eggs atop a bowl ofrice. The delectably
+    fatty meat fuses with the eggsto deliver its lucky devourer to taste nirvana.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    sp: 6
+  found_in: []
+  name: Duck Egg Bowl
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ tempura atop a bowl of rice,with a heaping helping of
+    salty-sweet sauce.I could eat this for eternity.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 20
+    hp: 4
+    sp: 8
+    strength: 4
+  found_in: []
+  name: ~SourceMain~ Ten-don
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Thick noodles made by combining wheat flourwith salt and water. They
+    slide down the throatwith glorious ease.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    hp: 5
+  found_in: []
+  name: Udon
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Adding fried tofu to udon creates a simply divinebroth. Fried tofu
+    is a famed favorite of fox gods,and thus I dub this Kitsune Udon.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 15
+    hp: 5
+    sp: 5
+  found_in: []
+  name: Kitsune Udon
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Ohoho, udon topped with ~SourceMain~ tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 15
+    hp: 8
+    sp: 8
+    strength: 4
+  found_in: []
+  name: Tempura Udon
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Thinly sliced noodles glazed with oil and sun dried.Their delicate
+    form mixes well with broth and otheringredients, making a solid foundation for
+    any meal.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+  found_in: []
+  name: Somen
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Noodles made by combining water and buckwheat flour,which is then stretched
+    and cut into thin slices.They give off a faint aroma of buckwheat.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    magic: 4
+    strength: 4
+  found_in: []
+  name: Soba
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Myrthe is an odd one, scattering tempura flakes atopsoba noodles. And
+    yet, it's delicious. The dark flakesremind me of a raccoon dog. I dub this Tanuki
+    Soba!
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 8
+    magic: 6
+    strength: 8
+  found_in: []
+  name: Tanuki Soba
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Soba noodles accompanied by mountain vegetables.The crunch of the vegetables
+    is a delightfulcontrast to the noodles' silky-smooth texture.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 8
+    magic: 8
+    strength: 6
+  found_in: []
+  name: Sansai Soba
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Soba noodles adorned with ~SourceMain~ tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 10
+    magic: 10
+    strength: 10
+  found_in: []
+  name: Tempura Soba
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A beloved treat of Myrthe's native Ventania,this pancake is made by
+    spreading dough thinlyacross a grill and topping it with ingredients.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 15
+    hp: 8
+    luck: 5
+    vitality: 5
+  found_in: []
+  name: Pannenkoek
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Crushed tekusari roots rolled into edible dumplings. As long as the
+    poison has been steeped out of theroots, they make for adequate rations.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Tekusari Dumplings
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Foodstuffs that I brought with me from the capital.We must secure a
+    foothold on this island before weinevitably run out of edible things to eat...
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Preserved Rations
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Hrm. Myrthe claims to be a skilled chef, but...Well, everyone makes
+    mistakes, I suppose.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Charred Lump
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A simple soup made from boiled ~SourceMain~.While it lacks a certain
+    culinary complexity,it's perfectly adequate for washing down a meal.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: ~SourceMain~ Broth
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Soup with mochi and ~SourceMain~. I cannot putmy finger on it, but
+    something about the soft,broth-soaked mochi evokes a celebratory sentiment.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 20
+    hp: 5
+    magic: 5
+    sp: 10
+  found_in: []
+  name: ~SourceMain~ Zoni
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Chilled soup made from water peppers and miso.Its cool zest stimulates
+    the appetite.
+  fertilizer_bonus: {}
+  food_bonus:
+    sp: 8
+  found_in: []
+  name: Chilled Miso Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Miso melted in hot water along with ~SourceMain~.Its moderate saltiness
+    and the dashi's flavor makefor a superior dish that pairs well with cooked rice.
+  fertilizer_bonus: {}
+  food_bonus:
+    sp: 10
+  found_in: []
+  name: ~SourceMain~ Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Miso soup made with boiled taro. One would not expectsomething so flavorful
+    to be a war ration, but it isoft used as such, bringing smiles to the battlefield.
+  fertilizer_bonus: {}
+  food_bonus:
+    sp: 8
+    vitality: 4
+  found_in: []
+  name: Taro Miso Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Miso soup paired with well-boiled ~SourceMain~,scales and all. Just
+    as nutritious as it tastes.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 4
+    luck: 4
+    sp: 8
+  found_in: []
+  name: ~SourceMain~ Stew
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Miso soup enhanced by thinly cut daikon radishand blocks of tofu. Using
+    every bit of the daikon,leaves and all, adds a tremendous amount of flavor.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 6
+    sp: 6
+  found_in: []
+  name: Misoyaki Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Miso soup that has had pheasant meat added in.The mouth-watering juice
+    that oozes from the meatwith every bite blends perfectly with the broth.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+    sp: 10
+  found_in: []
+  name: Pheasant Miso Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Myrthe put a lot of thought into this savorycombination of pork and
+    miso. Combined withvegetables, this soup is beyond compare.
+  fertilizer_bonus: {}
+  food_bonus:
+    sp: 5
+    strength: 3
+    vitality: 10
+  found_in: []
+  name: Pork Miso Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A chilled soup of sesame seeds and cucumber. A mostexcellent way to
+    refresh oneself on a hot summer day.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+    sp: 5
+  found_in: []
+  name: Cucumber Soup
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A bean soup brimming with smashed vegetableshailing from Myrthe's home
+    country of Ventania.The perfect accompaniment to a cold winter's day.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 5
+    hp: 8
+    sp: 5
+    strength: 5
+    vitality: 5
+  found_in: []
+  name: Erwtensoep
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ roasted on an open fire.Cooked to a golden brown with
+    allthe juicy flavor sealed inside.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Roast ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Chopped ~SourceMain~ steeped in a savory soup stock.Do not judge this
+    simple dish by looks alone;its flavor will speak for itself.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Blanched ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Chopped garlic steeped in a savory soup stock.Do not judge this simple
+    dish by looks alone;its flavor will speak for itself.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Blanched Garlic
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Grilled ~SourceMain~ that is salted to perfection.The trick is to get
+    it to the perfect temperaturethat leaves the inside soft and the outside crispy.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 5
+  found_in: []
+  name: Grilled ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ boiled in salt water. Its simplicitybrings out the best
+    flavor in its ingredients.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 5
+  found_in: []
+  name: Salt ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A dish fit for a god from Princess Sakuna's daysin the capital. Lightly
+    grilled eel is saltedand cooked to perfection in a bamboo steamer.
+  fertilizer_bonus: {}
+  food_bonus:
+    sp: 8
+    strength: 4
+    vitality: 4
+  found_in: []
+  name: Eel Steamed Rice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains adds to its delectability.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 5
+    magic: 5
+    sp: 5
+  found_in: []
+  name: ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 2
+    strength: 2
+    vitality: 2
+  found_in: []
+  name: Sake Soaked Stir-Fry
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ is first simmered in soy sauce,after which the broth is
+    drained and then cooledfor a jiggly texture and scrumptious aftertaste.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 6
+    vitality: 6
+  found_in: []
+  name: ~SourceMain~ Jelly
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Fragrant acorns that were soaked to remove theirbitterness, then roasted.
+    While they taste good,a handful of oaknuts does not a hearty meal make.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Roasted Acorns
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Steamed soy beans wrapped in rice straw and fermented.The peculiar
+    odor and stickiness can be offputting,but after one bite you'll become a lifelong
+    fan.
+  fertilizer_bonus: {}
+  food_bonus:
+    vitality: 2
+  found_in: []
+  name: Natto
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Tofu is grilled until golden brown and coatedin thick miso paste. One
+    whiff of its savoryaroma is guaranteed to whet your appetite.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 5
+    vitality: 5
+  found_in: []
+  name: Miso-Coated Tofu
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A classic summer dish of chilled tofu accompaniedby soy sauce and other
+    mouth-watering seasonings.The perfect complement to an evening's libations.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+    sp: 4
+  found_in: []
+  name: Chilled Tofu
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: For this recipe passed down from the far west,maize is grilled and
+    coated with a sweet sauce.One bite and you'll be awash in savory sweetness.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Corn on the Cob
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
+    it impartsa satisfying crunch with each and every bite.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 6
+  found_in: []
+  name: Pickled Wasabi
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Salted pickled plums that have been sun-dried andfermented. Biting
+    into one releases a powerfularoma and a rich, bittersweet flavor.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+  found_in: []
+  name: Pickled Dried Plum
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Cooked eggs rolled into a cylindrical shape thencut into bite-sized
+    slices. The soft texture andsweet flavor will surely put a smile on your face.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 4
+    luck: 4
+  found_in: []
+  name: Fried Egg
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A dish from the continent of Ouka made by mixinga beaten egg with stock
+    and other ingredients.Such gentle flavor! It warms me to my very core.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 6
+    luck: 8
+  found_in: []
+  name: Chawanmushi
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Tofu is dropped into soup stock and water,then boiled. The center comes
+    out piping hot,so give it time to cool down before enjoying!
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+    sp: 4
+  found_in: []
+  name: Boiled Tofu
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Salmon that has been soaked in salt water and driedin the sea breeze.
+    This pairs wondrously with sake!Though do take care not to gorge yourself.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+    strength: 4
+  found_in:
+  - Home
+  name: Dried Salmon
+  price: 1
+  source:
+  - Processed
+  - Cooking
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Food that's fried in naught but oil is not to beunderestimated. Truly
+    it brings out the bestthe ~SourceMain~ has to offer.
+  fertilizer_bonus: {}
+  food_bonus:
+    strength: 4
+    vitality: 2
+  found_in: []
+  name: Fried ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ covered in wheat flour and deep fried.The pleasant crunch
+    as you bite into it is ratheraddicting, if I do say so myself.
+  fertilizer_bonus: {}
+  food_bonus:
+    strength: 8
+    vitality: 6
+  found_in: []
+  name: Crispy ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ covered in egg and wheat flour,then deep fried. I am told
+    that this techniqueoriginally came from some western country.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 8
+    strength: 6
+    vitality: 4
+  found_in: []
+  name: ~SourceMain~ Tempura
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ stewed in soy sauce until soft.A gentle heat flows outward
+    from the broth,warming your body and comforting your soul.
+  fertilizer_bonus: {}
+  food_bonus:
+    strength: 5
+    vitality: 5
+  found_in: []
+  name: Stewed ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: ~SourceMain~ boiled in miso until soft. The richmiso and fresh ginger
+    make every ingredient sing.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 8
+    strength: 6
+    vitality: 6
+  found_in: []
+  name: Miso ~SourceMain~
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 15
+    luck: 10
+    sp: 10
+  found_in: []
+  name: Rabbit Hot Pot
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 20
+    strength: 10
+    vitality: 5
+  found_in: []
+  name: Boar Hot Pot
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 20
+    magic: 10
+    sp: 5
+  found_in: []
+  name: Deer Hot Pot
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 20
+    hp: 15
+    vitality: 10
+  found_in: []
+  name: Turtle Hot Pot
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 20
+    hp: 8
+    strength: 10
+    vitality: 10
+  found_in: []
+  name: Bear Hot Pot
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: This appears to be herring that was preserved with herbs,vinegar, and
+    salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
+    entirely unlike sushi.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 5
+    sp: 10
+  found_in: []
+  name: Dried Herring
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A dish of Myrthe's native Ventania made fromchopped potatoes and root
+    vegetables steamedand mashed. This will fill your belly right up!
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 8
+    luck: 10
+    magic: 10
+  found_in: []
+  name: Hutspot
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Rice cakes coated with sauce as they cook on stickskewers. The soft
+    texture combined with the sweetand savory sauce is in a league of its own.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 2
+  found_in: []
+  name: Dumpling
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Rice cakes that have had mugwort finely kneadedinto them. They taste
+    of spring itself.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 2
+    magic: 2
+  found_in: []
+  name: Mugwort Dumpling
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A sweet treat that hails from the country of Ouka,made from all sorts
+    of sesame. I am impressed theymanaged to make such a jelly out of sesame alone.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 2
+  found_in: []
+  name: Sesame Dumpling
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Persimmons that have been dried on a cord.This powerfully sweet fruit
+    melts in your mouth,making it difficult to put down after the first bite.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 2
+    vitality: 4
+  found_in: []
+  name: Dried Persimmon
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Ice that has been shaved down into tiny particles.The perfect remedy
+    for when you feel hot or feverish.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+  found_in: []
+  name: Shaved Ice
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Sweet mochi rolled into flat circles, then grilledto form crackers.
+    They are delightfully crispy.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 10
+    sp: 5
+  found_in: []
+  name: Senbei
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Buckwheat flour is tossed in boiling water and clumpedtogether to form
+    this dessert. Though the ingredientsare the same, it is wholly unlike soba noodles.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 2
+    strength: 2
+  found_in: []
+  name: Soba Dumpling
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Rice softened in water, then pounded and shapedinto a ball. They have
+    long been used as offeringsto the gods from the children of men.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 4
+    magic: 4
+  found_in: []
+  name: Rice Cake
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Steamed sweet dumplings that are knownto pair well with a variety of
+    ingredients.
+  fertilizer_bonus: {}
+  food_bonus:
+    fullness: 4
+    luck: 8
+  found_in: []
+  name: Manju
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Wheat flour that has been kneaded, rolled,and fried. Fill them with
+    red bean pasteor vegetables for an even tastier treat.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 6
+  found_in: []
+  name: Kenpin
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Miso mixed with finely chopped spices, then grilled.It pairs exceptionally
+    well with rice and sake.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 6
+  found_in: []
+  name: Grilled Miso
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Fresh water from the mountain pass.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: Oho! Water from the springs of the valley.It is quite clear and extremely
+    refreshing.
+  fertilizer_bonus:
+    toxicity: -5
+  food_bonus:
+    luck: 2
+  found_in: []
+  name: Spring Water
+  price: 1
+  source: []
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
+    sip would wash awayany impurity. It's no wonder it's renowned!
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 3
+  found_in: []
+  name: Renowned Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Materials/Ingredients
+  description: A drink made by pouring boiling water over driedtea leaves. No matter
+    what flavor of tea is used,it always enhances the taste of any meal.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 2
+  found_in:
+  - Fruitful Hassok
+  - 'Gathering Area: Spring'
+  name: Tea
+  price: 1
+  source:
+  - Bushes
+  - Foraging
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes: Tea
+- category: Food
+  description: The idea of combining roasted tea leaves with brownrice was truly a
+    revelation. It is bound to helpcalm the nerves and relieve pent-up stress.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 3
+  found_in: []
+  name: Genmaicha
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: A tea made with dried fish mint leaves.In the Lofty Realm, this drink
+    is saidto grant protection from poisonous mist.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Fish Mint Tea
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Though it is called tea, it is not made with tealeaves. This is a hot
+    broth made from roastingand drying kelp, then boiling it in hot water.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 4
+  found_in: []
+  name: Kelp Tea
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Kelp tea that has had plums added to it, creatinga sour flavor. This
+    divine combination is certainto soothe tension and melt the most anxious heart.
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 3
+  found_in: []
+  name: Plum Kelp Tea
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Plum kelp tea with a further addition of green tealeaves. According
+    to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 8
+  found_in: []
+  name: Lucky Tea
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
+    horribly unsanitary. Only thetruly courageous are bold enough to consume it.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 6
+  found_in: Home
+  name: Kuchikami Sake
+  price: 1
+  source: Processed
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: Cloudy white sake that is completely unfiltered.A blend of piercing
+    sourness and potent rice flavor.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+    sp: 5
+  found_in: Home
+  name: Doburoku
+  price: 1
+  source: Processed
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: []
+- category: Ingredients
+  description: 'A beverage made by converting rice into sugar.Be fooled not by its
+    name: this draught containsno alcohol. It is gently sweet and energizing.'
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 5
+    magic: 5
+    sommer_magic_buff: 2
+  found_in:
+  - Processed
+  - Cooking
+  name: Amazake
+  price: 1
+  sub_category: Sake
+  time_of_day: N/A
+  used_in_recipes:
+  - Sake Soaked Stir-Fry (Dried Pork)
+  - Sake Soaked Stir-Fry (Dried Rabbit Meat)
+- category: Food
+  description: Sake that has been filtered and heated until itruns clear. It has a
+    rich flavor with just a hintof sweetness to balance out the refined taste.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+  found_in: []
+  name: Refined Sake
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Sake truly cures all ills. This kind in particular hashad medicinal
+    herbs added to it. It will bolster yourfortitude and give you some resistance
+    to poison.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 4
+  found_in: []
+  name: Medicinal Sake
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Sake that is made by refining polished riceand fermenting it over low
+    heat. The resultis smooth, palatable, and incredibly fragrant.
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 10
+  found_in: []
+  name: Ginjo Sake
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Sake made by carefully selecting the finest grainsof rice and polishing
+    them to perfection. Translucentand fragrant, it qualifies as a true work of art!
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 15
+  found_in: []
+  name: Daiginjo Sake
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: An alcohol of the far west made from wheat.Its bitterness may be an
+    acquired taste,but it certainly goes down smooth.
+  fertilizer_bonus: {}
+  food_bonus:
+    hp: 5
+    luck: 5
+    magic: 10
+  found_in: []
+  name: Beer
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of an HP-boosting meal.Once you have mastered this
+    miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Health Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of an SP-boosting meal.Once you have mastered this
+    miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Skill Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of a strength-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Strength Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of a vitality-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Vitality Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of a magic-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Magic Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of a luck-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Luck Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Enhances the effect of a fullness-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Fullness Water
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Invaluable medicine that boosts your HP.Let us drink to your continued
+    good fortune!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Health Medicine
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Invaluable medicine that boosts your strength.Let us drink to your
+    continued good fortune!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Strength Medicine
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Invaluable medicine that boosts your vitality.Let us drink to your
+    continued good fortune!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Vitality Medicine
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Invaluable medicine that boosts your magic.Let us drink to your continued
+    good fortune!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Magic Medicine
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Invaluable medicine that boosts your luck.Let us drink to your continued
+    good fortune!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Luck Medicine
+  source: []
+  time_of_day: ''
+  used_in_recipes: []
+- category: Food
+  description: Invaluable medicine that boosts your gusto.Let us drink to your continued
+    good fortune!
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: []
+  name: Gusto Medicine
+  source: []
+  time_of_day: ''
+  used_in_recipes: []

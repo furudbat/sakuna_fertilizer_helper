@@ -1,0 +1,259 @@
+table:
+  itemlist:
+    col_add_to_inventory: Inv.
+    col_name: Name
+
+    col_fertilizer: Fertil.
+
+    col_yield_hp: Yield/ HP
+    col_taste_strength: Taste/ Str.
+    col_hardness_vitality: Hard./ Vital.
+    col_stickiness_gusto: Stick./ Gusto
+    col_aesthetic_luck: Aesth./ Luck
+    col_armor_magic: Armor/ Magic
+
+    col_immunity: Immu.
+    col_pesticide: Pest.
+    col_herbicide: Herb.
+
+    col_toxicity: Toxi.
+
+    col_expiable: Exp.
+  inventory:
+    col_add_to_fertilizer: Inv.
+    col_name: Name
+
+    col_immunity: Imm.
+    col_pesticide: Pes.
+    col_herbicide: Her.
+
+    col_toxicity: Tox.
+
+    col_expiable: Ex.
+guide:
+  title: Farming Guide
+  balanced: Balanced
+  yield: 'Yield: HP (most amount of rice)'
+  heartiness: 'Heartiness: Strength, Vitality and Gusto'
+  aesthetic: 'Aesthetic: Luck'
+  aroma: 'Aroma: Magic'
+  tilling:
+    title: Before Planting/Tilling
+    sort_rice:
+      lightly: >-
+        <i class="fas fa-sort"></i> 
+        Sort Rice with <strong>100% Mud</strong> (lightly)
+      thoroughly: >-
+        <i class="fas fa-sort"></i> 
+        Sort Rice with <strong>100% Salt</strong> (thoroughly)
+    sow_rice:
+      thinly: >-
+        <i class="fas fa-sort-amount-down-alt"></i> 
+        Sow Rice: <strong>Thinly</strong>
+      thickly: >-
+        <i class="fas fa-sort-amount-up-alt"></i> 
+        Sow Rice: <strong>Thickly</strong>
+    use_root_fertilizer: >-
+      <i class="fas fa-poop"></i> 
+      Use <strong>Root</strong> Fertilizer
+    fertilize_before_tilling: >-
+      <i class="fas fa-tractor"></i> 
+      Fertilize <strong>Before</strong> Tilling
+    fertilize_after_tilling: >-
+      <i class="fas fa-tractor"></i> 
+      Fertilize <strong>After</strong> Tilling
+  planting:
+    title: Planting (Raising Seedlings)
+    spacing:
+      little_far_apart: >-
+        <i class="fas fa-seedling"></i> 
+        Plant Spacing: <strong>Little far apart</strong>
+      balanced: >-
+        <i class="fas fa-seedling"></i> 
+        Plant Spacing: <strong>Balanced</strong>
+  after_planting:
+    title: After Planting (Seedlings)
+  water:
+    drain: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0%</strong>
+    shallow: >-
+      <i class="fas fa-tint"></i> 
+      Water: <strong>15-20% (Shallow)</strong>
+    deep: >-
+      <i class="fas fa-tint"></i> 
+      Water: <strong>25-30% (Deep)</strong>
+    deep_flowing: >-
+      <i class="fas fa-tint"></i> 
+      Water: <strong>25-30% (Deep flowing, open both gates)</strong>
+  offshots_1_2:
+    title: 1st/2nd Offshoots
+    use_kernel_fertilizer: >-
+      <i class="fas fa-poop"></i> 
+      Use <strong>Kernel</strong> Fertilizer
+    unleash_ducks: >-
+      <i class="fas fa-feather-alt"></i> 
+      <strong>Unleash ducks</strong>
+  temperature:
+    not_too_high: >-
+      <i class="fas fa-thermometer-half"></i> 
+      Temperature: <strong>Not too high</strong>
+    not_too_low: >-
+      <i class="fas fa-thermometer-half"></i> 
+      Temperature: <strong>Not too low</strong>
+  offshots_3:
+    title: 3nd Offshoots
+    lock_ducks: >-
+      <i class="fas fa-feather"></i> 
+      <strong>Lock ducks</strong>
+    dehydrate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0%</strong> (dehydrate)
+    short_dehydrate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0-5%</strong> (dehydrate, for a short time, evaporation to 0%)
+  sprouting:
+    title: Sprouting
+    use_leaf_fertilizer: >-
+      <i class="fas fa-poop"></i> 
+      Use <strong>Leaf</strong> Fertilizer
+  ripen:
+    weather:
+      pray_for_dry: >-
+        <i class="fas fa-cloud-sun"></i> 
+        Weather: <strong>Pray for dry</strong>
+      pray_for_coolness: >-
+        <i class="fas fa-cloud-moon"></i>
+        Weather: <strong>Pray for coolness</strong>
+      dry: >-
+        <i class="fas fa-sun"></i> 
+        Weather: <strong>Hot/Dry</strong>
+    harvest:
+      title: Harvest (Ripen)
+      early: >-
+        <i class="fas fa-spa"></i> 
+        Harvest <strong>Early</strong> (right after water drained)
+      average: >-
+        <i class="fas fa-spa"></i> 
+        Harvest a day later
+    after_harvest:
+      title: After Harvest (Ripen)
+    rice_in_storehouse:
+      title: Rice in Storehouse (Ripen)
+      thresh:
+        when_cool: >-
+          <i class="fab fa-pagelines"></i> 
+          Thresh and Polish: <strong>When cool</strong> (Night/Morning)
+      hulling:
+        white_rice: >-
+          <i class="fas fa-dharmachakra"></i> 
+          Hulling: <strong>White Rice</strong>
+        brown_or_white_rice: >-
+          <i class="fas fa-dharmachakra"></i> 
+          Hulling: <strong>Brown or White Rice</strong>
+        brown_rice: >-
+          <i class="fas fa-dharmachakra"></i> 
+          Hulling: <strong>Brown Rice</strong>
+  spacing:
+    little_far_apart: 
+      tab: Little far apart
+      title: A little far apart
+      description: Leave 1 square space in between 2 seedling.
+    balanced: 
+      tab: Balanced
+      title: Balanced
+      description: Place seedling every square.
+    circle: 
+      tab: Circle
+      title: Balanced (Circle)
+      description: Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
+    1_1_placements: >-
+      Stand at the <span class="text-placements-1-1-color">minus</i></span> for <strong>1x1</strong> the placements.
+    2_1_placements: >-
+      Stand at the <span class="text-placements-2-1-color">cross</span> for <strong>2x1</strong> the placements.<br />
+      <small>("Two by Two Planting"-Skill)</small>
+    1_3_placements: >-
+      Stand at the <span class="text-placements-1-3-color">waves</span> for <strong>1x3</strong> the placements.<br /> 
+      <small>("Three in a Row Planting"-Skill)</small>
+    2_2_placements: >-
+      Stand at the <span class="text-placements-2-2-color">V</span> for <strong>2x2</strong> the placements.<br /> 
+      <small>("Four Corner Planting"-Skill)</small>
+    circle_placements: >-
+      Stand at the <span class="text-placements-circle-color">minus</span> for <strong>circle</strong> placements.<br /> 
+      <small>("Well Rounded Planting"-Skill)</small>
+fertilizer_helper:
+  title: Fertilizer Helper
+  fertilizer:
+    title: Fertilizer
+    settings_no_inventory_restriction_label: No Inventory Restriction
+    soil_nutrients:
+      title: Soil nutrients
+      current_fertilizer: Current Fertilizer
+      current_fertilizer_short: Curr. Fert.
+      with_components: with Components
+      with_components_short: with Comp.
+      leaf: Leaf
+      kernel: Kernel
+      root: Root
+      leaf_label: Leaf Fertilizer
+      kernel_label: Kernel Fertilizer
+      root_label: Root Fertilizer
+    stats:
+      yield_hp: Yield/HP
+      yield_hp_short: Yield/ HP
+      taste_strength: Taste/Strength
+      taste_strength_short: Tas./ Str.
+      hardness_vitality: Hardness/Vitality
+      hardness_vitality_short: Hard./ Vit.
+      stickiness_gusto: Stickiness/Gusto
+      stickiness_gusto_short: Stick./Gus.
+      aesthetic_luck: Aesthetic/Luck
+      aesthetic_luck_short: Aest./ Luck
+      armor_magic: Armor/Magic
+      armor_magic_short: Armor/ Magic
+
+      immunity: Immunity
+      immunity_short: Immu.
+      pesticide: Pesticide
+      pesticide_short: Pest.
+      herbicide: Herbicide
+      herbicide_short: Herb.
+
+      toxicity: Toxicity
+      toxicity_short: Toxi.
+    components:
+      title: Components
+      amount_placeholder: Amount
+  inventory:
+    additional_components:
+      title: Additional Components (Inventory)
+    recommended:
+      title: Recommended
+    expiable:
+      title: Expiable
+    remove_from_inventory: Remove from Inv.
+    stats:
+      leaf_fertilizer: 'L:'
+      kernel_fertilizer: 'K:'
+      root_fertilizer: 'R:'
+      yield_hp: HP
+      taste_strength: Str.
+      hardness_vitality: Vit.
+      stickiness_gusto: Gus.
+      aesthetic_luck: Luck
+      armor_magic: Magic
+      immunity: Immu.
+      pesticide: Pest.
+      herbicide: Herb.
+      toxicity: Tox.
+    amount_placeholder: Amount
+  hints:
+    soil_nutrients_fertilizer_overflow: >-
+      <span class="text-info">Your soil nutrients are reach max value, you don't need to put more items to boost soil nutrients.</span>
+    state_overflow: >-
+      <span class="text-warning">* reach max value, you don't need to add more items for this stat to boost</span>
+item_list:
+  title: Item-List
+goto: go to
+footer: >-
+  I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

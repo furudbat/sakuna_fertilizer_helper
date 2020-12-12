@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+  {%- include head.html -%}
+
+  <body data-theme='dark'>
+    {%- include header.html -%}
+    <script type='text/javascript' >  
+      const site = {
+        data: {
+          assets_url: '{{ "assets/" | absolute_url }}',
+          strings: {{ site.data.strings | jsonify }},
+          items: {{ site.data.items | jsonify }}
+        }
+      };
+    </script>
+
+    <div class="py-5 px-2" id="main-content">
+      <div class="container-fluid px-5 page-content">
+          {{ content }}
+      </div>
+    </div>
+
+    {%- include footer.html -%}
+
+    <script src="{{ '/assets/js/jquery-ui.min.js' | relative_url }}"></script>
+
+    <script src="{{ '/assets/js/bootstrap/bootstrap.bundle.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/bootstrap/bootstrap-toggle.min.js' | relative_url }}"></script>
+
+    <script src="{{ '/assets/js/font-awesome/all.min.js' | relative_url }}"></script>
+    
+    <script src="{{ '/assets/js/datatables.net/jquery.dataTables.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/datatables.net/dataTables.bootstrap4.min.js' | relative_url }}"></script>
+
+    {%- if jekyll.environment == "development" -%}
+    <script src="{{ '/assets/js/app/bundle.js' | relative_url }}"></script>
+    {%- else -%}
+    <script src="{{ '/assets/js/app/bundle.min.js' | relative_url }}"></script>
+    {%- endif -%}
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<script type='text/javascript'>
+    {%- if site.options.useCache -%}
+    const USE_CACHE = true;
+    {%- else -%}
+    const USE_CACHE = false;
+    {%- endif -%}
+</script>
+
+
+<h1 class="mt-4">{{ site.data.strings.guide.title }}</h1>
+<section id="sectionFarmingGuide">
+    {% include guide.html %}
+</section>
+
+
+<h1 class="mt-4">{{ site.data.strings.fertilizer_helper.title }}</h1>
+<section id="sectionFertilizerHelper">
+    {% include fertilizer_helper.html %}
+</section>
+
+
+<h1 class="mt-4">{{ site.data.strings.item_list.title }}</h1>
+<section id="sectionItemList">
+    {% assign materials_items = site.data.items | where: "category", "Materials" %}
+    {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
+    {% include itemlist-table.html items=materials_items items2=materials_ingredients_items id='tblItemsList' %}
+</section>

@@ -1,1 +1,59 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Tauemons Lost Fertilizer Scrolls
+email: "hircreacc@gmail.com"
+description: >- # this means to ignore newlines until "baseurl:"
+  Sakuna: Of Rice and Ruin Fertilizer Helper, Farming Guide and Item-List
+short_description: >-
+  Sakuna: Of Rice and Ruin Fertilizer Helper
+baseurl: "/sakuna_fertilizer_helper" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: furudbat
+github_username:  furudbat
+author: FurudBat
+github_link: "https://github.com/furudbat/sakuna_fertilizer_helper"
 theme: jekyll-theme-midnight
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# A list of the pages to display in the navigation bar
+header_pages:
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - .gitignore
+  - .jshintrc
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - webpack.config.js
+  - tsconfig.json
+  - node_modules
+  - scripts
+  - requirements.txt
+  - update_dependencies.sh
+  - build.sh
+
+options:
+  useCache: false
+
+version: '0.1.0'

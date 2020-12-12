@@ -1,0 +1,79 @@
+{% for item in include.items %}
+<tr data-name="{{ item.name }}">
+  <td>
+    <button class="btn btn-primary btn-small add-item-to-inventory" data-name="{{ item.name }}">
+      <i class="fas fa-plus"></i>
+    </button>
+  </td>
+
+  <th scope="row" class="text-left">
+    <!-- <img class="rounded item-icon mx-auto" alt="{{ item.name }}" src="https://via.placeholder.com/16"> -->
+    <span class="ml-1">{{ item.name }}</span>
+  </th>
+
+  {% if item.fertilizer_bonus.leaf_fertilizer or item.fertilizer_bonus.kernel_fertilizer or item.fertilizer_bonus.root_fertilizer %}
+  <td class="table-success">
+    {% if item.fertilizer_bonus.leaf_fertilizer %}
+    {% if item.fertilizer_bonus.leaf_fertilizer > 0 %}
+    {% assign fertilizer_bonus_color = "" %}
+    {% else %}
+    {% assign fertilizer_bonus_color = "text-danger" %}
+    {% endif %}
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>L:</strong>
+      {% if item.fertilizer_bonus.leaf_fertilizer > 0 %}+{% endif %}
+      {{ item.fertilizer_bonus.leaf_fertilizer }}
+    </p>
+    {% endif %}
+
+    {% if item.fertilizer_bonus.kernel_fertilizer %}
+    {% if item.fertilizer_bonus.kernel_fertilizer > 0 %}
+    {% assign fertilizer_bonus_color = "" %}
+    {% else %}
+    {% assign fertilizer_bonus_color = "text-danger" %}
+    {% endif %}
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>K:</strong>
+      {% if item.fertilizer_bonus.kernel_fertilizer > 0 %}+{% endif %}
+      {{ item.fertilizer_bonus.kernel_fertilizer }}
+    </p>
+    {% endif %}
+
+    {% if item.fertilizer_bonus.root_fertilizer %}
+    {% if item.fertilizer_bonus.root_fertilizer > 0 %}
+    {% assign fertilizer_bonus_color = "" %}
+    {% else %}
+    {% assign fertilizer_bonus_color = "text-danger" %}
+    {% endif %}
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>R:</strong>
+      {% if item.fertilizer_bonus.root_fertilizer > 0 %}+{% endif %}
+      {{ item.fertilizer_bonus.root_fertilizer }}
+    </p>
+    {% endif %}
+  </td>
+  {% else %}
+  <td></td>
+  {% endif %}
+
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.yield_hp %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.taste_strength %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.hardness_vitality %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.stickiness_gusto %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.aesthetic_luck %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.armor_magic %}
+
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.immunity %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.pesticide %}
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.herbicide %}
+
+  {% include itemlist-bonus-cell.html value=item.fertilizer_bonus.toxicity invertcolor=1 %}
+
+  {% if item.expiable %}
+  <td class="table-warning">
+    In days <i class="fas fa-skull"></i>
+  </td>
+  {% else %}
+  <td>
+    <i class="fas fa-infinity"></i>
+  </td>
+  {% endif %}
+</tr>
+{% endfor %}
