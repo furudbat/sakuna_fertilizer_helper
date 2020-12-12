@@ -26,6 +26,7 @@ interface FoodBonusData {
     magic?: number;
     luck?: number;
     fullness?: number;
+    enchant?: number;
 
     natural_healing_buff?: number;
     overstuffed_buff?: number;
@@ -45,12 +46,12 @@ interface FoodBonusData {
 interface ItemData {
     name: string;
     category: string;
-    found_in: string;
-    source: string;
+    found_in: string[];
+    source: string[];
     time_of_day: string;
     fertilizer_bonus: FertilizerBonusData;
     food_bonus: FoodBonusData;
-    used_in_recipes: string;
+    used_in_recipes: string[];
     expirable?: boolean;
     life?: number;
 }

@@ -173,24 +173,21 @@ export class InventoryAdapter {
                                 const text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
                                 const sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
                                 fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer}</strong> 
-                                    ${sign}
-                                    ${row.fertilizer_bonus.leaf_fertilizer}
+                                    ${sign}${row.fertilizer_bonus.leaf_fertilizer}
                                 </p>`;
                             }
                             if (row.fertilizer_bonus.kernel_fertilizer) {
                                 const text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
                                 const sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
                                 fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer}</strong> 
-                                    ${sign}
-                                    ${row.fertilizer_bonus.kernel_fertilizer}
+                                    ${sign}${row.fertilizer_bonus.kernel_fertilizer}
                                 </p>`;
                             }
                             if (row.fertilizer_bonus.root_fertilizer) {
                                 const text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
                                 const sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
                                 fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer}</strong> 
-                                    ${sign}
-                                    ${row.fertilizer_bonus.root_fertilizer}
+                                    ${sign}${row.fertilizer_bonus.root_fertilizer}
                                 </p>`;
                             }
 

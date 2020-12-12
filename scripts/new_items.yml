@@ -819,7 +819,8 @@
   sub_category: Material
   time_of_day: ''
   used_in_recipes: []
-- category: Ingredients
+- &id001
+  category: Ingredients
   description: Pickled and salted Salmon put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -832,6 +833,20 @@
   sub_category: Sushi
   time_of_day: ''
   used_in_recipes: []
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
+- *id001
 - category: Ingredients
   description: These fish can be found in nearly every river in Yanato.Flavor notwithstanding,
     they certainly fill you up.
@@ -848,6 +863,8 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id001
+- *id001
 - category: Ingredients
   description: It is rare indeed to see these fish come all the way downfrom the northern
     sea. The delectable fat of their meatis certain to increase your spiritual abilities.
@@ -867,6 +884,8 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id001
+- *id001
 - category: Materials/Ingredients
   description: A hard-shelled bird egg. Not only will it expand yourcooking repertoire,
     but I have heard that it has manyhealth benefits as well.
@@ -923,7 +942,8 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
-- category: Ingredients
+- &id002
+  category: Ingredients
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   fertilizer_bonus: {}
@@ -935,6 +955,8 @@
   sub_category: SakeSyouchu
   time_of_day: ''
   used_in_recipes: []
+- *id002
+- *id002
 - category: Ingredients
   description: Though it is counted among the five grains, the wheatharvested on this
     island is not suited for cultivation.You are certainly free to use it as an ingredient,
@@ -953,6 +975,7 @@
   sub_category: ''
   time_of_day: Any
   used_in_recipes: []
+- *id002
 - category: Ingredients
   description: One of the five grains, and one of the most popular cropsproduced in
     Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint
@@ -995,6 +1018,7 @@
   - Tofu
   - Natto
   - Dumpling
+- *id002
 - category: Ingredients
   description: Even though the roots of this hardy plant are poisonous,it can be consumed
     after being crushed and soaked in water.Many farmers plant these in preparation
@@ -1009,7 +1033,8 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
-- category: Ingredients
+- &id003
+  category: Ingredients
   description: Maize that has been pickled in salted rice bran.Its potent flavor will
     wash over you with just one bite.
   fertilizer_bonus: {}
@@ -1021,6 +1046,9 @@
   sub_category: Nukazuke
   time_of_day: ''
   used_in_recipes: []
+- *id003
+- *id003
+- *id003
 - category: Ingredients
   description: A fern that is immensely bitter and frequently growsin the wilds of
     nearby settlements. Its acute flavormay give you the capacity to perform additional
@@ -1038,6 +1066,9 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id003
+- *id003
+- *id003
 - category: Ingredients
   description: Burdock, carrots, radishes, and the like are all delectableand abounding
     in nutrients. Whether or not you enjoy theirtaste, eating them will certainly
@@ -1056,6 +1087,9 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id003
+- *id003
+- *id003
 - category: Ingredients
   description: My word... This mushroom is known to be exceedingly rare!You must boast
     incredibly good fortune to have found it.Maybe eating it will bring even more
@@ -1074,6 +1108,7 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id003
 - category: Ingredients
   description: These nuts come from the seeds of ginkgo trees. The femaletrees produce
     ovules said to bestow health and long life.
@@ -1090,6 +1125,7 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id003
 - category: Ingredients
   description: A wild plant that packs quite a punch. Its vigorous flavordoes wonders
     for your vitality...less so for your breath.
@@ -1625,6 +1661,9 @@
   sub_category: ''
   time_of_day: ''
   used_in_recipes: []
+- *id001
+- *id003
+- *id003
 - category: Ingredients
   description: A dairy product that is widely adored in western lands.Perhaps it could
     be compared to Yanato's condensed milk.
@@ -1853,6 +1892,7 @@
   sub_category: Sake
   time_of_day: ''
   used_in_recipes: []
+- *id002
 - category: Ingredients
   description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
     It seems that her faithdoes not forbid the consumption of spirits...
