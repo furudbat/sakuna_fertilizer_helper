@@ -4,7 +4,7 @@ layout: home
 
 # Sakuna: Of Rice and Ruin Fertilizer Helper
 
-Sakuna: Of Rice and Ruin is an awesome game and the farming managment is fun, but while mixing the fertilizer it can be very tedious to find out what item you need for remove toxicity, pestrcide or other negative effects.  
+Sakuna: Of Rice and Ruin is an awesome game and the farming management is fun, but while mixing the fertilizer it can be very tedious to find out what item you need for remove toxicity, pesticide or other negative effects.  
 So I made this site as a Farming Guide and have the optimal fertilizer for your current build (Yield, Balanced, Aroma, ...).
 
 Select a build from the [Farming Guide](#sectionFertilizerHelper).  
@@ -20,7 +20,7 @@ In "Recommended" (Items) you find Items for your current build like boosting yie
 * Fertilizer Mixer
   * shows additional Stats and Item-Effects
   * show "Recommended" Items
-  * show "Expirable" Items
+  * show "Expiable" Items
 * Item List
 
 ### Missing Features

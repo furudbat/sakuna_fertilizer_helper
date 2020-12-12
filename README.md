@@ -18,7 +18,7 @@ In "Recommended" (Items) you find Items for your current build like boosting yie
  * Fertilizer Mixer
    - shows additional Stats and Item-Effects
    - show "Recommended" Items
-   - show "Expirable" Items
+   - show "Expiable" Items
  * Item List
 
 ## Missing Features

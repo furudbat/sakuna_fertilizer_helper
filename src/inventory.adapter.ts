@@ -125,7 +125,7 @@ export class InventoryAdapter {
                     }
                     break;
                 case 6:
-                    if (rowData.expirable) {
+                    if (rowData.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -325,14 +325,14 @@ export class InventoryAdapter {
                     data: null,
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            if (row.expirable) {
+                            if (row.expiable) {
                                 return '<i class="fas fa-skull"></i>';
                             }
 
                             return '<i class="fas fa-infinity"></i>';
                         }
 
-                        return (row.expirable) ? true : false;
+                        return (row.expiable) ? true : false;
                     }
                 }
             ]

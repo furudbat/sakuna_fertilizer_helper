@@ -222,7 +222,7 @@ def main():
                     life = int(row['Life'])
                     new_item['life'] = life
                     if life > 0:
-                        new_item['expirable'] = True
+                        new_item['expiable'] = True
 
                 if row['Source'] != '-':
                     source_set.add(row['Source'])

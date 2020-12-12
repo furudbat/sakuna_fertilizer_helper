@@ -199,7 +199,7 @@
     hardness_vitality: 5
   food_bonus: {}
   used_in_recipes: Roast Grasshopper
-  expirable: true
+  expiable: true
 - name: Health Flakes
   category: Materials/Ingredients
   found_in: Bubbling Sandbar
@@ -308,7 +308,7 @@
     taste_strength: 3
   food_bonus: {}
   used_in_recipes: Soup Stock
-  expirable: true
+  expiable: true
 - name: Matsutake
   category: Materials/Ingredients
   found_in: []
@@ -319,7 +319,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Oil
   category: Materials/Ingredients
   found_in: ''
@@ -443,7 +443,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: Soup Stock
-  expirable: true
+  expiable: true
 - name: Carp
   category: Materials/Ingredients
   found_in: []
@@ -454,7 +454,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Char
   category: Materials/Ingredients
   found_in: []
@@ -465,7 +465,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Masu Salmon
   category: Materials/Ingredients
   found_in: []
@@ -476,7 +476,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Herring
   category: Materials/Ingredients
   found_in: []
@@ -487,7 +487,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Eel
   category: Materials/Ingredients
   found_in: []
@@ -499,7 +499,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Basket Clam
   category: Materials/Ingredients
   found_in: []
@@ -510,7 +510,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Persimmon
   category: Materials/Ingredients
   found_in: []
@@ -521,7 +521,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Tea
   category: Ingredients
   found_in:
@@ -863,7 +863,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Madder
   category: Materials
   found_in: []
@@ -1010,7 +1010,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: 1
+  expiable: 1
 - name: Pork
   category: Materials/Ingredients
   found_in: []
@@ -1021,7 +1021,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Boar Meat
   category: Materials/Ingredients
   found_in: []
@@ -1032,7 +1032,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Venison
   category: Materials/Ingredients
   found_in: []
@@ -1043,7 +1043,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Bear Meat
   category: Materials/Ingredients
   found_in: []
@@ -1055,7 +1055,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Badger Meat
   category: Materials/Ingredients
   found_in: []
@@ -1067,7 +1067,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Sparrow Meat
   category: Materials/Ingredients
   found_in: []
@@ -1078,7 +1078,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Turtle Meat
   category: Materials/Ingredients
   found_in: []
@@ -1089,7 +1089,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Pheasant Meat
   category: Materials/Ingredients
   found_in: []
@@ -1100,7 +1100,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Loach
   category: Materials/Ingredients
   found_in: []
@@ -1111,7 +1111,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Taro
   category: Materials/Ingredients
   found_in: []
@@ -1122,7 +1122,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Horsetail
   category: Materials/Ingredients
   found_in: []
@@ -1133,7 +1133,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Seven Herbs
   category: Materials/Ingredients
   found_in: []
@@ -1144,7 +1144,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Mugwort
   category: Materials/Ingredients
   found_in: []
@@ -1155,7 +1155,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Chestnut
   category: Materials/Ingredients
   found_in: []
@@ -1166,7 +1166,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Plum
   category: Materials/Ingredients
   found_in: []
@@ -1176,7 +1176,7 @@
     yield_hp: 5
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Revitalizing Remedy
   category: Materials
   found_in: []
@@ -1375,7 +1375,7 @@
     hardness_vitality: 2
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Acorn
   category: Materials/Ingredients
   found_in: []
@@ -1385,7 +1385,7 @@
     hardness_vitality: 1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Salt
   category: Materials/Ingredients
   found_in: []
@@ -1418,7 +1418,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Potato
   category: Materials/Ingredients
   found_in: []
@@ -1429,7 +1429,7 @@
     pesticide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Onion
   category: Materials/Ingredients
   found_in: []
@@ -1440,7 +1440,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Cucumber
   category: Materials/Ingredients
   found_in: []
@@ -1451,7 +1451,7 @@
     herbicide: -1
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Maize
   category: Materials/Ingredients
   found_in: []
@@ -1472,7 +1472,7 @@
     pesticide: 5
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Green Onion
   category: Materials/Ingredients
   found_in: []
@@ -1484,7 +1484,7 @@
     pesticide: 5
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
 - name: Buckwheat
   category: Materials/Ingredients
   found_in: []
@@ -1522,4 +1522,4 @@
     pesticide: 5
   food_bonus: {}
   used_in_recipes: []
-  expirable: true
+  expiable: true
