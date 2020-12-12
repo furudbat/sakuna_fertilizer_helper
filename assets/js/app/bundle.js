@@ -56857,7 +56857,7 @@ var FertilizerData = (function () {
     });
     Object.defineProperty(FertilizerData.prototype, "kernel_fertilizer", {
         get: function () {
-            return site_1.clamp(this._leaf_fertilizer, exports.MIN_FERTILIZER, exports.MAX_FERTILIZER);
+            return site_1.clamp(this._kernel_fertilizer, exports.MIN_FERTILIZER, exports.MAX_FERTILIZER);
         },
         set: function (value) {
             this._kernel_fertilizer = value;
@@ -56885,7 +56885,7 @@ var FertilizerData = (function () {
     });
     Object.defineProperty(FertilizerData.prototype, "root_fertilizer", {
         get: function () {
-            return site_1.clamp(this._leaf_fertilizer, exports.MIN_FERTILIZER, exports.MAX_FERTILIZER);
+            return site_1.clamp(this._root_fertilizer, exports.MIN_FERTILIZER, exports.MAX_FERTILIZER);
         },
         set: function (value) {
             this._root_fertilizer = value;

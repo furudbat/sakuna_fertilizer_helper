@@ -52,4 +52,5 @@ interface ItemData {
     food_bonus: FoodBonusData;
     used_in_recipes: string;
     expirable?: boolean;
+    life?: number;
 }

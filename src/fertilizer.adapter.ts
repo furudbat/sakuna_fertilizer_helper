@@ -244,6 +244,7 @@ export class FertilizerAdapter {
         this.updateSoilNutrientsChartLeafFertilizer();
         this.updateSoilNutrientsChartKernelFertilizer();
         this.updateSoilNutrientsChartRootFertilizer();
+        
         this._soilNutrientsChart.update();
     }
 

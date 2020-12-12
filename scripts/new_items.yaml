@@ -1,0 +1,2033 @@
+- category: Material
+  fertilizer_bonus:
+    leaf_fertilizer: 20
+  food_bonus: {}
+  found_in: ''
+  name: Beast Hoof
+  source: ''
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    kernel_fertilizer: 20
+  food_bonus: {}
+  found_in: ''
+  name: Beast Manure
+  source: ''
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    root_fertilizer: 20
+  food_bonus: {}
+  found_in: ''
+  name: Fallen Leaves
+  source: ''
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    kernel_fertilizer: 8
+    leaf_fertilizer: 10
+    root_fertilizer: 8
+  food_bonus: {}
+  found_in: ''
+  name: Oil Cake
+  source: ''
+  sub_category: ManureBase
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: ''
+  name: Powder of Transformation
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Orb of Transformation
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    immunity: 10
+  food_bonus: {}
+  found_in: ''
+  name: Revitalizing Remedy
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    herbicide: 10
+  food_bonus: {}
+  found_in: ''
+  name: Reducing Remedy
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    pesticide: 10
+  food_bonus: {}
+  found_in: ''
+  name: Eradicating Remedy
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Health's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Skill's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Fullness' Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Strength's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Vitality's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Magic's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Luck's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Gusto's Bounty
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 1
+    armor_magic: 1
+    hardness_vitality: 1
+    pesticide: -2
+    stickiness_gusto: 1
+    taste_strength: 1
+    yield_hp: 1
+  food_bonus: {}
+  found_in: Anywhere
+  name: Rotten Food
+  source: Spoiled food.
+  sub_category: Material
+  time_of_day: Midnight
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    stickiness_gusto: 1
+    toxicity: 1
+  food_bonus: {}
+  found_in: ''
+  name: Clay
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: Any
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 1
+    toxicity: 1
+  food_bonus: {}
+  found_in: ''
+  name: Stone
+  source: 'Stone Spikes
+
+    Breakable Boulders
+
+    Untilled Rice Paddy'
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 2
+    toxicity: 2
+  food_bonus: {}
+  found_in: ''
+  name: Copper Ore
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 5
+    toxicity: 1
+  food_bonus: {}
+  found_in: ''
+  name: Iron Ore
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 5
+    hardness_vitality: 3
+    toxicity: 1
+  food_bonus: {}
+  found_in: ''
+  name: Jade
+  source: Mine Nodes
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 3
+    hardness_vitality: 5
+    toxicity: 1
+  food_bonus: {}
+  found_in: ''
+  name: Obsidian
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 10
+    toxicity: 3
+  food_bonus: {}
+  found_in: ''
+  name: Gold Ore
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 25
+    toxicity: 5
+  food_bonus: {}
+  found_in: ''
+  name: Stainless Steel
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 25
+    armor_magic: 25
+    hardness_vitality: 25
+    stickiness_gusto: 25
+    taste_strength: 25
+    yield_hp: 25
+  found_in: ''
+  name: Cloudy Crystal
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    pesticide: -1
+    root_fertilizer: 5
+    yield_hp: 1
+  food_bonus: {}
+  found_in: ''
+  name: Wood
+  source: Breakable Wood Structures
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    pesticide: -1
+    root_fertilizer: 5
+    yield_hp: 3
+  food_bonus: {}
+  found_in: ''
+  name: High Quality Oak
+  source: 'Bushes
+
+    Foraging'
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    pesticide: -1
+    root_fertilizer: 5
+    yield_hp: 5
+  food_bonus: {}
+  found_in: ''
+  name: Bamboo
+  source: 'Bushes
+
+    Foraging'
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 5
+    pesticide: -2
+    root_fertilizer: 5
+    yield_hp: 8
+  food_bonus: {}
+  found_in: ''
+  name: Ironwood
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Elder Elm
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 2
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Hemp
+  source: 'Bushes
+
+    Foraging'
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 3
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Sedge
+  source: 'Bushes
+
+    Foraging'
+  sub_category: Material
+  time_of_day: Any
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 5
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Hemp Palm
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    herbicide: -50
+    kernel_fertilizer: 100
+    leaf_fertilizer: 100
+    pesticide: -50
+    root_fertilizer: 100
+    toxicity: 50
+  food_bonus: {}
+  found_in: ''
+  name: Leaf of Creation
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 2
+    immunity: -1
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Cork Tree Branch
+  source: 'Bushes
+
+    Foraging'
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 3
+    immunity: -1
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Murasaki Root
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    immunity: -1
+    kernel_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Madder
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    kernel_fertilizer: 5
+    leaf_fertilizer: 5
+    pesticide: -2
+  food_bonus: {}
+  found_in: ''
+  name: Indigo Scale
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 10
+    pesticide: -2
+  food_bonus: {}
+  found_in: ''
+  name: Silk
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 20
+    pesticide: -5
+  food_bonus: {}
+  found_in: ''
+  name: Spirit Thread
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 8
+    hardness_vitality: 8
+    pesticide: -3
+  food_bonus: {}
+  found_in: ''
+  name: Washi Paper
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: -10
+    taste_strength: 20
+  food_bonus: {}
+  found_in: ''
+  name: Demonic Braid
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 20
+    hardness_vitality: -10
+  food_bonus: {}
+  found_in: ''
+  name: Thunderous Tasuki
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    yield_hp: 2
+  food_bonus: {}
+  found_in: ''
+  name: Beast Hide
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 5
+    immunity: 5
+    kernel_fertilizer: 10
+  food_bonus: {}
+  found_in: ''
+  name: Deer Antler
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 3
+  food_bonus: {}
+  found_in: ''
+  name: Demonic Pearl
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Ashigumo Shuriken
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 1
+    taste_strength: 4
+  food_bonus: {}
+  found_in: ''
+  name: Black Deer Leather
+  source: Black Deer
+  sub_category: Material
+  time_of_day: Any
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    aesthetic_luck: 1
+    taste_strength: 3
+  food_bonus: {}
+  found_in: ''
+  name: Pheasant Feather
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    leaf_fertilizer: 10
+    taste_strength: 5
+  food_bonus: {}
+  found_in: ''
+  name: Boar Tusk
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 5
+    root_fertilizer: 10
+  food_bonus: {}
+  found_in: ''
+  name: Badger Leaf
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 4
+    stickiness_gusto: 1
+    taste_strength: 4
+  food_bonus: {}
+  found_in: ''
+  name: Bear Hide
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    armor_magic: 50
+    toxicity: -50
+  food_bonus: {}
+  found_in: ''
+  name: Crane Feather
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    immunity: 50
+    kernel_fertilizer: 50
+    taste_strength: 50
+  found_in: ''
+  name: Dragon Bone
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    hardness_vitality: 50
+    kernel_fertilizer: 50
+    pesticide: 50
+  food_bonus: {}
+  found_in: ''
+  name: Dragon Scale
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    toxicity: -20
+  food_bonus: {}
+  found_in: 'Cylindric Caverns
+
+    Skipping Stone Hill
+
+    Den of Fangs
+
+    Eggplant Hollow
+
+    Dragon''s Tunnel'
+  name: Moonlit Stone
+  source: Any Enemy
+  sub_category: Material
+  time_of_day: Night
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    immunity: 20
+  food_bonus: {}
+  found_in: ''
+  name: Branching Flower
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    herbicide: 5
+    immunity: 5
+    pesticide: 5
+    toxicity: -5
+  food_bonus: {}
+  found_in: ''
+  name: Aqueous Droplet
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    pesticide: 20
+  food_bonus: {}
+  found_in: ''
+  name: Flaming Core
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Material
+  fertilizer_bonus:
+    herbicide: 20
+  food_bonus: {}
+  found_in: ''
+  name: Metallic Sand
+  source: ''
+  sub_category: Material
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 1
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Rabbit Meat
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 3
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Pork
+  price: 2
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    pesticide: -1
+    taste_strength: 3
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Boar Meat
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 2
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Venison
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+    pesticide: -1
+    taste_strength: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Bear Meat
+  price: 2
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 2
+    armor_magic: 2
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Badger Meat
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    pesticide: -1
+    yield_hp: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Turtle Meat
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Materials/Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 1
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Sparrow Meat
+  price: 1
+  source: ''
+  sub_category: Bird
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Materials/Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 3
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Pheasant Meat
+  price: 2
+  source: ''
+  sub_category: Bird
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Materials/Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    hardness_vitality: 5
+  found_in: ''
+  life: 2
+  name: Duck Meat
+  price: 3
+  source: ''
+  sub_category: Bird
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Loach
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 1
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Sweetfish
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: Soup Stock
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    pesticide: -1
+    yield_hp: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Carp
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 3
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Masu Salmon
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 3
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Char
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    stickiness_gusto: 3
+  found_in: ''
+  life: 2
+  name: Crucian Carp
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 3
+    taste_strength: 3
+  found_in: ''
+  life: 2
+  name: Salmon
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  found_in: ''
+  life: 2
+  name: Smelt
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    kernel_fertilizer: 5
+    leaf_fertilizer: 10
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Herring
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    pesticide: -1
+    taste_strength: 10
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Eel
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 2
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Basket Clam
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Materials/Ingredients
+  expirable: true
+  fertilizer_bonus:
+    pesticide: -1
+    stickiness_gusto: 2
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Egg
+  price: 1
+  source: ''
+  sub_category: Bird
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+  food_bonus: {}
+  found_in: Home
+  life: 2
+  name: Grasshopper
+  price: 1
+  source: '! Marks'
+  sub_category: ''
+  time_of_day: Autumn
+  used_in_recipes: Roast Grasshopper
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 2
+    yield_hp: 3
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Bee Larva
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Brown Rice
+  price: 1
+  source: ''
+  sub_category: Rice
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Mixed Rice
+  price: 2
+  source: ''
+  sub_category: Rice
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: N/A
+  name: White Rice
+  price: 3
+  source: Refined rice from hulling.
+  sub_category: Rice
+  time_of_day: Any
+  used_in_recipes: Vinegar
+- category: Ingredients
+  fertilizer_bonus:
+    stickiness_gusto: 3
+  food_bonus: {}
+  found_in: 'Bounteous Earth Grotto
+
+    Cylindric Cavern
+
+    Gathering Area: Plain'
+  name: Wheat
+  price: 1
+  source: Bushes
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    yield_hp: 5
+  found_in: ''
+  name: Foxtail Millet
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    armor_magic: 5
+  food_bonus: {}
+  found_in: ''
+  name: Sanwa Millet
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    herbicide: 1
+    leaf_fertilizer: 10
+  food_bonus: {}
+  found_in: 'Den of Fangs
+
+    Bounteous Earth Grotto
+
+    Eggplant Hollow
+
+    Dragon''s Tunnel
+
+    Gathering Area: Plain
+
+    Gathering Area: Spring'
+  name: Bean
+  price: 3
+  source: Bushes
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes: 'Tofu
+
+    Natto
+
+    Dumpling'
+- category: Ingredients
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  food_bonus: {}
+  found_in: ''
+  name: Buckwheat
+  price: 6
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    toxicity: 5
+  found_in: ''
+  name: Tekusari
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Acorn
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    herbicide: -1
+    stickiness_gusto: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Taro
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+    pesticide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Potato
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Onion
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  found_in: ''
+  life: 2
+  name: Warabi
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 5
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Horsetail
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Mugwort
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 3
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Seven Herbs
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    herbicide: -1
+    yield_hp: 3
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Root Crops
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 10
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Cucumber
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    hardness_vitality: 5
+    herbicide: -1
+    yield_hp: 5
+  food_bonus: {}
+  found_in: ''
+  name: Maize
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    herbicide: -1
+    taste_strength: 3
+  food_bonus: {}
+  found_in: 'Dragon''s Tunnel
+
+    Bounteous Earth Grotto
+
+    Eggplant Hollow
+
+    Dancing Mushroom Woods
+
+    Hare''s Nest Knoll
+
+    Fruitful Hassok
+
+    Forest of Supplication
+
+    Valley Passage
+
+    Misty Tear Ridge
+
+    Valley of Illusive Water
+
+    Bubbling Sandbar
+
+    Radiant River Gorge
+
+    Lucid Falls'
+  life: 2
+  name: Mushroom
+  price: 1
+  source: 'Bushes
+
+    Foraging'
+  sub_category: ''
+  time_of_day: N/A
+  used_in_recipes: Soup Stock
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 50
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Matsutake
+  price: 30
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 3
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Chestnut
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    yield_hp: 5
+  found_in: ''
+  life: 2
+  name: Ginkgo Nut
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 3
+    herbicide: -1
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Persimmon
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    hardness_vitality: 3
+    pesticide: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Garlic
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    armor_magic: 5
+    pesticide: 5
+  found_in: ''
+  life: 2
+  name: Wasabi
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    pesticide: 5
+    taste_strength: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Ginger
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    aesthetic_luck: 2
+    pesticide: 5
+    stickiness_gusto: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Green Onion
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus:
+    yield_hp: 5
+  food_bonus: {}
+  found_in: ''
+  life: 2
+  name: Plum
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    herbicide: 10
+    immunity: 10
+    pesticide: 10
+    toxicity: 5
+  food_bonus: {}
+  found_in: ''
+  name: Salt
+  price: 3
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    stickiness_gusto: 1
+    toxicity: 1
+  food_bonus: {}
+  found_in: ''
+  name: Sugar
+  price: 6
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    toxicity: -5
+  food_bonus: {}
+  found_in: ''
+  name: Sesame
+  price: 6
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    root_fertilizer: 10
+  found_in: ''
+  name: Kombu Kelp
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: 'Fruitful Hassok
+
+    Gathering Area: Spring'
+  name: Tea
+  price: 1
+  source: 'Bushes
+
+    Foraging'
+  sub_category: ''
+  time_of_day: Any
+  used_in_recipes: Tea
+- category: Ingredients
+  fertilizer_bonus:
+    pesticide: 3
+  food_bonus: {}
+  found_in: ''
+  name: Fish Mint
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Soup Stock
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Miso
+  price: 6
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Soy Sauce
+  price: 6
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Unknown
+  name: Oil
+  price: 5
+  source: Refined from other oils.
+  sub_category: ''
+  time_of_day: Unknown
+  used_in_recipes: Tofu
+- category: Ingredients
+  fertilizer_bonus:
+    leaf_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Vegetable Oil
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: Oil
+- category: Ingredients
+  fertilizer_bonus:
+    leaf_fertilizer: 5
+  food_bonus: {}
+  found_in: ''
+  name: Fish Oil
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: Oil
+- category: Ingredients
+  expirable: true
+  fertilizer_bonus: {}
+  found_in: ''
+  life: 1
+  name: Ice
+  price: 10
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Vinegar
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    yield_hp: 20
+  food_bonus: {}
+  found_in: ''
+  name: Health Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    aesthetic_luck: 10
+    stickiness_gusto: 10
+  food_bonus: {}
+  found_in: ''
+  name: Skill Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    taste_strength: 20
+  food_bonus: {}
+  found_in: ''
+  name: Strength Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    hardness_vitality: 20
+  found_in: ''
+  name: Vitality Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    armor_magic: 20
+  food_bonus: {}
+  found_in: ''
+  name: Magic Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    aesthetic_luck: 20
+  food_bonus: {}
+  found_in: ''
+  name: Luck Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    stickiness_gusto: 20
+  food_bonus: {}
+  found_in: ''
+  name: Fullness Powder
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    yield_hp: 50
+  food_bonus: {}
+  found_in: Bubbling Sandbar
+  name: Health Flakes
+  price: 1
+  source: Chest?
+  sub_category: ''
+  time_of_day: Any
+- category: Ingredients
+  fertilizer_bonus:
+    taste_strength: 50
+  food_bonus: {}
+  found_in: ''
+  name: Strength Flakes
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    hardness_vitality: 50
+  food_bonus: {}
+  found_in: ''
+  name: Vitality Flakes
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    armor_magic: 50
+  food_bonus: {}
+  found_in: ''
+  name: Magic Flakes
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    aesthetic_luck: 50
+  found_in: ''
+  name: Luck Flakes
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    stickiness_gusto: 50
+  food_bonus: {}
+  found_in: ''
+  name: Gusto Flakes
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    aesthetic_luck: 25
+    armor_magic: 25
+    hardness_vitality: 25
+    stickiness_gusto: 25
+    taste_strength: 25
+    yield_hp: 25
+  food_bonus: {}
+  found_in: ''
+  name: Medicinal Base
+  price: 20
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Malt
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    herbicide: 2
+    kernel_fertilizer: 10
+    pesticide: -2
+  food_bonus: {}
+  found_in: N/A
+  name: Rice Bran
+  price: 1
+  source: Hulling Rice
+  sub_category: ''
+  time_of_day: N/A
+  used_in_recipes: N/A
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Processed
+  name: Mochi
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Tofu
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Rice Cake
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Dried ~Auto~
+  price: 1
+  source: ''
+  sub_category: Shiraboshi
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Smoked ~Auto~
+  price: 1
+  source: ''
+  sub_category: Kunsei
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Pickled ~Auto~
+  price: 1
+  source: ''
+  sub_category: Nukazuke
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: ~Auto~ Sushi
+  price: 1
+  source: ''
+  sub_category: Sushi
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: ''
+  name: Cheese
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Dried Herring
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus:
+    swift_recovery: 1
+  found_in: Home
+  name: Dried Boiled Rice
+  price: 1
+  source: Processed
+  sub_category: ''
+  time_of_day: N/A
+  used_in_recipes: Dried Boiled Rice
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus:
+    magic: 5
+    strength: 9
+  found_in: Home
+  name: Dried Salmon
+  price: 1
+  source: 'Processed
+
+    Cooking'
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Dried Taro Stem
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Dried Persimmon
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Pickled Wasabi
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Pickled Dried Plum
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus:
+    toxicity: -5
+  food_bonus: {}
+  found_in: ''
+  name: Spring Water
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Renowned Water
+  price: 1
+  source: ''
+  sub_category: ''
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Home
+  name: Kuchikami Sake
+  price: 1
+  source: Processed
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus: {}
+  found_in: Home
+  name: Doburoku
+  price: 1
+  source: Processed
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  food_bonus:
+    luck: 10
+    magic: 6
+    sommer_magic_buff: 2
+  found_in: 'Processed
+
+    Cooking'
+  name: Amazake
+  price: 1
+  source: N/A
+  sub_category: Sake
+  time_of_day: N/A
+  used_in_recipes: 'Sake Soaked Stir-Fry (Dried Pork)
+
+    Sake Soaked Stir-Fry (Dried Rabbit Meat)'
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Refined Sake
+  price: 1
+  source: ''
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Medicinal Sake
+  price: 1
+  source: ''
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Ginjo Sake
+  price: 1
+  source: ''
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Daiginjo Sake
+  price: 1
+  source: ''
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: ~Auto~ Shochu
+  price: 1
+  source: ''
+  sub_category: SakeSyouchu
+  time_of_day: ''
+  used_in_recipes: ''
+- category: Ingredients
+  fertilizer_bonus: {}
+  found_in: ''
+  name: Beer
+  price: 1
+  source: ''
+  sub_category: Sake
+  time_of_day: ''
+  used_in_recipes: ''

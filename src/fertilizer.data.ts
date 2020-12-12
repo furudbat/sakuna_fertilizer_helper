@@ -46,7 +46,7 @@ export class FertilizerData {
     }
 
     get kernel_fertilizer() {
-        return clamp(this._leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+        return clamp(this._kernel_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
     }
     set kernel_fertilizer(value: number) {
         this._kernel_fertilizer = value;
@@ -63,7 +63,7 @@ export class FertilizerData {
     }
 
     get root_fertilizer() {
-        return clamp(this._leaf_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
+        return clamp(this._root_fertilizer, MIN_FERTILIZER, MAX_FERTILIZER);
     }
     set root_fertilizer(value: number) {
         this._root_fertilizer = value;

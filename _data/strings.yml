@@ -168,7 +168,7 @@ guide:
       title: Balanced (Circle)
       description: Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
     1_1_placements: >-
-      Stand at the <span class="text-placements-1-1-color"><i class="fas fa-circle"></i></span> for <strong>1x1</strong> placements.
+      Stand at the <span class="text-placements-1-1-color"><i class="fas fa-plus"></i></span> for <strong>1x1</strong> placements.
     2_1_placements: >-
       Stand at the <span class="text-placements-2-1-color"><i class="fas fa-heart"></i></span> for <strong>2x1</strong> placements.<br />
       <small>("Two by Two Planting"-Skill)</small>
@@ -182,7 +182,7 @@ guide:
       Stand at the <span class="text-placements-4-4-color"><i class="fas fa-star"></i></span> for <strong>4x4</strong> placements.<br /> 
       <small>("Four Corner Planting"-Skill)</small>
     circle_placements: >-
-      Stand at the <span class="text-placements-circle-color"><i class="fas fa-circle"></i></span> for <strong>circle</strong> placements.<br /> 
+      Stand at the <span class="text-placements-circle-color"><i class="fas fa-plus"></i></span> for <strong>circle</strong> placements.<br /> 
       <small>("Well Rounded Planting"-Skill)</small>
 fertilizer_helper:
   title: Fertilizer Helper
