@@ -7,29 +7,21 @@ Select a build from the Farming Guide.
 You can add Items into the Inventory from the Items-List, then add Items to the fertilizer.
 Manage the Inventory list how ever you want, Items only you have in your games inventory, items you only want to use in fertilizer, etc.
 In "Recommended" (Items) you find Items for your current build like boosting yield (HP), Aroma (Magic) or Heartiness.
-## What this site is not
- * making THE best fertilizer
- * helping you with Diseases
 
-# Features
-  * Farming Guide
-    - Balanced-, Yield-, Heartiness-, Aesthetic- and Aroma-Harvest with Seasons
-    - Planting space
- * Fertilizer Mixer
-   - shows additional Stats and Item-Effects
-   - show "Recommended" Items
-   - show "Expirable" Items
- * Item List
+## Features
 
-## Missing Features
- * Use more then one amount of Item (hard to find out scalability of item effect)
- * Item Icons
- * Food and Cooking ?
- * Website theming ?
+* Farming Guide
+  * Balanced-, Yield-, Heartiness-, Aesthetic- and Aroma-Harvest with Seasons
+  * Planting space
+* Fertilizer Mixer
+  * shows additional Stats and Item-Effects
+  * show "Recommended" Items
+  * show "Expirable" Items
+* Item List
 
 ## Run
 
-Well to just run this project on your local machine, you need [Jekyll](https://jekyllrb.com/) and run `bundle exec jekyll serve`.  
+You need [Jekyll](https://jekyllrb.com/) and to run this project on your local machine run `bundle exec jekyll serve`.  
 
 
 ## Requirements (for development)
@@ -44,9 +36,8 @@ run `npm install`
 
 ## Build
 
-run `npm run build` (for production code) or `npm run build-dev` (for development code), when you are running `bundle exec jekyll serve` its uses development code.  
-
-or just run `./build.sh`
+Run `npm run build` (for production code) or `npm run build-dev` (for development code).  
+You can als run `bundle exec jekyll serve` for development or just run `./build.sh`
 
 
 
@@ -63,4 +54,4 @@ A [Bootstrap 4](https://getbootstrap.com/) start up project for [Github Pages](h
 
 ## License
 
-[See the license file.](./LICENSE.md)
+[See the license file.](./LICENSE)
