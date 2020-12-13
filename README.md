@@ -60,4 +60,4 @@ A [Bootstrap 4](https://getbootstrap.com/) start up project for [Github Pages](h
 
 ## License
 
-[See the license file.](./LICENSE.md)
+[See the license file.](./LICENSE)
