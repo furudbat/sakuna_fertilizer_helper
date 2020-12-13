@@ -155,7 +155,7 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a class="nav-link active" id="nav-inventory-tab" data-toggle="tab" href="#nav-inventory" role="tab" aria-controls="nav-inventory" aria-selected="true">{{ site.data.strings.fertilizer_helper.inventory.additional_components.title }}</a>
                         <a class="nav-link" id="nav-recommended-components-tab" data-toggle="tab" href="#nav-recommended-components" role="tab" aria-controls="nav-recommended-components" aria-selected="false">{{ site.data.strings.fertilizer_helper.inventory.recommended.title }}</a>
-                        <a class="nav-link" id="nav-expirable-components-tab" data-toggle="tab" href="#nav-expirable-components" role="tab" aria-controls="nav-expirable-components" aria-selected="false">{{ site.data.strings.fertilizer_helper.inventory.expirable.title }}</a>
+                        <a class="nav-link" id="nav-expiable-components-tab" data-toggle="tab" href="#nav-expiable-components" role="tab" aria-controls="nav-expiable-components" aria-selected="false">{{ site.data.strings.fertilizer_helper.inventory.expiable.title }}</a>
                     </div>
                 </nav>
             </div>
@@ -171,9 +171,9 @@
                             {% include inventory-itemlist-table.html id="tblInventoryRecommended" %}
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-expirable-components" role="tabpanel" aria-labelledby="nav-expirable-components-tab">
+                    <div class="tab-pane fade" id="nav-expiable-components" role="tabpanel" aria-labelledby="nav-expiable-components-tab">
                         <div class="row no-gutters">
-                            {% include inventory-itemlist-table.html id="tblInventoryExpirables" %}
+                            {% include inventory-itemlist-table.html id="tblInventoryexpiables" %}
                         </div>
                     </div>
                 </div>

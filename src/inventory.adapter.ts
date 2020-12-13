@@ -125,7 +125,7 @@ export class InventoryAdapter {
                     }
                     break;
                 case 6:
-                    if (rowData.expirable) {
+                    if (rowData.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -204,7 +204,7 @@ export class InventoryAdapter {
 
                             const toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
 
-                            const collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
+                            const collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
 
                             const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0) ? 'd-none' : 0;
                             const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0) ? 'd-none' : 0;
@@ -325,14 +325,14 @@ export class InventoryAdapter {
                     data: null,
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            if (row.expirable) {
+                            if (row.expiable) {
                                 return '<i class="fas fa-skull"></i>';
                             }
 
                             return '<i class="fas fa-infinity"></i>';
                         }
 
-                        return (row.expirable) ? true : false;
+                        return (row.expiable) ? true : false;
                     }
                 }
             ]

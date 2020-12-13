@@ -11,9 +11,8 @@ $heartiness-color: #db963c !default;
 $aesthetic-color: #db3c3c !default;
 $aroma-color: #9b3cdb !default;
 
-$placements-1-1-color: red !default;
-$placements-2-1-color: turquoise !default;
-$placements-4-4-color: springgreen !default;
-$placements-1-3-color: orange !default;
-$placements-2-2-color: skyblue !default;
-$placements-circle-color: violet !default;
+$placements-1-1-color: $spring-color !default;
+$placements-2-1-color: $summer-color !default;
+$placements-1-3-color: $autumn-color !default;
+$placements-2-2-color: $winter-color !default;
+$placements-circle-color: $spring-color !default;

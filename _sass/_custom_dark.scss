@@ -9,3 +9,9 @@
 .card-body {
     color: $body-color;
 }
+
+.card-header {
+    .btn-link {
+        color: darken($link-color, 25%)
+    }
+}

@@ -53,7 +53,7 @@ export class FertilizerAdapter {
                 that._soilNutrientsChart?.update();
 
                 const yield_hp = render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
-                const taste_strength = render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_yield_hp_overflow);
+                const taste_strength = render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_taste_strength_overflow);
                 const hardness_vitality = render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
                 const stickiness_gusto = render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
                 const aesthetic_luck = render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);

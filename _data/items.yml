@@ -633,7 +633,7 @@
   sub_category: Material
   time_of_day: ''
   used_in_recipes: []
-- category: Materials
+- category: Materials/Misc
   description: This is a throwing needle of the Ashigumo tribe, who you mercifully
     defeated. Even now, it holdsa lingering manifestation of their loyal spirits.
   fertilizer_bonus: {}
@@ -835,7 +835,7 @@
 - category: Ingredients
   description: These fish can be found in nearly every river in Yanato.Flavor notwithstanding,
     they certainly fill you up.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     stickiness_gusto: 3
   food_bonus:
@@ -851,7 +851,7 @@
 - category: Ingredients
   description: It is rare indeed to see these fish come all the way downfrom the northern
     sea. The delectable fat of their meatis certain to increase your spiritual abilities.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     kernel_fertilizer: 5
     leaf_fertilizer: 10
@@ -870,7 +870,7 @@
 - category: Materials/Ingredients
   description: A hard-shelled bird egg. Not only will it expand yourcooking repertoire,
     but I have heard that it has manyhealth benefits as well.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     pesticide: -1
     stickiness_gusto: 2
@@ -890,7 +890,7 @@
 - category: Ingredients
   description: While this pest may feast on our ears of rice,as an ingredient it imparts
     vitality to dishes.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
   food_bonus:
@@ -908,7 +908,7 @@
 - category: Ingredients
   description: This insect is prized for its health and vitalityboosting properties.
     As for its appearance...Well, one can get used to anything, I suppose.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     hardness_vitality: 2
     yield_hp: 3
@@ -1025,7 +1025,7 @@
   description: A fern that is immensely bitter and frequently growsin the wilds of
     nearby settlements. Its acute flavormay give you the capacity to perform additional
     skills.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
   food_bonus:
@@ -1042,7 +1042,7 @@
   description: Burdock, carrots, radishes, and the like are all delectableand abounding
     in nutrients. Whether or not you enjoy theirtaste, eating them will certainly
     make you more healthy.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     herbicide: -1
     yield_hp: 3
@@ -1060,7 +1060,7 @@
   description: My word... This mushroom is known to be exceedingly rare!You must boast
     incredibly good fortune to have found it.Maybe eating it will bring even more
     luck into your life.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     aesthetic_luck: 50
     herbicide: -1
@@ -1077,7 +1077,7 @@
 - category: Ingredients
   description: These nuts come from the seeds of ginkgo trees. The femaletrees produce
     ovules said to bestow health and long life.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     yield_hp: 5
   food_bonus:
@@ -1093,7 +1093,7 @@
 - category: Ingredients
   description: A wild plant that packs quite a punch. Its vigorous flavordoes wonders
     for your vitality...less so for your breath.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     hardness_vitality: 3
     pesticide: 5
@@ -1111,7 +1111,7 @@
   description: This wild plant frequently grows by clear streams and isused as a seasoning.
     Its excessive spiciness will clear outyour sinuses and get your spiritual powers
     pumping.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     armor_magic: 5
     pesticide: 5
@@ -1129,7 +1129,7 @@
   description: A root that has long been used both to stifle stenchesand season suppers.
     Guaranteed to warm you up, bolsteryour strength, and boost your capacity for using
     skills.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     pesticide: 5
     taste_strength: 5
@@ -1148,7 +1148,7 @@
   description: Eaten raw, it is spicy and crisp, but cooking it willbring out its
     inner sweetness. It also has medicinal uses,and is even known to raise one's skilfulness
     in battle.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     aesthetic_luck: 2
     pesticide: 5
@@ -1167,7 +1167,7 @@
   description: The hint of sweetness hidden within its acutely sour tasteis like a
     metaphor for raising children. Unlike parenthood,eating it may also prove to be
     beneficial to your health.
-  expirable: true
+  expiable: true
   fertilizer_bonus:
     yield_hp: 5
   food_bonus:
@@ -1241,7 +1241,10 @@
 - category: Materials/Ingredients
   description: A drink made by pouring boiling water over driedtea leaves. No matter
     what flavor of tea is used,it always enhances the taste of any meal.
-  fertilizer_bonus: {}
+  fertilizer_bonus: 
+    leaf_fertilizer: 5
+    pesticide: 1
+    herbicide: 1
   food_bonus:
     luck: 2
   found_in:
@@ -1348,7 +1351,7 @@
 - category: Ingredients
   description: Renowned water that has been frozen in some frigid place.It keeps foodstuffs
     cool and prevents them from rotting...until it melts, that is.
-  expirable: true
+  expiable: true
   fertilizer_bonus: {}
   food_bonus: {}
   found_in: []

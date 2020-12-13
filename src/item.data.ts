@@ -52,6 +52,6 @@ interface ItemData {
     fertilizer_bonus: FertilizerBonusData;
     food_bonus: FoodBonusData;
     used_in_recipes: string[];
-    expirable?: boolean;
+    expiable?: boolean;
     life?: number;
 }

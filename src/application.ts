@@ -16,12 +16,12 @@ export class Application {
 
     private _appData: ApplicationData = new ApplicationData();
     private _recommendedInventory = new Inventory();
-    private _expirablesInventory = new Inventory();
+    private _expiablesInventory = new Inventory();
     private _fertilizerAdapter?: FertilizerAdapter;
     private _fertilizeComponentsAdapter?: FertilizeComponentsAdapter;
     private _inventoryAdapter?: InventoryAdapter;
     private _recommendedInventoryAdapter?: InventoryAdapter;
-    private _expirablesInventoryAdapter?: InventoryAdapter;
+    private _expiablesInventoryAdapter?: InventoryAdapter;
     private _itemList?: DataTables.Api;
 
     private log = LoggerManager.create('Application');
@@ -64,7 +64,7 @@ export class Application {
         this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
         this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
-        this._expirablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory, { can_remove_from_inventory: false });
+        this._expiablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryexpiables', this._expiablesInventory, { can_remove_from_inventory: false });
 
         this.initItemList();
         this.initSettings();
@@ -142,7 +142,7 @@ export class Application {
 
     private initInventory() {
         this._inventoryAdapter?.init();
-        this._expirablesInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
+        this._expiablesInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
         this._recommendedInventoryAdapter?.init([], [0, 1, 2, 3, 4, 5, 6], false);
     }
 
@@ -241,19 +241,19 @@ export class Application {
 
             return true;
         });
-        let expirables_inventory_items = inventory_items.filter(it => it.expirable);
+        let expiables_inventory_items = inventory_items.filter(it => it.expiable);
         let recommended_inventory_items = inventory_items;
 
-        expirables_inventory_items = this.sortRecommendedItems(fertilizer, expirables_inventory_items);
+        expiables_inventory_items = this.sortRecommendedItems(fertilizer, expiables_inventory_items);
         recommended_inventory_items = this.sortRecommendedItems(fertilizer, recommended_inventory_items, true);
 
         //this.log.debug('updateRecommendedItems', { no_negative_effect: this._fertilizer.no_negative_effect, recommended_inventory_items });
 
         this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
-        this._expirablesInventory.items = expirables_inventory_items;
+        this._expiablesInventory.items = expiables_inventory_items;
     }
 
-    private sortRecommendedItems(fertilizer: FertilizerData, items: ItemInventoryData[], expirable: boolean = false): ItemInventoryData[] {
+    private sortRecommendedItems(fertilizer: FertilizerData, items: ItemInventoryData[], expiable: boolean = false): ItemInventoryData[] {
         const get_leaf_fertilizer = (item: ItemInventoryData) => (item.fertilizer_bonus.leaf_fertilizer) ? item.fertilizer_bonus.leaf_fertilizer : 0;
         const get_kernel_fertilizer = (item: ItemInventoryData) => (item.fertilizer_bonus.kernel_fertilizer) ? item.fertilizer_bonus.kernel_fertilizer : 0;
         const get_root_fertilizer = (item: ItemInventoryData) => (item.fertilizer_bonus.root_fertilizer) ? item.fertilizer_bonus.root_fertilizer : 0;
@@ -297,7 +297,7 @@ export class Application {
 
             item.points_fertilizer.toxicity = (item.fertilizer_bonus.toxicity) ? -item.fertilizer_bonus.toxicity : 0;
 
-            item.points = that.calcOrderItemPoints(fertilizer, item, expirable);
+            item.points = that.calcOrderItemPoints(fertilizer, item, expiable);
 
             //that.log.debug('sortRecommendedItems', { points: item.points, points_fertilizer: item.points_fertilizer, item: item });
 
@@ -305,10 +305,10 @@ export class Application {
         }).sort((a: RecommendedItemInventoryData, b: RecommendedItemInventoryData) => b.points - a.points).map(it => it as ItemInventoryData);
     }
 
-    private calcOrderItemPoints(fertilizer: FertilizerData, item: RecommendedItemInventoryData, expirable: boolean = false) {
+    private calcOrderItemPoints(fertilizer: FertilizerData, item: RecommendedItemInventoryData, expiable: boolean = false) {
         let ret = 0;
 
-        ret += (expirable && item.expirable) ? 1 : 0;
+        ret += (expiable && item.expiable) ? 1 : 0;
 
         const calcPointsFer = (points_fertilizer: number, current_fertilizer: number, max_or_overflow: boolean, invert_value: boolean = false) => {
             current_fertilizer = current_fertilizer * ((invert_value) ? -1 : 1);

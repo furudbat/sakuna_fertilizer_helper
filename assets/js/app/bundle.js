@@ -55383,7 +55383,7 @@ var ApplicationData = (function () {
         this._settings = new Observer_1.DataSubject(new Settings());
         this._inventory = new inventory_1.Inventory();
         this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
-        this._theme = Theme.Light;
+        this._theme = Theme.Dark;
         this._storeSession = localforage_1.default.createInstance({
             name: "session"
         });
@@ -55615,7 +55615,7 @@ var Application = (function () {
     function Application() {
         this._appData = new application_data_1.ApplicationData();
         this._recommendedInventory = new inventory_1.Inventory();
-        this._expirablesInventory = new inventory_1.Inventory();
+        this._expiablesInventory = new inventory_1.Inventory();
         this.log = loggerManager_1.LoggerManager.create('Application');
     }
     Application.prototype.init = function () {
@@ -55652,7 +55652,7 @@ var Application = (function () {
         this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
         this._recommendedInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
-        this._expirablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryExpirables', this._expirablesInventory, { can_remove_from_inventory: false });
+        this._expiablesInventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryexpiables', this._expiablesInventory, { can_remove_from_inventory: false });
         this.initItemList();
         this.initSettings();
         this.initInventory();
@@ -55720,7 +55720,7 @@ var Application = (function () {
     Application.prototype.initInventory = function () {
         var _a, _b, _c;
         (_a = this._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.init();
-        (_b = this._expirablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6], false);
+        (_b = this._expiablesInventoryAdapter) === null || _b === void 0 ? void 0 : _b.init([], [0, 1, 2, 3, 4, 5, 6], false);
         (_c = this._recommendedInventoryAdapter) === null || _c === void 0 ? void 0 : _c.init([], [0, 1, 2, 3, 4, 5, 6], false);
     };
     Application.prototype.initObservers = function () {
@@ -55831,15 +55831,15 @@ var Application = (function () {
             }
             return true;
         });
-        var expirables_inventory_items = inventory_items.filter(function (it) { return it.expirable; });
+        var expiables_inventory_items = inventory_items.filter(function (it) { return it.expiable; });
         var recommended_inventory_items = inventory_items;
-        expirables_inventory_items = this.sortRecommendedItems(fertilizer, expirables_inventory_items);
+        expiables_inventory_items = this.sortRecommendedItems(fertilizer, expiables_inventory_items);
         recommended_inventory_items = this.sortRecommendedItems(fertilizer, recommended_inventory_items, true);
         this._recommendedInventory.items = recommended_inventory_items.slice(0, MAX_SHOW_RECOMMENDED_ITEMS);
-        this._expirablesInventory.items = expirables_inventory_items;
+        this._expiablesInventory.items = expiables_inventory_items;
     };
-    Application.prototype.sortRecommendedItems = function (fertilizer, items, expirable) {
-        if (expirable === void 0) { expirable = false; }
+    Application.prototype.sortRecommendedItems = function (fertilizer, items, expiable) {
+        if (expiable === void 0) { expiable = false; }
         var get_leaf_fertilizer = function (item) { return (item.fertilizer_bonus.leaf_fertilizer) ? item.fertilizer_bonus.leaf_fertilizer : 0; };
         var get_kernel_fertilizer = function (item) { return (item.fertilizer_bonus.kernel_fertilizer) ? item.fertilizer_bonus.kernel_fertilizer : 0; };
         var get_root_fertilizer = function (item) { return (item.fertilizer_bonus.root_fertilizer) ? item.fertilizer_bonus.root_fertilizer : 0; };
@@ -55876,14 +55876,14 @@ var Application = (function () {
             item.points_fertilizer.pesticide = (item.fertilizer_bonus.pesticide) ? item.fertilizer_bonus.pesticide : 0;
             item.points_fertilizer.herbicide = (item.fertilizer_bonus.herbicide) ? item.fertilizer_bonus.herbicide : 0;
             item.points_fertilizer.toxicity = (item.fertilizer_bonus.toxicity) ? -item.fertilizer_bonus.toxicity : 0;
-            item.points = that.calcOrderItemPoints(fertilizer, item, expirable);
+            item.points = that.calcOrderItemPoints(fertilizer, item, expiable);
             return item;
         }).sort(function (a, b) { return b.points - a.points; }).map(function (it) { return it; });
     };
-    Application.prototype.calcOrderItemPoints = function (fertilizer, item, expirable) {
-        if (expirable === void 0) { expirable = false; }
+    Application.prototype.calcOrderItemPoints = function (fertilizer, item, expiable) {
+        if (expiable === void 0) { expiable = false; }
         var ret = 0;
-        ret += (expirable && item.expirable) ? 1 : 0;
+        ret += (expiable && item.expiable) ? 1 : 0;
         var calcPointsFer = function (points_fertilizer, current_fertilizer, max_or_overflow, invert_value) {
             if (invert_value === void 0) { invert_value = false; }
             current_fertilizer = current_fertilizer * ((invert_value) ? -1 : 1);
@@ -56367,7 +56367,7 @@ var FertilizerAdapter = (function () {
                 that.updateSoilNutrientsChartRootFertilizer();
                 (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.update();
                 var yield_hp = inventory_adapter_1.render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
-                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_yield_hp_overflow);
+                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_taste_strength_overflow);
                 var hardness_vitality = inventory_adapter_1.render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
                 var stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
                 var aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
@@ -57330,7 +57330,7 @@ var InventoryAdapter = (function () {
                     }
                     break;
                 case 6:
-                    if (rowData.expirable) {
+                    if (rowData.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -57377,17 +57377,17 @@ var InventoryAdapter = (function () {
                             if (row.fertilizer_bonus.leaf_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
                                 var sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer + "</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.leaf_fertilizer + "\n                                </p>";
+                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer + "</strong> \n                                    " + sign + row.fertilizer_bonus.leaf_fertilizer + "\n                                </p>";
                             }
                             if (row.fertilizer_bonus.kernel_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
                                 var sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer + "</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.kernel_fertilizer + "\n                                </p>";
+                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer + "</strong> \n                                    " + sign + row.fertilizer_bonus.kernel_fertilizer + "\n                                </p>";
                             }
                             if (row.fertilizer_bonus.root_fertilizer) {
                                 var text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
                                 var sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer + "</strong> \n                                    " + sign + "\n                                    " + row.fertilizer_bonus.root_fertilizer + "\n                                </p>";
+                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer + "</strong> \n                                    " + sign + row.fertilizer_bonus.root_fertilizer + "\n                                </p>";
                             }
                             var yield_hp = render_buff_bonus_html(row.fertilizer_bonus.yield_hp, false);
                             var taste_strength = render_buff_bonus_html(row.fertilizer_bonus.taste_strength, false);
@@ -57399,7 +57399,7 @@ var InventoryAdapter = (function () {
                             var pesticide = render_buff_bonus_html(row.fertilizer_bonus.pesticide, false);
                             var herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
                             var toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
-                            var collapse_id = 'collapseInventory' + data.replace(' ', '-').replace('.', '-');
+                            var collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
                             var show_yield_hp = (((_a = row.fertilizer_bonus.yield_hp) !== null && _a !== void 0 ? _a : 0) === 0) ? 'd-none' : 0;
                             var show_taste_strength = (((_b = row.fertilizer_bonus.taste_strength) !== null && _b !== void 0 ? _b : 0) === 0) ? 'd-none' : 0;
                             var show_hardness_vitality = (((_c = row.fertilizer_bonus.hardness_vitality) !== null && _c !== void 0 ? _c : 0) === 0) ? 'd-none' : 0;
@@ -57439,12 +57439,12 @@ var InventoryAdapter = (function () {
                     data: null,
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            if (row.expirable) {
+                            if (row.expiable) {
                                 return '<i class="fas fa-skull"></i>';
                             }
                             return '<i class="fas fa-infinity"></i>';
                         }
-                        return (row.expirable) ? true : false;
+                        return (row.expiable) ? true : false;
                     }
                 }
             ]

@@ -18,7 +18,7 @@ table:
 
     col_toxicity: Toxi.
 
-    col_expirable: Exp.
+    col_expiable: Exp.
   inventory:
     col_add_to_fertilizer: Inv.
     col_name: Name
@@ -29,7 +29,7 @@ table:
 
     col_toxicity: Tox.
 
-    col_expirable: Ex.
+    col_expiable: Ex.
 guide:
   title: Farming Guide
   balanced: Balanced
@@ -168,21 +168,18 @@ guide:
       title: Balanced (Circle)
       description: Fast way to plant seedling balanced, when placed well, but leave one square space in the center.
     1_1_placements: >-
-      Stand at the <span class="text-placements-1-1-color"><i class="fas fa-plus"></i></span> for <strong>1x1</strong> placements.
+      Stand at the <span class="text-placements-1-1-color">minus</i></span> for <strong>1x1</strong> the placements.
     2_1_placements: >-
-      Stand at the <span class="text-placements-2-1-color"><i class="fas fa-heart"></i></span> for <strong>2x1</strong> placements.<br />
+      Stand at the <span class="text-placements-2-1-color">cross</span> for <strong>2x1</strong> the placements.<br />
       <small>("Two by Two Planting"-Skill)</small>
     1_3_placements: >-
-      Stand at the <span class="text-placements-1-3-color"><i class="fas fa-minus"></i></span> for <strong>1x3</strong> placements.<br /> 
+      Stand at the <span class="text-placements-1-3-color">waves</span> for <strong>1x3</strong> the placements.<br /> 
       <small>("Three in a Row Planting"-Skill)</small>
     2_2_placements: >-
-      Stand at the <span class="text-placements-2-2-color"><i class="fas fa-times"></i></span> for <strong>2x2</strong> placements.<br /> 
-      <small>("Two by Two Planting"-Skill)</small>
-    4_4_placements: >-
-      Stand at the <span class="text-placements-4-4-color"><i class="fas fa-star"></i></span> for <strong>4x4</strong> placements.<br /> 
+      Stand at the <span class="text-placements-2-2-color">V</span> for <strong>2x2</strong> the placements.<br /> 
       <small>("Four Corner Planting"-Skill)</small>
     circle_placements: >-
-      Stand at the <span class="text-placements-circle-color"><i class="fas fa-plus"></i></span> for <strong>circle</strong> placements.<br /> 
+      Stand at the <span class="text-placements-circle-color">minus</span> for <strong>circle</strong> placements.<br /> 
       <small>("Well Rounded Planting"-Skill)</small>
 fertilizer_helper:
   title: Fertilizer Helper
@@ -232,8 +229,8 @@ fertilizer_helper:
       title: Additional Components (Inventory)
     recommended:
       title: Recommended
-    expirable:
-      title: Expirable
+    expiable:
+      title: Expiable
     remove_from_inventory: Remove from Inv.
     stats:
       leaf_fertilizer: 'L:'
@@ -256,7 +253,7 @@ fertilizer_helper:
     state_overflow: >-
       <span class="text-warning">* reach max value, you don't need to add more items for this stat to boost</span>
 item_list:
-  title: Items-List
+  title: Item-List
 goto: go to
 footer: >-
   I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

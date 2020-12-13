@@ -16,7 +16,7 @@
 title: Tauemons Lost Fertilizer Scrolls
 email: "hircreacc@gmail.com"
 description: >- # this means to ignore newlines until "baseurl:"
-  Sakuna: Of Rice and Ruin Fertilizer Helper, Farming Guide and Items-List
+  Sakuna: Of Rice and Ruin Fertilizer Helper, Farming Guide and Item-List
 short_description: >-
   Sakuna: Of Rice and Ruin Fertilizer Helper
 baseurl: "/sakuna_fertilizer_helper" # the subpath of your site, e.g. /blog
@@ -25,6 +25,7 @@ twitter_username: furudbat
 github_username:  furudbat
 author: FurudBat
 github_link: "https://github.com/furudbat/sakuna_fertilizer_helper"
+theme: jekyll-theme-midnight
 
 # Build settings
 plugins:
