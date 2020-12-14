@@ -2,7 +2,8 @@ Food.csv
 Material.csv
 Cooking.csv
 Enchant.csv
-Enchant.bak.csv
-Food.bak.csv
-Material.bak.csv
-Cooking.bak.csv
+
+Enchant.*.csv
+Food.*.csv
+Material.*.csv
+Cooking.*.csv

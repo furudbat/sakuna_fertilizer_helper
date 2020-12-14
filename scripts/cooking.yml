@@ -1,101 +1,133 @@
-- Code: EatTypeStaple_Genmaimeshi
-  category: Food
+- category: Food
   description: Firm and fragrant brown rice, boiled to perfection.Eat up before it
     gets cold.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     hp: 5
     sp: 1
     strength: 8
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Cooked Brown Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_BuzukiMeshi
-  category: Food
+- category: Food
   description: This mixed rice is boiled to perfection.Every bite is rich in flavor
     and nutrients.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     hp: 5
     strength: 3
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Cooked Mixed Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_Shiromeshi
-  category: Food
+- category: Food
   description: White rice boiled to perfection. Each glisteninggrain is your reward
     for months of painstaking toil.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Cooked White Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_Kowameshi
-  category: Food
+- category: Food
   description: White rice that has been steamed with sake,amplifying its natural sweetness.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     magic: 2
     strength: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
   ingredients_or: []
   name: Steamed Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_SansaiKowameshi
-  category: Food
+- category: Food
   description: Rice that has been steamed with sake and mixedwith wild vegetables.
     The rustic, crispy crunchof this dish will make one's heart sing.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     sp: 4
     strength: 5
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  - amount: 2
     name: Warabi
   ingredients_or: []
   name: Sansai Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_KuriKowameshi
-  category: Food
+- category: Food
   description: Rice that has been steamed with sake and mixed withchestnuts. The steaming
     enhances the chestnuts'natural sweetness to create a dish for any palate.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     magic: 4
     strength: 5
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  - amount: 2
     name: Chestnut
   ingredients_or: []
   name: Chestnut Rice
@@ -103,22 +135,37 @@
     luck: 3
     strength: 2
   season_buff: Autumn
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_GinnanKowameshi
-  category: Food
+- category: Food
   description: Rice that has been steamed with sake and mixed withginkgo nuts. Savor
     the ingredient's enhanced flavor.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     hp: 4
     strength: 5
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  - amount: 2
     name: Ginkgo Nut
   ingredients_or: []
   name: Ginkgo Rice
@@ -126,51 +173,43 @@
     hp: 3
     strength: 2
   season_buff: Autumn
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_Yakimeshi
-  category: Food
+- category: Food
   description: Boiled rice that has been fried in a splashof soy sauce. Both its fragrance
     and textureare simply irresistable.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     vitality: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Oil
   ingredients_or: []
   name: Fried Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_Sekihan
-  category: Food
+- category: Food
   description: Red rice that has been steamed in a vat.A fascinating blend of salty
     and sweetthat calls to mind a celebratory mood.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     luck: 4
     magic: 6
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Bean
-  - amount: 3
+  - amount: 2
     name: Salt
+  - amount: 1
+    name: Sesame
   ingredients_or: []
   name: Sekihan
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: RiceStaple_GokokumMeshi
-  category: Food
+- category: Food
   description: Five types of rice that have been mixed and steamedtogether. A highly
     nutritious meal, its five colorsguarantee ever-changing flavor with every bite.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
@@ -179,61 +218,67 @@
     sp: 3
     strength: 3
     vitality: 3
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Foxtail Millet
+  - amount: 1
+    name: Sanwa Millet
+  - amount: 1
+    name: Bean
   ingredients_or: []
   name: Mixed Grain Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
 - &id001
-  Code: SoupStaple_Chazuke
   category: Food
-  description: White rice soaked in tea and sprinkled withsoy sauce. Silky smooth
-    for easy digestion,with an irresistably invigorating aftertaste.
-  fertilizer_bonus: {}
+  description: A meal made of cooked Sanwa Millet.Satisfying, but it doesn't compareto
+    the piquant taste of rice.
   food_bonus:
-    enchant: []
-    fullness: 10
-    hp: 2
-    sp: 2
-  found_in: []
-  ingredients_and: []
-  ingredients_or: []
-  name: ~SourceMain~ Chazuke
-  source: []
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 5
+  name: Cooked Sanwa Millet
   time_of_day: ''
-  used_in_recipes: []
 - *id001
-- Code: RiceStaple_HoshiIi
-  category: Food
+- category: Food
   description: Dried cooked rice that has been rehydratedwith boiling water. It has
     a rather lightflavor, similar to porridge.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Swift Recovery
     fullness: 5
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Dried Boiled Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupStaple_NanakusaKayu
+- &id002
   category: Food
+  description: A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making
+    ita perfect meal for the bedridden.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 5
+    sp: 2
+  ingredients_and: []
+  ingredients_or: []
+  name: Sanwa Millet Porridge
+  time_of_day: ''
+- *id002
+- *id002
+- category: Food
   description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
     heralds the arrival of spring.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 5
     luck: 10
     sp: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Salt
   ingredients_or: []
   name: Seven Herb Porridge
   season_bonus:
@@ -241,15 +286,51 @@
     luck: 5
     sp: 1
   season_buff: Spring
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- *id001
-- Code: SoupStaple_SakeChazuke
+- &id003
   category: Food
+  description: A meal made of Sanwa Millet boiledwith rice. It is bound to warm youto
+    the core on chilly evenings.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 10
+    sp: 2
+  ingredients_and:
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Vegetables
+  ingredients_or: []
+  name: Sanwa Millet Zosui
+  time_of_day: ''
+- *id003
+- *id003
+- &id004
+  category: Food
+  description: White rice soaked in tea and sprinkled withsoy sauce. Silky smooth
+    for easy digestion,with an irresistably invigorating aftertaste.
+  food_bonus:
+    enchant: []
+    fullness: 10
+    hp: 2
+    sp: 2
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Soy Sauce
+  ingredients_or: []
+  name: Sanwa Millet Chazuke
+  time_of_day: ''
+- *id004
+- *id004
+- category: Food
   description: Chazuke bedecked with mouth-wateringly good,bite-sized pieces of savory
     salted salmon.A match made in the Lofty Realm!
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 10
@@ -259,18 +340,19 @@
     sp: 2
     strength: 4
     vitality: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Salmon
   ingredients_or: []
   name: Salmon Chazuke
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupStaple_MatsutakeChazuke
-  category: Food
+- category: Food
   description: Chazuke garnished with matsutake mushrooms,which are a rare delicacy
     on Hinoe Island.How decadent! What lies beyond this luxury?
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 10
@@ -280,141 +362,218 @@
     sp: 2
     strength: 2
     vitality: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Matsutake
   ingredients_or: []
   name: Matsutake Chazuke
   season_bonus:
     luck: 10
   season_buff: Autumn
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupStaple_Aburimochi
-  category: Food
+- category: Food
   description: Enticingly aromatic, puffy mochi that has beentoasted over a fire.
     You may be tempted to digright in, but do be careful! It's quite hot.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Natural Healing
     fullness: 30
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Aburi Mochi
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- &id002
-  Code: SoftMainDish_Tenpura
+- &id005
   category: Food
-  description: Maize covered in egg and wheat flour,then deep fried. I am told that
-    this techniqueoriginally came from some western country.
-  fertilizer_bonus: {}
+  description: Top a bowl of rice with a bit of sauce and someSalmon to create a truly
+    delectable meal!Yanato's culinary ingenuity never ceases to amaze.
   food_bonus:
-    enchant:
-    - level: 2
-      name: Natural Healing
-    luck: 8
-    strength: 6
-    vitality: 4
-  found_in: []
+    enchant: []
+    fullness: 10
+    sp: 2
   ingredients_and:
-  - amount: 4
-    name: Oil
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Sugar
+  - amount: 3
+    name: Grain
   ingredients_or: []
-  name: ~SourceMain~ Tempura
-  source: []
+  name: Salmon Bowl
   time_of_day: ''
-  used_in_recipes: []
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- Code: RiceStaple_KamotamaDon
-  category: Food
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- category: Food
   description: Grilled duck meat and fluffy eggs atop a bowl ofrice. The delectably
     fatty meat fuses with the eggsto deliver its lucky devourer to taste nirvana.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 10
     sp: 6
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Sugar
+  - amount: 2
     name: Duck Meat
-  - amount: 4
-    name: White Rice
-  - amount: 4
-    name: Brown Rice
-  - amount: 4
-    name: Mixed Rice
-  - amount: 4
-    name: Bean Rice
-  - amount: 4
-    name: Foxtail Millet
-  - amount: 4
-    name: Buckwheat
+  - amount: 1
+    name: Egg
+  - amount: 3
+    name: Grain
   ingredients_or: []
   name: Duck Egg Bowl
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- *id002
-- Code: RiceStaple_Udon
+- &id006
   category: Food
+  description: Maize tempura atop a bowl of rice,with a heaping helping of salty-sweet
+    sauce.I could eat this for eternity.
+  food_bonus:
+    enchant: []
+    fullness: 20
+    hp: 4
+    sp: 8
+    strength: 4
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Sugar
+  - amount: 3
+    name: Grain
+  - amount: 1
+    name: Oil
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Maize Ten-don
+  time_of_day: ''
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- category: Food
   description: Thick noodles made by combining wheat flourwith salt and water. They
     slide down the throatwith glorious ease.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Natural Healing
     fullness: 10
     hp: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Salt
   ingredients_or: []
   name: Udon
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_KitsuneUdon
-  category: Food
+- category: Food
   description: Adding fried tofu to udon creates a simply divinebroth. Fried tofu
     is a famed favorite of fox gods,and thus I dub this Kitsune Udon.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
@@ -422,20 +581,19 @@
     fullness: 15
     hp: 5
     sp: 5
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 1
+    name: Salt
+  - amount: 2
     name: Oil
+  - amount: 1
+    name: Tofu
   ingredients_or: []
   name: Kitsune Udon
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_TenpuraUdon
-  category: Food
+- category: Food
   description: Ohoho, udon topped with Tempura Udon tempura?Yes please! The way the
     fried coating dissolvesin the broth is utterly magnificent.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
@@ -444,28 +602,30 @@
     hp: 8
     sp: 8
     strength: 4
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 1
+    name: Salt
+  - amount: 3
     name: Oil
+  - amount: 1
+    name: Egg
   ingredients_or: []
   name: Tempura Udon
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_Soumen
-  category: Food
+- category: Food
   description: Thinly sliced noodles glazed with oil and sun dried.Their delicate
     form mixes well with broth and otheringredients, making a solid foundation for
     any meal.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Fire Resistance
     magic: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 1
+    name: Oil
   ingredients_or: []
   name: Somen
   season_bonus:
@@ -473,14 +633,10 @@
     - level: 6
       name: Fire Resistance
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_Sobakiri
-  category: Food
+- category: Food
   description: Noodles made by combining water and buckwheat flour,which is then stretched
     and cut into thin slices.They give off a faint aroma of buckwheat.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
@@ -488,21 +644,18 @@
     fullness: 5
     magic: 4
     strength: 4
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Buckwheat
+  - amount: 1
+    name: Soup Stock
   ingredients_or: []
   name: Soba
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_TanukiSobakiri
-  category: Food
+- category: Food
   description: Myrthe is an odd one, scattering tempura flakes atopsoba noodles. And
     yet, it's delicious. The dark flakesremind me of a raccoon dog. I dub this Tanuki
     Soba!
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
@@ -510,20 +663,19 @@
     fullness: 8
     magic: 6
     strength: 8
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Buckwheat
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Oil
   ingredients_or: []
   name: Tanuki Soba
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_SansaiSobakiri
-  category: Food
+- category: Food
   description: Soba noodles accompanied by mountain vegetables.The crunch of the vegetables
     is a delightfulcontrast to the noodles' silky-smooth texture.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
@@ -531,22 +683,19 @@
     fullness: 8
     magic: 8
     strength: 6
-  found_in: []
   ingredients_and:
-  - amount: 4
-    name: Buckwheat
   - amount: 3
+    name: Buckwheat
+  - amount: 1
+    name: Soup Stock
+  - amount: 2
     name: Warabi
   ingredients_or: []
   name: Sansai Soba
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_TenpuraSobakiri
-  category: Food
+- category: Food
   description: Soba noodles adorned with Tempura Soba tempurais not a dish to be overlooked
     or underestimated.The texture of the noodles is perfection itself.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -554,22 +703,21 @@
     fullness: 10
     magic: 10
     strength: 10
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Buckwheat
-  - amount: 4
+  - amount: 1
+    name: Soup Stock
+  - amount: 3
     name: Oil
+  - amount: 1
+    name: Egg
   ingredients_or: []
   name: Tempura Soba
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_Pannenkoek
-  category: Food
+- category: Food
   description: A beloved treat of Myrthe's native Ventania,this pancake is made by
     spreading dough thinlyacross a grill and topping it with ingredients.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
@@ -578,148 +726,104 @@
     hp: 8
     luck: 5
     vitality: 5
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Egg
   ingredients_or: []
   name: Pannenkoek
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: NoodleStaple_Tekusari
-  category: Food
+- category: Food
   description: Crushed tekusari roots rolled into edible dumplings. As long as the
     poison has been steeped out of theroots, they make for adequate rations.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Tekusari Dumplings
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftStaple_Preserve
-  category: Food
+- category: Food
   description: Foodstuffs that I brought with me from the capital.We must secure a
     foothold on this island before weinevitably run out of edible things to eat...
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Natural Healing
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Preserved Rations
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: HardStaple_Failed
-  category: Food
+- category: Food
   description: Hrm. Myrthe claims to be a skilled chef, but...Well, everyone makes
     mistakes, I suppose.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Natural Healing
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Charred Lump
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_Tadamiziru
-  category: Food
+- category: Food
   description: Chilled soup made from water peppers and miso.Its cool zest stimulates
     the appetite.
-  fertilizer_bonus: {}
   food_bonus:
     sp: 8
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Chilled Miso Soup
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_ImoMisoshiru
+- &id007
   category: Food
-  description: Miso soup made with boiled taro. One would not expectsomething so flavorful
-    to be a war ration, but it isoft used as such, bringing smiles to the battlefield.
-  fertilizer_bonus: {}
+  description: Miso melted in hot water along with Maize.Its moderate saltiness and
+    the dashi's flavor makefor a superior dish that pairs well with cooked rice.
   food_bonus:
-    sp: 8
-    vitality: 4
-  found_in: []
-  ingredients_and: []
-  ingredients_or: []
-  name: Taro Miso Soup
-  source: []
-  time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_Misoyakiziru
-  category: Food
-  description: Miso soup enhanced by thinly cut daikon radishand blocks of tofu. Using
-    every bit of the daikon,leaves and all, adds a tremendous amount of flavor.
-  fertilizer_bonus: {}
-  food_bonus:
-    hp: 6
-    sp: 6
-  found_in: []
-  ingredients_and: []
-  ingredients_or: []
-  name: Misoyaki Soup
-  source: []
-  time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_Aogachiziru
-  category: Food
-  description: Miso soup that has had pheasant meat added in.The mouth-watering juice
-    that oozes from the meatwith every bite blends perfectly with the broth.
-  fertilizer_bonus: {}
-  food_bonus:
-    magic: 5
     sp: 10
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
   ingredients_or: []
-  name: Pheasant Miso Soup
-  source: []
+  name: Maize Soup
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_Tonziru
-  category: Food
-  description: Myrthe put a lot of thought into this savorycombination of pork and
-    miso. Combined withvegetables, this soup is beyond compare.
-  fertilizer_bonus: {}
-  food_bonus:
-    sp: 5
-    strength: 3
-    vitality: 10
-  found_in: []
-  ingredients_and: []
-  ingredients_or: []
-  name: Pork Miso Soup
-  source: []
-  time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_Hiyaziru
-  category: Food
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- category: Food
   description: A chilled soup of sesame seeds and cucumber. A mostexcellent way to
     refresh oneself on a hot summer day.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Fire Resistance
     magic: 5
     sp: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Cucumber
+  - amount: 1
+    name: Sesame
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Miso
   ingredients_or: []
   name: Cucumber Soup
   season_bonus:
@@ -727,14 +831,87 @@
     - level: 3
       name: Fire Resistance
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupSoup_Erwtensoep
-  category: Food
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- category: Food
+  description: Miso soup made with boiled taro. One would not expectsomething so flavorful
+    to be a war ration, but it isoft used as such, bringing smiles to the battlefield.
+  food_bonus:
+    sp: 8
+    vitality: 4
+  ingredients_and:
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Taro Miso Soup
+  time_of_day: ''
+- category: Food
+  description: Miso soup enhanced by thinly cut daikon radishand blocks of tofu. Using
+    every bit of the daikon,leaves and all, adds a tremendous amount of flavor.
+  food_bonus:
+    hp: 6
+    sp: 6
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Root Crops
+  - amount: 1
+    name: Tofu
+  ingredients_or: []
+  name: Misoyaki Soup
+  time_of_day: ''
+- category: Food
+  description: Miso soup that has had pheasant meat added in.The mouth-watering juice
+    that oozes from the meatwith every bite blends perfectly with the broth.
+  food_bonus:
+    magic: 5
+    sp: 10
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Pheasant Meat
+  ingredients_or: []
+  name: Pheasant Miso Soup
+  time_of_day: ''
+- category: Food
+  description: Myrthe put a lot of thought into this savorycombination of pork and
+    miso. Combined withvegetables, this soup is beyond compare.
+  food_bonus:
+    sp: 5
+    strength: 3
+    vitality: 10
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Pork
+  - amount: 1
+    name: Root Crops
+  - amount: 1
+    name: Green Onion
+  ingredients_or: []
+  name: Pork Miso Soup
+  time_of_day: ''
+- category: Food
   description: A bean soup brimming with smashed vegetableshailing from Myrthe's home
     country of Ventania.The perfect accompaniment to a cold winter's day.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -744,60 +921,70 @@
     sp: 5
     strength: 5
     vitality: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Potato
+  - amount: 1
+    name: Onion
+  - amount: 1
+    name: Egg
   ingredients_or: []
   name: Erwtensoep
-  season_bonus: {}
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_Aburiyaki
+- &id008
   category: Food
   description: Grasshopper roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
-  name: Roast ~SourceMain~
-  source: []
+  name: Roast Grasshopper
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_OhitashiNinniku
-  category: Food
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- category: Food
   description: Chopped garlic steeped in a savory soup stock.Do not judge this simple
     dish by looks alone;its flavor will speak for itself.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Blanched Garlic
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_UnagiSiro
-  category: Food
+- category: Food
   description: A dish fit for a god from Princess Sakuna's daysin the capital. Lightly
     grilled eel is saltedand cooked to perfection in a bamboo steamer.
-  fertilizer_bonus: {}
   food_bonus:
     sp: 8
     strength: 4
     vitality: 4
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Eel
+  - amount: 1
+    name: Salt
   ingredients_or: []
   name: Eel Steamed Rice
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: HardMainDish_Sakezukeyaki
-  category: Food
+- category: Food
   description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
     food and drinkalike! This technique is surely worth a try.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
@@ -805,89 +992,128 @@
     magic: 2
     strength: 2
     vitality: 2
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Sake Soaked Stir-Fry
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Iridongri
+- &id009
   category: Food
+  description: Salmon is first simmered in soy sauce,after which the broth is drained
+    and then cooledfor a jiggly texture and scrumptious aftertaste.
+  food_bonus:
+    magic: 6
+    vitality: 6
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  ingredients_or: []
+  name: Salmon Jelly
+  time_of_day: ''
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- category: Food
   description: Fragrant acorns that were soaked to remove theirbitterness, then roasted.
     While they taste good,a handful of oaknuts does not a hearty meal make.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Natural Healing
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Roasted Acorns
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: HardMainDish_Nattou
-  category: Food
+- category: Food
   description: Steamed soy beans wrapped in rice straw and fermented.The peculiar
     odor and stickiness can be offputting,but after one bite you'll become a lifelong
     fan.
-  fertilizer_bonus: {}
   food_bonus:
     vitality: 2
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Natto
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Misodengaku
-  category: Food
+- category: Food
   description: Tofu is grilled until golden brown and coatedin thick miso paste. One
     whiff of its savoryaroma is guaranteed to whet your appetite.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Natural Healing
     luck: 5
     vitality: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Tofu
   ingredients_or: []
   name: Miso-Coated Tofu
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Hiyayakko
-  category: Food
+- category: Food
   description: A classic summer dish of chilled tofu accompaniedby soy sauce and other
     mouth-watering seasonings.The perfect complement to an evening's libations.
-  fertilizer_bonus: {}
   food_bonus:
     magic: 4
     sp: 4
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Tofu
+  - amount: 1
+    name: Ginger
   ingredients_or: []
   name: Chilled Tofu
   season_bonus:
     sp: 1
     strength: 1
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Yakitamakibi
-  category: Food
+- category: Food
   description: For this recipe passed down from the far west,maize is grilled and
     coated with a sweet sauce.One bite and you'll be awash in savory sweetness.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Maize
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Sugar
   ingredients_or: []
   name: Corn on the Cob
   season_bonus:
@@ -895,17 +1121,12 @@
     - level: 1
       name: Summer Skill Buff
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Wasabizuke
-  category: Food
+- category: Food
   description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
     it impartsa satisfying crunch with each and every bite.
-  fertilizer_bonus: {}
   food_bonus:
     magic: 6
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Pickled Wasabi
@@ -914,80 +1135,72 @@
     - level: 1
       name: Spring Magic Buff
   season_buff: Spring
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Umeboshi
-  category: Food
+- category: Food
   description: Salted pickled plums that have been sun-dried andfermented. Biting
     into one releases a powerfularoma and a rich, bittersweet flavor.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Poison Resistance
     magic: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Pickled Dried Plum
   season_bonus:
     magic: 2
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Tamagoyaki
-  category: Food
+- category: Food
   description: Cooked eggs rolled into a cylindrical shape thencut into bite-sized
     slices. The soft texture andsweet flavor will surely put a smile on your face.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Natural Healing
     hp: 4
     luck: 4
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Egg
+  - amount: 1
+    name: Sugar
   ingredients_or: []
   name: Fried Egg
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Chawanmushi
-  category: Food
+- category: Food
   description: A dish from the continent of Ouka made by mixinga beaten egg with stock
     and other ingredients.Such gentle flavor! It warms me to my very core.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Natural Healing
     hp: 6
     luck: 8
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Egg
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Ginkgo Nut
   ingredients_or: []
   name: Chawanmushi
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_Yudouhu
-  category: Food
+- category: Food
   description: Tofu is dropped into soup stock and water,then boiled. The center comes
     out piping hot,so give it time to cool down before enjoying!
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Water Resistance
     magic: 4
     sp: 4
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Tofu
+  - amount: 1
+    name: Kombu Kelp
   ingredients_or: []
   name: Boiled Tofu
   season_bonus:
@@ -995,32 +1208,212 @@
     - level: 6
       name: Water Resistance
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_Saketoba
-  category: Food
+- category: Food
   description: Salmon that has been soaked in salt water and driedin the sea breeze.
     This pairs wondrously with sake!Though do take care not to gorge yourself.
-  fertilizer_bonus: {}
   food_bonus:
     magic: 4
     strength: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Dried Salmon
   season_bonus:
     magic: 3
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_GetsuyoNabe
+- &id010
   category: Food
+  description: Salmon covered in wheat flour and deep fried.The pleasant crunch as
+    you bite into it is ratheraddicting, if I do say so myself.
+  food_bonus:
+    strength: 8
+    vitality: 6
+  ingredients_and:
+  - amount: 3
+    name: Oil
+  ingredients_or: []
+  name: Crispy Salmon
+  time_of_day: ''
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- &id011
+  category: Food
+  description: Maize covered in egg and wheat flour,then deep fried. I am told that
+    this techniqueoriginally came from some western country.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    luck: 8
+    strength: 6
+    vitality: 4
+  ingredients_and:
+  - amount: 3
+    name: Oil
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Maize Tempura
+  time_of_day: ''
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- &id012
+  category: Food
+  description: Maize stewed in soy sauce until soft.A gentle heat flows outward from
+    the broth,warming your body and comforting your soul.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    strength: 5
+    vitality: 5
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
+  name: Stewed Maize
+  time_of_day: ''
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- &id013
+  category: Food
+  description: Maize boiled in miso until soft. The richmiso and fresh ginger make
+    every ingredient sing.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    hp: 8
+    strength: 6
+    vitality: 6
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Sugar
+  - amount: 1
+    name: Ginger
+  ingredients_or: []
+  name: Miso Maize
+  time_of_day: ''
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- category: Food
   description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
     absorbed the deep flavorof the meat.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -1028,8 +1421,9 @@
     fullness: 15
     luck: 10
     sp: 10
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Soup Stock
   ingredients_or: []
   name: Rabbit Hot Pot
   season_bonus:
@@ -1037,14 +1431,10 @@
     - level: 4
       name: Natural Healing
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_BotanNabe
-  category: Food
+- category: Food
   description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
     deepens with each bite.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -1052,10 +1442,11 @@
     fullness: 20
     strength: 10
     vitality: 5
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Boar Meat
+  - amount: 1
+    name: Soup Stock
   ingredients_or: []
   name: Boar Hot Pot
   season_bonus:
@@ -1063,14 +1454,10 @@
     - level: 4
       name: Natural Healing
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_MomijiNabe
-  category: Food
+- category: Food
   description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
     satisfying flavor.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -1078,10 +1465,11 @@
     fullness: 20
     magic: 10
     sp: 5
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Venison
+  - amount: 1
+    name: Soup Stock
   ingredients_or: []
   name: Deer Hot Pot
   season_bonus:
@@ -1089,14 +1477,10 @@
     - level: 4
       name: Natural Healing
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_MaruNabe
-  category: Food
+- category: Food
   description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
     and pairs well with vegetables.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -1104,10 +1488,27 @@
     fullness: 20
     hp: 15
     vitality: 10
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Turtle Meat
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
   ingredients_or: []
   name: Turtle Hot Pot
   season_bonus:
@@ -1115,45 +1516,39 @@
     - level: 4
       name: Natural Healing
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_KumaNabe
-  category: Food
+- category: Food
   description: Hot pot brimming with bear meat. Not only is itnutritious, but the
     fattiness it adds is unlikeany other meat.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     fullness: 20
     hp: 8
     strength: 10
     vitality: 10
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Bear Meat
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Sugar
   ingredients_or: []
   name: Bear Hot Pot
   season_bonus:
     enchant: []
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoupMainDish_Herring
-  category: Food
+- category: Food
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
     entirely unlike sushi.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Gill Shredder
     luck: 5
     sp: 10
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Dried Herring
@@ -1162,57 +1557,54 @@
     - level: 3
       name: Gill Shredder
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftMainDish_Hutspot
-  category: Food
+- category: Food
   description: A dish of Myrthe's native Ventania made fromchopped potatoes and root
     vegetables steamedand mashed. This will fill your belly right up!
-  fertilizer_bonus: {}
   food_bonus:
     fullness: 8
     luck: 10
     magic: 10
-  found_in: []
   ingredients_and:
-  - amount: 4
+  - amount: 3
     name: Potato
+  - amount: 1
+    name: Root Crops
+  - amount: 1
+    name: Onion
+  - amount: 1
+    name: Salt
   ingredients_or: []
   name: Hutspot
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Dango
-  category: Food
+- category: Food
   description: Rice cakes coated with sauce as they cook on stickskewers. The soft
     texture combined with the sweetand savory sauce is in a league of its own.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Swift Recovery
     fullness: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Bean
   ingredients_or: []
   name: Dumpling
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_YomogiDango
-  category: Food
+- category: Food
   description: Rice cakes that have had mugwort finely kneadedinto them. They taste
     of spring itself.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Swift Recovery
     fullness: 2
     magic: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Mugwort
   ingredients_or: []
   name: Mugwort Dumpling
   season_bonus:
@@ -1220,49 +1612,38 @@
     - level: 5
       name: Swift Recovery
   season_buff: Spring
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_GomaDango
-  category: Food
+- category: Food
   description: A sweet treat that hails from the country of Ouka,made from all sorts
     of sesame. I am impressed theymanaged to make such a jelly out of sesame alone.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Poison Resistance
     fullness: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Sesame
   ingredients_or: []
   name: Sesame Dumpling
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Hoshigaki
-  category: Food
+- category: Food
   description: Persimmons that have been dried on a cord.This powerfully sweet fruit
     melts in your mouth,making it difficult to put down after the first bite.
-  fertilizer_bonus: {}
   food_bonus:
     hp: 2
     vitality: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Dried Persimmon
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Mizore
-  category: Food
+- category: Food
   description: Ice that has been shaved down into tiny particles.The perfect remedy
     for when you feel hot or feverish.
-  fertilizer_bonus: {}
   food_bonus:
     magic: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Shaved Ice
@@ -1271,137 +1652,134 @@
     - level: 6
       name: Fire Resistance
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Senbei
-  category: Food
+- category: Food
   description: Sweet mochi rolled into flat circles, then grilledto form crackers.
     They are delightfully crispy.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Catapulting Impact
     luck: 10
     sp: 5
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Mochi
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
   ingredients_or: []
   name: Senbei
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: HardSweets_Sobagaki
-  category: Food
+- category: Food
   description: Buckwheat flour is tossed in boiling water and clumpedtogether to form
     this dessert. Though the ingredientsare the same, it is wholly unlike soba noodles.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Prudence
     magic: 2
     strength: 2
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Buckwheat
+  - amount: 1
+    name: Bean
   ingredients_or: []
   name: Soba Dumpling
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Shitogi
-  category: Food
+- category: Food
   description: Rice softened in water, then pounded and shapedinto a ball. They have
     long been used as offeringsto the gods from the children of men.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Sun Goddess
     luck: 4
     magic: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Rice Cake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Manjyu
-  category: Food
+- category: Food
   description: Steamed sweet dumplings that are knownto pair well with a variety of
     ingredients.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Swift Recovery
     fullness: 4
     luck: 8
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Sugar
-  - amount: 3
+  - amount: 2
     name: Bean
+  - amount: 1
+    name: Oil
   ingredients_or: []
   name: Manju
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftSweets_Kenpin
-  category: Food
+- category: Food
   description: Wheat flour that has been kneaded, rolled,and fried. Fill them with
     red bean pasteor vegetables for an even tastier treat.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Celestial Maiden
     luck: 6
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Sugar
+  - amount: 1
+    name: Sesame
   ingredients_or: []
   name: Kenpin
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: HardSweets_Yakimiso
-  category: Food
+- category: Food
   description: Miso mixed with finely chopped spices, then grilled.It pairs exceptionally
     well with rice and sake.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Brilliant Virtue
     luck: 6
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Green Onion
+  - amount: 1
+    name: Garlic
   ingredients_or: []
   name: Grilled Miso
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: SoftDrink_Water
-  category: Food
+- category: Food
   description: Fresh water from the mountain pass.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   name: Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Kiyomizu
-  category: Food
+- category: Food
   description: Oho! Water from the springs of the valley.It is quite clear and extremely
     refreshing.
-  fertilizer_bonus: {}
   food_bonus:
     luck: 2
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Spring Water
@@ -1410,17 +1788,12 @@
     - level: 3
       name: Fire Resistance
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Meisui
-  category: Food
+- category: Food
   description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
     sip would wash awayany impurity. It's no wonder it's renowned!
-  fertilizer_bonus: {}
   food_bonus:
     luck: 3
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Renowned Water
@@ -1429,17 +1802,12 @@
     - level: 6
       name: Fire Resistance
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Cha
-  category: Food
+- category: Food
   description: A drink made by pouring boiling water over driedtea leaves. No matter
     what flavor of tea is used,it always enhances the taste of any meal.
-  fertilizer_bonus: {}
   food_bonus:
     luck: 2
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Tea
@@ -1448,18 +1816,17 @@
     - level: 1
       name: Winter Skill Buff
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Genmaicha
-  category: Food
+- category: Food
   description: The idea of combining roasted tea leaves with brownrice was truly a
     revelation. It is bound to helpcalm the nerves and relieve pent-up stress.
-  fertilizer_bonus: {}
   food_bonus:
     luck: 3
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Brown Rice
   ingredients_or: []
   name: Genmaicha
   season_bonus:
@@ -1467,33 +1834,23 @@
     - level: 1
       name: Winter Skill Buff
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Dokudami
-  category: Food
+- category: Food
   description: A tea made with dried fish mint leaves.In the Lofty Realm, this drink
     is saidto grant protection from poisonous mist.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Poison Resistance
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Fish Mint Tea
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Kobucha
-  category: Food
+- category: Food
   description: Though it is called tea, it is not made with tealeaves. This is a hot
     broth made from roastingand drying kelp, then boiling it in hot water.
-  fertilizer_bonus: {}
   food_bonus:
     luck: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Kelp Tea
@@ -1502,21 +1859,20 @@
     - level: 1
       name: Winter Skill Buff
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Umekobucha
-  category: Food
+- category: Food
   description: Kelp tea that has had plums added to it, creatinga sour flavor. This
     divine combination is certainto soothe tension and melt the most anxious heart.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Poison Resistance
     luck: 3
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Kombu Kelp
+  - amount: 1
+    name: Plum
   ingredients_or: []
   name: Plum Kelp Tea
   season_bonus:
@@ -1524,21 +1880,20 @@
     - level: 2
       name: Poison Resistance
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Fukucha
-  category: Food
+- category: Food
   description: Plum kelp tea with a further addition of green tealeaves. According
     to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Luck Boost
     luck: 8
-  found_in: []
-  ingredients_and: []
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Kombu Kelp
   ingredients_or: []
   name: Lucky Tea
   season_bonus:
@@ -1546,129 +1901,90 @@
     - level: 2
       name: Luck Boost
   season_buff: Winter
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Kuchikamizake
-  category: Food
+- category: Food
   description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
     horribly unsanitary. Only thetruly courageous are bold enough to consume it.
-  fertilizer_bonus: {}
   food_bonus:
     magic: 6
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Kuchikami Sake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doburoku
-  category: Food
+- category: Food
   description: Cloudy white sake that is completely unfiltered.A blend of piercing
     sourness and potent rice flavor.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 1
       name: Night Owl
     magic: 5
     sp: 5
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Doburoku
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Amazake
-  category: Food
+- category: Food
   description: 'A beverage made by converting rice into sugar.Be fooled not by its
     name: this draught containsno alcohol. It is gently sweet and energizing.'
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Summer Magic Buff
     luck: 5
     magic: 5
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Amazake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Seisyu
-  category: Food
+- category: Food
   description: Sake that has been filtered and heated until itruns clear. It has a
     rich flavor with just a hintof sweetness to balance out the refined taste.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 2
       name: Spectral Scourge
     magic: 5
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Refined Sake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Yakushu
-  category: Food
+- category: Food
   description: Sake truly cures all ills. This kind in particular hashad medicinal
     herbs added to it. It will bolster yourfortitude and give you some resistance
     to poison.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
       name: Poison Resistance
     magic: 4
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Medicinal Sake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Ginjyou
-  category: Food
+- category: Food
   description: Sake that is made by refining polished riceand fermenting it over low
     heat. The resultis smooth, palatable, and incredibly fragrant.
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     magic: 10
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Ginjo Sake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Daiginjyou
-  category: Food
+- category: Food
   description: Sake made by carefully selecting the finest grainsof rice and polishing
     them to perfection. Translucentand fragrant, it qualifies as a true work of art!
-  fertilizer_bonus: {}
   food_bonus:
     enchant: []
     magic: 15
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Daiginjo Sake
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Beer
-  category: Food
+- category: Food
   description: An alcohol of the far west made from wheat.Its bitterness may be an
     acquired taste,but it certainly goes down smooth.
-  fertilizer_bonus: {}
   food_bonus:
     enchant:
     - level: 3
@@ -1676,7 +1992,6 @@
     hp: 5
     luck: 5
     magic: 10
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Beer
@@ -1685,187 +2000,119 @@
     - level: 5
       name: Fire Resistance
   season_buff: Summer
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Hp
-  category: Food
+- category: Food
   description: Enhances the effect of an HP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Health Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Wp
-  category: Food
+- category: Food
   description: Enhances the effect of an SP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Skill Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Strength
-  category: Food
+- category: Food
   description: Enhances the effect of a strength-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Strength Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Vital
-  category: Food
+- category: Food
   description: Enhances the effect of a vitality-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Vitality Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Magic
-  category: Food
+- category: Food
   description: Enhances the effect of a magic-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Magic Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Luck
-  category: Food
+- category: Food
   description: Enhances the effect of a luck-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Luck Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_BuffBoost_Hungry
-  category: Food
+- category: Food
   description: Enhances the effect of a fullness-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and: []
   ingredients_or: []
   name: Fullness Water
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doping_Hp
-  category: Food
+- category: Food
   description: Invaluable medicine that boosts your HP.Let us drink to your continued
     good fortune!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Medicinal Base
+  - amount: 1
+    name: Health Flakes
   ingredients_or: []
   name: Health Medicine
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doping_Strength
-  category: Food
+- category: Food
   description: Invaluable medicine that boosts your strength.Let us drink to your
     continued good fortune!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Medicinal Base
+  - amount: 1
+    name: Strength Flakes
   ingredients_or: []
   name: Strength Medicine
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doping_Vital
-  category: Food
+- category: Food
   description: Invaluable medicine that boosts your vitality.Let us drink to your
     continued good fortune!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Medicinal Base
+  - amount: 1
+    name: Vitality Flakes
   ingredients_or: []
   name: Vitality Medicine
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doping_Magic
-  category: Food
+- category: Food
   description: Invaluable medicine that boosts your magic.Let us drink to your continued
     good fortune!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Medicinal Base
+  - amount: 1
+    name: Magic Flakes
   ingredients_or: []
   name: Magic Medicine
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doping_Luck
-  category: Food
+- category: Food
   description: Invaluable medicine that boosts your luck.Let us drink to your continued
     good fortune!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Medicinal Base
+  - amount: 1
+    name: Luck Flakes
   ingredients_or: []
   name: Luck Medicine
-  source: []
   time_of_day: ''
-  used_in_recipes: []
-- Code: DrinkDrink_Doping_Eat
-  category: Food
+- category: Food
   description: Invaluable medicine that boosts your gusto.Let us drink to your continued
     good fortune!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   ingredients_and:
-  - amount: 3
+  - amount: 2
     name: Medicinal Base
+  - amount: 1
+    name: Gusto Flakes
   ingredients_or: []
   name: Gusto Medicine
-  source: []
   time_of_day: ''
-  used_in_recipes: []
