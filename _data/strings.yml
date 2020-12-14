@@ -3,7 +3,7 @@ table:
     col_add_to_inventory: Inv.
     col_name: Name
 
-    col_fertilizer: Fertil.
+    col_fertilizer: Soil Nut.
 
     col_yield_hp: Yield/ HP
     col_taste_strength: Taste/ Str.
@@ -20,7 +20,7 @@ table:
 
     col_expiable: Exp.
   inventory:
-    col_add_to_fertilizer: Inv.
+    col_add_to_fertilizer: Fer.
     col_name: Name
 
     col_immunity: Imm.
@@ -86,6 +86,9 @@ guide:
     deep_flowing: >-
       <i class="fas fa-tint"></i> 
       Water: <strong>25-30% (Deep flowing, open both gates)</strong>
+    drain_open_gate: >-
+      <i class="fas fa-tint-slash"></i> 
+      Water: <strong>0%</strong> (keep release gate open)
   offshots_1_2:
     title: 1st/2nd Offshoots
     use_kernel_fertilizer: >-
@@ -158,7 +161,9 @@ guide:
     little_far_apart: 
       tab: Little far apart
       title: A little far apart
-      description: Leave 1 square space in between 2 seedling.
+      description: >-
+        Leave 1 square space in between 2 seedling.<br />
+        <em>Try to spread the seedling in more of a rectangle (not just in ONE row and some seedling at the top), you can get balanced by mistake.</em>
     balanced: 
       tab: Balanced
       title: Balanced
@@ -189,9 +194,9 @@ fertilizer_helper:
     soil_nutrients:
       title: Soil nutrients
       current_fertilizer: Current Fertilizer
-      current_fertilizer_short: Curr. Fert.
+      current_fertilizer_short: <i class="fas fa-poop"></i>
       with_components: with Components
-      with_components_short: with Comp.
+      with_components_short: <i class="fas fa-poo"></i>
       leaf: Leaf
       kernel: Kernel
       root: Root
@@ -231,6 +236,9 @@ fertilizer_helper:
       title: Recommended
     expiable:
       title: Expiable
+      in_days: In %life% day(s) <i class="fas fa-skull"></i>
+      in_days_unknown: In few day(s) <i class="fas fa-skull"></i>
+      infinity: <i class="fas fa-infinity"></i>
     remove_from_inventory: Remove from Inv.
     stats:
       leaf_fertilizer: 'L:'
@@ -254,6 +262,12 @@ fertilizer_helper:
       <span class="text-warning">* reach max value, you don't need to add more items for this stat to boost</span>
 item_list:
   title: Item-List
+  materials: 
+    title: Materials
+  ingredients: 
+    title: Ingredients
+  food: 
+    title: Food
 goto: go to
 footer: >-
   I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

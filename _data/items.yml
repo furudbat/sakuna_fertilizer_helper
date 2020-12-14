@@ -1,330 +1,213 @@
-- category: Materials
-  description: This is a base component of Leaf Fertilizer.When making fertilizer,
-    you'll start with this before deciding what other nutrients to add.
+- category: Soilwork
+  description: What a lovely little seedling.Go on now,  plant it in the field!
+  name: Seedling
+  time_of_day: ''
+- category: Material
+  description: This is a base component of Leaf Fertilizer.When making fertilizer,  you'll
+    start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     leaf_fertilizer: 20
-  food_bonus: {}
-  found_in: []
   name: Beast Hoof
-  source: []
   sub_category: ManureBase
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This is a base component of Kernel Fertilizer.When making fertilizer,
-    you'll start with this before deciding what other nutrients to add.
+- category: Material
+  description: This is a base component of Kernel Fertilizer.When making fertilizer,  you'll
+    start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     kernel_fertilizer: 20
-  food_bonus: {}
-  found_in: []
   name: Beast Manure
-  source: []
   sub_category: ManureBase
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This is a base component of Root Fertilizer.When making fertilizer,
-    you'll start with this before deciding what other nutrients to add.
+- category: Material
+  description: This is a base component of Root Fertilizer.When making fertilizer,  you'll
+    start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     root_fertilizer: 20
-  food_bonus: {}
-  found_in: []
   name: Fallen Leaves
-  source: []
   sub_category: ManureBase
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This is a base component for any fertilizer.When making fertilizer,
-    you'll start with this before deciding what other nutrients to add.
+- category: Material
+  description: This is a base component for any fertilizer.When making fertilizer,  you'll
+    start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     kernel_fertilizer: 8
     leaf_fertilizer: 10
     root_fertilizer: 8
-  food_bonus: {}
-  found_in: []
   name: Oil Cake
-  source: []
   sub_category: ManureBase
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Ah, how rare! This powder alters the flow of time, allowing fertilizer
+- category: Material
+  description: Ah,  how rare! This powder alters the flow of time,  allowing fertilizer
     to be completed immediately.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   name: Powder of Transformation
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A divine fruit grown from the Tree of Creation.Its very essence is
-    ripe with spiritual energy.How shall we put its power to use, Princess?
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    ripe with spiritual energy.How shall we put its power to use,  Princess?
   name: Orb of Transformation
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A chemical that revitalizes life, returning plants from their weakened
-    state. If you mix it in withfertilizer, it will cure some rice disorders.
+- category: Material
+  description: A chemical that revitalizes life,  returning plants from their weakened
+    state. If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     immunity: 10
-  food_bonus: {}
-  found_in: []
   name: Revitalizing Remedy
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A chemical that reduces excess, restoring plantsto their proper balance.
-    If you mix it in withfertilizer, it will cure some rice disorders.
+- category: Material
+  description: A chemical that reduces excess,  restoring plantsto their proper balance.
+    If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     herbicide: 10
-  food_bonus: {}
-  found_in: []
   name: Reducing Remedy
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A chemical that wards off pests, saving plants from invasive insects.
-    If you mix it in withfertilizer, it will cure some rice disorders.
+- category: Material
+  description: A chemical that wards off pests,  saving plants from invasive insects.
+    If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     pesticide: 10
-  food_bonus: {}
-  found_in: []
   name: Eradicating Remedy
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Health Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Health Pollution.
   name: Health's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Skill Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Skill Pollution.
   name: Skill's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Fullness Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Fullness Pollution.
   name: Fullness' Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Strength Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Strength Pollution.
   name: Strength's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Vitality Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Vitality Pollution.
   name: Vitality's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Magic Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Magic Pollution.
   name: Magic's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Luck Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Luck Pollution.
   name: Luck's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
-    and your powers shall be restored , purifying the land of Gusto Pollution.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+    and your powers shall be restored ,  purifying the land of Gusto Pollution.
   name: Gusto's Bounty
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Hoho! It seems this uneaten food has spoiled.However, we can still
+- category: Material
+  description: Hoho! It seems this uneaten food has spoiled.However,  we can still
     use this as fertilizer.
   fertilizer_bonus:
     aesthetic_luck: 1
     armor_magic: 1
     hardness_vitality: 1
-    pesticide: -2
     stickiness_gusto: 1
     taste_strength: 1
     yield_hp: 1
-  food_bonus: {}
-  found_in:
-  - Anywhere
   name: Rotten Food
-  source:
-  - Spoiled food.
   sub_category: Material
-  time_of_day: Midnight
-  used_in_recipes: []
-- category: Materials
-  description: This earth is soft, viscous, and easy to process.
+  time_of_day: ''
+- category: Material
+  description: This earth is soft,  viscous,  and easy to process.
   fertilizer_bonus:
     stickiness_gusto: 1
     toxicity: 1
-  food_bonus: {}
-  found_in: []
   name: Clay
-  source: Mine Nodes
   sub_category: Material
-  time_of_day: Any
-  used_in_recipes: []
-- category: Materials
-  description: A stone chunk that could be used for almost anything.Unfortunately,
-    its quality leaves much to be desired.
+  time_of_day: ''
+- category: Material
+  description: A stone chunk that could be used for almost anything.Unfortunately,  its
+    quality leaves much to be desired.
   fertilizer_bonus:
     hardness_vitality: 1
     toxicity: 1
-  food_bonus: {}
-  found_in: []
   name: Stone
-  source:
-  - Stone Spikes
-  - Breakable Boulders
-  - Untilled Rice Paddy
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: This ore has long been used as a material to craftcertain metals.
   fertilizer_bonus:
     hardness_vitality: 2
     toxicity: 2
-  food_bonus: {}
-  found_in: []
   name: Copper Ore
-  source: Mine Nodes
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A strong, pliable metal. In shaping it, apprenticesmiths shape themselves
+- category: Material
+  description: A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves
     into masters of the craft.
   fertilizer_bonus:
     hardness_vitality: 5
     toxicity: 1
-  food_bonus: {}
-  found_in: []
   name: Iron Ore
-  source:
-  - Mine Nodes
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Jade is known to have miraculous powers. Not onlyis it used as currency,
-    but it is revered by manyas a ceremonial implement as well.
+- category: Material
+  description: Jade is known to have miraculous powers. Not onlyis it used as currency,  but
+    it is revered by manyas a ceremonial implement as well.
   fertilizer_bonus:
     armor_magic: 5
     hardness_vitality: 3
     toxicity: 1
-  food_bonus: {}
-  found_in: []
   name: Jade
-  source: Mine Nodes
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Iridescent obsidian such as this is said to beexceptionally rare. No
     doubt it would make for finecrafting material.
   fertilizer_bonus:
     armor_magic: 3
     hardness_vitality: 5
     toxicity: 1
-  food_bonus: {}
-  found_in: []
   name: Obsidian
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: The glister of gold is the spark which ignitesthe flames of war. Do
-    be careful not to becometoo enthralled by it, Princess.
+    be careful not to becometoo enthralled by it,  Princess.
   fertilizer_bonus:
     hardness_vitality: 10
     toxicity: 3
-  food_bonus: {}
-  found_in: []
   name: Gold Ore
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This is steel from Dharka, a country that lies farto the west, and
-    it's supposedly impervious to rust.I must say, its striped pattern is quite beautiful.
+- category: Material
+  description: This is steel from Dharka,  a country that lies farto the west,  and
+    it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.
   fertilizer_bonus:
     hardness_vitality: 25
     toxicity: 5
-  food_bonus: {}
-  found_in: []
   name: Stainless Steel
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A jewel formed from the dense Clouds of Beginning, which separate the
-    two realms. Just one of thesecontains enough power to create a small island.
+- category: Material
+  description: A jewel formed from the dense Clouds of Beginning,  which separate
+    the two realms. Just one of thesecontains enough power to create a small island.
   fertilizer_bonus:
     aesthetic_luck: 25
     armor_magic: 25
@@ -332,507 +215,508 @@
     stickiness_gusto: 25
     taste_strength: 25
     yield_hp: 25
-  food_bonus: {}
-  found_in: []
   name: Cloudy Crystal
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This wood can be used in various ways.Unfortunately, its quality leaves
+- category: Material
+  description: This wood can be used in various ways.Unfortunately,  its quality leaves
     much to be desired.
   fertilizer_bonus:
-    pesticide: -1
     root_fertilizer: 5
     yield_hp: 1
-  food_bonus: {}
-  found_in: []
   name: Wood
-  source:
-  - Breakable Wood Structures
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This is hard, sturdy wood. I wager it could be crafted into a fine
+- category: Material
+  description: This is hard,  sturdy wood. I wager it could be crafted into a fine
     tool.
   fertilizer_bonus:
-    pesticide: -1
     root_fertilizer: 5
     yield_hp: 3
-  food_bonus: {}
-  found_in: []
   name: High Quality Oak
-  source:
-  - Bushes
-  - Foraging
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A plant that is neither tree nor grass. Indeed, it is difficult to
-    classify... Nevertheless, bamboo is quite flexible and easy to process.
+- category: Material
+  description: A plant that is neither tree nor grass. Indeed,  it is difficult to
+    classify... Nevertheless,  bamboo is quite flexible and easy to process.
   fertilizer_bonus:
-    pesticide: -1
     root_fertilizer: 5
     yield_hp: 5
-  food_bonus: {}
-  found_in: []
   name: Bamboo
-  source:
-  - Bushes
-  - Foraging
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This wood is not only hard, but resistant to water, meaning that it
-    is slow to rot. Thus, its appellation is well deserved.
+- category: Material
+  description: This wood is not only hard,  but resistant to water,  meaning that
+    it is slow to rot. Thus,  its appellation is well deserved.
   fertilizer_bonus:
     hardness_vitality: 5
-    pesticide: -2
     root_fertilizer: 5
     yield_hp: 8
-  food_bonus: {}
-  found_in: []
   name: Ironwood
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: The origin of all Yanato elm trees, nearly as old as the Lofty Realm
-    itself. The quality of its woodis unsurpassed, but it's as rare as it is ancient.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+- category: Material
+  description: The origin of all Yanato elm trees,  nearly as old as the Lofty Realm
+    itself. The quality of its woodis unsurpassed,  but it's as rare as it is ancient.
   name: Elder Elm
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: This grass fiber is indispensable for weaving.
   fertilizer_bonus:
     armor_magic: 2
     kernel_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Hemp
-  source:
-  - Bushes
-  - Foraging
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: This plant is often used to craft straw hats and raincoats. I have
     heard that it is easierto raise in humid climes.
   fertilizer_bonus:
     armor_magic: 3
     kernel_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Sedge
-  source:
-  - Bushes
-  - Foraging
   sub_category: Material
-  time_of_day: Any
-  used_in_recipes: []
-- category: Materials
+  time_of_day: ''
+- category: Material
   description: Bark imported from a southern country.It rivals straw in its ease of
     use.
   fertilizer_bonus:
     armor_magic: 5
     kernel_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Hemp Palm
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Aha, so you found an untainted leaf from Hinoe'sTree of Creation? If
-    you can gather enough to useas materials, I imagine you'll gain untold power.
+- category: Material
+  description: Aha,  so you found an untainted leaf from Hinoe'sTree of Creation?
+    If you can gather enough to useas materials,  I imagine you'll gain untold power.
   fertilizer_bonus:
-    herbicide: -50
     kernel_fertilizer: 100
     leaf_fertilizer: 100
-    pesticide: -50
     root_fertilizer: 100
     toxicity: 50
-  food_bonus: {}
-  found_in: []
   name: Leaf of Creation
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: This golden tree branch can be used to createa stunning yellow dye.
     Strip the bark and seeits brilliant hue for yourself!
   fertilizer_bonus:
     aesthetic_luck: 2
-    immunity: -1
     kernel_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Cork Tree Branch
-  source:
-  - Bushes
-  - Foraging
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: This plant root can be used to create purple dye.It thrives in soil
     that gets regular runoff exposure.
   fertilizer_bonus:
     aesthetic_luck: 3
-    immunity: -1
     kernel_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Murasaki Root
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A root which is used to make red dyes. It can befound in the mountainous
     regions of this island.
   fertilizer_bonus:
     aesthetic_luck: 5
-    immunity: -1
     kernel_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Madder
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A fish scale that can be turned into a bluish-purpledye, if it's crushed
+- category: Material
+  description: A fish scale that can be turned into a bluish-purpledye,  if it's crushed
     and mixed with the right plants.
   fertilizer_bonus:
     aesthetic_luck: 5
     kernel_fertilizer: 5
     leaf_fertilizer: 5
-    pesticide: -2
-  food_bonus: {}
-  found_in: []
   name: Indigo Scale
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: This is a fiber produced by the thread of silkworms, which were brought
+- category: Material
+  description: This is a fiber produced by the thread of silkworms,  which were brought
     over from the country of Ouka.
   fertilizer_bonus:
     armor_magic: 10
-    pesticide: -2
-  food_bonus: {}
-  found_in: []
   name: Silk
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A miraculous thread selected from the finest silk.It is both a delight
     to the eyes and strong enoughto repel blades. It should make an excellent outfit.
   fertilizer_bonus:
     armor_magic: 20
-    pesticide: -5
-  food_bonus: {}
-  found_in: []
   name: Spirit Thread
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Yanato's highest quality paper, said to lastfor a thousand years. In
-    fact, it's strongenough you can even make clothes out if it.
+- category: Material
+  description: Yanato's highest quality paper,  said to lastfor a thousand years.
+    In fact,  it's strongenough you can even make clothes out if it.
   fertilizer_bonus:
     armor_magic: 8
     hardness_vitality: 8
-    pesticide: -3
-  food_bonus: {}
-  found_in: []
   name: Washi Paper
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: How ominous... This cord appears to have been wovenwith the accursed
     power of a multitude of demons.May we find a way to bring some good out of it.
   fertilizer_bonus:
-    armor_magic: -10
     taste_strength: 20
-  food_bonus: {}
-  found_in: []
   name: Demonic Braid
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A cord that is used to tie up kimono sleeves.This one contains the
-    power of lightning, the ultimate expression of wood energy.
+    power of lightning,  the ultimate expression of wood energy.
   fertilizer_bonus:
     armor_magic: 20
-    hardness_vitality: -10
-  food_bonus: {}
-  found_in: []
   name: Thunderous Tasuki
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: The skinned hide of a most ferocious demon.It can be tanned into durable
     leather.
   fertilizer_bonus:
     yield_hp: 2
-  food_bonus: {}
-  found_in: []
   name: Beast Hide
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Taken from the skull of a deer demon. It can be usedin its current
-    state, or processed into an evenhigher-quality material.
+    state,  or processed into an evenhigher-quality material.
   fertilizer_bonus:
     armor_magic: 5
     leaf_fertilizer: 10
-  food_bonus: {}
-  found_in: []
   name: Deer Antler
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A jewel formed inside the shell of a demon clam.Apparently its devolution
     into demonhood has onlyserved to increase the quality of its pearl.
   fertilizer_bonus:
     armor_magic: 3
-  food_bonus: {}
-  found_in: []
   name: Demonic Pearl
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
 - category: Materials/Misc
-  description: This is a throwing needle of the Ashigumo tribe, who you mercifully
-    defeated. Even now, it holdsa lingering manifestation of their loyal spirits.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  description: This is a throwing needle of the Ashigumo tribe,  who you mercifully
+    defeated. Even now,  it holdsa lingering manifestation of their loyal spirits.
   name: Ashigumo Shuriken
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: The resilient hide of a black deer demon.When I close my eyes, I can
+- category: Material
+  description: The resilient hide of a black deer demon.When I close my eyes,  I can
     still vividlysee your fierce battle with the beast!
   fertilizer_bonus:
     armor_magic: 1
     taste_strength: 4
-  food_bonus: {}
-  found_in: []
   name: Black Deer Leather
-  source: Black Deer
   sub_category: Material
-  time_of_day: Any
-  used_in_recipes: []
-- category: Materials
+  time_of_day: ''
+- category: Material
   description: A silver feather plucked from a demon pheasant.Faint light emanates
     from it.
   fertilizer_bonus:
     aesthetic_luck: 1
     taste_strength: 3
-  food_bonus: {}
-  found_in: []
   name: Pheasant Feather
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A tremendous tusk, taken from a boar that hadtransformed into a mighty
+- category: Material
+  description: A tremendous tusk,  taken from a boar that hadtransformed into a mighty
     demon.
   fertilizer_bonus:
     leaf_fertilizer: 10
     taste_strength: 5
-  food_bonus: {}
-  found_in: []
   name: Boar Tusk
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Ah, was this attached to a demon badger's forehead?It's teeming with
+- category: Material
+  description: Ah,  was this attached to a demon badger's forehead?It's teeming with
     magical power. They must be moreselective in choosing their leaves than I thought.
   fertilizer_bonus:
     armor_magic: 5
     root_fertilizer: 10
-  food_bonus: {}
-  found_in: []
   name: Badger Leaf
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Oho, the hide of a demon bear. Even in this form, it exudes power and
-    seems difficult to work with.It will certainly make for a high-quality material.
+- category: Material
+  description: Oho,  the hide of a demon bear. Even in this form,  it exudes power
+    and seems difficult to work with.It will certainly make for a high-quality material.
   fertilizer_bonus:
     hardness_vitality: 1
     taste_strength: 4
-  food_bonus: {}
-  found_in: []
   name: Bear Hide
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A feather belonging to Yui, an exceptionally rarespirit crane. If turned
-    into thread, it could be woveninto an unparalleled garment.
+- category: Material
+  description: A feather belonging to Yui,  an exceptionally rarespirit crane. If
+    turned into thread,  it could be woveninto an unparalleled garment.
   fertilizer_bonus:
     armor_magic: 50
-    toxicity: -50
-  food_bonus: {}
-  found_in: []
   name: Crane Feather
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A vertebra once belonging to Omizuchi, gifted to usby Lady Kamuhitsuki.
-    If we combine it with the Edgeof Hoshidama, it shall create an all-powerful weapon.
+- category: Material
+  description: A vertebra once belonging to Omizuchi,  gifted to usby Lady Kamuhitsuki.
+    If we combine it with the Edgeof Hoshidama,  it shall create an all-powerful weapon.
   fertilizer_bonus:
     immunity: 50
     kernel_fertilizer: 50
     taste_strength: 50
-  food_bonus: {}
-  found_in: []
   name: Dragon Bone
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: Oho, a scale taken from the great Omizuchi himself.It appears to be
+- category: Material
+  description: Oho,  a scale taken from the great Omizuchi himself.It appears to be
     hard enough to deflect any weapon.
   fertilizer_bonus:
     hardness_vitality: 50
     kernel_fertilizer: 50
     pesticide: 50
-  food_bonus: {}
-  found_in: []
   name: Dragon Scale
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A stone that has been exposed to moonlightfor an incredibly long time.
     Perhaps we canextract its inner earth energy for ourselves.
-  fertilizer_bonus:
-    toxicity: -20
-  food_bonus: {}
-  found_in:
-  - Cylindric Caverns
-  - Skipping Stone Hill
-  - Den of Fangs
-  - Eggplant Hollow
-  - Dragon's Tunnel
   name: Moonlit Stone
-  source:
-  - Any Enemy
   sub_category: Material
-  time_of_day: Night
-  used_in_recipes: []
-- category: Materials
+  time_of_day: ''
+- category: Material
   description: This flower only blooms at night on mighty treesthat have absorbed
     an abundance of wood energy.
   fertilizer_bonus:
     immunity: 20
-  food_bonus: {}
-  found_in: []
   name: Branching Flower
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
-  description: A semi-solid drop of condensed water energy, anchored in place amidst
+- category: Material
+  description: A semi-solid drop of condensed water energy,  anchored in place amidst
     the sundering flow.
   fertilizer_bonus:
     herbicide: 5
     immunity: 5
     pesticide: 5
-    toxicity: -5
-  food_bonus: {}
-  found_in: []
   name: Aqueous Droplet
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: A glowing red fragment of hardened lava that holdsa wealth of fire
     energy deep in its molten core.
   fertilizer_bonus:
     pesticide: 20
-  food_bonus: {}
-  found_in: []
   name: Flaming Core
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials
+- category: Material
   description: Sand that was ground down into miniscule particlesover the ages. It
     would take a god of the forgeto extract the metal energy radiating within it.
   fertilizer_bonus:
     herbicide: 20
-  food_bonus: {}
-  found_in: []
   name: Metallic Sand
-  source: []
   sub_category: Material
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: Pickled and salted Salmon put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff, but I am not so easily
-    convinced.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
-  name: Rabbit Meat Sushi
+- category: Material/Food
+  description: It is said that one can gain the powers of the creaturesthey consume.
+    Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 1
+  food_bonus:
+    sp: 4
+  life: 2
+  name: Rabbit Meat
   price: 1
-  source: []
-  sub_category: Sushi
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: Known for its vitality, the meat of pig demons is essentialfor building
+    muscle. I have heard pork is the most commonlyeaten meat in Ouka, a land across
+    the sea.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 3
+  food_bonus:
+    vitality: 5
+  life: 2
+  name: Pork
+  price: 2
+  time_of_day: ''
+- category: Material/Food
+  description: Compared to other demons of its kind, a boar's strength iswithout equal.
+    The meat has a slight gamey odor, it must begently boiled to bring out the delicate
+    flavor.
+  expiable: true
+  fertilizer_bonus:
+    taste_strength: 3
+  food_bonus:
+    strength: 5
+  life: 2
+  name: Boar Meat
+  price: 3
+  time_of_day: ''
+- category: Material/Food
+  description: Venison must be properly prepared before it is cooked,but the end result
+    is a truly magical cut of meat thatcan be paired with any dish.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 2
+  food_bonus:
+    magic: 6
+  life: 2
+  name: Venison
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: Even powerful gods are amazed by the strength and vitalitycontained
+    in bear meat. Though it may prove troublesome tocook, the end result is more than
+    worth the effort.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+    taste_strength: 5
+  food_bonus:
+    strength: 4
+    vitality: 4
+  life: 2
+  name: Bear Meat
+  price: 2
+  time_of_day: ''
+- category: Material/Food
+  description: Strangely enough, badger meat can vary in flavor dependingon the type
+    procured. Whether a morsel is palatable or notcomes down to little more than luck.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 2
+    armor_magic: 2
+  food_bonus:
+    luck: 5
+  life: 2
+  name: Badger Meat
+  price: 3
+  time_of_day: ''
+- category: Material/Food
+  description: Turtle meat is oft used as medicine for its rejuvenatingproperties.
+    I recommend eating some when your vitalityis in short supply.
+  expiable: true
+  fertilizer_bonus:
+    yield_hp: 5
+  food_bonus:
+    hp: 4
+    vitality: 3
+  life: 2
+  name: Turtle Meat
+  price: 3
+  time_of_day: ''
+- category: Material/Food
+  description: Ah, the sparrow... The bane of rice fields everywhere.Its crispiness
+    when cooked is simply divine. Small as itmay be, magical energy runs abundant
+    through its meat.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 1
+  food_bonus:
+    magic: 4
+  life: 2
+  name: Sparrow Meat
+  price: 1
+  sub_category: Bird
+  time_of_day: ''
+- category: Material/Food
+  description: A pheasant's cunning can be most vexing, but its meat mayhelp to bolster
+    one's skill. Though the texture is ratherbland, the flavor is said to be utterly
+    delicious.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 3
+  food_bonus:
+    sp: 6
+  life: 2
+  name: Pheasant Meat
+  price: 2
+  sub_category: Bird
+  time_of_day: ''
+- category: Material/Food
+  description: Duck meat is revered for its luscious, high-quality fat.After eating
+    some, one cannot help but feel their vitalityrestored and their luck improved.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    hardness_vitality: 5
+  food_bonus:
+    luck: 4
+    vitality: 2
+  life: 2
+  name: Duck Meat
+  price: 3
+  sub_category: Bird
+  time_of_day: ''
+- category: Material/Food
+  description: Do not judge the loach by its diminutive size, for it isbrimming with
+    hidden vitality. Be grateful as you carry outyour work on the morrow.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+  food_bonus:
+    vitality: 4
+  life: 2
+  name: Loach
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: A fortuitous fish that has been used in divination sinceancient times.
+    I must say, it's one of my favorites!
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 1
+  food_bonus:
+    luck: 3
+  life: 2
+  name: Sweetfish
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: Carp are said to have the power to boost women's health.I cannot help
+    but wonder how one gets rid of the stenchof mud. It must be the mark of a truly
+    talented chef.
+  expiable: true
+  fertilizer_bonus:
+    yield_hp: 5
+  food_bonus:
+    hp: 5
+  life: 2
+  name: Carp
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: Because of their proclivity for clear water, these fishhave a magnificent
+    fragrance. I imagine they must havepotent spiritual energy swirling in their fishy
+    forms.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 3
+  food_bonus:
+    magic: 4
+  life: 2
+  name: Masu Salmon
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: These fish's avid appetites give them a heaping helpingof vitality.
+    They boast a simple yet robust flavor profile.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 3
+  food_bonus:
+    vitality: 4
+  life: 2
+  name: Char
+  price: 1
+  time_of_day: ''
+- category: Food
   description: These fish can be found in nearly every river in Yanato.Flavor notwithstanding,
     they certainly fill you up.
   expiable: true
@@ -840,54 +724,94 @@
     stickiness_gusto: 3
   food_bonus:
     fullness: 4
-  found_in: []
   life: 2
   name: Crucian Carp
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: Salmon are known as the fish of the gods, for they areborn into this
+    world with the spiritual energy to passfrom death to life and the strength to
+    swim upstream.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 3
+    taste_strength: 3
+  food_bonus:
+    magic: 4
+    strength: 4
+  life: 2
+  name: Salmon
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: These fish adore cold water and are blessed with goodfortune. Their
+    tender meat is perfect for frying.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  food_bonus:
+    luck: 4
+  life: 2
+  name: Smelt
+  price: 1
+  time_of_day: ''
+- category: Food
   description: It is rare indeed to see these fish come all the way downfrom the northern
     sea. The delectable fat of their meatis certain to increase your spiritual abilities.
   expiable: true
   fertilizer_bonus:
     kernel_fertilizer: 5
     leaf_fertilizer: 10
-    pesticide: -1
   food_bonus:
     fullness: 3
     magic: 3
-  found_in: []
   life: 2
   name: Herring
   price: 3
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
+  description: A long river fish brimming with wholesome nutrients.Its wriggling energy
+    imparts skill and strength.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+    taste_strength: 10
+  food_bonus:
+    sp: 5
+    strength: 5
+  life: 2
+  name: Eel
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: Shellfish suck up the spiritual energy from the mudand sand. Particularly
+    big clams are liable to devolveinto demons if exposed to too much negative energy.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 2
+  food_bonus:
+    magic: 3
+  life: 2
+  name: Basket Clam
+  price: 1
+  time_of_day: ''
+- category: Material/Food
   description: A hard-shelled bird egg. Not only will it expand yourcooking repertoire,
     but I have heard that it has manyhealth benefits as well.
   expiable: true
   fertilizer_bonus:
-    pesticide: -1
     stickiness_gusto: 2
   food_bonus:
     luck: 2
     magic: 2
     strength: 2
     vitality: 2
-  found_in: []
   life: 2
   name: Egg
   price: 1
-  source: []
   sub_category: Bird
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
   description: While this pest may feast on our ears of rice,as an ingredient it imparts
     vitality to dishes.
   expiable: true
@@ -895,17 +819,11 @@
     hardness_vitality: 5
   food_bonus:
     vitality: 3
-  found_in:
-  - Home
   life: 2
   name: Grasshopper
   price: 1
-  source:
-  - '! Marks'
-  sub_category: ''
-  time_of_day: Autumn
-  used_in_recipes: Roast Grasshopper
-- category: Ingredients
+  time_of_day: ''
+- category: Food
   description: This insect is prized for its health and vitalityboosting properties.
     As for its appearance...Well, one can get used to anything, I suppose.
   expiable: true
@@ -915,27 +833,41 @@
   food_bonus:
     hp: 2
     vitality: 3
-  found_in: []
   life: 2
   name: Bee Larva
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: A strong alcohol made from distilled ingredients.The flavor of the
-    grains used adds to its delectability.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
-  name: White Rice Shochu
+- category: Food
+  description: Though this rice is unmilled, many prefer its fragrance andflavor.
+    It is said to be more nutritious than white rice.
+  food_bonus:
+    fullness: 15
+    hp: 5
+    strength: 5
+  name: Brown Rice
   price: 1
-  source: []
-  sub_category: SakeSyouchu
+  sub_category: Rice
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
+  description: This rice has only been partially milled. It thereforefeatures the
+    properties of both white and brown rice.
+  food_bonus:
+    fullness: 15
+    hp: 5
+  name: Mixed Rice
+  price: 2
+  sub_category: Rice
+  time_of_day: ''
+- category: Food
+  description: This pearly white rice has been immaculately polished.Why, these grains
+    are the very soul of the Yanato people!
+  food_bonus:
+    fullness: 15
+  name: White Rice
+  price: 3
+  sub_category: Rice
+  time_of_day: ''
+- category: Food
   description: Though it is counted among the five grains, the wheatharvested on this
     island is not suited for cultivation.You are certainly free to use it as an ingredient,
     however.
@@ -943,17 +875,22 @@
     stickiness_gusto: 3
   food_bonus:
     fullness: 10
-  found_in:
-  - Bounteous Earth Grotto
-  - Cylindric Cavern
-  - 'Gathering Area: Plain'
   name: Wheat
   price: 1
-  source: Bushes
-  sub_category: ''
-  time_of_day: Any
-  used_in_recipes: []
-- category: Ingredients
+  time_of_day: ''
+- category: Material/Food
+  description: One of the five grains, and said to be the oldest cropsgrown in Yanato.
+    It may not do much to sate the appetite,but it does appear to be good for your
+    health.
+  fertilizer_bonus:
+    yield_hp: 5
+  food_bonus:
+    fullness: 5
+    hp: 2
+  name: Foxtail Millet
+  price: 1
+  time_of_day: ''
+- category: Food
   description: One of the five grains, and one of the most popular cropsproduced in
     Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint
     of spiritual energy.
@@ -962,14 +899,10 @@
   food_bonus:
     fullness: 5
     magic: 2
-  found_in: []
   name: Sanwa Millet
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: One of the five grains, and a source of great strength.It is also used
     as an ingredient in many magnificentcondiments, such as miso and soy sauce.
   fertilizer_bonus:
@@ -978,50 +911,83 @@
   food_bonus:
     fullness: 5
     strength: 2
-  found_in:
-  - Den of Fangs
-  - Bounteous Earth Grotto
-  - Eggplant Hollow
-  - Dragon's Tunnel
-  - 'Gathering Area: Plain'
-  - 'Gathering Area: Spring'
   name: Bean
   price: 3
-  source:
-  - Bushes
-  sub_category: ''
-  time_of_day: Any
-  used_in_recipes:
-  - Tofu
-  - Natto
-  - Dumpling
-- category: Ingredients
+  time_of_day: ''
+- category: Material/Food
+  description: A hardy plant grown to stave off famine. In additionto filling your
+    stomach, it may very well grant youthe ability to pull off even more skills in
+    combat.
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  food_bonus:
+    fullness: 5
+    sp: 2
+  name: Buckwheat
+  price: 6
+  time_of_day: ''
+- category: Food
   description: Even though the roots of this hardy plant are poisonous,it can be consumed
     after being crushed and soaked in water.Many farmers plant these in preparation
     for poor harvests.
   fertilizer_bonus:
     toxicity: 5
-  food_bonus: {}
-  found_in: []
   name: Tekusari
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: Maize that has been pickled in salted rice bran.Its potent flavor will
-    wash over you with just one bite.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
-  name: Pickled Potato
+- category: Material/Food
+  description: This is the hard-shelled fruit of a broad-leafed tree.It may be meager,
+    but every little bit goes a long way.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 1
+  food_bonus:
+    fullness: 2
+  life: 2
+  name: Acorn
   price: 1
-  source: []
-  sub_category: Nukazuke
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: Taro is a root plant that has been keeping the peopleof Yanato fed
+    since long before even the five grains.These days, it's the star of many a dinnertime
+    dish.
+  expiable: true
+  fertilizer_bonus:
+    stickiness_gusto: 5
+  food_bonus:
+    fullness: 4
+  life: 2
+  name: Taro
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: The potato is a kind of taro that's grown in frigid landsand has found
+    its way to Yanato as of late. It is quitefilling for a root plant, and may bestow
+    extra vitality.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+  food_bonus:
+    fullness: 4
+    vitality: 2
+  life: 2
+  name: Potato
+  price: 3
+  time_of_day: ''
+- category: Material/Food
+  description: This appears to be a bulbous version of the green onion.It seems to
+    grant good fortune, and is favored by warriorsof the west. Also notorious for
+    inducing tears when cut.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 5
+  food_bonus:
+    luck: 4
+  life: 2
+  name: Onion
+  price: 3
+  time_of_day: ''
+- category: Food
   description: A fern that is immensely bitter and frequently growsin the wilds of
     nearby settlements. Its acute flavormay give you the capacity to perform additional
     skills.
@@ -1030,51 +996,125 @@
     aesthetic_luck: 5
   food_bonus:
     sp: 4
-  found_in: []
   life: 2
   name: Warabi
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: These shoots from the horsetail plant are a medicinal herb.It gathers
+    spiritual energy from the soil, which gives ita bittersweet flavor that evokes
+    memories of springtime.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 5
+  food_bonus:
+    magic: 2
+  life: 2
+  name: Horsetail
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: A fragrant herb that can be found in the springtime.It is well known
+    for its various medicinal properties,the most useful of which is amplifying your
+    vitality.
+  expiable: true
+  fertilizer_bonus:
+    hardness_vitality: 5
+  food_bonus:
+    vitality: 2
+  life: 2
+  name: Mugwort
+  price: 1
+  time_of_day: ''
+- category: Material/Food
+  description: Water dropwort, shepherd's purse, cudweed, chickweed,nipplewort, turnip,
+    and radish. If you manage to findall seven, legend says that fortune will favor
+    you.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 3
+  food_bonus:
+    luck: 2
+  life: 2
+  name: Seven Herbs
+  price: 1
+  time_of_day: ''
+- category: Food
   description: Burdock, carrots, radishes, and the like are all delectableand abounding
     in nutrients. Whether or not you enjoy theirtaste, eating them will certainly
     make you more healthy.
   expiable: true
   fertilizer_bonus:
-    herbicide: -1
     yield_hp: 3
   food_bonus:
     hp: 2
-  found_in: []
   life: 2
   name: Root Crops
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: A juicy vegetable that is both sweet and slightly bitter.They are especially
+    well-loved by the water-dwelling kappa.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 10
+  food_bonus:
+    luck: 2
+  life: 2
+  name: Cucumber
+  price: 3
+  time_of_day: ''
+- category: Material/Food
+  description: An unfamiliar plant comprised of tiny yellow kernels.To my knowledge,
+    this crop is not grown in Yanato.
+  fertilizer_bonus:
+    hardness_vitality: 5
+    yield_hp: 5
+  food_bonus:
+    hp: 3
+    vitality: 3
+  name: Maize
+  price: 3
+  time_of_day: ''
+- category: Material/Food
+  description: A phenomenal variety of mushrooms grow around the treesof the mountain,
+    including maitake, shimeji, and shiitake.Their nutrients will boost your muscles
+    and grant strength.
+  expiable: true
+  fertilizer_bonus:
+    taste_strength: 3
+  food_bonus:
+    strength: 2
+  life: 2
+  name: Mushroom
+  price: 1
+  time_of_day: ''
+- category: Food
   description: My word... This mushroom is known to be exceedingly rare!You must boast
     incredibly good fortune to have found it.Maybe eating it will bring even more
     luck into your life.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 50
-    herbicide: -1
   food_bonus:
     luck: 50
-  found_in: []
   life: 2
   name: Matsutake
   price: 30
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: The hard outer shell hides a sweet inner core. Moreover,partaking of
+    it may strengthen your spiritual powers.
+  expiable: true
+  fertilizer_bonus:
+    armor_magic: 3
+  food_bonus:
+    magic: 4
+  life: 2
+  name: Chestnut
+  price: 1
+  time_of_day: ''
+- category: Food
   description: These nuts come from the seeds of ginkgo trees. The femaletrees produce
     ovules said to bestow health and long life.
   expiable: true
@@ -1082,15 +1122,24 @@
     yield_hp: 5
   food_bonus:
     hp: 4
-  found_in: []
   life: 2
   name: Ginkgo Nut
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Material/Food
+  description: The persimmons on this island vary greatly between beingastringent
+    and delectably sweet. You must have good luckif you managed to land on a sweet
+    one...this time.
+  expiable: true
+  fertilizer_bonus:
+    aesthetic_luck: 3
+  food_bonus:
+    luck: 4
+  life: 2
+  name: Persimmon
+  price: 1
+  time_of_day: ''
+- category: Food
   description: A wild plant that packs quite a punch. Its vigorous flavordoes wonders
     for your vitality...less so for your breath.
   expiable: true
@@ -1099,15 +1148,11 @@
     pesticide: 5
   food_bonus:
     vitality: 2
-  found_in: []
   life: 2
   name: Garlic
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: This wild plant frequently grows by clear streams and isused as a seasoning.
     Its excessive spiciness will clear outyour sinuses and get your spiritual powers
     pumping.
@@ -1117,15 +1162,11 @@
     pesticide: 5
   food_bonus:
     magic: 2
-  found_in: []
   life: 2
   name: Wasabi
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: A root that has long been used both to stifle stenchesand season suppers.
     Guaranteed to warm you up, bolsteryour strength, and boost your capacity for using
     skills.
@@ -1136,15 +1177,11 @@
   food_bonus:
     sp: 2
     strength: 2
-  found_in: []
   life: 2
   name: Ginger
   price: 3
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: Eaten raw, it is spicy and crisp, but cooking it willbring out its
     inner sweetness. It also has medicinal uses,and is even known to raise one's skilfulness
     in battle.
@@ -1155,15 +1192,11 @@
     stickiness_gusto: 5
   food_bonus:
     sp: 4
-  found_in: []
   life: 2
   name: Green Onion
   price: 3
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: The hint of sweetness hidden within its acutely sour tasteis like a
     metaphor for raising children. Unlike parenthood,eating it may also prove to be
     beneficial to your health.
@@ -1172,15 +1205,11 @@
     yield_hp: 5
   food_bonus:
     hp: 2
-  found_in: []
   life: 2
   name: Plum
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: Salt is a mineral that is indispensable as a preservativenot only for
     food, but also for your mind and body. It isknown to have the power to cleanse
     all sorts of impurities.
@@ -1189,363 +1218,280 @@
     immunity: 10
     pesticide: 10
     toxicity: 5
-  food_bonus: {}
-  found_in: []
   name: Salt
   price: 3
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A sweetener harvested from sugarcane grown on an islandin the southern
-    sea. It is of high quality, but has beenspreading as of late; even commoners can
+    sea. It is of high quality, but has beenspreading as of late, even commoners can
     enjoy it now.
   fertilizer_bonus:
     stickiness_gusto: 1
     toxicity: 1
-  food_bonus: {}
-  found_in: []
   name: Sugar
   price: 6
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: The seed of a flowering plant that is used to seasonmany a dish. It
     has been cherished since ancient times,and is also abounding in nutrients.
-  fertilizer_bonus:
-    toxicity: -5
-  food_bonus: {}
-  found_in: []
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Poison Resistance
   name: Sesame
   price: 6
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A type of seaweed that has been long beloved in Yanatoas the base of
     a soup stock and as a general ingredient.
   fertilizer_bonus:
     root_fertilizer: 10
-  food_bonus: {}
-  found_in: []
   name: Kombu Kelp
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
-  description: A drink made by pouring boiling water over driedtea leaves. No matter
-    what flavor of tea is used,it always enhances the taste of any meal.
-  fertilizer_bonus: 
+- category: Material/Food
+  description: Although the tea plant came from Ouka, there was alreadya species growing
+    on this island. Its leaves are used fordivination. Drinking it in a hot broth
+    brings good fortune.
+  fertilizer_bonus:
+    herbicide: 1
     leaf_fertilizer: 5
     pesticide: 1
-    herbicide: 1
   food_bonus:
-    luck: 2
-  found_in:
-  - Fruitful Hassok
-  - 'Gathering Area: Spring'
+    luck: 3
   name: Tea
   price: 1
-  source:
-  - Bushes
-  - Foraging
-  sub_category: ''
-  time_of_day: Any
-  used_in_recipes: Tea
-- category: Ingredients
+  time_of_day: ''
+- category: Food
   description: A medicinal herb effective against a variety of ailments.It can be
     particularly useful as a remedy for poison...not to mention quite delectable when
     made into tempura.
   fertilizer_bonus:
     pesticide: 3
-  food_bonus: {}
-  found_in: []
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Poison Resistance
   name: Fish Mint
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: Made from ingredients that are boiled to bring outtheir flavor. A culinary
     necessity in any kitchen.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: Processed
+  ingredients_and: []
+  ingredients_or:
+  - amount: 2
+    name: Crucain Carp
+  - amount: 2
+    name: Sweetfish
+  - amount: 2
+    name: Smelt
+  - amount: 2
+    name: Basket Clam
+  - amount: 2
+    name: Carp
+  - amount: 2
+    name: Char
+  - amount: 2
+    name: Eel
+  - amount: 2
+    name: Masu Salmon
+  - amount: 2
+    name: Loach
+  - amount: 2
+    name: Salmon
+  - amount: 2
+    name: Kombu Kelp
+  - amount: 2
+    name: Mushroom
   name: Soup Stock
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: A paste made by mixing and then fermenting crushed beans,malt, and
     salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient
     could not exist!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 2
+    name: Malt
+  - amount: 2
+    name: Bean
+  - amount: 2
+    name: Salt
+  ingredients_or: []
   name: Miso
   price: 6
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: A liquid seasoning made from fermented soybean paste.Use it to enliven
     noodle dishes like udon and soba.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 2
+    name: Malt
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Salt
+  ingredients_or: []
   name: Soy Sauce
   price: 6
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: Refined oil, with the dregs carefully filtered out. A lifeof luxury
     is incomplete without this invaluable substance.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: ''
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Vegetable Oil
+  - amount: 3
+    name: Fish Oil
   name: Oil
   price: 5
-  source:
-  - Refined from other oils.
-  sub_category: ''
-  time_of_day: Unknown
-  used_in_recipes: Tofu
-- category: Ingredients
+  time_of_day: ''
+- category: Food
   description: A raw oil extracted from perilla seeds and the like.It contains dregs
     and is rather pungent, making itdifficult to use in this form.
   fertilizer_bonus:
     leaf_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Vegetable Oil
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: Oil
-- category: Materials/Ingredients
+- category: Material/Food
   description: A raw oil extracted from fish. It contains dregs and israther pungent,
     making it difficult to use in this form.
   fertilizer_bonus:
     leaf_fertilizer: 5
-  food_bonus: {}
-  found_in: []
   name: Fish Oil
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: Oil
-- category: Ingredients
+- category: Food
   description: Renowned water that has been frozen in some frigid place.It keeps foodstuffs
     cool and prevents them from rotting...until it melts, that is.
   expiable: true
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   life: 1
   name: Ice
   price: 10
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A seasoning produced by fermenting malted rice to createacetic acid.
     Its sour flavor relieves exhaustion.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in:
-  - Processed
+  ingredients_and: []
+  ingredients_or:
+  - amount: 2
+    name: Brown Rice
+  - amount: 2
+    name: Mixed Rice
+  - amount: 2
+    name: White Rice
   name: Vinegar
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourhealth. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     yield_hp: 20
-  food_bonus: {}
-  found_in: []
   name: Health Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourskill capacity.
     Dissolve it in water to partake of it.
   fertilizer_bonus:
     aesthetic_luck: 10
     stickiness_gusto: 10
-  food_bonus: {}
-  found_in: []
   name: Skill Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourstrength. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     taste_strength: 20
-  food_bonus: {}
-  found_in: []
   name: Strength Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourvitality. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     hardness_vitality: 20
-  food_bonus: {}
-  found_in: []
   name: Vitality Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourmagic. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     armor_magic: 20
-  food_bonus: {}
-  found_in: []
   name: Magic Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourluck. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     aesthetic_luck: 20
-  food_bonus: {}
-  found_in: []
   name: Luck Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A powdered medicine that will temporarily increase yourfullness. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     stickiness_gusto: 20
-  food_bonus: {}
-  found_in: []
   name: Fullness Powder
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base health.
   fertilizer_bonus:
     yield_hp: 50
-  food_bonus: {}
-  found_in: Bubbling Sandbar
   name: Health Flakes
   price: 1
-  source:
-  - Chest?
-  sub_category: ''
-  time_of_day: Any
-- category: Materials/Ingredients
+  time_of_day: ''
+- category: Material/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base strength.
   fertilizer_bonus:
     taste_strength: 50
-  food_bonus: {}
-  found_in: []
   name: Strength Flakes
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base vitality.
   fertilizer_bonus:
     hardness_vitality: 50
-  food_bonus: {}
-  found_in: []
   name: Vitality Flakes
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base magic.
   fertilizer_bonus:
     armor_magic: 50
-  food_bonus: {}
-  found_in: []
   name: Magic Flakes
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base luck.
   fertilizer_bonus:
     aesthetic_luck: 50
-  food_bonus: {}
-  found_in: []
   name: Luck Flakes
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base gusto.
   fertilizer_bonus:
     stickiness_gusto: 50
-  food_bonus: {}
-  found_in: []
   name: Gusto Flakes
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: When combined with flakes, this medicinal basewill increase your various
     capabilities.
   fertilizer_bonus:
@@ -1555,316 +1501,3596 @@
     stickiness_gusto: 25
     taste_strength: 25
     yield_hp: 25
-  food_bonus: {}
-  found_in: []
   name: Medicinal Base
   price: 20
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: A thick, syrupy substance made of steamed and fermentedrice. It is
     the basis of many recipes and seasonings.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: Processed
+  ingredients_and: []
+  ingredients_or:
+  - amount: 2
+    name: Brown Rice
+  - amount: 2
+    name: Mixed Rice
+  - amount: 2
+    name: White Rice
   name: Malt
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
+- category: Material/Food
   description: A collection of dregs left over from the hulling process,including
     the shells and sprouts. It is very functional,ready to be used for cleaning in
     addition to cooking.
   fertilizer_bonus:
     herbicide: 2
     kernel_fertilizer: 10
-    pesticide: -2
-  food_bonus: {}
-  found_in: ''
   name: Rice Bran
   price: 1
-  source: Hulling Rice
-  sub_category: ''
   time_of_day: ''
-- category: Ingredients
+- category: Food
   description: A kind of cake made by adding water to rice, pounding it,and letting
     it harden. It is delightful both when boiledand toasted. What's more, it's extremely
     easy to preserve!
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: Processed
+  ingredients_and: []
+  ingredients_or:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
   name: Mochi
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: This bean curd is made by combining soybean juicewith a salt solution
     and letting the mixture harden.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 3
+    name: Bean
+  - amount: 1
+    name: Oil
+  ingredients_or: []
   name: Tofu
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: This rice has been mixed with water, pounded, and moldedinto a round
     shape. In the olden days, the children of menused to regularly present these as
     an offering to the gods.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 2
+    name: Brown Rice
+  - amount: 2
+    name: Mixed Rice
+  - amount: 2
+    name: White Rice
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
   name: Rice Cake
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
+  description: Rabbit Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Rabbit Meat
+  name: Dried Rabbit Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Pork that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Pork
+  name: Dried Pork
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Boar Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Boar Meat
+  name: Dried Boar Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Venison that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Venison
+  name: Dried Venison
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Bear Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Bear Meat
+  name: Dried Bear Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Badger Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Badger Meat
+  name: Dried Badger Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Turtle Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Turtle Meat
+  name: Dried Turtle Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Sparrow Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Sparrow Meat
+  name: Dried Sparrow Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Pheasant Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Pheasant Meat
+  name: Dried Pheasant Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Duck Meat that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Duck Meat
+  name: Dried Duck Meat
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Crucain Carp that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Crucain Carp
+  name: Dried Crucain Carp
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Sweetfish that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Sweetfish
+  name: Dried Sweetfish
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Smelt that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Smelt
+  name: Dried Smelt
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Basket Clam that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Basket Clam
+  name: Dried Basket Clam
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Carp that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Carp
+  name: Dried Carp
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Char that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Char
+  name: Dried Char
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Eel that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Eel
+  name: Dried Eel
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Masu Salmon that has been dried in the sun to preventit from rotting.
+    Most foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Masu Salmon
+  name: Dried Masu Salmon
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Loach that has been dried in the sun to preventit from rotting. Most
+    foods will last longer whenrobbed of the water within them.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Loach
+  name: Dried Loach
+  price: 1
+  sub_category: Shiraboshi
+  time_of_day: ''
+- category: Food
+  description: Salted salmon, dried in the sea breeze to preserve it.While it may
+    keep for some time, it also happens to beincredibly salty. Take care not to gorge
+    yourself on it.
+  ingredients_and:
+  - amount: 1
+    name: Salmon
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  ingredients_or: []
+  name: Dried Salmon
+  price: 1
+  time_of_day: ''
+- category: Food
+  description: Rabbit Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Rabbit Meat
+  ingredients_or: []
+  name: Smoked Rabbit Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Pork that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Pork
+  ingredients_or: []
+  name: Smoked Pork
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Boar Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Boar Meat
+  ingredients_or: []
+  name: Smoked Boar Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Venison that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Venison
+  ingredients_or: []
+  name: Smoked Venison
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Bear Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Bear Meat
+  ingredients_or: []
+  name: Smoked Bear Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Badger Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Badger Meat
+  ingredients_or: []
+  name: Smoked Badger Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Turtle Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Turtle Meat
+  ingredients_or: []
+  name: Smoked Turtle Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Sparrow Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Sparrow Meat
+  ingredients_or: []
+  name: Smoked Sparrow Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Pheasant Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Pheasant Meat
+  ingredients_or: []
+  name: Smoked Pheasant Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Duck Meat that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Duck Meat
+  ingredients_or: []
+  name: Smoked Duck Meat
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Crucain Carp that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Crucain Carp
+  ingredients_or: []
+  name: Smoked Crucain Carp
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Sweetfish that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Sweetfish
+  ingredients_or: []
+  name: Smoked Sweetfish
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Smelt that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Smelt
+  ingredients_or: []
+  name: Smoked Smelt
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Basket Clam that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Basket Clam
+  ingredients_or: []
+  name: Smoked Basket Clam
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Carp that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Carp
+  ingredients_or: []
+  name: Smoked Carp
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Char that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Char
+  ingredients_or: []
+  name: Smoked Char
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Eel that has been salted,  smoked,  and dried.The smoky fragrance mixes
+    well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Eel
+  ingredients_or: []
+  name: Smoked Eel
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Masu Salmon that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Masu Salmon
+  ingredients_or: []
+  name: Smoked Masu Salmon
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Loach that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Loach
+  ingredients_or: []
+  name: Smoked Loach
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Salmon that has been salted,  smoked,  and dried.The smoky fragrance
+    mixes well with its rich flavor.
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Salmon
+  ingredients_or: []
+  name: Smoked Salmon
+  price: 1
+  sub_category: Kunsei
+  time_of_day: ''
+- category: Food
+  description: Potato that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Potato
+  ingredients_or: []
+  name: Pickled Potato
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Persimmon that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Persimmon
+  ingredients_or: []
+  name: Pickled Persimmon
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Chestnut that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Chestnut
+  ingredients_or: []
+  name: Pickled Chestnut
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Cucumber that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Cucumber
+  ingredients_or: []
+  name: Pickled Cucumber
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Mushroom that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Mushroom
+  ingredients_or: []
+  name: Pickled Mushroom
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Mugwort that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Mugwort
+  ingredients_or: []
+  name: Pickled Mugwort
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Root Corps that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Root Corps
+  ingredients_or: []
+  name: Pickled Root Corps
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Acorn that has been pickled in salted rice bran.Its potent flavor will
+    wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Acorn
+  ingredients_or: []
+  name: Pickled Acorn
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Taro that has been pickled in salted rice bran.Its potent flavor will
+    wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Taro
+  ingredients_or: []
+  name: Pickled Taro
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Onion that has been pickled in salted rice bran.Its potent flavor will
+    wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Onion
+  ingredients_or: []
+  name: Pickled Onion
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Seven Herbs that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Seven Herbs
+  ingredients_or: []
+  name: Pickled Seven Herbs
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Horsetail that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Horsetail
+  ingredients_or: []
+  name: Pickled Horsetail
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Ginko Nut that has been pickled in salted rice bran.Its potent flavor
+    will wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Ginko Nut
+  ingredients_or: []
+  name: Pickled Ginko Nut
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Maize that has been pickled in salted rice bran.Its potent flavor will
+    wash over you with just one bite.
+  ingredients_and:
+  - amount: 1
+    name: Rice Bran
+  - amount: 2
+    name: Maize
+  ingredients_or: []
+  name: Pickled Maize
+  price: 1
+  sub_category: Nukazuke
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Rabbit Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Rabbit Meat
+  ingredients_or: []
+  name: Rabbit Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Pork put in rice to preserve it.Some peculiar folks
+    claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Pork
+  ingredients_or: []
+  name: Pork Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Boar Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Boar Meat
+  ingredients_or: []
+  name: Boar Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Venison put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Venison
+  ingredients_or: []
+  name: Venison Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Bear Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Bear Meat
+  ingredients_or: []
+  name: Bear Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Badger Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Badger Meat
+  ingredients_or: []
+  name: Badger Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Turtle Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Turtle Meat
+  ingredients_or: []
+  name: Turtle Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Sparrow Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Sparrow Meat
+  ingredients_or: []
+  name: Sparrow Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Pheasant Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Pheasant Meat
+  ingredients_or: []
+  name: Pheasant Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Duck Meat put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Duck Meat
+  ingredients_or: []
+  name: Duck Meat Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Crucain Carp put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Crucain Carp
+  ingredients_or: []
+  name: Crucain Carp Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Sweetfish put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Sweetfish
+  ingredients_or: []
+  name: Sweetfish Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Smelt put in rice to preserve it.Some peculiar folks
+    claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Smelt
+  ingredients_or: []
+  name: Smelt Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Basket Clam put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Basket Clam
+  ingredients_or: []
+  name: Basket Clam Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Carp put in rice to preserve it.Some peculiar folks
+    claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Carp
+  ingredients_or: []
+  name: Carp Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Char put in rice to preserve it.Some peculiar folks
+    claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Char
+  ingredients_or: []
+  name: Char Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Eel put in rice to preserve it.Some peculiar folks
+    claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Eel
+  ingredients_or: []
+  name: Eel Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Masu Salmon put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Masu Salmon
+  ingredients_or: []
+  name: Masu Salmon Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Loach put in rice to preserve it.Some peculiar folks
+    claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Loach
+  ingredients_or: []
+  name: Loach Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
+  description: Pickled and salted Salmon put in rice to preserve it.Some peculiar
+    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    convinced.
+  ingredients_and:
+  - amount: 5
+    name: Brown Rice
+  - amount: 5
+    name: Mixed Rice
+  - amount: 5
+    name: White Rice
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Salmon
+  ingredients_or: []
+  name: Salmon Sushi
+  price: 1
+  sub_category: Sushi
+  time_of_day: ''
+- category: Food
   description: A dairy product that is widely adored in western lands.Perhaps it could
     be compared to Yanato's condensed milk.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   name: Cheese
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
     entirely unlike sushi.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 1
+    name: Herring
+  - amount: 1
+    name: Onion
+  - amount: 1
+    name: Cucumber
+  - amount: 1
+    name: Vinegar
+  ingredients_or: []
   name: Dried Herring
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: Dried cooked rice that has been rehydratedwith boiling water. It has
-    a rather lightflavor, similar to porridge.
-  fertilizer_bonus: {}
-  food_bonus:
-    fullness: 5
-    swift_recovery: 1
-  found_in: Home
+- category: Food
+  description: A grain that has been dried out in the sun and robbedof its water contents.
+    It is best when soaked in boiledwater to rehydrate it before being eaten.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 2
+    name: Brown Rice
+  - amount: 2
+    name: Mixed Rice
+  - amount: 2
+    name: White Rice
   name: Dried Boiled Rice
   price: 1
-  source:
-  - Processed
-  sub_category: ''
-  time_of_day: N/A
-  used_in_recipes: Dried Boiled Rice
-- category: Ingredients
-  description: Salmon that has been soaked in salt water and driedin the sea breeze.
-    This pairs wondrously with sake!Though do take care not to gorge yourself.
-  fertilizer_bonus: {}
-  food_bonus:
-    magic: 4
-    strength: 4
-  found_in:
-  - Home
-  name: Dried Salmon
-  price: 1
-  source:
-  - Processed
-  - Cooking
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: The dried stem of a taro plant, woven into a cord.Often carried by
     soldiers headed to the battlefield.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 1
+    name: Taro
+  - amount: 1
+    name: Miso
+  ingredients_or: []
   name: Dried Taro Stem
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: A persimmon hung under the eave of a house and dried untildeveloping
     a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is
     autumn's finest treasure.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and: []
+  ingredients_or:
+  - amount: 3
+    name: Persimmon
   name: Dried Persimmon
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little
     too well. Be wary not to drink too much.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 2
+    name: Wasabi
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  ingredients_or: []
   name: Pickled Wasabi
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: A plum that has been pickled in salt. Not only is it usedfor battle
     rations, but also as a medicine to cure poisons.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Poison Resistance
+  ingredients_and:
+  - amount: 1
+    name: Plum
+  - amount: 1
+    name: Salt
+  ingredients_or: []
   name: Pickled Dried Plum
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Materials/Ingredients
-  description: Oho! Water from the springs of the valley.It is quite clear and extremely
-    refreshing.
-  fertilizer_bonus:
-    toxicity: -5
-  food_bonus:
-    luck: 2
-  found_in: []
+- category: Material/Food
+  description: Ah, this must be clean water that was drawn from a springdown in the
+    valley. I must admit, it's better for drinkingand cooking than the water found
+    around the mountain pass.
   name: Spring Water
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: Water that is renowned for its purity, which has beenmelted down from
     solid ice. I imagine it is the highestquality water that we can hope to find on
     this island.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
   name: Renowned Water
   price: 1
-  source: []
-  sub_category: ''
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
-    horribly unsanitary. Only thetruly courageous are bold enough to consume it.
-  fertilizer_bonus: {}
-  food_bonus:
-    magic: 6
-  found_in: Home
+- category: Food
+  description: An alcohol fermented with human saliva.It reeks to high heaven and
+    is horribly unsanitary.Only the truly courageous are bold enough to consume it.
+  ingredients_and: []
+  ingredients_or:
+  - amount: 1
+    name: Brown Rice
+  - amount: 1
+    name: Mixed Rice
+  - amount: 1
+    name: White Rice
   name: Kuchikami Sake
   price: 1
-  source: Processed
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: Cloudy white sake that is completely unfiltered.A blend of piercing
-    sourness and potent rice flavor.
-  fertilizer_bonus: {}
-  food_bonus:
-    magic: 5
-    sp: 5
-  found_in: Home
+- category: Food
+  description: Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust,
+    rice-like flavor.
+  ingredients_and:
+  - amount: 1
+    name: Brown Rice
+  - amount: 1
+    name: Mixed Rice
+  - amount: 1
+    name: White Rice
+  - amount: 1
+    name: Malt
+  ingredients_or: []
   name: Doburoku
   price: 1
-  source: Processed
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
-  description: 'A beverage made by converting rice into sugar.Be fooled not by its
-    name: this draught containsno alcohol. It is gently sweet and energizing.'
-  fertilizer_bonus: {}
-  food_bonus:
-    luck: 5
-    magic: 5
-    sommer_magic_buff: 2
-  found_in:
-  - Processed
-  - Cooking
+- category: Food
+  description: 'A drink made by saccharizing rice.Be fooled not by its name: this
+    draught is virgin.Gently sweet and energizing.'
+  ingredients_and: []
+  ingredients_or:
+  - amount: 2
+    name: Malt
   name: Amazake
   price: 1
   sub_category: Sake
-  time_of_day: N/A
-  used_in_recipes:
-  - Sake Soaked Stir-Fry (Dried Pork)
-  - Sake Soaked Stir-Fry (Dried Rabbit Meat)
-- category: Ingredients
+  time_of_day: ''
+- category: Food
   description: A clear alcohol that has been filtered and heated.Has a rich flavor
     with a hint of sweetness.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 1
+    name: Malt
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
   name: Refined Sake
   price: 1
-  source: []
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: Highly nutritious roots and leaves have been added to thissake to make
     it medicinal. As bitter as it tastes, at leastit will make you hardy enough to
     resist most poisons.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 3
+    name: Malt
+  - amount: 1
+    name: Mugwort
+  - amount: 1
+    name: Plum
+  ingredients_or: []
   name: Medicinal Sake
   price: 1
-  source: []
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: An alcohol made by refining polished rice and fermenting it over low
     heat.Smooth, palatable, and incredibly fragrant.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 2
+    name: Malt
+  - amount: 2
+    name: Sugar
+  ingredients_or: []
   name: Ginjo Sake
   price: 1
-  source: []
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
   description: An alcohol made by carefully selecting only the best grains of riceand
     polishing them to perfection. Its translucence and superlativefragrance certify
     its status as a true work of art.
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 5
+    name: Malt
+  - amount: 5
+    name: Sugar
+  ingredients_or: []
   name: Daiginjo Sake
   price: 1
-  source: []
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
-- category: Ingredients
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  ingredients_and:
+  - amount: 4
+    name: Malt
+  - amount: 2
+    name: Sugar
+  - amount: 1
+    name: White Rice
+  ingredients_or: []
+  name: White Rice Shochu
+  price: 1
+  sub_category: SakeSyouchu
+  time_of_day: ''
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  ingredients_and:
+  - amount: 4
+    name: Malt
+  - amount: 2
+    name: Sugar
+  - amount: 1
+    name: Brown Rice
+  ingredients_or: []
+  name: Brown Rice Shochu
+  price: 1
+  sub_category: SakeSyouchu
+  time_of_day: ''
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  ingredients_and:
+  - amount: 4
+    name: Malt
+  - amount: 2
+    name: Sugar
+  - amount: 1
+    name: Mixed Rice
+  ingredients_or: []
+  name: Mixed Rice Shochu
+  price: 1
+  sub_category: SakeSyouchu
+  time_of_day: ''
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  ingredients_and:
+  - amount: 4
+    name: Malt
+  - amount: 2
+    name: Sugar
+  - amount: 1
+    name: Bean Rice
+  ingredients_or: []
+  name: Bean Rice Shochu
+  price: 1
+  sub_category: SakeSyouchu
+  time_of_day: ''
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  ingredients_and:
+  - amount: 4
+    name: Malt
+  - amount: 2
+    name: Sugar
+  - amount: 1
+    name: Foxtail Millet
+  ingredients_or: []
+  name: Foxtail Millet Shochu
+  price: 1
+  sub_category: SakeSyouchu
+  time_of_day: ''
+- category: Food
+  description: A strong alcohol made from distilled ingredients.The flavor of the
+    grains used adds to its delectability.
+  ingredients_and:
+  - amount: 4
+    name: Malt
+  - amount: 2
+    name: Sugar
+  - amount: 1
+    name: Buckwheat
+  ingredients_or: []
+  name: Buckwheat Shochu
+  price: 1
+  sub_category: SakeSyouchu
+  time_of_day: ''
+- category: Food
   description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
     It seems that her faithdoes not forbid the consumption of spirits...
-  fertilizer_bonus: {}
-  food_bonus: {}
-  found_in: []
+  ingredients_and:
+  - amount: 1
+    name: Brown Rice
+  - amount: 1
+    name: Mixed Rice
+  - amount: 1
+    name: White Rice
+  - amount: 1
+    name: Maize
+  ingredients_or: []
   name: Beer
   price: 1
-  source: []
   sub_category: Sake
   time_of_day: ''
-  used_in_recipes: []
+- category: Food
+  description: Firm and fragrant brown rice, boiled to perfection.Eat up before it
+    gets cold.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    hp: 5
+    sp: 1
+    strength: 8
+  ingredients_and: []
+  ingredients_or: []
+  name: Cooked Brown Rice
+  time_of_day: ''
+- category: Food
+  description: This mixed rice is boiled to perfection.Every bite is rich in flavor
+    and nutrients.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    hp: 5
+    strength: 3
+  ingredients_and: []
+  ingredients_or: []
+  name: Cooked Mixed Rice
+  time_of_day: ''
+- category: Food
+  description: White rice boiled to perfection. Each glisteninggrain is your reward
+    for months of painstaking toil.
+  food_bonus:
+    enchant: []
+    fullness: 5
+  ingredients_and: []
+  ingredients_or: []
+  name: Cooked White Rice
+  time_of_day: ''
+- category: Food
+  description: White rice that has been steamed with sake,amplifying its natural sweetness.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    magic: 2
+    strength: 5
+  ingredients_and:
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  ingredients_or: []
+  name: Steamed Rice
+  time_of_day: ''
+- category: Food
+  description: Rice that has been steamed with sake and mixedwith wild vegetables.
+    The rustic, crispy crunchof this dish will make one's heart sing.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    sp: 4
+    strength: 5
+  ingredients_and:
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Warabi
+  ingredients_or: []
+  name: Sansai Rice
+  time_of_day: ''
+- category: Food
+  description: Rice that has been steamed with sake and mixed withchestnuts. The steaming
+    enhances the chestnuts'natural sweetness to create a dish for any palate.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    magic: 4
+    strength: 5
+  ingredients_and:
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Chestnut
+  ingredients_or: []
+  name: Chestnut Rice
+  season_bonus:
+    luck: 3
+    strength: 2
+  season_buff: Autumn
+  time_of_day: ''
+- category: Food
+  description: Rice that has been steamed with sake and mixed withginkgo nuts. Savor
+    the ingredient's enhanced flavor.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    hp: 4
+    strength: 5
+  ingredients_and:
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Ginkgo Nut
+  ingredients_or: []
+  name: Ginkgo Rice
+  season_bonus:
+    hp: 3
+    strength: 2
+  season_buff: Autumn
+  time_of_day: ''
+- category: Food
+  description: Boiled rice that has been fried in a splashof soy sauce. Both its fragrance
+    and textureare simply irresistable.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    vitality: 5
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Oil
+  ingredients_or: []
+  name: Fried Rice
+  time_of_day: ''
+- category: Food
+  description: Red rice that has been steamed in a vat.A fascinating blend of salty
+    and sweetthat calls to mind a celebratory mood.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    luck: 4
+    magic: 6
+  ingredients_and:
+  - amount: 2
+    name: Bean
+  - amount: 2
+    name: Salt
+  - amount: 1
+    name: Sesame
+  ingredients_or: []
+  name: Sekihan
+  time_of_day: ''
+- category: Food
+  description: Five types of rice that have been mixed and steamedtogether. A highly
+    nutritious meal, its five colorsguarantee ever-changing flavor with every bite.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    hp: 3
+    magic: 3
+    sp: 3
+    strength: 3
+    vitality: 3
+  ingredients_and:
+  - amount: 1
+    name: Foxtail Millet
+  - amount: 1
+    name: Sanwa Millet
+  - amount: 1
+    name: Bean
+  ingredients_or: []
+  name: Mixed Grain Rice
+  time_of_day: ''
+- &id001
+  category: Food
+  description: A meal made of cooked Sanwa Millet.Satisfying, but it doesn't compareto
+    the piquant taste of rice.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 5
+  name: Cooked Sanwa Millet
+  time_of_day: ''
+- *id001
+- category: Food
+  description: Dried cooked rice that has been rehydratedwith boiling water. It has
+    a rather lightflavor, similar to porridge.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Swift Recovery
+    fullness: 5
+  ingredients_and: []
+  ingredients_or: []
+  name: Dried Boiled Rice
+  time_of_day: ''
+- &id002
+  category: Food
+  description: A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making
+    ita perfect meal for the bedridden.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 5
+    sp: 2
+  ingredients_and: []
+  ingredients_or: []
+  name: Sanwa Millet Porridge
+  time_of_day: ''
+- *id002
+- *id002
+- category: Food
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  food_bonus:
+    enchant: []
+    fullness: 5
+    luck: 10
+    sp: 2
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  ingredients_or: []
+  name: Seven Herb Porridge
+  season_bonus:
+    fullness: 2
+    luck: 5
+    sp: 1
+  season_buff: Spring
+  time_of_day: ''
+- &id003
+  category: Food
+  description: A meal made of Sanwa Millet boiledwith rice. It is bound to warm youto
+    the core on chilly evenings.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 10
+    sp: 2
+  ingredients_and:
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Vegetables
+  ingredients_or: []
+  name: Sanwa Millet Zosui
+  time_of_day: ''
+- *id003
+- *id003
+- &id004
+  category: Food
+  description: White rice soaked in tea and sprinkled withsoy sauce. Silky smooth
+    for easy digestion,with an irresistably invigorating aftertaste.
+  food_bonus:
+    enchant: []
+    fullness: 10
+    hp: 2
+    sp: 2
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Soy Sauce
+  ingredients_or: []
+  name: Sanwa Millet Chazuke
+  time_of_day: ''
+- *id004
+- *id004
+- category: Food
+  description: Chazuke bedecked with mouth-wateringly good,bite-sized pieces of savory
+    salted salmon.A match made in the Lofty Realm!
+  food_bonus:
+    enchant: []
+    fullness: 10
+    hp: 2
+    luck: 2
+    magic: 5
+    sp: 2
+    strength: 4
+    vitality: 2
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Salmon
+  ingredients_or: []
+  name: Salmon Chazuke
+  time_of_day: ''
+- category: Food
+  description: Chazuke garnished with matsutake mushrooms,which are a rare delicacy
+    on Hinoe Island.How decadent! What lies beyond this luxury?
+  food_bonus:
+    enchant: []
+    fullness: 10
+    hp: 2
+    luck: 50
+    magic: 2
+    sp: 2
+    strength: 2
+    vitality: 2
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Matsutake
+  ingredients_or: []
+  name: Matsutake Chazuke
+  season_bonus:
+    luck: 10
+  season_buff: Autumn
+  time_of_day: ''
+- category: Food
+  description: Enticingly aromatic, puffy mochi that has beentoasted over a fire.
+    You may be tempted to digright in, but do be careful! It's quite hot.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 30
+  ingredients_and: []
+  ingredients_or: []
+  name: Aburi Mochi
+  time_of_day: ''
+- &id005
+  category: Food
+  description: Top a bowl of rice with a bit of sauce and someSalmon to create a truly
+    delectable meal!Yanato's culinary ingenuity never ceases to amaze.
+  food_bonus:
+    enchant: []
+    fullness: 10
+    sp: 2
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Sugar
+  - amount: 3
+    name: Grain
+  ingredients_or: []
+  name: Salmon Bowl
+  time_of_day: ''
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- *id005
+- category: Food
+  description: Grilled duck meat and fluffy eggs atop a bowl ofrice. The delectably
+    fatty meat fuses with the eggsto deliver its lucky devourer to taste nirvana.
+  food_bonus:
+    enchant: []
+    fullness: 10
+    sp: 6
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Sugar
+  - amount: 2
+    name: Duck Meat
+  - amount: 1
+    name: Egg
+  - amount: 3
+    name: Grain
+  ingredients_or: []
+  name: Duck Egg Bowl
+  time_of_day: ''
+- &id006
+  category: Food
+  description: Maize tempura atop a bowl of rice,with a heaping helping of salty-sweet
+    sauce.I could eat this for eternity.
+  food_bonus:
+    enchant: []
+    fullness: 20
+    hp: 4
+    sp: 8
+    strength: 4
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  - amount: 1
+    name: Sugar
+  - amount: 3
+    name: Grain
+  - amount: 1
+    name: Oil
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Maize Ten-don
+  time_of_day: ''
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- *id006
+- category: Food
+  description: Thick noodles made by combining wheat flourwith salt and water. They
+    slide down the throatwith glorious ease.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 10
+    hp: 5
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  ingredients_or: []
+  name: Udon
+  time_of_day: ''
+- category: Food
+  description: Adding fried tofu to udon creates a simply divinebroth. Fried tofu
+    is a famed favorite of fox gods,and thus I dub this Kitsune Udon.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 15
+    hp: 5
+    sp: 5
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 2
+    name: Oil
+  - amount: 1
+    name: Tofu
+  ingredients_or: []
+  name: Kitsune Udon
+  time_of_day: ''
+- category: Food
+  description: Ohoho, udon topped with Tempura Udon tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 15
+    hp: 8
+    sp: 8
+    strength: 4
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 3
+    name: Oil
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Tempura Udon
+  time_of_day: ''
+- category: Food
+  description: Thinly sliced noodles glazed with oil and sun dried.Their delicate
+    form mixes well with broth and otheringredients, making a solid foundation for
+    any meal.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Fire Resistance
+    magic: 5
+  ingredients_and:
+  - amount: 1
+    name: Salt
+  - amount: 1
+    name: Oil
+  ingredients_or: []
+  name: Somen
+  season_bonus:
+    enchant:
+    - level: 6
+      name: Fire Resistance
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: Noodles made by combining water and buckwheat flour,which is then stretched
+    and cut into thin slices.They give off a faint aroma of buckwheat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    fullness: 5
+    magic: 4
+    strength: 4
+  ingredients_and:
+  - amount: 3
+    name: Buckwheat
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Soba
+  time_of_day: ''
+- category: Food
+  description: Myrthe is an odd one, scattering tempura flakes atopsoba noodles. And
+    yet, it's delicious. The dark flakesremind me of a raccoon dog. I dub this Tanuki
+    Soba!
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 8
+    magic: 6
+    strength: 8
+  ingredients_and:
+  - amount: 3
+    name: Buckwheat
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Oil
+  ingredients_or: []
+  name: Tanuki Soba
+  time_of_day: ''
+- category: Food
+  description: Soba noodles accompanied by mountain vegetables.The crunch of the vegetables
+    is a delightfulcontrast to the noodles' silky-smooth texture.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 8
+    magic: 8
+    strength: 6
+  ingredients_and:
+  - amount: 3
+    name: Buckwheat
+  - amount: 1
+    name: Soup Stock
+  - amount: 2
+    name: Warabi
+  ingredients_or: []
+  name: Sansai Soba
+  time_of_day: ''
+- category: Food
+  description: Soba noodles adorned with Tempura Soba tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 10
+    magic: 10
+    strength: 10
+  ingredients_and:
+  - amount: 3
+    name: Buckwheat
+  - amount: 1
+    name: Soup Stock
+  - amount: 3
+    name: Oil
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Tempura Soba
+  time_of_day: ''
+- category: Food
+  description: A beloved treat of Myrthe's native Ventania,this pancake is made by
+    spreading dough thinlyacross a grill and topping it with ingredients.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Overstuffed
+    fullness: 15
+    hp: 8
+    luck: 5
+    vitality: 5
+  ingredients_and:
+  - amount: 3
+    name: Egg
+  ingredients_or: []
+  name: Pannenkoek
+  time_of_day: ''
+- category: Food
+  description: Crushed tekusari roots rolled into edible dumplings. As long as the
+    poison has been steeped out of theroots, they make for adequate rations.
+  ingredients_and: []
+  ingredients_or: []
+  name: Tekusari Dumplings
+  time_of_day: ''
+- category: Food
+  description: Foodstuffs that I brought with me from the capital.We must secure a
+    foothold on this island before weinevitably run out of edible things to eat...
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+  ingredients_and: []
+  ingredients_or: []
+  name: Preserved Rations
+  time_of_day: ''
+- category: Food
+  description: Hrm. Myrthe claims to be a skilled chef, but...Well, everyone makes
+    mistakes, I suppose.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+  ingredients_and: []
+  ingredients_or: []
+  name: Charred Lump
+  time_of_day: ''
+- category: Food
+  description: Chilled soup made from water peppers and miso.Its cool zest stimulates
+    the appetite.
+  food_bonus:
+    sp: 8
+  ingredients_and: []
+  ingredients_or: []
+  name: Chilled Miso Soup
+  time_of_day: ''
+- &id007
+  category: Food
+  description: Miso melted in hot water along with Maize.Its moderate saltiness and
+    the dashi's flavor makefor a superior dish that pairs well with cooked rice.
+  food_bonus:
+    sp: 10
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Maize Soup
+  time_of_day: ''
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- category: Food
+  description: A chilled soup of sesame seeds and cucumber. A mostexcellent way to
+    refresh oneself on a hot summer day.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Fire Resistance
+    magic: 5
+    sp: 5
+  ingredients_and:
+  - amount: 1
+    name: Cucumber
+  - amount: 1
+    name: Sesame
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Miso
+  ingredients_or: []
+  name: Cucumber Soup
+  season_bonus:
+    enchant:
+    - level: 3
+      name: Fire Resistance
+  season_buff: Summer
+  time_of_day: ''
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- *id007
+- category: Food
+  description: Miso soup made with boiled taro. One would not expectsomething so flavorful
+    to be a war ration, but it isoft used as such, bringing smiles to the battlefield.
+  food_bonus:
+    sp: 8
+    vitality: 4
+  ingredients_and:
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Taro Miso Soup
+  time_of_day: ''
+- category: Food
+  description: Miso soup enhanced by thinly cut daikon radishand blocks of tofu. Using
+    every bit of the daikon,leaves and all, adds a tremendous amount of flavor.
+  food_bonus:
+    hp: 6
+    sp: 6
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Root Crops
+  - amount: 1
+    name: Tofu
+  ingredients_or: []
+  name: Misoyaki Soup
+  time_of_day: ''
+- category: Food
+  description: Miso soup that has had pheasant meat added in.The mouth-watering juice
+    that oozes from the meatwith every bite blends perfectly with the broth.
+  food_bonus:
+    magic: 5
+    sp: 10
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Pheasant Meat
+  ingredients_or: []
+  name: Pheasant Miso Soup
+  time_of_day: ''
+- category: Food
+  description: Myrthe put a lot of thought into this savorycombination of pork and
+    miso. Combined withvegetables, this soup is beyond compare.
+  food_bonus:
+    sp: 5
+    strength: 3
+    vitality: 10
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Pork
+  - amount: 1
+    name: Root Crops
+  - amount: 1
+    name: Green Onion
+  ingredients_or: []
+  name: Pork Miso Soup
+  time_of_day: ''
+- category: Food
+  description: A bean soup brimming with smashed vegetableshailing from Myrthe's home
+    country of Ventania.The perfect accompaniment to a cold winter's day.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 5
+    hp: 8
+    sp: 5
+    strength: 5
+    vitality: 5
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Potato
+  - amount: 1
+    name: Onion
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Erwtensoep
+  season_buff: Winter
+  time_of_day: ''
+- &id008
+  category: Food
+  description: Grasshopper roasted on an open fire.Cooked to a golden brown with allthe
+    juicy flavor sealed inside.
+  name: Roast Grasshopper
+  time_of_day: ''
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- *id008
+- category: Food
+  description: Chopped garlic steeped in a savory soup stock.Do not judge this simple
+    dish by looks alone;its flavor will speak for itself.
+  ingredients_and: []
+  ingredients_or: []
+  name: Blanched Garlic
+  time_of_day: ''
+- category: Food
+  description: A dish fit for a god from Princess Sakuna's daysin the capital. Lightly
+    grilled eel is saltedand cooked to perfection in a bamboo steamer.
+  food_bonus:
+    sp: 8
+    strength: 4
+    vitality: 4
+  ingredients_and:
+  - amount: 1
+    name: Eel
+  - amount: 1
+    name: Salt
+  ingredients_or: []
+  name: Eel Steamed Rice
+  time_of_day: ''
+- category: Food
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients_and: []
+  ingredients_or: []
+  name: Sake Soaked Stir-Fry
+  time_of_day: ''
+- &id009
+  category: Food
+  description: Salmon is first simmered in soy sauce,after which the broth is drained
+    and then cooledfor a jiggly texture and scrumptious aftertaste.
+  food_bonus:
+    magic: 6
+    vitality: 6
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  ingredients_or: []
+  name: Salmon Jelly
+  time_of_day: ''
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- *id009
+- category: Food
+  description: Fragrant acorns that were soaked to remove theirbitterness, then roasted.
+    While they taste good,a handful of oaknuts does not a hearty meal make.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+  ingredients_and: []
+  ingredients_or: []
+  name: Roasted Acorns
+  time_of_day: ''
+- category: Food
+  description: Steamed soy beans wrapped in rice straw and fermented.The peculiar
+    odor and stickiness can be offputting,but after one bite you'll become a lifelong
+    fan.
+  food_bonus:
+    vitality: 2
+  ingredients_and: []
+  ingredients_or: []
+  name: Natto
+  time_of_day: ''
+- category: Food
+  description: Tofu is grilled until golden brown and coatedin thick miso paste. One
+    whiff of its savoryaroma is guaranteed to whet your appetite.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    luck: 5
+    vitality: 5
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Tofu
+  ingredients_or: []
+  name: Miso-Coated Tofu
+  time_of_day: ''
+- category: Food
+  description: A classic summer dish of chilled tofu accompaniedby soy sauce and other
+    mouth-watering seasonings.The perfect complement to an evening's libations.
+  food_bonus:
+    magic: 4
+    sp: 4
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Tofu
+  - amount: 1
+    name: Ginger
+  ingredients_or: []
+  name: Chilled Tofu
+  season_bonus:
+    sp: 1
+    strength: 1
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: For this recipe passed down from the far west,maize is grilled and
+    coated with a sweet sauce.One bite and you'll be awash in savory sweetness.
+  ingredients_and:
+  - amount: 1
+    name: Maize
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
+  name: Corn on the Cob
+  season_bonus:
+    enchant:
+    - level: 1
+      name: Summer Skill Buff
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
+    it impartsa satisfying crunch with each and every bite.
+  food_bonus:
+    magic: 6
+  ingredients_and: []
+  ingredients_or: []
+  name: Pickled Wasabi
+  season_bonus:
+    enchant:
+    - level: 1
+      name: Spring Magic Buff
+  season_buff: Spring
+  time_of_day: ''
+- category: Food
+  description: Salted pickled plums that have been sun-dried andfermented. Biting
+    into one releases a powerfularoma and a rich, bittersweet flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Poison Resistance
+    magic: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Pickled Dried Plum
+  season_bonus:
+    magic: 2
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: Cooked eggs rolled into a cylindrical shape thencut into bite-sized
+    slices. The soft texture andsweet flavor will surely put a smile on your face.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    hp: 4
+    luck: 4
+  ingredients_and:
+  - amount: 2
+    name: Egg
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
+  name: Fried Egg
+  time_of_day: ''
+- category: Food
+  description: A dish from the continent of Ouka made by mixinga beaten egg with stock
+    and other ingredients.Such gentle flavor! It warms me to my very core.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    hp: 6
+    luck: 8
+  ingredients_and:
+  - amount: 1
+    name: Egg
+  - amount: 1
+    name: Soup Stock
+  - amount: 1
+    name: Ginkgo Nut
+  ingredients_or: []
+  name: Chawanmushi
+  time_of_day: ''
+- category: Food
+  description: Tofu is dropped into soup stock and water,then boiled. The center comes
+    out piping hot,so give it time to cool down before enjoying!
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Water Resistance
+    magic: 4
+    sp: 4
+  ingredients_and:
+  - amount: 1
+    name: Tofu
+  - amount: 1
+    name: Kombu Kelp
+  ingredients_or: []
+  name: Boiled Tofu
+  season_bonus:
+    enchant:
+    - level: 6
+      name: Water Resistance
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Salmon that has been soaked in salt water and driedin the sea breeze.
+    This pairs wondrously with sake!Though do take care not to gorge yourself.
+  food_bonus:
+    magic: 4
+    strength: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Dried Salmon
+  season_bonus:
+    magic: 3
+  season_buff: Winter
+  time_of_day: ''
+- &id010
+  category: Food
+  description: Salmon covered in wheat flour and deep fried.The pleasant crunch as
+    you bite into it is ratheraddicting, if I do say so myself.
+  food_bonus:
+    strength: 8
+    vitality: 6
+  ingredients_and:
+  - amount: 3
+    name: Oil
+  ingredients_or: []
+  name: Crispy Salmon
+  time_of_day: ''
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- *id010
+- &id011
+  category: Food
+  description: Maize covered in egg and wheat flour,then deep fried. I am told that
+    this techniqueoriginally came from some western country.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    luck: 8
+    strength: 6
+    vitality: 4
+  ingredients_and:
+  - amount: 3
+    name: Oil
+  - amount: 1
+    name: Egg
+  ingredients_or: []
+  name: Maize Tempura
+  time_of_day: ''
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- *id011
+- &id012
+  category: Food
+  description: Maize stewed in soy sauce until soft.A gentle heat flows outward from
+    the broth,warming your body and comforting your soul.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    strength: 5
+    vitality: 5
+  ingredients_and:
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
+  name: Stewed Maize
+  time_of_day: ''
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- *id012
+- &id013
+  category: Food
+  description: Maize boiled in miso until soft. The richmiso and fresh ginger make
+    every ingredient sing.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    hp: 8
+    strength: 6
+    vitality: 6
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Sugar
+  - amount: 1
+    name: Ginger
+  ingredients_or: []
+  name: Miso Maize
+  time_of_day: ''
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- *id013
+- category: Food
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    luck: 10
+    sp: 10
+  ingredients_and:
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Rabbit Hot Pot
+  season_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    strength: 10
+    vitality: 5
+  ingredients_and:
+  - amount: 3
+    name: Boar Meat
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Boar Hot Pot
+  season_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    magic: 10
+    sp: 5
+  ingredients_and:
+  - amount: 3
+    name: Venison
+  - amount: 1
+    name: Soup Stock
+  ingredients_or: []
+  name: Deer Hot Pot
+  season_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 15
+    vitality: 10
+  ingredients_and:
+  - amount: 3
+    name: Turtle Meat
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  ingredients_or: []
+  name: Turtle Hot Pot
+  season_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant: []
+    fullness: 20
+    hp: 8
+    strength: 10
+    vitality: 10
+  ingredients_and:
+  - amount: 3
+    name: Bear Meat
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Sugar
+  ingredients_or: []
+  name: Bear Hot Pot
+  season_bonus:
+    enchant: []
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: This appears to be herring that was preserved with herbs,vinegar, and
+    salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
+    entirely unlike sushi.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Gill Shredder
+    luck: 5
+    sp: 10
+  ingredients_and: []
+  ingredients_or: []
+  name: Dried Herring
+  season_bonus:
+    enchant:
+    - level: 3
+      name: Gill Shredder
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: A dish of Myrthe's native Ventania made fromchopped potatoes and root
+    vegetables steamedand mashed. This will fill your belly right up!
+  food_bonus:
+    fullness: 8
+    luck: 10
+    magic: 10
+  ingredients_and:
+  - amount: 3
+    name: Potato
+  - amount: 1
+    name: Root Crops
+  - amount: 1
+    name: Onion
+  - amount: 1
+    name: Salt
+  ingredients_or: []
+  name: Hutspot
+  time_of_day: ''
+- category: Food
+  description: Rice cakes coated with sauce as they cook on stickskewers. The soft
+    texture combined with the sweetand savory sauce is in a league of its own.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Swift Recovery
+    fullness: 2
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  ingredients_or: []
+  name: Dumpling
+  time_of_day: ''
+- category: Food
+  description: Rice cakes that have had mugwort finely kneadedinto them. They taste
+    of spring itself.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Swift Recovery
+    fullness: 2
+    magic: 2
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Mugwort
+  ingredients_or: []
+  name: Mugwort Dumpling
+  season_bonus:
+    enchant:
+    - level: 5
+      name: Swift Recovery
+  season_buff: Spring
+  time_of_day: ''
+- category: Food
+  description: A sweet treat that hails from the country of Ouka,made from all sorts
+    of sesame. I am impressed theymanaged to make such a jelly out of sesame alone.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Poison Resistance
+    fullness: 2
+  ingredients_and:
+  - amount: 1
+    name: Bean
+  - amount: 1
+    name: Sesame
+  ingredients_or: []
+  name: Sesame Dumpling
+  time_of_day: ''
+- category: Food
+  description: Persimmons that have been dried on a cord.This powerfully sweet fruit
+    melts in your mouth,making it difficult to put down after the first bite.
+  food_bonus:
+    hp: 2
+    vitality: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Dried Persimmon
+  time_of_day: ''
+- category: Food
+  description: Ice that has been shaved down into tiny particles.The perfect remedy
+    for when you feel hot or feverish.
+  food_bonus:
+    magic: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Shaved Ice
+  season_bonus:
+    enchant:
+    - level: 6
+      name: Fire Resistance
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: Sweet mochi rolled into flat circles, then grilledto form crackers.
+    They are delightfully crispy.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Catapulting Impact
+    luck: 10
+    sp: 5
+  ingredients_and:
+  - amount: 1
+    name: Mochi
+  - amount: 1
+    name: Soy Sauce
+  - amount: 1
+    name: Kuchikami Sake
+  - amount: 1
+    name: Doburoku
+  - amount: 1
+    name: Amazake
+  - amount: 1
+    name: Refined Sake
+  - amount: 1
+    name: Medicinal Sake
+  - amount: 1
+    name: Ginjo Sake
+  - amount: 1
+    name: Daiginjo Sake
+  - amount: 1
+    name: ~Auto~ Shochu
+  - amount: 1
+    name: Beer
+  ingredients_or: []
+  name: Senbei
+  time_of_day: ''
+- category: Food
+  description: Buckwheat flour is tossed in boiling water and clumpedtogether to form
+    this dessert. Though the ingredientsare the same, it is wholly unlike soba noodles.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Prudence
+    magic: 2
+    strength: 2
+  ingredients_and:
+  - amount: 1
+    name: Buckwheat
+  - amount: 1
+    name: Bean
+  ingredients_or: []
+  name: Soba Dumpling
+  time_of_day: ''
+- category: Food
+  description: Rice softened in water, then pounded and shapedinto a ball. They have
+    long been used as offeringsto the gods from the children of men.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Sun Goddess
+    luck: 4
+    magic: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Rice Cake
+  time_of_day: ''
+- category: Food
+  description: Steamed sweet dumplings that are knownto pair well with a variety of
+    ingredients.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Swift Recovery
+    fullness: 4
+    luck: 8
+  ingredients_and:
+  - amount: 2
+    name: Sugar
+  - amount: 2
+    name: Bean
+  - amount: 1
+    name: Oil
+  ingredients_or: []
+  name: Manju
+  time_of_day: ''
+- category: Food
+  description: Wheat flour that has been kneaded, rolled,and fried. Fill them with
+    red bean pasteor vegetables for an even tastier treat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Celestial Maiden
+    luck: 6
+  ingredients_and:
+  - amount: 1
+    name: Sugar
+  - amount: 1
+    name: Sesame
+  ingredients_or: []
+  name: Kenpin
+  time_of_day: ''
+- category: Food
+  description: Miso mixed with finely chopped spices, then grilled.It pairs exceptionally
+    well with rice and sake.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Brilliant Virtue
+    luck: 6
+  ingredients_and:
+  - amount: 1
+    name: Miso
+  - amount: 1
+    name: Green Onion
+  - amount: 1
+    name: Garlic
+  ingredients_or: []
+  name: Grilled Miso
+  time_of_day: ''
+- category: Food
+  description: Fresh water from the mountain pass.
+  name: Water
+  time_of_day: ''
+- category: Food
+  description: Oho! Water from the springs of the valley.It is quite clear and extremely
+    refreshing.
+  food_bonus:
+    luck: 2
+  ingredients_and: []
+  ingredients_or: []
+  name: Spring Water
+  season_bonus:
+    enchant:
+    - level: 3
+      name: Fire Resistance
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
+    sip would wash awayany impurity. It's no wonder it's renowned!
+  food_bonus:
+    luck: 3
+  ingredients_and: []
+  ingredients_or: []
+  name: Renowned Water
+  season_bonus:
+    enchant:
+    - level: 6
+      name: Fire Resistance
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: A drink made by pouring boiling water over driedtea leaves. No matter
+    what flavor of tea is used,it always enhances the taste of any meal.
+  food_bonus:
+    luck: 2
+  ingredients_and: []
+  ingredients_or: []
+  name: Tea
+  season_bonus:
+    enchant:
+    - level: 1
+      name: Winter Skill Buff
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: The idea of combining roasted tea leaves with brownrice was truly a
+    revelation. It is bound to helpcalm the nerves and relieve pent-up stress.
+  food_bonus:
+    luck: 3
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Brown Rice
+  ingredients_or: []
+  name: Genmaicha
+  season_bonus:
+    enchant:
+    - level: 1
+      name: Winter Skill Buff
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: A tea made with dried fish mint leaves.In the Lofty Realm, this drink
+    is saidto grant protection from poisonous mist.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Poison Resistance
+  ingredients_and: []
+  ingredients_or: []
+  name: Fish Mint Tea
+  time_of_day: ''
+- category: Food
+  description: Though it is called tea, it is not made with tealeaves. This is a hot
+    broth made from roastingand drying kelp, then boiling it in hot water.
+  food_bonus:
+    luck: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Kelp Tea
+  season_bonus:
+    enchant:
+    - level: 1
+      name: Winter Skill Buff
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Kelp tea that has had plums added to it, creatinga sour flavor. This
+    divine combination is certainto soothe tension and melt the most anxious heart.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Poison Resistance
+    luck: 3
+  ingredients_and:
+  - amount: 1
+    name: Kombu Kelp
+  - amount: 1
+    name: Plum
+  ingredients_or: []
+  name: Plum Kelp Tea
+  season_bonus:
+    enchant:
+    - level: 2
+      name: Poison Resistance
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Plum kelp tea with a further addition of green tealeaves. According
+    to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Luck Boost
+    luck: 8
+  ingredients_and:
+  - amount: 1
+    name: Tea
+  - amount: 1
+    name: Kombu Kelp
+  ingredients_or: []
+  name: Lucky Tea
+  season_bonus:
+    enchant:
+    - level: 2
+      name: Luck Boost
+  season_buff: Winter
+  time_of_day: ''
+- category: Food
+  description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
+    horribly unsanitary. Only thetruly courageous are bold enough to consume it.
+  food_bonus:
+    magic: 6
+  ingredients_and: []
+  ingredients_or: []
+  name: Kuchikami Sake
+  time_of_day: ''
+- category: Food
+  description: Cloudy white sake that is completely unfiltered.A blend of piercing
+    sourness and potent rice flavor.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Night Owl
+    magic: 5
+    sp: 5
+  ingredients_and: []
+  ingredients_or: []
+  name: Doburoku
+  time_of_day: ''
+- category: Food
+  description: 'A beverage made by converting rice into sugar.Be fooled not by its
+    name: this draught containsno alcohol. It is gently sweet and energizing.'
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Summer Magic Buff
+    luck: 5
+    magic: 5
+  ingredients_and: []
+  ingredients_or: []
+  name: Amazake
+  time_of_day: ''
+- category: Food
+  description: Sake that has been filtered and heated until itruns clear. It has a
+    rich flavor with just a hintof sweetness to balance out the refined taste.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Spectral Scourge
+    magic: 5
+  ingredients_and: []
+  ingredients_or: []
+  name: Refined Sake
+  time_of_day: ''
+- category: Food
+  description: Sake truly cures all ills. This kind in particular hashad medicinal
+    herbs added to it. It will bolster yourfortitude and give you some resistance
+    to poison.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Poison Resistance
+    magic: 4
+  ingredients_and: []
+  ingredients_or: []
+  name: Medicinal Sake
+  time_of_day: ''
+- category: Food
+  description: Sake that is made by refining polished riceand fermenting it over low
+    heat. The resultis smooth, palatable, and incredibly fragrant.
+  food_bonus:
+    enchant: []
+    magic: 10
+  ingredients_and: []
+  ingredients_or: []
+  name: Ginjo Sake
+  time_of_day: ''
+- category: Food
+  description: Sake made by carefully selecting the finest grainsof rice and polishing
+    them to perfection. Translucentand fragrant, it qualifies as a true work of art!
+  food_bonus:
+    enchant: []
+    magic: 15
+  ingredients_and: []
+  ingredients_or: []
+  name: Daiginjo Sake
+  time_of_day: ''
+- category: Food
+  description: An alcohol of the far west made from wheat.Its bitterness may be an
+    acquired taste,but it certainly goes down smooth.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Fire Resistance
+    hp: 5
+    luck: 5
+    magic: 10
+  ingredients_and: []
+  ingredients_or: []
+  name: Beer
+  season_bonus:
+    enchant:
+    - level: 5
+      name: Fire Resistance
+  season_buff: Summer
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of an HP-boosting meal.Once you have mastered this
+    miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Health Water
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of an SP-boosting meal.Once you have mastered this
+    miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Skill Water
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of a strength-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Strength Water
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of a vitality-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Vitality Water
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of a magic-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Magic Water
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of a luck-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Luck Water
+  time_of_day: ''
+- category: Food
+  description: Enhances the effect of a fullness-boosting meal.Once you have mastered
+    this miraculous water,it should prove to be a potent supplement.
+  ingredients_and: []
+  ingredients_or: []
+  name: Fullness Water
+  time_of_day: ''
+- category: Food
+  description: Invaluable medicine that boosts your HP.Let us drink to your continued
+    good fortune!
+  ingredients_and:
+  - amount: 2
+    name: Medicinal Base
+  - amount: 1
+    name: Health Flakes
+  ingredients_or: []
+  name: Health Medicine
+  time_of_day: ''
+- category: Food
+  description: Invaluable medicine that boosts your strength.Let us drink to your
+    continued good fortune!
+  ingredients_and:
+  - amount: 2
+    name: Medicinal Base
+  - amount: 1
+    name: Strength Flakes
+  ingredients_or: []
+  name: Strength Medicine
+  time_of_day: ''
+- category: Food
+  description: Invaluable medicine that boosts your vitality.Let us drink to your
+    continued good fortune!
+  ingredients_and:
+  - amount: 2
+    name: Medicinal Base
+  - amount: 1
+    name: Vitality Flakes
+  ingredients_or: []
+  name: Vitality Medicine
+  time_of_day: ''
+- category: Food
+  description: Invaluable medicine that boosts your magic.Let us drink to your continued
+    good fortune!
+  ingredients_and:
+  - amount: 2
+    name: Medicinal Base
+  - amount: 1
+    name: Magic Flakes
+  ingredients_or: []
+  name: Magic Medicine
+  time_of_day: ''
+- category: Food
+  description: Invaluable medicine that boosts your luck.Let us drink to your continued
+    good fortune!
+  ingredients_and:
+  - amount: 2
+    name: Medicinal Base
+  - amount: 1
+    name: Luck Flakes
+  ingredients_or: []
+  name: Luck Medicine
+  time_of_day: ''
+- category: Food
+  description: Invaluable medicine that boosts your gusto.Let us drink to your continued
+    good fortune!
+  ingredients_and:
+  - amount: 2
+    name: Medicinal Base
+  - amount: 1
+    name: Gusto Flakes
+  ingredients_or: []
+  name: Gusto Medicine
+  time_of_day: ''

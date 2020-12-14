@@ -19,9 +19,8 @@
     {% else %}
     {% assign fertilizer_bonus_color = "text-danger" %}
     {% endif %}
-    <p class="text-left {{fertilizer_bonus_color}}"><strong>L:</strong>
-      {% if item.fertilizer_bonus.leaf_fertilizer > 0 %}+{% endif %}
-      {{ item.fertilizer_bonus.leaf_fertilizer }}
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>{{ site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer }}</strong>
+      {% if item.fertilizer_bonus.leaf_fertilizer > 0 %}+{% endif %}{{ item.fertilizer_bonus.leaf_fertilizer }}
     </p>
     {% endif %}
 
@@ -31,9 +30,8 @@
     {% else %}
     {% assign fertilizer_bonus_color = "text-danger" %}
     {% endif %}
-    <p class="text-left {{fertilizer_bonus_color}}"><strong>K:</strong>
-      {% if item.fertilizer_bonus.kernel_fertilizer > 0 %}+{% endif %}
-      {{ item.fertilizer_bonus.kernel_fertilizer }}
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>{{ site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer }}</strong>
+      {% if item.fertilizer_bonus.kernel_fertilizer > 0 %}+{% endif %}{{ item.fertilizer_bonus.kernel_fertilizer }}
     </p>
     {% endif %}
 
@@ -43,9 +41,8 @@
     {% else %}
     {% assign fertilizer_bonus_color = "text-danger" %}
     {% endif %}
-    <p class="text-left {{fertilizer_bonus_color}}"><strong>R:</strong>
-      {% if item.fertilizer_bonus.root_fertilizer > 0 %}+{% endif %}
-      {{ item.fertilizer_bonus.root_fertilizer }}
+    <p class="text-left {{fertilizer_bonus_color}}"><strong>{{ site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer }}</strong>
+      {% if item.fertilizer_bonus.root_fertilizer > 0 %}+{% endif %}{{ item.fertilizer_bonus.root_fertilizer }}
     </p>
     {% endif %}
   </td>
@@ -68,11 +65,16 @@
 
   {% if item.expiable %}
   <td class="table-warning">
-    In days <i class="fas fa-skull"></i>
+    {% assign life = item.life %}
+    {% if life %}
+    {{ site.data.strings.fertilizer_helper.inventory.expiable.in_days | replace: "%life%", life }}
+    {% else %}
+    {{ site.data.strings.fertilizer_helper.inventory.expiable.in_days_unknown }}
+    {% endif %}
   </td>
   {% else %}
   <td>
-    <i class="fas fa-infinity"></i>
+    {{ site.data.strings.fertilizer_helper.inventory.expiable.infinity }}
   </td>
   {% endif %}
 </tr>

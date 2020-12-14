@@ -21,7 +21,31 @@
 
 <h1 class="mt-4">{{ site.data.strings.item_list.title }}</h1>
 <section id="sectionItemList">
-    {% assign materials_items = site.data.items | where: "category", "Materials" %}
-    {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
-    {% include itemlist-table.html items=materials_items items2=materials_ingredients_items id='tblItemsList' %}
+    <h2>{{ site.data.strings.item_list.materials.title }}</h2>
+    <section id="sectionItemListMaterials">
+        {% assign materials_items = site.data.items | where: "category", "Materials" %}
+        {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
+        {% assign material_items = site.data.items | where: "category", "Material" %}
+        {% assign material_food_items = site.data.items | where: "category", "Material/Food" %}
+        
+        {% include itemlist-table.html id='tblItemsList' items=materials_items items2=materials_ingredients_items items3=material_items items4=material_food_items %}
+    </section>
+
+    
+    <h2>{{ site.data.strings.item_list.ingredients.title }}</h2>
+    <section id="sectionItemListIngredients">
+        {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
+        {% assign ingredients_items = site.data.items | where: "category", "Ingredients" %}
+        {% assign food_items = site.data.items | where: "category", "Food" %}
+
+        Coming Soon
+    </section>
+    
+
+    <h2>{{ site.data.strings.item_list.food.title }}</h2>
+    <section id="sectionItemListFood">
+        {% assign food_items = site.data.items | where: "category", "Cooking" %}
+
+        Coming Soon
+    </section>
 </section>
