@@ -8,6 +8,77 @@ import io
 from csv import DictReader
 from pprint import pprint
 
+insects = [
+    'Grasshopper'
+]
+
+meats = [
+    'Rabbit Meat',
+    'Pork',
+    'Boar Meat',
+    'Venison',
+    'Bear Meat',
+    'Badger Meat',
+    'Turtle Meat',
+    'Sparrow Meat',
+    'Pheasant Meat',
+    'Duck Meat'
+]
+vegetables = [
+    'Potato',
+    'Persimmon',
+    'Chestnut',
+    'Cucumber',
+    'Mushroom',
+    'Mugwort',
+    'Root Corps',
+    'Acorn',
+    'Taro',
+    'Onion',
+    'Seven Herbs',
+    'Horsetail',
+    'Ginko Nut',
+    'Maize'
+]
+seafood = [
+    'Crucain Carp',
+    'Sweetfish',
+    'Smelt',
+    'Basket Clam',
+    'Carp',
+    'Char',
+    'Eel',
+    'Masu Salmon',
+    'Loach',
+    'Salmon'
+]
+grains = [
+    'White Rice',
+    'Brown Rice',
+    'Mixed Rice',
+    'Bean Rice',
+    'Foxtail Millet',
+    'Buckwheat'
+]
+materials = [
+    'Salt',
+    'Sugar',
+    'Tea',
+    'Fish Mint'
+    'Sesame',
+    'Kombu Kelp',
+    'Oil',
+    'Fish Oil',
+    'Vinegar',
+    'Rice Bran',
+    'Spring Water',
+    'Renowed Water',
+    'Medicinal Base'
+]
+
+meat_seafood = meats
+meat_seafood.extend(seafood)
+
 
 def newItem(name, category):
     return {
@@ -20,7 +91,6 @@ def newItem(name, category):
         'time_of_day': '',
         'used_in_recipes': []
     }
-
 
 def setFertilizerBonus(item, row):
     if row['Mnr_Ne'].isnumeric() and int(row['Mnr_Ne']) != 0:
@@ -57,7 +127,73 @@ def setFertilizerBonus(item, row):
     return item
 
 
-def setFoodBonus(item, row):
+def parseEnchant(enchant, enchants_map):
+    ret = []
+    for en in enchant.split('|'):
+        en = en.strip()
+        enchant_level = int(re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', en)[0]) + 1 if re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', en) and re.findall(r'^[a-zA-Z_]+\/(\d+)$', en)[0].isnumeric() else 1
+        enchant_code = re.findall(r'^([\*a-zA-Z_]+)\/\d+$', en)[0] if re.findall(r'^([\*a-zA-Z_]+)\/\d+$', en) else ''
+        enchant_name = [it for it in enchants_map.values() if it['Code'] == enchant_code][0]['name'] if [it for it in enchants_map.values() if it['Code'] == enchant_code] else ''
+
+        if enchant_name:
+            ret.append({ "name": enchant_name, "level": enchant_level })
+
+    return ret
+
+
+def parseSource(item, sourcestr, items_map, item_names, delimiter='|', auto=None):
+    ret = []
+    if delimiter in sourcestr:
+        for source in sourcestr.split(delimiter):
+            source = source.strip()
+
+            amount = int(re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', source)[0]) + 1 if re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', source) and re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', source)[0].isnumeric() else 1
+            
+            item_code = re.findall(r'^([\*a-zA-Z_]+)\/\d+$', source)[0] if re.findall(r'^([\*a-zA-Z_]+)\/\d+$', source) else ''
+
+            if item['name'] == 'Miso':
+                print(item_code)
+
+            if re.findall(r'^Flag_(\s+)$', item_code):
+                food_flag = re.findall(r'^Flag_(\s+)$', item_code)[0] if re.findall(r'^Flag_(\s+)$', item_code) else ''
+                for food_item in [it for it in items_map.values() if it['sub_category'] == food_flag]:
+                    item_name = food_item['name']
+                    if item_name:
+                        ret.append({"name": item_name, "amount": amount})
+            elif re.findall(r'^\*Auto$', item_code):
+                if auto:
+                    ret.append({"name": auto, "amount": amount})
+                else:
+                    print("warn: auto is None but '*Auto' was found in {}".format(sourcestr))
+            elif item_code == 'Meat':
+                for item_name in meats:
+                    if item_name:
+                        ret.append({"name": item_name, "amount": amount})
+            elif item_code == 'Vegetable':
+                for item_name in vegetables:
+                    if item_name:
+                        ret.append({"name": item_name, "amount": amount})
+            elif item_code == 'Seafood':
+                for item_name in seafood:
+                    if item_name:
+                        ret.append({"name": item_name, "amount": amount})
+            elif item_code == 'Grain':
+                for item_name in grains:
+                    if item_name:
+                        ret.append({"name": item_name, "amount": amount})
+            elif item_code == 'Insect':
+                for item_name in insects:
+                    if item_name:
+                        ret.append({"name": item_name, "amount": amount})
+            else:
+                item_name = [it for it in item_names if it['Code'] == item_code][0]['name'] if [it for it in item_names if it['Code'] == item_code] else ''
+
+                if item_name:
+                    ret.append({"name": item_name, "amount": amount})
+
+    return ret
+
+def setFoodBonus(item, row, enchants_map):
     if row['BuffHpMax'].isnumeric() and int(row['BuffHpMax']) != 0:
         item['food_bonus']['hp'] = int(row['BuffHpMax'])
     if row['BuffWpMax'].isnumeric() and int(row['BuffWpMax']) != 0:
@@ -72,100 +208,64 @@ def setFoodBonus(item, row):
         item['food_bonus']['luck'] = int(row['BuffLuck'])
     if row['BuffHungry'].isnumeric() and int(row['BuffHungry']) != 0:
         item['food_bonus']['fullness'] = int(row['BuffHungry'])
-    if row['BuffEnchant'].isnumeric() and int(row['BuffEnchant']) != 0:
-        item['food_bonus']['enchant'] = int(row['BuffEnchant'])
+    
+    if row['BuffEnchant'] and row['BuffEnchant'] != '-':
+        item['food_bonus']['enchant'] = parseEnchant(row['BuffEnchant'], enchants_map)
+
+    return item
+
+def setFoodBonusFromCooking(item, row, enchants_map):
+    if row['SeasonBuff'] and row['SeasonBuff'] != '-':
+        item['season_buff'] = row['SeasonBuff']
+        item['season_bonus'] = {}
+
+        if row['SeasonBuffHpMax'].isnumeric() and int(row['SeasonBuffHpMax']) != 0:
+            item['season_bonus']['hp'] = int(row['SeasonBuffHpMax'])
+        if row['SeasonBuffWpMax'].isnumeric() and int(row['SeasonBuffWpMax']) != 0:
+            item['season_bonus']['sp'] = int(row['SeasonBuffWpMax'])
+        if row['SeasonBuffStrength'].isnumeric() and int(row['SeasonBuffStrength']) != 0:
+            item['season_bonus']['strength'] = int(row['SeasonBuffStrength'])
+        if row['SeasonBuffVital'].isnumeric() and int(row['SeasonBuffVital']) != 0:
+            item['season_bonus']['vitality'] = int(row['SeasonBuffVital'])
+        if row['SeasonBuffMagic'].isnumeric() and int(row['SeasonBuffMagic']) != 0:
+            item['season_bonus']['magic'] = int(row['SeasonBuffMagic'])
+        if row['SeasonBuffLuck'].isnumeric() and int(row['SeasonBuffLuck']) != 0:
+            item['season_bonus']['luck'] = int(row['SeasonBuffLuck'])
+        if row['SeasonBuffHungry'].isnumeric() and int(row['SeasonBuffHungry']) != 0:
+            item['season_bonus']['fullness'] = int(row['SeasonBuffHungry'])
+        
+        if row['SeasonBuffEnchant'] and row['SeasonBuffEnchant'] != '-':
+            item['season_bonus']['enchant'] = parseEnchant(row['SeasonBuffEnchant'], enchants_map)
 
     return item
 
 
-def setFoodBonusFromCooking(item, row):
+item_names = []
+items_map = {}
+categories_set = set()
+source_set = set()
 
-    return item
 
+def getItemNames(filename):
+    ret = []
+    with open(filename, encoding="utf8") as read_obj:
+        #data = read_obj.read()
+        # csvs are a bit juncky ... '\n' is NOT the ende of the row ... "~Code" is the end of the row (but some times missing =/)
+        # also add "End" at the "Header" (line 1)
+        # need todo some work by your own =/ ... delimiters are not set right
 
-def main():
-    items = {}
-    items_map = {}
+        reader = DictReader(read_obj)
+
+        # iterate over each line as a ordered dictionary
+        for row in reader:
+            name = row['NameEn']
+            if name:
+                ret.append({ "name": name, "Code": row['Code'] })
+    
+    return ret
+
+def getMaterials():
     materials_map = {}
-    food_map = {}
-    cooking_map = {}
-    categories_set = set()
-    source_set = set()
-
-    meats = [
-        'Rabbit Meat',
-        'Pork',
-        'Boar Meat',
-        'Venison',
-        'Bear Meat',
-        'Badger Meat',
-        'Turtle Meat',
-        'Sparrow Meat',
-        'Pheasant Meat',
-        'Duck Meat'
-    ]
-    vegetables = [
-        'Potato',
-        'Persimmon',
-        'Chestnut',
-        'Cucumber',
-        'Mushroom',
-        'Mugwort',
-        'Root Corps',
-        'Acorn',
-        'Taro',
-        'Onion',
-        'Seven Herbs',
-        'Horsetail',
-        'Ginko Nut',
-        'Maize'
-    ]
-    seafood = [
-        'Crucain Carp',
-        'Sweetfish',
-        'Smelt',
-        'Basket Clam',
-        'Carp',
-        'Char',
-        'Eel',
-        'Masu Salmon',
-        'Loach',
-        'Salmon'
-    ]
-    grains = [
-        'White Rice',
-        'Brown Rice',
-        'Mixed Rice',
-        'Bean Rice',
-        'Foxtail Millet',
-        'Buckwheat'
-    ]
-    materials = [
-        'Salt',
-        'Sugar',
-        'Tea',
-        'Fish Mint'
-        'Sesame',
-        'Kombu Kelp',
-        'Oil',
-        'Fish Oil',
-        'Vinegar',
-        'Rice Bran',
-        'Spring Water',
-        'Renowed Water',
-        'Medicinal Base'
-    ]
-
-    meat_seafood = meats
-    meat_seafood.extend(seafood)
-
-    with open('items.yml') as f:
-        # use safe_load instead load
-        items = yaml.safe_load(f)
-
-    for item in items:
-        items_map[item['name']] = item
-
     with open('Material.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
         # csvs are a bit juncky ... '\n' is NOT the ende of the row ... "~Code" is the end of the row (but some times missing =/)
@@ -197,6 +297,15 @@ def main():
 
                     materials_map[name] = new_item
 
+                    items_map[name] = new_item
+                    items_map[name]['Code'] = row['Code']
+
+    return materials_map
+
+
+def getFood(item_names, enchants_map):
+    food_map = {}
+
     with open('Food.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
         # csvs are a bit juncky ... '\n' is NOT the ende of the row ... "~Code" is the end of the row (but some times missing =/)
@@ -210,11 +319,8 @@ def main():
             name = row['NameEn']
             if name:
                 new_item = newItem(name, row['FoodFlag'])
-                if name in items_map:
-                    new_item = items_map[name]
-                categories_set.add(row['FoodFlag'])
 
-                if row['FoodFlag'] == 'Material' or row['FoodFlag'] == 'ManureBase' or row['FoodFlag'] == 'Bird' or name in meats or name in vegetables or (name in grains and not 'Rice' in name) or name in materials or ' Powder' in name or ' Flakes' in name:
+                if row['FoodFlag'] == 'Material' or row['FoodFlag'] == 'ManureBase' or row['FoodFlag'] == 'Bird' or name in meats or name in vegetables or (name in grains and not 'Rice' in name) or name in materials or name in insects or ' Powder' in name or ' Flakes' in name:
                     new_item['category'] = 'Materials/Ingredients'
                 else:
                     new_item['category'] = 'Ingredients'
@@ -228,40 +334,72 @@ def main():
                     new_item['life'] = life
                     if life > 0:
                         new_item['expiable'] = True
-
-                if row['Source'] != '-':
-                    source_set.add(row['Source'])
+                
                 if row['Price'].isnumeric() and int(row['Price']) != 0:
                     new_item['price'] = int(row['Price'])
 
-                new_item = setFertilizerBonus(new_item, row)
-                new_item = setFoodBonus(new_item, row)
+                setFertilizerBonus(new_item, row)
+                setFoodBonus(new_item, row, enchants_map)
 
                 # hotfixes
                 if name == 'Tea':
-                    item['fertilizer_bonus']['leaf_fertilizer'] = 5
-                    item['fertilizer_bonus']['herbicide'] = 1
-                    item['fertilizer_bonus']['pesticide'] = 1
+                    new_item['fertilizer_bonus']['leaf_fertilizer'] = 5
+                    new_item['fertilizer_bonus']['herbicide'] = 1
+                    new_item['fertilizer_bonus']['pesticide'] = 1
 
                 auto_list = None
                 if '_*Meat|Seafood' in row['Code']:
-                    auto_list = meat_seadfood
+                    auto_list = meat_seafood
                 elif '_*Meat' in row['Code']:
                     auto_list = meats
                 elif '_*Vegetable' in row['Code']:
                     auto_list = vegetables
                 elif '_*Grain' in row['Code']:
                     auto_list = grains
+                elif '_*Insect' in row['Code']:
+                    auto_list = insects
 
                 if auto_list:
                     for name in auto_list:
                         new_food_item = new_item
-                        new_food_item['name'] = new_food_item['name'].replace('~Auto~', name)
+                        new_food_item['name'] = new_item['name'].replace('~Auto~', name)
                         new_food_item['description'] = row['CommentEn'].replace('~Auto~', name).replace('\\1', ',').replace('\n', '')
+                        
+                        if row['Source'] != '-':
+                            new_food_item['ingredients_and'] = parseSource(new_food_item, row['Source'], items_map, item_names, '&', name)
+                            new_food_item['ingredients_or'] = parseSource(new_food_item, row['Source'], items_map, item_names, '|', name)
+                        
                         food_map[name] = new_food_item
+                        
+                        items_map[name] = new_food_item
+                        items_map[name]['Code'] = row['Code']
                 else:
+                    if row['Source'] != '-':
+                        new_item['ingredients_and'] = parseSource(new_item, row['Source'], items_map, item_names, '&', name)
+                        new_item['ingredients_or'] = parseSource(new_item, row['Source'], items_map, item_names, '|', name)
+                    
                     food_map[name] = new_item
+                    
+                    items_map[name] = new_item
+                    items_map[name]['Code'] = row['Code']
 
+    return food_map
+
+def getEnchant():
+    enchant_map = {}
+    with open('Enchant.csv', encoding="utf8") as read_obj:
+        enchant_reader = DictReader(read_obj)
+
+        # iterate over each line as a ordered dictionary
+        for row in enchant_reader:
+            name = row['NameEn']
+            if name:
+                enchant_map[name] = { "name": name, "Code": row['Code'] }
+
+    return enchant_map
+
+def getCooking(item_names, enchants_map):
+    cooking_map = {}
     with open('Cooking.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
         # csvs are a bit juncky ... '\n' is NOT the ende of the row ... "~Code" is the end of the row (but some times missing =/)
@@ -275,30 +413,57 @@ def main():
             name = row['NameEn']
             if name:
                 new_item = newItem(name, 'Food')
-                if name in items_map:
-                    new_item = items_map[name]
+                    
+                names = [name]
+                if re.findall(r'~SourceMain~', name) and row['SourceMain'] != '-':
+                    source_main = parseSource(new_item, row['SourceMain'], items_map, item_names, '|')
+                    pprint(source_main)
+                    names = []
+                    for sm in source_main:
+                        names.append(sm['name'])
 
-                new_item['description'] = row['CommentEn'].replace('\\1', ',')
+                for name in names:
+                    new_item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', name)
 
-                if row['Source'] != '-':
-                    source_set.add(row['Source'])
-                
-                if row['SeasonBuff'] and row['SeasonBuff'] != '-':
-                    new_item['season'] = row['SeasonBuff']
+                    if row['Source'] != '-':
+                        new_item['ingredients_or'] = parseSource(new_item, row['Source'], items_map, item_names, '|', name)
+                        new_item['ingredients_and'] = parseSource(new_item, row['Source'], items_map, item_names, '&', name)
 
-                new_item = setFoodBonus(new_item, row)
+                    setFoodBonus(new_item, row, enchants_map)
+                    setFoodBonusFromCooking(new_item, row, enchants_map)
 
-                cooking_map[name] = new_item
+                    cooking_map[name] = new_item
+
+                    items_map[name] = new_item
+                    items_map[name]['Code'] = row['Code']
+
+    return cooking_map
+
+def main():
+    item_names = []
+    for name in getItemNames('Material.csv'):
+        item_names.append(name)
+    for name in getItemNames('Food.csv'):
+        item_names.append(name)
+    for name in getItemNames('Cooking.csv'):
+        item_names.append(name)
+
+    enchant_map = getEnchant()
+    materials_map = getMaterials()
+    food_map = getFood(item_names, enchant_map)
+    cooking_map = getCooking(item_names, enchant_map)
 
     pprint(categories_set)
     pprint(source_set)
 
     new_food = []
     new_items = []
+
     for value in materials_map.values():
         new_items.append(value)
     for value in food_map.values():
         new_items.append(value)
+
     for value in cooking_map.values():
         new_food.append(value)
 
