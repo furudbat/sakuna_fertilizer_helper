@@ -2004,6 +2004,8 @@
 - category: Food
   description: Enhances the effect of an HP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    hp: 100
   ingredients_and: []
   ingredients_or: []
   name: Health Water
@@ -2011,6 +2013,8 @@
 - category: Food
   description: Enhances the effect of an SP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    sp: 100
   ingredients_and: []
   ingredients_or: []
   name: Skill Water
@@ -2018,6 +2022,8 @@
 - category: Food
   description: Enhances the effect of a strength-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    strength: 100
   ingredients_and: []
   ingredients_or: []
   name: Strength Water
@@ -2025,6 +2031,8 @@
 - category: Food
   description: Enhances the effect of a vitality-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    vitality: 100
   ingredients_and: []
   ingredients_or: []
   name: Vitality Water
@@ -2032,6 +2040,8 @@
 - category: Food
   description: Enhances the effect of a magic-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    magic: 100
   ingredients_and: []
   ingredients_or: []
   name: Magic Water
@@ -2039,6 +2049,8 @@
 - category: Food
   description: Enhances the effect of a luck-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    luck: 100
   ingredients_and: []
   ingredients_or: []
   name: Luck Water
@@ -2046,6 +2058,8 @@
 - category: Food
   description: Enhances the effect of a fullness-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    fullness: 100
   ingredients_and: []
   ingredients_or: []
   name: Fullness Water

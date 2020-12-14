@@ -29,13 +29,16 @@
 - category: Material
   description: This is a base component for any fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
+  enemy_drops:
+  - name: Aburamushi
+    time: Always
   fertilizer_bonus:
     kernel_fertilizer: 8
     leaf_fertilizer: 10
     root_fertilizer: 8
   name: Oil Cake
   sub_category: ManureBase
-  time_of_day: ''
+  time_of_day: Always
 - category: Material
   description: Ah,  how rare! This powder alters the flow of time,  allowing fertilizer
     to be completed immediately.
@@ -123,6 +126,9 @@
 - category: Material
   description: Hoho! It seems this uneaten food has spoiled.However,  we can still
     use this as fertilizer.
+  enemy_drops:
+  - name: Homusubi
+    time: Night
   fertilizer_bonus:
     aesthetic_luck: 1
     armor_magic: 1
@@ -132,7 +138,7 @@
     yield_hp: 1
   name: Rotten Food
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: This earth is soft,  viscous,  and easy to process.
   fertilizer_bonus:
@@ -161,12 +167,15 @@
 - category: Material
   description: A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves
     into masters of the craft.
+  enemy_drops:
+  - name: Buta
+    time: Night
   fertilizer_bonus:
     hardness_vitality: 5
     toxicity: 1
   name: Iron Ore
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: Jade is known to have miraculous powers. Not onlyis it used as currency,  but
     it is revered by manyas a ceremonial implement as well.
@@ -199,12 +208,15 @@
 - category: Material
   description: This is steel from Dharka,  a country that lies farto the west,  and
     it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.
+  enemy_drops:
+  - name: Bossmaru
+    time: Night
   fertilizer_bonus:
     hardness_vitality: 25
     toxicity: 5
   name: Stainless Steel
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: A jewel formed from the dense Clouds of Beginning,  which separate
     the two realms. Just one of thesecontains enough power to create a small island.
@@ -404,9 +416,12 @@
 - category: Materials/Misc
   description: This is a throwing needle of the Ashigumo tribe,  who you mercifully
     defeated. Even now,  it holdsa lingering manifestation of their loyal spirits.
+  enemy_drops:
+  - name: Ashigumo
+    time: Always
   name: Ashigumo Shuriken
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Always
 - category: Material
   description: The resilient hide of a black deer demon.When I close my eyes,  I can
     still vividlysee your fierce battle with the beast!
@@ -483,43 +498,78 @@
 - category: Material
   description: A stone that has been exposed to moonlightfor an incredibly long time.
     Perhaps we canextract its inner earth energy for ourselves.
+  enemy_drops:
+  - name: Buta
+    time: Night
   name: Moonlit Stone
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: This flower only blooms at night on mighty treesthat have absorbed
     an abundance of wood energy.
+  enemy_drops:
+  - name: Shika
+    time: Night
+  - name: Kiji
+    time: Night
+  - name: Tsubakigama
+    time: Night
   fertilizer_bonus:
     immunity: 20
   name: Branching Flower
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: A semi-solid drop of condensed water energy,  anchored in place amidst
     the sundering flow.
+  enemy_drops:
+  - name: Ayu
+    time: Night
+  - name: Suppon
+    time: Night
+  - name: Onamazu
+    time: Night
   fertilizer_bonus:
     herbicide: 5
     immunity: 5
     pesticide: 5
   name: Aqueous Droplet
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: A glowing red fragment of hardened lava that holdsa wealth of fire
     energy deep in its molten core.
+  enemy_drops:
+  - name: Inoshishi
+    time: Night
+  - name: Homusubi
+    time: Night
   fertilizer_bonus:
     pesticide: 20
   name: Flaming Core
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material
   description: Sand that was ground down into miniscule particlesover the ages. It
     would take a god of the forgeto extract the metal energy radiating within it.
+  enemy_drops:
+  - name: Usagi
+    time: Night
+  - name: Suzume
+    time: Night
+  - name: Shijimi
+    time: Night
+  - name: Mujina
+    time: Night
+  - name: Kuma
+    time: Night
+  - name: Bossmaru
+    time: Night
   fertilizer_bonus:
     herbicide: 20
   name: Metallic Sand
   sub_category: Material
-  time_of_day: ''
+  time_of_day: Night
 - category: Material/Food
   description: It is said that one can gain the powers of the creaturesthey consume.
     Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.
@@ -4982,6 +5032,8 @@
 - category: Food
   description: Enhances the effect of an HP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    hp: 100
   ingredients_and: []
   ingredients_or: []
   name: Health Water
@@ -4989,6 +5041,8 @@
 - category: Food
   description: Enhances the effect of an SP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    sp: 100
   ingredients_and: []
   ingredients_or: []
   name: Skill Water
@@ -4996,6 +5050,8 @@
 - category: Food
   description: Enhances the effect of a strength-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    strength: 100
   ingredients_and: []
   ingredients_or: []
   name: Strength Water
@@ -5003,6 +5059,8 @@
 - category: Food
   description: Enhances the effect of a vitality-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    vitality: 100
   ingredients_and: []
   ingredients_or: []
   name: Vitality Water
@@ -5010,6 +5068,8 @@
 - category: Food
   description: Enhances the effect of a magic-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    magic: 100
   ingredients_and: []
   ingredients_or: []
   name: Magic Water
@@ -5017,6 +5077,8 @@
 - category: Food
   description: Enhances the effect of a luck-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    luck: 100
   ingredients_and: []
   ingredients_or: []
   name: Luck Water
@@ -5024,6 +5086,8 @@
 - category: Food
   description: Enhances the effect of a fullness-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
+  food_bonus:
+    fullness: 100
   ingredients_and: []
   ingredients_or: []
   name: Fullness Water

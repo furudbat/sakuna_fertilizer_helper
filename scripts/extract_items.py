@@ -80,6 +80,7 @@ meat_seafood = meats
 meat_seafood.extend(seafood)
 
 
+enemies_map = {}
 old_items = {}
 item_names = []
 
@@ -100,6 +101,23 @@ def parseEnchant(enchant, enchants_map):
 
         if enchant_name:
             ret.append({ 'name': enchant_name, 'level': enchant_level })
+
+    return ret
+
+
+def parseItemDrop(itemstr, item_names):
+    ret = []
+
+    for item_code in itemstr.split('|'):
+        item_code = item_code.strip()
+
+        item_code = re.sub('^F:', '', item_code)
+        item_code = re.sub('^M:', '', item_code)
+        item_code = re.sub('^C:', '', item_code)
+
+        for drop_item in item_names:
+            if item_code == drop_item['Code']:
+                ret.append({ "name": drop_item['name'], "Code": drop_item['Code'] })
 
     return ret
 
@@ -248,6 +266,22 @@ def setFoodBonus(item, row, enchants_map):
     if row['BuffHungry'].isnumeric() and int(row['BuffHungry']) != 0:
         item['food_bonus']['fullness'] = int(row['BuffHungry'])
     
+    if row['BuffHpMax'] == '*100':
+        item['food_bonus']['hp'] = 100
+    if row['BuffWpMax'] == '*100':
+        item['food_bonus']['sp'] = 100
+    if row['BuffStrength'] == '*100':
+        item['food_bonus']['strength'] = 100
+    if row['BuffVital'] == '*100':
+        item['food_bonus']['vitality'] = 100
+    if row['BuffMagic'] == '*100':
+        item['food_bonus']['magic'] = 100
+    if row['BuffLuck'] == '*100':
+        item['food_bonus']['luck'] = 100
+    if row['BuffHungry'] == '*100':
+        item['food_bonus']['fullness'] = 100
+
+
     if row['BuffEnchant'] and row['BuffEnchant'] != '-':
         item['food_bonus']['enchant'] = parseEnchant(row['BuffEnchant'], enchants_map)
 
@@ -276,6 +310,21 @@ def setFoodBonusFromCooking(item, row, enchants_map):
         if row['SeasonBuffHungry'].isnumeric() and int(row['SeasonBuffHungry']) != 0:
             item['season_bonus']['fullness'] = int(row['SeasonBuffHungry'])
         
+        if row['SeasonBuffHpMax'] == '*100':
+            item['food_bonus']['hp'] = 100
+        if row['SeasonBuffWpMax'] == '*100':
+            item['food_bonus']['sp'] = 100
+        if row['SeasonBuffStrength'] == '*100':
+            item['food_bonus']['strength'] = 100
+        if row['SeasonBuffVital'] == '*100':
+            item['food_bonus']['vitality'] = 100
+        if row['SeasonBuffMagic'] == '*100':
+            item['food_bonus']['magic'] = 100
+        if row['SeasonBuffLuck'] == '*100':
+            item['food_bonus']['luck'] = 100
+        if row['SeasonBuffHungry'] == '*100':
+            item['food_bonus']['fullness'] = 100
+            
         if row['SeasonBuffEnchant'] and row['SeasonBuffEnchant'] != '-':
             item['season_bonus']['enchant'] = parseEnchant(row['SeasonBuffEnchant'], enchants_map)
 
@@ -284,6 +333,21 @@ def setFoodBonusFromCooking(item, row, enchants_map):
             
     return item
 
+def setEnemyDrops(item, item_code, item_names, enemies_map):
+    if not 'enemy_drops' in item:
+        item['enemy_drops'] = []
+    
+    for enemy in enemies_map.values():
+        if enemy['Item']:
+            for drop in parseItemDrop(enemy['Item'], item_names):
+                if item_code == drop['Code']:
+                    item['enemy_drops'].append({ 'name': enemy['name'], 'time': enemy['time_of_day'] })
+                    item['time_of_day'] = enemy['time_of_day']
+
+    if not item['enemy_drops']:
+        del item['enemy_drops']
+            
+    return item
 
 def getItemNames(filename, category):
     ret = []
@@ -315,7 +379,7 @@ def getItemNames(filename, category):
     
     return ret
 
-def getMaterials():
+def getMaterials(item_names, enemies_map):
     materials_map = {}
     with open('Material.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
@@ -345,6 +409,7 @@ def getMaterials():
 
                 setFertilizerBonus(new_item, row)
                 hotfixMaterial(name, new_item)
+                setEnemyDrops(new_item, row['Code'], item_names, enemies_map)
 
                 materials_map[name] = new_item
 
@@ -501,6 +566,24 @@ def getCooking(item_names, enchants_map):
 
     return cooking_map
 
+def getEnemies():
+    enemies_map = {}
+    with open('EnemyDrop.csv', encoding="utf8") as read_obj:
+        enemies_reader = DictReader(read_obj)
+
+        # iterate over each line as a ordered dictionary
+        for row in enemies_reader:
+            name = row['Name']
+            enemies_map[name] = { 
+                "name": name,
+                "Code": row['Name'],
+                "min_level": int(row['LevelMin']) if row['LevelMin'].isnumeric() else 0,
+                "max_level": int(row['LevelMax']) if row['LevelMax'].isnumeric() else 0,
+                "Item": row['Item'],
+                "time_of_day": row['Time']
+            }
+
+    return enemies_map
 
 
 def hotfixCooking(name, item):
@@ -535,8 +618,9 @@ def main():
     for name in getItemNames('Cooking.csv', 'Cooking'):
         item_names.append(name)
 
+    enemies_map = getEnemies()
     enchant_map = getEnchant()
-    materials_map = getMaterials()
+    materials_map = getMaterials(item_names, enemies_map)
     food_map = getFood(item_names, enchant_map)
     cooking_map = getCooking(item_names, enchant_map)
 
