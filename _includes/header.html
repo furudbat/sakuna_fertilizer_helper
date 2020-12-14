@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" rel="author" href="{{ '/' | relative_url }}">
-      <i class="fas fa-scroll"></i><span class="mx-1">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="mx-1"> - {{ site.short_description | escape }}</span> {%- endif -%}
+      <i class="fas fa-scroll"></i><span class="mx-1">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="mx-1 d-none d-sm-flex"> - {{ site.short_description | escape }}</span> {%- endif -%}
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

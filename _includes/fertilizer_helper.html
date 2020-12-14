@@ -1,11 +1,11 @@
 <div class="row mt-2">
     <div class="col-lg-6 pr-lg-2">
-        <div class="card card-fertilizer">
+        <div class="card card-fertilizer mt-2">
             <div class="card-header card-header-fertilizer text-center">
                 {{ site.data.strings.fertilizer_helper.fertilizer.title }}
             </div>
             <div class="card-body card-body-fertilizer p-0 p-lg-3 my-2">
-                <div class="row">
+                <div class="row mx-1">
                     <div class="col">
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="chbSettingsNoInventoryRestriction">
@@ -14,14 +14,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-7 pr-lg-2">
+                    <div class="col-lg-7 pr-lg-2 my-2">
                         <div class="card card-soil-nutrients">
                             <div class="card-header card-header-soil-nutrients text-center">
                                 {{ site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.title }}
                             </div>
                             <div class="card-body card-body-soil-nutrients">
                                 <div class="input-group">
-                                    <div class="input-group-prepend d-none d-sm-inline">
+                                    <div class="input-group-prepend">
                                         <span class="input-group-text d-sm-none">{{ site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer_short }}</span>
                                         <span class="input-group-text d-none d-sm-flex">{{ site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.current_fertilizer }}</span>
                                     </div>
@@ -36,7 +36,7 @@
                                     <canvas class="soil-nutrients-chart" id="soilNutrientsChart"></canvas>
                                 </div>
                                 <div class="input-group">
-                                    <div class="input-group-prepend d-none d-sm-inline">
+                                    <div class="input-group-prepend">
                                         <span class="input-group-text d-sm-none">{{ site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components_short }}</span>
                                         <span class="input-group-text d-none d-sm-flex">{{ site.data.strings.fertilizer_helper.fertilizer.soil_nutrients.with_components }}</span>
                                     </div>
@@ -118,7 +118,7 @@
                             <div class="col-2 armor-magic text-left pr-0" id="fertilizerArmorMagic">0</div>
                         </div>
                     </div>
-                    <div class="col-lg-5 pl-lg-2">
+                    <div class="col-lg-5 pl-lg-2 my-2">
                         <div class="card card-components">
                             <div class="card-header card-header-components text-center">
                                 {{ site.data.strings.fertilizer_helper.fertilizer.components.title }}
@@ -149,7 +149,7 @@
     </div>
 
     <div class="col-lg-6 pl-lg-2">
-        <div class="card card-fertilizer-inventory">
+        <div class="card card-fertilizer-inventory mt-2">
             <div class="card-header card-header-fertilizer-inventory card-header-nav-tabs text-center">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
