@@ -41,16 +41,22 @@ def newItem(name, category):
         'category': category
     }
 
-def parseEnchant(enchant, enchants_map):
+def parseEnchant(enchantstr, enchants_map):
     ret = []
-    for en in enchant.split('|'):
-        en = en.strip()
-        enchant_level = int(re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', en)[0]) + 1 if re.findall(r'^[\*a-zA-Z_]+\/(\d+)$', en) and re.findall(r'^[a-zA-Z_]+\/(\d+)$', en)[0].isnumeric() else 1
-        enchant_code = re.findall(r'^([\*a-zA-Z_]+)\/\d+$', en)[0] if re.findall(r'^([\*a-zA-Z_]+)\/\d+$', en) else ''
-        enchant_name = [it for it in enchants_map.values() if it['Code'] == enchant_code][0]['name'] if [it for it in enchants_map.values() if it['Code'] == enchant_code] else ''
 
-        if enchant_name:
+    for enchant in enchants_map.values():
+        enchant_code = enchant['Code']
+        enchant_name = enchant['name']
+        
+        enchant_regex_str = "({})(\\/(\\d+))?".format(enchant_code)
+        enchant_match = re.search(enchant_regex_str, enchantstr)
+        enchant_level = int(enchant_match.groups()[2]) + 1 if enchant_match and enchant_match.groups()[2] and enchant_match.groups()[2].isnumeric() else 1
+
+        if enchant_match:
             ret.append({ 'name': enchant_name, 'level': enchant_level })
+        
+    if not ret:
+        print("parseEnchant: not found: {}".format(enchantstr))
 
     return ret
 
@@ -79,22 +85,19 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
     sources = [sourcestr]
     if '|' in sourcestr or '&' in sourcestr:
         sources = sourcestr.split(' ')
-    else:
-        sources = []
 
     for i in range(0, len(sources), 2):
         operator = ''
         source = ''
-        if i == 0:
-            operator = ''
-            source = sources[0]
-        else:
-            if sources[i-1] == '|':
-                operator = 'or'
-            if sources[i-1] == '&':
-                operator = 'and'
 
-            source = sources[i]
+        source = sources[i]
+        if i+1 < len(sources):
+            if sources[i+1] == '|':
+                operator = 'or'
+            if sources[i+1] == '&':
+                operator = 'and'
+        else:
+            operator = ''
 
         if source:
             source_match = re.search(r'^([_.:\*A-Za-z]+)(\/(\d+))?$', source)
@@ -108,11 +111,19 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
             
             if re.findall(r'^Flag_([_.:\*A-Za-z]+)$', item_code):
                 food_flag = re.search(r'^Flag_([_.:\*A-Za-z]+)$', item_code).groups()[0] if re.search(r'^Flag_([_.:\*A-Za-z]+)$', item_code) else ''
+                find_items = False
                 for food_item in item_names:
-                    if 'sub_category' in food_item and (food_item['sub_category'] == food_flag or (food_item['sub_category'] == 'SakeSyouchu' and food_flag == 'Sake') or (food_item['sub_category'] == 'SakeSyouchu' and food_flag == 'Syouchu')):
-                        item_name = food_item['name']
-                        if item_name:
-                            ret.append({"name": item_name, "amount": amount, "operator": "or"})
+                    if 'sub_category' in food_item and food_item['sub_category']:
+                        if food_flag in food_item['sub_category']:
+                            item_name = food_item['name']
+                            if item_name:
+                                ret.append({"name": item_name, "amount": amount, "operator": "or"})
+                                find_items = True
+                if find_items:
+                    ret[-1]['operator'] = ''
+                else:
+                    pprint(ret)
+                    print("parseSource: flag {} not found, {}: {}".format(food_flag, item['name'], sourcestr))
             elif item_code == '*Auto':
                 if auto_name:
                     ret.append({"name": auto_name, "amount": amount, "operator": operator})
@@ -125,26 +136,32 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
                 for meat_item in meat:
                     if meat_item['name']:
                         ret.append({"name": meat_item['name'], "amount": amount, "operator": "or"})
+                ret[-1]['operator'] = ''
             elif item_code == 'Vegetable':
                 for vegetable_item in vegetables:
                     if vegetable_item['name']:
                         ret.append({"name": vegetable_item['name'], "amount": amount, "operator": "or"})
+                ret[-1]['operator'] = ''
             elif item_code == 'Seafood':
                 for seafood_item in seafood:
                     if seafood_item['name']:
                         ret.append({"name": seafood_item['name'], "amount": amount, "operator": "or"})
+                ret[-1]['operator'] = ''
             elif item_code == 'Grain':
                 for grain_item in grains:
                     if grain_item['name']:
                         ret.append({"name": grain_item['name'], "amount": amount, "operator": "or"})
+                ret[-1]['operator'] = ''
             elif item_code == 'Insect':
                 for insect_item in insects:
                     if insect_item['name']:
                         ret.append({"name": insect_item['name'], "amount": amount, "operator": "or"})
+                ret[-1]['operator'] = ''
             elif item_code == 'Spice':
                 for spice_item in spices:
                     if spice_item['name']:
                         ret.append({"name": spice_item['name'], "amount": amount, "operator": "or"})
+                ret[-1]['operator'] = ''
             else:
                 find_item = False
                 for it in item_names:
@@ -160,6 +177,10 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
                     find_item = find_item or (it['Code'] == 'Drink_DoburokuDrink_Meisui' and 'Drink_Meisui' == item_code)
                     find_item = find_item or (it['Code'] == 'Drink_DoburokuDrink_Kiyomizu' and 'Drink_Kiyomizu' == item_code)
                     find_item = find_item or (it['Code'] == 'Drink_DoburokuPreserve_Umeboshi' and 'Preserve_Umeboshi' == item_code)
+                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Ginjyou' and 'Drink_Seisyu' == item_code)
+                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Ginjyou' and 'Drink_Ginjyou' == item_code)
+                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Daiginjyou' and 'Drink_Daiginjyou' == item_code)
+                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Beer' and 'Drink_Beer' == item_code)
 
                     if find_item:
                         item_name = it['name']
@@ -169,11 +190,6 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
                 if not find_item:
                     pprint(ret)
                     print("parseSource: {} not found, {}: {}".format(item_code, item['name'], sourcestr))
-    
-        if item_code == '*Ex:Saiken':
-            # TODO: what is Ex:Saiken ???
-            pprint(ret)
-            print("parseSource: {} not found, {}: {}".format(item_code, item['name'], sourcestr))
 
     return ret
 
@@ -256,6 +272,9 @@ def setFoodBonus(item, row, enchants_map):
     if row['BuffEnchant'] and row['BuffEnchant'] != '-':
         item['food_bonus']['enchant'] = parseEnchant(row['BuffEnchant'], enchants_map)
 
+    if 'food_bonus' in item and 'enchant' in item['food_bonus'] and not item['food_bonus']['enchant']:
+        del item['food_bonus']['enchant']
+        
     if not item['food_bonus']:
         del item['food_bonus']
 
@@ -280,7 +299,7 @@ def setFoodBonusFromCooking(item, row, enchants_map):
             item['season_bonus']['luck'] = int(row['SeasonBuffLuck'])
         if row['SeasonBuffHungry'].isnumeric() and int(row['SeasonBuffHungry']) != 0:
             item['season_bonus']['fullness'] = int(row['SeasonBuffHungry'])
-        
+
         if row['SeasonBuffHpMax'] == '*100':
             item['food_bonus']['hp'] = 100
         if row['SeasonBuffWpMax'] == '*100':
@@ -502,7 +521,7 @@ def getFood(item_names, enchants_map, only_name=False):
                             hotfixFood(name, new_food_item)
 
                             if row['Source'] != '-':
-                                new_food_item['ingredients'] = parseSource(new_food_item, row['Source'], item_names, auto)
+                                new_food_item['ingredients'] = parseSource(new_food_item, row['Source'], item_names, auto['name'])
                             
                         food_map[item_code] = new_food_item
                 else:
@@ -562,28 +581,30 @@ def getCooking(item_names, enchants_map, food_map, only_names=False):
                         names.append(sm['name'])
 
                 for source in names:
+                    new_food_item = new_item.copy()
                     name = row['NameEn'].replace('~SourceMain~', source)
-                    new_item['name'] = name
+                    new_food_item['name'] = name
 
                     if only_names:
-                        new_item['Code'] = row['Code']
+                        new_food_item['Code'] = row['Code']
                     else:
-                        new_item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source)
+                        new_food_item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source)
 
                         if row['SourceMain'] != '-':
-                            source_main = parseSource(new_item, row['SourceMain'], item_names)
-                            for sm in source_main:
-                                if sm['name'] == name:
-                                    new_item['main_ingredients'] = sm
+                            source_main = parseSource(new_food_item, row['SourceMain'], item_names)
+                            if source and not 'main_ingredients' in new_food_item:
+                                new_food_item['main_ingredients'] = source_main
                         
                         if row['Source'] != '-':
-                            new_item['ingredients'] = parseSource(new_item, row['Source'], item_names)
+                            source = parseSource(new_food_item, row['Source'], item_names)
+                            if source and not 'ingredients' in new_food_item:
+                                new_food_item['ingredients'] = source
 
-                        new_item = setFoodBonus(new_item, row, enchants_map)
-                        new_item = setFoodBonusFromCooking(new_item, row, enchants_map)
-                        new_item = hotfixCooking(name, new_item)
+                        setFoodBonus(new_food_item, row, enchants_map)
+                        setFoodBonusFromCooking(new_food_item, row, enchants_map)
+                        hotfixCooking(name, new_food_item)
 
-                    cooking_map[name] = new_item
+                    cooking_map[name] = new_food_item
 
     return cooking_map
 
