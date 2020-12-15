@@ -1,7 +1,6 @@
 - category: Soilwork
   description: What a lovely little seedling.Go on now,  plant it in the field!
   name: Seedling
-  time_of_day: ''
 - category: Material
   description: This is a base component of Leaf Fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
@@ -9,7 +8,6 @@
     leaf_fertilizer: 20
   name: Beast Hoof
   sub_category: ManureBase
-  time_of_day: ''
 - category: Material
   description: This is a base component of Kernel Fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
@@ -17,7 +15,6 @@
     kernel_fertilizer: 20
   name: Beast Manure
   sub_category: ManureBase
-  time_of_day: ''
 - category: Material
   description: This is a base component of Root Fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
@@ -25,7 +22,6 @@
     root_fertilizer: 20
   name: Fallen Leaves
   sub_category: ManureBase
-  time_of_day: ''
 - category: Material
   description: This is a base component for any fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
@@ -44,13 +40,11 @@
     to be completed immediately.
   name: Powder of Transformation
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A divine fruit grown from the Tree of Creation.Its very essence is
     ripe with spiritual energy.How shall we put its power to use,  Princess?
   name: Orb of Transformation
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A chemical that revitalizes life,  returning plants from their weakened
     state. If you mix it in withfertilizer,  it will cure some rice disorders.
@@ -58,7 +52,6 @@
     immunity: 10
   name: Revitalizing Remedy
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A chemical that reduces excess,  restoring plantsto their proper balance.
     If you mix it in withfertilizer,  it will cure some rice disorders.
@@ -66,7 +59,6 @@
     herbicide: 10
   name: Reducing Remedy
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A chemical that wards off pests,  saving plants from invasive insects.
     If you mix it in withfertilizer,  it will cure some rice disorders.
@@ -74,55 +66,46 @@
     pesticide: 10
   name: Eradicating Remedy
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Health Pollution.
   name: Health's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Skill Pollution.
   name: Skill's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Fullness Pollution.
   name: Fullness' Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Strength Pollution.
   name: Strength's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Vitality Pollution.
   name: Vitality's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Magic Pollution.
   name: Magic's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Luck Pollution.
   name: Luck's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Gusto Pollution.
   name: Gusto's Bounty
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Hoho! It seems this uneaten food has spoiled.However,  we can still
     use this as fertilizer.
@@ -146,7 +129,6 @@
     toxicity: 1
   name: Clay
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A stone chunk that could be used for almost anything.Unfortunately,  its
     quality leaves much to be desired.
@@ -155,7 +137,6 @@
     toxicity: 1
   name: Stone
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This ore has long been used as a material to craftcertain metals.
   fertilizer_bonus:
@@ -163,7 +144,6 @@
     toxicity: 2
   name: Copper Ore
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves
     into masters of the craft.
@@ -185,7 +165,6 @@
     toxicity: 1
   name: Jade
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Iridescent obsidian such as this is said to beexceptionally rare. No
     doubt it would make for finecrafting material.
@@ -195,7 +174,6 @@
     toxicity: 1
   name: Obsidian
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: The glister of gold is the spark which ignitesthe flames of war. Do
     be careful not to becometoo enthralled by it,  Princess.
@@ -204,7 +182,6 @@
     toxicity: 3
   name: Gold Ore
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This is steel from Dharka,  a country that lies farto the west,  and
     it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.
@@ -229,7 +206,6 @@
     yield_hp: 25
   name: Cloudy Crystal
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This wood can be used in various ways.Unfortunately,  its quality leaves
     much to be desired.
@@ -238,7 +214,6 @@
     yield_hp: 1
   name: Wood
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This is hard,  sturdy wood. I wager it could be crafted into a fine
     tool.
@@ -247,7 +222,6 @@
     yield_hp: 3
   name: High Quality Oak
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A plant that is neither tree nor grass. Indeed,  it is difficult to
     classify... Nevertheless,  bamboo is quite flexible and easy to process.
@@ -256,7 +230,6 @@
     yield_hp: 5
   name: Bamboo
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This wood is not only hard,  but resistant to water,  meaning that
     it is slow to rot. Thus,  its appellation is well deserved.
@@ -266,13 +239,11 @@
     yield_hp: 8
   name: Ironwood
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: The origin of all Yanato elm trees,  nearly as old as the Lofty Realm
     itself. The quality of its woodis unsurpassed,  but it's as rare as it is ancient.
   name: Elder Elm
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This grass fiber is indispensable for weaving.
   fertilizer_bonus:
@@ -280,7 +251,6 @@
     kernel_fertilizer: 5
   name: Hemp
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This plant is often used to craft straw hats and raincoats. I have
     heard that it is easierto raise in humid climes.
@@ -289,7 +259,6 @@
     kernel_fertilizer: 5
   name: Sedge
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Bark imported from a southern country.It rivals straw in its ease of
     use.
@@ -298,7 +267,6 @@
     kernel_fertilizer: 5
   name: Hemp Palm
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Aha,  so you found an untainted leaf from Hinoe'sTree of Creation?
     If you can gather enough to useas materials,  I imagine you'll gain untold power.
@@ -309,7 +277,6 @@
     toxicity: 50
   name: Leaf of Creation
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This golden tree branch can be used to createa stunning yellow dye.
     Strip the bark and seeits brilliant hue for yourself!
@@ -318,7 +285,6 @@
     kernel_fertilizer: 5
   name: Cork Tree Branch
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This plant root can be used to create purple dye.It thrives in soil
     that gets regular runoff exposure.
@@ -327,7 +293,6 @@
     kernel_fertilizer: 5
   name: Murasaki Root
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A root which is used to make red dyes. It can befound in the mountainous
     regions of this island.
@@ -336,7 +301,6 @@
     kernel_fertilizer: 5
   name: Madder
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A fish scale that can be turned into a bluish-purpledye,  if it's crushed
     and mixed with the right plants.
@@ -346,7 +310,6 @@
     leaf_fertilizer: 5
   name: Indigo Scale
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: This is a fiber produced by the thread of silkworms,  which were brought
     over from the country of Ouka.
@@ -354,7 +317,6 @@
     armor_magic: 10
   name: Silk
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A miraculous thread selected from the finest silk.It is both a delight
     to the eyes and strong enoughto repel blades. It should make an excellent outfit.
@@ -362,7 +324,6 @@
     armor_magic: 20
   name: Spirit Thread
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Yanato's highest quality paper,  said to lastfor a thousand years.
     In fact,  it's strongenough you can even make clothes out if it.
@@ -371,7 +332,6 @@
     hardness_vitality: 8
   name: Washi Paper
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: How ominous... This cord appears to have been wovenwith the accursed
     power of a multitude of demons.May we find a way to bring some good out of it.
@@ -379,7 +339,6 @@
     taste_strength: 20
   name: Demonic Braid
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A cord that is used to tie up kimono sleeves.This one contains the
     power of lightning,  the ultimate expression of wood energy.
@@ -387,7 +346,6 @@
     armor_magic: 20
   name: Thunderous Tasuki
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: The skinned hide of a most ferocious demon.It can be tanned into durable
     leather.
@@ -395,7 +353,6 @@
     yield_hp: 2
   name: Beast Hide
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Taken from the skull of a deer demon. It can be usedin its current
     state,  or processed into an evenhigher-quality material.
@@ -404,7 +361,6 @@
     leaf_fertilizer: 10
   name: Deer Antler
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A jewel formed inside the shell of a demon clam.Apparently its devolution
     into demonhood has onlyserved to increase the quality of its pearl.
@@ -412,7 +368,6 @@
     armor_magic: 3
   name: Demonic Pearl
   sub_category: Material
-  time_of_day: ''
 - category: Materials/Misc
   description: This is a throwing needle of the Ashigumo tribe,  who you mercifully
     defeated. Even now,  it holdsa lingering manifestation of their loyal spirits.
@@ -430,7 +385,6 @@
     taste_strength: 4
   name: Black Deer Leather
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A silver feather plucked from a demon pheasant.Faint light emanates
     from it.
@@ -439,7 +393,6 @@
     taste_strength: 3
   name: Pheasant Feather
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A tremendous tusk,  taken from a boar that hadtransformed into a mighty
     demon.
@@ -448,7 +401,6 @@
     taste_strength: 5
   name: Boar Tusk
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Ah,  was this attached to a demon badger's forehead?It's teeming with
     magical power. They must be moreselective in choosing their leaves than I thought.
@@ -457,7 +409,6 @@
     root_fertilizer: 10
   name: Badger Leaf
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Oho,  the hide of a demon bear. Even in this form,  it exudes power
     and seems difficult to work with.It will certainly make for a high-quality material.
@@ -466,7 +417,6 @@
     taste_strength: 4
   name: Bear Hide
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A feather belonging to Yui,  an exceptionally rarespirit crane. If
     turned into thread,  it could be woveninto an unparalleled garment.
@@ -474,7 +424,6 @@
     armor_magic: 50
   name: Crane Feather
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A vertebra once belonging to Omizuchi,  gifted to usby Lady Kamuhitsuki.
     If we combine it with the Edgeof Hoshidama,  it shall create an all-powerful weapon.
@@ -484,7 +433,6 @@
     taste_strength: 50
   name: Dragon Bone
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: Oho,  a scale taken from the great Omizuchi himself.It appears to be
     hard enough to deflect any weapon.
@@ -494,7 +442,6 @@
     pesticide: 50
   name: Dragon Scale
   sub_category: Material
-  time_of_day: ''
 - category: Material
   description: A stone that has been exposed to moonlightfor an incredibly long time.
     Perhaps we canextract its inner earth energy for ourselves.
