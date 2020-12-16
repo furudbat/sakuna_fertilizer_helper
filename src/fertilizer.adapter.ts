@@ -3,10 +3,10 @@ import { LoggerManager } from "typescript-logger";
 import { ApplicationData } from "./application.data";
 import { ItemFertilizerComponentData } from "./fertilizer-components";
 import { FertilizerData, MAX_FERTILIZER, MAX_STATS, MIN_FERTILIZER, MIN_STATS } from "./fertilizer.data";
-import { render_buff_bonus_html } from "./inventory.adapter";
 import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./Observer";
 import Chart from "chart.js";
 import { clamp, site } from "./site";
+import { render_buff_bonus_html } from "./itemlist.adapter";
 
 export class FertilizerAdapter {
     private _appData: ApplicationData;
@@ -52,18 +52,18 @@ export class FertilizerAdapter {
                 that.updateSoilNutrientsChartRootFertilizer();
                 that._soilNutrientsChart?.update();
 
-                const yield_hp = render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
-                const taste_strength = render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_taste_strength_overflow);
-                const hardness_vitality = render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
-                const stickiness_gusto = render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
-                const aesthetic_luck = render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
-                const armor_magic = render_buff_bonus_html((fertilizer.armor_magic) ? fertilizer.armor_magic : 0, false, fertilizer.is_armor_magic_overflow);
+                const yield_hp = render_buff_bonus_html(fertilizer.yield_hp, false, fertilizer.is_yield_hp_overflow);
+                const taste_strength = render_buff_bonus_html(fertilizer.taste_strength, false, fertilizer.is_taste_strength_overflow);
+                const hardness_vitality = render_buff_bonus_html( fertilizer.hardness_vitality, false, fertilizer.is_hardness_vitality_overflow);
+                const stickiness_gusto = render_buff_bonus_html(fertilizer.stickiness_gusto, false, fertilizer.is_stickiness_gusto_overflow);
+                const aesthetic_luck = render_buff_bonus_html(fertilizer.aesthetic_luck, false, fertilizer.is_aesthetic_luck_overflow);
+                const armor_magic = render_buff_bonus_html(fertilizer.armor_magic, false, fertilizer.is_armor_magic_overflow);
 
-                const immunity = render_buff_bonus_html((fertilizer.immunity) ? fertilizer.immunity : 0, false, fertilizer.is_immunity_overflow);
-                const pesticide = render_buff_bonus_html((fertilizer.pesticide) ? fertilizer.pesticide : 0, false, fertilizer.is_pesticide_overflow);
-                const herbicide = render_buff_bonus_html((fertilizer.herbicide) ? fertilizer.herbicide : 0, false, fertilizer.is_herbicide_overflow);
+                const immunity = render_buff_bonus_html(fertilizer.immunity, false, fertilizer.is_immunity_overflow);
+                const pesticide = render_buff_bonus_html(fertilizer.pesticide, false, fertilizer.is_pesticide_overflow);
+                const herbicide = render_buff_bonus_html(fertilizer.herbicide, false, fertilizer.is_herbicide_overflow);
 
-                const toxicity = render_buff_bonus_html((fertilizer.toxicity) ? fertilizer.toxicity : 0, true, fertilizer.is_toxicity_overflow);
+                const toxicity = render_buff_bonus_html(fertilizer.toxicity, true, fertilizer.is_toxicity_overflow);
 
                 $('#fertilizerYieldHp').html(yield_hp);
                 $('#fertilizerTasteStrength').html(taste_strength);

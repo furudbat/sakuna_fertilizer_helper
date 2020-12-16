@@ -23,12 +23,7 @@
 <section id="sectionItemList">
     <h2>{{ site.data.strings.item_list.materials.title }}</h2>
     <section id="sectionItemListMaterials">
-        {% assign materials_items = site.data.items | where: "category", "Materials" %}
-        {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
-        {% assign material_items = site.data.items | where: "category", "Material" %}
-        {% assign material_food_items = site.data.items | where: "category", "Material/Food" %}
-        
-        {% include itemlist-table.html id='tblItemsList' items=materials_items items2=materials_ingredients_items items3=material_items items4=material_food_items %}
+        {% include material-itemlist-table.html id='tblMaterialItemsList' %}
     </section>
 
     

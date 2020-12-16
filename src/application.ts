@@ -10,11 +10,14 @@ import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY } from './inve
 import { LoggerManager } from 'typescript-logger/build/loggerManager'
 import { DataListObserver, DataListSubject, DataObserver, DataSubject } from './Observer'
 import { ItemFertilizerComponentData } from './fertilizer-components'
+import { MaterialItemListAdapter } from './material-itemlist.adapter'
+import { isRegExp } from 'util'
 
 const MAX_SHOW_RECOMMENDED_ITEMS = 12;
 export class Application {
 
     private _appData: ApplicationData = new ApplicationData();
+    private _materialItemListAdapter?: MaterialItemListAdapter;
     private _recommendedInventory = new Inventory();
     private _expiablesInventory = new Inventory();
     private _fertilizerAdapter?: FertilizerAdapter;
@@ -60,6 +63,7 @@ export class Application {
             that._appData.currentGuide = $(this).data('name');
         });
 
+        this._materialItemListAdapter = new MaterialItemListAdapter('tblMaterialItemsList');
         this._fertilizerAdapter = new FertilizerAdapter(this._appData);
         this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
@@ -78,33 +82,31 @@ export class Application {
     }
 
     private initItemList() {
-        this._itemList = $('#tblItemsList').DataTable({
-            order: [[1, "asc"]],
-            responsive: true,
-            columnDefs: [
-                { orderable: false, targets: [0] },
-                { orderable: true, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
-            ]
-        });
+        if (this._materialItemListAdapter) {
+            this._materialItemListAdapter.init();
 
-        var that = this;
-        this._itemList.on('draw.dt', function () {
-            that.updateItemListEvents();
-        });
+            const material_item_list = this._appData.items.filter(it => {
+                return it.category == 'Materials' || 
+                    it.category == 'Materials/Ingredients' || 
+                    it.category == 'Material' || 
+                    it.category == 'Material/Food';
+            });
+
+            this.log.debug('initItemList material_item_list:', material_item_list);
+
+            this._materialItemListAdapter.data = material_item_list;
+        }
 
         this.updateItemListEvents();
     }
 
     private updateItemListEvents() {
-        var that = this;
-        $('.add-item-to-inventory').off('click').on('click', function () {
-            const item_name = $(this).data('name');
-            const item = that._appData.getItemByName(item_name);
-
-            if (item !== undefined) {
-                that._inventoryAdapter?.add(item, 1);
-            }
-        });
+        if (this._materialItemListAdapter) {
+            var that = this;
+            this._materialItemListAdapter.addItemToInventoryListener = (item, amount) => {
+                that._inventoryAdapter?.add(item, amount);
+            };
+        }
     }
 
     private initSettings() {

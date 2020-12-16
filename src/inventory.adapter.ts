@@ -1,59 +1,11 @@
 import { LoggerManager } from "typescript-logger";
-import { FarmingFocus, Settings } from "./application.data";
+import { Settings } from "./application.data";
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
 import { site } from "./site";
 import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./observer";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
+import { ItemListAdapter } from "./itemlist.adapter";
 
-function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
-    return o[propertyName] !== undefined;
-}
-function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] | null {
-    return (o[propertyName] !== undefined) ? o[propertyName] : null; // o[propertyName] is of type T[K]
-}
-
-export function render_buff_bonus_html(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
-    const val_number = (value) ? value as number : 0;
-    let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
-
-    if (invert_color !== undefined) {
-        if (!invert_color) {
-            if (overflow) {
-                val_str = `<span class="text-warning">${val_str}*</span>`;
-            } else if (val_number > 0) {
-                val_str = `<span class="text-success">${val_str}</span>`;
-            }
-
-            if (val_number < 0) {
-                val_str = `<span class="text-danger">${val_str}</span>`;
-            }
-        } else {
-            if (overflow) {
-                val_str = `<span class="text-warning">${val_str}*</span>`;
-            } else if (val_number < 0) {
-                val_str = `<span class="text-success">${val_str}</span>`;
-            }
-
-            if (val_number > 0) {
-                val_str = `<span class="text-danger">${val_str}</span>`;
-            }
-        }
-    }
-
-    return `<span class="text-center">${val_str}</span>`;
-};
-
-export function render_buff_bonus(property_name: string, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
-    return function (data: any, type: string, row: ItemInventoryData) {
-        const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
-        if (type === 'display') {
-            return render_buff_bonus_html(value, invert_color, overflow);
-        }
-
-        // Search, order and type can use the original data
-        return value;
-    };
-};
 
 const INVENTORY_PAGE_LENGTH = 7;
 
@@ -61,7 +13,7 @@ export interface InventoryAdapterSettings {
     can_remove_from_inventory: boolean;
 }
 
-export class InventoryAdapter {
+export class InventoryAdapter extends ItemListAdapter {
     private _settings: DataSubject<Settings>;
     private _fertilizer_components: FertilizerComponents;
     private _table_selector: string;
@@ -69,9 +21,9 @@ export class InventoryAdapter {
     private _table?: DataTables.Api;
     private _adapter_settings?: InventoryAdapterSettings;
 
-    private log = LoggerManager.create('InventoryAdapter');
-
     constructor(settings: DataSubject<Settings>, fertilizer_components: FertilizerComponents, table_selector: string, data: Inventory, adapter_settings: InventoryAdapterSettings | undefined = undefined) {
+        super(`InventoryAdapter|${table_selector}`);
+
         this._settings = settings;
         this._fertilizer_components = fertilizer_components;
         this._table_selector = table_selector;
@@ -84,45 +36,21 @@ export class InventoryAdapter {
     }
 
     public init(orderable: number[] = [1, 2, 3, 4, 5, 6], not_orderable: number[] = [0], ordering: boolean | undefined = undefined) {
-        const createdCell = function (cell: Node, cellData: any, rowData: any, row: number, col: number) {
+        const createdCell = function (cell: Node, cellData: any, rowData: ItemData, row: number, col: number) {
             $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
 
             switch (col) {
                 case 2:
-                    if (cellData.immunity) {
-                        if (cellData.immunity > 0) {
-                            $(cell).addClass('table-success');
-                        } else if (cellData.immunity < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'immunity');
                     break;
                 case 3:
-                    if (cellData.pesticide) {
-                        if (cellData.pesticide > 0) {
-                            $(cell).addClass('table-success');
-                        } else if (cellData.pesticide < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'pesticide');
                     break;
                 case 4:
-                    if (cellData.herbicide) {
-                        if (cellData.herbicide > 0) {
-                            $(cell).addClass('table-success');
-                        } else if (cellData.herbicide < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'herbicide');
                     break;
                 case 5:
-                    if (cellData.toxicity) {
-                        if (cellData.toxicity > 0) {
-                            $(cell).addClass('table-danger');
-                        } else if (cellData.toxicity < 0) {
-                            $(cell).addClass('table-success');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'toxicity', true);
                     break;
                 case 6:
                     if (rowData.expiable) {
@@ -168,54 +96,33 @@ export class InventoryAdapter {
                     data: 'name',
                     render: function (data: string, type: string, row: ItemInventoryData, meta: any) {
                         if (type === 'display') {
-                            let fertilizer_bonus = '';
-                            if (row.fertilizer_bonus.leaf_fertilizer) {
-                                const text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
-                                const sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer}</strong> 
-                                    ${sign}${row.fertilizer_bonus.leaf_fertilizer}
-                                </p>`;
-                            }
-                            if (row.fertilizer_bonus.kernel_fertilizer) {
-                                const text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
-                                const sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer}</strong> 
-                                    ${sign}${row.fertilizer_bonus.kernel_fertilizer}
-                                </p>`;
-                            }
-                            if (row.fertilizer_bonus.root_fertilizer) {
-                                const text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
-                                const sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer}</strong> 
-                                    ${sign}${row.fertilizer_bonus.root_fertilizer}
-                                </p>`;
-                            }
+                            const fertilizer_bonus = InventoryAdapter.renderSoilNutrientsHtml(row.fertilizer_bonus);
 
-                            const yield_hp = render_buff_bonus_html(row.fertilizer_bonus.yield_hp, false);
-                            const taste_strength = render_buff_bonus_html(row.fertilizer_bonus.taste_strength, false);
-                            const hardness_vitality = render_buff_bonus_html(row.fertilizer_bonus.hardness_vitality, false);
-                            const stickiness_gusto = render_buff_bonus_html(row.fertilizer_bonus.stickiness_gusto, false);
-                            const aesthetic_luck = render_buff_bonus_html(row.fertilizer_bonus.aesthetic_luck, false);
-                            const armor_magic = render_buff_bonus_html(row.fertilizer_bonus.armor_magic, false);
+                            const yield_hp = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.yield_hp, false);
+                            const taste_strength = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.taste_strength, false);
+                            const hardness_vitality = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.hardness_vitality, false);
+                            const stickiness_gusto = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.stickiness_gusto, false);
+                            const aesthetic_luck = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.aesthetic_luck, false);
+                            const armor_magic = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.armor_magic, false);
 
-                            const immunity = render_buff_bonus_html(row.fertilizer_bonus.immunity, false);
-                            const pesticide = render_buff_bonus_html(row.fertilizer_bonus.pesticide, false);
-                            const herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
+                            const immunity = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.immunity, false);
+                            const pesticide = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.pesticide, false);
+                            const herbicide = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.herbicide, false);
 
-                            const toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
+                            const toxicity = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.toxicity, true);
 
-                            const collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+                            const collapse_id = that.getCollapseId(row);
 
-                            const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0) ? 'd-none' : 0;
-                            const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0) ? 'd-none' : 0;
-                            const show_hardness_vitality = ((row.fertilizer_bonus.hardness_vitality ?? 0) === 0) ? 'd-none' : 0;
-                            const show_stickiness_gusto = ((row.fertilizer_bonus.stickiness_gusto ?? 0) === 0) ? 'd-none' : 0;
-                            const show_aesthetic_luck = ((row.fertilizer_bonus.aesthetic_luck ?? 0) === 0) ? 'd-none' : 0;
-                            const show_armor_magic = ((row.fertilizer_bonus.armor_magic ?? 0) === 0) ? 'd-none' : 0;
-                            const show_immunity = ((row.fertilizer_bonus.immunity ?? 0) === 0) ? 'd-none' : 0;
-                            const show_pesticide = ((row.fertilizer_bonus.pesticide ?? 0) === 0) ? 'd-none' : 0;
-                            const show_herbicide = ((row.fertilizer_bonus.herbicide ?? 0) === 0) ? 'd-none' : 0;
-                            const show_toxicity = ((row.fertilizer_bonus.toxicity ?? 0) === 0) ? 'd-none' : 0;
+                            const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0) ? 'd-none' : '';
+                            const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0) ? 'd-none' : '';
+                            const show_hardness_vitality = ((row.fertilizer_bonus.hardness_vitality ?? 0) === 0) ? 'd-none' : '';
+                            const show_stickiness_gusto = ((row.fertilizer_bonus.stickiness_gusto ?? 0) === 0) ? 'd-none' : '';
+                            const show_aesthetic_luck = ((row.fertilizer_bonus.aesthetic_luck ?? 0) === 0) ? 'd-none' : '';
+                            const show_armor_magic = ((row.fertilizer_bonus.armor_magic ?? 0) === 0) ? 'd-none' : '';
+                            const show_immunity = ((row.fertilizer_bonus.immunity ?? 0) === 0) ? 'd-none' : '';
+                            const show_pesticide = ((row.fertilizer_bonus.pesticide ?? 0) === 0) ? 'd-none' : '';
+                            const show_herbicide = ((row.fertilizer_bonus.herbicide ?? 0) === 0) ? 'd-none' : '';
+                            const show_toxicity = ((row.fertilizer_bonus.toxicity ?? 0) === 0) ? 'd-none' : '';
 
                             const data_color_class = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
 
@@ -310,30 +217,20 @@ export class InventoryAdapter {
                 },
                 {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('immunity')
+                    render: InventoryAdapter.renderBuffBonus('immunity')
                 }, {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('pesticide')
+                    render: InventoryAdapter.renderBuffBonus('pesticide')
                 }, {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('herbicide')
+                    render: InventoryAdapter.renderBuffBonus('herbicide')
                 }, {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('toxicity')
+                    render: InventoryAdapter.renderBuffBonus('toxicity')
                 },
                 {
                     data: null,
-                    render: function (data, type, row) {
-                        if (type === 'display') {
-                            if (row.expiable) {
-                                return '<i class="fas fa-skull"></i>';
-                            }
-
-                            return '<i class="fas fa-infinity"></i>';
-                        }
-
-                        return (row.expiable) ? true : false;
-                    }
+                    render: InventoryAdapter.renderShortExpiable
                 }
             ]
         });
@@ -526,5 +423,12 @@ export class InventoryAdapter {
                 }
             }
         });
+    }
+
+    private getCollapseId(row: ItemInventoryData) {
+        const table_selector_id = $(this._table_selector).attr('id') ?? '';
+        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+
+        return `collapseInventory-${table_selector_id}-${name_id}`;
     }
 }

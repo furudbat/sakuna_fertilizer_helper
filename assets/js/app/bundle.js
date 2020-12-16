@@ -55610,6 +55610,7 @@ var fertilize_components_adapter_1 = require("./fertilize-components.adapter");
 var inventory_adapter_1 = require("./inventory.adapter");
 var inventory_1 = require("./inventory");
 var loggerManager_1 = require("typescript-logger/build/loggerManager");
+var material_itemlist_adapter_1 = require("./material-itemlist.adapter");
 var MAX_SHOW_RECOMMENDED_ITEMS = 12;
 var Application = (function () {
     function Application() {
@@ -55648,6 +55649,7 @@ var Application = (function () {
             }
             that._appData.currentGuide = $(this).data('name');
         });
+        this._materialItemListAdapter = new material_itemlist_adapter_1.MaterialItemListAdapter('tblMaterialItemsList');
         this._fertilizerAdapter = new fertilizer_adapter_1.FertilizerAdapter(this._appData);
         this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
@@ -55662,30 +55664,27 @@ var Application = (function () {
         this.initObservers();
     };
     Application.prototype.initItemList = function () {
-        this._itemList = $('#tblItemsList').DataTable({
-            order: [[1, "asc"]],
-            responsive: true,
-            columnDefs: [
-                { orderable: false, targets: [0] },
-                { orderable: true, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
-            ]
-        });
-        var that = this;
-        this._itemList.on('draw.dt', function () {
-            that.updateItemListEvents();
-        });
+        if (this._materialItemListAdapter) {
+            this._materialItemListAdapter.init();
+            var material_item_list = this._appData.items.filter(function (it) {
+                return it.category == 'Materials' ||
+                    it.category == 'Materials/Ingredients' ||
+                    it.category == 'Material' ||
+                    it.category == 'Material/Food';
+            });
+            this.log.debug('initItemList material_item_list:', material_item_list);
+            this._materialItemListAdapter.data = material_item_list;
+        }
         this.updateItemListEvents();
     };
     Application.prototype.updateItemListEvents = function () {
-        var that = this;
-        $('.add-item-to-inventory').off('click').on('click', function () {
-            var _a;
-            var item_name = $(this).data('name');
-            var item = that._appData.getItemByName(item_name);
-            if (item !== undefined) {
-                (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, 1);
-            }
-        });
+        if (this._materialItemListAdapter) {
+            var that = this;
+            this._materialItemListAdapter.addItemToInventoryListener = function (item, amount) {
+                var _a;
+                (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, amount);
+            };
+        }
     };
     Application.prototype.initSettings = function () {
         $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
@@ -56002,7 +56001,7 @@ var RecommendedFertilizerData = (function () {
     }
     return RecommendedFertilizerData;
 }());
-},{"./application.data":25,"./fertilize-components.adapter":27,"./fertilizer.adapter":29,"./fertilizer.data":30,"./inventory":32,"./inventory.adapter":31,"./site":34,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
+},{"./application.data":25,"./fertilize-components.adapter":27,"./fertilizer.adapter":29,"./fertilizer.data":30,"./inventory":32,"./inventory.adapter":31,"./material-itemlist.adapter":35,"./site":36,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
@@ -56176,7 +56175,7 @@ var FertilizeComponentsAdapter = (function () {
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components":28,"./inventory":32,"./site":34,"typescript-logger":17}],28:[function(require,module,exports){
+},{"./fertilizer-components":28,"./inventory":32,"./site":36,"typescript-logger":17}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerComponents = exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MAX_FERTILIZE_COMPONENTS = void 0;
@@ -56311,7 +56310,7 @@ var FertilizerComponents = (function () {
     return FertilizerComponents;
 }());
 exports.FertilizerComponents = FertilizerComponents;
-},{"./Observer":24,"./site":34,"console":6}],29:[function(require,module,exports){
+},{"./Observer":24,"./site":36,"console":6}],29:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -56321,10 +56320,10 @@ exports.FertilizerAdapter = void 0;
 var console_1 = require("console");
 var typescript_logger_1 = require("typescript-logger");
 var fertilizer_data_1 = require("./fertilizer.data");
-var inventory_adapter_1 = require("./inventory.adapter");
 var Observer_1 = require("./Observer");
 var chart_js_1 = __importDefault(require("chart.js"));
 var site_1 = require("./site");
+var itemlist_adapter_1 = require("./itemlist.adapter");
 var FertilizerAdapter = (function () {
     function FertilizerAdapter(appData) {
         this._data = new Observer_1.DataSubject(new fertilizer_data_1.FertilizerData());
@@ -56366,16 +56365,16 @@ var FertilizerAdapter = (function () {
                 that.updateSoilNutrientsChartKernelFertilizer();
                 that.updateSoilNutrientsChartRootFertilizer();
                 (_a = that._soilNutrientsChart) === null || _a === void 0 ? void 0 : _a.update();
-                var yield_hp = inventory_adapter_1.render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
-                var taste_strength = inventory_adapter_1.render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_taste_strength_overflow);
-                var hardness_vitality = inventory_adapter_1.render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
-                var stickiness_gusto = inventory_adapter_1.render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
-                var aesthetic_luck = inventory_adapter_1.render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
-                var armor_magic = inventory_adapter_1.render_buff_bonus_html((fertilizer.armor_magic) ? fertilizer.armor_magic : 0, false, fertilizer.is_armor_magic_overflow);
-                var immunity = inventory_adapter_1.render_buff_bonus_html((fertilizer.immunity) ? fertilizer.immunity : 0, false, fertilizer.is_immunity_overflow);
-                var pesticide = inventory_adapter_1.render_buff_bonus_html((fertilizer.pesticide) ? fertilizer.pesticide : 0, false, fertilizer.is_pesticide_overflow);
-                var herbicide = inventory_adapter_1.render_buff_bonus_html((fertilizer.herbicide) ? fertilizer.herbicide : 0, false, fertilizer.is_herbicide_overflow);
-                var toxicity = inventory_adapter_1.render_buff_bonus_html((fertilizer.toxicity) ? fertilizer.toxicity : 0, true, fertilizer.is_toxicity_overflow);
+                var yield_hp = itemlist_adapter_1.render_buff_bonus_html(fertilizer.yield_hp, false, fertilizer.is_yield_hp_overflow);
+                var taste_strength = itemlist_adapter_1.render_buff_bonus_html(fertilizer.taste_strength, false, fertilizer.is_taste_strength_overflow);
+                var hardness_vitality = itemlist_adapter_1.render_buff_bonus_html(fertilizer.hardness_vitality, false, fertilizer.is_hardness_vitality_overflow);
+                var stickiness_gusto = itemlist_adapter_1.render_buff_bonus_html(fertilizer.stickiness_gusto, false, fertilizer.is_stickiness_gusto_overflow);
+                var aesthetic_luck = itemlist_adapter_1.render_buff_bonus_html(fertilizer.aesthetic_luck, false, fertilizer.is_aesthetic_luck_overflow);
+                var armor_magic = itemlist_adapter_1.render_buff_bonus_html(fertilizer.armor_magic, false, fertilizer.is_armor_magic_overflow);
+                var immunity = itemlist_adapter_1.render_buff_bonus_html(fertilizer.immunity, false, fertilizer.is_immunity_overflow);
+                var pesticide = itemlist_adapter_1.render_buff_bonus_html(fertilizer.pesticide, false, fertilizer.is_pesticide_overflow);
+                var herbicide = itemlist_adapter_1.render_buff_bonus_html(fertilizer.herbicide, false, fertilizer.is_herbicide_overflow);
+                var toxicity = itemlist_adapter_1.render_buff_bonus_html(fertilizer.toxicity, true, fertilizer.is_toxicity_overflow);
                 $('#fertilizerYieldHp').html(yield_hp);
                 $('#fertilizerTasteStrength').html(taste_strength);
                 $('#fertilizerHardnessVitality').html(hardness_vitality);
@@ -56795,7 +56794,7 @@ var FertilizerAdapter = (function () {
     return FertilizerAdapter;
 }());
 exports.FertilizerAdapter = FertilizerAdapter;
-},{"./Observer":24,"./fertilizer.data":30,"./inventory.adapter":31,"./site":34,"chart.js":5,"console":6,"typescript-logger":17}],30:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer.data":30,"./itemlist.adapter":33,"./site":36,"chart.js":5,"console":6,"typescript-logger":17}],30:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerData = exports.MAX_STATS = exports.MIN_STATS = exports.MAX_FERTILIZER = exports.MIN_FERTILIZER = void 0;
@@ -57205,75 +57204,38 @@ var FertilizerData = (function () {
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
-},{"./site":34}],31:[function(require,module,exports){
+},{"./site":36}],31:[function(require,module,exports){
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InventoryAdapter = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
-var typescript_logger_1 = require("typescript-logger");
+exports.InventoryAdapter = void 0;
 var inventory_1 = require("./inventory");
 var site_1 = require("./site");
-function hasProperty(o, propertyName) {
-    return o[propertyName] !== undefined;
-}
-function getProperty(o, propertyName) {
-    return (o[propertyName] !== undefined) ? o[propertyName] : null;
-}
-function render_buff_bonus_html(value, invert_color, overflow) {
-    if (invert_color === void 0) { invert_color = undefined; }
-    if (overflow === void 0) { overflow = false; }
-    var val_number = (value) ? value : 0;
-    var val_str = (val_number > 0) ? "+" + val_number : "" + val_number;
-    if (invert_color !== undefined) {
-        if (!invert_color) {
-            if (overflow) {
-                val_str = "<span class=\"text-warning\">" + val_str + "*</span>";
-            }
-            else if (val_number > 0) {
-                val_str = "<span class=\"text-success\">" + val_str + "</span>";
-            }
-            if (val_number < 0) {
-                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
-            }
-        }
-        else {
-            if (overflow) {
-                val_str = "<span class=\"text-warning\">" + val_str + "*</span>";
-            }
-            else if (val_number < 0) {
-                val_str = "<span class=\"text-success\">" + val_str + "</span>";
-            }
-            if (val_number > 0) {
-                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
-            }
-        }
-    }
-    return "<span class=\"text-center\">" + val_str + "</span>";
-}
-exports.render_buff_bonus_html = render_buff_bonus_html;
-;
-function render_buff_bonus(property_name, invert_color, overflow) {
-    if (invert_color === void 0) { invert_color = undefined; }
-    if (overflow === void 0) { overflow = false; }
-    return function (data, type, row) {
-        var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
-        if (type === 'display') {
-            return render_buff_bonus_html(value, invert_color, overflow);
-        }
-        return value;
-    };
-}
-exports.render_buff_bonus = render_buff_bonus;
-;
+var itemlist_adapter_1 = require("./itemlist.adapter");
 var INVENTORY_PAGE_LENGTH = 7;
-var InventoryAdapter = (function () {
+var InventoryAdapter = (function (_super) {
+    __extends(InventoryAdapter, _super);
     function InventoryAdapter(settings, fertilizer_components, table_selector, data, adapter_settings) {
         if (adapter_settings === void 0) { adapter_settings = undefined; }
-        this.log = typescript_logger_1.LoggerManager.create('InventoryAdapter');
-        this._settings = settings;
-        this._fertilizer_components = fertilizer_components;
-        this._table_selector = table_selector;
-        this._data = data;
-        this._adapter_settings = adapter_settings;
+        var _this = _super.call(this, "InventoryAdapter|" + table_selector) || this;
+        _this._settings = settings;
+        _this._fertilizer_components = fertilizer_components;
+        _this._table_selector = table_selector;
+        _this._data = data;
+        _this._adapter_settings = adapter_settings;
+        return _this;
     }
     Object.defineProperty(InventoryAdapter.prototype, "observable", {
         get: function () {
@@ -57290,44 +57252,16 @@ var InventoryAdapter = (function () {
             $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
             switch (col) {
                 case 2:
-                    if (cellData.immunity) {
-                        if (cellData.immunity > 0) {
-                            $(cell).addClass('table-success');
-                        }
-                        else if (cellData.immunity < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'immunity');
                     break;
                 case 3:
-                    if (cellData.pesticide) {
-                        if (cellData.pesticide > 0) {
-                            $(cell).addClass('table-success');
-                        }
-                        else if (cellData.pesticide < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'pesticide');
                     break;
                 case 4:
-                    if (cellData.herbicide) {
-                        if (cellData.herbicide > 0) {
-                            $(cell).addClass('table-success');
-                        }
-                        else if (cellData.herbicide < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'herbicide');
                     break;
                 case 5:
-                    if (cellData.toxicity) {
-                        if (cellData.toxicity > 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                        else if (cellData.toxicity < 0) {
-                            $(cell).addClass('table-success');
-                        }
-                    }
+                    InventoryAdapter.addColColorClass(cell, cellData, 'toxicity', true);
                     break;
                 case 6:
                     if (rowData.expiable) {
@@ -57373,43 +57307,28 @@ var InventoryAdapter = (function () {
                     render: function (data, type, row, meta) {
                         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
                         if (type === 'display') {
-                            var fertilizer_bonus = '';
-                            if (row.fertilizer_bonus.leaf_fertilizer) {
-                                var text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
-                                var sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer + "</strong> \n                                    " + sign + row.fertilizer_bonus.leaf_fertilizer + "\n                                </p>";
-                            }
-                            if (row.fertilizer_bonus.kernel_fertilizer) {
-                                var text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
-                                var sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer + "</strong> \n                                    " + sign + row.fertilizer_bonus.kernel_fertilizer + "\n                                </p>";
-                            }
-                            if (row.fertilizer_bonus.root_fertilizer) {
-                                var text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
-                                var sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer + "</strong> \n                                    " + sign + row.fertilizer_bonus.root_fertilizer + "\n                                </p>";
-                            }
-                            var yield_hp = render_buff_bonus_html(row.fertilizer_bonus.yield_hp, false);
-                            var taste_strength = render_buff_bonus_html(row.fertilizer_bonus.taste_strength, false);
-                            var hardness_vitality = render_buff_bonus_html(row.fertilizer_bonus.hardness_vitality, false);
-                            var stickiness_gusto = render_buff_bonus_html(row.fertilizer_bonus.stickiness_gusto, false);
-                            var aesthetic_luck = render_buff_bonus_html(row.fertilizer_bonus.aesthetic_luck, false);
-                            var armor_magic = render_buff_bonus_html(row.fertilizer_bonus.armor_magic, false);
-                            var immunity = render_buff_bonus_html(row.fertilizer_bonus.immunity, false);
-                            var pesticide = render_buff_bonus_html(row.fertilizer_bonus.pesticide, false);
-                            var herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
-                            var toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
-                            var collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
-                            var show_yield_hp = (((_a = row.fertilizer_bonus.yield_hp) !== null && _a !== void 0 ? _a : 0) === 0) ? 'd-none' : 0;
-                            var show_taste_strength = (((_b = row.fertilizer_bonus.taste_strength) !== null && _b !== void 0 ? _b : 0) === 0) ? 'd-none' : 0;
-                            var show_hardness_vitality = (((_c = row.fertilizer_bonus.hardness_vitality) !== null && _c !== void 0 ? _c : 0) === 0) ? 'd-none' : 0;
-                            var show_stickiness_gusto = (((_d = row.fertilizer_bonus.stickiness_gusto) !== null && _d !== void 0 ? _d : 0) === 0) ? 'd-none' : 0;
-                            var show_aesthetic_luck = (((_e = row.fertilizer_bonus.aesthetic_luck) !== null && _e !== void 0 ? _e : 0) === 0) ? 'd-none' : 0;
-                            var show_armor_magic = (((_f = row.fertilizer_bonus.armor_magic) !== null && _f !== void 0 ? _f : 0) === 0) ? 'd-none' : 0;
-                            var show_immunity = (((_g = row.fertilizer_bonus.immunity) !== null && _g !== void 0 ? _g : 0) === 0) ? 'd-none' : 0;
-                            var show_pesticide = (((_h = row.fertilizer_bonus.pesticide) !== null && _h !== void 0 ? _h : 0) === 0) ? 'd-none' : 0;
-                            var show_herbicide = (((_j = row.fertilizer_bonus.herbicide) !== null && _j !== void 0 ? _j : 0) === 0) ? 'd-none' : 0;
-                            var show_toxicity = (((_k = row.fertilizer_bonus.toxicity) !== null && _k !== void 0 ? _k : 0) === 0) ? 'd-none' : 0;
+                            var fertilizer_bonus = InventoryAdapter.renderSoilNutrientsHtml(row.fertilizer_bonus);
+                            var yield_hp = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.yield_hp, false);
+                            var taste_strength = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.taste_strength, false);
+                            var hardness_vitality = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.hardness_vitality, false);
+                            var stickiness_gusto = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.stickiness_gusto, false);
+                            var aesthetic_luck = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.aesthetic_luck, false);
+                            var armor_magic = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.armor_magic, false);
+                            var immunity = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.immunity, false);
+                            var pesticide = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.pesticide, false);
+                            var herbicide = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.herbicide, false);
+                            var toxicity = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.toxicity, true);
+                            var collapse_id = that.getCollapseId(row);
+                            var show_yield_hp = (((_a = row.fertilizer_bonus.yield_hp) !== null && _a !== void 0 ? _a : 0) === 0) ? 'd-none' : '';
+                            var show_taste_strength = (((_b = row.fertilizer_bonus.taste_strength) !== null && _b !== void 0 ? _b : 0) === 0) ? 'd-none' : '';
+                            var show_hardness_vitality = (((_c = row.fertilizer_bonus.hardness_vitality) !== null && _c !== void 0 ? _c : 0) === 0) ? 'd-none' : '';
+                            var show_stickiness_gusto = (((_d = row.fertilizer_bonus.stickiness_gusto) !== null && _d !== void 0 ? _d : 0) === 0) ? 'd-none' : '';
+                            var show_aesthetic_luck = (((_e = row.fertilizer_bonus.aesthetic_luck) !== null && _e !== void 0 ? _e : 0) === 0) ? 'd-none' : '';
+                            var show_armor_magic = (((_f = row.fertilizer_bonus.armor_magic) !== null && _f !== void 0 ? _f : 0) === 0) ? 'd-none' : '';
+                            var show_immunity = (((_g = row.fertilizer_bonus.immunity) !== null && _g !== void 0 ? _g : 0) === 0) ? 'd-none' : '';
+                            var show_pesticide = (((_h = row.fertilizer_bonus.pesticide) !== null && _h !== void 0 ? _h : 0) === 0) ? 'd-none' : '';
+                            var show_herbicide = (((_j = row.fertilizer_bonus.herbicide) !== null && _j !== void 0 ? _j : 0) === 0) ? 'd-none' : '';
+                            var show_toxicity = (((_k = row.fertilizer_bonus.toxicity) !== null && _k !== void 0 ? _k : 0) === 0) ? 'd-none' : '';
                             var data_color_class = inventory_1.Inventory.getStateFocusTextColor(row.fertilizer_bonus);
                             var item_name_1 = row.name;
                             var amount_value = (_l = row.amount) !== null && _l !== void 0 ? _l : 1;
@@ -57424,28 +57343,20 @@ var InventoryAdapter = (function () {
                 },
                 {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('immunity')
+                    render: InventoryAdapter.renderBuffBonus('immunity')
                 }, {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('pesticide')
+                    render: InventoryAdapter.renderBuffBonus('pesticide')
                 }, {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('herbicide')
+                    render: InventoryAdapter.renderBuffBonus('herbicide')
                 }, {
                     data: 'fertilizer_bonus',
-                    render: render_buff_bonus('toxicity')
+                    render: InventoryAdapter.renderBuffBonus('toxicity')
                 },
                 {
                     data: null,
-                    render: function (data, type, row) {
-                        if (type === 'display') {
-                            if (row.expiable) {
-                                return '<i class="fas fa-skull"></i>';
-                            }
-                            return '<i class="fas fa-infinity"></i>';
-                        }
-                        return (row.expiable) ? true : false;
-                    }
+                    render: InventoryAdapter.renderShortExpiable
                 }
             ]
         });
@@ -57634,10 +57545,16 @@ var InventoryAdapter = (function () {
             }
         });
     };
+    InventoryAdapter.prototype.getCollapseId = function (row) {
+        var _a;
+        var table_selector_id = (_a = $(this._table_selector).attr('id')) !== null && _a !== void 0 ? _a : '';
+        var name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+        return "collapseInventory-" + table_selector_id + "-" + name_id;
+    };
     return InventoryAdapter;
-}());
+}(itemlist_adapter_1.ItemListAdapter));
 exports.InventoryAdapter = InventoryAdapter;
-},{"./inventory":32,"./site":34,"typescript-logger":17}],32:[function(require,module,exports){
+},{"./inventory":32,"./itemlist.adapter":33,"./site":36}],32:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = exports.MAX_ITEMS_AMOUNT_INVENTORY = exports.MIN_ITEMS_AMOUNT_INVENTORY = void 0;
@@ -57792,7 +57709,139 @@ var Inventory = (function () {
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{"./Observer":24,"./application.data":25,"./fertilizer-components":28,"./site":34,"console":6}],33:[function(require,module,exports){
+},{"./Observer":24,"./application.data":25,"./fertilizer-components":28,"./site":36,"console":6}],33:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItemListAdapter = exports.render_soil_nutrients_html = exports.render_buff_bonus = exports.render_buff_bonus_html = void 0;
+var typescript_logger_1 = require("typescript-logger");
+var site_1 = require("./site");
+function hasProperty(o, propertyName) {
+    return o[propertyName] !== undefined;
+}
+function getProperty(o, propertyName) {
+    return (o[propertyName] !== undefined) ? o[propertyName] : null;
+}
+function render_buff_bonus_html(value, invert_color, overflow) {
+    if (invert_color === void 0) { invert_color = undefined; }
+    if (overflow === void 0) { overflow = false; }
+    var val_number = (value) ? value : 0;
+    var val_str = (val_number > 0) ? "+" + val_number : "" + val_number;
+    if (invert_color !== undefined) {
+        if (!invert_color) {
+            if (overflow) {
+                val_str = "<span class=\"text-warning\">" + val_str + "*</span>";
+            }
+            else if (val_number > 0) {
+                val_str = "<span class=\"text-success\">" + val_str + "</span>";
+            }
+            if (val_number < 0) {
+                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
+            }
+        }
+        else {
+            if (overflow) {
+                val_str = "<span class=\"text-warning\">" + val_str + "*</span>";
+            }
+            else if (val_number < 0) {
+                val_str = "<span class=\"text-success\">" + val_str + "</span>";
+            }
+            if (val_number > 0) {
+                val_str = "<span class=\"text-danger\">" + val_str + "</span>";
+            }
+        }
+    }
+    return "<span class=\"text-center\">" + val_str + "</span>";
+}
+exports.render_buff_bonus_html = render_buff_bonus_html;
+;
+function render_buff_bonus(property_name, invert_color, overflow) {
+    if (invert_color === void 0) { invert_color = undefined; }
+    if (overflow === void 0) { overflow = false; }
+    return function (data, type, row) {
+        var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        if (type === 'display') {
+            return render_buff_bonus_html(value, invert_color, overflow);
+        }
+        return value;
+    };
+}
+exports.render_buff_bonus = render_buff_bonus;
+;
+function render_soil_nutrients_html(fertilizer_bonus) {
+    var ret = '';
+    if (fertilizer_bonus.leaf_fertilizer) {
+        var text_color = (fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
+        var sign = (fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
+        ret += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer + "</strong> \n            " + sign + fertilizer_bonus.leaf_fertilizer + "\n        </p>";
+    }
+    if (fertilizer_bonus.kernel_fertilizer) {
+        var text_color = (fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
+        var sign = (fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
+        ret += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer + "</strong> \n            " + sign + fertilizer_bonus.kernel_fertilizer + "\n        </p>";
+    }
+    if (fertilizer_bonus.root_fertilizer) {
+        var text_color = (fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
+        var sign = (fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
+        ret += "<p class=\"text-left " + text_color + "\"><strong>" + site_1.site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer + "</strong> \n            " + sign + fertilizer_bonus.root_fertilizer + "\n        </p>";
+    }
+    return ret;
+}
+exports.render_soil_nutrients_html = render_soil_nutrients_html;
+var ItemListAdapter = (function () {
+    function ItemListAdapter(tag) {
+        this.log = typescript_logger_1.LoggerManager.create(tag);
+    }
+    ItemListAdapter.renderSoilNutrientsHtml = function (fertilizer_bonus) {
+        return render_soil_nutrients_html(fertilizer_bonus);
+    };
+    ItemListAdapter.renderBuffBonusHtml = function (value, invert_color, overflow) {
+        if (invert_color === void 0) { invert_color = undefined; }
+        if (overflow === void 0) { overflow = false; }
+        return render_buff_bonus_html(value, invert_color, overflow);
+    };
+    ItemListAdapter.renderBuffBonus = function (property_name, invert_color, overflow) {
+        if (invert_color === void 0) { invert_color = undefined; }
+        if (overflow === void 0) { overflow = false; }
+        return render_buff_bonus(property_name, invert_color, overflow);
+    };
+    ItemListAdapter.renderShortExpiable = function (data, type, row) {
+        if (type === 'display') {
+            if (row.expiable) {
+                return '<i class="fas fa-skull"></i>';
+            }
+            return '<i class="fas fa-infinity"></i>';
+        }
+        return (row.expiable) ? true : false;
+    };
+    ItemListAdapter.renderExpiable = function (data, type, row) {
+        if (type === 'display') {
+            if (row.expiable) {
+                if (row.life !== undefined) {
+                    return site_1.site.data.strings.fertilizer_helper.inventory.expiable.in_days.replace("%life%", row.life);
+                }
+                return site_1.site.data.strings.fertilizer_helper.inventory.expiable.in_days_unknown;
+            }
+            return '<i class="fas fa-infinity"></i>';
+        }
+        return (row.expiable) ? true : false;
+    };
+    ItemListAdapter.addColColorClass = function (cell, fertilizer_bonus, property_name, invert_color) {
+        if (invert_color === void 0) { invert_color = false; }
+        var value = (hasProperty(fertilizer_bonus, property_name)) ? getProperty(fertilizer_bonus, property_name) : 0;
+        $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
+        if (value) {
+            if (value > 0) {
+                $(cell).addClass((!invert_color) ? 'table-success' : 'table-danger');
+            }
+            else if (value < 0) {
+                $(cell).addClass((!invert_color) ? 'table-danger' : 'table-success');
+            }
+        }
+    };
+    return ItemListAdapter;
+}());
+exports.ItemListAdapter = ItemListAdapter;
+},{"./site":36,"typescript-logger":17}],34:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");
@@ -57805,7 +57854,209 @@ $(function () {
     var app = new application_1.Application();
     app.init();
 });
-},{"./application":26,"./site":34,"typescript-logger":17}],34:[function(require,module,exports){
+},{"./application":26,"./site":36,"typescript-logger":17}],35:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MaterialItemListAdapter = void 0;
+var itemlist_adapter_1 = require("./itemlist.adapter");
+var MaterialItemListAdapter = (function (_super) {
+    __extends(MaterialItemListAdapter, _super);
+    function MaterialItemListAdapter(table_selector, data) {
+        if (data === void 0) { data = []; }
+        var _this = _super.call(this, "MaterialItemListAdapter|" + table_selector) || this;
+        _this._table_selector = table_selector;
+        _this._data = data;
+        return _this;
+    }
+    Object.defineProperty(MaterialItemListAdapter.prototype, "data", {
+        get: function () {
+            return this._data;
+        },
+        set: function (data) {
+            var _a, _b;
+            this._data = data;
+            (_a = this._table) === null || _a === void 0 ? void 0 : _a.clear();
+            (_b = this._table) === null || _b === void 0 ? void 0 : _b.rows.add(this._data).draw();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    MaterialItemListAdapter.prototype.init = function (orderable, not_orderable, ordering) {
+        if (orderable === void 0) { orderable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; }
+        if (not_orderable === void 0) { not_orderable = [0]; }
+        if (ordering === void 0) { ordering = undefined; }
+        var createdCell = function (cell, cellData, rowData, row, col) {
+            $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
+            switch (col) {
+                case 2:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'yield_hp');
+                    break;
+                case 3:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'taste_strength');
+                    break;
+                case 4:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'hardness_vitality');
+                    break;
+                case 5:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'stickiness_gusto');
+                    break;
+                case 6:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'aesthetic_luck');
+                    break;
+                case 7:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'armor_magic');
+                    break;
+                case 8:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'immunity');
+                    break;
+                case 9:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'pesticide');
+                    break;
+                case 10:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'herbicide');
+                    break;
+                case 11:
+                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'toxicity', true);
+                    break;
+                case 12:
+                    if (rowData.expiable) {
+                        $(cell).addClass('table-warning');
+                    }
+                    break;
+            }
+        };
+        var that = this;
+        this._table = $(this._table_selector).DataTable({
+            ordering: ordering,
+            order: (orderable.find(function (it) { return it === 1; })) ? [[1, "asc"]] : undefined,
+            autoWidth: false,
+            responsive: true,
+            createdRow: function (row, data, dataIndex) {
+                $(row).attr('data-name', data.name);
+                $(row).attr('data-index', dataIndex);
+            },
+            columnDefs: [
+                {
+                    orderable: false,
+                    targets: not_orderable,
+                    createdCell: createdCell
+                },
+                {
+                    orderable: true,
+                    targets: orderable,
+                    createdCell: createdCell
+                }
+            ],
+            data: this._data,
+            columns: [
+                {
+                    data: 'name',
+                    render: function (data, type) {
+                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-inventory\" data-name=\"" + data + "\"><i class=\"fas fa-plus\"></i></button>" : '';
+                    }
+                },
+                {
+                    data: 'name',
+                    render: function (data, type) {
+                        if (type === 'display') {
+                            return "<span class=\"ml-1\">" + data + "</span>";
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: function (data, type) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderSoilNutrientsHtml(data);
+                        }
+                        return [data.leaf_fertilizer, data.kernel_fertilizer, data.root_fertilizer].join(';');
+                    }
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('yield_hp')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('taste_strength')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('hardness_vitality')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('stickiness_gusto')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('aesthetic_luck')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('armor_magic')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('immunity')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('pesticide')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('herbicide')
+                },
+                {
+                    data: 'fertilizer_bonus',
+                    render: MaterialItemListAdapter.renderBuffBonus('toxicity', true)
+                },
+                {
+                    data: null,
+                    render: MaterialItemListAdapter.renderExpiable
+                }
+            ]
+        });
+        this.updateUI();
+        var that = this;
+        this._table.on('draw.dt', function () {
+            that.updateUI();
+        });
+    };
+    MaterialItemListAdapter.prototype.updateUI = function () {
+        this.initEvents();
+    };
+    MaterialItemListAdapter.prototype.initEvents = function () {
+        var that = this;
+        $(this._table_selector).find('.add-item-to-inventory').off('click').on('click', function () {
+            if (that.addItemToInventoryListener) {
+                var item_name_1 = $(this).data('name');
+                var item = that._data.find(function (it) { return it.name == item_name_1; });
+                if (item !== undefined) {
+                    that.addItemToInventoryListener(item, 1);
+                }
+            }
+        });
+    };
+    return MaterialItemListAdapter;
+}(itemlist_adapter_1.ItemListAdapter));
+exports.MaterialItemListAdapter = MaterialItemListAdapter;
+},{"./itemlist.adapter":33}],36:[function(require,module,exports){
 'use strict';
 String.prototype.format = function () {
     var args = arguments;
@@ -57888,5 +58139,5 @@ module.exports = {
     makeDoubleClick: makeDoubleClick,
     clamp: clamp
 };
-},{}]},{},[33])
+},{}]},{},[34])
 //# sourceMappingURL=bundle.js.map
