@@ -4,6 +4,7 @@ Cooking.csv
 Enchant.csv
 EnemyDrop.csv
 WorldmapCollect.csv
+WorldmapLandmark.csv
 
 Enchant.*.csv
 Food.*.csv
@@ -11,3 +12,4 @@ Material.*.csv
 Cooking.*.csv
 EnemyDrop.*.csv
 WorldmapCollect.*.csv
+WorldmapLandmark.*.csv

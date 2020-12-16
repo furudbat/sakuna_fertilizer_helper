@@ -18,6 +18,10 @@ interface FertilizerBonusData {
     toxicity?: number;
 }
 
+interface EnchantData {
+    name: string;
+    level: number;
+}
 interface FoodBonusData {
     hp?: number;
     sp?: number;
@@ -26,32 +30,54 @@ interface FoodBonusData {
     magic?: number;
     luck?: number;
     fullness?: number;
-    enchant?: number;
 
-    natural_healing_buff?: number;
-    overstuffed_buff?: number;
-    retribution_buff?: number;
-    herbalist_buff?: number;
-    rain_goddess_buff?: number;
-    swift_recovery_buff?: number;
-    posion_resistance_buff?: number;
-    water_resistance_buff?: number;
-    fire_resistance_buff?: number;
-    luck_boost_buff?: number;
-    night_owl_buff?: number;
-    sommer_magic_buff?: number;
-    spectral_scourge_buff?: number;
+    enchant?: EnchantData[];
 }
 
-interface ItemData {
+interface BaseItemData {
     name: string;
     category: string;
-    found_in: string[];
-    source: string[];
-    time_of_day: string;
-    fertilizer_bonus: FertilizerBonusData;
-    food_bonus: FoodBonusData;
-    used_in_recipes: string[];
+    sub_category?: string;
+    description?: string;
+}
+
+interface FindInData {
+    name: string;
+    percent: number;
+    season: string;
+}
+
+interface EnemyDropData {
+    name: string;
+    time: string;
+}
+interface MaterialItemData extends BaseItemData {
+    fertilizer_bonus?: FertilizerBonusData;
+    find_in?: FindInData[];
+    enemy_drops?: EnemyDropData[];
+}
+
+interface IngredientsData {
+    name: string;
+    amount: number;
+    operator: string;
+}
+interface FoodItemData extends MaterialItemData {
+    food_bonus?: FoodBonusData;
+
+    ingredients?: IngredientsData[];
     expiable?: boolean;
     life?: number;
+    price?: number;
+    when_spoiled?: string;
 }
+
+interface CookingItemData extends FoodItemData {
+    season_buff?: string;
+    season_food_bonus?: FoodBonusData;
+
+    main_ingredients?: IngredientsData[];
+}
+
+type MaterialOrFoodItemData = MaterialItemData | FoodItemData;
+type ItemData = MaterialItemData | FoodItemData | CookingItemData;

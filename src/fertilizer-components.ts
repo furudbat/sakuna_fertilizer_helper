@@ -39,7 +39,7 @@ export class FertilizerComponents {
     }
 
     public getItemByName(name: string) {
-        return this._components.find((it) => it.name === name);
+        return this._components.find((it) => it.item.name === name);
     }
 
     public setInInventoryAmount(index: number, amount: number | undefined) {
@@ -70,7 +70,7 @@ export class FertilizerComponents {
         }
         assert(amount === undefined || amount >= 0, "add fertilizer component, add item amount can't be negative");
 
-        const item_index = this._components.findIndex((it) => it.name === item.name);
+        const item_index = this._components.findIndex((it) => it.item.name === item.item.name);
         if (item_index >= 0) {
             this._components.let(item_index, (item_component: ItemFertilizerComponentData) => {
                 if (item_component.in_fertilizer !== undefined || amount !== undefined) {
@@ -86,9 +86,7 @@ export class FertilizerComponents {
             return undefined;
         }
 
-        let new_item: ItemFertilizerComponentData = item;
-        new_item.in_fertilizer = amount;
-        new_item.amount = item.amount;
+        const new_item: ItemFertilizerComponentData = { item: item.item, in_fertilizer: amount, amount: item.amount };
         this._components.push(new_item);
 
         return this._components.last();
@@ -104,18 +102,23 @@ export class FertilizerComponents {
         assert(amount === undefined || amount >= 0, "remove item amount can't be negative");
 
         const item_name: string = ((): string => {
-            if ((item as ItemInventoryData).name !== undefined) {
-                return (item as ItemInventoryData).name;
+            if (typeof item === 'string' || item instanceof String) {
+                return item as string;
+            }
+            if ((item as ItemInventoryData)?.item?.name !== undefined) {
+                return (item as ItemInventoryData).item.name;
             }
 
-            return item as string;
+            console.error('item_name type ???');
+
+            return '';
         })();
 
         var ret: ItemFertilizerComponentData | undefined = undefined;
-        const item_component_index = this._components.findIndex((it) => it.name === item_name);
+        const item_component_index = this._components.findIndex((it) => it.item.name === item_name);
         if (item_component_index >= 0) {
             this._components.let(item_component_index, (item_component: ItemFertilizerComponentData) => {
-                if(amount === undefined) {
+                if (amount === undefined) {
                     item_component.in_fertilizer = amount;
                     ret = item_component;
                     return undefined;

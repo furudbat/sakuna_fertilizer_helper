@@ -1,4 +1,4 @@
-- category: Food
+- category: Materials/Food
   description: It is said that one can gain the powers of the creaturesthey consume.
     Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.
   expiable: true
@@ -10,7 +10,7 @@
   name: Rabbit Meat
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Known for its vitality, the meat of pig demons is essentialfor building
     muscle. I have heard pork is the most commonlyeaten meat in Ouka, a land across
     the sea.
@@ -23,7 +23,7 @@
   name: Pork
   price: 2
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Compared to other demons of its kind, a boar's strength iswithout equal.
     The meat has a slight gamey odor, it must begently boiled to bring out the delicate
     flavor.
@@ -36,7 +36,7 @@
   name: Boar Meat
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Venison must be properly prepared before it is cooked,but the end result
     is a truly magical cut of meat thatcan be paired with any dish.
   expiable: true
@@ -48,7 +48,7 @@
   name: Venison
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Even powerful gods are amazed by the strength and vitalitycontained
     in bear meat. Though it may prove troublesome tocook, the end result is more than
     worth the effort.
@@ -63,7 +63,7 @@
   name: Bear Meat
   price: 2
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Strangely enough, badger meat can vary in flavor dependingon the type
     procured. Whether a morsel is palatable or notcomes down to little more than luck.
   expiable: true
@@ -76,7 +76,7 @@
   name: Badger Meat
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Turtle meat is oft used as medicine for its rejuvenatingproperties.
     I recommend eating some when your vitalityis in short supply.
   expiable: true
@@ -89,7 +89,7 @@
   name: Turtle Meat
   price: 3
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: Ah, the sparrow... The bane of rice fields everywhere.Its crispiness
     when cooked is simply divine. Small as itmay be, magical energy runs abundant
     through its meat.
@@ -102,7 +102,7 @@
   name: Sparrow Meat
   price: 1
   sub_category: Bird
-- category: Material/Food
+- category: Materials/Food
   description: A pheasant's cunning can be most vexing, but its meat mayhelp to bolster
     one's skill. Though the texture is ratherbland, the flavor is said to be utterly
     delicious.
@@ -115,7 +115,7 @@
   name: Pheasant Meat
   price: 2
   sub_category: Bird
-- category: Material/Food
+- category: Materials/Food
   description: Duck meat is revered for its luscious, high-quality fat.After eating
     some, one cannot help but feel their vitalityrestored and their luck improved.
   expiable: true
@@ -129,19 +129,29 @@
   name: Duck Meat
   price: 3
   sub_category: Bird
-- category: Food
+- category: Materials/Food
   description: Do not judge the loach by its diminutive size, for it isbrimming with
     hidden vitality. Be grateful as you carry outyour work on the morrow.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 30
+    season: Winter
+  - name: 'Gathering Area: Spring'
+    percent: 25
+    season: Winter
+  - name: 'Gathering Area: Stream'
+    percent: 15
+    season: Winter
   food_bonus:
     vitality: 4
   life: 2
   name: Loach
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A fortuitous fish that has been used in divination sinceancient times.
     I must say, it's one of my favorites!
   expiable: true
@@ -153,57 +163,136 @@
   name: Sweetfish
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: Carp are said to have the power to boost women's health.I cannot help
     but wonder how one gets rid of the stenchof mud. It must be the mark of a truly
     talented chef.
   expiable: true
   fertilizer_bonus:
     yield_hp: 5
+  find_in:
+  - name: 'Gathering Area: Lake'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Beach'
+    percent: 10
+    season: Always
+  - name: Lucid Falls
+    percent: 15
+    season: Always
+    try: 5
   food_bonus:
     hp: 5
   life: 2
   name: Carp
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: Because of their proclivity for clear water, these fishhave a magnificent
     fragrance. I imagine they must havepotent spiritual energy swirling in their fishy
     forms.
   expiable: true
   fertilizer_bonus:
     armor_magic: 3
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 15
+    season: Spring
+  - name: 'Gathering Area: Stream'
+    percent: 15
+    season: Summer
+  - name: 'Gathering Area: Lake'
+    percent: 5
+    season: Spring
+  - name: 'Gathering Area: Lake'
+    percent: 5
+    season: Summer
+  - name: Lucid Falls
+    percent: 5
+    season: Spring
+    try: 5
+  - name: Lucid Falls
+    percent: 5
+    season: Summer
+    try: 5
   food_bonus:
     magic: 4
   life: 2
   name: Masu Salmon
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: These fish's avid appetites give them a heaping helpingof vitality.
     They boast a simple yet robust flavor profile.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 3
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 15
+    season: Spring
+  - name: 'Gathering Area: Stream'
+    percent: 15
+    season: Summer
+  - name: 'Gathering Area: Lake'
+    percent: 15
+    season: Spring
+  - name: 'Gathering Area: Lake'
+    percent: 15
+    season: Summer
+  - name: Lucid Falls
+    percent: 20
+    season: Spring
+    try: 5
+  - name: Lucid Falls
+    percent: 20
+    season: Summer
+    try: 5
   food_bonus:
     vitality: 4
   life: 2
   name: Char
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: These fish can be found in nearly every river in Yanato.Flavor notwithstanding,
     they certainly fill you up.
   expiable: true
   fertilizer_bonus:
     stickiness_gusto: 3
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 20
+    season: Spring
+  - name: 'Gathering Area: River'
+    percent: 20
+    season: Autumn
+  - name: 'Gathering Area: Spring'
+    percent: 20
+    season: Spring
+  - name: 'Gathering Area: Spring'
+    percent: 20
+    season: Autumn
+  - name: Lucid Falls
+    percent: 20
+    season: Spring
+    try: 5
+  - name: Lucid Falls
+    percent: 20
+    season: Autumn
+    try: 5
   food_bonus:
     fullness: 4
   life: 2
   name: Crucian Carp
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: Salmon are known as the fish of the gods, for they areborn into this
     world with the spiritual energy to passfrom death to life and the strength to
     swim upstream.
@@ -211,6 +300,20 @@
   fertilizer_bonus:
     armor_magic: 3
     taste_strength: 3
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 5
+    season: Autumn
+  - name: 'Gathering Area: Lake'
+    percent: 5
+    season: Autumn
+  - name: 'Gathering Area: Beach'
+    percent: 10
+    season: Autumn
+  - name: Lucid Falls
+    percent: 10
+    season: Autumn
+    try: 5
   food_bonus:
     magic: 4
     strength: 4
@@ -218,19 +321,32 @@
   name: Salmon
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: These fish adore cold water and are blessed with goodfortune. Their
     tender meat is perfect for frying.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
+  find_in:
+  - name: 'Gathering Area: Lake'
+    percent: 15
+    season: Winter
+  - name: 'Gathering Area: Beach'
+    percent: 15
+    season: Winter
+  - name: Lucid Falls
+    percent: 20
+    season: Winter
+    try: 5
   food_bonus:
     luck: 4
   life: 2
   name: Smelt
   price: 1
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: It is rare indeed to see these fish come all the way downfrom the northern
     sea. The delectable fat of their meatis certain to increase your spiritual abilities.
   expiable: true
@@ -244,13 +360,24 @@
   name: Herring
   price: 3
   sub_category: ''
-- category: Food
+  when_spoiled: Fish Oil
+- category: Materials/Food
   description: A long river fish brimming with wholesome nutrients.Its wriggling energy
     imparts skill and strength.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
     taste_strength: 10
+  find_in:
+  - name: 'Gathering Area: Beach'
+    percent: 10
+    season: Summer
+  - name: 'Gathering Area: Beach'
+    percent: 15
+    season: Autumn
+  - name: 'Gathering Area: Beach'
+    percent: 20
+    season: Winter
   food_bonus:
     sp: 5
     strength: 5
@@ -258,7 +385,7 @@
   name: Eel
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Shellfish suck up the spiritual energy from the mudand sand. Particularly
     big clams are liable to devolveinto demons if exposed to too much negative energy.
   expiable: true
@@ -270,7 +397,7 @@
   name: Basket Clam
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A hard-shelled bird egg. Not only will it expand yourcooking repertoire,
     but I have heard that it has manyhealth benefits as well.
   expiable: true
@@ -285,7 +412,7 @@
   name: Egg
   price: 1
   sub_category: Bird
-- category: Food
+- category: Materials/Food
   description: While this pest may feast on our ears of rice,as an ingredient it imparts
     vitality to dishes.
   expiable: true
@@ -297,13 +424,28 @@
   name: Grasshopper
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: This insect is prized for its health and vitalityboosting properties.
     As for its appearance...Well, one can get used to anything, I suppose.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 2
     yield_hp: 3
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Summer
+  - name: 'Gathering Area: Forest'
+    percent: 15
+    season: Autumn
+  - name: Fruitful Hassok
+    percent: 30
+    season: Summer
+    try: 5
+  - name: Fruitful Hassok
+    percent: 15
+    season: Autumn
+    try: 5
   food_bonus:
     hp: 2
     vitality: 3
@@ -338,54 +480,108 @@
   name: White Rice
   price: 3
   sub_category: Rice
-- category: Food
+- category: Materials/Food
   description: Though it is counted among the five grains, the wheatharvested on this
     island is not suited for cultivation.You are certainly free to use it as an ingredient,
     however.
   fertilizer_bonus:
     stickiness_gusto: 3
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 30
+    season: Spring
+  - name: 'Gathering Area: Plain'
+    percent: 30
+    season: Autumn
+  - name: Bounteous Earth Grotto
+    percent: 30
+    season: Spring
+    try: 5
+  - name: Bounteous Earth Grotto
+    percent: 30
+    season: Autumn
+    try: 5
+  - name: 'Gathering Area: Foothills'
+    percent: 10
+    season: Spring
   food_bonus:
     fullness: 10
   name: Wheat
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: One of the five grains, and said to be the oldest cropsgrown in Yanato.
     It may not do much to sate the appetite,but it does appear to be good for your
     health.
   fertilizer_bonus:
     yield_hp: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 30
+    season: Autumn
+  - name: Bounteous Earth Grotto
+    percent: 40
+    season: Autumn
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 10
+    season: Autumn
   food_bonus:
     fullness: 5
     hp: 2
   name: Foxtail Millet
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: One of the five grains, and one of the most popular cropsproduced in
     Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint
     of spiritual energy.
   fertilizer_bonus:
     armor_magic: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 30
+    season: Autumn
+  - name: Bounteous Earth Grotto
+    percent: 40
+    season: Autumn
+    try: 5
+  - name: 'Gathering Area: Foothills'
+    percent: 10
+    season: Autumn
   food_bonus:
     fullness: 5
     magic: 2
   name: Sanwa Millet
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: One of the five grains, and a source of great strength.It is also used
     as an ingredient in many magnificentcondiments, such as miso and soy sauce.
   fertilizer_bonus:
     herbicide: 1
     leaf_fertilizer: 10
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 20
+    season: Always
+  - name: 'Gathering Area: Plain'
+    percent: 20
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 30
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Spring'
+    percent: 20
+    season: Always
   food_bonus:
     fullness: 5
     strength: 2
   name: Bean
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A hardy plant grown to stave off famine. In additionto filling your
     stomach, it may very well grant youthe ability to pull off even more skills in
     combat.
@@ -397,7 +593,7 @@
   name: Buckwheat
   price: 6
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Even though the roots of this hardy plant are poisonous,it can be consumed
     after being crushed and soaked in water.Many farmers plant these in preparation
     for poor harvests.
@@ -406,32 +602,51 @@
   name: Tekusari
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: This is the hard-shelled fruit of a broad-leafed tree.It may be meager,
     but every little bit goes a long way.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 1
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Always
   food_bonus:
     fullness: 2
   life: 2
   name: Acorn
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Taro is a root plant that has been keeping the peopleof Yanato fed
     since long before even the five grains.These days, it's the star of many a dinnertime
     dish.
   expiable: true
   fertilizer_bonus:
     stickiness_gusto: 5
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Foothills'
+    percent: 20
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 10
+    season: Always
+    try: 5
   food_bonus:
     fullness: 4
   life: 2
   name: Taro
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: The potato is a kind of taro that's grown in frigid landsand has found
     its way to Yanato as of late. It is quitefilling for a root plant, and may bestow
     extra vitality.
@@ -445,7 +660,7 @@
   name: Potato
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: This appears to be a bulbous version of the green onion.It seems to
     grant good fortune, and is favored by warriorsof the west. Also notorious for
     inducing tears when cut.
@@ -458,72 +673,119 @@
   name: Onion
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A fern that is immensely bitter and frequently growsin the wilds of
     nearby settlements. Its acute flavormay give you the capacity to perform additional
     skills.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 40
+    season: Spring
+  - name: Fruitful Hassok
+    percent: 20
+    season: Spring
+    try: 5
   food_bonus:
     sp: 4
   life: 2
   name: Warabi
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: These shoots from the horsetail plant are a medicinal herb.It gathers
     spiritual energy from the soil, which gives ita bittersweet flavor that evokes
     memories of springtime.
   expiable: true
   fertilizer_bonus:
     armor_magic: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Spring
+  - name: 'Gathering Area: Hillside'
+    percent: 5
+    season: Spring
   food_bonus:
     magic: 2
   life: 2
   name: Horsetail
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A fragrant herb that can be found in the springtime.It is well known
     for its various medicinal properties,the most useful of which is amplifying your
     vitality.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 15
+    season: Spring
+  - name: 'Gathering Area: Hillside'
+    percent: 5
+    season: Spring
   food_bonus:
     vitality: 2
   life: 2
   name: Mugwort
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Water dropwort, shepherd's purse, cudweed, chickweed,nipplewort, turnip,
     and radish. If you manage to findall seven, legend says that fortune will favor
     you.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 3
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 10
+    season: Spring
   food_bonus:
     luck: 2
   life: 2
   name: Seven Herbs
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Burdock, carrots, radishes, and the like are all delectableand abounding
     in nutrients. Whether or not you enjoy theirtaste, eating them will certainly
     make you more healthy.
   expiable: true
   fertilizer_bonus:
     yield_hp: 3
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Spring
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Winter
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Spring
+    try: 5
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Winter
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 5
+    season: Spring
+  - name: 'Gathering Area: Hillside'
+    percent: 5
+    season: Winter
   food_bonus:
     hp: 2
   life: 2
   name: Root Crops
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A juicy vegetable that is both sweet and slightly bitter.They are especially
     well-loved by the water-dwelling kappa.
   expiable: true
@@ -535,7 +797,7 @@
   name: Cucumber
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: An unfamiliar plant comprised of tiny yellow kernels.To my knowledge,
     this crop is not grown in Yanato.
   fertilizer_bonus:
@@ -547,83 +809,231 @@
   name: Maize
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A phenomenal variety of mushrooms grow around the treesof the mountain,
     including maitake, shimeji, and shiitake.Their nutrients will boost your muscles
     and grant strength.
   expiable: true
   fertilizer_bonus:
     taste_strength: 3
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Autumn
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Winter
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Autumn
+    try: 5
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Winter
+    try: 5
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Autumn
+  - name: 'Gathering Area: Forest'
+    percent: 15
+    season: Winter
+  - name: Fruitful Hassok
+    percent: 15
+    season: Autumn
+    try: 5
+  - name: Fruitful Hassok
+    percent: 15
+    season: Winter
+    try: 5
+  - name: 'Gathering Area: Cavern'
+    percent: 15
+    season: Autumn
+  - name: 'Gathering Area: Cavern'
+    percent: 10
+    season: Winter
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Autumn
+  - name: 'Gathering Area: Dry Moat'
+    percent: 5
+    season: Winter
+  - name: Takeribi's Gold Mine
+    percent: 10
+    season: Autumn
+    try: 5
+  - name: Takeribi's Gold Mine
+    percent: 5
+    season: Winter
+    try: 5
   food_bonus:
     strength: 2
   life: 2
   name: Mushroom
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: My word... This mushroom is known to be exceedingly rare!You must boast
     incredibly good fortune to have found it.Maybe eating it will bring even more
     luck into your life.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 50
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 0
+    season: Spring
+  - name: 'Gathering Area: Forest'
+    percent: 1
+    season: Autumn
+  - name: 'Gathering Area: Spring'
+    percent: 0
+    season: Autumn
+  - name: Fruitful Hassok
+    percent: 0
+    season: Spring
+    try: 5
+  - name: Fruitful Hassok
+    percent: 1
+    season: Autumn
+    try: 5
   food_bonus:
     luck: 50
   life: 2
   name: Matsutake
   price: 30
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: The hard outer shell hides a sweet inner core. Moreover,partaking of
     it may strengthen your spiritual powers.
   expiable: true
   fertilizer_bonus:
     armor_magic: 3
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Autumn
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Winter
+  - name: 'Gathering Area: Spring'
+    percent: 20
+    season: Autumn
+  - name: 'Gathering Area: Spring'
+    percent: 20
+    season: Winter
+  - name: Fruitful Hassok
+    percent: 20
+    season: Autumn
+    try: 5
+  - name: Fruitful Hassok
+    percent: 20
+    season: Winter
+    try: 5
   food_bonus:
     magic: 4
   life: 2
   name: Chestnut
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: These nuts come from the seeds of ginkgo trees. The femaletrees produce
     ovules said to bestow health and long life.
   expiable: true
   fertilizer_bonus:
     yield_hp: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Autumn
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Autumn
+    try: 5
+  - name: 'Gathering Area: Lake'
+    percent: 30
+    season: Autumn
+  - name: Lucid Falls
+    percent: 30
+    season: Autumn
+    try: 5
   food_bonus:
     hp: 4
   life: 2
   name: Ginkgo Nut
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: The persimmons on this island vary greatly between beingastringent
     and delectably sweet. You must have good luckif you managed to land on a sweet
     one...this time.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 3
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Autumn
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Winter
+  - name: 'Gathering Area: Spring'
+    percent: 30
+    season: Autumn
+  - name: 'Gathering Area: Spring'
+    percent: 30
+    season: Winter
+  - name: Fruitful Hassok
+    percent: 30
+    season: Autumn
+    try: 5
+  - name: Fruitful Hassok
+    percent: 30
+    season: Winter
+    try: 5
+  - name: 'Gathering Area: Foothills'
+    percent: 15
+    season: Autumn
   food_bonus:
     luck: 4
   life: 2
   name: Persimmon
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A wild plant that packs quite a punch. Its vigorous flavordoes wonders
     for your vitality...less so for your breath.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 3
     pesticide: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 5
+    season: Spring
+  - name: 'Gathering Area: Plain'
+    percent: 15
+    season: Summer
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Spring
+    try: 5
+  - name: Bounteous Earth Grotto
+    percent: 20
+    season: Summer
+    try: 5
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Spring
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Summer
   food_bonus:
     vitality: 2
   life: 2
   name: Garlic
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: This wild plant frequently grows by clear streams and isused as a seasoning.
     Its excessive spiciness will clear outyour sinuses and get your spiritual powers
     pumping.
@@ -631,13 +1041,28 @@
   fertilizer_bonus:
     armor_magic: 5
     pesticide: 5
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 20
+    season: Winter
+  - name: Fruitful Hassok
+    percent: 20
+    season: Winter
+    try: 5
+  - name: 'Gathering Area: Stream'
+    percent: 20
+    season: Winter
+  - name: Lucid Falls
+    percent: 30
+    season: Winter
+    try: 5
   food_bonus:
     magic: 2
   life: 2
   name: Wasabi
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A root that has long been used both to stifle stenchesand season suppers.
     Guaranteed to warm you up, bolsteryour strength, and boost your capacity for using
     skills.
@@ -652,7 +1077,7 @@
   name: Ginger
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Eaten raw, it is spicy and crisp, but cooking it willbring out its
     inner sweetness. It also has medicinal uses,and is even known to raise one's skilfulness
     in battle.
@@ -667,20 +1092,27 @@
   name: Green Onion
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: The hint of sweetness hidden within its acutely sour tasteis like a
     metaphor for raising children. Unlike parenthood,eating it may also prove to be
     beneficial to your health.
   expiable: true
   fertilizer_bonus:
     yield_hp: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 15
+    season: Spring
+  - name: 'Gathering Area: River'
+    percent: 10
+    season: Spring
   food_bonus:
     hp: 2
   life: 2
   name: Plum
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Salt is a mineral that is indispensable as a preservativenot only for
     food, but also for your mind and body. It isknown to have the power to cleanse
     all sorts of impurities.
@@ -689,22 +1121,52 @@
     immunity: 10
     pesticide: 10
     toxicity: 5
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 1
+    season: Always
+  - name: 'Gathering Area: River'
+    percent: 1
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 1
+    season: Always
+    try: 5
+  - name: Bounteous Earth Grotto
+    percent: 1
+    season: Summer
+    try: 5
+  - name: 'Gathering Area: Beach'
+    percent: 45
+    season: Always
+  - name: 'Gathering Area: Foothills'
+    percent: 3
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 5
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Dry Moat'
+    percent: 3
+    season: Always
   name: Salt
   price: 3
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A sweetener harvested from sugarcane grown on an islandin the southern
     sea. It is of high quality, but has beenspreading as of late, even commoners can
     enjoy it now.
   fertilizer_bonus:
-    stickiness_gusto: 1
+    stickiness_gusto: 5
     toxicity: 1
   name: Sugar
   price: 6
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: The seed of a flowering plant that is used to seasonmany a dish. It
     has been cherished since ancient times,and is also abounding in nutrients.
+  fertilizer_bonus:
+    toxicity: -5
   food_bonus:
     enchant:
     - level: 2
@@ -712,15 +1174,22 @@
   name: Sesame
   price: 6
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A type of seaweed that has been long beloved in Yanatoas the base of
     a soup stock and as a general ingredient.
   fertilizer_bonus:
     root_fertilizer: 10
+  find_in:
+  - name: 'Gathering Area: Beach'
+    percent: 40
+    season: Summer
+  - name: 'Gathering Area: Beach'
+    percent: 35
+    season: Autumn
   name: Kombu Kelp
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Although the tea plant came from Ouka, there was alreadya species growing
     on this island. Its leaves are used fordivination. Drinking it in a hot broth
     brings good fortune.
@@ -728,17 +1197,33 @@
     herbicide: 1
     leaf_fertilizer: 5
     pesticide: 1
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 30
+    season: Spring
+  - name: Fruitful Hassok
+    percent: 30
+    season: Spring
+    try: 5
   food_bonus:
     luck: 2
   name: Tea
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A medicinal herb effective against a variety of ailments.It can be
     particularly useful as a remedy for poison...not to mention quite delectable when
     made into tempura.
   fertilizer_bonus:
     pesticide: 3
+  find_in:
+  - name: 'Gathering Area: Foothills'
+    percent: 30
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 30
+    season: Always
+    try: 5
   food_bonus:
     enchant:
     - level: 2
@@ -828,9 +1313,21 @@
   name: Soy Sauce
   price: 6
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Refined oil, with the dregs carefully filtered out. A lifeof luxury
     is incomplete without this invaluable substance.
+  enemy_drops:
+  - name: Tsubakigama
+    time: Night
+  fertilizer_bonus:
+    kernel_fertilizer: 0
+    leaf_fertilizer: 0
+    root_fertilizer: 0
+  find_in:
+  - name: Takeribi's Gold Mine
+    percent: 5
+    season: Always
+    try: 5
   ingredients:
   - amount: 3
     name: Vegetable Oil
@@ -841,19 +1338,50 @@
   name: Oil
   price: 5
   sub_category: ''
-- category: Food
+  time_of_day: Night
+- category: Materials/Food
   description: A raw oil extracted from perilla seeds and the like.It contains dregs
     and is rather pungent, making itdifficult to use in this form.
+  enemy_drops:
+  - name: Aburamushi
+    time: Always
   fertilizer_bonus:
     leaf_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 30
+    season: Spring
+  - name: 'Gathering Area: Spring'
+    percent: 30
+    season: Summer
+  - name: 'Gathering Area: Spring'
+    percent: 30
+    season: Autumn
+  - name: Fruitful Hassok
+    percent: 30
+    season: Spring
+    try: 5
+  - name: Fruitful Hassok
+    percent: 30
+    season: Summer
+    try: 5
+  - name: Fruitful Hassok
+    percent: 30
+    season: Autumn
+    try: 5
   name: Vegetable Oil
   price: 1
   sub_category: ''
-- category: Food
+  time_of_day: Always
+- category: Materials/Food
   description: A raw oil extracted from fish. It contains dregs and israther pungent,
     making it difficult to use in this form.
   fertilizer_bonus:
     leaf_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Beach'
+    percent: 10
+    season: Always
   name: Fish Oil
   price: 1
   sub_category: ''
@@ -861,13 +1389,28 @@
   description: Renowned water that has been frozen in some frigid place.It keeps foodstuffs
     cool and prevents them from rotting...until it melts, that is.
   expiable: true
+  find_in:
+  - name: 'Gathering Area: Lake'
+    percent: 20
+    season: Winter
+  - name: Lucid Falls
+    percent: 30
+    season: Winter
+    try: 5
+  - name: Hidden Crimson Spring
+    percent: 10
+    season: Winter
+    try: 5
   life: 1
   name: Ice
   price: 10
   sub_category: ''
-- category: Food
+  when_spoiled: Renowned Water
+- category: Materials/Food
   description: A seasoning produced by fermenting malted rice to createacetic acid.
     Its sour flavor relieves exhaustion.
+  fertilizer_bonus:
+    immunity: 1
   ingredients:
   - amount: 2
     name: Brown Rice
@@ -884,64 +1427,120 @@
   name: Vinegar
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourhealth. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     yield_hp: 20
+  find_in:
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Dry Moat'
+    percent: 2
+    season: Always
   name: Health Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourskill capacity.
     Dissolve it in water to partake of it.
   fertilizer_bonus:
     aesthetic_luck: 10
     stickiness_gusto: 10
+  find_in:
+  - name: 'Gathering Area: Foothills'
+    percent: 2
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
   name: Skill Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourstrength. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     taste_strength: 20
+  find_in:
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Dry Moat'
+    percent: 2
+    season: Always
   name: Strength Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourvitality. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     hardness_vitality: 20
+  find_in:
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 2
+    season: Always
   name: Vitality Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourmagic. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     armor_magic: 20
+  find_in:
+  - name: 'Gathering Area: Foothills'
+    percent: 2
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
   name: Magic Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourluck. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     aesthetic_luck: 20
+  find_in:
+  - name: 'Gathering Area: Foothills'
+    percent: 2
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
   name: Luck Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: A powdered medicine that will temporarily increase yourfullness. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
     stickiness_gusto: 20
+  find_in:
+  - name: Hidden Crimson Spring
+    percent: 1
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 2
+    season: Always
   name: Fullness Powder
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base health.
   fertilizer_bonus:
@@ -949,7 +1548,7 @@
   name: Health Flakes
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base strength.
   fertilizer_bonus:
@@ -957,7 +1556,7 @@
   name: Strength Flakes
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base vitality.
   fertilizer_bonus:
@@ -965,7 +1564,7 @@
   name: Vitality Flakes
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base magic.
   fertilizer_bonus:
@@ -973,7 +1572,7 @@
   name: Magic Flakes
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base luck.
   fertilizer_bonus:
@@ -981,7 +1580,7 @@
   name: Luck Flakes
   price: 1
   sub_category: ''
-- category: Material/Food
+- category: Materials/Food
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base gusto.
   fertilizer_bonus:
@@ -989,9 +1588,12 @@
   name: Gusto Flakes
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: When combined with flakes, this medicinal basewill increase your various
     capabilities.
+  enemy_drops:
+  - name: Onamazu
+    time: Night
   fertilizer_bonus:
     aesthetic_luck: 25
     armor_magic: 25
@@ -999,9 +1601,18 @@
     stickiness_gusto: 25
     taste_strength: 25
     yield_hp: 25
+  find_in:
+  - name: 'Gathering Area: Cavern'
+    percent: 5
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 0
+    season: Always
+    try: 5
   name: Medicinal Base
   price: 20
   sub_category: ''
+  time_of_day: Night
 - category: Food
   description: A thick, syrupy substance made of steamed and fermentedrice. It is
     the basis of many recipes and seasonings.
@@ -1018,13 +1629,14 @@
   name: Malt
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: A collection of dregs left over from the hulling process,including
     the shells and sprouts. It is very functional,ready to be used for cleaning in
     addition to cooking.
   fertilizer_bonus:
     herbicide: 2
     kernel_fertilizer: 10
+    pesticide: -2
   name: Rice Bran
   price: 1
   sub_category: ''
@@ -2213,10 +2825,34 @@
   name: Pickled Dried Plum
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Ah, this must be clean water that was drawn from a springdown in the
     valley. I must admit, it's better for drinkingand cooking than the water found
     around the mountain pass.
+  fertilizer_bonus:
+    toxicity: -5
+  find_in:
+  - name: 'Gathering Area: Lake'
+    percent: 20
+    season: Spring
+  - name: 'Gathering Area: Lake'
+    percent: 20
+    season: Summer
+  - name: 'Gathering Area: Lake'
+    percent: 20
+    season: Autumn
+  - name: Lucid Falls
+    percent: 30
+    season: Spring
+    try: 5
+  - name: Lucid Falls
+    percent: 30
+    season: Summer
+    try: 5
+  - name: Lucid Falls
+    percent: 30
+    season: Autumn
+    try: 5
   name: Spring Water
   price: 1
   sub_category: ''

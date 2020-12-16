@@ -6,6 +6,30 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     leaf_fertilizer: 20
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 25
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 15
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Cavern'
+    percent: 15
+    season: Always
+  - name: 'Gathering Area: Foothills'
+    percent: 15
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 35
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 10
+    season: Always
   name: Beast Hoof
   sub_category: ManureBase
 - category: Material
@@ -13,6 +37,23 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     kernel_fertilizer: 20
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 25
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 15
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Cavern'
+    percent: 25
+    season: Always
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Always
   name: Beast Manure
   sub_category: ManureBase
 - category: Material
@@ -20,6 +61,38 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     root_fertilizer: 20
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Always
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Autumn
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Winter
+  - name: Fruitful Hassok
+    percent: 30
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Lake'
+    percent: 10
+    season: Always
+  - name: Lucid Falls
+    percent: 25
+    season: Always
+    try: 5
+  - name: Lucid Falls
+    percent: 10
+    season: Autumn
+    try: 5
+  - name: Hidden Crimson Spring
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 10
+    season: Always
   name: Fallen Leaves
   sub_category: ManureBase
 - category: Material
@@ -32,12 +105,44 @@
     kernel_fertilizer: 8
     leaf_fertilizer: 10
     root_fertilizer: 8
+  find_in:
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 10
+    season: Always
+    try: 5
   name: Oil Cake
   sub_category: ManureBase
   time_of_day: Always
 - category: Material
   description: Ah,  how rare! This powder alters the flow of time,  allowing fertilizer
     to be completed immediately.
+  find_in:
+  - name: Bounteous Earth Grotto
+    percent: 1
+    season: Always
+    try: 5
+  - name: Fruitful Hassok
+    percent: 1
+    season: Always
+    try: 5
+  - name: Lucid Falls
+    percent: 2
+    season: Always
+    try: 5
+  - name: Hidden Crimson Spring
+    percent: 2
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 2
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 2
+    season: Always
+    try: 5
   name: Powder of Transformation
   sub_category: Material
 - category: Material
@@ -50,6 +155,14 @@
     state. If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     immunity: 10
+  find_in:
+  - name: Bounteous Earth Grotto
+    percent: 5
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Forest'
+    percent: 5
+    season: Always
   name: Revitalizing Remedy
   sub_category: Material
 - category: Material
@@ -57,6 +170,14 @@
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     herbicide: 10
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 8
+    season: Always
+  - name: Lucid Falls
+    percent: 8
+    season: Always
+    try: 5
   name: Reducing Remedy
   sub_category: Material
 - category: Material
@@ -64,6 +185,14 @@
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     pesticide: 10
+  find_in:
+  - name: 'Gathering Area: Hillside'
+    percent: 8
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 8
+    season: Always
+    try: 5
   name: Eradicating Remedy
   sub_category: Material
 - category: Material
@@ -106,7 +235,7 @@
     and your powers shall be restored ,  purifying the land of Gusto Pollution.
   name: Gusto's Bounty
   sub_category: Material
-- category: Material
+- category: Materials
   description: Hoho! It seems this uneaten food has spoiled.However,  we can still
     use this as fertilizer.
   enemy_drops:
@@ -127,6 +256,14 @@
   fertilizer_bonus:
     stickiness_gusto: 1
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 5
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 5
+    season: Always
+    try: 5
   name: Clay
   sub_category: Material
 - category: Material
@@ -135,6 +272,20 @@
   fertilizer_bonus:
     hardness_vitality: 1
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 5
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Cavern'
+    percent: 20
+    season: Always
+  - name: 'Gathering Area: Dry Moat'
+    percent: 20
+    season: Always
   name: Stone
   sub_category: Material
 - category: Material
@@ -142,6 +293,18 @@
   fertilizer_bonus:
     hardness_vitality: 2
     toxicity: 2
+  find_in:
+  - name: Bounteous Earth Grotto
+    percent: 5
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Cavern'
+    percent: 20
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 8
+    season: Always
+    try: 5
   name: Copper Ore
   sub_category: Material
 - category: Material
@@ -153,6 +316,17 @@
   fertilizer_bonus:
     hardness_vitality: 5
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: Lake'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Dry Moat'
+    percent: 12
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 8
+    season: Always
+    try: 5
   name: Iron Ore
   sub_category: Material
   time_of_day: Night
@@ -163,6 +337,14 @@
     armor_magic: 5
     hardness_vitality: 3
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
+  - name: Lucid Falls
+    percent: 15
+    season: Always
+    try: 5
   name: Jade
   sub_category: Material
 - category: Material
@@ -172,6 +354,14 @@
     armor_magic: 3
     hardness_vitality: 5
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: Cavern'
+    percent: 10
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 12
+    season: Always
+    try: 5
   name: Obsidian
   sub_category: Material
 - category: Material
@@ -180,6 +370,14 @@
   fertilizer_bonus:
     hardness_vitality: 10
     toxicity: 3
+  find_in:
+  - name: 'Gathering Area: Dry Moat'
+    percent: 12
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 15
+    season: Always
+    try: 5
   name: Gold Ore
   sub_category: Material
 - category: Material
@@ -212,6 +410,24 @@
   fertilizer_bonus:
     root_fertilizer: 5
     yield_hp: 1
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 10
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Always
   name: Wood
   sub_category: Material
 - category: Material
@@ -220,6 +436,14 @@
   fertilizer_bonus:
     root_fertilizer: 5
     yield_hp: 3
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
   name: High Quality Oak
   sub_category: Material
 - category: Material
@@ -228,6 +452,23 @@
   fertilizer_bonus:
     root_fertilizer: 5
     yield_hp: 5
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 15
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Lake'
+    percent: 5
+    season: Always
+  - name: 'Gathering Area: Beach'
+    percent: 15
+    season: Always
   name: Bamboo
   sub_category: Material
 - category: Material
@@ -249,6 +490,10 @@
   fertilizer_bonus:
     armor_magic: 2
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 15
+    season: Always
   name: Hemp
   sub_category: Material
 - category: Material
@@ -257,6 +502,17 @@
   fertilizer_bonus:
     armor_magic: 3
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 15
+    season: Always
+  - name: 'Gathering Area: Spring'
+    percent: 15
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
   name: Sedge
   sub_category: Material
 - category: Material
@@ -283,6 +539,14 @@
   fertilizer_bonus:
     aesthetic_luck: 2
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 5
+    season: Always
+  - name: Fruitful Hassok
+    percent: 5
+    season: Always
+    try: 5
   name: Cork Tree Branch
   sub_category: Material
 - category: Material
@@ -291,6 +555,10 @@
   fertilizer_bonus:
     aesthetic_luck: 3
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
   name: Murasaki Root
   sub_category: Material
 - category: Material
@@ -299,6 +567,14 @@
   fertilizer_bonus:
     aesthetic_luck: 5
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Foothills'
+    percent: 15
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 20
+    season: Always
+    try: 5
   name: Madder
   sub_category: Material
 - category: Material

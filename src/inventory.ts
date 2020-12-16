@@ -6,7 +6,8 @@ import { clamp } from "./site";
 
 export const MIN_ITEMS_AMOUNT_INVENTORY = 1;
 export const MAX_ITEMS_AMOUNT_INVENTORY = 999;
-export interface ItemInventoryData extends ItemData {
+export interface ItemInventoryData {
+    item: ItemData;
     amount?: number;
 }
 export class Inventory {
@@ -25,7 +26,7 @@ export class Inventory {
     }
 
     public getItemByName(name: string) {
-        return this._items_in_inventory.data.find((it) => it.name === name);
+        return this._items_in_inventory.data.find((it) => it.item.name === name);
     }
 
     public setItemAmount(index: number, amount: number | undefined) {
@@ -45,7 +46,7 @@ export class Inventory {
         }
         assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
 
-        const item_index = this._items_in_inventory.findIndex((it) => it.name === item.name);
+        const item_index = this._items_in_inventory.findIndex((it) => it.item.name === item.name);
         if (item_index >= 0) {
             const item_amount = this._items_in_inventory.get(item_index).amount;
 
@@ -62,8 +63,7 @@ export class Inventory {
             return undefined;
         }
 
-        let new_item: ItemInventoryData = item;
-        new_item.amount = amount;
+        let new_item: ItemInventoryData = { item: item, amount: amount }
         this._items_in_inventory.push(new_item);
 
         return this._items_in_inventory.last();
@@ -75,17 +75,23 @@ export class Inventory {
         }
         assert(amount === undefined || (amount !== undefined && amount >= 0), "add inventory, item amount can not be negative");
 
+        
         const item_name: string = ((): string => {
-            if ((item as ItemData).name !== undefined) {
-                return (item as ItemData).name;
+            if (typeof item === 'string' || item instanceof String) {
+                return item as string;
+            }
+            if ((item as ItemData)?.name !== undefined) {
+                return (item as ItemData).name as string;
             }
 
-            return item as string;
+            console.error('item_name type ???');
+
+            return '';
         })();
 
         var ret: ItemInventoryData | undefined = undefined;
         this._items_in_inventory.lets((item: ItemInventoryData, index: number) => {
-            if (item.name === item_name) {
+            if (item.item.name === item_name) {
                 if (amount === undefined) {
                     item.amount = amount;
                     ret = item;
@@ -108,20 +114,22 @@ export class Inventory {
     }
 
 
-    static getStateFocusTextColor(fertilizer_bonus: FertilizerBonusData) {
-        switch (this.getStateFocus(fertilizer_bonus)) {
-            case FarmingFocus.Balanced:
-                return 'text-balanced';
-            case FarmingFocus.Heartiness:
-                return 'text-heartiness';
-            case FarmingFocus.Yield:
-                return 'text-yield';
-            case FarmingFocus.Aesthetic:
-                return 'text-aesthetic';
-            case FarmingFocus.Aroma:
-                return 'text-aroma';
-            case FarmingFocus.Neutral:
-                return 'text-neutral';
+    static getStateFocusTextColor(fertilizer_bonus: FertilizerBonusData | undefined) {
+        if (fertilizer_bonus !== undefined) {
+            switch (this.getStateFocus(fertilizer_bonus)) {
+                case FarmingFocus.Balanced:
+                    return 'text-balanced';
+                case FarmingFocus.Heartiness:
+                    return 'text-heartiness';
+                case FarmingFocus.Yield:
+                    return 'text-yield';
+                case FarmingFocus.Aesthetic:
+                    return 'text-aesthetic';
+                case FarmingFocus.Aroma:
+                    return 'text-aroma';
+                case FarmingFocus.Neutral:
+                    return 'text-neutral';
+            }
         }
 
         return '';
@@ -137,8 +145,8 @@ export class Inventory {
             return FarmingFocus.Balanced;
         } else if ((fertilizer_bonus.yield_hp === undefined || fertilizer_bonus.yield_hp === 0) &&
             (fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
-            fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
-            fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0) &&
+                fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
+                fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0) &&
             (fertilizer_bonus.aesthetic_luck === undefined || fertilizer_bonus.aesthetic_luck === 0) &&
             (fertilizer_bonus.armor_magic === undefined || fertilizer_bonus.armor_magic === 0)) {
             return FarmingFocus.Heartiness;

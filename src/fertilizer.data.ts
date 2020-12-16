@@ -242,7 +242,7 @@ export class FertilizerData {
         return this._toxicity === MAX_STATS || this.is_toxicity_overflow;
     }
 
-    get are_state_overflow(){
+    get are_state_overflow() {
         return this.is_yield_hp_overflow ||
             this.is_taste_strength_overflow ||
             this.is_hardness_vitality_overflow ||

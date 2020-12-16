@@ -1,4 +1,3 @@
-import { LoggerManager } from "typescript-logger";
 import { Settings } from "./application.data";
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
 import { site } from "./site";
@@ -36,24 +35,30 @@ export class InventoryAdapter extends ItemListAdapter {
     }
 
     public init(orderable: number[] = [1, 2, 3, 4, 5, 6], not_orderable: number[] = [0], ordering: boolean | undefined = undefined) {
-        const createdCell = function (cell: Node, cellData: any, rowData: ItemData, row: number, col: number) {
-            $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
+        const createdCell = function (cell: Node, cellData: any, rowData: ItemInventoryData, row: number, col: number) {
 
             switch (col) {
                 case 2:
+                    $(cell).addClass('text-center');
                     InventoryAdapter.addColColorClass(cell, cellData, 'immunity');
                     break;
                 case 3:
+                    $(cell).addClass('text-center');
                     InventoryAdapter.addColColorClass(cell, cellData, 'pesticide');
                     break;
                 case 4:
+                    $(cell).addClass('text-center');
                     InventoryAdapter.addColColorClass(cell, cellData, 'herbicide');
                     break;
                 case 5:
+                    $(cell).addClass('text-center');
                     InventoryAdapter.addColColorClass(cell, cellData, 'toxicity', true);
                     break;
                 case 6:
-                    if (rowData.expiable) {
+                    $(cell).addClass('text-center');
+                    const item = rowData.item;
+                    const food_item = item as FoodItemData;
+                    if (food_item.expiable !== undefined && food_item.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -69,7 +74,7 @@ export class InventoryAdapter extends ItemListAdapter {
             responsive: true,
             lengthChange: false,
             createdRow: function (row: Node, data: any[] | object, dataIndex: number) {
-                $(row).attr('data-name', (data as ItemInventoryData).name);
+                $(row).attr('data-name', (data as ItemInventoryData).item.name);
                 $(row).attr('data-index', dataIndex);
             },
             columnDefs: [
@@ -87,52 +92,53 @@ export class InventoryAdapter extends ItemListAdapter {
             data: this._data.items,
             columns: [
                 {
-                    data: 'name',
+                    data: 'item.name',
                     render: function (data: string, type: string) {
                         return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}"><i class="fas fa-plus"></i></button>` : '';
                     }
                 },
                 {
-                    data: 'name',
-                    render: function (data: string, type: string, row: ItemInventoryData, meta: any) {
+                    data: 'item.name',
+                    render: function (data: string, type: string, row: ItemInventoryData) {
+                        const item = row.item;
                         if (type === 'display') {
-                            const fertilizer_bonus = InventoryAdapter.renderSoilNutrientsHtml(row.fertilizer_bonus);
+                            const fertilizer_bonus = InventoryAdapter.renderSoilNutrientsHtml(item.fertilizer_bonus);
 
-                            const yield_hp = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.yield_hp, false);
-                            const taste_strength = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.taste_strength, false);
-                            const hardness_vitality = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.hardness_vitality, false);
-                            const stickiness_gusto = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.stickiness_gusto, false);
-                            const aesthetic_luck = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.aesthetic_luck, false);
-                            const armor_magic = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.armor_magic, false);
+                            const yield_hp = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.yield_hp, false);
+                            const taste_strength = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.taste_strength, false);
+                            const hardness_vitality = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.hardness_vitality, false);
+                            const stickiness_gusto = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.stickiness_gusto, false);
+                            const aesthetic_luck = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.aesthetic_luck, false);
+                            const armor_magic = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.armor_magic, false);
 
-                            const immunity = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.immunity, false);
-                            const pesticide = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.pesticide, false);
-                            const herbicide = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.herbicide, false);
+                            const immunity = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.immunity, false);
+                            const pesticide = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.pesticide, false);
+                            const herbicide = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.herbicide, false);
 
-                            const toxicity = InventoryAdapter.renderBuffBonusHtml(row.fertilizer_bonus.toxicity, true);
+                            const toxicity = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.toxicity, true);
 
                             const collapse_id = that.getCollapseId(row);
 
-                            const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0) ? 'd-none' : '';
-                            const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0) ? 'd-none' : '';
-                            const show_hardness_vitality = ((row.fertilizer_bonus.hardness_vitality ?? 0) === 0) ? 'd-none' : '';
-                            const show_stickiness_gusto = ((row.fertilizer_bonus.stickiness_gusto ?? 0) === 0) ? 'd-none' : '';
-                            const show_aesthetic_luck = ((row.fertilizer_bonus.aesthetic_luck ?? 0) === 0) ? 'd-none' : '';
-                            const show_armor_magic = ((row.fertilizer_bonus.armor_magic ?? 0) === 0) ? 'd-none' : '';
-                            const show_immunity = ((row.fertilizer_bonus.immunity ?? 0) === 0) ? 'd-none' : '';
-                            const show_pesticide = ((row.fertilizer_bonus.pesticide ?? 0) === 0) ? 'd-none' : '';
-                            const show_herbicide = ((row.fertilizer_bonus.herbicide ?? 0) === 0) ? 'd-none' : '';
-                            const show_toxicity = ((row.fertilizer_bonus.toxicity ?? 0) === 0) ? 'd-none' : '';
+                            const show_yield_hp = ((item.fertilizer_bonus?.yield_hp ?? 0) === 0) ? 'd-none' : '';
+                            const show_taste_strength = ((item.fertilizer_bonus?.taste_strength ?? 0) === 0) ? 'd-none' : '';
+                            const show_hardness_vitality = ((item.fertilizer_bonus?.hardness_vitality ?? 0) === 0) ? 'd-none' : '';
+                            const show_stickiness_gusto = ((item.fertilizer_bonus?.stickiness_gusto ?? 0) === 0) ? 'd-none' : '';
+                            const show_aesthetic_luck = ((item.fertilizer_bonus?.aesthetic_luck ?? 0) === 0) ? 'd-none' : '';
+                            const show_armor_magic = ((item.fertilizer_bonus?.armor_magic ?? 0) === 0) ? 'd-none' : '';
+                            const show_immunity = ((item.fertilizer_bonus?.immunity ?? 0) === 0) ? 'd-none' : '';
+                            const show_pesticide = ((item.fertilizer_bonus?.pesticide ?? 0) === 0) ? 'd-none' : '';
+                            const show_herbicide = ((item.fertilizer_bonus?.herbicide ?? 0) === 0) ? 'd-none' : '';
+                            const show_toxicity = ((item.fertilizer_bonus?.toxicity ?? 0) === 0) ? 'd-none' : '';
 
-                            const data_color_class = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
+                            const data_color_class = Inventory.getStateFocusTextColor(item.fertilizer_bonus);
 
-                            const item_name = row.name;
+                            const item_name = item.name;
                             const amount_value = row.amount ?? 1;
-                            const index = that._data.items.findIndex(it => it.name == item_name);
+                            const index = that._data.items.findIndex(it => it.item.name == item_name);
                             const hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
                             const disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
-                            
-                            const show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false)? 'd-none' : '';
+
+                            const show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false) ? 'd-none' : '';
 
                             return `<div class="row no-gutters">
                                         <div class="col-3 text-left inventory-item-amount-container ${hide_amount}">
@@ -216,16 +222,16 @@ export class InventoryAdapter extends ItemListAdapter {
                     }
                 },
                 {
-                    data: 'fertilizer_bonus',
+                    data: 'item.fertilizer_bonus',
                     render: InventoryAdapter.renderBuffBonus('immunity')
                 }, {
-                    data: 'fertilizer_bonus',
+                    data: 'item.fertilizer_bonus',
                     render: InventoryAdapter.renderBuffBonus('pesticide')
                 }, {
-                    data: 'fertilizer_bonus',
+                    data: 'item.fertilizer_bonus',
                     render: InventoryAdapter.renderBuffBonus('herbicide')
                 }, {
-                    data: 'fertilizer_bonus',
+                    data: 'item.fertilizer_bonus',
                     render: InventoryAdapter.renderBuffBonus('toxicity')
                 },
                 {
@@ -259,7 +265,7 @@ export class InventoryAdapter extends ItemListAdapter {
         this._data.observable.attach(new class implements DataListObserver<ItemInventoryData> {
             update(subject: DataListSubject<ItemInventoryData>): void {
                 that._fertilizer_components.observable.forEach((item_component: ItemInventoryData, index: number) => {
-                    const item_inventory = subject.find(it => it.name == item_component.name);
+                    const item_inventory = subject.find(it => it.item.name == item_component.item.name);
                     if (item_inventory !== undefined && item_component.amount !== item_inventory.amount) {
                         that._fertilizer_components.setInInventoryAmount(index, item_inventory.amount);
                     }
@@ -305,7 +311,7 @@ export class InventoryAdapter extends ItemListAdapter {
                 that._table?.rows.add([added]).draw(false);
             }
             updateRemovedItem(subject: DataListSubject<ItemInventoryData>, removed: ItemInventoryData): void {
-                that._table?.row(`[data-name='${removed.name}']`).remove();
+                that._table?.row(`[data-name='${removed.item.name}']`).remove();
                 that._table?.draw(false);
             }
         });
@@ -419,7 +425,7 @@ export class InventoryAdapter extends ItemListAdapter {
                 that._data.setItemAmount(index, amount);
             } else {
                 if (that._data.items[index] !== undefined) {
-                    that._data.remove(that._data.items[index], undefined);
+                    that._data.remove(that._data.items[index].item, undefined);
                 }
             }
         });
@@ -427,7 +433,7 @@ export class InventoryAdapter extends ItemListAdapter {
 
     private getCollapseId(row: ItemInventoryData) {
         const table_selector_id = $(this._table_selector).attr('id') ?? '';
-        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+        const name_id = row.item.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
 
         return `collapseInventory-${table_selector_id}-${name_id}`;
     }
