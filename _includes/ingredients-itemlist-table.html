@@ -1,0 +1,26 @@
+<div class="table-item-list table-responsive">
+  <table class="table table-bordered table-striped dt-responsive" id="{{include.id}}">
+    {% if include.caption %}
+      <caption>{{ include.caption }}</caption>
+    {% endif %}
+    <thead>
+      <tr>
+        <th scope="col" data-priority="9" data-class-name="name">{{ site.data.strings.table.ingredientslist.col_name }}</th>
+
+        <th scope="col" data-priority="8" data-class-name="enchant">{{ site.data.strings.table.ingredientslist.col_enchant }}</th>
+
+        <th scope="col" data-priority="7" data-class-name="hp">{{ site.data.strings.table.ingredientslist.col_hp }}</th>
+        <th scope="col" data-priority="6" data-class-name="sp">{{ site.data.strings.table.ingredientslist.col_sp }}</th>
+        <th scope="col" data-priority="5" data-class-name="strength">{{ site.data.strings.table.ingredientslist.col_strength }}</th>
+        <th scope="col" data-priority="7" data-class-name="vitality">{{ site.data.strings.table.ingredientslist.col_vitality }}</th>
+        <th scope="col" data-priority="3" data-class-name="magic">{{ site.data.strings.table.ingredientslist.col_magic }}</th>
+        <th scope="col" data-priority="2" data-class-name="luck">{{ site.data.strings.table.ingredientslist.col_luck }}</th>
+        <th scope="col" data-priority="1" data-class-name="magic">{{ site.data.strings.table.ingredientslist.col_fullness }}</th>
+
+        <th scope="col" data-priority="0" data-class-name="expiable">{{ site.data.strings.table.ingredientslist.col_expiable }}</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

@@ -2,33 +2,47 @@ table:
   itemlist:
     col_add_to_inventory: Inv.
     col_name: Name
-
     col_fertilizer: Soil Nut.
-
     col_yield_hp: Yield/ HP
     col_taste_strength: Taste/ Str.
     col_hardness_vitality: Hard./ Vital.
     col_stickiness_gusto: Stick./ Gusto
     col_aesthetic_luck: Aesth./ Luck
     col_armor_magic: Armor/ Magic
-
     col_immunity: Immu.
     col_pesticide: Pest.
     col_herbicide: Herb.
-
     col_toxicity: Toxi.
-
     col_expiable: Exp.
+  ingredientslist:
+    col_name: Name
+    col_enchant: Enchant
+    col_hp: HP
+    col_sp: SP
+    col_strength: Str.
+    col_vitality: Vital.
+    col_magic: Magic
+    col_luck: Luck
+    col_fullness: Full.
+    col_expiable: Exp.
+  foodlist:
+    col_name: Name
+    col_season_buff: Seasonal Buff
+    col_enchant: Enchant
+    col_hp: HP
+    col_sp: SP
+    col_strength: Str.
+    col_vitality: Vital.
+    col_magic: Magic
+    col_luck: Luck
+    col_fullness: Full.
   inventory:
     col_add_to_fertilizer: Fer.
     col_name: Name
-
     col_immunity: Imm.
     col_pesticide: Pes.
     col_herbicide: Her.
-
     col_toxicity: Tox.
-
     col_expiable: Ex.
 guide:
   title: Farming Guide
@@ -236,8 +250,9 @@ fertilizer_helper:
       title: Recommended
     expiable:
       title: Expiable
-      in_days: In %life% day(s) <i class="fas fa-skull"></i>
-      in_days_unknown: In few day(s) <i class="fas fa-skull"></i>
+      in_days: In %life% day(s)
+      in_days_unknown: In few day(s)
+      in_days_short: <i class="fas fa-skull"></i>
       infinity: <i class="fas fa-infinity"></i>
     remove_from_inventory: Remove from Inv.
     stats:
@@ -266,8 +281,18 @@ item_list:
     title: Materials
   ingredients: 
     title: Ingredients
+    table_caption: state boost varies, depending on your Gusto
   food: 
-    title: Food
+    title: Dishes
+    table_caption: state boost varies, depending on your Gusto
+    seasonal_buffs:
+      label: Seasonal Buff
+      label_filter: Show only Seasonal Buffs
+      none: None
+      spring: Spring
+      summer: Summer
+      autumn: Autumn
+      winter: Winter
 misc:
   clear_session: Clear Session
   clear_session_help: Clear you Inventory and Fertilizer Components

@@ -1,5 +1,5 @@
 
-interface FertilizerBonusData {
+export interface FertilizerBonusData {
     leaf_fertilizer?: number;
     kernel_fertilizer?: number;
     root_fertilizer?: number;
@@ -18,11 +18,13 @@ interface FertilizerBonusData {
     toxicity?: number;
 }
 
-interface EnchantData {
+export interface EnchantData {
     name: string;
     level: number;
 }
-interface FoodBonusData {
+export interface FoodBonusData {
+    enchant?: EnchantData[];
+
     hp?: number;
     sp?: number;
     strength?: number;
@@ -30,39 +32,50 @@ interface FoodBonusData {
     magic?: number;
     luck?: number;
     fullness?: number;
-
-    enchant?: EnchantData[];
 }
 
-interface BaseItemData {
+export interface BaseItemData {
     name: string;
     category: string;
     sub_category?: string;
     description?: string;
 }
 
-interface FindInData {
+export enum FindInSeason {
+    Always = "Always",
+    Spring = "Spring",
+    Summer = "Summer",
+    Autumn = "Autumn",
+    Winter = "Winter"
+}
+export interface FindInData {
     name: string;
     percent: number;
-    season: string;
+    season: FindInSeason;
 }
 
-interface EnemyDropData {
-    name: string;
-    time: string;
+
+export enum EnemyDropTime {
+    Always = "Always",
+    Day = "Day",
+    Night = "Night"
 }
-interface MaterialItemData extends BaseItemData {
+export interface EnemyDropData {
+    name: string;
+    time: EnemyDropTime;
+}
+export interface MaterialItemData extends BaseItemData {
     fertilizer_bonus?: FertilizerBonusData;
     find_in?: FindInData[];
     enemy_drops?: EnemyDropData[];
 }
 
-interface IngredientsData {
+export interface IngredientsData {
     name: string;
     amount: number;
     operator: string;
 }
-interface FoodItemData extends MaterialItemData {
+export interface FoodItemData extends MaterialItemData {
     food_bonus?: FoodBonusData;
 
     ingredients?: IngredientsData[];
@@ -72,12 +85,18 @@ interface FoodItemData extends MaterialItemData {
     when_spoiled?: string;
 }
 
-interface CookingItemData extends FoodItemData {
-    season_buff?: string;
+export enum SeasonBuff {
+    Spring = "Spring",
+    Summer = "Summer",
+    Autumn = "Autumn",
+    Winter = "Winter"
+}
+export interface CookingItemData extends FoodItemData {
+    season_buff?: SeasonBuff;
     season_food_bonus?: FoodBonusData;
 
     main_ingredients?: IngredientsData[];
 }
 
-type MaterialOrFoodItemData = MaterialItemData | FoodItemData;
-type ItemData = MaterialItemData | FoodItemData | CookingItemData;
+export type MaterialOrFoodItemData = MaterialItemData | FoodItemData;
+export type ItemData = MaterialItemData | FoodItemData | CookingItemData;

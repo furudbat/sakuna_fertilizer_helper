@@ -11,12 +11,17 @@ import { LoggerManager } from 'typescript-logger/build/loggerManager'
 import { DataListObserver, DataListSubject, DataObserver, DataSubject } from './Observer'
 import { ItemFertilizerComponentData } from './fertilizer-components'
 import { MaterialItemListAdapter } from './material-itemlist.adapter'
+import { FoodItemListAdapter } from './food-itemlist.adapter'
+import { FoodItemData, ItemData, SeasonBuff } from './item.data'
+import { CookingItemListAdapter } from './cooking-itemlist.adapter'
 
 const MAX_SHOW_RECOMMENDED_ITEMS = 12;
 export class Application {
 
     private _appData: ApplicationData = new ApplicationData();
     private _materialItemListAdapter?: MaterialItemListAdapter;
+    private _foodItemListAdapter?: FoodItemListAdapter;
+    private _cookingItemListAdapter?: CookingItemListAdapter;
     private _recommendedInventory = new Inventory();
     private _expiablesInventory = new Inventory();
     private _fertilizerAdapter?: FertilizerAdapter;
@@ -30,9 +35,10 @@ export class Application {
     public init() {
         var that = this;
         this._appData.loadFromStorage().then(function () {
-            if (that._appData.items.length <= 0 || !USE_CACHE) {
-                that._appData.items = site.data.items;
-            }
+            //if (that._appData.items.length <= 0 || !USE_CACHE) {
+            //    that._appData.items = site.data.items;
+            //}
+            that._appData.items = site.data.items;
             that.initSite();
         });
     }
@@ -62,6 +68,8 @@ export class Application {
         });
 
         this._materialItemListAdapter = new MaterialItemListAdapter('#tblMaterialItemsList');
+        this._foodItemListAdapter = new FoodItemListAdapter('#tblIngredientsItemsList');
+        this._cookingItemListAdapter = new CookingItemListAdapter('#tblFoodItemsList');
         this._fertilizerAdapter = new FertilizerAdapter(this._appData);
         this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
@@ -79,35 +87,110 @@ export class Application {
         this.initObservers();
     }
 
+    private getMaterialsItemList() {
+        return this._appData.items.filter(it => {
+            return it.category == 'Materials' ||
+                it.category == 'Materials/Food' ||
+                it.category == 'Materials/Cooking';
+        });
+    }
+
+    private getFoodItemList() {
+        return this._appData.items.filter(it => {
+            return it.category == 'Food' ||
+                it.category == 'Materials/Food';
+        });
+    }
+
+    private getCookingItemList() {
+        return this._appData.items.filter(it => {
+            return it.category == 'Cooking' || it.category == 'Food/Cooking';
+        });
+    }
+
     private initItemList() {
         if (this._materialItemListAdapter) {
             this._materialItemListAdapter.init();
 
-            const material_item_list = this._appData.items.filter(it => {
-                return it.category == 'Materials' ||
-                    it.category == 'Materials/Ingredients' ||
-                    it.category == 'Materials/Cooking' ||
-                    it.category == 'Material' ||
-                    it.category == 'Material/Food' ||
-                    it.category == 'Materials/Food' ||
-                    it.category == 'Materials/Cooking';
-            });
+            const material_item_list = this.getMaterialsItemList().filter(it => it.fertilizer_bonus !== undefined);
 
             this.log.debug('initItemList material_item_list:', material_item_list);
 
             this._materialItemListAdapter.data = material_item_list;
         }
 
+        if (this._foodItemListAdapter) {
+            this._foodItemListAdapter.init();
+
+            const food_item_list = this.getFoodItemList();
+
+            this.log.debug('initItemList food_item_list:', food_item_list);
+
+            this._foodItemListAdapter.data = food_item_list;
+        }
+
+
+        if (this._cookingItemListAdapter) {
+            this._cookingItemListAdapter.init();
+
+            const cooking_item_list = this.getCookingItemList();
+
+            this.log.debug('initItemList cooking_item_list:', cooking_item_list);
+
+            this._cookingItemListAdapter.data = cooking_item_list;
+        }
+
         this.updateItemListEvents();
     }
 
     private updateItemListEvents() {
+        var that = this;
+
         if (this._materialItemListAdapter) {
-            var that = this;
             this._materialItemListAdapter.addItemToInventoryListener = (item, amount) => {
                 that._inventoryAdapter?.add(item, amount);
             };
         }
+
+        $('#btnSeasonalBuffNone').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(undefined, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffSpring').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Spring, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffSummer').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Summer, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffAutumn').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Autumn, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffWinter').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Winter, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#chbSeasonalBuffFilter').off('change').on('change', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonFilter($(this).prop('checked'), cooking_item_list);
+        })
     }
 
     private initSettings() {
@@ -118,7 +201,7 @@ export class Application {
             that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
         });
 
-        $('#btnClearSession').on('click', function() {
+        $('#btnClearSession').on('click', function () {
             that._appData.clearSessionStorage();
         });
 

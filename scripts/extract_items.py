@@ -43,6 +43,14 @@ materials = [
     'Maize'
 ]
 
+CATEGORY_MISC = 'Misc'
+CATEGORY_MATERIAL = 'Materials'
+CATEGORY_MATERIAL_FOOD = 'Materials/Food'
+CATEGORY_MATERIAL_MISC = 'Materials/Misc'
+CATEGORY_MATERIAL_COOKING = 'Materials/Cooking'
+CATEGORY_FOOD = 'Food'
+CATEGORY_COOKING = 'Cooking'
+
 old_items = {}
 
 
@@ -415,27 +423,27 @@ def setCollectionDrops(item, item_code, item_names, worldmap_collection_map):
 def setFoodCategory(item, row):
     name = item['name']
     if 'FoodFlag' in row and (row['FoodFlag'] == 'Material' or row['FoodFlag'] == 'ManureBase' or row['FoodFlag'] == 'Bird' or ' Powder' in name or ' Flakes' in name):
-        item['category'] = 'Material/Food'
+        item['category'] = CATEGORY_MATERIAL_FOOD
         item['sub_category'] = row['FoodFlag'] if row['FoodFlag'] != '-' else ''
     elif 'FoodFlag' in row:
-        item['category'] = 'Food'
+        item['category'] = CATEGORY_FOOD
         item['sub_category'] = row['FoodFlag'] if row['FoodFlag'] != '-' else ''
 
     for it in materials:
         if item['name'] == it:
-            item['category'] = 'Material'
+            item['category'] = CATEGORY_MATERIAL
 
     for it in meat_seafood:
         if item['name'] == it['name']:
-            item['category'] = 'Material/Food'
+            item['category'] = CATEGORY_MATERIAL_FOOD
             item['sub_category'] = row['FoodFlag'] if row['FoodFlag'] != '-' else ''
     for it in insects:
         if item['name'] == it['name']:
-            item['category'] = 'Material/Food'
+            item['category'] = CATEGORY_MATERIAL_FOOD
             item['sub_category'] = row['FoodFlag'] if row['FoodFlag'] != '-' else ''
     for it in grains:
         if item['name'] == it['name'] and not 'Rice' in item['name']:
-            item['category'] = 'Material/Food'
+            item['category'] = CATEGORY_MATERIAL_FOOD
             item['sub_category'] = row['FoodFlag'] if row['FoodFlag'] != '-' else ''
 
     return item
@@ -464,7 +472,7 @@ def getItemNames(filename, category, item_names, only_names=False):
                     item = { "name": name, "Code": row['Code'], "category": category }
 
                     if 'SubCategory' in row and (row['SubCategory'] == 'Material' or row['SubCategory'] == 'ManureBase'):
-                        item['category'] = 'Material'
+                        item['category'] = CATEGORY_MATERIAL
                         item['sub_category'] = row['SubCategory'] if row['SubCategory'] != '-' else ''
                     else:
                         item = setFoodCategory(item, row)
@@ -493,7 +501,7 @@ def getMaterials(item_names, enemies_map, worldmap_collection_map, only_name=Fal
                         new_item = it.copy()
 
                 if row['SubCategory'] == 'Material' or row['SubCategory'] == 'ManureBase':
-                    new_item['category'] = 'Material'
+                    new_item['category'] = CATEGORY_MATERIAL
                     if row['SubCategory'] != '-':
                         new_item['sub_category'] = row['SubCategory']
                 elif row['SubCategory'] != '':
@@ -639,13 +647,15 @@ def getCooking(item_names, enchants_map, food_map, worldmap_collection_map, only
         for row in cooking_reader:
             name = row['NameEn']
             if name:
-                new_item = newItem(name, 'Food')
+                new_item = newItem(name, 'Cooking')
+
                 for it in old_items:
                     if name == it['name']:
                         new_item = it.copy()
                 for it in food_map.values():
                     if name == it['name']:
                         new_item = it.copy()
+                        new_item['category'] = 'Cooking'
                     
                 names = [name]
                 if '~SourceMain~' in name and row['SourceMain'] != '-':
@@ -821,24 +831,66 @@ def getWorldmapCollection(worldmap_landmark_map, item_names):
 
 def hotfixCooking(name, item):
     if 'fertilizer_bonus' in item and item['fertilizer_bonus']:
-        item['category'] = 'Materials/Cooking'
+        item['category'] = CATEGORY_MATERIAL_COOKING
         
     for material in materials:
         if material == name:
-            item['category'] = 'Materials/Cooking'
+            item['category'] = CATEGORY_MATERIAL_COOKING
+
+    if 'Cooking' in item['category'] and not 'main_ingredients' in item and not 'ingredients' in item and item['name'] != 'Water':
+        print('hotfixFood: cooking without ingredients: {}'.format(name))
     
+    if not 'Cooking' in item['category'] and ('main_ingredients' in item or 'ingredients' in item):
+            print('hotfixFood: ingredients without cooking category: {}, {}'.format(name, item['category']))
+
     return item
 
 def hotfixMaterial(name, item):
     if name == 'Ashigumo Shuriken':
-        item['category'] = 'Materials/Misc'
+        item['category'] = CATEGORY_MISC
+    if name == 'Powder of Transformation':
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == 'Orb of Transformation':
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Health's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Skill's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Strength's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Vitality's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Fullness' Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Luck's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Gusto's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Magic's Bounty":
+        item['category'] = CATEGORY_MATERIAL_MISC
+    if name == "Elder Elm":
+        item['category'] = CATEGORY_MATERIAL_MISC
 
     for material in materials:
         if material == name:
-            item['category'] = 'Materials'
+            item['category'] = CATEGORY_MATERIAL
+            
+    
+    if not 'fertilizer_bonus' in item:
+        item['fertilizer_bonus'] = dict()
 
-    if 'Materials' in item['category'] and item['category'] != 'Materials/Misc' and not 'fertilizer_bonus' in item:
-        print('hotfixFood: material without fertilizer_bonus: {}'.format(name))
+    if name == 'Moonlit Stone':
+        item['fertilizer_bonus']['toxicity'] = -20
+
+    if 'fertilizer_bonus' in item and not item['fertilizer_bonus']:
+        del item['fertilizer_bonus']
+
+    
+    if 'Materials' in item['category'] and item['category'] != CATEGORY_MATERIAL_MISC and not 'fertilizer_bonus' in item:
+        print('hotfixMaterial: material without fertilizer_bonus: {}'.format(name))
+    
+    if not 'Materials' in item['category'] and 'fertilizer_bonus' in item:
+        print('hotfixMaterial: fertilizer_bonus without materials category: {}, {}'.format(name, item['category']))
     
     return item
 
@@ -896,14 +948,17 @@ def hotfixFood(name, item):
         del item['fertilizer_bonus']
 
     if 'fertilizer_bonus' in item and item['fertilizer_bonus']:
-        item['category'] = 'Materials/Food'
+        item['category'] = CATEGORY_MATERIAL_FOOD
         
     for material in materials:
         if material == name:
-            item['category'] = 'Materials/Food'
+            item['category'] = CATEGORY_MATERIAL_FOOD
 
     if 'Materials' in item['category'] and not 'fertilizer_bonus' in item:
         print('hotfixFood: material without fertilizer_bonus: {}'.format(name))
+    
+    if not 'Food' in item['category'] and 'food_bonus' in item:
+        print('hotfixFood: food_bonus without food category: {}, {}'.format(name, item['category']))
 
     return item
 
@@ -935,11 +990,11 @@ def main():
     worldmap_landmark_map = getWorldmapLandmarks()
 
     item_names = []
-    for item in getItemNames('Material.csv', 'Materials', item_names):
+    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names):
         item_names.append(item)
-    for item in getItemNames('Food.csv', 'Food', item_names):
+    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names):
         item_names.append(item)
-    for name in getItemNames('Cooking.csv', 'Cooking', item_names):
+    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names):
         item_names.append(name)
 
     worldmap_collection_map = getWorldmapCollection(worldmap_landmark_map, item_names)

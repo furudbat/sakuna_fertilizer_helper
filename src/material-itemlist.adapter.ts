@@ -1,4 +1,5 @@
 import { LoggerManager } from "typescript-logger";
+import { FertilizerBonusData, FoodItemData, ItemData, MaterialOrFoodItemData } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
 export class MaterialItemListAdapter extends ItemListAdapter {
@@ -8,7 +9,7 @@ export class MaterialItemListAdapter extends ItemListAdapter {
 
     public addItemToInventoryListener?: (item: MaterialOrFoodItemData, amount: number | undefined) => void;
 
-    constructor(table_selector: string, data: MaterialItemData[] = []) {
+    constructor(table_selector: string, data: MaterialOrFoodItemData[] = []) {
         super(`MaterialItemListAdapter|${table_selector}`);
 
         this._table_selector = table_selector;
@@ -20,11 +21,7 @@ export class MaterialItemListAdapter extends ItemListAdapter {
     }
 
     set data(data: ItemData[]) {
-        if (data.find(it => it.fertilizer_bonus === undefined) !== undefined) {
-            this.log.warn('data without fertilizer_bonus got filtered out');
-        }
-
-        this._data = data.filter(it => it.fertilizer_bonus !== undefined);
+        this._data = data.map(it => it as MaterialOrFoodItemData);
         this._table?.clear();
         this._table?.rows.add(this._data).draw();
     }
@@ -41,51 +38,71 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                     break;
                 case 3:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'yield_hp');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'yield_hp');
+                    }
                     break;
                 case 4:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'taste_strength');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'taste_strength');
+                    }
                     break;
                 case 5:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'hardness_vitality');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'hardness_vitality');
+                    }
                     break;
                 case 6:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'stickiness_gusto');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'stickiness_gusto');
+                    }
                     break;
                 case 7:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'aesthetic_luck');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'aesthetic_luck');
+                    }
                     break;
                 case 8:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'armor_magic');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'armor_magic');
+                    }
                     break;
 
                 case 9:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'immunity');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'immunity');
+                    }
                     break;
                 case 10:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'pesticide');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'pesticide');
+                    }
                     break;
                 case 11:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'herbicide');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'herbicide');
+                    }
                     break;
 
                 case 12:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'toxicity', true);
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'toxicity', true);
+                    }
                     break;
 
                 case 13:
                     $(cell).addClass('text-center');
                     const food_item = rowData as FoodItemData;
-                    if (food_item.expiable !== undefined && food_item.expiable) {
+                    if (food_item?.expiable !== undefined && food_item?.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -131,57 +148,121 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                 },
 
                 {
-                    data: 'fertilizer_bonus',
-                    render: function (data: FertilizerBonusData, type: string) {
+                    data: null,
+                    render: function (data: FertilizerBonusData, type: string, row: MaterialOrFoodItemData) {
                         if (type === 'display') {
-                            return MaterialItemListAdapter.renderSoilNutrientsHtml(data);
+                            if (row.fertilizer_bonus !== undefined) {
+                                return MaterialItemListAdapter.renderSoilNutrientsHtml(row.fertilizer_bonus);
+                            }
+
+                            return '';
                         }
 
-                        return [data.leaf_fertilizer, data.kernel_fertilizer, data.root_fertilizer].join(';')
+                        return (row.fertilizer_bonus !== undefined)? [row.fertilizer_bonus?.leaf_fertilizer, row.fertilizer_bonus?.kernel_fertilizer, row.fertilizer_bonus?.root_fertilizer].join(';') : '';
                     }
                 },
 
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('yield_hp')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.yield_hp);
+                        }
+
+                        return row.fertilizer_bonus?.yield_hp ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('taste_strength')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.taste_strength);
+                        }
+
+                        return row.fertilizer_bonus?.taste_strength ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('hardness_vitality')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.hardness_vitality);
+                        }
+
+                        return row.fertilizer_bonus?.hardness_vitality ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('stickiness_gusto')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.stickiness_gusto);
+                        }
+
+                        return row.fertilizer_bonus?.stickiness_gusto ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('aesthetic_luck')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.aesthetic_luck);
+                        }
+
+                        return row.fertilizer_bonus?.aesthetic_luck ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('armor_magic')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.armor_magic);
+                        }
+
+                        return row.fertilizer_bonus?.armor_magic ?? 0;
+                    }
                 },
 
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('immunity')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.immunity);
+                        }
+
+                        return row.fertilizer_bonus?.immunity ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('pesticide')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.pesticide);
+                        }
+
+                        return row.fertilizer_bonus?.pesticide ?? 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('herbicide')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.herbicide);
+                        }
+
+                        return row.fertilizer_bonus?.herbicide ?? 0;
+                    }
                 },
 
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('toxicity')
+                    data: null,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.toxicity);
+                        }
+
+                        return row.fertilizer_bonus?.toxicity ?? 0;
+                    }
                 },
 
                 {

@@ -1,5 +1,6 @@
 import { Logger, LoggerManager } from "typescript-logger";
 import { ItemInventoryData } from "./inventory";
+import { FertilizerBonusData, FoodBonusData, FoodItemData } from "./item.data";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
@@ -59,9 +60,20 @@ export function render_buff_bonus(property_name: string, invert_color: boolean |
 };
 
 
-export function render_value(property_name: string) {
+export function render_value_from_property(property_name: string) {
     return function (data: any, type: string, row: any) {
         const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        if (type === 'display') {
+            return render_value_html(value);
+        }
+
+        // Search, order and type can use the original data
+        return value;
+    };
+};
+
+export function render_value(value: number | undefined) {
+    return function (data: any, type: string, row: any) {
         if (type === 'display') {
             return render_value_html(value);
         }
@@ -121,17 +133,21 @@ export abstract class ItemListAdapter {
         return render_buff_bonus(property_name, invert_color, overflow);
     }
     
-    static renderValue(property_name: string) {
-        return render_value(property_name);
+    static renderValueFromProperty(property_name: string) {
+        return render_value_from_property(property_name);
+    }
+
+    static renderValueHtml(value: number | undefined) {
+        return render_value_html(value);
     }
 
     static renderShortExpiable(data: any, type: any, row: FoodItemData): string | boolean {
         if (type === 'display') {
             if (row.expiable !== undefined && row.expiable) {
-                return '<i class="fas fa-skull"></i>';
+                return site.data.strings.fertilizer_helper.inventory.expiable.in_days_short;
             }
 
-            return '<i class="fas fa-infinity"></i>';
+            return site.data.strings.fertilizer_helper.inventory.expiable.infinity;
         }
 
         return (row.expiable) ? true : false;
@@ -147,16 +163,35 @@ export abstract class ItemListAdapter {
                 return site.data.strings.fertilizer_helper.inventory.expiable.in_days_unknown;
             }
 
-            return '<i class="fas fa-infinity"></i>';
+            return site.data.strings.fertilizer_helper.inventory.expiable.infinity;
         }
 
         return (row.expiable) ? true : false;
     }
 
-    static addColColorClass(cell: Node, fertilizer_bonus: FertilizerBonusData, property_name: "leaf_fertilizer" | "kernel_fertilizer" | "root_fertilizer" | "yield_hp" | "taste_strength" | "hardness_vitality" | "stickiness_gusto" | "aesthetic_luck" | "armor_magic" | "immunity" | "pesticide" | "herbicide" | "toxicity", invert_color: boolean = false) {
+    static addColColorClassFromFertilizerBonus(cell: Node, fertilizer_bonus: FertilizerBonusData, property_name: "leaf_fertilizer" | "kernel_fertilizer" | "root_fertilizer" | "yield_hp" | "taste_strength" | "hardness_vitality" | "stickiness_gusto" | "aesthetic_luck" | "armor_magic" | "immunity" | "pesticide" | "herbicide" | "toxicity", invert_color: boolean = false) {
         const value = (hasProperty(fertilizer_bonus, property_name)) ? getProperty(fertilizer_bonus, property_name) : 0;
 
         ItemListAdapter.addColColorClassFromValue(cell, value, invert_color)
+    }
+    
+    static addColColorClassFromFoodBonus(cell: Node, food_bonus: FoodBonusData, property_name: "hp" | "sp" | "strength" | "vitality" | "magic" | "luck" | "fullness", invert_color: boolean = false) {
+        const value = (hasProperty(food_bonus, property_name)) ? getProperty(food_bonus, property_name) : 0;
+
+        ItemListAdapter.addColColorClassFromValue(cell, value, invert_color)
+    }
+
+    static addColColorClass(cell: Node, fertilizer_bonus: any, property_name: any, invert_color: boolean = false) {
+        const value = (hasProperty(fertilizer_bonus, property_name)) ? getProperty(fertilizer_bonus, property_name) : 0;
+
+        ItemListAdapter.addColColorClassFromValue(cell, value, invert_color)
+    }
+
+    static addColColorClassFromSeasonalFoodBonus(cell: Node, seasonal_food_bonus: FoodBonusData | undefined, food_bonus: FoodBonusData | undefined, property_name: "hp" | "sp" | "strength" | "vitality" | "magic" | "luck" | "fullness", invert_color: boolean = false) {
+        const seasonal_value = (seasonal_food_bonus !== undefined)? ((hasProperty(seasonal_food_bonus, property_name)) ? getProperty(seasonal_food_bonus, property_name) : 0) ?? 0 : 0;
+        const value = (food_bonus !== undefined)? ((hasProperty(food_bonus, property_name)) ? getProperty(food_bonus, property_name) : 0) ?? 0 : 0;
+
+        ItemListAdapter.addColColorClassFromValue(cell, seasonal_value + value, invert_color)
     }
     
     static addColColorClassFromValue(cell: Node, value: number | undefined, invert_color: boolean = false) {

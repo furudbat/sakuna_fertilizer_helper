@@ -1,7 +1,7 @@
 - category: Soilwork
   description: What a lovely little seedling.Go on now,  plant it in the field!
   name: Seedling
-- category: Material
+- category: Materials
   description: This is a base component of Leaf Fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
@@ -32,7 +32,7 @@
     season: Always
   name: Beast Hoof
   sub_category: ManureBase
-- category: Material
+- category: Materials
   description: This is a base component of Kernel Fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
@@ -56,7 +56,7 @@
     season: Always
   name: Beast Manure
   sub_category: ManureBase
-- category: Material
+- category: Materials
   description: This is a base component of Root Fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
@@ -95,7 +95,7 @@
     season: Always
   name: Fallen Leaves
   sub_category: ManureBase
-- category: Material
+- category: Materials
   description: This is a base component for any fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
   enemy_drops:
@@ -116,7 +116,7 @@
   name: Oil Cake
   sub_category: ManureBase
   time_of_day: Always
-- category: Material
+- category: Materials/Misc
   description: Ah,  how rare! This powder alters the flow of time,  allowing fertilizer
     to be completed immediately.
   find_in:
@@ -145,12 +145,12 @@
     try: 5
   name: Powder of Transformation
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: A divine fruit grown from the Tree of Creation.Its very essence is
     ripe with spiritual energy.How shall we put its power to use,  Princess?
   name: Orb of Transformation
   sub_category: Material
-- category: Material
+- category: Materials
   description: A chemical that revitalizes life,  returning plants from their weakened
     state. If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
@@ -165,7 +165,7 @@
     season: Always
   name: Revitalizing Remedy
   sub_category: Material
-- category: Material
+- category: Materials
   description: A chemical that reduces excess,  restoring plantsto their proper balance.
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
@@ -180,7 +180,7 @@
     try: 5
   name: Reducing Remedy
   sub_category: Material
-- category: Material
+- category: Materials
   description: A chemical that wards off pests,  saving plants from invasive insects.
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
@@ -195,42 +195,42 @@
     try: 5
   name: Eradicating Remedy
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Health Pollution.
   name: Health's Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Skill Pollution.
   name: Skill's Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Fullness Pollution.
   name: Fullness' Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Strength Pollution.
   name: Strength's Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Vitality Pollution.
   name: Vitality's Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Magic Pollution.
   name: Magic's Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Luck Pollution.
   name: Luck's Bounty
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: Power that was lost when demons ruined our fields.Spread it as fertilizer
     and your powers shall be restored ,  purifying the land of Gusto Pollution.
   name: Gusto's Bounty
@@ -251,7 +251,7 @@
   name: Rotten Food
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: This earth is soft,  viscous,  and easy to process.
   fertilizer_bonus:
     stickiness_gusto: 1
@@ -266,7 +266,7 @@
     try: 5
   name: Clay
   sub_category: Material
-- category: Material
+- category: Materials
   description: A stone chunk that could be used for almost anything.Unfortunately,  its
     quality leaves much to be desired.
   fertilizer_bonus:
@@ -288,7 +288,7 @@
     season: Always
   name: Stone
   sub_category: Material
-- category: Material
+- category: Materials
   description: This ore has long been used as a material to craftcertain metals.
   fertilizer_bonus:
     hardness_vitality: 2
@@ -307,7 +307,7 @@
     try: 5
   name: Copper Ore
   sub_category: Material
-- category: Material
+- category: Materials
   description: A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves
     into masters of the craft.
   enemy_drops:
@@ -330,7 +330,7 @@
   name: Iron Ore
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: Jade is known to have miraculous powers. Not onlyis it used as currency,  but
     it is revered by manyas a ceremonial implement as well.
   fertilizer_bonus:
@@ -347,7 +347,7 @@
     try: 5
   name: Jade
   sub_category: Material
-- category: Material
+- category: Materials
   description: Iridescent obsidian such as this is said to beexceptionally rare. No
     doubt it would make for finecrafting material.
   fertilizer_bonus:
@@ -364,7 +364,7 @@
     try: 5
   name: Obsidian
   sub_category: Material
-- category: Material
+- category: Materials
   description: The glister of gold is the spark which ignitesthe flames of war. Do
     be careful not to becometoo enthralled by it,  Princess.
   fertilizer_bonus:
@@ -380,7 +380,7 @@
     try: 5
   name: Gold Ore
   sub_category: Material
-- category: Material
+- category: Materials
   description: This is steel from Dharka,  a country that lies farto the west,  and
     it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.
   enemy_drops:
@@ -392,7 +392,7 @@
   name: Stainless Steel
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: A jewel formed from the dense Clouds of Beginning,  which separate
     the two realms. Just one of thesecontains enough power to create a small island.
   fertilizer_bonus:
@@ -404,7 +404,7 @@
     yield_hp: 25
   name: Cloudy Crystal
   sub_category: Material
-- category: Material
+- category: Materials
   description: This wood can be used in various ways.Unfortunately,  its quality leaves
     much to be desired.
   fertilizer_bonus:
@@ -430,7 +430,7 @@
     season: Always
   name: Wood
   sub_category: Material
-- category: Material
+- category: Materials
   description: This is hard,  sturdy wood. I wager it could be crafted into a fine
     tool.
   fertilizer_bonus:
@@ -446,7 +446,7 @@
     try: 5
   name: High Quality Oak
   sub_category: Material
-- category: Material
+- category: Materials
   description: A plant that is neither tree nor grass. Indeed,  it is difficult to
     classify... Nevertheless,  bamboo is quite flexible and easy to process.
   fertilizer_bonus:
@@ -471,7 +471,7 @@
     season: Always
   name: Bamboo
   sub_category: Material
-- category: Material
+- category: Materials
   description: This wood is not only hard,  but resistant to water,  meaning that
     it is slow to rot. Thus,  its appellation is well deserved.
   fertilizer_bonus:
@@ -480,12 +480,12 @@
     yield_hp: 8
   name: Ironwood
   sub_category: Material
-- category: Material
+- category: Materials/Misc
   description: The origin of all Yanato elm trees,  nearly as old as the Lofty Realm
     itself. The quality of its woodis unsurpassed,  but it's as rare as it is ancient.
   name: Elder Elm
   sub_category: Material
-- category: Material
+- category: Materials
   description: This grass fiber is indispensable for weaving.
   fertilizer_bonus:
     armor_magic: 2
@@ -496,7 +496,7 @@
     season: Always
   name: Hemp
   sub_category: Material
-- category: Material
+- category: Materials
   description: This plant is often used to craft straw hats and raincoats. I have
     heard that it is easierto raise in humid climes.
   fertilizer_bonus:
@@ -515,7 +515,7 @@
     try: 5
   name: Sedge
   sub_category: Material
-- category: Material
+- category: Materials
   description: Bark imported from a southern country.It rivals straw in its ease of
     use.
   fertilizer_bonus:
@@ -523,7 +523,7 @@
     kernel_fertilizer: 5
   name: Hemp Palm
   sub_category: Material
-- category: Material
+- category: Materials
   description: Aha,  so you found an untainted leaf from Hinoe'sTree of Creation?
     If you can gather enough to useas materials,  I imagine you'll gain untold power.
   fertilizer_bonus:
@@ -533,7 +533,7 @@
     toxicity: 50
   name: Leaf of Creation
   sub_category: Material
-- category: Material
+- category: Materials
   description: This golden tree branch can be used to createa stunning yellow dye.
     Strip the bark and seeits brilliant hue for yourself!
   fertilizer_bonus:
@@ -549,7 +549,7 @@
     try: 5
   name: Cork Tree Branch
   sub_category: Material
-- category: Material
+- category: Materials
   description: This plant root can be used to create purple dye.It thrives in soil
     that gets regular runoff exposure.
   fertilizer_bonus:
@@ -561,7 +561,7 @@
     season: Always
   name: Murasaki Root
   sub_category: Material
-- category: Material
+- category: Materials
   description: A root which is used to make red dyes. It can befound in the mountainous
     regions of this island.
   fertilizer_bonus:
@@ -577,7 +577,7 @@
     try: 5
   name: Madder
   sub_category: Material
-- category: Material
+- category: Materials
   description: A fish scale that can be turned into a bluish-purpledye,  if it's crushed
     and mixed with the right plants.
   fertilizer_bonus:
@@ -586,21 +586,21 @@
     leaf_fertilizer: 5
   name: Indigo Scale
   sub_category: Material
-- category: Material
+- category: Materials
   description: This is a fiber produced by the thread of silkworms,  which were brought
     over from the country of Ouka.
   fertilizer_bonus:
     armor_magic: 10
   name: Silk
   sub_category: Material
-- category: Material
+- category: Materials
   description: A miraculous thread selected from the finest silk.It is both a delight
     to the eyes and strong enoughto repel blades. It should make an excellent outfit.
   fertilizer_bonus:
     armor_magic: 20
   name: Spirit Thread
   sub_category: Material
-- category: Material
+- category: Materials
   description: Yanato's highest quality paper,  said to lastfor a thousand years.
     In fact,  it's strongenough you can even make clothes out if it.
   fertilizer_bonus:
@@ -608,28 +608,28 @@
     hardness_vitality: 8
   name: Washi Paper
   sub_category: Material
-- category: Material
+- category: Materials
   description: How ominous... This cord appears to have been wovenwith the accursed
     power of a multitude of demons.May we find a way to bring some good out of it.
   fertilizer_bonus:
     taste_strength: 20
   name: Demonic Braid
   sub_category: Material
-- category: Material
+- category: Materials
   description: A cord that is used to tie up kimono sleeves.This one contains the
     power of lightning,  the ultimate expression of wood energy.
   fertilizer_bonus:
     armor_magic: 20
   name: Thunderous Tasuki
   sub_category: Material
-- category: Material
+- category: Materials
   description: The skinned hide of a most ferocious demon.It can be tanned into durable
     leather.
   fertilizer_bonus:
     yield_hp: 2
   name: Beast Hide
   sub_category: Material
-- category: Material
+- category: Materials
   description: Taken from the skull of a deer demon. It can be usedin its current
     state,  or processed into an evenhigher-quality material.
   fertilizer_bonus:
@@ -637,14 +637,14 @@
     leaf_fertilizer: 10
   name: Deer Antler
   sub_category: Material
-- category: Material
+- category: Materials
   description: A jewel formed inside the shell of a demon clam.Apparently its devolution
     into demonhood has onlyserved to increase the quality of its pearl.
   fertilizer_bonus:
     armor_magic: 3
   name: Demonic Pearl
   sub_category: Material
-- category: Materials/Misc
+- category: Misc
   description: This is a throwing needle of the Ashigumo tribe,  who you mercifully
     defeated. Even now,  it holdsa lingering manifestation of their loyal spirits.
   enemy_drops:
@@ -653,7 +653,7 @@
   name: Ashigumo Shuriken
   sub_category: Material
   time_of_day: Always
-- category: Material
+- category: Materials
   description: The resilient hide of a black deer demon.When I close my eyes,  I can
     still vividlysee your fierce battle with the beast!
   fertilizer_bonus:
@@ -661,7 +661,7 @@
     taste_strength: 4
   name: Black Deer Leather
   sub_category: Material
-- category: Material
+- category: Materials
   description: A silver feather plucked from a demon pheasant.Faint light emanates
     from it.
   fertilizer_bonus:
@@ -669,7 +669,7 @@
     taste_strength: 3
   name: Pheasant Feather
   sub_category: Material
-- category: Material
+- category: Materials
   description: A tremendous tusk,  taken from a boar that hadtransformed into a mighty
     demon.
   fertilizer_bonus:
@@ -677,7 +677,7 @@
     taste_strength: 5
   name: Boar Tusk
   sub_category: Material
-- category: Material
+- category: Materials
   description: Ah,  was this attached to a demon badger's forehead?It's teeming with
     magical power. They must be moreselective in choosing their leaves than I thought.
   fertilizer_bonus:
@@ -685,7 +685,7 @@
     root_fertilizer: 10
   name: Badger Leaf
   sub_category: Material
-- category: Material
+- category: Materials
   description: Oho,  the hide of a demon bear. Even in this form,  it exudes power
     and seems difficult to work with.It will certainly make for a high-quality material.
   fertilizer_bonus:
@@ -693,14 +693,14 @@
     taste_strength: 4
   name: Bear Hide
   sub_category: Material
-- category: Material
+- category: Materials
   description: A feather belonging to Yui,  an exceptionally rarespirit crane. If
     turned into thread,  it could be woveninto an unparalleled garment.
   fertilizer_bonus:
     armor_magic: 50
   name: Crane Feather
   sub_category: Material
-- category: Material
+- category: Materials
   description: A vertebra once belonging to Omizuchi,  gifted to usby Lady Kamuhitsuki.
     If we combine it with the Edgeof Hoshidama,  it shall create an all-powerful weapon.
   fertilizer_bonus:
@@ -709,7 +709,7 @@
     taste_strength: 50
   name: Dragon Bone
   sub_category: Material
-- category: Material
+- category: Materials
   description: Oho,  a scale taken from the great Omizuchi himself.It appears to be
     hard enough to deflect any weapon.
   fertilizer_bonus:
@@ -718,16 +718,18 @@
     pesticide: 50
   name: Dragon Scale
   sub_category: Material
-- category: Material
+- category: Materials
   description: A stone that has been exposed to moonlightfor an incredibly long time.
     Perhaps we canextract its inner earth energy for ourselves.
   enemy_drops:
   - name: Buta
     time: Night
+  fertilizer_bonus:
+    toxicity: -20
   name: Moonlit Stone
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: This flower only blooms at night on mighty treesthat have absorbed
     an abundance of wood energy.
   enemy_drops:
@@ -742,7 +744,7 @@
   name: Branching Flower
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: A semi-solid drop of condensed water energy,  anchored in place amidst
     the sundering flow.
   enemy_drops:
@@ -759,7 +761,7 @@
   name: Aqueous Droplet
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: A glowing red fragment of hardened lava that holdsa wealth of fire
     energy deep in its molten core.
   enemy_drops:
@@ -772,7 +774,7 @@
   name: Flaming Core
   sub_category: Material
   time_of_day: Night
-- category: Material
+- category: Materials
   description: Sand that was ground down into miniscule particlesover the ages. It
     would take a god of the forgeto extract the metal energy radiating within it.
   enemy_drops:
@@ -3922,7 +3924,7 @@
   name: Beer
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Firm and fragrant brown rice, boiled to perfection.Eat up before it
     gets cold.
   food_bonus:
@@ -3940,7 +3942,7 @@
     name: Brown Rice
     operator: ''
   name: Cooked Brown Rice
-- category: Food
+- category: Cooking
   description: This mixed rice is boiled to perfection.Every bite is rich in flavor
     and nutrients.
   food_bonus:
@@ -3957,7 +3959,7 @@
     name: Mixed Rice
     operator: ''
   name: Cooked Mixed Rice
-- category: Food
+- category: Cooking
   description: White rice boiled to perfection. Each glisteninggrain is your reward
     for months of painstaking toil.
   food_bonus:
@@ -3972,7 +3974,7 @@
     name: White Rice
     operator: ''
   name: Cooked White Rice
-- category: Food
+- category: Cooking
   description: White rice that has been steamed with sake,amplifying its natural sweetness.
   food_bonus:
     enchant:
@@ -4039,7 +4041,7 @@
     name: Salt
     operator: ''
   name: Steamed Rice
-- category: Food
+- category: Cooking
   description: Rice that has been steamed with sake and mixedwith wild vegetables.
     The rustic, crispy crunchof this dish will make one's heart sing.
   food_bonus:
@@ -4110,7 +4112,7 @@
     name: Warabi
     operator: ''
   name: Sansai Rice
-- category: Food
+- category: Cooking
   description: Rice that has been steamed with sake and mixed withchestnuts. The steaming
     enhances the chestnuts'natural sweetness to create a dish for any palate.
   food_bonus:
@@ -4185,7 +4187,7 @@
   season_food_bonus:
     luck: 3
     strength: 2
-- category: Food
+- category: Cooking
   description: Rice that has been steamed with sake and mixed withginkgo nuts. Savor
     the ingredient's enhanced flavor.
   food_bonus:
@@ -4260,7 +4262,7 @@
   season_food_bonus:
     hp: 3
     strength: 2
-- category: Food
+- category: Cooking
   description: Boiled rice that has been fried in a splashof soy sauce. Both its fragrance
     and textureare simply irresistable.
   food_bonus:
@@ -4282,7 +4284,7 @@
     name: Oil
     operator: ''
   name: Fried Rice
-- category: Food
+- category: Cooking
   description: Red rice that has been steamed in a vat.A fascinating blend of salty
     and sweetthat calls to mind a celebratory mood.
   food_bonus:
@@ -4310,7 +4312,7 @@
     name: Sesame
     operator: ''
   name: Sekihan
-- category: Food
+- category: Cooking
   description: Five types of rice that have been mixed and steamedtogether. A highly
     nutritious meal, its five colorsguarantee ever-changing flavor with every bite.
   food_bonus:
@@ -4348,7 +4350,7 @@
     name: White Rice
     operator: ''
   name: Mixed Grain Rice
-- category: Food
+- category: Cooking
   description: A meal made of cooked Sanwa Millet.Satisfying, but it doesn't compareto
     the piquant taste of rice.
   food_bonus:
@@ -4367,7 +4369,7 @@
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
-- category: Food
+- category: Cooking
   description: Dried cooked rice that has been rehydratedwith boiling water. It has
     a rather lightflavor, similar to porridge.
   food_bonus:
@@ -4388,7 +4390,7 @@
   name: Dried Boiled Rice
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making
     ita perfect meal for the bedridden.
   food_bonus:
@@ -4421,7 +4423,7 @@
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Porridge
-- category: Food
+- category: Cooking
   description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
     heralds the arrival of spring.
   food_bonus:
@@ -4465,7 +4467,7 @@
     fullness: 2
     luck: 5
     sp: 1
-- category: Food
+- category: Cooking
   description: A meal made of Sanwa Millet boiledwith rice. It is bound to warm youto
     the core on chilly evenings.
   food_bonus:
@@ -4549,7 +4551,7 @@
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Zosui
-- category: Food
+- category: Cooking
   description: White rice soaked in tea and sprinkled withsoy sauce. Silky smooth
     for easy digestion,with an irresistably invigorating aftertaste.
   food_bonus:
@@ -4606,7 +4608,7 @@
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Chazuke
-- category: Food
+- category: Cooking
   description: Chazuke bedecked with mouth-wateringly good,bite-sized pieces of savory
     salted salmon.A match made in the Lofty Realm!
   food_bonus:
@@ -4651,7 +4653,7 @@
     name: Plum
     operator: ''
   name: Salmon Chazuke
-- category: Food
+- category: Cooking
   description: Chazuke garnished with matsutake mushrooms,which are a rare delicacy
     on Hinoe Island.How decadent! What lies beyond this luxury?
   food_bonus:
@@ -4699,7 +4701,7 @@
   season_buff: Autumn
   season_food_bonus:
     luck: 10
-- category: Food
+- category: Cooking
   description: Enticingly aromatic, puffy mochi that has beentoasted over a fire.
     You may be tempted to digright in, but do be careful! It's quite hot.
   food_bonus:
@@ -4712,7 +4714,7 @@
     name: Mochi
     operator: ''
   name: Aburi Mochi
-- category: Food
+- category: Cooking
   description: Top a bowl of rice with a bit of sauce and someBasket Clam to create
     a truly delectable meal!Yanato's culinary ingenuity never ceases to amaze.
   food_bonus:
@@ -4867,7 +4869,7 @@
     name: Basket Clam
     operator: ''
   name: Basket Clam Bowl
-- category: Food
+- category: Cooking
   description: Grilled duck meat and fluffy eggs atop a bowl ofrice. The delectably
     fatty meat fuses with the eggsto deliver its lucky devourer to taste nirvana.
   food_bonus:
@@ -4964,7 +4966,7 @@
     name: Buckwheat
     operator: ''
   name: Duck Egg Bowl
-- category: Food
+- category: Cooking
   description: Persimmon tempura atop a bowl of rice,with a heaping helping of salty-sweet
     sauce.I could eat this for eternity.
   food_bonus:
@@ -5181,7 +5183,7 @@
     name: Persimmon
     operator: ''
   name: Persimmon Ten-don
-- category: Food
+- category: Cooking
   description: Thick noodles made by combining wheat flourwith salt and water. They
     slide down the throatwith glorious ease.
   food_bonus:
@@ -5198,7 +5200,7 @@
     name: Salt
     operator: ''
   name: Udon
-- category: Food
+- category: Cooking
   description: Adding fried tofu to udon creates a simply divinebroth. Fried tofu
     is a famed favorite of fox gods,and thus I dub this Kitsune Udon.
   food_bonus:
@@ -5222,7 +5224,7 @@
     name: Tofu
     operator: ''
   name: Kitsune Udon
-- category: Food
+- category: Cooking
   description: Ohoho, udon topped with Tempura Udon tempura?Yes please! The way the
     fried coating dissolvesin the broth is utterly magnificent.
   food_bonus:
@@ -5362,7 +5364,7 @@
     name: Persimmon
     operator: ''
   name: Tempura Udon
-- category: Food
+- category: Cooking
   description: Thinly sliced noodles glazed with oil and sun dried.Their delicate
     form mixes well with broth and otheringredients, making a solid foundation for
     any meal.
@@ -5387,7 +5389,7 @@
     enchant:
     - level: 6
       name: Fire Resistance
-- category: Food
+- category: Cooking
   description: Noodles made by combining water and buckwheat flour,which is then stretched
     and cut into thin slices.They give off a faint aroma of buckwheat.
   food_bonus:
@@ -5405,7 +5407,7 @@
     name: Soup Stock
     operator: ''
   name: Soba
-- category: Food
+- category: Cooking
   description: Myrthe is an odd one, scattering tempura flakes atopsoba noodles. And
     yet, it's delicious. The dark flakesremind me of a raccoon dog. I dub this Tanuki
     Soba!
@@ -5430,7 +5432,7 @@
     name: Wheat
     operator: ''
   name: Tanuki Soba
-- category: Food
+- category: Cooking
   description: Soba noodles accompanied by mountain vegetables.The crunch of the vegetables
     is a delightfulcontrast to the noodles' silky-smooth texture.
   food_bonus:
@@ -5451,7 +5453,7 @@
     name: Warabi
     operator: ''
   name: Sansai Soba
-- category: Food
+- category: Cooking
   description: Soba noodles adorned with Tempura Soba tempurais not a dish to be overlooked
     or underestimated.The texture of the noodles is perfection itself.
   food_bonus:
@@ -5593,7 +5595,7 @@
     name: Persimmon
     operator: ''
   name: Tempura Soba
-- category: Food
+- category: Cooking
   description: A beloved treat of Myrthe's native Ventania,this pancake is made by
     spreading dough thinlyacross a grill and topping it with ingredients.
   food_bonus:
@@ -5618,7 +5620,7 @@
     name: Egg
     operator: ''
   name: Pannenkoek
-- category: Food
+- category: Cooking
   description: Crushed tekusari roots rolled into edible dumplings. As long as the
     poison has been steeped out of theroots, they make for adequate rations.
   ingredients:
@@ -5626,7 +5628,7 @@
     name: Tekusari
     operator: ''
   name: Tekusari Dumplings
-- category: Food
+- category: Cooking
   description: Foodstuffs that I brought with me from the capital.We must secure a
     foothold on this island before weinevitably run out of edible things to eat...
   food_bonus:
@@ -5634,7 +5636,7 @@
     - level: 1
       name: Natural Healing
   name: Preserved Rations
-- category: Food
+- category: Cooking
   description: Hrm. Myrthe claims to be a skilled chef, but...Well, everyone makes
     mistakes, I suppose.
   food_bonus:
@@ -5642,7 +5644,7 @@
     - level: 1
       name: Natural Healing
   name: Charred Lump
-- category: Food
+- category: Cooking
   description: A simple soup made from boiled Persimmon.While it lacks a certain culinary
     complexity,it's perfectly adequate for washing down a meal.
   main_ingredients:
@@ -5698,7 +5700,7 @@
     name: Persimmon
     operator: ''
   name: Persimmon Broth
-- category: Food
+- category: Cooking
   description: Soup with mochi and Persimmon. I cannot putmy finger on it, but something
     about the soft,broth-soaked mochi evokes a celebratory sentiment.
   food_bonus:
@@ -5820,7 +5822,7 @@
     name: Persimmon
     operator: ''
   name: Persimmon Zoni
-- category: Food
+- category: Cooking
   description: Chilled soup made from water peppers and miso.Its cool zest stimulates
     the appetite.
   food_bonus:
@@ -5830,7 +5832,7 @@
     name: Miso
     operator: ''
   name: Chilled Miso Soup
-- category: Food
+- category: Cooking
   description: Miso melted in hot water along with Persimmon.Its moderate saltiness
     and the dashi's flavor makefor a superior dish that pairs well with cooked rice.
   food_bonus:
@@ -5925,7 +5927,7 @@
     name: Persimmon
     operator: ''
   name: Persimmon Soup
-- category: Food
+- category: Cooking
   description: Miso soup made with boiled taro. One would not expectsomething so flavorful
     to be a war ration, but it isoft used as such, bringing smiles to the battlefield.
   food_bonus:
@@ -5939,7 +5941,7 @@
     name: Dried Taro Stem
     operator: ''
   name: Taro Miso Soup
-- category: Food
+- category: Cooking
   description: Miso soup paired with well-boiled Basket Clam,scales and all. Just
     as nutritious as it tastes.
   food_bonus:
@@ -6003,7 +6005,7 @@
     name: Basket Clam
     operator: ''
   name: Basket Clam Stew
-- category: Food
+- category: Cooking
   description: Miso soup enhanced by thinly cut daikon radishand blocks of tofu. Using
     every bit of the daikon,leaves and all, adds a tremendous amount of flavor.
   food_bonus:
@@ -6023,7 +6025,7 @@
     name: Tofu
     operator: ''
   name: Misoyaki Soup
-- category: Food
+- category: Cooking
   description: Miso soup that has had pheasant meat added in.The mouth-watering juice
     that oozes from the meatwith every bite blends perfectly with the broth.
   food_bonus:
@@ -6055,7 +6057,7 @@
     name: Plum
     operator: ''
   name: Pheasant Miso Soup
-- category: Food
+- category: Cooking
   description: Myrthe put a lot of thought into this savorycombination of pork and
     miso. Combined withvegetables, this soup is beyond compare.
   food_bonus:
@@ -6079,7 +6081,7 @@
     name: Green Onion
     operator: ''
   name: Pork Miso Soup
-- category: Food
+- category: Cooking
   description: A chilled soup of sesame seeds and cucumber. A mostexcellent way to
     refresh oneself on a hot summer day.
   food_bonus:
@@ -6110,7 +6112,7 @@
     enchant:
     - level: 3
       name: Fire Resistance
-- category: Food
+- category: Cooking
   description: A bean soup brimming with smashed vegetableshailing from Myrthe's home
     country of Ventania.The perfect accompaniment to a cold winter's day.
   food_bonus:
@@ -6140,7 +6142,7 @@
     operator: ''
   name: Erwtensoep
   season_buff: Winter
-- category: Food
+- category: Cooking
   description: Bee Larva roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
   main_ingredients:
@@ -6214,7 +6216,7 @@
     name: Bee Larva
     operator: ''
   name: Roast Bee Larva
-- category: Food
+- category: Cooking
   description: Chopped Persimmon steeped in a savory soup stock.Do not judge this
     simple dish by looks alone;its flavor will speak for itself.
   ingredients:
@@ -6274,7 +6276,7 @@
     name: Persimmon
     operator: ''
   name: Blanched Persimmon
-- category: Food
+- category: Cooking
   description: Chopped garlic steeped in a savory soup stock.Do not judge this simple
     dish by looks alone;its flavor will speak for itself.
   ingredients:
@@ -6286,7 +6288,7 @@
     name: Garlic
     operator: ''
   name: Blanched Garlic
-- category: Food
+- category: Cooking
   description: Grilled Basket Clam that is salted to perfection.The trick is to get
     it to the perfect temperaturethat leaves the inside soft and the outside crispy.
   food_bonus:
@@ -6333,7 +6335,7 @@
     name: Basket Clam
     operator: ''
   name: Grilled Basket Clam
-- category: Food
+- category: Cooking
   description: Persimmon boiled in salt water. Its simplicitybrings out the best flavor
     in its ingredients.
   food_bonus:
@@ -6398,7 +6400,7 @@
     name: Persimmon
     operator: ''
   name: Salt Persimmon
-- category: Food
+- category: Cooking
   description: A dish fit for a god from Princess Sakuna's daysin the capital. Lightly
     grilled eel is saltedand cooked to perfection in a bamboo steamer.
   food_bonus:
@@ -6413,7 +6415,7 @@
     name: Salt
     operator: ''
   name: Eel Steamed Rice
-- category: Food
+- category: Cooking
   description: These ingredients have been dried in the sun.They might make good rations
     in times of need.
   food_bonus:
@@ -6455,7 +6457,7 @@
     name: Dried Duck Meat
     operator: ''
   name: Dried Duck Meat
-- category: Food
+- category: Cooking
   description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
     food and drinkalike! This technique is surely worth a try.
   food_bonus:
@@ -6546,7 +6548,7 @@
     name: Dried Duck Meat
     operator: ''
   name: Sake Soaked Stir-Fry
-- category: Food
+- category: Cooking
   description: These ingredients have been salted and cookedover smoke. I can guarantee
     that it tastesevery bit as good as it smells. Delicious!
   food_bonus:
@@ -6588,7 +6590,7 @@
     name: Smoked Duck Meat
     operator: ''
   name: Smoked Duck Meat
-- category: Food
+- category: Cooking
   description: A preserved food made with pickled ingredientsfermented in rice bran.
     This salty addition pairswell with just about any meal.
   food_bonus:
@@ -6647,7 +6649,7 @@
     name: Pickled Persimmon
     operator: ''
   name: Pickled Persimmon
-- category: Food
+- category: Cooking
   description: A preserved food made with salted and pickledingredients covered in
     rice and fermented.Potently acidic, aromatic, and flavorful.
   food_bonus:
@@ -6723,7 +6725,7 @@
     name: Basket Clam Sushi
     operator: ''
   name: Basket Clam Sushi
-- category: Food
+- category: Cooking
   description: Basket Clam is first simmered in soy sauce,after which the broth is
     drained and then cooledfor a jiggly texture and scrumptious aftertaste.
   food_bonus:
@@ -6846,7 +6848,7 @@
     name: Basket Clam
     operator: ''
   name: Basket Clam Jelly
-- category: Food
+- category: Cooking
   description: Fragrant acorns that were soaked to remove theirbitterness, then roasted.
     While they taste good,a handful of oaknuts does not a hearty meal make.
   food_bonus:
@@ -6858,7 +6860,7 @@
     name: Acorn
     operator: ''
   name: Roasted Acorns
-- category: Food
+- category: Cooking
   description: Steamed soy beans wrapped in rice straw and fermented.The peculiar
     odor and stickiness can be offputting,but after one bite you'll become a lifelong
     fan.
@@ -6869,7 +6871,7 @@
     name: Bean
     operator: ''
   name: Natto
-- category: Food
+- category: Cooking
   description: Tofu is grilled until golden brown and coatedin thick miso paste. One
     whiff of its savoryaroma is guaranteed to whet your appetite.
   food_bonus:
@@ -6886,7 +6888,7 @@
     name: Tofu
     operator: ''
   name: Miso-Coated Tofu
-- category: Food
+- category: Cooking
   description: A classic summer dish of chilled tofu accompaniedby soy sauce and other
     mouth-watering seasonings.The perfect complement to an evening's libations.
   food_bonus:
@@ -6907,7 +6909,7 @@
   season_food_bonus:
     sp: 1
     strength: 1
-- category: Food
+- category: Cooking
   description: For this recipe passed down from the far west,maize is grilled and
     coated with a sweet sauce.One bite and you'll be awash in savory sweetness.
   ingredients:
@@ -6928,7 +6930,7 @@
       name: Skill Buff
     - level: 1
       name: Summer Skill Buff
-- category: Food
+- category: Cooking
   description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
     it impartsa satisfying crunch with each and every bite.
   food_bonus:
@@ -6995,7 +6997,7 @@
     - level: 1
       name: Spring Magic Buff
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Salted pickled plums that have been sun-dried andfermented. Biting
     into one releases a powerfularoma and a rich, bittersweet flavor.
   food_bonus:
@@ -7016,7 +7018,7 @@
   season_food_bonus:
     magic: 2
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Cooked eggs rolled into a cylindrical shape thencut into bite-sized
     slices. The soft texture andsweet flavor will surely put a smile on your face.
   food_bonus:
@@ -7033,7 +7035,7 @@
     name: Sugar
     operator: ''
   name: Fried Egg
-- category: Food
+- category: Cooking
   description: A dish from the continent of Ouka made by mixinga beaten egg with stock
     and other ingredients.Such gentle flavor! It warms me to my very core.
   food_bonus:
@@ -7053,7 +7055,7 @@
     name: Ginkgo Nut
     operator: ''
   name: Chawanmushi
-- category: Food
+- category: Cooking
   description: Tofu is dropped into soup stock and water,then boiled. The center comes
     out piping hot,so give it time to cool down before enjoying!
   food_bonus:
@@ -7078,7 +7080,7 @@
     enchant:
     - level: 6
       name: Water Resistance
-- category: Food
+- category: Cooking
   description: Salmon that has been soaked in salt water and driedin the sea breeze.
     This pairs wondrously with sake!Though do take care not to gorge yourself.
   food_bonus:
@@ -7142,7 +7144,7 @@
   season_food_bonus:
     magic: 3
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Food that's fried in naught but oil is not to beunderestimated. Truly
     it brings out the bestthe Persimmon has to offer.
   food_bonus:
@@ -7205,7 +7207,7 @@
     name: Persimmon
     operator: ''
   name: Fried Persimmon
-- category: Food
+- category: Cooking
   description: Basket Clam covered in wheat flour and deep fried.The pleasant crunch
     as you bite into it is ratheraddicting, if I do say so myself.
   food_bonus:
@@ -7283,7 +7285,7 @@
     name: Basket Clam
     operator: ''
   name: Crispy Basket Clam
-- category: Food
+- category: Cooking
   description: Persimmon covered in egg and wheat flour,then deep fried. I am told
     that this techniqueoriginally came from some western country.
   food_bonus:
@@ -7419,7 +7421,7 @@
     name: Persimmon
     operator: ''
   name: Persimmon Tempura
-- category: Food
+- category: Cooking
   description: Persimmon stewed in soy sauce until soft.A gentle heat flows outward
     from the broth,warming your body and comforting your soul.
   food_bonus:
@@ -7551,7 +7553,7 @@
     name: Persimmon
     operator: ''
   name: Stewed Persimmon
-- category: Food
+- category: Cooking
   description: Persimmon boiled in miso until soft. The richmiso and fresh ginger
     make every ingredient sing.
   food_bonus:
@@ -7687,7 +7689,7 @@
     name: Persimmon
     operator: ''
   name: Miso Persimmon
-- category: Food
+- category: Cooking
   description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
     absorbed the deep flavorof the meat.
   food_bonus:
@@ -7783,7 +7785,7 @@
     enchant:
     - level: 4
       name: Natural Healing
-- category: Food
+- category: Cooking
   description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
     deepens with each bite.
   food_bonus:
@@ -7879,7 +7881,7 @@
     enchant:
     - level: 4
       name: Natural Healing
-- category: Food
+- category: Cooking
   description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
     satisfying flavor.
   food_bonus:
@@ -7975,7 +7977,7 @@
     enchant:
     - level: 4
       name: Natural Healing
-- category: Food
+- category: Cooking
   description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
     and pairs well with vegetables.
   food_bonus:
@@ -8101,7 +8103,7 @@
     enchant:
     - level: 4
       name: Natural Healing
-- category: Food
+- category: Cooking
   description: Hot pot brimming with bear meat. Not only is itnutritious, but the
     fattiness it adds is unlikeany other meat.
   food_bonus:
@@ -8205,7 +8207,7 @@
       name: Biped's Bane
     - level: 2
       name: Quadruped Calamity
-- category: Food
+- category: Cooking
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
     entirely unlike sushi.
@@ -8236,7 +8238,7 @@
     - level: 3
       name: Gill Shredder
   sub_category: ''
-- category: Food
+- category: Cooking
   description: A dish of Myrthe's native Ventania made fromchopped potatoes and root
     vegetables steamedand mashed. This will fill your belly right up!
   food_bonus:
@@ -8257,7 +8259,7 @@
     name: Salt
     operator: ''
   name: Hutspot
-- category: Food
+- category: Cooking
   description: Rice cakes coated with sauce as they cook on stickskewers. The soft
     texture combined with the sweetand savory sauce is in a league of its own.
   food_bonus:
@@ -8273,7 +8275,7 @@
     name: Bean
     operator: ''
   name: Dumpling
-- category: Food
+- category: Cooking
   description: Rice cakes that have had mugwort finely kneadedinto them. They taste
     of spring itself.
   food_bonus:
@@ -8298,7 +8300,7 @@
     enchant:
     - level: 5
       name: Swift Recovery
-- category: Food
+- category: Cooking
   description: A sweet treat that hails from the country of Ouka,made from all sorts
     of sesame. I am impressed theymanaged to make such a jelly out of sesame alone.
   food_bonus:
@@ -8317,7 +8319,7 @@
     name: Sesame
     operator: ''
   name: Sesame Dumpling
-- category: Food
+- category: Cooking
   description: Persimmons that have been dried on a cord.This powerfully sweet fruit
     melts in your mouth,making it difficult to put down after the first bite.
   food_bonus:
@@ -8330,7 +8332,7 @@
   name: Dried Persimmon
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Ice that has been shaved down into tiny particles.The perfect remedy
     for when you feel hot or feverish.
   food_bonus:
@@ -8345,7 +8347,7 @@
     enchant:
     - level: 6
       name: Fire Resistance
-- category: Food
+- category: Cooking
   description: Sweet mochi rolled into flat circles, then grilledto form crackers.
     They are delightfully crispy.
   food_bonus:
@@ -8410,7 +8412,7 @@
     name: Beer
     operator: ''
   name: Senbei
-- category: Food
+- category: Cooking
   description: Buckwheat flour is tossed in boiling water and clumpedtogether to form
     this dessert. Though the ingredientsare the same, it is wholly unlike soba noodles.
   food_bonus:
@@ -8427,7 +8429,7 @@
     name: Bean
     operator: ''
   name: Soba Dumpling
-- category: Food
+- category: Cooking
   description: Rice softened in water, then pounded and shapedinto a ball. They have
     long been used as offeringsto the gods from the children of men.
   food_bonus:
@@ -8452,7 +8454,7 @@
   name: Rice Cake
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Steamed sweet dumplings that are knownto pair well with a variety of
     ingredients.
   food_bonus:
@@ -8475,7 +8477,7 @@
     name: Oil
     operator: ''
   name: Manju
-- category: Food
+- category: Cooking
   description: Wheat flour that has been kneaded, rolled,and fried. Fill them with
     red bean pasteor vegetables for an even tastier treat.
   food_bonus:
@@ -8494,7 +8496,7 @@
     name: Sesame
     operator: ''
   name: Kenpin
-- category: Food
+- category: Cooking
   description: Miso mixed with finely chopped spices, then grilled.It pairs exceptionally
     well with rice and sake.
   food_bonus:
@@ -8513,7 +8515,7 @@
     name: Garlic
     operator: ''
   name: Grilled Miso
-- category: Food
+- category: Cooking
   description: Fresh water from the mountain pass.
   name: Water
 - category: Materials/Cooking
@@ -8557,7 +8559,7 @@
     - level: 3
       name: Fire Resistance
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
     sip would wash awayany impurity. It's no wonder it's renowned!
   food_bonus:
@@ -8605,7 +8607,7 @@
     - level: 1
       name: Winter Skill Buff
   sub_category: ''
-- category: Food
+- category: Cooking
   description: The idea of combining roasted tea leaves with brownrice was truly a
     revelation. It is bound to helpcalm the nerves and relieve pent-up stress.
   food_bonus:
@@ -8625,7 +8627,7 @@
       name: Skill Buff
     - level: 1
       name: Winter Skill Buff
-- category: Food
+- category: Cooking
   description: A tea made with dried fish mint leaves.In the Lofty Realm, this drink
     is saidto grant protection from poisonous mist.
   food_bonus:
@@ -8637,7 +8639,7 @@
     name: Fish Mint
     operator: ''
   name: Fish Mint Tea
-- category: Food
+- category: Cooking
   description: Though it is called tea, it is not made with tealeaves. This is a hot
     broth made from roastingand drying kelp, then boiling it in hot water.
   food_bonus:
@@ -8654,7 +8656,7 @@
       name: Skill Buff
     - level: 1
       name: Winter Skill Buff
-- category: Food
+- category: Cooking
   description: Kelp tea that has had plums added to it, creatinga sour flavor. This
     divine combination is certainto soothe tension and melt the most anxious heart.
   food_bonus:
@@ -8675,7 +8677,7 @@
     enchant:
     - level: 2
       name: Poison Resistance
-- category: Food
+- category: Cooking
   description: Plum kelp tea with a further addition of green tealeaves. According
     to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
   food_bonus:
@@ -8706,7 +8708,7 @@
       name: Luck Boost
     - level: 1
       name: Luck Buff
-- category: Food
+- category: Cooking
   description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
     horribly unsanitary. Only thetruly courageous are bold enough to consume it.
   food_bonus:
@@ -8724,7 +8726,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Cloudy white sake that is completely unfiltered.A blend of piercing
     sourness and potent rice flavor.
   food_bonus:
@@ -8749,7 +8751,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: 'A beverage made by converting rice into sugar.Be fooled not by its
     name: this draught containsno alcohol. It is gently sweet and energizing.'
   food_bonus:
@@ -8767,7 +8769,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Sake that has been filtered and heated until itruns clear. It has a
     rich flavor with just a hintof sweetness to balance out the refined taste.
   food_bonus:
@@ -8788,7 +8790,7 @@
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Sake truly cures all ills. This kind in particular hashad medicinal
     herbs added to it. It will bolster yourfortitude and give you some resistance
     to poison.
@@ -8810,7 +8812,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Sake that is made by refining polished riceand fermenting it over low
     heat. The resultis smooth, palatable, and incredibly fragrant.
   food_bonus:
@@ -8833,7 +8835,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Sake made by carefully selecting the finest grainsof rice and polishing
     them to perfection. Translucentand fragrant, it qualifies as a true work of art!
   food_bonus:
@@ -8856,7 +8858,7 @@
   name: Daiginjo Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains adds to its delectability.
   food_bonus:
@@ -8892,7 +8894,7 @@
     name: Buckwheat Shochu
     operator: ''
   name: Buckwheat Shochu
-- category: Food
+- category: Cooking
   description: An alcohol of the far west made from wheat.Its bitterness may be an
     acquired taste,but it certainly goes down smooth.
   food_bonus:
@@ -8929,7 +8931,7 @@
     - level: 5
       name: Fire Resistance
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Enhances the effect of an HP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8939,7 +8941,7 @@
     name: Health Powder
     operator: ''
   name: Health Water
-- category: Food
+- category: Cooking
   description: Enhances the effect of an SP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8949,7 +8951,7 @@
     name: Skill Powder
     operator: ''
   name: Skill Water
-- category: Food
+- category: Cooking
   description: Enhances the effect of a strength-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8959,7 +8961,7 @@
     name: Strength Powder
     operator: ''
   name: Strength Water
-- category: Food
+- category: Cooking
   description: Enhances the effect of a vitality-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8969,7 +8971,7 @@
     name: Vitality Powder
     operator: ''
   name: Vitality Water
-- category: Food
+- category: Cooking
   description: Enhances the effect of a magic-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8979,7 +8981,7 @@
     name: Magic Powder
     operator: ''
   name: Magic Water
-- category: Food
+- category: Cooking
   description: Enhances the effect of a luck-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8989,7 +8991,7 @@
     name: Luck Powder
     operator: ''
   name: Luck Water
-- category: Food
+- category: Cooking
   description: Enhances the effect of a fullness-boosting meal.Once you have mastered
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
@@ -8999,7 +9001,7 @@
     name: Fullness Powder
     operator: ''
   name: Fullness Water
-- category: Food
+- category: Cooking
   description: Invaluable medicine that boosts your HP.Let us drink to your continued
     good fortune!
   ingredients:
@@ -9010,7 +9012,7 @@
     name: Health Flakes
     operator: ''
   name: Health Medicine
-- category: Food
+- category: Cooking
   description: Invaluable medicine that boosts your strength.Let us drink to your
     continued good fortune!
   ingredients:
@@ -9021,7 +9023,7 @@
     name: Strength Flakes
     operator: ''
   name: Strength Medicine
-- category: Food
+- category: Cooking
   description: Invaluable medicine that boosts your vitality.Let us drink to your
     continued good fortune!
   ingredients:
@@ -9032,7 +9034,7 @@
     name: Vitality Flakes
     operator: ''
   name: Vitality Medicine
-- category: Food
+- category: Cooking
   description: Invaluable medicine that boosts your magic.Let us drink to your continued
     good fortune!
   ingredients:
@@ -9043,7 +9045,7 @@
     name: Magic Flakes
     operator: ''
   name: Magic Medicine
-- category: Food
+- category: Cooking
   description: Invaluable medicine that boosts your luck.Let us drink to your continued
     good fortune!
   ingredients:
@@ -9054,7 +9056,7 @@
     name: Luck Flakes
     operator: ''
   name: Luck Medicine
-- category: Food
+- category: Cooking
   description: Invaluable medicine that boosts your gusto.Let us drink to your continued
     good fortune!
   ingredients:

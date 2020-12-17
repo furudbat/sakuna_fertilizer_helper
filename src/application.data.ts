@@ -1,6 +1,7 @@
 import localForage from "localforage";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
 import { Inventory, ItemInventoryData } from "./inventory";
+import { ItemData } from "./item.data";
 import { DataSubject } from "./Observer";
 
 const STORAGE_KEY_ITEMS = 'items';

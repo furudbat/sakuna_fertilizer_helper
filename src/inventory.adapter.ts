@@ -4,6 +4,7 @@ import { site } from "./site";
 import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./observer";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
 import { ItemListAdapter } from "./itemlist.adapter";
+import { FoodItemData, ItemData } from "./item.data";
 
 
 const INVENTORY_PAGE_LENGTH = 7;
@@ -40,25 +41,25 @@ export class InventoryAdapter extends ItemListAdapter {
             switch (col) {
                 case 2:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'immunity');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'immunity');
                     break;
                 case 3:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'pesticide');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'pesticide');
                     break;
                 case 4:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'herbicide');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'herbicide');
                     break;
                 case 5:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'toxicity', true);
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'toxicity', true);
                     break;
                 case 6:
                     $(cell).addClass('text-center');
                     const item = rowData.item;
                     const food_item = item as FoodItemData;
-                    if (food_item.expiable !== undefined && food_item.expiable) {
+                    if (food_item?.expiable !== undefined && food_item?.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;

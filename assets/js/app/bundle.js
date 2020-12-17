@@ -55596,7 +55596,7 @@ var ApplicationData = (function () {
     return ApplicationData;
 }());
 exports.ApplicationData = ApplicationData;
-},{"./Observer":24,"./fertilizer-components":28,"./inventory":32,"localforage":12}],26:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer-components":29,"./inventory":34,"localforage":12}],26:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
@@ -55611,6 +55611,9 @@ var inventory_adapter_1 = require("./inventory.adapter");
 var inventory_1 = require("./inventory");
 var loggerManager_1 = require("typescript-logger/build/loggerManager");
 var material_itemlist_adapter_1 = require("./material-itemlist.adapter");
+var food_itemlist_adapter_1 = require("./food-itemlist.adapter");
+var item_data_1 = require("./item.data");
+var cooking_itemlist_adapter_1 = require("./cooking-itemlist.adapter");
 var MAX_SHOW_RECOMMENDED_ITEMS = 12;
 var Application = (function () {
     function Application() {
@@ -55622,9 +55625,7 @@ var Application = (function () {
     Application.prototype.init = function () {
         var that = this;
         this._appData.loadFromStorage().then(function () {
-            if (that._appData.items.length <= 0 || !site_1.USE_CACHE) {
-                that._appData.items = site_1.site.data.items;
-            }
+            that._appData.items = site_1.site.data.items;
             that.initSite();
         });
     };
@@ -55649,6 +55650,8 @@ var Application = (function () {
             that._appData.currentGuide = $(this).data('name');
         });
         this._materialItemListAdapter = new material_itemlist_adapter_1.MaterialItemListAdapter('#tblMaterialItemsList');
+        this._foodItemListAdapter = new food_itemlist_adapter_1.FoodItemListAdapter('#tblIngredientsItemsList');
+        this._cookingItemListAdapter = new cooking_itemlist_adapter_1.CookingItemListAdapter('#tblFoodItemsList');
         this._fertilizerAdapter = new fertilizer_adapter_1.FertilizerAdapter(this._appData);
         this._fertilizeComponentsAdapter = new fertilize_components_adapter_1.FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
         this._inventoryAdapter = new inventory_adapter_1.InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
@@ -55662,31 +55665,93 @@ var Application = (function () {
         this.updateRecommendedItems(this._fertilizerAdapter.data);
         this.initObservers();
     };
+    Application.prototype.getMaterialsItemList = function () {
+        return this._appData.items.filter(function (it) {
+            return it.category == 'Materials' ||
+                it.category == 'Materials/Food' ||
+                it.category == 'Materials/Cooking';
+        });
+    };
+    Application.prototype.getFoodItemList = function () {
+        return this._appData.items.filter(function (it) {
+            return it.category == 'Food' ||
+                it.category == 'Materials/Food';
+        });
+    };
+    Application.prototype.getCookingItemList = function () {
+        return this._appData.items.filter(function (it) {
+            return it.category == 'Cooking' || it.category == 'Food/Cooking';
+        });
+    };
     Application.prototype.initItemList = function () {
         if (this._materialItemListAdapter) {
             this._materialItemListAdapter.init();
-            var material_item_list = this._appData.items.filter(function (it) {
-                return it.category == 'Materials' ||
-                    it.category == 'Materials/Ingredients' ||
-                    it.category == 'Materials/Cooking' ||
-                    it.category == 'Material' ||
-                    it.category == 'Material/Food' ||
-                    it.category == 'Materials/Food' ||
-                    it.category == 'Materials/Cooking';
-            });
+            var material_item_list = this.getMaterialsItemList().filter(function (it) { return it.fertilizer_bonus !== undefined; });
             this.log.debug('initItemList material_item_list:', material_item_list);
             this._materialItemListAdapter.data = material_item_list;
+        }
+        if (this._foodItemListAdapter) {
+            this._foodItemListAdapter.init();
+            var food_item_list = this.getFoodItemList();
+            this.log.debug('initItemList food_item_list:', food_item_list);
+            this._foodItemListAdapter.data = food_item_list;
+        }
+        if (this._cookingItemListAdapter) {
+            this._cookingItemListAdapter.init();
+            var cooking_item_list = this.getCookingItemList();
+            this.log.debug('initItemList cooking_item_list:', cooking_item_list);
+            this._cookingItemListAdapter.data = cooking_item_list;
         }
         this.updateItemListEvents();
     };
     Application.prototype.updateItemListEvents = function () {
+        var that = this;
         if (this._materialItemListAdapter) {
-            var that = this;
             this._materialItemListAdapter.addItemToInventoryListener = function (item, amount) {
                 var _a;
                 (_a = that._inventoryAdapter) === null || _a === void 0 ? void 0 : _a.add(item, amount);
             };
         }
+        $('#btnSeasonalBuffNone').off('click').on('click', function () {
+            var _a;
+            var cooking_item_list = that.getCookingItemList();
+            (_a = that._cookingItemListAdapter) === null || _a === void 0 ? void 0 : _a.setSeasonData(undefined, cooking_item_list);
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffSpring').off('click').on('click', function () {
+            var _a;
+            var cooking_item_list = that.getCookingItemList();
+            (_a = that._cookingItemListAdapter) === null || _a === void 0 ? void 0 : _a.setSeasonData(item_data_1.SeasonBuff.Spring, cooking_item_list);
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffSummer').off('click').on('click', function () {
+            var _a;
+            var cooking_item_list = that.getCookingItemList();
+            (_a = that._cookingItemListAdapter) === null || _a === void 0 ? void 0 : _a.setSeasonData(item_data_1.SeasonBuff.Summer, cooking_item_list);
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffAutumn').off('click').on('click', function () {
+            var _a;
+            var cooking_item_list = that.getCookingItemList();
+            (_a = that._cookingItemListAdapter) === null || _a === void 0 ? void 0 : _a.setSeasonData(item_data_1.SeasonBuff.Autumn, cooking_item_list);
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffWinter').off('click').on('click', function () {
+            var _a;
+            var cooking_item_list = that.getCookingItemList();
+            (_a = that._cookingItemListAdapter) === null || _a === void 0 ? void 0 : _a.setSeasonData(item_data_1.SeasonBuff.Winter, cooking_item_list);
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#chbSeasonalBuffFilter').off('change').on('change', function () {
+            var _a;
+            var cooking_item_list = that.getCookingItemList();
+            (_a = that._cookingItemListAdapter) === null || _a === void 0 ? void 0 : _a.setSeasonFilter($(this).prop('checked'), cooking_item_list);
+        });
     };
     Application.prototype.initSettings = function () {
         $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
@@ -56010,7 +56075,334 @@ var RecommendedFertilizerData = (function () {
     }
     return RecommendedFertilizerData;
 }());
-},{"./application.data":25,"./fertilize-components.adapter":27,"./fertilizer.adapter":29,"./fertilizer.data":30,"./inventory":32,"./inventory.adapter":31,"./material-itemlist.adapter":35,"./site":36,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
+},{"./application.data":25,"./cooking-itemlist.adapter":27,"./fertilize-components.adapter":28,"./fertilizer.adapter":30,"./fertilizer.data":31,"./food-itemlist.adapter":32,"./inventory":34,"./inventory.adapter":33,"./item.data":35,"./material-itemlist.adapter":38,"./site":39,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CookingItemListAdapter = void 0;
+var item_data_1 = require("./item.data");
+var itemlist_adapter_1 = require("./itemlist.adapter");
+var CookingItemListAdapter = (function (_super) {
+    __extends(CookingItemListAdapter, _super);
+    function CookingItemListAdapter(table_selector, data, adapter_settings) {
+        if (data === void 0) { data = []; }
+        if (adapter_settings === void 0) { adapter_settings = {}; }
+        var _this = _super.call(this, "CookingItemListAdapter|" + table_selector) || this;
+        _this._table_selector = table_selector;
+        _this._data = data;
+        _this._adapter_settings = adapter_settings;
+        return _this;
+    }
+    Object.defineProperty(CookingItemListAdapter.prototype, "data", {
+        get: function () {
+            return this._data;
+        },
+        set: function (data) {
+            var _this = this;
+            var _a, _b;
+            this._data = data.map(function (it) { return it; });
+            var show_data = this._data;
+            if (this._adapter_settings.season_buff_filter) {
+                if (this._adapter_settings.season_buff !== undefined) {
+                    show_data = this._data.filter(function (it) { var _a; return it.season_buff === ((_a = _this._adapter_settings) === null || _a === void 0 ? void 0 : _a.season_buff); });
+                }
+            }
+            (_a = this._table) === null || _a === void 0 ? void 0 : _a.clear();
+            (_b = this._table) === null || _b === void 0 ? void 0 : _b.rows.add(show_data).draw();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    CookingItemListAdapter.prototype.setSeasonData = function (season_buff, data) {
+        this._adapter_settings.season_buff = season_buff;
+        this.data = data;
+    };
+    CookingItemListAdapter.prototype.setSeasonFilter = function (on_off, data) {
+        this._adapter_settings.season_buff_filter = on_off;
+        this.data = data;
+    };
+    CookingItemListAdapter.prototype.init = function (orderable, not_orderable, ordering) {
+        if (orderable === void 0) { orderable = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; }
+        if (not_orderable === void 0) { not_orderable = []; }
+        if (ordering === void 0) { ordering = undefined; }
+        var createdCell = function (cell, cellData, rowData, row, col) {
+            switch (col) {
+                case 1:
+                    $(cell).addClass('text-left');
+                    if (rowData.season_buff !== undefined) {
+                        switch (rowData.season_buff) {
+                            case item_data_1.SeasonBuff.Spring:
+                                $(cell).addClass('table-spring');
+                                break;
+                            case item_data_1.SeasonBuff.Summer:
+                                $(cell).addClass('table-summer');
+                                break;
+                            case item_data_1.SeasonBuff.Autumn:
+                                $(cell).addClass('table-autumn');
+                                break;
+                            case item_data_1.SeasonBuff.Winter:
+                                $(cell).addClass('table-winter');
+                                break;
+                        }
+                    }
+                    break;
+                case 3:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'hp');
+                    }
+                    break;
+                case 4:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'sp');
+                    }
+                    break;
+                case 5:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'strength');
+                    }
+                    break;
+                case 6:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'vitality');
+                    }
+                    break;
+                case 7:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'magic');
+                    }
+                    break;
+                case 8:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'luck');
+                    }
+                    break;
+                case 9:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'fullness');
+                    }
+                    break;
+            }
+        };
+        var that = this;
+        this._table = $(this._table_selector).DataTable({
+            ordering: ordering,
+            order: (orderable.find(function (it) { return it === 0; })) ? [[0, "asc"]] : undefined,
+            autoWidth: false,
+            responsive: true,
+            createdRow: function (row, data, dataIndex) {
+                $(row).attr('data-name', data.name);
+                $(row).attr('data-index', dataIndex);
+                var is_seasonal_buff = that._adapter_settings.season_buff !== undefined && data.season_buff === that._adapter_settings.season_buff;
+                if (is_seasonal_buff) {
+                    $(row).addClass('seasonal-buff-item');
+                }
+            },
+            columnDefs: [
+                {
+                    orderable: false,
+                    targets: not_orderable,
+                    createdCell: createdCell
+                },
+                {
+                    orderable: true,
+                    targets: orderable,
+                    createdCell: createdCell
+                }
+            ],
+            data: this._data,
+            columns: [
+                {
+                    data: 'name',
+                    render: function (data, type, row) {
+                        if (type === 'display') {
+                            var is_season_buff = that.isSeasonalBuff(row);
+                            var text_color = that.getSeasonalTextColor(row) + ((is_season_buff) ? ' seasonal-buff-name' : '');
+                            return "<span class=\"" + text_color + "\">" + data + "</span>";
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a;
+                        return (_a = row.season_buff) !== null && _a !== void 0 ? _a : '';
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        var is_season_buff = that.isSeasonalBuff(row);
+                        var season_buff_text_color = that.getSeasonalTextColor(row);
+                        var enchants = [];
+                        if (((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.enchant) !== undefined) {
+                            row.food_bonus.enchant.forEach(function (enchant) {
+                                enchants.push(enchant);
+                            });
+                        }
+                        if (is_season_buff && ((_b = row.season_food_bonus) === null || _b === void 0 ? void 0 : _b.enchant) !== undefined) {
+                            row.season_food_bonus.enchant.forEach(function (enchant) {
+                                var find_exist_enchant = false;
+                                for (var i = 0; i < enchants.length; i++) {
+                                    if (enchants[i].name == enchant.name) {
+                                        enchants[i] = { name: enchant.name, level: enchant.level, is_season_buff: is_season_buff };
+                                        find_exist_enchant = true;
+                                    }
+                                }
+                                if (!find_exist_enchant) {
+                                    enchants.push({ name: enchant.name, level: enchant.level, is_season_buff: is_season_buff });
+                                }
+                            });
+                            enchants.sort(function (a, b) { return ((a.is_season_buff) ? 1 : 0) - ((b.is_season_buff) ? 1 : 0); });
+                        }
+                        if (type === 'display') {
+                            var ret_1 = '<ul>';
+                            enchants.forEach(function (enchant) {
+                                var content = enchant.name + " " + enchant.level;
+                                var text_color = (enchant.is_season_buff) ? season_buff_text_color : '';
+                                ret_1 += "<li class=\"" + text_color + "\">" + content + "</li>";
+                            });
+                            ret_1 += '</ul>';
+                            return ret_1;
+                        }
+                        return (enchants !== undefined) ? enchants.map(function (it) { return it.name + " " + it.level; }).join(';') : '';
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.hp, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.hp);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.sp, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.sp);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.strength, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.strength);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.vitality, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.vitality);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.magic, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.magic);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.luck, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.luck);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b;
+                        return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.fullness, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.fullness);
+                    }
+                }
+            ]
+        });
+        this.updateUI();
+        var that = this;
+        this._table.on('draw.dt', function () {
+            that.updateUI();
+        });
+    };
+    CookingItemListAdapter.prototype.updateUI = function () {
+        this.initEvents();
+    };
+    CookingItemListAdapter.prototype.initEvents = function () {
+    };
+    CookingItemListAdapter.prototype.getFoodBuff = function (type, season_buff, season_value, value) {
+        var is_season_buff = this.isSeasonalBuffValue(season_buff);
+        var boost_value = this.getFoodBuffValue(season_buff, season_value, value);
+        if (type === 'display') {
+            var text_color = (this.getFoodBuffOnlySeasonValue(season_buff, season_value) != 0) ? 'seasonal-buff-state' : '';
+            var boost_value_html = CookingItemListAdapter.renderBuffBonusHtml(boost_value);
+            return (is_season_buff) ? "<span class=\"" + text_color + "\">" + boost_value_html + "</span>" : boost_value_html;
+        }
+        return boost_value;
+    };
+    CookingItemListAdapter.prototype.addColColorClassFromSeasonFoodBonus = function (cell, row, property_name, invert_color) {
+        if (invert_color === void 0) { invert_color = false; }
+        if (this.isSeasonalBuff(row)) {
+            CookingItemListAdapter.addColColorClassFromSeasonalFoodBonus(cell, row.season_food_bonus, row.food_bonus, property_name, invert_color);
+            return;
+        }
+        if (row.food_bonus !== undefined) {
+            CookingItemListAdapter.addColColorClassFromFoodBonus(cell, row.food_bonus, property_name, invert_color);
+        }
+    };
+    CookingItemListAdapter.prototype.getFoodBuffValue = function (season_buff, season_value, value) {
+        return (this.isSeasonalBuffValue(season_buff)) ? (value !== null && value !== void 0 ? value : 0) + (season_value !== null && season_value !== void 0 ? season_value : 0) : value !== null && value !== void 0 ? value : 0;
+    };
+    CookingItemListAdapter.prototype.getFoodBuffOnlySeasonValue = function (season_buff, season_value) {
+        return (this.isSeasonalBuffValue(season_buff)) ? season_value !== null && season_value !== void 0 ? season_value : 0 : 0;
+    };
+    CookingItemListAdapter.prototype.isSeasonalBuffValue = function (season_buff) {
+        return this._adapter_settings.season_buff !== undefined && season_buff === this._adapter_settings.season_buff;
+    };
+    CookingItemListAdapter.prototype.isSeasonalBuff = function (row) {
+        return this._adapter_settings.season_buff !== undefined && row.season_buff === this._adapter_settings.season_buff;
+    };
+    CookingItemListAdapter.prototype.getSeasonalTextColor = function (row) {
+        if (this.isSeasonalBuff(row)) {
+            if (row.season_buff !== undefined) {
+                switch (row.season_buff) {
+                    case item_data_1.SeasonBuff.Spring:
+                        return 'text-spring';
+                    case item_data_1.SeasonBuff.Summer:
+                        return 'text-summer';
+                    case item_data_1.SeasonBuff.Autumn:
+                        return 'text-autumn';
+                    case item_data_1.SeasonBuff.Winter:
+                        return 'text-winter';
+                }
+            }
+        }
+        return '';
+    };
+    return CookingItemListAdapter;
+}(itemlist_adapter_1.ItemListAdapter));
+exports.CookingItemListAdapter = CookingItemListAdapter;
+},{"./item.data":35,"./itemlist.adapter":36}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
@@ -56184,7 +56576,7 @@ var FertilizeComponentsAdapter = (function () {
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components":28,"./inventory":32,"./site":36,"typescript-logger":17}],28:[function(require,module,exports){
+},{"./fertilizer-components":29,"./inventory":34,"./site":39,"typescript-logger":17}],29:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerComponents = exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MAX_FERTILIZE_COMPONENTS = void 0;
@@ -56322,7 +56714,7 @@ var FertilizerComponents = (function () {
     return FertilizerComponents;
 }());
 exports.FertilizerComponents = FertilizerComponents;
-},{"./Observer":24,"./site":36,"console":6}],29:[function(require,module,exports){
+},{"./Observer":24,"./site":39,"console":6}],30:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -56806,7 +57198,7 @@ var FertilizerAdapter = (function () {
     return FertilizerAdapter;
 }());
 exports.FertilizerAdapter = FertilizerAdapter;
-},{"./Observer":24,"./fertilizer.data":30,"./itemlist.adapter":33,"./site":36,"chart.js":5,"console":6,"typescript-logger":17}],30:[function(require,module,exports){
+},{"./Observer":24,"./fertilizer.data":31,"./itemlist.adapter":36,"./site":39,"chart.js":5,"console":6,"typescript-logger":17}],31:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerData = exports.MAX_STATS = exports.MIN_STATS = exports.MAX_FERTILIZER = exports.MIN_FERTILIZER = void 0;
@@ -57216,7 +57608,244 @@ var FertilizerData = (function () {
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
-},{"./site":36}],31:[function(require,module,exports){
+},{"./site":39}],32:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FoodItemListAdapter = void 0;
+var itemlist_adapter_1 = require("./itemlist.adapter");
+var FoodItemListAdapter = (function (_super) {
+    __extends(FoodItemListAdapter, _super);
+    function FoodItemListAdapter(table_selector, data) {
+        if (data === void 0) { data = []; }
+        var _this = _super.call(this, "FoodItemListAdapter|" + table_selector) || this;
+        _this._table_selector = table_selector;
+        _this._data = data;
+        return _this;
+    }
+    Object.defineProperty(FoodItemListAdapter.prototype, "data", {
+        get: function () {
+            return this._data;
+        },
+        set: function (data) {
+            var _a, _b;
+            this._data = data.map(function (it) { return it; });
+            (_a = this._table) === null || _a === void 0 ? void 0 : _a.clear();
+            (_b = this._table) === null || _b === void 0 ? void 0 : _b.rows.add(this._data).draw();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    FoodItemListAdapter.prototype.init = function (orderable, not_orderable, ordering) {
+        if (orderable === void 0) { orderable = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; }
+        if (not_orderable === void 0) { not_orderable = []; }
+        if (ordering === void 0) { ordering = undefined; }
+        var createdCell = function (cell, cellData, rowData, row, col) {
+            switch (col) {
+                case 2:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'hp');
+                    }
+                    break;
+                case 3:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'sp');
+                    }
+                    break;
+                case 4:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'strength');
+                    }
+                    break;
+                case 5:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'vitality');
+                    }
+                    break;
+                case 6:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'magic');
+                    }
+                    break;
+                case 7:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'luck');
+                    }
+                    break;
+                case 8:
+                    $(cell).addClass('text-center');
+                    if (rowData.food_bonus !== undefined) {
+                        FoodItemListAdapter.addColColorClassFromFoodBonus(cell, rowData.food_bonus, 'fullness');
+                    }
+                    break;
+                case 9:
+                    $(cell).addClass('text-center');
+                    var food_item = rowData;
+                    if ((food_item === null || food_item === void 0 ? void 0 : food_item.expiable) !== undefined && (food_item === null || food_item === void 0 ? void 0 : food_item.expiable)) {
+                        $(cell).addClass('table-warning');
+                    }
+                    break;
+            }
+        };
+        var that = this;
+        this._table = $(this._table_selector).DataTable({
+            ordering: ordering,
+            order: (orderable.find(function (it) { return it === 0; })) ? [[0, "asc"]] : undefined,
+            autoWidth: false,
+            responsive: true,
+            createdRow: function (row, data, dataIndex) {
+                $(row).attr('data-name', data.name);
+                $(row).attr('data-index', dataIndex);
+            },
+            columnDefs: [
+                {
+                    orderable: false,
+                    targets: not_orderable,
+                    createdCell: createdCell
+                },
+                {
+                    orderable: true,
+                    targets: orderable,
+                    createdCell: createdCell
+                }
+            ],
+            data: this._data,
+            columns: [
+                {
+                    data: 'name',
+                    render: function (data, type) {
+                        return data;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            if (((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.enchant) !== undefined && row.food_bonus.enchant) {
+                                var ret_1 = '<ul>';
+                                (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.enchant.forEach(function (enchant) {
+                                    var name = enchant.name;
+                                    var level = enchant.level;
+                                    ret_1 += "<li>" + name + " " + level + "</li>";
+                                });
+                                ret_1 += '</ul>';
+                                return ret_1;
+                            }
+                            return '';
+                        }
+                        return (((_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.enchant) !== undefined) ? row.food_bonus.enchant.map(function (it) { return it.name + " " + it.level; }).join(';') : '';
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.hp);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.hp) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.sp);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.sp) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.strength);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.strength) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.vitality);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.vitality) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.magic);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.magic) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.luck);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.luck) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.fullness);
+                        }
+                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.fullness) !== null && _c !== void 0 ? _c : 0;
+                    }
+                },
+                {
+                    data: null,
+                    render: FoodItemListAdapter.renderExpiable
+                }
+            ]
+        });
+        this.updateUI();
+        var that = this;
+        this._table.on('draw.dt', function () {
+            that.updateUI();
+        });
+    };
+    FoodItemListAdapter.prototype.updateUI = function () {
+        this.initEvents();
+    };
+    FoodItemListAdapter.prototype.initEvents = function () {
+    };
+    return FoodItemListAdapter;
+}(itemlist_adapter_1.ItemListAdapter));
+exports.FoodItemListAdapter = FoodItemListAdapter;
+},{"./itemlist.adapter":36}],33:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -57264,25 +57893,25 @@ var InventoryAdapter = (function (_super) {
             switch (col) {
                 case 2:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'immunity');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'immunity');
                     break;
                 case 3:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'pesticide');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'pesticide');
                     break;
                 case 4:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'herbicide');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'herbicide');
                     break;
                 case 5:
                     $(cell).addClass('text-center');
-                    InventoryAdapter.addColColorClass(cell, cellData, 'toxicity', true);
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'toxicity', true);
                     break;
                 case 6:
                     $(cell).addClass('text-center');
                     var item = rowData.item;
                     var food_item = item;
-                    if (food_item.expiable !== undefined && food_item.expiable) {
+                    if ((food_item === null || food_item === void 0 ? void 0 : food_item.expiable) !== undefined && (food_item === null || food_item === void 0 ? void 0 : food_item.expiable)) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -57573,7 +58202,7 @@ var InventoryAdapter = (function (_super) {
     return InventoryAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
 exports.InventoryAdapter = InventoryAdapter;
-},{"./inventory":32,"./itemlist.adapter":33,"./site":36}],32:[function(require,module,exports){
+},{"./inventory":34,"./itemlist.adapter":36,"./site":39}],34:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = exports.MAX_ITEMS_AMOUNT_INVENTORY = exports.MIN_ITEMS_AMOUNT_INVENTORY = void 0;
@@ -57734,10 +58363,35 @@ var Inventory = (function () {
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{"./Observer":24,"./application.data":25,"./fertilizer-components":28,"./site":36,"console":6}],33:[function(require,module,exports){
+},{"./Observer":24,"./application.data":25,"./fertilizer-components":29,"./site":39,"console":6}],35:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ItemListAdapter = exports.render_soil_nutrients_html = exports.render_value = exports.render_buff_bonus = exports.render_buff_bonus_html = exports.render_value_html = void 0;
+exports.SeasonBuff = exports.EnemyDropTime = exports.FindInSeason = void 0;
+var FindInSeason;
+(function (FindInSeason) {
+    FindInSeason["Always"] = "Always";
+    FindInSeason["Spring"] = "Spring";
+    FindInSeason["Summer"] = "Summer";
+    FindInSeason["Autumn"] = "Autumn";
+    FindInSeason["Winter"] = "Winter";
+})(FindInSeason = exports.FindInSeason || (exports.FindInSeason = {}));
+var EnemyDropTime;
+(function (EnemyDropTime) {
+    EnemyDropTime["Always"] = "Always";
+    EnemyDropTime["Day"] = "Day";
+    EnemyDropTime["Night"] = "Night";
+})(EnemyDropTime = exports.EnemyDropTime || (exports.EnemyDropTime = {}));
+var SeasonBuff;
+(function (SeasonBuff) {
+    SeasonBuff["Spring"] = "Spring";
+    SeasonBuff["Summer"] = "Summer";
+    SeasonBuff["Autumn"] = "Autumn";
+    SeasonBuff["Winter"] = "Winter";
+})(SeasonBuff = exports.SeasonBuff || (exports.SeasonBuff = {}));
+},{}],36:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItemListAdapter = exports.render_soil_nutrients_html = exports.render_value = exports.render_value_from_property = exports.render_buff_bonus = exports.render_buff_bonus_html = exports.render_value_html = void 0;
 var typescript_logger_1 = require("typescript-logger");
 var site_1 = require("./site");
 function hasProperty(o, propertyName) {
@@ -57799,9 +58453,19 @@ function render_buff_bonus(property_name, invert_color, overflow) {
 }
 exports.render_buff_bonus = render_buff_bonus;
 ;
-function render_value(property_name) {
+function render_value_from_property(property_name) {
     return function (data, type, row) {
         var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        if (type === 'display') {
+            return render_value_html(value);
+        }
+        return value;
+    };
+}
+exports.render_value_from_property = render_value_from_property;
+;
+function render_value(value) {
+    return function (data, type, row) {
         if (type === 'display') {
             return render_value_html(value);
         }
@@ -57850,15 +58514,18 @@ var ItemListAdapter = (function () {
         if (overflow === void 0) { overflow = false; }
         return render_buff_bonus(property_name, invert_color, overflow);
     };
-    ItemListAdapter.renderValue = function (property_name) {
-        return render_value(property_name);
+    ItemListAdapter.renderValueFromProperty = function (property_name) {
+        return render_value_from_property(property_name);
+    };
+    ItemListAdapter.renderValueHtml = function (value) {
+        return render_value_html(value);
     };
     ItemListAdapter.renderShortExpiable = function (data, type, row) {
         if (type === 'display') {
             if (row.expiable !== undefined && row.expiable) {
-                return '<i class="fas fa-skull"></i>';
+                return site_1.site.data.strings.fertilizer_helper.inventory.expiable.in_days_short;
             }
-            return '<i class="fas fa-infinity"></i>';
+            return site_1.site.data.strings.fertilizer_helper.inventory.expiable.infinity;
         }
         return (row.expiable) ? true : false;
     };
@@ -57870,14 +58537,31 @@ var ItemListAdapter = (function () {
                 }
                 return site_1.site.data.strings.fertilizer_helper.inventory.expiable.in_days_unknown;
             }
-            return '<i class="fas fa-infinity"></i>';
+            return site_1.site.data.strings.fertilizer_helper.inventory.expiable.infinity;
         }
         return (row.expiable) ? true : false;
+    };
+    ItemListAdapter.addColColorClassFromFertilizerBonus = function (cell, fertilizer_bonus, property_name, invert_color) {
+        if (invert_color === void 0) { invert_color = false; }
+        var value = (hasProperty(fertilizer_bonus, property_name)) ? getProperty(fertilizer_bonus, property_name) : 0;
+        ItemListAdapter.addColColorClassFromValue(cell, value, invert_color);
+    };
+    ItemListAdapter.addColColorClassFromFoodBonus = function (cell, food_bonus, property_name, invert_color) {
+        if (invert_color === void 0) { invert_color = false; }
+        var value = (hasProperty(food_bonus, property_name)) ? getProperty(food_bonus, property_name) : 0;
+        ItemListAdapter.addColColorClassFromValue(cell, value, invert_color);
     };
     ItemListAdapter.addColColorClass = function (cell, fertilizer_bonus, property_name, invert_color) {
         if (invert_color === void 0) { invert_color = false; }
         var value = (hasProperty(fertilizer_bonus, property_name)) ? getProperty(fertilizer_bonus, property_name) : 0;
         ItemListAdapter.addColColorClassFromValue(cell, value, invert_color);
+    };
+    ItemListAdapter.addColColorClassFromSeasonalFoodBonus = function (cell, seasonal_food_bonus, food_bonus, property_name, invert_color) {
+        var _a, _b;
+        if (invert_color === void 0) { invert_color = false; }
+        var seasonal_value = (seasonal_food_bonus !== undefined) ? (_a = ((hasProperty(seasonal_food_bonus, property_name)) ? getProperty(seasonal_food_bonus, property_name) : 0)) !== null && _a !== void 0 ? _a : 0 : 0;
+        var value = (food_bonus !== undefined) ? (_b = ((hasProperty(food_bonus, property_name)) ? getProperty(food_bonus, property_name) : 0)) !== null && _b !== void 0 ? _b : 0 : 0;
+        ItemListAdapter.addColColorClassFromValue(cell, seasonal_value + value, invert_color);
     };
     ItemListAdapter.addColColorClassFromValue = function (cell, value, invert_color) {
         if (invert_color === void 0) { invert_color = false; }
@@ -57894,7 +58578,7 @@ var ItemListAdapter = (function () {
     return ItemListAdapter;
 }());
 exports.ItemListAdapter = ItemListAdapter;
-},{"./site":36,"typescript-logger":17}],34:[function(require,module,exports){
+},{"./site":39,"typescript-logger":17}],37:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");
@@ -57907,7 +58591,7 @@ $(function () {
     var app = new application_1.Application();
     app.init();
 });
-},{"./application":26,"./site":36,"typescript-logger":17}],35:[function(require,module,exports){
+},{"./application":26,"./site":39,"typescript-logger":17}],38:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -57940,10 +58624,7 @@ var MaterialItemListAdapter = (function (_super) {
         },
         set: function (data) {
             var _a, _b;
-            if (data.find(function (it) { return it.fertilizer_bonus === undefined; }) !== undefined) {
-                this.log.warn('data without fertilizer_bonus got filtered out');
-            }
-            this._data = data.filter(function (it) { return it.fertilizer_bonus !== undefined; });
+            this._data = data.map(function (it) { return it; });
             (_a = this._table) === null || _a === void 0 ? void 0 : _a.clear();
             (_b = this._table) === null || _b === void 0 ? void 0 : _b.rows.add(this._data).draw();
         },
@@ -57963,48 +58644,68 @@ var MaterialItemListAdapter = (function (_super) {
                     break;
                 case 3:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'yield_hp');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'yield_hp');
+                    }
                     break;
                 case 4:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'taste_strength');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'taste_strength');
+                    }
                     break;
                 case 5:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'hardness_vitality');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'hardness_vitality');
+                    }
                     break;
                 case 6:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'stickiness_gusto');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'stickiness_gusto');
+                    }
                     break;
                 case 7:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'aesthetic_luck');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'aesthetic_luck');
+                    }
                     break;
                 case 8:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'armor_magic');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'armor_magic');
+                    }
                     break;
                 case 9:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'immunity');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'immunity');
+                    }
                     break;
                 case 10:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'pesticide');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'pesticide');
+                    }
                     break;
                 case 11:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'herbicide');
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'herbicide');
+                    }
                     break;
                 case 12:
                     $(cell).addClass('text-center');
-                    MaterialItemListAdapter.addColColorClass(cell, cellData, 'toxicity', true);
+                    if (rowData.fertilizer_bonus !== undefined) {
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'toxicity', true);
+                    }
                     break;
                 case 13:
                     $(cell).addClass('text-center');
                     var food_item = rowData;
-                    if (food_item.expiable !== undefined && food_item.expiable) {
+                    if ((food_item === null || food_item === void 0 ? void 0 : food_item.expiable) !== undefined && (food_item === null || food_item === void 0 ? void 0 : food_item.expiable)) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -58047,53 +58748,117 @@ var MaterialItemListAdapter = (function (_super) {
                     }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: function (data, type) {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
                         if (type === 'display') {
-                            return MaterialItemListAdapter.renderSoilNutrientsHtml(data);
+                            if (row.fertilizer_bonus !== undefined) {
+                                return MaterialItemListAdapter.renderSoilNutrientsHtml(row.fertilizer_bonus);
+                            }
+                            return '';
                         }
-                        return [data.leaf_fertilizer, data.kernel_fertilizer, data.root_fertilizer].join(';');
+                        return (row.fertilizer_bonus !== undefined) ? [(_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.leaf_fertilizer, (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.kernel_fertilizer, (_c = row.fertilizer_bonus) === null || _c === void 0 ? void 0 : _c.root_fertilizer].join(';') : '';
                     }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('yield_hp')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.yield_hp);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.yield_hp) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('taste_strength')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.taste_strength);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.taste_strength) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('hardness_vitality')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.hardness_vitality);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.hardness_vitality) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('stickiness_gusto')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.stickiness_gusto);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.stickiness_gusto) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('aesthetic_luck')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.aesthetic_luck);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.aesthetic_luck) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('armor_magic')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.armor_magic);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.armor_magic) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('immunity')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.immunity);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.immunity) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('pesticide')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.pesticide);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.pesticide) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('herbicide')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.herbicide);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.herbicide) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: MaterialItemListAdapter.renderValue('toxicity')
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a, _b, _c;
+                        if (type === 'display') {
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.toxicity);
+                        }
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.toxicity) !== null && _c !== void 0 ? _c : 0;
+                    }
                 },
                 {
                     data: null,
@@ -58125,7 +58890,7 @@ var MaterialItemListAdapter = (function (_super) {
     return MaterialItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
 exports.MaterialItemListAdapter = MaterialItemListAdapter;
-},{"./itemlist.adapter":33}],36:[function(require,module,exports){
+},{"./itemlist.adapter":36}],39:[function(require,module,exports){
 'use strict';
 String.prototype.format = function () {
     var args = arguments;
@@ -58208,5 +58973,5 @@ module.exports = {
     makeDoubleClick: makeDoubleClick,
     clamp: clamp
 };
-},{}]},{},[34])
+},{}]},{},[37])
 //# sourceMappingURL=bundle.js.map

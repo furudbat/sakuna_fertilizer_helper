@@ -1,3 +1,5 @@
+import { ItemData } from "./item.data";
+
 export interface SiteValue {
     data: {
         assets_url: string,

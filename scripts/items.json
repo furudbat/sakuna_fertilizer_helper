@@ -6,7 +6,7 @@
     },
     {
         "name": "Beast Hoof",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "ManureBase",
         "description": "This is a base component of Leaf Fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
@@ -54,7 +54,7 @@
     },
     {
         "name": "Beast Manure",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "ManureBase",
         "description": "This is a base component of Kernel Fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
@@ -91,7 +91,7 @@
     },
     {
         "name": "Fallen Leaves",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "ManureBase",
         "description": "This is a base component of Root Fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
@@ -151,7 +151,7 @@
     },
     {
         "name": "Oil Cake",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "ManureBase",
         "description": "This is a base component for any fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
@@ -182,7 +182,7 @@
     },
     {
         "name": "Powder of Transformation",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Ah,  how rare! This powder alters the flow of time,  allowing fertilizer to be completed immediately.",
         "find_in": [
@@ -225,13 +225,13 @@
     },
     {
         "name": "Orb of Transformation",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "A divine fruit grown from the Tree of Creation.Its very essence is ripe with spiritual energy.How shall we put its power to use,  Princess?"
     },
     {
         "name": "Revitalizing Remedy",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A chemical that revitalizes life,  returning plants from their weakened state. If you mix it in withfertilizer,  it will cure some rice disorders.",
         "fertilizer_bonus": {
@@ -253,7 +253,7 @@
     },
     {
         "name": "Reducing Remedy",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A chemical that reduces excess,  restoring plantsto their proper balance. If you mix it in withfertilizer,  it will cure some rice disorders.",
         "fertilizer_bonus": {
@@ -275,7 +275,7 @@
     },
     {
         "name": "Eradicating Remedy",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A chemical that wards off pests,  saving plants from invasive insects. If you mix it in withfertilizer,  it will cure some rice disorders.",
         "fertilizer_bonus": {
@@ -297,49 +297,49 @@
     },
     {
         "name": "Health's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Health Pollution."
     },
     {
         "name": "Skill's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Skill Pollution."
     },
     {
         "name": "Fullness' Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Fullness Pollution."
     },
     {
         "name": "Strength's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Strength Pollution."
     },
     {
         "name": "Vitality's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Vitality Pollution."
     },
     {
         "name": "Magic's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Magic Pollution."
     },
     {
         "name": "Luck's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Luck Pollution."
     },
     {
         "name": "Gusto's Bounty",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "Power that was lost when demons ruined our fields.Spread it as fertilizer and your powers shall be restored ,  purifying the land of Gusto Pollution."
     },
@@ -366,7 +366,7 @@
     },
     {
         "name": "Clay",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This earth is soft,  viscous,  and easy to process.",
         "fertilizer_bonus": {
@@ -389,7 +389,7 @@
     },
     {
         "name": "Stone",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A stone chunk that could be used for almost anything.Unfortunately,  its quality leaves much to be desired.",
         "fertilizer_bonus": {
@@ -422,7 +422,7 @@
     },
     {
         "name": "Copper Ore",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This ore has long been used as a material to craftcertain metals.",
         "fertilizer_bonus": {
@@ -451,7 +451,7 @@
     },
     {
         "name": "Iron Ore",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves into masters of the craft.",
         "fertilizer_bonus": {
@@ -486,7 +486,7 @@
     },
     {
         "name": "Jade",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Jade is known to have miraculous powers. Not onlyis it used as currency,  but it is revered by manyas a ceremonial implement as well.",
         "fertilizer_bonus": {
@@ -510,7 +510,7 @@
     },
     {
         "name": "Obsidian",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Iridescent obsidian such as this is said to beexceptionally rare. No doubt it would make for finecrafting material.",
         "fertilizer_bonus": {
@@ -534,7 +534,7 @@
     },
     {
         "name": "Gold Ore",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "The glister of gold is the spark which ignitesthe flames of war. Do be careful not to becometoo enthralled by it,  Princess.",
         "fertilizer_bonus": {
@@ -557,7 +557,7 @@
     },
     {
         "name": "Stainless Steel",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This is steel from Dharka,  a country that lies farto the west,  and it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.",
         "fertilizer_bonus": {
@@ -574,7 +574,7 @@
     },
     {
         "name": "Cloudy Crystal",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A jewel formed from the dense Clouds of Beginning,  which separate the two realms. Just one of thesecontains enough power to create a small island.",
         "fertilizer_bonus": {
@@ -588,7 +588,7 @@
     },
     {
         "name": "Wood",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This wood can be used in various ways.Unfortunately,  its quality leaves much to be desired.",
         "fertilizer_bonus": {
@@ -627,7 +627,7 @@
     },
     {
         "name": "High Quality Oak",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This is hard,  sturdy wood. I wager it could be crafted into a fine tool.",
         "fertilizer_bonus": {
@@ -650,7 +650,7 @@
     },
     {
         "name": "Bamboo",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A plant that is neither tree nor grass. Indeed,  it is difficult to classify... Nevertheless,  bamboo is quite flexible and easy to process.",
         "fertilizer_bonus": {
@@ -688,7 +688,7 @@
     },
     {
         "name": "Ironwood",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This wood is not only hard,  but resistant to water,  meaning that it is slow to rot. Thus,  its appellation is well deserved.",
         "fertilizer_bonus": {
@@ -699,13 +699,13 @@
     },
     {
         "name": "Elder Elm",
-        "category": "Material",
+        "category": "Materials/Misc",
         "sub_category": "Material",
         "description": "The origin of all Yanato elm trees,  nearly as old as the Lofty Realm itself. The quality of its woodis unsurpassed,  but it's as rare as it is ancient."
     },
     {
         "name": "Hemp",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This grass fiber is indispensable for weaving.",
         "fertilizer_bonus": {
@@ -722,7 +722,7 @@
     },
     {
         "name": "Sedge",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This plant is often used to craft straw hats and raincoats. I have heard that it is easierto raise in humid climes.",
         "fertilizer_bonus": {
@@ -750,7 +750,7 @@
     },
     {
         "name": "Hemp Palm",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Bark imported from a southern country.It rivals straw in its ease of use.",
         "fertilizer_bonus": {
@@ -760,7 +760,7 @@
     },
     {
         "name": "Leaf of Creation",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Aha,  so you found an untainted leaf from Hinoe'sTree of Creation? If you can gather enough to useas materials,  I imagine you'll gain untold power.",
         "fertilizer_bonus": {
@@ -772,7 +772,7 @@
     },
     {
         "name": "Cork Tree Branch",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This golden tree branch can be used to createa stunning yellow dye. Strip the bark and seeits brilliant hue for yourself!",
         "fertilizer_bonus": {
@@ -795,7 +795,7 @@
     },
     {
         "name": "Murasaki Root",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This plant root can be used to create purple dye.It thrives in soil that gets regular runoff exposure.",
         "fertilizer_bonus": {
@@ -812,7 +812,7 @@
     },
     {
         "name": "Madder",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A root which is used to make red dyes. It can befound in the mountainous regions of this island.",
         "fertilizer_bonus": {
@@ -835,7 +835,7 @@
     },
     {
         "name": "Indigo Scale",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A fish scale that can be turned into a bluish-purpledye,  if it's crushed and mixed with the right plants.",
         "fertilizer_bonus": {
@@ -846,7 +846,7 @@
     },
     {
         "name": "Silk",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This is a fiber produced by the thread of silkworms,  which were brought over from the country of Ouka.",
         "fertilizer_bonus": {
@@ -855,7 +855,7 @@
     },
     {
         "name": "Spirit Thread",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A miraculous thread selected from the finest silk.It is both a delight to the eyes and strong enoughto repel blades. It should make an excellent outfit.",
         "fertilizer_bonus": {
@@ -864,7 +864,7 @@
     },
     {
         "name": "Washi Paper",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Yanato's highest quality paper,  said to lastfor a thousand years. In fact,  it's strongenough you can even make clothes out if it.",
         "fertilizer_bonus": {
@@ -874,7 +874,7 @@
     },
     {
         "name": "Demonic Braid",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "How ominous... This cord appears to have been wovenwith the accursed power of a multitude of demons.May we find a way to bring some good out of it.",
         "fertilizer_bonus": {
@@ -883,7 +883,7 @@
     },
     {
         "name": "Thunderous Tasuki",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A cord that is used to tie up kimono sleeves.This one contains the power of lightning,  the ultimate expression of wood energy.",
         "fertilizer_bonus": {
@@ -892,7 +892,7 @@
     },
     {
         "name": "Beast Hide",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "The skinned hide of a most ferocious demon.It can be tanned into durable leather.",
         "fertilizer_bonus": {
@@ -901,7 +901,7 @@
     },
     {
         "name": "Deer Antler",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Taken from the skull of a deer demon. It can be usedin its current state,  or processed into an evenhigher-quality material.",
         "fertilizer_bonus": {
@@ -911,7 +911,7 @@
     },
     {
         "name": "Demonic Pearl",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A jewel formed inside the shell of a demon clam.Apparently its devolution into demonhood has onlyserved to increase the quality of its pearl.",
         "fertilizer_bonus": {
@@ -920,7 +920,7 @@
     },
     {
         "name": "Ashigumo Shuriken",
-        "category": "Materials/Misc",
+        "category": "Misc",
         "sub_category": "Material",
         "description": "This is a throwing needle of the Ashigumo tribe,  who you mercifully defeated. Even now,  it holdsa lingering manifestation of their loyal spirits.",
         "enemy_drops": [
@@ -933,7 +933,7 @@
     },
     {
         "name": "Black Deer Leather",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "The resilient hide of a black deer demon.When I close my eyes,  I can still vividlysee your fierce battle with the beast!",
         "fertilizer_bonus": {
@@ -943,7 +943,7 @@
     },
     {
         "name": "Pheasant Feather",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A silver feather plucked from a demon pheasant.Faint light emanates from it.",
         "fertilizer_bonus": {
@@ -953,7 +953,7 @@
     },
     {
         "name": "Boar Tusk",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A tremendous tusk,  taken from a boar that hadtransformed into a mighty demon.",
         "fertilizer_bonus": {
@@ -963,7 +963,7 @@
     },
     {
         "name": "Badger Leaf",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Ah,  was this attached to a demon badger's forehead?It's teeming with magical power. They must be moreselective in choosing their leaves than I thought.",
         "fertilizer_bonus": {
@@ -973,7 +973,7 @@
     },
     {
         "name": "Bear Hide",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Oho,  the hide of a demon bear. Even in this form,  it exudes power and seems difficult to work with.It will certainly make for a high-quality material.",
         "fertilizer_bonus": {
@@ -983,7 +983,7 @@
     },
     {
         "name": "Crane Feather",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A feather belonging to Yui,  an exceptionally rarespirit crane. If turned into thread,  it could be woveninto an unparalleled garment.",
         "fertilizer_bonus": {
@@ -992,7 +992,7 @@
     },
     {
         "name": "Dragon Bone",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A vertebra once belonging to Omizuchi,  gifted to usby Lady Kamuhitsuki. If we combine it with the Edgeof Hoshidama,  it shall create an all-powerful weapon.",
         "fertilizer_bonus": {
@@ -1003,7 +1003,7 @@
     },
     {
         "name": "Dragon Scale",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Oho,  a scale taken from the great Omizuchi himself.It appears to be hard enough to deflect any weapon.",
         "fertilizer_bonus": {
@@ -1014,7 +1014,7 @@
     },
     {
         "name": "Moonlit Stone",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A stone that has been exposed to moonlightfor an incredibly long time. Perhaps we canextract its inner earth energy for ourselves.",
         "enemy_drops": [
@@ -1023,11 +1023,14 @@
                 "time": "Night"
             }
         ],
-        "time_of_day": "Night"
+        "time_of_day": "Night",
+        "fertilizer_bonus": {
+            "toxicity": -20
+        }
     },
     {
         "name": "Branching Flower",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "This flower only blooms at night on mighty treesthat have absorbed an abundance of wood energy.",
         "fertilizer_bonus": {
@@ -1051,7 +1054,7 @@
     },
     {
         "name": "Aqueous Droplet",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A semi-solid drop of condensed water energy,  anchored in place amidst the sundering flow.",
         "fertilizer_bonus": {
@@ -1077,7 +1080,7 @@
     },
     {
         "name": "Flaming Core",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "A glowing red fragment of hardened lava that holdsa wealth of fire energy deep in its molten core.",
         "fertilizer_bonus": {
@@ -1097,7 +1100,7 @@
     },
     {
         "name": "Metallic Sand",
-        "category": "Material",
+        "category": "Materials",
         "sub_category": "Material",
         "description": "Sand that was ground down into miniscule particlesover the ages. It would take a god of the forgeto extract the metal energy radiating within it.",
         "fertilizer_bonus": {
@@ -5594,7 +5597,7 @@
     },
     {
         "name": "Cooked Brown Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Firm and fragrant brown rice, boiled to perfection.Eat up before it gets cold.",
         "ingredients": [
             {
@@ -5622,7 +5625,7 @@
     },
     {
         "name": "Cooked Mixed Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "This mixed rice is boiled to perfection.Every bite is rich in flavor and nutrients.",
         "ingredients": [
             {
@@ -5649,7 +5652,7 @@
     },
     {
         "name": "Cooked White Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "White rice boiled to perfection. Each glisteninggrain is your reward for months of painstaking toil.",
         "ingredients": [
             {
@@ -5674,7 +5677,7 @@
     },
     {
         "name": "Steamed Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "White rice that has been steamed with sake,amplifying its natural sweetness.",
         "ingredients": [
             {
@@ -5786,7 +5789,7 @@
     },
     {
         "name": "Sansai Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Rice that has been steamed with sake and mixedwith wild vegetables. The rustic, crispy crunchof this dish will make one's heart sing.",
         "ingredients": [
             {
@@ -5903,7 +5906,7 @@
     },
     {
         "name": "Chestnut Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Rice that has been steamed with sake and mixed withchestnuts. The steaming enhances the chestnuts'natural sweetness to create a dish for any palate.",
         "ingredients": [
             {
@@ -6025,7 +6028,7 @@
     },
     {
         "name": "Ginkgo Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Rice that has been steamed with sake and mixed withginkgo nuts. Savor the ingredient's enhanced flavor.",
         "ingredients": [
             {
@@ -6147,7 +6150,7 @@
     },
     {
         "name": "Fried Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Boiled rice that has been fried in a splashof soy sauce. Both its fragrance and textureare simply irresistable.",
         "ingredients": [
             {
@@ -6183,7 +6186,7 @@
     },
     {
         "name": "Sekihan",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Red rice that has been steamed in a vat.A fascinating blend of salty and sweetthat calls to mind a celebratory mood.",
         "ingredients": [
             {
@@ -6229,7 +6232,7 @@
     },
     {
         "name": "Mixed Grain Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Five types of rice that have been mixed and steamedtogether. A highly nutritious meal, its five colorsguarantee ever-changing flavor with every bite.",
         "ingredients": [
             {
@@ -6289,7 +6292,7 @@
     },
     {
         "name": "Cooked Sanwa Millet",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A meal made of cooked Sanwa Millet.Satisfying, but it doesn't compareto the piquant taste of rice.",
         "main_ingredients": [
             {
@@ -6320,7 +6323,7 @@
     },
     {
         "name": "Dried Boiled Rice",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Dried cooked rice that has been rehydratedwith boiling water. It has a rather lightflavor, similar to porridge.",
         "price": 1,
@@ -6353,7 +6356,7 @@
     },
     {
         "name": "Sanwa Millet Porridge",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making ita perfect meal for the bedridden.",
         "main_ingredients": [
             {
@@ -6407,7 +6410,7 @@
     },
     {
         "name": "Seven Herb Porridge",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor heralds the arrival of spring.",
         "main_ingredients": [
             {
@@ -6477,7 +6480,7 @@
     },
     {
         "name": "Sanwa Millet Zosui",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A meal made of Sanwa Millet boiledwith rice. It is bound to warm youto the core on chilly evenings.",
         "main_ingredients": [
             {
@@ -6616,7 +6619,7 @@
     },
     {
         "name": "Sanwa Millet Chazuke",
-        "category": "Food",
+        "category": "Cooking",
         "description": "White rice soaked in tea and sprinkled withsoy sauce. Silky smooth for easy digestion,with an irresistably invigorating aftertaste.",
         "main_ingredients": [
             {
@@ -6710,7 +6713,7 @@
     },
     {
         "name": "Salmon Chazuke",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Chazuke bedecked with mouth-wateringly good,bite-sized pieces of savory salted salmon.A match made in the Lofty Realm!",
         "ingredients": [
             {
@@ -6781,7 +6784,7 @@
     },
     {
         "name": "Matsutake Chazuke",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Chazuke garnished with matsutake mushrooms,which are a rare delicacy on Hinoe Island.How decadent! What lies beyond this luxury?",
         "ingredients": [
             {
@@ -6856,7 +6859,7 @@
     },
     {
         "name": "Aburi Mochi",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enticingly aromatic, puffy mochi that has beentoasted over a fire. You may be tempted to digright in, but do be careful! It's quite hot.",
         "ingredients": [
             {
@@ -6877,7 +6880,7 @@
     },
     {
         "name": "Basket Clam Bowl",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Top a bowl of rice with a bit of sauce and someBasket Clam to create a truly delectable meal!Yanato's culinary ingenuity never ceases to amaze.",
         "main_ingredients": [
             {
@@ -7135,7 +7138,7 @@
     },
     {
         "name": "Duck Egg Bowl",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Grilled duck meat and fluffy eggs atop a bowl ofrice. The delectably fatty meat fuses with the eggsto deliver its lucky devourer to taste nirvana.",
         "ingredients": [
             {
@@ -7296,7 +7299,7 @@
     },
     {
         "name": "Persimmon Ten-don",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Persimmon tempura atop a bowl of rice,with a heaping helping of salty-sweet sauce.I could eat this for eternity.",
         "main_ingredients": [
             {
@@ -7656,7 +7659,7 @@
     },
     {
         "name": "Udon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Thick noodles made by combining wheat flourwith salt and water. They slide down the throatwith glorious ease.",
         "ingredients": [
             {
@@ -7683,7 +7686,7 @@
     },
     {
         "name": "Kitsune Udon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Adding fried tofu to udon creates a simply divinebroth. Fried tofu is a famed favorite of fox gods,and thus I dub this Kitsune Udon.",
         "ingredients": [
             {
@@ -7721,7 +7724,7 @@
     },
     {
         "name": "Tempura Udon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Ohoho, udon topped with Tempura Udon tempura?Yes please! The way the fried coating dissolvesin the broth is utterly magnificent.",
         "main_ingredients": [
             {
@@ -7952,7 +7955,7 @@
     },
     {
         "name": "Somen",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Thinly sliced noodles glazed with oil and sun dried.Their delicate form mixes well with broth and otheringredients, making a solid foundation for any meal.",
         "ingredients": [
             {
@@ -7992,7 +7995,7 @@
     },
     {
         "name": "Soba",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Noodles made by combining water and buckwheat flour,which is then stretched and cut into thin slices.They give off a faint aroma of buckwheat.",
         "ingredients": [
             {
@@ -8020,7 +8023,7 @@
     },
     {
         "name": "Tanuki Soba",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Myrthe is an odd one, scattering tempura flakes atopsoba noodles. And yet, it's delicious. The dark flakesremind me of a raccoon dog. I dub this Tanuki Soba!",
         "ingredients": [
             {
@@ -8058,7 +8061,7 @@
     },
     {
         "name": "Sansai Soba",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Soba noodles accompanied by mountain vegetables.The crunch of the vegetables is a delightfulcontrast to the noodles' silky-smooth texture.",
         "ingredients": [
             {
@@ -8091,7 +8094,7 @@
     },
     {
         "name": "Tempura Soba",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Soba noodles adorned with Tempura Soba tempurais not a dish to be overlooked or underestimated.The texture of the noodles is perfection itself.",
         "main_ingredients": [
             {
@@ -8326,7 +8329,7 @@
     },
     {
         "name": "Pannenkoek",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A beloved treat of Myrthe's native Ventania,this pancake is made by spreading dough thinlyacross a grill and topping it with ingredients.",
         "ingredients": [
             {
@@ -8365,7 +8368,7 @@
     },
     {
         "name": "Tekusari Dumplings",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Crushed tekusari roots rolled into edible dumplings. As long as the poison has been steeped out of theroots, they make for adequate rations.",
         "ingredients": [
             {
@@ -8377,7 +8380,7 @@
     },
     {
         "name": "Preserved Rations",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Foodstuffs that I brought with me from the capital.We must secure a foothold on this island before weinevitably run out of edible things to eat...",
         "food_bonus": {
             "enchant": [
@@ -8390,7 +8393,7 @@
     },
     {
         "name": "Charred Lump",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Hrm. Myrthe claims to be a skilled chef, but...Well, everyone makes mistakes, I suppose.",
         "food_bonus": {
             "enchant": [
@@ -8403,7 +8406,7 @@
     },
     {
         "name": "Persimmon Broth",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A simple soup made from boiled Persimmon.While it lacks a certain culinary complexity,it's perfectly adequate for washing down a meal.",
         "main_ingredients": [
             {
@@ -8495,7 +8498,7 @@
     },
     {
         "name": "Persimmon Zoni",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Soup with mochi and Persimmon. I cannot putmy finger on it, but something about the soft,broth-soaked mochi evokes a celebratory sentiment.",
         "main_ingredients": [
             {
@@ -8696,7 +8699,7 @@
     },
     {
         "name": "Chilled Miso Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Chilled soup made from water peppers and miso.Its cool zest stimulates the appetite.",
         "ingredients": [
             {
@@ -8711,7 +8714,7 @@
     },
     {
         "name": "Persimmon Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Miso melted in hot water along with Persimmon.Its moderate saltiness and the dashi's flavor makefor a superior dish that pairs well with cooked rice.",
         "main_ingredients": [
             {
@@ -8868,7 +8871,7 @@
     },
     {
         "name": "Taro Miso Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Miso soup made with boiled taro. One would not expectsomething so flavorful to be a war ration, but it isoft used as such, bringing smiles to the battlefield.",
         "ingredients": [
             {
@@ -8889,7 +8892,7 @@
     },
     {
         "name": "Basket Clam Stew",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Miso soup paired with well-boiled Basket Clam,scales and all. Just as nutritious as it tastes.",
         "main_ingredients": [
             {
@@ -8993,7 +8996,7 @@
     },
     {
         "name": "Misoyaki Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Miso soup enhanced by thinly cut daikon radishand blocks of tofu. Using every bit of the daikon,leaves and all, adds a tremendous amount of flavor.",
         "ingredients": [
             {
@@ -9024,7 +9027,7 @@
     },
     {
         "name": "Pheasant Miso Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Miso soup that has had pheasant meat added in.The mouth-watering juice that oozes from the meatwith every bite blends perfectly with the broth.",
         "ingredients": [
             {
@@ -9075,7 +9078,7 @@
     },
     {
         "name": "Pork Miso Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Myrthe put a lot of thought into this savorycombination of pork and miso. Combined withvegetables, this soup is beyond compare.",
         "ingredients": [
             {
@@ -9112,7 +9115,7 @@
     },
     {
         "name": "Cucumber Soup",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A chilled soup of sesame seeds and cucumber. A mostexcellent way to refresh oneself on a hot summer day.",
         "ingredients": [
             {
@@ -9163,7 +9166,7 @@
     },
     {
         "name": "Erwtensoep",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A bean soup brimming with smashed vegetableshailing from Myrthe's home country of Ventania.The perfect accompaniment to a cold winter's day.",
         "ingredients": [
             {
@@ -9209,7 +9212,7 @@
     },
     {
         "name": "Roast Bee Larva",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Bee Larva roasted on an open fire.Cooked to a golden brown with allthe juicy flavor sealed inside.",
         "main_ingredients": [
             {
@@ -9331,7 +9334,7 @@
     },
     {
         "name": "Blanched Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Chopped Persimmon steeped in a savory soup stock.Do not judge this simple dish by looks alone;its flavor will speak for itself.",
         "main_ingredients": [
             {
@@ -9430,7 +9433,7 @@
     },
     {
         "name": "Blanched Garlic",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Chopped garlic steeped in a savory soup stock.Do not judge this simple dish by looks alone;its flavor will speak for itself.",
         "main_ingredients": [
             {
@@ -9449,7 +9452,7 @@
     },
     {
         "name": "Grilled Basket Clam",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Grilled Basket Clam that is salted to perfection.The trick is to get it to the perfect temperaturethat leaves the inside soft and the outside crispy.",
         "main_ingredients": [
             {
@@ -9527,7 +9530,7 @@
     },
     {
         "name": "Salt Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Persimmon boiled in salt water. Its simplicitybrings out the best flavor in its ingredients.",
         "main_ingredients": [
             {
@@ -9634,7 +9637,7 @@
     },
     {
         "name": "Eel Steamed Rice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A dish fit for a god from Princess Sakuna's daysin the capital. Lightly grilled eel is saltedand cooked to perfection in a bamboo steamer.",
         "ingredients": [
             {
@@ -9656,7 +9659,7 @@
     },
     {
         "name": "Dried Duck Meat",
-        "category": "Food",
+        "category": "Cooking",
         "description": "These ingredients have been dried in the sun.They might make good rations in times of need.",
         "main_ingredients": [
             {
@@ -9724,7 +9727,7 @@
     },
     {
         "name": "Sake Soaked Stir-Fry",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Dried ingredients are rehydrated with sakeand lightly fried, enhancing food and drinkalike! This technique is surely worth a try.",
         "main_ingredients": [
             {
@@ -9874,7 +9877,7 @@
     },
     {
         "name": "Smoked Duck Meat",
-        "category": "Food",
+        "category": "Cooking",
         "description": "These ingredients have been salted and cookedover smoke. I can guarantee that it tastesevery bit as good as it smells. Delicious!",
         "main_ingredients": [
             {
@@ -9942,7 +9945,7 @@
     },
     {
         "name": "Pickled Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A preserved food made with pickled ingredientsfermented in rice bran. This salty addition pairswell with just about any meal.",
         "main_ingredients": [
             {
@@ -10038,7 +10041,7 @@
     },
     {
         "name": "Basket Clam Sushi",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A preserved food made with salted and pickledingredients covered in rice and fermented.Potently acidic, aromatic, and flavorful.",
         "main_ingredients": [
             {
@@ -10162,7 +10165,7 @@
     },
     {
         "name": "Basket Clam Jelly",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Basket Clam is first simmered in soy sauce,after which the broth is drained and then cooledfor a jiggly texture and scrumptious aftertaste.",
         "main_ingredients": [
             {
@@ -10365,7 +10368,7 @@
     },
     {
         "name": "Roasted Acorns",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Fragrant acorns that were soaked to remove theirbitterness, then roasted. While they taste good,a handful of oaknuts does not a hearty meal make.",
         "ingredients": [
             {
@@ -10385,7 +10388,7 @@
     },
     {
         "name": "Natto",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Steamed soy beans wrapped in rice straw and fermented.The peculiar odor and stickiness can be offputting,but after one bite you'll become a lifelong fan.",
         "ingredients": [
             {
@@ -10400,7 +10403,7 @@
     },
     {
         "name": "Miso-Coated Tofu",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Tofu is grilled until golden brown and coatedin thick miso paste. One whiff of its savoryaroma is guaranteed to whet your appetite.",
         "ingredients": [
             {
@@ -10427,7 +10430,7 @@
     },
     {
         "name": "Chilled Tofu",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A classic summer dish of chilled tofu accompaniedby soy sauce and other mouth-watering seasonings.The perfect complement to an evening's libations.",
         "ingredients": [
             {
@@ -10458,7 +10461,7 @@
     },
     {
         "name": "Corn on the Cob",
-        "category": "Food",
+        "category": "Cooking",
         "description": "For this recipe passed down from the far west,maize is grilled and coated with a sweet sauce.One bite and you'll be awash in savory sweetness.",
         "ingredients": [
             {
@@ -10493,7 +10496,7 @@
     },
     {
         "name": "Pickled Wasabi",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Wasabi that has been pickled in sake lees.Packed with a ripened spiciness, it impartsa satisfying crunch with each and every bite.",
         "price": 1,
@@ -10603,7 +10606,7 @@
     },
     {
         "name": "Pickled Dried Plum",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Salted pickled plums that have been sun-dried andfermented. Biting into one releases a powerfularoma and a rich, bittersweet flavor.",
         "price": 1,
@@ -10635,7 +10638,7 @@
     },
     {
         "name": "Fried Egg",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Cooked eggs rolled into a cylindrical shape thencut into bite-sized slices. The soft texture andsweet flavor will surely put a smile on your face.",
         "ingredients": [
             {
@@ -10662,7 +10665,7 @@
     },
     {
         "name": "Chawanmushi",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A dish from the continent of Ouka made by mixinga beaten egg with stock and other ingredients.Such gentle flavor! It warms me to my very core.",
         "ingredients": [
             {
@@ -10694,7 +10697,7 @@
     },
     {
         "name": "Boiled Tofu",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Tofu is dropped into soup stock and water,then boiled. The center comes out piping hot,so give it time to cool down before enjoying!",
         "ingredients": [
             {
@@ -10735,7 +10738,7 @@
     },
     {
         "name": "Dried Salmon",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Salmon that has been soaked in salt water and driedin the sea breeze. This pairs wondrously with sake!Though do take care not to gorge yourself.",
         "price": 1,
@@ -10837,7 +10840,7 @@
     },
     {
         "name": "Fried Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Food that's fried in naught but oil is not to beunderestimated. Truly it brings out the bestthe Persimmon has to offer.",
         "main_ingredients": [
             {
@@ -10940,7 +10943,7 @@
     },
     {
         "name": "Crispy Basket Clam",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Basket Clam covered in wheat flour and deep fried.The pleasant crunch as you bite into it is ratheraddicting, if I do say so myself.",
         "main_ingredients": [
             {
@@ -11068,7 +11071,7 @@
     },
     {
         "name": "Persimmon Tempura",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Persimmon covered in egg and wheat flour,then deep fried. I am told that this techniqueoriginally came from some western country.",
         "main_ingredients": [
             {
@@ -11293,7 +11296,7 @@
     },
     {
         "name": "Stewed Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Persimmon stewed in soy sauce until soft.A gentle heat flows outward from the broth,warming your body and comforting your soul.",
         "main_ingredients": [
             {
@@ -11512,7 +11515,7 @@
     },
     {
         "name": "Miso Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Persimmon boiled in miso until soft. The richmiso and fresh ginger make every ingredient sing.",
         "main_ingredients": [
             {
@@ -11737,7 +11740,7 @@
     },
     {
         "name": "Rabbit Hot Pot",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Hot pot brimming with rabbit meat, cooked untiltender. The broth has absorbed the deep flavorof the meat.",
         "main_ingredients": [
             {
@@ -11896,7 +11899,7 @@
     },
     {
         "name": "Boar Hot Pot",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Hot pot brimming with boar meat. The tough meatimparts a flavor that deepens with each bite.",
         "main_ingredients": [
             {
@@ -12055,7 +12058,7 @@
     },
     {
         "name": "Deer Hot Pot",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Hot pot brimming with venison. The lightnessof the meat belies a deeply satisfying flavor.",
         "main_ingredients": [
             {
@@ -12214,7 +12217,7 @@
     },
     {
         "name": "Turtle Hot Pot",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Hot pot brimming with turtle meat. Creates a trulyspectacular broth, and pairs well with vegetables.",
         "main_ingredients": [
             {
@@ -12423,7 +12426,7 @@
     },
     {
         "name": "Bear Hot Pot",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Hot pot brimming with bear meat. Not only is itnutritious, but the fattiness it adds is unlikeany other meat.",
         "main_ingredients": [
             {
@@ -12596,7 +12599,7 @@
     },
     {
         "name": "Dried Herring",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "This appears to be herring that was preserved with herbs,vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi.",
         "price": 1,
@@ -12644,7 +12647,7 @@
     },
     {
         "name": "Hutspot",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A dish of Myrthe's native Ventania made fromchopped potatoes and root vegetables steamedand mashed. This will fill your belly right up!",
         "ingredients": [
             {
@@ -12676,7 +12679,7 @@
     },
     {
         "name": "Dumpling",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Rice cakes coated with sauce as they cook on stickskewers. The soft texture combined with the sweetand savory sauce is in a league of its own.",
         "ingredients": [
             {
@@ -12702,7 +12705,7 @@
     },
     {
         "name": "Mugwort Dumpling",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Rice cakes that have had mugwort finely kneadedinto them. They taste of spring itself.",
         "ingredients": [
             {
@@ -12743,7 +12746,7 @@
     },
     {
         "name": "Sesame Dumpling",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A sweet treat that hails from the country of Ouka,made from all sorts of sesame. I am impressed theymanaged to make such a jelly out of sesame alone.",
         "ingredients": [
             {
@@ -12774,7 +12777,7 @@
     },
     {
         "name": "Dried Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Persimmons that have been dried on a cord.This powerfully sweet fruit melts in your mouth,making it difficult to put down after the first bite.",
         "price": 1,
@@ -12792,7 +12795,7 @@
     },
     {
         "name": "Shaved Ice",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Ice that has been shaved down into tiny particles.The perfect remedy for when you feel hot or feverish.",
         "ingredients": [
             {
@@ -12816,7 +12819,7 @@
     },
     {
         "name": "Senbei",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Sweet mochi rolled into flat circles, then grilledto form crackers. They are delightfully crispy.",
         "ingredients": [
             {
@@ -12923,7 +12926,7 @@
     },
     {
         "name": "Soba Dumpling",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Buckwheat flour is tossed in boiling water and clumpedtogether to form this dessert. Though the ingredientsare the same, it is wholly unlike soba noodles.",
         "ingredients": [
             {
@@ -12950,7 +12953,7 @@
     },
     {
         "name": "Rice Cake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Rice softened in water, then pounded and shapedinto a ball. They have long been used as offeringsto the gods from the children of men.",
         "price": 1,
@@ -12989,7 +12992,7 @@
     },
     {
         "name": "Manju",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Steamed sweet dumplings that are knownto pair well with a variety of ingredients.",
         "ingredients": [
             {
@@ -13026,7 +13029,7 @@
     },
     {
         "name": "Kenpin",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Wheat flour that has been kneaded, rolled,and fried. Fill them with red bean pasteor vegetables for an even tastier treat.",
         "ingredients": [
             {
@@ -13057,7 +13060,7 @@
     },
     {
         "name": "Grilled Miso",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Miso mixed with finely chopped spices, then grilled.It pairs exceptionally well with rice and sake.",
         "ingredients": [
             {
@@ -13088,7 +13091,7 @@
     },
     {
         "name": "Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Fresh water from the mountain pass."
     },
     {
@@ -13157,7 +13160,7 @@
     },
     {
         "name": "Renowned Water",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "description": "Smooth and with a hint of sweetness. Indeed,it tastes as though one sip would wash awayany impurity. It's no wonder it's renowned!",
         "price": 1,
@@ -13231,7 +13234,7 @@
     },
     {
         "name": "Genmaicha",
-        "category": "Food",
+        "category": "Cooking",
         "description": "The idea of combining roasted tea leaves with brownrice was truly a revelation. It is bound to helpcalm the nerves and relieve pent-up stress.",
         "ingredients": [
             {
@@ -13264,7 +13267,7 @@
     },
     {
         "name": "Fish Mint Tea",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A tea made with dried fish mint leaves.In the Lofty Realm, this drink is saidto grant protection from poisonous mist.",
         "ingredients": [
             {
@@ -13284,7 +13287,7 @@
     },
     {
         "name": "Kelp Tea",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Though it is called tea, it is not made with tealeaves. This is a hot broth made from roastingand drying kelp, then boiling it in hot water.",
         "ingredients": [
             {
@@ -13312,7 +13315,7 @@
     },
     {
         "name": "Plum Kelp Tea",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Kelp tea that has had plums added to it, creatinga sour flavor. This divine combination is certainto soothe tension and melt the most anxious heart.",
         "ingredients": [
             {
@@ -13347,7 +13350,7 @@
     },
     {
         "name": "Lucky Tea",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Plum kelp tea with a further addition of green tealeaves. According to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!",
         "ingredients": [
             {
@@ -13400,7 +13403,7 @@
     },
     {
         "name": "Kuchikami Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "Alcohol fermented with human saliva. It reeks tohigh heaven and is horribly unsanitary. Only thetruly courageous are bold enough to consume it.",
         "price": 1,
@@ -13427,7 +13430,7 @@
     },
     {
         "name": "Doburoku",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "Cloudy white sake that is completely unfiltered.A blend of piercing sourness and potent rice flavor.",
         "price": 1,
@@ -13466,7 +13469,7 @@
     },
     {
         "name": "Amazake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "A beverage made by converting rice into sugar.Be fooled not by its name: this draught containsno alcohol. It is gently sweet and energizing.",
         "price": 1,
@@ -13494,7 +13497,7 @@
     },
     {
         "name": "Refined Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "Sake that has been filtered and heated until itruns clear. It has a rich flavor with just a hintof sweetness to balance out the refined taste.",
         "price": 1,
@@ -13527,7 +13530,7 @@
     },
     {
         "name": "Medicinal Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "Sake truly cures all ills. This kind in particular hashad medicinal herbs added to it. It will bolster yourfortitude and give you some resistance to poison.",
         "price": 1,
@@ -13560,7 +13563,7 @@
     },
     {
         "name": "Ginjo Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "Sake that is made by refining polished riceand fermenting it over low heat. The resultis smooth, palatable, and incredibly fragrant.",
         "price": 1,
@@ -13597,7 +13600,7 @@
     },
     {
         "name": "Daiginjo Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "Sake made by carefully selecting the finest grainsof rice and polishing them to perfection. Translucentand fragrant, it qualifies as a true work of art!",
         "price": 1,
@@ -13634,7 +13637,7 @@
     },
     {
         "name": "Buckwheat Shochu",
-        "category": "Food",
+        "category": "Cooking",
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains adds to its delectability.",
         "main_ingredients": [
             {
@@ -13692,7 +13695,7 @@
     },
     {
         "name": "Beer",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "description": "An alcohol of the far west made from wheat.Its bitterness may be an acquired taste,but it certainly goes down smooth.",
         "price": 1,
@@ -13751,7 +13754,7 @@
     },
     {
         "name": "Health Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of an HP-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13766,7 +13769,7 @@
     },
     {
         "name": "Skill Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of an SP-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13781,7 +13784,7 @@
     },
     {
         "name": "Strength Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of a strength-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13796,7 +13799,7 @@
     },
     {
         "name": "Vitality Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of a vitality-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13811,7 +13814,7 @@
     },
     {
         "name": "Magic Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of a magic-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13826,7 +13829,7 @@
     },
     {
         "name": "Luck Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of a luck-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13841,7 +13844,7 @@
     },
     {
         "name": "Fullness Water",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Enhances the effect of a fullness-boosting meal.Once you have mastered this miraculous water,it should prove to be a potent supplement.",
         "ingredients": [
             {
@@ -13856,7 +13859,7 @@
     },
     {
         "name": "Health Medicine",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Invaluable medicine that boosts your HP.Let us drink to your continued good fortune!",
         "ingredients": [
             {
@@ -13873,7 +13876,7 @@
     },
     {
         "name": "Strength Medicine",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Invaluable medicine that boosts your strength.Let us drink to your continued good fortune!",
         "ingredients": [
             {
@@ -13890,7 +13893,7 @@
     },
     {
         "name": "Vitality Medicine",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Invaluable medicine that boosts your vitality.Let us drink to your continued good fortune!",
         "ingredients": [
             {
@@ -13907,7 +13910,7 @@
     },
     {
         "name": "Magic Medicine",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Invaluable medicine that boosts your magic.Let us drink to your continued good fortune!",
         "ingredients": [
             {
@@ -13924,7 +13927,7 @@
     },
     {
         "name": "Luck Medicine",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Invaluable medicine that boosts your luck.Let us drink to your continued good fortune!",
         "ingredients": [
             {
@@ -13941,7 +13944,7 @@
     },
     {
         "name": "Gusto Medicine",
-        "category": "Food",
+        "category": "Cooking",
         "description": "Invaluable medicine that boosts your gusto.Let us drink to your continued good fortune!",
         "ingredients": [
             {
