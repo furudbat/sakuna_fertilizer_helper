@@ -109,6 +109,28 @@ export class FoodItemListAdapter extends ItemListAdapter {
                 {
                     data: 'name',
                     render: function (data: string, type: string) {
+                        if (type === 'display') {
+                            const collapse_id = that.getCollapseId(row);
+                            
+                            let ingredients = '';
+
+                            return `<div class="row no-gutters">
+                                        <div class="col-9 text-left">
+                                            <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                                ${data}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col collapse" id="${collapse_id}">
+                                            <div class="row my-1">
+                                                ${ingredients}
+                                            </div>
+                                        </div>
+                                    </div>
+                            `;
+                        }
+
                         return data;
                     }
                 },
@@ -225,5 +247,12 @@ export class FoodItemListAdapter extends ItemListAdapter {
     }
 
     private initEvents() {
+    }
+
+    private getCollapseId(row: FoodItemData) {
+        const table_selector_id = $(this._table_selector).attr('id') ?? '';
+        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+
+        return `collapseFoodItemList-${table_selector_id}-${name_id}`;
     }
 }

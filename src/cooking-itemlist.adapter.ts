@@ -151,9 +151,27 @@ export class CookingItemListAdapter extends ItemListAdapter {
                     data: 'name',
                     render: function (data: string, type: string, row: CookingItemData) {
                         if (type === 'display') {
+                            const collapse_id = that.getCollapseId(row);
                             const is_season_buff = that.isSeasonalBuff(row)
-                            let text_color = that.getSeasonalTextColor(row) + ((is_season_buff)? ' seasonal-buff-name' : '');
-                            return `<span class="${text_color}">${data}</span>`;
+                            const text_color = that.getSeasonalTextColor(row) + ((is_season_buff)? ' seasonal-buff-name' : '');
+                            
+                            let ingredients = '';
+
+                            return `<div class="row no-gutters">
+                                        <div class="col-9 text-left">
+                                            <button class="btn btn-link text-left ${text_color}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                                ${data}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col collapse" id="${collapse_id}">
+                                            <div class="row my-1">
+                                                ${ingredients}
+                                            </div>
+                                        </div>
+                                    </div>
+                            `;
                         }
 
                         return data;
@@ -174,13 +192,9 @@ export class CookingItemListAdapter extends ItemListAdapter {
                         const season_buff_text_color = that.getSeasonalTextColor(row);
 
                         let enchants: EnchantCookingAdapterData[] = [];
-                        if (row.food_bonus?.enchant !== undefined) {
-                            row.food_bonus.enchant.forEach((enchant) => {
-                                enchants.push(enchant);
-                            });
-                        }
                         if (is_season_buff && row.season_food_bonus?.enchant !== undefined) {
                             row.season_food_bonus.enchant.forEach((enchant) => {
+                                /*
                                 let find_exist_enchant = false;
                                 for (let i = 0; i < enchants.length; i++) {
                                     if (enchants[i].name == enchant.name) {
@@ -192,8 +206,15 @@ export class CookingItemListAdapter extends ItemListAdapter {
                                 if (!find_exist_enchant) {
                                     enchants.push({ name: enchant.name, level: enchant.level, is_season_buff: is_season_buff });
                                 }
+                                */
+
+                                enchants.push({ name: enchant.name, level: enchant.level, is_season_buff: is_season_buff });
                             });
                             enchants.sort((a, b) => ((a.is_season_buff)? 1 : 0) - ((b.is_season_buff)? 1 : 0));
+                        } else if (row.food_bonus?.enchant !== undefined) {
+                            row.food_bonus.enchant.forEach((enchant) => {
+                                enchants.push(enchant);
+                            });
                         }
 
                         if (type === 'display') {
@@ -353,6 +374,13 @@ export class CookingItemListAdapter extends ItemListAdapter {
         }
 
         return '';
+    }
+
+    private getCollapseId(row: CookingItemData) {
+        const table_selector_id = $(this._table_selector).attr('id') ?? '';
+        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+
+        return `collapseCookingItemList-${table_selector_id}-${name_id}`;
     }
 }
 
