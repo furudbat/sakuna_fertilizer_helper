@@ -55666,11 +55666,13 @@ var Application = (function () {
         if (this._materialItemListAdapter) {
             this._materialItemListAdapter.init();
             var material_item_list = this._appData.items.filter(function (it) {
-                return (it.category == 'Materials' ||
+                return it.category == 'Materials' ||
                     it.category == 'Materials/Ingredients' ||
                     it.category == 'Materials/Cooking' ||
                     it.category == 'Material' ||
-                    it.category == 'Material/Food') && it.fertilizer_bonus !== undefined;
+                    it.category == 'Material/Food' ||
+                    it.category == 'Materials/Food' ||
+                    it.category == 'Materials/Cooking';
             });
             this.log.debug('initItemList material_item_list:', material_item_list);
             this._materialItemListAdapter.data = material_item_list;

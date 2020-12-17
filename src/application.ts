@@ -88,7 +88,9 @@ export class Application {
                     it.category == 'Materials/Ingredients' ||
                     it.category == 'Materials/Cooking' ||
                     it.category == 'Material' ||
-                    it.category == 'Material/Food';
+                    it.category == 'Material/Food' ||
+                    it.category == 'Materials/Food' ||
+                    it.category == 'Materials/Cooking';
             });
 
             this.log.debug('initItemList material_item_list:', material_item_list);
