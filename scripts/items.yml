@@ -115,6 +115,7 @@
     aesthetic_luck: 1
     armor_magic: 1
     hardness_vitality: 1
+    pesticide: -2
     stickiness_gusto: 1
     taste_strength: 1
     yield_hp: 1
@@ -206,6 +207,7 @@
   description: This wood can be used in various ways.Unfortunately,  its quality leaves
     much to be desired.
   fertilizer_bonus:
+    pesticide: -1
     root_fertilizer: 5
     yield_hp: 1
   name: Wood
@@ -214,6 +216,7 @@
   description: This is hard,  sturdy wood. I wager it could be crafted into a fine
     tool.
   fertilizer_bonus:
+    pesticide: -1
     root_fertilizer: 5
     yield_hp: 3
   name: High Quality Oak
@@ -222,6 +225,7 @@
   description: A plant that is neither tree nor grass. Indeed,  it is difficult to
     classify... Nevertheless,  bamboo is quite flexible and easy to process.
   fertilizer_bonus:
+    pesticide: -1
     root_fertilizer: 5
     yield_hp: 5
   name: Bamboo
@@ -231,6 +235,7 @@
     it is slow to rot. Thus,  its appellation is well deserved.
   fertilizer_bonus:
     hardness_vitality: 5
+    pesticide: -2
     root_fertilizer: 5
     yield_hp: 8
   name: Ironwood
@@ -267,8 +272,10 @@
   description: Aha,  so you found an untainted leaf from Hinoe'sTree of Creation?
     If you can gather enough to useas materials,  I imagine you'll gain untold power.
   fertilizer_bonus:
+    herbicide: -50
     kernel_fertilizer: 100
     leaf_fertilizer: 100
+    pesticide: -50
     root_fertilizer: 100
     toxicity: 50
   name: Leaf of Creation
@@ -278,6 +285,7 @@
     Strip the bark and seeits brilliant hue for yourself!
   fertilizer_bonus:
     aesthetic_luck: 2
+    immunity: -1
     kernel_fertilizer: 5
   name: Cork Tree Branch
   sub_category: Material
@@ -286,6 +294,7 @@
     that gets regular runoff exposure.
   fertilizer_bonus:
     aesthetic_luck: 3
+    immunity: -1
     kernel_fertilizer: 5
   name: Murasaki Root
   sub_category: Material
@@ -294,6 +303,7 @@
     regions of this island.
   fertilizer_bonus:
     aesthetic_luck: 5
+    immunity: -1
     kernel_fertilizer: 5
   name: Madder
   sub_category: Material
@@ -307,6 +317,7 @@
     aesthetic_luck: 5
     kernel_fertilizer: 5
     leaf_fertilizer: 5
+    pesticide: -2
   name: Indigo Scale
   sub_category: Material
 - category: Materials
@@ -314,6 +325,7 @@
     over from the country of Ouka.
   fertilizer_bonus:
     armor_magic: 10
+    pesticide: -2
   name: Silk
   sub_category: Material
 - category: Materials
@@ -321,6 +333,7 @@
     to the eyes and strong enoughto repel blades. It should make an excellent outfit.
   fertilizer_bonus:
     armor_magic: 20
+    pesticide: -5
   name: Spirit Thread
   sub_category: Material
 - category: Materials
@@ -329,12 +342,14 @@
   fertilizer_bonus:
     armor_magic: 8
     hardness_vitality: 8
+    pesticide: -3
   name: Washi Paper
   sub_category: Material
 - category: Materials
   description: How ominous... This cord appears to have been wovenwith the accursed
     power of a multitude of demons.May we find a way to bring some good out of it.
   fertilizer_bonus:
+    armor_magic: -10
     taste_strength: 20
   name: Demonic Braid
   sub_category: Material
@@ -346,6 +361,7 @@
     time: Always
   fertilizer_bonus:
     armor_magic: 20
+    hardness_vitality: -10
   name: Thunderous Tasuki
   sub_category: Material
 - category: Materials
@@ -442,6 +458,7 @@
     turned into thread,  it could be woveninto an unparalleled garment.
   fertilizer_bonus:
     armor_magic: 50
+    toxicity: -50
   name: Crane Feather
   sub_category: Material
 - category: Materials
@@ -562,6 +579,7 @@
     herbicide: 5
     immunity: 5
     pesticide: 5
+    toxicity: -5
   name: Aqueous Droplet
   sub_category: Material
 - category: Materials
@@ -641,6 +659,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 1
+    pesticide: -1
   food_bonus:
     sp: 4
   life: 2
@@ -657,6 +676,7 @@
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 3
+    pesticide: -1
   food_bonus:
     vitality: 5
   life: 2
@@ -672,6 +692,7 @@
     time: Always
   expiable: true
   fertilizer_bonus:
+    pesticide: -1
     taste_strength: 3
   food_bonus:
     strength: 5
@@ -680,14 +701,15 @@
   price: 3
   sub_category: ''
 - category: Materials/Food
-  description: Venison must be properly prepared before it is cooked,but the end result
-    is a truly magical cut of meat thatcan be paired with any dish.
+  description: Venison must be properly prepared before it is cooked, but the end
+    result is a truly magical cut of meat thatcan be paired with any dish.
   enemy_drops:
   - name: Deer
     time: Always
   expiable: true
   fertilizer_bonus:
     armor_magic: 2
+    pesticide: -1
   food_bonus:
     magic: 6
   life: 2
@@ -704,6 +726,7 @@
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
+    pesticide: -1
     taste_strength: 5
   food_bonus:
     strength: 4
@@ -722,6 +745,7 @@
   fertilizer_bonus:
     aesthetic_luck: 2
     armor_magic: 2
+    pesticide: -1
   food_bonus:
     luck: 5
   life: 2
@@ -736,6 +760,7 @@
     time: Always
   expiable: true
   fertilizer_bonus:
+    pesticide: -1
     yield_hp: 5
   food_bonus:
     hp: 4
@@ -754,6 +779,7 @@
   expiable: true
   fertilizer_bonus:
     armor_magic: 1
+    pesticide: -1
   food_bonus:
     magic: 4
   life: 2
@@ -770,6 +796,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 3
+    pesticide: -1
   food_bonus:
     sp: 6
   life: 2
@@ -783,6 +810,7 @@
   fertilizer_bonus:
     aesthetic_luck: 5
     hardness_vitality: 5
+    pesticide: -1
   food_bonus:
     luck: 4
     vitality: 2
@@ -796,6 +824,7 @@
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
+    pesticide: -1
   find_in:
   - name: 'Gathering Area: River'
     percent: 30
@@ -821,6 +850,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 1
+    pesticide: -1
   food_bonus:
     luck: 3
   life: 2
@@ -834,6 +864,7 @@
     talented chef.
   expiable: true
   fertilizer_bonus:
+    pesticide: -1
     yield_hp: 5
   find_in:
   - name: 'Gathering Area: Lake'
@@ -860,6 +891,7 @@
   expiable: true
   fertilizer_bonus:
     armor_magic: 3
+    pesticide: -1
   find_in:
   - name: 'Gathering Area: Stream'
     percent: 15
@@ -894,6 +926,7 @@
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 3
+    pesticide: -1
   find_in:
   - name: 'Gathering Area: Stream'
     percent: 15
@@ -927,6 +960,7 @@
     they certainly fill you up.
   expiable: true
   fertilizer_bonus:
+    pesticide: -1
     stickiness_gusto: 3
   find_in:
   - name: 'Gathering Area: River'
@@ -963,6 +997,7 @@
   expiable: true
   fertilizer_bonus:
     armor_magic: 3
+    pesticide: -1
     taste_strength: 3
   find_in:
   - name: 'Gathering Area: River'
@@ -992,6 +1027,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
+    pesticide: -1
   find_in:
   - name: 'Gathering Area: Lake'
     percent: 15
@@ -1017,6 +1053,7 @@
   fertilizer_bonus:
     kernel_fertilizer: 5
     leaf_fertilizer: 10
+    pesticide: -1
   food_bonus:
     fullness: 3
     magic: 3
@@ -1031,6 +1068,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
+    pesticide: -1
     taste_strength: 10
   find_in:
   - name: 'Gathering Area: Beach'
@@ -1058,6 +1096,7 @@
   expiable: true
   fertilizer_bonus:
     armor_magic: 2
+    pesticide: -1
   food_bonus:
     magic: 3
   life: 2
@@ -1069,6 +1108,7 @@
     but I have heard that it has manyhealth benefits as well.
   expiable: true
   fertilizer_bonus:
+    pesticide: -1
     stickiness_gusto: 2
   food_bonus:
     luck: 2
@@ -1080,8 +1120,8 @@
   price: 1
   sub_category: Bird
 - category: Materials/Food
-  description: While this pest may feast on our ears of rice,as an ingredient it imparts
-    vitality to dishes.
+  description: While this pest may feast on our ears of rice, as an ingredient it
+    imparts vitality to dishes.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
@@ -1178,7 +1218,7 @@
   sub_category: ''
 - category: Materials/Food
   description: One of the five grains, and said to be the oldest cropsgrown in Yanato.
-    It may not do much to sate the appetite,but it does appear to be good for your
+    It may not do much to sate the appetite, but it does appear to be good for your
     health.
   fertilizer_bonus:
     yield_hp: 5
@@ -1232,9 +1272,6 @@
   - name: 'Gathering Area: Plain'
     percent: 20
     season: Always
-  - name: 'Gathering Area: Plain'
-    percent: 20
-    season: Always
   - name: Bounteous Earth Grotto
     percent: 30
     season: Always
@@ -1261,8 +1298,8 @@
   price: 6
   sub_category: ''
 - category: Materials/Food
-  description: Even though the roots of this hardy plant are poisonous,it can be consumed
-    after being crushed and soaked in water.Many farmers plant these in preparation
+  description: Even though the roots of this hardy plant are poisonous, it can be
+    consumed after being crushed and soaked in water.Many farmers plant these in preparation
     for poor harvests.
   fertilizer_bonus:
     toxicity: 5
@@ -1294,6 +1331,7 @@
     dish.
   expiable: true
   fertilizer_bonus:
+    herbicide: -1
     stickiness_gusto: 5
   find_in:
   - name: 'Gathering Area: Spring'
@@ -1323,6 +1361,7 @@
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
+    herbicide: -1
   food_bonus:
     fullness: 4
     vitality: 2
@@ -1337,6 +1376,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
+    herbicide: -1
   food_bonus:
     luck: 4
   life: 2
@@ -1350,6 +1390,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 5
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Spring'
     percent: 40
@@ -1371,6 +1412,7 @@
   expiable: true
   fertilizer_bonus:
     armor_magic: 5
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Plain'
     percent: 5
@@ -1386,11 +1428,12 @@
   sub_category: ''
 - category: Materials/Food
   description: A fragrant herb that can be found in the springtime.It is well known
-    for its various medicinal properties,the most useful of which is amplifying your
+    for its various medicinal properties, the most useful of which is amplifying your
     vitality.
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Plain'
     percent: 15
@@ -1405,12 +1448,13 @@
   price: 1
   sub_category: ''
 - category: Materials/Food
-  description: Water dropwort, shepherd's purse, cudweed, chickweed,nipplewort, turnip,
+  description: Water dropwort, shepherd's purse, cudweed, chickweed, nipplewort, turnip,
     and radish. If you manage to findall seven, legend says that fortune will favor
     you.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 3
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Plain'
     percent: 10
@@ -1427,6 +1471,7 @@
     make you more healthy.
   expiable: true
   fertilizer_bonus:
+    herbicide: -1
     yield_hp: 3
   find_in:
   - name: 'Gathering Area: Plain'
@@ -1461,6 +1506,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 10
+    herbicide: -1
   food_bonus:
     luck: 2
   life: 2
@@ -1472,6 +1518,7 @@
     this crop is not grown in Yanato.
   fertilizer_bonus:
     hardness_vitality: 5
+    herbicide: -1
     yield_hp: 5
   food_bonus:
     hp: 3
@@ -1485,6 +1532,7 @@
     and grant strength.
   expiable: true
   fertilizer_bonus:
+    herbicide: -1
     taste_strength: 3
   find_in:
   - name: 'Gathering Area: Plain'
@@ -1548,6 +1596,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 50
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Forest'
     percent: 0
@@ -1573,11 +1622,12 @@
   price: 30
   sub_category: ''
 - category: Materials/Food
-  description: The hard outer shell hides a sweet inner core. Moreover,partaking of
-    it may strengthen your spiritual powers.
+  description: The hard outer shell hides a sweet inner core. Moreover, partaking
+    of it may strengthen your spiritual powers.
   expiable: true
   fertilizer_bonus:
     armor_magic: 3
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Forest'
     percent: 20
@@ -1610,6 +1660,7 @@
     ovules said to bestow health and long life.
   expiable: true
   fertilizer_bonus:
+    herbicide: -1
     yield_hp: 5
   find_in:
   - name: 'Gathering Area: Plain'
@@ -1639,6 +1690,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 3
+    herbicide: -1
   find_in:
   - name: 'Gathering Area: Forest'
     percent: 20
@@ -1749,8 +1801,8 @@
   sub_category: ''
 - category: Materials/Food
   description: Eaten raw, it is spicy and crisp, but cooking it willbring out its
-    inner sweetness. It also has medicinal uses,and is even known to raise one's skilfulness
-    in battle.
+    inner sweetness. It also has medicinal uses, and is even known to raise one's
+    skilfulness in battle.
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 2
@@ -1764,8 +1816,8 @@
   sub_category: ''
 - category: Materials/Food
   description: The hint of sweetness hidden within its acutely sour tasteis like a
-    metaphor for raising children. Unlike parenthood,eating it may also prove to be
-    beneficial to your health.
+    metaphor for raising children. Unlike parenthood, eating it may also prove to
+    be beneficial to your health.
   expiable: true
   fertilizer_bonus:
     yield_hp: 5
@@ -1834,7 +1886,7 @@
   sub_category: ''
 - category: Materials/Food
   description: The seed of a flowering plant that is used to seasonmany a dish. It
-    has been cherished since ancient times,and is also abounding in nutrients.
+    has been cherished since ancient times, and is also abounding in nutrients.
   fertilizer_bonus:
     toxicity: -5
   food_bonus:
@@ -1876,7 +1928,7 @@
     season: Spring
     try: 5
   food_bonus:
-    luck: 2
+    luck: 5
   name: Tea
   price: 1
   sub_category: ''
@@ -1948,7 +2000,7 @@
   price: 1
   sub_category: ''
 - category: Food
-  description: A paste made by mixing and then fermenting crushed beans,malt, and
+  description: A paste made by mixing and then fermenting crushed beans, malt, and
     salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient
     could not exist!
   ingredients:
@@ -2297,8 +2349,8 @@
   price: 1
   sub_category: ''
 - category: Materials/Food
-  description: A collection of dregs left over from the hulling process,including
-    the shells and sprouts. It is very functional,ready to be used for cleaning in
+  description: A collection of dregs left over from the hulling process, including
+    the shells and sprouts. It is very functional, ready to be used for cleaning in
     addition to cooking.
   fertilizer_bonus:
     herbicide: 2
@@ -2308,7 +2360,7 @@
   price: 1
   sub_category: ''
 - category: Food
-  description: A kind of cake made by adding water to rice, pounding it,and letting
+  description: A kind of cake made by adding water to rice, pounding it, and letting
     it harden. It is delightful both when boiledand toasted. What's more, it's extremely
     easy to preserve!
   ingredients:
@@ -2337,7 +2389,7 @@
   name: Tofu
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: This rice has been mixed with water, pounded, and moldedinto a round
     shape. In the olden days, the children of menused to regularly present these as
     an offering to the gods.
@@ -2458,7 +2510,7 @@
   price: 1
   sub_category: Shiraboshi
 - category: Food
-  description: Rabbit Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Rabbit Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2471,8 +2523,8 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Pork that has been salted,  smoked,  and dried.The smoky fragrance
-    mixes well with its rich flavor.
+  description: Pork that has been salted, smoked, and dried.The smoky fragrance mixes
+    well with its rich flavor.
   ingredients:
   - amount: 1
     name: Salt
@@ -2484,7 +2536,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Boar Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Boar Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2497,7 +2549,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Venison that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Venison that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2510,7 +2562,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Bear Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Bear Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2523,7 +2575,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Badger Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Badger Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2536,7 +2588,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Turtle Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Turtle Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2549,7 +2601,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Sparrow Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Sparrow Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2562,7 +2614,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Pheasant Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Pheasant Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2575,7 +2627,7 @@
   price: 1
   sub_category: Kunsei
 - category: Food
-  description: Duck Meat that has been salted,  smoked,  and dried.The smoky fragrance
+  description: Duck Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
   - amount: 1
@@ -2814,7 +2866,7 @@
   sub_category: Nukazuke
 - category: Food
   description: Pickled and salted Rabbit Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2837,8 +2889,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Pork put in rice to preserve it.Some peculiar folks
-    claim it becomes even more appealingwith every sniff,  but I am not so easily
-    convinced.
+    claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
   - amount: 5
     name: Brown Rice
@@ -2860,7 +2911,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Boar Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2883,7 +2934,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Venison put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2906,7 +2957,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Bear Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2929,7 +2980,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Badger Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2952,7 +3003,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Turtle Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2975,7 +3026,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Sparrow Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -2998,7 +3049,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Pheasant Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3021,7 +3072,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Duck Meat put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3044,8 +3095,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Loach put in rice to preserve it.Some peculiar folks
-    claim it becomes even more appealingwith every sniff,  but I am not so easily
-    convinced.
+    claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
   - amount: 5
     name: Brown Rice
@@ -3067,7 +3117,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Sweetfish put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3090,8 +3140,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Carp put in rice to preserve it.Some peculiar folks
-    claim it becomes even more appealingwith every sniff,  but I am not so easily
-    convinced.
+    claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
   - amount: 5
     name: Brown Rice
@@ -3113,7 +3162,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Masu Salmon put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3136,8 +3185,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Char put in rice to preserve it.Some peculiar folks
-    claim it becomes even more appealingwith every sniff,  but I am not so easily
-    convinced.
+    claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
   - amount: 5
     name: Brown Rice
@@ -3159,7 +3207,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Crucian Carp put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3182,7 +3230,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Salmon put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3205,8 +3253,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Smelt put in rice to preserve it.Some peculiar folks
-    claim it becomes even more appealingwith every sniff,  but I am not so easily
-    convinced.
+    claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
   - amount: 5
     name: Brown Rice
@@ -3228,7 +3275,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Herring put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3251,8 +3298,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Eel put in rice to preserve it.Some peculiar folks
-    claim it becomes even more appealingwith every sniff,  but I am not so easily
-    convinced.
+    claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
   - amount: 5
     name: Brown Rice
@@ -3274,7 +3320,7 @@
   sub_category: Sushi
 - category: Food
   description: Pickled and salted Basket Clam put in rice to preserve it.Some peculiar
-    folks claim it becomes even more appealingwith every sniff,  but I am not so easily
+    folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
   ingredients:
   - amount: 5
@@ -3301,10 +3347,10 @@
   name: Cheese
   price: 1
   sub_category: ''
-- category: Food
-  description: This appears to be herring that was preserved with herbs,vinegar, and
-    salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
-    entirely unlike sushi.
+- category: Cooking
+  description: This appears to be herring that was preserved with herbs, vinegar,
+    and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's
+    not entirely unlike sushi.
   ingredients:
   - amount: 1
     name: Herring
@@ -3321,7 +3367,7 @@
   name: Dried Herring
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: A grain that has been dried out in the sun and robbedof its water contents.
     It is best when soaked in boiledwater to rehydrate it before being eaten.
   ingredients:
@@ -3337,7 +3383,7 @@
   name: Dried Boiled Rice
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Salted salmon, dried in the sea breeze to preserve it.While it may
     keep for some time, it also happens to beincredibly salty. Take care not to gorge
     yourself on it.
@@ -3365,30 +3411,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -3433,7 +3455,7 @@
   name: Dried Taro Stem
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: A persimmon hung under the eave of a house and dried untildeveloping
     a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is
     autumn's finest treasure.
@@ -3444,7 +3466,7 @@
   name: Dried Persimmon
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little
     too well. Be wary not to drink too much.
   ingredients:
@@ -3471,30 +3493,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -3526,12 +3524,12 @@
   name: Pickled Wasabi
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: A plum that has been pickled in salt. Not only is it usedfor battle
     rations, but also as a medicine to cure poisons.
   food_bonus:
     enchant:
-    - level: 3
+    - level: 5
       name: Poison Resistance
     magic: 4
   ingredients:
@@ -3575,14 +3573,16 @@
   name: Spring Water
   price: 1
   sub_category: ''
-- category: Food
+- category: Materials/Food
   description: Water that is renowned for its purity, which has beenmelted down from
     solid ice. I imagine it is the highestquality water that we can hope to find on
     this island.
+  fertilizer_bonus:
+    toxicity: -10
   name: Renowned Water
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking
   description: An alcohol fermented with human saliva.It reeks to high heaven and
     is horribly unsanitary.Only the truly courageous are bold enough to consume it.
   ingredients:
@@ -3598,7 +3598,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust,
     rice-like flavor.
   ingredients:
@@ -3617,7 +3617,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: 'A drink made by saccharizing rice.Be fooled not by its name: this
     draught is virgin.Gently sweet and energizing.'
   ingredients:
@@ -3627,7 +3627,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: A clear alcohol that has been filtered and heated.Has a rich flavor
     with a hint of sweetness.
   ingredients:
@@ -3643,7 +3643,7 @@
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: Highly nutritious roots and leaves have been added to thissake to make
     it medicinal. As bitter as it tastes, at leastit will make you hardy enough to
     resist most poisons.
@@ -3660,7 +3660,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: An alcohol made by refining polished rice and fermenting it over low
     heat.Smooth, palatable, and incredibly fragrant.
   ingredients:
@@ -3676,7 +3676,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking
   description: An alcohol made by carefully selecting only the best grains of riceand
     polishing them to perfection. Its translucence and superlativefragrance certify
     its status as a true work of art.
@@ -3821,7 +3821,7 @@
   name: Buckwheat Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking
   description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
     It seems that her faithdoes not forbid the consumption of spirits...
   ingredients:
@@ -3933,30 +3933,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -4023,30 +3999,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -4118,30 +4070,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -4217,30 +4145,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -4381,7 +4285,7 @@
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
-- category: Cooking
+- category: Food/Cooking
   description: Dried cooked rice that has been rehydratedwith boiling water. It has
     a rather lightflavor, similar to porridge.
   food_bonus:
@@ -4699,30 +4603,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -4816,30 +4696,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -4939,30 +4795,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -5107,6 +4939,7 @@
     - level: 3
       name: Fire Resistance
     magic: 5
+    vitality: -5
   ingredients:
   - amount: 2
     name: Wheat
@@ -5242,6 +5075,8 @@
 - category: Cooking
   description: Crushed tekusari roots rolled into edible dumplings. As long as the
     poison has been steeped out of theroots, they make for adequate rations.
+  food_bonus:
+    fullness: -10
   ingredients:
   - amount: 1
     name: Tekusari
@@ -5262,6 +5097,7 @@
     enchant:
     - level: 1
       name: Natural Healing
+    fullness: -25
   name: Charred Lump
 - category: Cooking
   description: A simple soup made from boiled Persimmon.While it lacks a certain culinary
@@ -5312,30 +5148,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -5706,30 +5518,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -5829,30 +5617,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -5968,10 +5732,11 @@
       name: Skill Buff
     - level: 1
       name: Summer Skill Buff
-- category: Cooking
+- category: Food/Cooking
   description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
     it impartsa satisfying crunch with each and every bite.
   food_bonus:
+    luck: -4
     magic: 6
   ingredients:
   - amount: 2
@@ -5997,30 +5762,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -6059,12 +5800,12 @@
     - level: 1
       name: Spring Magic Buff
   sub_category: ''
-- category: Cooking
+- category: Food/Cooking
   description: Salted pickled plums that have been sun-dried andfermented. Biting
     into one releases a powerfularoma and a rich, bittersweet flavor.
   food_bonus:
     enchant:
-    - level: 3
+    - level: 5
       name: Poison Resistance
     magic: 4
   ingredients:
@@ -6142,7 +5883,7 @@
     enchant:
     - level: 6
       name: Water Resistance
-- category: Cooking
+- category: Food/Cooking
   description: Salmon that has been soaked in salt water and driedin the sea breeze.
     This pairs wondrously with sake!Though do take care not to gorge yourself.
   food_bonus:
@@ -6172,30 +5913,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -6508,30 +6225,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -6616,7 +6309,7 @@
       name: Biped's Bane
     - level: 2
       name: Quadruped Calamity
-- category: Cooking
+- category: Food/Cooking
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
     entirely unlike sushi.
@@ -6728,7 +6421,7 @@
     name: Sesame
     operator: ''
   name: Sesame Dumpling
-- category: Cooking
+- category: Food/Cooking
   description: Persimmons that have been dried on a cord.This powerfully sweet fruit
     melts in your mouth,making it difficult to put down after the first bite.
   food_bonus:
@@ -6794,30 +6487,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -6862,7 +6531,7 @@
     name: Bean
     operator: ''
   name: Soba Dumpling
-- category: Cooking
+- category: Food/Cooking
   description: Rice softened in water, then pounded and shapedinto a ball. They have
     long been used as offeringsto the gods from the children of men.
   food_bonus:
@@ -6992,9 +6661,11 @@
     - level: 3
       name: Fire Resistance
   sub_category: ''
-- category: Cooking
+- category: Materials/Cooking
   description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
     sip would wash awayany impurity. It's no wonder it's renowned!
+  fertilizer_bonus:
+    toxicity: -10
   food_bonus:
     luck: 3
   ingredients:
@@ -7025,7 +6696,7 @@
     season: Spring
     try: 5
   food_bonus:
-    luck: 2
+    luck: 5
   ingredients:
   - amount: 1
     name: Tea
@@ -7067,6 +6738,8 @@
     enchant:
     - level: 3
       name: Poison Resistance
+    strength: -3
+    vitality: -3
   ingredients:
   - amount: 2
     name: Fish Mint
@@ -7141,11 +6814,12 @@
       name: Luck Boost
     - level: 1
       name: Luck Buff
-- category: Cooking
+- category: Food/Cooking
   description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
     horribly unsanitary. Only thetruly courageous are bold enough to consume it.
   food_bonus:
     magic: 6
+    strength: -6
   ingredients:
   - amount: 1
     name: Brown Rice
@@ -7159,7 +6833,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Cloudy white sake that is completely unfiltered.A blend of piercing
     sourness and potent rice flavor.
   food_bonus:
@@ -7184,7 +6858,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: 'A beverage made by converting rice into sugar.Be fooled not by its
     name: this draught containsno alcohol. It is gently sweet and energizing.'
   food_bonus:
@@ -7202,7 +6876,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake that has been filtered and heated until itruns clear. It has a
     rich flavor with just a hintof sweetness to balance out the refined taste.
   food_bonus:
@@ -7211,19 +6885,13 @@
       name: Spectral Scourge
     magic: 5
   ingredients:
-  - amount: 5
-    name: White Rice
-    operator: and
   - amount: 1
-    name: Malt
-    operator: and
-  - amount: 1
-    name: Sugar
+    name: Ginjo Sake
     operator: ''
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake truly cures all ills. This kind in particular hashad medicinal
     herbs added to it. It will bolster yourfortitude and give you some resistance
     to poison.
@@ -7245,7 +6913,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake that is made by refining polished riceand fermenting it over low
     heat. The resultis smooth, palatable, and incredibly fragrant.
   food_bonus:
@@ -7268,7 +6936,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake made by carefully selecting the finest grainsof rice and polishing
     them to perfection. Translucentand fragrant, it qualifies as a true work of art!
   food_bonus:
@@ -7298,6 +6966,7 @@
     enchant:
     - level: 2
       name: Night Owl
+    hp: -5
     luck: 5
     magic: 5
     sp: 5
@@ -7306,13 +6975,14 @@
     name: Buckwheat Shochu
     operator: ''
   name: Buckwheat Shochu
-- category: Cooking
+- category: Food/Cooking
   description: An alcohol of the far west made from wheat.Its bitterness may be an
     acquired taste,but it certainly goes down smooth.
   food_bonus:
     enchant:
     - level: 3
       name: Fire Resistance
+    fullness: -5
     hp: 5
     luck: 5
     magic: 10

@@ -115,6 +115,7 @@
     aesthetic_luck: 1
     armor_magic: 1
     hardness_vitality: 1
+    pesticide: -2
     stickiness_gusto: 1
     taste_strength: 1
     yield_hp: 1
@@ -206,6 +207,7 @@
   description: This wood can be used in various ways.Unfortunately,  its quality leaves
     much to be desired.
   fertilizer_bonus:
+    pesticide: -1
     root_fertilizer: 5
     yield_hp: 1
   name: Wood
@@ -214,6 +216,7 @@
   description: This is hard,  sturdy wood. I wager it could be crafted into a fine
     tool.
   fertilizer_bonus:
+    pesticide: -1
     root_fertilizer: 5
     yield_hp: 3
   name: High Quality Oak
@@ -222,6 +225,7 @@
   description: A plant that is neither tree nor grass. Indeed,  it is difficult to
     classify... Nevertheless,  bamboo is quite flexible and easy to process.
   fertilizer_bonus:
+    pesticide: -1
     root_fertilizer: 5
     yield_hp: 5
   name: Bamboo
@@ -231,6 +235,7 @@
     it is slow to rot. Thus,  its appellation is well deserved.
   fertilizer_bonus:
     hardness_vitality: 5
+    pesticide: -2
     root_fertilizer: 5
     yield_hp: 8
   name: Ironwood
@@ -267,8 +272,10 @@
   description: Aha,  so you found an untainted leaf from Hinoe'sTree of Creation?
     If you can gather enough to useas materials,  I imagine you'll gain untold power.
   fertilizer_bonus:
+    herbicide: -50
     kernel_fertilizer: 100
     leaf_fertilizer: 100
+    pesticide: -50
     root_fertilizer: 100
     toxicity: 50
   name: Leaf of Creation
@@ -278,6 +285,7 @@
     Strip the bark and seeits brilliant hue for yourself!
   fertilizer_bonus:
     aesthetic_luck: 2
+    immunity: -1
     kernel_fertilizer: 5
   name: Cork Tree Branch
   sub_category: Material
@@ -286,6 +294,7 @@
     that gets regular runoff exposure.
   fertilizer_bonus:
     aesthetic_luck: 3
+    immunity: -1
     kernel_fertilizer: 5
   name: Murasaki Root
   sub_category: Material
@@ -294,6 +303,7 @@
     regions of this island.
   fertilizer_bonus:
     aesthetic_luck: 5
+    immunity: -1
     kernel_fertilizer: 5
   name: Madder
   sub_category: Material
@@ -307,6 +317,7 @@
     aesthetic_luck: 5
     kernel_fertilizer: 5
     leaf_fertilizer: 5
+    pesticide: -2
   name: Indigo Scale
   sub_category: Material
 - category: Materials
@@ -314,6 +325,7 @@
     over from the country of Ouka.
   fertilizer_bonus:
     armor_magic: 10
+    pesticide: -2
   name: Silk
   sub_category: Material
 - category: Materials
@@ -321,6 +333,7 @@
     to the eyes and strong enoughto repel blades. It should make an excellent outfit.
   fertilizer_bonus:
     armor_magic: 20
+    pesticide: -5
   name: Spirit Thread
   sub_category: Material
 - category: Materials
@@ -329,12 +342,14 @@
   fertilizer_bonus:
     armor_magic: 8
     hardness_vitality: 8
+    pesticide: -3
   name: Washi Paper
   sub_category: Material
 - category: Materials
   description: How ominous... This cord appears to have been wovenwith the accursed
     power of a multitude of demons.May we find a way to bring some good out of it.
   fertilizer_bonus:
+    armor_magic: -10
     taste_strength: 20
   name: Demonic Braid
   sub_category: Material
@@ -346,6 +361,7 @@
     time: Always
   fertilizer_bonus:
     armor_magic: 20
+    hardness_vitality: -10
   name: Thunderous Tasuki
   sub_category: Material
 - category: Materials
@@ -442,6 +458,7 @@
     turned into thread,  it could be woveninto an unparalleled garment.
   fertilizer_bonus:
     armor_magic: 50
+    toxicity: -50
   name: Crane Feather
   sub_category: Material
 - category: Materials
@@ -562,6 +579,7 @@
     herbicide: 5
     immunity: 5
     pesticide: 5
+    toxicity: -5
   name: Aqueous Droplet
   sub_category: Material
 - category: Materials

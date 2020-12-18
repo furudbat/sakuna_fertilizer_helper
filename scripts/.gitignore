@@ -13,3 +13,5 @@ Cooking.*.csv
 EnemyDrop.*.csv
 WorldmapCollect.*.csv
 WorldmapLandmark.*.csv
+
+*.xlsx

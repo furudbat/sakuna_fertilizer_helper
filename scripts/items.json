@@ -152,7 +152,8 @@
             "hardness_vitality": 1,
             "stickiness_gusto": 1,
             "aesthetic_luck": 1,
-            "armor_magic": 1
+            "armor_magic": 1,
+            "pesticide": -2
         }
     },
     {
@@ -270,7 +271,8 @@
         "description": "This wood can be used in various ways.Unfortunately,  its quality leaves much to be desired.",
         "fertilizer_bonus": {
             "root_fertilizer": 5,
-            "yield_hp": 1
+            "yield_hp": 1,
+            "pesticide": -1
         }
     },
     {
@@ -280,7 +282,8 @@
         "description": "This is hard,  sturdy wood. I wager it could be crafted into a fine tool.",
         "fertilizer_bonus": {
             "root_fertilizer": 5,
-            "yield_hp": 3
+            "yield_hp": 3,
+            "pesticide": -1
         }
     },
     {
@@ -290,7 +293,8 @@
         "description": "A plant that is neither tree nor grass. Indeed,  it is difficult to classify... Nevertheless,  bamboo is quite flexible and easy to process.",
         "fertilizer_bonus": {
             "root_fertilizer": 5,
-            "yield_hp": 5
+            "yield_hp": 5,
+            "pesticide": -1
         }
     },
     {
@@ -301,7 +305,8 @@
         "fertilizer_bonus": {
             "root_fertilizer": 5,
             "yield_hp": 8,
-            "hardness_vitality": 5
+            "hardness_vitality": 5,
+            "pesticide": -2
         }
     },
     {
@@ -349,6 +354,8 @@
             "root_fertilizer": 100,
             "kernel_fertilizer": 100,
             "leaf_fertilizer": 100,
+            "herbicide": -50,
+            "pesticide": -50,
             "toxicity": 50
         }
     },
@@ -359,7 +366,8 @@
         "description": "This golden tree branch can be used to createa stunning yellow dye. Strip the bark and seeits brilliant hue for yourself!",
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
-            "aesthetic_luck": 2
+            "aesthetic_luck": 2,
+            "immunity": -1
         }
     },
     {
@@ -369,7 +377,8 @@
         "description": "This plant root can be used to create purple dye.It thrives in soil that gets regular runoff exposure.",
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
-            "aesthetic_luck": 3
+            "aesthetic_luck": 3,
+            "immunity": -1
         }
     },
     {
@@ -379,7 +388,8 @@
         "description": "A root which is used to make red dyes. It can befound in the mountainous regions of this island.",
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "immunity": -1
         }
     },
     {
@@ -396,7 +406,8 @@
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
             "leaf_fertilizer": 5,
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "pesticide": -2
         }
     },
     {
@@ -405,7 +416,8 @@
         "sub_category": "Material",
         "description": "This is a fiber produced by the thread of silkworms,  which were brought over from the country of Ouka.",
         "fertilizer_bonus": {
-            "armor_magic": 10
+            "armor_magic": 10,
+            "pesticide": -2
         }
     },
     {
@@ -414,7 +426,8 @@
         "sub_category": "Material",
         "description": "A miraculous thread selected from the finest silk.It is both a delight to the eyes and strong enoughto repel blades. It should make an excellent outfit.",
         "fertilizer_bonus": {
-            "armor_magic": 20
+            "armor_magic": 20,
+            "pesticide": -5
         }
     },
     {
@@ -424,7 +437,8 @@
         "description": "Yanato's highest quality paper,  said to lastfor a thousand years. In fact,  it's strongenough you can even make clothes out if it.",
         "fertilizer_bonus": {
             "hardness_vitality": 8,
-            "armor_magic": 8
+            "armor_magic": 8,
+            "pesticide": -3
         }
     },
     {
@@ -433,7 +447,8 @@
         "sub_category": "Material",
         "description": "How ominous... This cord appears to have been wovenwith the accursed power of a multitude of demons.May we find a way to bring some good out of it.",
         "fertilizer_bonus": {
-            "taste_strength": 20
+            "taste_strength": 20,
+            "armor_magic": -10
         }
     },
     {
@@ -448,6 +463,7 @@
         ],
         "description": "A cord that is used to tie up kimono sleeves.This one contains the power of lightning,  the ultimate expression of wood energy.",
         "fertilizer_bonus": {
+            "hardness_vitality": -10,
             "armor_magic": 20
         }
     },
@@ -585,7 +601,8 @@
         "sub_category": "Material",
         "description": "A feather belonging to Yui,  an exceptionally rarespirit crane. If turned into thread,  it could be woveninto an unparalleled garment.",
         "fertilizer_bonus": {
-            "armor_magic": 50
+            "armor_magic": 50,
+            "toxicity": -50
         }
     },
     {
@@ -794,7 +811,8 @@
         "fertilizer_bonus": {
             "immunity": 5,
             "herbicide": 5,
-            "pesticide": 5
+            "pesticide": 5,
+            "toxicity": -5
         }
     },
     {
@@ -933,12 +951,13 @@
                 "time": "Always"
             }
         ],
-        "description": "It is said that one can gain the powers of the creaturesthey consume. Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "It is said that one can gain the powers of the creaturesthey consume. Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 1
+            "aesthetic_luck": 1,
+            "pesticide": -1
         },
         "food_bonus": {
             "sp": 4
@@ -954,12 +973,13 @@
                 "time": "Always"
             }
         ],
-        "description": "Known for its vitality, the meat of pig demons is essentialfor building muscle. I have heard pork is the most commonlyeaten meat in Ouka, a land across the sea.",
         "life": 2,
         "expiable": true,
         "price": 2,
+        "description": "Known for its vitality, the meat of pig demons is essentialfor building muscle. I have heard pork is the most commonlyeaten meat in Ouka, a land across the sea.",
         "fertilizer_bonus": {
-            "hardness_vitality": 3
+            "hardness_vitality": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "vitality": 5
@@ -975,12 +995,13 @@
                 "time": "Always"
             }
         ],
-        "description": "Compared to other demons of its kind, a boar's strength iswithout equal. The meat has a slight gamey odor, it must begently boiled to bring out the delicate flavor.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "Compared to other demons of its kind, a boar's strength iswithout equal. The meat has a slight gamey odor, it must begently boiled to bring out the delicate flavor.",
         "fertilizer_bonus": {
-            "taste_strength": 3
+            "taste_strength": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "strength": 5
@@ -996,12 +1017,13 @@
                 "time": "Always"
             }
         ],
-        "description": "Venison must be properly prepared before it is cooked,but the end result is a truly magical cut of meat thatcan be paired with any dish.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Venison must be properly prepared before it is cooked, but the end result is a truly magical cut of meat thatcan be paired with any dish.",
         "fertilizer_bonus": {
-            "armor_magic": 2
+            "armor_magic": 2,
+            "pesticide": -1
         },
         "food_bonus": {
             "magic": 6
@@ -1017,13 +1039,14 @@
                 "time": "Always"
             }
         ],
-        "description": "Even powerful gods are amazed by the strength and vitalitycontained in bear meat. Though it may prove troublesome tocook, the end result is more than worth the effort.",
         "life": 2,
         "expiable": true,
         "price": 2,
+        "description": "Even powerful gods are amazed by the strength and vitalitycontained in bear meat. Though it may prove troublesome tocook, the end result is more than worth the effort.",
         "fertilizer_bonus": {
             "taste_strength": 5,
-            "hardness_vitality": 5
+            "hardness_vitality": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "strength": 4,
@@ -1040,13 +1063,14 @@
                 "time": "Always"
             }
         ],
-        "description": "Strangely enough, badger meat can vary in flavor dependingon the type procured. Whether a morsel is palatable or notcomes down to little more than luck.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "Strangely enough, badger meat can vary in flavor dependingon the type procured. Whether a morsel is palatable or notcomes down to little more than luck.",
         "fertilizer_bonus": {
             "aesthetic_luck": 2,
-            "armor_magic": 2
+            "armor_magic": 2,
+            "pesticide": -1
         },
         "food_bonus": {
             "luck": 5
@@ -1062,12 +1086,13 @@
                 "time": "Always"
             }
         ],
-        "description": "Turtle meat is oft used as medicine for its rejuvenatingproperties. I recommend eating some when your vitalityis in short supply.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "Turtle meat is oft used as medicine for its rejuvenatingproperties. I recommend eating some when your vitalityis in short supply.",
         "fertilizer_bonus": {
-            "yield_hp": 5
+            "yield_hp": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "hp": 4,
@@ -1084,12 +1109,13 @@
                 "time": "Always"
             }
         ],
-        "description": "Ah, the sparrow... The bane of rice fields everywhere.Its crispiness when cooked is simply divine. Small as itmay be, magical energy runs abundant through its meat.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Ah, the sparrow... The bane of rice fields everywhere.Its crispiness when cooked is simply divine. Small as itmay be, magical energy runs abundant through its meat.",
         "fertilizer_bonus": {
-            "armor_magic": 1
+            "armor_magic": 1,
+            "pesticide": -1
         },
         "food_bonus": {
             "magic": 4
@@ -1105,12 +1131,13 @@
                 "time": "Always"
             }
         ],
-        "description": "A pheasant's cunning can be most vexing, but its meat mayhelp to bolster one's skill. Though the texture is ratherbland, the flavor is said to be utterly delicious.",
         "life": 2,
         "expiable": true,
         "price": 2,
+        "description": "A pheasant's cunning can be most vexing, but its meat mayhelp to bolster one's skill. Though the texture is ratherbland, the flavor is said to be utterly delicious.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 3
+            "aesthetic_luck": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "sp": 6
@@ -1120,13 +1147,14 @@
         "name": "Duck Meat",
         "category": "Materials/Food",
         "sub_category": "Bird",
-        "description": "Duck meat is revered for its luscious, high-quality fat.After eating some, one cannot help but feel their vitalityrestored and their luck improved.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "Duck meat is revered for its luscious, high-quality fat.After eating some, one cannot help but feel their vitalityrestored and their luck improved.",
         "fertilizer_bonus": {
             "hardness_vitality": 5,
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "vitality": 2,
@@ -1137,12 +1165,13 @@
         "name": "Loach",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Do not judge the loach by its diminutive size, for it isbrimming with hidden vitality. Be grateful as you carry outyour work on the morrow.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Do not judge the loach by its diminutive size, for it isbrimming with hidden vitality. Be grateful as you carry outyour work on the morrow.",
         "fertilizer_bonus": {
-            "hardness_vitality": 5
+            "hardness_vitality": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "vitality": 4
@@ -1175,12 +1204,13 @@
                 "time": "Always"
             }
         ],
-        "description": "A fortuitous fish that has been used in divination sinceancient times. I must say, it's one of my favorites!",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A fortuitous fish that has been used in divination sinceancient times. I must say, it's one of my favorites!",
         "fertilizer_bonus": {
-            "aesthetic_luck": 1
+            "aesthetic_luck": 1,
+            "pesticide": -1
         },
         "food_bonus": {
             "luck": 3
@@ -1191,12 +1221,13 @@
         "name": "Carp",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Carp are said to have the power to boost women's health.I cannot help but wonder how one gets rid of the stenchof mud. It must be the mark of a truly talented chef.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Carp are said to have the power to boost women's health.I cannot help but wonder how one gets rid of the stenchof mud. It must be the mark of a truly talented chef.",
         "fertilizer_bonus": {
-            "yield_hp": 5
+            "yield_hp": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "hp": 5
@@ -1225,12 +1256,13 @@
         "name": "Masu Salmon",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Because of their proclivity for clear water, these fishhave a magnificent fragrance. I imagine they must havepotent spiritual energy swirling in their fishy forms.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Because of their proclivity for clear water, these fishhave a magnificent fragrance. I imagine they must havepotent spiritual energy swirling in their fishy forms.",
         "fertilizer_bonus": {
-            "armor_magic": 3
+            "armor_magic": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "magic": 4
@@ -1275,12 +1307,13 @@
         "name": "Char",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "These fish's avid appetites give them a heaping helpingof vitality. They boast a simple yet robust flavor profile.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "These fish's avid appetites give them a heaping helpingof vitality. They boast a simple yet robust flavor profile.",
         "fertilizer_bonus": {
-            "hardness_vitality": 3
+            "hardness_vitality": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "vitality": 4
@@ -1325,12 +1358,13 @@
         "name": "Crucian Carp",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "These fish can be found in nearly every river in Yanato.Flavor notwithstanding, they certainly fill you up.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "These fish can be found in nearly every river in Yanato.Flavor notwithstanding, they certainly fill you up.",
         "fertilizer_bonus": {
-            "stickiness_gusto": 3
+            "stickiness_gusto": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "fullness": 4
@@ -1375,13 +1409,14 @@
         "name": "Salmon",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Salmon are known as the fish of the gods, for they areborn into this world with the spiritual energy to passfrom death to life and the strength to swim upstream.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Salmon are known as the fish of the gods, for they areborn into this world with the spiritual energy to passfrom death to life and the strength to swim upstream.",
         "fertilizer_bonus": {
             "taste_strength": 3,
-            "armor_magic": 3
+            "armor_magic": 3,
+            "pesticide": -1
         },
         "food_bonus": {
             "strength": 4,
@@ -1416,12 +1451,13 @@
         "name": "Smelt",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "These fish adore cold water and are blessed with goodfortune. Their tender meat is perfect for frying.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "These fish adore cold water and are blessed with goodfortune. Their tender meat is perfect for frying.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "luck": 4
@@ -1450,13 +1486,14 @@
         "name": "Herring",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "It is rare indeed to see these fish come all the way downfrom the northern sea. The delectable fat of their meatis certain to increase your spiritual abilities.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "It is rare indeed to see these fish come all the way downfrom the northern sea. The delectable fat of their meatis certain to increase your spiritual abilities.",
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
-            "leaf_fertilizer": 10
+            "leaf_fertilizer": 10,
+            "pesticide": -1
         },
         "food_bonus": {
             "magic": 3,
@@ -1468,13 +1505,14 @@
         "name": "Eel",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A long river fish brimming with wholesome nutrients.Its wriggling energy imparts skill and strength.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A long river fish brimming with wholesome nutrients.Its wriggling energy imparts skill and strength.",
         "fertilizer_bonus": {
             "taste_strength": 10,
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "pesticide": -1
         },
         "food_bonus": {
             "sp": 5,
@@ -1508,12 +1546,13 @@
                 "time": "Always"
             }
         ],
-        "description": "Shellfish suck up the spiritual energy from the mudand sand. Particularly big clams are liable to devolveinto demons if exposed to too much negative energy.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Shellfish suck up the spiritual energy from the mudand sand. Particularly big clams are liable to devolveinto demons if exposed to too much negative energy.",
         "fertilizer_bonus": {
-            "armor_magic": 2
+            "armor_magic": 2,
+            "pesticide": -1
         },
         "food_bonus": {
             "magic": 3
@@ -1523,12 +1562,13 @@
         "name": "Egg",
         "category": "Materials/Food",
         "sub_category": "Bird",
-        "description": "A hard-shelled bird egg. Not only will it expand yourcooking repertoire, but I have heard that it has manyhealth benefits as well.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A hard-shelled bird egg. Not only will it expand yourcooking repertoire, but I have heard that it has manyhealth benefits as well.",
         "fertilizer_bonus": {
-            "stickiness_gusto": 2
+            "stickiness_gusto": 2,
+            "pesticide": -1
         },
         "food_bonus": {
             "strength": 2,
@@ -1541,10 +1581,10 @@
         "name": "Grasshopper",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "While this pest may feast on our ears of rice,as an ingredient it imparts vitality to dishes.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "While this pest may feast on our ears of rice, as an ingredient it imparts vitality to dishes.",
         "fertilizer_bonus": {
             "hardness_vitality": 5
         },
@@ -1556,10 +1596,10 @@
         "name": "Bee Larva",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "This insect is prized for its health and vitalityboosting properties. As for its appearance...Well, one can get used to anything, I suppose.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "This insect is prized for its health and vitalityboosting properties. As for its appearance...Well, one can get used to anything, I suppose.",
         "fertilizer_bonus": {
             "yield_hp": 3,
             "hardness_vitality": 2
@@ -1597,8 +1637,8 @@
         "name": "Brown Rice",
         "category": "Food",
         "sub_category": "Rice",
-        "description": "Though this rice is unmilled, many prefer its fragrance andflavor. It is said to be more nutritious than white rice.",
         "price": 1,
+        "description": "Though this rice is unmilled, many prefer its fragrance andflavor. It is said to be more nutritious than white rice.",
         "food_bonus": {
             "hp": 5,
             "strength": 5,
@@ -1609,8 +1649,8 @@
         "name": "Mixed Rice",
         "category": "Food",
         "sub_category": "Rice",
-        "description": "This rice has only been partially milled. It thereforefeatures the properties of both white and brown rice.",
         "price": 2,
+        "description": "This rice has only been partially milled. It thereforefeatures the properties of both white and brown rice.",
         "food_bonus": {
             "hp": 5,
             "fullness": 15
@@ -1620,8 +1660,8 @@
         "name": "White Rice",
         "category": "Food",
         "sub_category": "Rice",
-        "description": "This pearly white rice has been immaculately polished.Why, these grains are the very soul of the Yanato people!",
         "price": 3,
+        "description": "This pearly white rice has been immaculately polished.Why, these grains are the very soul of the Yanato people!",
         "food_bonus": {
             "fullness": 15
         }
@@ -1630,8 +1670,8 @@
         "name": "Wheat",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Though it is counted among the five grains, the wheatharvested on this island is not suited for cultivation.You are certainly free to use it as an ingredient, however.",
         "price": 1,
+        "description": "Though it is counted among the five grains, the wheatharvested on this island is not suited for cultivation.You are certainly free to use it as an ingredient, however.",
         "fertilizer_bonus": {
             "stickiness_gusto": 3
         },
@@ -1672,8 +1712,8 @@
         "name": "Foxtail Millet",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "One of the five grains, and said to be the oldest cropsgrown in Yanato. It may not do much to sate the appetite,but it does appear to be good for your health.",
         "price": 1,
+        "description": "One of the five grains, and said to be the oldest cropsgrown in Yanato. It may not do much to sate the appetite, but it does appear to be good for your health.",
         "fertilizer_bonus": {
             "yield_hp": 5
         },
@@ -1704,8 +1744,8 @@
         "name": "Sanwa Millet",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "One of the five grains, and one of the most popular cropsproduced in Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint of spiritual energy.",
         "price": 1,
+        "description": "One of the five grains, and one of the most popular cropsproduced in Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint of spiritual energy.",
         "fertilizer_bonus": {
             "armor_magic": 5
         },
@@ -1736,8 +1776,8 @@
         "name": "Bean",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "One of the five grains, and a source of great strength.It is also used as an ingredient in many magnificentcondiments, such as miso and soy sauce.",
         "price": 3,
+        "description": "One of the five grains, and a source of great strength.It is also used as an ingredient in many magnificentcondiments, such as miso and soy sauce.",
         "fertilizer_bonus": {
             "leaf_fertilizer": 10,
             "herbicide": 1
@@ -1747,11 +1787,6 @@
             "fullness": 5
         },
         "find_in": [
-            {
-                "name": "Gathering Area: Plain",
-                "percent": 20,
-                "season": "Always"
-            },
             {
                 "name": "Gathering Area: Plain",
                 "percent": 20,
@@ -1774,8 +1809,8 @@
         "name": "Buckwheat",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A hardy plant grown to stave off famine. In additionto filling your stomach, it may very well grant youthe ability to pull off even more skills in combat.",
         "price": 6,
+        "description": "A hardy plant grown to stave off famine. In additionto filling your stomach, it may very well grant youthe ability to pull off even more skills in combat.",
         "fertilizer_bonus": {
             "aesthetic_luck": 5
         },
@@ -1788,8 +1823,8 @@
         "name": "Tekusari",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Even though the roots of this hardy plant are poisonous,it can be consumed after being crushed and soaked in water.Many farmers plant these in preparation for poor harvests.",
         "price": 1,
+        "description": "Even though the roots of this hardy plant are poisonous, it can be consumed after being crushed and soaked in water.Many farmers plant these in preparation for poor harvests.",
         "fertilizer_bonus": {
             "toxicity": 5
         }
@@ -1804,10 +1839,10 @@
                 "time": "Always"
             }
         ],
-        "description": "This is the hard-shelled fruit of a broad-leafed tree.It may be meager, but every little bit goes a long way.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "This is the hard-shelled fruit of a broad-leafed tree.It may be meager, but every little bit goes a long way.",
         "fertilizer_bonus": {
             "hardness_vitality": 1
         },
@@ -1826,12 +1861,13 @@
         "name": "Taro",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Taro is a root plant that has been keeping the peopleof Yanato fed since long before even the five grains.These days, it's the star of many a dinnertime dish.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Taro is a root plant that has been keeping the peopleof Yanato fed since long before even the five grains.These days, it's the star of many a dinnertime dish.",
         "fertilizer_bonus": {
-            "stickiness_gusto": 5
+            "stickiness_gusto": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "fullness": 4
@@ -1865,12 +1901,13 @@
         "name": "Potato",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "The potato is a kind of taro that's grown in frigid landsand has found its way to Yanato as of late. It is quitefilling for a root plant, and may bestow extra vitality.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "The potato is a kind of taro that's grown in frigid landsand has found its way to Yanato as of late. It is quitefilling for a root plant, and may bestow extra vitality.",
         "fertilizer_bonus": {
-            "hardness_vitality": 5
+            "hardness_vitality": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "vitality": 2,
@@ -1881,12 +1918,13 @@
         "name": "Onion",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "This appears to be a bulbous version of the green onion.It seems to grant good fortune, and is favored by warriorsof the west. Also notorious for inducing tears when cut.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "This appears to be a bulbous version of the green onion.It seems to grant good fortune, and is favored by warriorsof the west. Also notorious for inducing tears when cut.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "luck": 4
@@ -1896,12 +1934,13 @@
         "name": "Warabi",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A fern that is immensely bitter and frequently growsin the wilds of nearby settlements. Its acute flavormay give you the capacity to perform additional skills.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A fern that is immensely bitter and frequently growsin the wilds of nearby settlements. Its acute flavormay give you the capacity to perform additional skills.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 5
+            "aesthetic_luck": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "sp": 4
@@ -1924,12 +1963,13 @@
         "name": "Horsetail",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "These shoots from the horsetail plant are a medicinal herb.It gathers spiritual energy from the soil, which gives ita bittersweet flavor that evokes memories of springtime.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "These shoots from the horsetail plant are a medicinal herb.It gathers spiritual energy from the soil, which gives ita bittersweet flavor that evokes memories of springtime.",
         "fertilizer_bonus": {
-            "armor_magic": 5
+            "armor_magic": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "magic": 2
@@ -1951,12 +1991,13 @@
         "name": "Mugwort",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A fragrant herb that can be found in the springtime.It is well known for its various medicinal properties,the most useful of which is amplifying your vitality.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A fragrant herb that can be found in the springtime.It is well known for its various medicinal properties, the most useful of which is amplifying your vitality.",
         "fertilizer_bonus": {
-            "hardness_vitality": 5
+            "hardness_vitality": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "vitality": 2
@@ -1978,12 +2019,13 @@
         "name": "Seven Herbs",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Water dropwort, shepherd's purse, cudweed, chickweed,nipplewort, turnip, and radish. If you manage to findall seven, legend says that fortune will favor you.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Water dropwort, shepherd's purse, cudweed, chickweed, nipplewort, turnip, and radish. If you manage to findall seven, legend says that fortune will favor you.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 3
+            "aesthetic_luck": 3,
+            "herbicide": -1
         },
         "food_bonus": {
             "luck": 2
@@ -2000,12 +2042,13 @@
         "name": "Root Crops",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Burdock, carrots, radishes, and the like are all delectableand abounding in nutrients. Whether or not you enjoy theirtaste, eating them will certainly make you more healthy.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "Burdock, carrots, radishes, and the like are all delectableand abounding in nutrients. Whether or not you enjoy theirtaste, eating them will certainly make you more healthy.",
         "fertilizer_bonus": {
-            "yield_hp": 3
+            "yield_hp": 3,
+            "herbicide": -1
         },
         "food_bonus": {
             "hp": 2
@@ -2049,12 +2092,13 @@
         "name": "Cucumber",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A juicy vegetable that is both sweet and slightly bitter.They are especially well-loved by the water-dwelling kappa.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "A juicy vegetable that is both sweet and slightly bitter.They are especially well-loved by the water-dwelling kappa.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 10
+            "aesthetic_luck": 10,
+            "herbicide": -1
         },
         "food_bonus": {
             "luck": 2
@@ -2064,11 +2108,12 @@
         "name": "Maize",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "An unfamiliar plant comprised of tiny yellow kernels.To my knowledge, this crop is not grown in Yanato.",
         "price": 3,
+        "description": "An unfamiliar plant comprised of tiny yellow kernels.To my knowledge, this crop is not grown in Yanato.",
         "fertilizer_bonus": {
             "yield_hp": 5,
-            "hardness_vitality": 5
+            "hardness_vitality": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "hp": 3,
@@ -2079,12 +2124,13 @@
         "name": "Mushroom",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A phenomenal variety of mushrooms grow around the treesof the mountain, including maitake, shimeji, and shiitake.Their nutrients will boost your muscles and grant strength.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A phenomenal variety of mushrooms grow around the treesof the mountain, including maitake, shimeji, and shiitake.Their nutrients will boost your muscles and grant strength.",
         "fertilizer_bonus": {
-            "taste_strength": 3
+            "taste_strength": 3,
+            "herbicide": -1
         },
         "food_bonus": {
             "strength": 2
@@ -2172,12 +2218,13 @@
         "name": "Matsutake",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "My word... This mushroom is known to be exceedingly rare!You must boast incredibly good fortune to have found it.Maybe eating it will bring even more luck into your life.",
         "life": 2,
         "expiable": true,
         "price": 30,
+        "description": "My word... This mushroom is known to be exceedingly rare!You must boast incredibly good fortune to have found it.Maybe eating it will bring even more luck into your life.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 50
+            "aesthetic_luck": 50,
+            "herbicide": -1
         },
         "food_bonus": {
             "luck": 50
@@ -2216,12 +2263,13 @@
         "name": "Chestnut",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "The hard outer shell hides a sweet inner core. Moreover,partaking of it may strengthen your spiritual powers.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "The hard outer shell hides a sweet inner core. Moreover, partaking of it may strengthen your spiritual powers.",
         "fertilizer_bonus": {
-            "armor_magic": 3
+            "armor_magic": 3,
+            "herbicide": -1
         },
         "food_bonus": {
             "magic": 4
@@ -2265,12 +2313,13 @@
         "name": "Ginkgo Nut",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "These nuts come from the seeds of ginkgo trees. The femaletrees produce ovules said to bestow health and long life.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "These nuts come from the seeds of ginkgo trees. The femaletrees produce ovules said to bestow health and long life.",
         "fertilizer_bonus": {
-            "yield_hp": 5
+            "yield_hp": 5,
+            "herbicide": -1
         },
         "food_bonus": {
             "hp": 4
@@ -2304,12 +2353,13 @@
         "name": "Persimmon",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "The persimmons on this island vary greatly between beingastringent and delectably sweet. You must have good luckif you managed to land on a sweet one...this time.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "The persimmons on this island vary greatly between beingastringent and delectably sweet. You must have good luckif you managed to land on a sweet one...this time.",
         "fertilizer_bonus": {
-            "aesthetic_luck": 3
+            "aesthetic_luck": 3,
+            "herbicide": -1
         },
         "food_bonus": {
             "luck": 4
@@ -2358,10 +2408,10 @@
         "name": "Garlic",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A wild plant that packs quite a punch. Its vigorous flavordoes wonders for your vitality...less so for your breath.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "A wild plant that packs quite a punch. Its vigorous flavordoes wonders for your vitality...less so for your breath.",
         "fertilizer_bonus": {
             "hardness_vitality": 3,
             "pesticide": 5
@@ -2408,10 +2458,10 @@
         "name": "Wasabi",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "This wild plant frequently grows by clear streams and isused as a seasoning. Its excessive spiciness will clear outyour sinuses and get your spiritual powers pumping.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "This wild plant frequently grows by clear streams and isused as a seasoning. Its excessive spiciness will clear outyour sinuses and get your spiritual powers pumping.",
         "fertilizer_bonus": {
             "armor_magic": 5,
             "pesticide": 5
@@ -2448,10 +2498,10 @@
         "name": "Ginger",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A root that has long been used both to stifle stenchesand season suppers. Guaranteed to warm you up, bolsteryour strength, and boost your capacity for using skills.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "A root that has long been used both to stifle stenchesand season suppers. Guaranteed to warm you up, bolsteryour strength, and boost your capacity for using skills.",
         "fertilizer_bonus": {
             "taste_strength": 5,
             "pesticide": 5
@@ -2465,10 +2515,10 @@
         "name": "Green Onion",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Eaten raw, it is spicy and crisp, but cooking it willbring out its inner sweetness. It also has medicinal uses,and is even known to raise one's skilfulness in battle.",
         "life": 2,
         "expiable": true,
         "price": 3,
+        "description": "Eaten raw, it is spicy and crisp, but cooking it willbring out its inner sweetness. It also has medicinal uses, and is even known to raise one's skilfulness in battle.",
         "fertilizer_bonus": {
             "stickiness_gusto": 5,
             "aesthetic_luck": 2,
@@ -2482,10 +2532,10 @@
         "name": "Plum",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "The hint of sweetness hidden within its acutely sour tasteis like a metaphor for raising children. Unlike parenthood,eating it may also prove to be beneficial to your health.",
         "life": 2,
         "expiable": true,
         "price": 1,
+        "description": "The hint of sweetness hidden within its acutely sour tasteis like a metaphor for raising children. Unlike parenthood, eating it may also prove to be beneficial to your health.",
         "fertilizer_bonus": {
             "yield_hp": 5
         },
@@ -2509,8 +2559,8 @@
         "name": "Salt",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Salt is a mineral that is indispensable as a preservativenot only for food, but also for your mind and body. It isknown to have the power to cleanse all sorts of impurities.",
         "price": 3,
+        "description": "Salt is a mineral that is indispensable as a preservativenot only for food, but also for your mind and body. It isknown to have the power to cleanse all sorts of impurities.",
         "fertilizer_bonus": {
             "immunity": 10,
             "herbicide": 10,
@@ -2567,8 +2617,8 @@
         "name": "Sugar",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A sweetener harvested from sugarcane grown on an islandin the southern sea. It is of high quality, but has beenspreading as of late, even commoners can enjoy it now.",
         "price": 6,
+        "description": "A sweetener harvested from sugarcane grown on an islandin the southern sea. It is of high quality, but has beenspreading as of late, even commoners can enjoy it now.",
         "fertilizer_bonus": {
             "stickiness_gusto": 5,
             "toxicity": 1
@@ -2578,8 +2628,11 @@
         "name": "Sesame",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "The seed of a flowering plant that is used to seasonmany a dish. It has been cherished since ancient times,and is also abounding in nutrients.",
         "price": 6,
+        "description": "The seed of a flowering plant that is used to seasonmany a dish. It has been cherished since ancient times, and is also abounding in nutrients.",
+        "fertilizer_bonus": {
+            "toxicity": -5
+        },
         "food_bonus": {
             "enchant": [
                 {
@@ -2587,17 +2640,14 @@
                     "level": 2
                 }
             ]
-        },
-        "fertilizer_bonus": {
-            "toxicity": -5
         }
     },
     {
         "name": "Kombu Kelp",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A type of seaweed that has been long beloved in Yanatoas the base of a soup stock and as a general ingredient.",
         "price": 1,
+        "description": "A type of seaweed that has been long beloved in Yanatoas the base of a soup stock and as a general ingredient.",
         "fertilizer_bonus": {
             "root_fertilizer": 10
         },
@@ -2618,10 +2668,15 @@
         "name": "Tea",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Although the tea plant came from Ouka, there was alreadya species growing on this island. Its leaves are used fordivination. Drinking it in a hot broth brings good fortune.",
         "price": 1,
+        "description": "Although the tea plant came from Ouka, there was alreadya species growing on this island. Its leaves are used fordivination. Drinking it in a hot broth brings good fortune.",
+        "fertilizer_bonus": {
+            "leaf_fertilizer": 5,
+            "herbicide": 1,
+            "pesticide": 1
+        },
         "food_bonus": {
-            "luck": 2
+            "luck": 5
         },
         "find_in": [
             {
@@ -2635,19 +2690,14 @@
                 "season": "Spring",
                 "try": 5
             }
-        ],
-        "fertilizer_bonus": {
-            "leaf_fertilizer": 5,
-            "herbicide": 1,
-            "pesticide": 1
-        }
+        ]
     },
     {
         "name": "Fish Mint",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A medicinal herb effective against a variety of ailments.It can be particularly useful as a remedy for poison...not to mention quite delectable when made into tempura.",
         "price": 1,
+        "description": "A medicinal herb effective against a variety of ailments.It can be particularly useful as a remedy for poison...not to mention quite delectable when made into tempura.",
         "fertilizer_bonus": {
             "pesticide": 3
         },
@@ -2677,8 +2727,6 @@
         "name": "Soup Stock",
         "category": "Food",
         "sub_category": "",
-        "description": "Made from ingredients that are boiled to bring outtheir flavor. A culinary necessity in any kitchen.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Loach",
@@ -2745,14 +2793,14 @@
                 "amount": 2,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "Made from ingredients that are boiled to bring outtheir flavor. A culinary necessity in any kitchen."
     },
     {
         "name": "Miso",
         "category": "Food",
         "sub_category": "",
-        "description": "A paste made by mixing and then fermenting crushed beans,malt, and salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient could not exist!",
-        "price": 6,
         "ingredients": [
             {
                 "name": "Malt",
@@ -2769,14 +2817,14 @@
                 "amount": 2,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 6,
+        "description": "A paste made by mixing and then fermenting crushed beans, malt, and salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient could not exist!"
     },
     {
         "name": "Soy Sauce",
         "category": "Food",
         "sub_category": "",
-        "description": "A liquid seasoning made from fermented soybean paste.Use it to enliven noodle dishes like udon and soba.",
-        "price": 6,
         "ingredients": [
             {
                 "name": "Malt",
@@ -2798,7 +2846,9 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 6,
+        "description": "A liquid seasoning made from fermented soybean paste.Use it to enliven noodle dishes like udon and soba."
     },
     {
         "name": "Oil",
@@ -2810,8 +2860,6 @@
                 "time": "Night"
             }
         ],
-        "description": "Refined oil, with the dregs carefully filtered out. A lifeof luxury is incomplete without this invaluable substance.",
-        "price": 5,
         "ingredients": [
             {
                 "name": "Vegetable Oil",
@@ -2824,6 +2872,13 @@
                 "operator": ""
             }
         ],
+        "price": 5,
+        "description": "Refined oil, with the dregs carefully filtered out. A lifeof luxury is incomplete without this invaluable substance.",
+        "fertilizer_bonus": {
+            "root_fertilizer": 0,
+            "leaf_fertilizer": 0,
+            "kernel_fertilizer": 0
+        },
         "find_in": [
             {
                 "name": "Takeribi's Gold Mine",
@@ -2831,12 +2886,7 @@
                 "season": "Always",
                 "try": 5
             }
-        ],
-        "fertilizer_bonus": {
-            "root_fertilizer": 0,
-            "leaf_fertilizer": 0,
-            "kernel_fertilizer": 0
-        }
+        ]
     },
     {
         "name": "Vegetable Oil",
@@ -2848,8 +2898,8 @@
                 "time": "Always"
             }
         ],
-        "description": "A raw oil extracted from perilla seeds and the like.It contains dregs and is rather pungent, making itdifficult to use in this form.",
         "price": 1,
+        "description": "A raw oil extracted from perilla seeds and the like.It contains dregs and is rather pungent, making itdifficult to use in this form.",
         "fertilizer_bonus": {
             "leaf_fertilizer": 5
         },
@@ -2893,8 +2943,8 @@
         "name": "Fish Oil",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A raw oil extracted from fish. It contains dregs and israther pungent, making it difficult to use in this form.",
         "price": 1,
+        "description": "A raw oil extracted from fish. It contains dregs and israther pungent, making it difficult to use in this form.",
         "fertilizer_bonus": {
             "leaf_fertilizer": 5
         },
@@ -2910,10 +2960,10 @@
         "name": "Ice",
         "category": "Food",
         "sub_category": "",
-        "description": "Renowned water that has been frozen in some frigid place.It keeps foodstuffs cool and prevents them from rotting...until it melts, that is.",
         "life": 1,
         "expiable": true,
         "price": 10,
+        "description": "Renowned water that has been frozen in some frigid place.It keeps foodstuffs cool and prevents them from rotting...until it melts, that is.",
         "find_in": [
             {
                 "name": "Gathering Area: Lake",
@@ -2939,8 +2989,6 @@
         "name": "Vinegar",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A seasoning produced by fermenting malted rice to createacetic acid. Its sour flavor relieves exhaustion.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -2963,6 +3011,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "A seasoning produced by fermenting malted rice to createacetic acid. Its sour flavor relieves exhaustion.",
         "fertilizer_bonus": {
             "immunity": 1
         }
@@ -2971,8 +3021,8 @@
         "name": "Health Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourhealth. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourhealth. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "yield_hp": 20
         },
@@ -2994,8 +3044,8 @@
         "name": "Skill Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourskill capacity. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourskill capacity. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "stickiness_gusto": 10,
             "aesthetic_luck": 10
@@ -3018,8 +3068,8 @@
         "name": "Strength Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourstrength. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourstrength. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "taste_strength": 20
         },
@@ -3041,8 +3091,8 @@
         "name": "Vitality Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourvitality. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourvitality. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "hardness_vitality": 20
         },
@@ -3064,8 +3114,8 @@
         "name": "Magic Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourmagic. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourmagic. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "armor_magic": 20
         },
@@ -3087,8 +3137,8 @@
         "name": "Luck Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourluck. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourluck. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "aesthetic_luck": 20
         },
@@ -3110,8 +3160,8 @@
         "name": "Fullness Powder",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A powdered medicine that will temporarily increase yourfullness. Dissolve it in water to partake of it.",
         "price": 1,
+        "description": "A powdered medicine that will temporarily increase yourfullness. Dissolve it in water to partake of it.",
         "fertilizer_bonus": {
             "stickiness_gusto": 20
         },
@@ -3133,8 +3183,8 @@
         "name": "Health Flakes",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "When combined with a medicinal base, these flakeswill serve to increase your base health.",
         "price": 1,
+        "description": "When combined with a medicinal base, these flakeswill serve to increase your base health.",
         "fertilizer_bonus": {
             "yield_hp": 50
         }
@@ -3143,8 +3193,8 @@
         "name": "Strength Flakes",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "When combined with a medicinal base, these flakeswill serve to increase your base strength.",
         "price": 1,
+        "description": "When combined with a medicinal base, these flakeswill serve to increase your base strength.",
         "fertilizer_bonus": {
             "taste_strength": 50
         }
@@ -3153,8 +3203,8 @@
         "name": "Vitality Flakes",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "When combined with a medicinal base, these flakeswill serve to increase your base vitality.",
         "price": 1,
+        "description": "When combined with a medicinal base, these flakeswill serve to increase your base vitality.",
         "fertilizer_bonus": {
             "hardness_vitality": 50
         }
@@ -3163,8 +3213,8 @@
         "name": "Magic Flakes",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "When combined with a medicinal base, these flakeswill serve to increase your base magic.",
         "price": 1,
+        "description": "When combined with a medicinal base, these flakeswill serve to increase your base magic.",
         "fertilizer_bonus": {
             "armor_magic": 50
         }
@@ -3173,8 +3223,8 @@
         "name": "Luck Flakes",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "When combined with a medicinal base, these flakeswill serve to increase your base luck.",
         "price": 1,
+        "description": "When combined with a medicinal base, these flakeswill serve to increase your base luck.",
         "fertilizer_bonus": {
             "aesthetic_luck": 50
         }
@@ -3183,8 +3233,8 @@
         "name": "Gusto Flakes",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "When combined with a medicinal base, these flakeswill serve to increase your base gusto.",
         "price": 1,
+        "description": "When combined with a medicinal base, these flakeswill serve to increase your base gusto.",
         "fertilizer_bonus": {
             "stickiness_gusto": 50
         }
@@ -3199,8 +3249,8 @@
                 "time": "Night"
             }
         ],
-        "description": "When combined with flakes, this medicinal basewill increase your various capabilities.",
         "price": 20,
+        "description": "When combined with flakes, this medicinal basewill increase your various capabilities.",
         "fertilizer_bonus": {
             "yield_hp": 25,
             "taste_strength": 25,
@@ -3227,8 +3277,6 @@
         "name": "Malt",
         "category": "Food",
         "sub_category": "",
-        "description": "A thick, syrupy substance made of steamed and fermentedrice. It is the basis of many recipes and seasonings.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -3245,14 +3293,16 @@
                 "amount": 2,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A thick, syrupy substance made of steamed and fermentedrice. It is the basis of many recipes and seasonings."
     },
     {
         "name": "Rice Bran",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A collection of dregs left over from the hulling process,including the shells and sprouts. It is very functional,ready to be used for cleaning in addition to cooking.",
         "price": 1,
+        "description": "A collection of dregs left over from the hulling process, including the shells and sprouts. It is very functional, ready to be used for cleaning in addition to cooking.",
         "fertilizer_bonus": {
             "kernel_fertilizer": 10,
             "herbicide": 2,
@@ -3263,8 +3313,6 @@
         "name": "Mochi",
         "category": "Food",
         "sub_category": "",
-        "description": "A kind of cake made by adding water to rice, pounding it,and letting it harden. It is delightful both when boiledand toasted. What's more, it's extremely easy to preserve!",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -3281,14 +3329,14 @@
                 "amount": 5,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A kind of cake made by adding water to rice, pounding it, and letting it harden. It is delightful both when boiledand toasted. What's more, it's extremely easy to preserve!"
     },
     {
         "name": "Tofu",
         "category": "Food",
         "sub_category": "",
-        "description": "This bean curd is made by combining soybean juicewith a salt solution and letting the mixture harden.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Bean",
@@ -3300,14 +3348,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "This bean curd is made by combining soybean juicewith a salt solution and letting the mixture harden."
     },
     {
         "name": "Rice Cake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "This rice has been mixed with water, pounded, and moldedinto a round shape. In the olden days, the children of menused to regularly present these as an offering to the gods.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -3329,14 +3377,16 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "This rice has been mixed with water, pounded, and moldedinto a round shape. In the olden days, the children of menused to regularly present these as an offering to the gods."
     },
     {
         "name": "Dried Rabbit Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Rabbit Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Rabbit Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Rabbit Meat",
@@ -3349,8 +3399,8 @@
         "name": "Dried Pork",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Pork that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Pork that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Pork",
@@ -3363,8 +3413,8 @@
         "name": "Dried Boar Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Boar Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Boar Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Boar Meat",
@@ -3377,8 +3427,8 @@
         "name": "Dried Venison",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Venison that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Venison that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Venison",
@@ -3391,8 +3441,8 @@
         "name": "Dried Bear Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Bear Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Bear Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Bear Meat",
@@ -3405,8 +3455,8 @@
         "name": "Dried Badger Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Badger Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Badger Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Badger Meat",
@@ -3419,8 +3469,8 @@
         "name": "Dried Turtle Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Turtle Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Turtle Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Turtle Meat",
@@ -3433,8 +3483,8 @@
         "name": "Dried Sparrow Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Sparrow Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Sparrow Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Sparrow Meat",
@@ -3447,8 +3497,8 @@
         "name": "Dried Pheasant Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Pheasant Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Pheasant Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Pheasant Meat",
@@ -3461,8 +3511,8 @@
         "name": "Dried Duck Meat",
         "category": "Food",
         "sub_category": "Shiraboshi",
-        "description": "Duck Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "price": 1,
+        "description": "Duck Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
         "ingredients": [
             {
                 "name": "Duck Meat",
@@ -3475,8 +3525,8 @@
         "name": "Smoked Rabbit Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Rabbit Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Rabbit Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3494,8 +3544,8 @@
         "name": "Smoked Pork",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Pork that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Pork that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3513,8 +3563,8 @@
         "name": "Smoked Boar Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Boar Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Boar Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3532,8 +3582,8 @@
         "name": "Smoked Venison",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Venison that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Venison that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3551,8 +3601,8 @@
         "name": "Smoked Bear Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Bear Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Bear Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3570,8 +3620,8 @@
         "name": "Smoked Badger Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Badger Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Badger Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3589,8 +3639,8 @@
         "name": "Smoked Turtle Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Turtle Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Turtle Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3608,8 +3658,8 @@
         "name": "Smoked Sparrow Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Sparrow Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Sparrow Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3627,8 +3677,8 @@
         "name": "Smoked Pheasant Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Pheasant Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Pheasant Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3646,8 +3696,8 @@
         "name": "Smoked Duck Meat",
         "category": "Food",
         "sub_category": "Kunsei",
-        "description": "Duck Meat that has been salted,  smoked,  and dried.The smoky fragrance mixes well with its rich flavor.",
         "price": 1,
+        "description": "Duck Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
         "ingredients": [
             {
                 "name": "Salt",
@@ -3665,8 +3715,8 @@
         "name": "Pickled Tekusari",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Tekusari that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Tekusari that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3684,8 +3734,8 @@
         "name": "Pickled Acorn",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Acorn that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Acorn that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3703,8 +3753,8 @@
         "name": "Pickled Taro",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Taro that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Taro that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3722,8 +3772,8 @@
         "name": "Pickled Potato",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Potato that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Potato that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3741,8 +3791,8 @@
         "name": "Pickled Onion",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Onion that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Onion that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3760,8 +3810,8 @@
         "name": "Pickled Warabi",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Warabi that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Warabi that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3779,8 +3829,8 @@
         "name": "Pickled Horsetail",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Horsetail that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Horsetail that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3798,8 +3848,8 @@
         "name": "Pickled Mugwort",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Mugwort that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Mugwort that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3817,8 +3867,8 @@
         "name": "Pickled Seven Herbs",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Seven Herbs that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Seven Herbs that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3843,8 +3893,8 @@
         "name": "Pickled Root Crops",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Root Crops that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Root Crops that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3862,8 +3912,8 @@
         "name": "Pickled Cucumber",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Cucumber that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Cucumber that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3881,8 +3931,8 @@
         "name": "Pickled Maize",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Maize that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Maize that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3900,8 +3950,8 @@
         "name": "Pickled Mushroom",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Mushroom that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Mushroom that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3919,8 +3969,8 @@
         "name": "Pickled Matsutake",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Matsutake that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Matsutake that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3938,8 +3988,8 @@
         "name": "Pickled Chestnut",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Chestnut that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Chestnut that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3957,8 +4007,8 @@
         "name": "Pickled Ginkgo Nut",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Ginkgo Nut that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Ginkgo Nut that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3976,8 +4026,8 @@
         "name": "Pickled Persimmon",
         "category": "Food",
         "sub_category": "Nukazuke",
-        "description": "Persimmon that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "price": 1,
+        "description": "Persimmon that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
         "ingredients": [
             {
                 "name": "Rice Bran",
@@ -3995,8 +4045,8 @@
         "name": "Rabbit Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Rabbit Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Rabbit Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4029,8 +4079,8 @@
         "name": "Pork Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Pork put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Pork put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4063,8 +4113,8 @@
         "name": "Boar Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Boar Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Boar Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4097,8 +4147,8 @@
         "name": "Venison Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Venison put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Venison put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4131,8 +4181,8 @@
         "name": "Bear Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Bear Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Bear Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4165,8 +4215,8 @@
         "name": "Badger Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Badger Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Badger Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4199,8 +4249,8 @@
         "name": "Turtle Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Turtle Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Turtle Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4233,8 +4283,8 @@
         "name": "Sparrow Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Sparrow Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Sparrow Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4267,8 +4317,8 @@
         "name": "Pheasant Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Pheasant Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Pheasant Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4301,8 +4351,8 @@
         "name": "Duck Meat Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Duck Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Duck Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4335,8 +4385,8 @@
         "name": "Loach Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Loach put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Loach put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4369,8 +4419,8 @@
         "name": "Sweetfish Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Sweetfish put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Sweetfish put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4403,8 +4453,8 @@
         "name": "Carp Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Carp put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Carp put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4437,8 +4487,8 @@
         "name": "Masu Salmon Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Masu Salmon put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Masu Salmon put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4471,8 +4521,8 @@
         "name": "Char Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Char put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Char put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4505,8 +4555,8 @@
         "name": "Crucian Carp Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Crucian Carp put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Crucian Carp put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4539,8 +4589,8 @@
         "name": "Salmon Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Salmon put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Salmon put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4573,8 +4623,8 @@
         "name": "Smelt Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Smelt put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Smelt put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4607,8 +4657,8 @@
         "name": "Herring Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Herring put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Herring put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4641,8 +4691,8 @@
         "name": "Eel Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Eel put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Eel put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4675,8 +4725,8 @@
         "name": "Basket Clam Sushi",
         "category": "Food",
         "sub_category": "Sushi",
-        "description": "Pickled and salted Basket Clam put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff,  but I am not so easily convinced.",
         "price": 1,
+        "description": "Pickled and salted Basket Clam put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4709,15 +4759,13 @@
         "name": "Cheese",
         "category": "Food",
         "sub_category": "",
-        "description": "A dairy product that is widely adored in western lands.Perhaps it could be compared to Yanato's condensed milk.",
-        "price": 1
+        "price": 1,
+        "description": "A dairy product that is widely adored in western lands.Perhaps it could be compared to Yanato's condensed milk."
     },
     {
         "name": "Dried Herring",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "This appears to be herring that was preserved with herbs,vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Herring",
@@ -4739,14 +4787,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "This appears to be herring that was preserved with herbs, vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi."
     },
     {
         "name": "Dried Boiled Rice",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "A grain that has been dried out in the sun and robbedof its water contents. It is best when soaked in boiledwater to rehydrate it before being eaten.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -4763,14 +4811,14 @@
                 "amount": 2,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A grain that has been dried out in the sun and robbedof its water contents. It is best when soaked in boiledwater to rehydrate it before being eaten."
     },
     {
         "name": "Dried Salmon",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "Salted salmon, dried in the sea breeze to preserve it.While it may keep for some time, it also happens to beincredibly salty. Take care not to gorge yourself on it.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Salmon",
@@ -4813,46 +4861,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -4897,14 +4905,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "Salted salmon, dried in the sea breeze to preserve it.While it may keep for some time, it also happens to beincredibly salty. Take care not to gorge yourself on it."
     },
     {
         "name": "Dried Taro Stem",
         "category": "Food",
         "sub_category": "",
-        "description": "The dried stem of a taro plant, woven into a cord.Often carried by soldiers headed to the battlefield.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Taro",
@@ -4916,28 +4924,28 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "The dried stem of a taro plant, woven into a cord.Often carried by soldiers headed to the battlefield."
     },
     {
         "name": "Dried Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "A persimmon hung under the eave of a house and dried untildeveloping a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is autumn's finest treasure.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Persimmon",
                 "amount": 3,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A persimmon hung under the eave of a house and dried untildeveloping a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is autumn's finest treasure."
     },
     {
         "name": "Pickled Wasabi",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little too well. Be wary not to drink too much.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Wasabi",
@@ -4980,46 +4988,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -5064,23 +5032,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little too well. Be wary not to drink too much."
     },
     {
         "name": "Pickled Dried Plum",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
-        "description": "A plum that has been pickled in salt. Not only is it usedfor battle rations, but also as a medicine to cure poisons.",
-        "price": 1,
-        "food_bonus": {
-            "enchant": [
-                {
-                    "name": "Poison Resistance",
-                    "level": 3
-                }
-            ],
-            "magic": 4
-        },
         "ingredients": [
             {
                 "name": "Plum",
@@ -5092,14 +5051,28 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A plum that has been pickled in salt. Not only is it usedfor battle rations, but also as a medicine to cure poisons.",
+        "food_bonus": {
+            "enchant": [
+                {
+                    "name": "Poison Resistance",
+                    "level": 5
+                }
+            ],
+            "magic": 4
+        }
     },
     {
         "name": "Spring Water",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "Ah, this must be clean water that was drawn from a springdown in the valley. I must admit, it's better for drinkingand cooking than the water found around the mountain pass.",
         "price": 1,
+        "description": "Ah, this must be clean water that was drawn from a springdown in the valley. I must admit, it's better for drinkingand cooking than the water found around the mountain pass.",
+        "fertilizer_bonus": {
+            "toxicity": -5
+        },
         "find_in": [
             {
                 "name": "Gathering Area: Lake",
@@ -5134,24 +5107,22 @@
                 "season": "Autumn",
                 "try": 5
             }
-        ],
-        "fertilizer_bonus": {
-            "toxicity": -5
-        }
+        ]
     },
     {
         "name": "Renowned Water",
-        "category": "Food",
+        "category": "Materials/Food",
         "sub_category": "",
+        "price": 1,
         "description": "Water that is renowned for its purity, which has beenmelted down from solid ice. I imagine it is the highestquality water that we can hope to find on this island.",
-        "price": 1
+        "fertilizer_bonus": {
+            "toxicity": -10
+        }
     },
     {
         "name": "Kuchikami Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "An alcohol fermented with human saliva.It reeks to high heaven and is horribly unsanitary.Only the truly courageous are bold enough to consume it.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -5168,14 +5139,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "An alcohol fermented with human saliva.It reeks to high heaven and is horribly unsanitary.Only the truly courageous are bold enough to consume it."
     },
     {
         "name": "Doburoku",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust, rice-like flavor.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -5197,28 +5168,28 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust, rice-like flavor."
     },
     {
         "name": "Amazake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "A drink made by saccharizing rice.Be fooled not by its name: this draught is virgin.Gently sweet and energizing.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Malt",
                 "amount": 2,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A drink made by saccharizing rice.Be fooled not by its name: this draught is virgin.Gently sweet and energizing."
     },
     {
         "name": "Refined Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "A clear alcohol that has been filtered and heated.Has a rich flavor with a hint of sweetness.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "White Rice",
@@ -5235,14 +5206,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "A clear alcohol that has been filtered and heated.Has a rich flavor with a hint of sweetness."
     },
     {
         "name": "Medicinal Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "Highly nutritious roots and leaves have been added to thissake to make it medicinal. As bitter as it tastes, at leastit will make you hardy enough to resist most poisons.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Malt",
@@ -5259,14 +5230,14 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "Highly nutritious roots and leaves have been added to thissake to make it medicinal. As bitter as it tastes, at leastit will make you hardy enough to resist most poisons."
     },
     {
         "name": "Ginjo Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "An alcohol made by refining polished rice and fermenting it over low heat.Smooth, palatable, and incredibly fragrant.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "White Rice",
@@ -5283,14 +5254,14 @@
                 "amount": 2,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "An alcohol made by refining polished rice and fermenting it over low heat.Smooth, palatable, and incredibly fragrant."
     },
     {
         "name": "Daiginjo Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "An alcohol made by carefully selecting only the best grains of riceand polishing them to perfection. Its translucence and superlativefragrance certify its status as a true work of art.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "White Rice",
@@ -5307,14 +5278,16 @@
                 "amount": 5,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "An alcohol made by carefully selecting only the best grains of riceand polishing them to perfection. Its translucence and superlativefragrance certify its status as a true work of art."
     },
     {
         "name": "Brown Rice Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5337,8 +5310,8 @@
         "name": "Mixed Rice Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5361,8 +5334,8 @@
         "name": "White Rice Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5385,8 +5358,8 @@
         "name": "Wheat Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5409,8 +5382,8 @@
         "name": "Foxtail Millet Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5433,8 +5406,8 @@
         "name": "Sanwa Millet Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5457,8 +5430,8 @@
         "name": "Bean Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5481,8 +5454,8 @@
         "name": "Buckwheat Shochu",
         "category": "Food",
         "sub_category": "SakeSyouchu",
-        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "price": 1,
+        "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
         "ingredients": [
             {
                 "name": "Malt",
@@ -5503,10 +5476,8 @@
     },
     {
         "name": "Beer",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
-        "description": "An alcohol from the far west made with wheat.Myrthe's favorite drink. It seems that her faithdoes not forbid the consumption of spirits...",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -5538,7 +5509,9 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "price": 1,
+        "description": "An alcohol from the far west made with wheat.Myrthe's favorite drink. It seems that her faithdoes not forbid the consumption of spirits..."
     },
     {
         "name": "Cooked Brown Rice",
@@ -5666,46 +5639,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -5814,46 +5747,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -5971,46 +5864,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -6133,46 +5986,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -6416,10 +6229,8 @@
     },
     {
         "name": "Dried Boiled Rice",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "Dried cooked rice that has been rehydratedwith boiling water. It has a rather lightflavor, similar to porridge.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -6437,6 +6248,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Dried cooked rice that has been rehydratedwith boiling water. It has a rather lightflavor, similar to porridge.",
         "food_bonus": {
             "fullness": 5,
             "enchant": [
@@ -6909,46 +6722,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -7096,46 +6869,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -7302,46 +7035,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -7594,6 +7287,7 @@
             }
         ],
         "food_bonus": {
+            "vitality": -5,
             "magic": 5,
             "enchant": [
                 {
@@ -7803,7 +7497,10 @@
                 "amount": 1,
                 "operator": ""
             }
-        ]
+        ],
+        "food_bonus": {
+            "fullness": -10
+        }
     },
     {
         "name": "Preserved Rations",
@@ -7823,6 +7520,7 @@
         "category": "Cooking",
         "description": "Hrm. Myrthe claims to be a skilled chef, but...Well, everyone makes mistakes, I suppose.",
         "food_bonus": {
+            "fullness": -25,
             "enchant": [
                 {
                     "name": "Natural Healing",
@@ -7898,46 +7596,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -8503,46 +8161,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -8704,46 +8322,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -8928,10 +8506,8 @@
     },
     {
         "name": "Pickled Wasabi",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "Wasabi that has been pickled in sake lees.Packed with a ripened spiciness, it impartsa satisfying crunch with each and every bite.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Wasabi",
@@ -8974,46 +8550,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -9059,8 +8595,11 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Wasabi that has been pickled in sake lees.Packed with a ripened spiciness, it impartsa satisfying crunch with each and every bite.",
         "food_bonus": {
-            "magic": 6
+            "magic": 6,
+            "luck": -4
         },
         "season_buff": "Spring",
         "season_food_bonus": {
@@ -9078,19 +8617,8 @@
     },
     {
         "name": "Pickled Dried Plum",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "Salted pickled plums that have been sun-dried andfermented. Biting into one releases a powerfularoma and a rich, bittersweet flavor.",
-        "price": 1,
-        "food_bonus": {
-            "enchant": [
-                {
-                    "name": "Poison Resistance",
-                    "level": 3
-                }
-            ],
-            "magic": 4
-        },
         "ingredients": [
             {
                 "name": "Plum",
@@ -9103,6 +8631,17 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Salted pickled plums that have been sun-dried andfermented. Biting into one releases a powerfularoma and a rich, bittersweet flavor.",
+        "food_bonus": {
+            "enchant": [
+                {
+                    "name": "Poison Resistance",
+                    "level": 5
+                }
+            ],
+            "magic": 4
+        },
         "season_buff": "Summer",
         "season_food_bonus": {
             "magic": 2
@@ -9210,10 +8749,8 @@
     },
     {
         "name": "Dried Salmon",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "Salmon that has been soaked in salt water and driedin the sea breeze. This pairs wondrously with sake!Though do take care not to gorge yourself.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Salmon",
@@ -9252,46 +8789,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -9341,6 +8838,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Salmon that has been soaked in salt water and driedin the sea breeze. This pairs wondrously with sake!Though do take care not to gorge yourself.",
         "food_bonus": {
             "strength": 4,
             "magic": 4
@@ -9777,46 +9276,6 @@
                 "operator": "or"
             },
             {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
                 "name": "Beer",
                 "amount": 1,
                 "operator": "or"
@@ -9971,10 +9430,8 @@
     },
     {
         "name": "Dried Herring",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "This appears to be herring that was preserved with herbs,vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Herring",
@@ -9997,6 +9454,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "This appears to be herring that was preserved with herbs,vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi.",
         "food_bonus": {
             "sp": 10,
             "luck": 5,
@@ -10149,10 +9608,8 @@
     },
     {
         "name": "Dried Persimmon",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "Persimmons that have been dried on a cord.This powerfully sweet fruit melts in your mouth,making it difficult to put down after the first bite.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Persimmon",
@@ -10160,6 +9617,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Persimmons that have been dried on a cord.This powerfully sweet fruit melts in your mouth,making it difficult to put down after the first bite.",
         "food_bonus": {
             "hp": 2,
             "vitality": 4
@@ -10236,46 +9695,6 @@
             },
             {
                 "name": "Daiginjo Sake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
                 "amount": 1,
                 "operator": "or"
             },
@@ -10365,10 +9784,8 @@
     },
     {
         "name": "Rice Cake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "",
-        "description": "Rice softened in water, then pounded and shapedinto a ball. They have long been used as offeringsto the gods from the children of men.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -10391,6 +9808,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Rice softened in water, then pounded and shapedinto a ball. They have long been used as offeringsto the gods from the children of men.",
         "food_bonus": {
             "magic": 4,
             "luck": 4,
@@ -10510,8 +9929,11 @@
         "name": "Spring Water",
         "category": "Materials/Cooking",
         "sub_category": "",
-        "description": "Oho! Water from the springs of the valley.It is quite clear and extremely refreshing.",
         "price": 1,
+        "description": "Oho! Water from the springs of the valley.It is quite clear and extremely refreshing.",
+        "fertilizer_bonus": {
+            "toxicity": -5
+        },
         "find_in": [
             {
                 "name": "Gathering Area: Lake",
@@ -10547,9 +9969,6 @@
                 "try": 5
             }
         ],
-        "fertilizer_bonus": {
-            "toxicity": -5
-        },
         "ingredients": [
             {
                 "name": "Spring Water",
@@ -10572,10 +9991,13 @@
     },
     {
         "name": "Renowned Water",
-        "category": "Cooking",
+        "category": "Materials/Cooking",
         "sub_category": "",
-        "description": "Smooth and with a hint of sweetness. Indeed,it tastes as though one sip would wash awayany impurity. It's no wonder it's renowned!",
         "price": 1,
+        "description": "Smooth and with a hint of sweetness. Indeed,it tastes as though one sip would wash awayany impurity. It's no wonder it's renowned!",
+        "fertilizer_bonus": {
+            "toxicity": -10
+        },
         "ingredients": [
             {
                 "name": "Renowned Water",
@@ -10600,10 +10022,15 @@
         "name": "Tea",
         "category": "Materials/Cooking",
         "sub_category": "",
-        "description": "A drink made by pouring boiling water over driedtea leaves. No matter what flavor of tea is used,it always enhances the taste of any meal.",
         "price": 1,
+        "description": "A drink made by pouring boiling water over driedtea leaves. No matter what flavor of tea is used,it always enhances the taste of any meal.",
+        "fertilizer_bonus": {
+            "leaf_fertilizer": 5,
+            "herbicide": 1,
+            "pesticide": 1
+        },
         "food_bonus": {
-            "luck": 2
+            "luck": 5
         },
         "find_in": [
             {
@@ -10618,11 +10045,6 @@
                 "try": 5
             }
         ],
-        "fertilizer_bonus": {
-            "leaf_fertilizer": 5,
-            "herbicide": 1,
-            "pesticide": 1
-        },
         "ingredients": [
             {
                 "name": "Tea",
@@ -10689,6 +10111,8 @@
             }
         ],
         "food_bonus": {
+            "strength": -3,
+            "vitality": -3,
             "enchant": [
                 {
                     "name": "Poison Resistance",
@@ -10815,10 +10239,8 @@
     },
     {
         "name": "Kuchikami Sake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "Alcohol fermented with human saliva. It reeks tohigh heaven and is horribly unsanitary. Only thetruly courageous are bold enough to consume it.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -10836,16 +10258,17 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Alcohol fermented with human saliva. It reeks tohigh heaven and is horribly unsanitary. Only thetruly courageous are bold enough to consume it.",
         "food_bonus": {
+            "strength": -6,
             "magic": 6
         }
     },
     {
         "name": "Doburoku",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "Cloudy white sake that is completely unfiltered.A blend of piercing sourness and potent rice flavor.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -10868,6 +10291,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Cloudy white sake that is completely unfiltered.A blend of piercing sourness and potent rice flavor.",
         "food_bonus": {
             "sp": 5,
             "magic": 5,
@@ -10881,10 +10306,8 @@
     },
     {
         "name": "Amazake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "A beverage made by converting rice into sugar.Be fooled not by its name: this draught containsno alcohol. It is gently sweet and energizing.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Malt",
@@ -10892,6 +10315,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "A beverage made by converting rice into sugar.Be fooled not by its name: this draught containsno alcohol. It is gently sweet and energizing.",
         "food_bonus": {
             "magic": 5,
             "luck": 5,
@@ -10909,27 +10334,17 @@
     },
     {
         "name": "Refined Sake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "Sake that has been filtered and heated until itruns clear. It has a rich flavor with just a hintof sweetness to balance out the refined taste.",
-        "price": 1,
         "ingredients": [
             {
-                "name": "White Rice",
-                "amount": 5,
-                "operator": "and"
-            },
-            {
-                "name": "Malt",
-                "amount": 1,
-                "operator": "and"
-            },
-            {
-                "name": "Sugar",
+                "name": "Ginjo Sake",
                 "amount": 1,
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Sake that has been filtered and heated until itruns clear. It has a rich flavor with just a hintof sweetness to balance out the refined taste.",
         "food_bonus": {
             "magic": 5,
             "enchant": [
@@ -10942,10 +10357,8 @@
     },
     {
         "name": "Medicinal Sake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "Sake truly cures all ills. This kind in particular hashad medicinal herbs added to it. It will bolster yourfortitude and give you some resistance to poison.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Malt",
@@ -10963,6 +10376,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Sake truly cures all ills. This kind in particular hashad medicinal herbs added to it. It will bolster yourfortitude and give you some resistance to poison.",
         "food_bonus": {
             "magic": 4,
             "enchant": [
@@ -10975,10 +10390,8 @@
     },
     {
         "name": "Ginjo Sake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "Sake that is made by refining polished riceand fermenting it over low heat. The resultis smooth, palatable, and incredibly fragrant.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "White Rice",
@@ -10996,6 +10409,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Sake that is made by refining polished riceand fermenting it over low heat. The resultis smooth, palatable, and incredibly fragrant.",
         "food_bonus": {
             "magic": 10,
             "enchant": [
@@ -11012,10 +10427,8 @@
     },
     {
         "name": "Daiginjo Sake",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "Sake made by carefully selecting the finest grainsof rice and polishing them to perfection. Translucentand fragrant, it qualifies as a true work of art!",
-        "price": 1,
         "ingredients": [
             {
                 "name": "White Rice",
@@ -11033,6 +10446,8 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "Sake made by carefully selecting the finest grainsof rice and polishing them to perfection. Translucentand fragrant, it qualifies as a true work of art!",
         "food_bonus": {
             "magic": 15,
             "enchant": [
@@ -11057,6 +10472,7 @@
             "operator": ""
         },
         "food_bonus": {
+            "hp": -5,
             "sp": 5,
             "magic": 5,
             "luck": 5,
@@ -11070,10 +10486,8 @@
     },
     {
         "name": "Beer",
-        "category": "Cooking",
+        "category": "Food/Cooking",
         "sub_category": "Sake",
-        "description": "An alcohol of the far west made from wheat.Its bitterness may be an acquired taste,but it certainly goes down smooth.",
-        "price": 1,
         "ingredients": [
             {
                 "name": "Brown Rice",
@@ -11106,10 +10520,13 @@
                 "operator": ""
             }
         ],
+        "price": 1,
+        "description": "An alcohol of the far west made from wheat.Its bitterness may be an acquired taste,but it certainly goes down smooth.",
         "food_bonus": {
             "hp": 5,
             "magic": 10,
             "luck": 5,
+            "fullness": -5,
             "enchant": [
                 {
                     "name": "Fire Resistance",

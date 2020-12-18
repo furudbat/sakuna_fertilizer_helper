@@ -1841,7 +1841,7 @@
     {
         "name": "Cooked Brown Rice",
         "category": "Cooking",
-        "Code": "EatTypeStaple_Genmaimeshi"
+        "Code": "RiceStaple_Genmaimeshi"
     },
     {
         "name": "Cooked Mixed Rice",
@@ -1895,7 +1895,7 @@
     },
     {
         "name": "Dried Boiled Rice",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "RiceStaple_HoshiIi"
     },
@@ -2151,13 +2151,13 @@
     },
     {
         "name": "Pickled Wasabi",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "SoftMainDish_Wasabizuke"
     },
     {
         "name": "Pickled Dried Plum",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "SoftMainDish_Umeboshi"
     },
@@ -2178,7 +2178,7 @@
     },
     {
         "name": "Dried Salmon",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "SoupMainDish_Saketoba"
     },
@@ -2234,7 +2234,7 @@
     },
     {
         "name": "Dried Herring",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "SoupMainDish_Herring"
     },
@@ -2260,7 +2260,7 @@
     },
     {
         "name": "Dried Persimmon",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "SoftSweets_Hoshigaki"
     },
@@ -2281,7 +2281,7 @@
     },
     {
         "name": "Rice Cake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "SoftSweets_Shitogi"
     },
@@ -2307,19 +2307,19 @@
     },
     {
         "name": "Spring Water",
-        "category": "Materials",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "DrinkDrink_Kiyomizu"
     },
     {
         "name": "Renowned Water",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "DrinkDrink_Meisui"
     },
     {
         "name": "Tea",
-        "category": "Materials",
+        "category": "Cooking",
         "sub_category": "",
         "Code": "DrinkDrink_Cha"
     },
@@ -2350,43 +2350,43 @@
     },
     {
         "name": "Kuchikami Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Kuchikamizake"
     },
     {
         "name": "Doburoku",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Doburoku"
     },
     {
         "name": "Amazake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Amazake"
     },
     {
         "name": "Refined Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Seisyu"
     },
     {
         "name": "Medicinal Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Yakushu"
     },
     {
         "name": "Ginjo Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Ginjyou"
     },
     {
         "name": "Daiginjo Sake",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Daiginjyou"
     },
@@ -2397,7 +2397,7 @@
     },
     {
         "name": "Beer",
-        "category": "Food",
+        "category": "Cooking",
         "sub_category": "Sake",
         "Code": "DrinkDrink_Beer"
     },

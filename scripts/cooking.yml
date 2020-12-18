@@ -85,30 +85,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -175,30 +151,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -270,30 +222,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -369,30 +297,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -533,7 +437,7 @@
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
-- category: Cooking
+- category: Food/Cooking
   description: Dried cooked rice that has been rehydratedwith boiling water. It has
     a rather lightflavor, similar to porridge.
   food_bonus:
@@ -851,30 +755,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -968,30 +848,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -1091,30 +947,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -1259,6 +1091,7 @@
     - level: 3
       name: Fire Resistance
     magic: 5
+    vitality: -5
   ingredients:
   - amount: 2
     name: Wheat
@@ -1394,6 +1227,8 @@
 - category: Cooking
   description: Crushed tekusari roots rolled into edible dumplings. As long as the
     poison has been steeped out of theroots, they make for adequate rations.
+  food_bonus:
+    fullness: -10
   ingredients:
   - amount: 1
     name: Tekusari
@@ -1414,6 +1249,7 @@
     enchant:
     - level: 1
       name: Natural Healing
+    fullness: -25
   name: Charred Lump
 - category: Cooking
   description: A simple soup made from boiled Persimmon.While it lacks a certain culinary
@@ -1464,30 +1300,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -1858,30 +1670,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -1981,30 +1769,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -2120,10 +1884,11 @@
       name: Skill Buff
     - level: 1
       name: Summer Skill Buff
-- category: Cooking
+- category: Food/Cooking
   description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
     it impartsa satisfying crunch with each and every bite.
   food_bonus:
+    luck: -4
     magic: 6
   ingredients:
   - amount: 2
@@ -2149,30 +1914,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -2211,12 +1952,12 @@
     - level: 1
       name: Spring Magic Buff
   sub_category: ''
-- category: Cooking
+- category: Food/Cooking
   description: Salted pickled plums that have been sun-dried andfermented. Biting
     into one releases a powerfularoma and a rich, bittersweet flavor.
   food_bonus:
     enchant:
-    - level: 3
+    - level: 5
       name: Poison Resistance
     magic: 4
   ingredients:
@@ -2294,7 +2035,7 @@
     enchant:
     - level: 6
       name: Water Resistance
-- category: Cooking
+- category: Food/Cooking
   description: Salmon that has been soaked in salt water and driedin the sea breeze.
     This pairs wondrously with sake!Though do take care not to gorge yourself.
   food_bonus:
@@ -2324,30 +2065,6 @@
     operator: or
   - amount: 1
     name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
     operator: or
   - amount: 1
     name: Beer
@@ -2660,30 +2377,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -2768,7 +2461,7 @@
       name: Biped's Bane
     - level: 2
       name: Quadruped Calamity
-- category: Cooking
+- category: Food/Cooking
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
     entirely unlike sushi.
@@ -2880,7 +2573,7 @@
     name: Sesame
     operator: ''
   name: Sesame Dumpling
-- category: Cooking
+- category: Food/Cooking
   description: Persimmons that have been dried on a cord.This powerfully sweet fruit
     melts in your mouth,making it difficult to put down after the first bite.
   food_bonus:
@@ -2946,30 +2639,6 @@
     name: Daiginjo Sake
     operator: or
   - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
-    name: Buckwheat Shochu
-    operator: or
-  - amount: 1
     name: Beer
     operator: or
   - amount: 1
@@ -3014,7 +2683,7 @@
     name: Bean
     operator: ''
   name: Soba Dumpling
-- category: Cooking
+- category: Food/Cooking
   description: Rice softened in water, then pounded and shapedinto a ball. They have
     long been used as offeringsto the gods from the children of men.
   food_bonus:
@@ -3144,9 +2813,11 @@
     - level: 3
       name: Fire Resistance
   sub_category: ''
-- category: Cooking
+- category: Materials/Cooking
   description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
     sip would wash awayany impurity. It's no wonder it's renowned!
+  fertilizer_bonus:
+    toxicity: -10
   food_bonus:
     luck: 3
   ingredients:
@@ -3177,7 +2848,7 @@
     season: Spring
     try: 5
   food_bonus:
-    luck: 2
+    luck: 5
   ingredients:
   - amount: 1
     name: Tea
@@ -3219,6 +2890,8 @@
     enchant:
     - level: 3
       name: Poison Resistance
+    strength: -3
+    vitality: -3
   ingredients:
   - amount: 2
     name: Fish Mint
@@ -3293,11 +2966,12 @@
       name: Luck Boost
     - level: 1
       name: Luck Buff
-- category: Cooking
+- category: Food/Cooking
   description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
     horribly unsanitary. Only thetruly courageous are bold enough to consume it.
   food_bonus:
     magic: 6
+    strength: -6
   ingredients:
   - amount: 1
     name: Brown Rice
@@ -3311,7 +2985,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Cloudy white sake that is completely unfiltered.A blend of piercing
     sourness and potent rice flavor.
   food_bonus:
@@ -3336,7 +3010,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: 'A beverage made by converting rice into sugar.Be fooled not by its
     name: this draught containsno alcohol. It is gently sweet and energizing.'
   food_bonus:
@@ -3354,7 +3028,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake that has been filtered and heated until itruns clear. It has a
     rich flavor with just a hintof sweetness to balance out the refined taste.
   food_bonus:
@@ -3363,19 +3037,13 @@
       name: Spectral Scourge
     magic: 5
   ingredients:
-  - amount: 5
-    name: White Rice
-    operator: and
   - amount: 1
-    name: Malt
-    operator: and
-  - amount: 1
-    name: Sugar
+    name: Ginjo Sake
     operator: ''
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake truly cures all ills. This kind in particular hashad medicinal
     herbs added to it. It will bolster yourfortitude and give you some resistance
     to poison.
@@ -3397,7 +3065,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake that is made by refining polished riceand fermenting it over low
     heat. The resultis smooth, palatable, and incredibly fragrant.
   food_bonus:
@@ -3420,7 +3088,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food/Cooking
   description: Sake made by carefully selecting the finest grainsof rice and polishing
     them to perfection. Translucentand fragrant, it qualifies as a true work of art!
   food_bonus:
@@ -3450,6 +3118,7 @@
     enchant:
     - level: 2
       name: Night Owl
+    hp: -5
     luck: 5
     magic: 5
     sp: 5
@@ -3458,13 +3127,14 @@
     name: Buckwheat Shochu
     operator: ''
   name: Buckwheat Shochu
-- category: Cooking
+- category: Food/Cooking
   description: An alcohol of the far west made from wheat.Its bitterness may be an
     acquired taste,but it certainly goes down smooth.
   food_bonus:
     enchant:
     - level: 3
       name: Fire Resistance
+    fullness: -5
     hp: 5
     luck: 5
     magic: 10
