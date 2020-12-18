@@ -7,15 +7,13 @@ export interface CookingItemListAdapterSettings {
 }
 
 export class CookingItemListAdapter extends ItemListAdapter {
-    private _table_selector: string;
     private _data: CookingItemData[];
     private _table?: DataTables.Api;
     private _adapter_settings: CookingItemListAdapterSettings;
 
     constructor(table_selector: string, data: CookingItemData[] = [], adapter_settings: CookingItemListAdapterSettings = {}) {
-        super(`CookingItemListAdapter|${table_selector}`);
+        super(`CookingItemListAdapter|${table_selector}`, table_selector, 'CookingItemList');
 
-        this._table_selector = table_selector;
         this._data = data;
         this._adapter_settings = adapter_settings;
     }
@@ -374,13 +372,6 @@ export class CookingItemListAdapter extends ItemListAdapter {
         }
 
         return '';
-    }
-
-    private getCollapseId(row: CookingItemData) {
-        const table_selector_id = $(this._table_selector).attr('id') ?? '';
-        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
-
-        return `collapseCookingItemList-${table_selector_id}-${name_id}`;
     }
 }
 

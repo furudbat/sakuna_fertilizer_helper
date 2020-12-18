@@ -1,6 +1,6 @@
 import { Logger, LoggerManager } from "typescript-logger";
 import { ItemInventoryData } from "./inventory";
-import { FertilizerBonusData, FoodBonusData, FoodItemData } from "./item.data";
+import { EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, ItemData } from "./item.data";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
@@ -116,9 +116,60 @@ export function render_soil_nutrients_html(fertilizer_bonus: FertilizerBonusData
 
 export abstract class ItemListAdapter {
     protected log: Logger;
+    protected _table_selector: string;
+    private _list_name: string;
 
-    public constructor(tag: string) {
+    public constructor(tag: string, table_selector: string, list_name: string) {
         this.log = LoggerManager.create(tag);
+        this._table_selector = table_selector;
+        this._list_name = list_name;
+    }
+    
+    protected getCollapseId(row: ItemData) {
+        const table_selector_id = $(this._table_selector).attr('id') ?? '';
+        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+
+        return `collapse${this._list_name}-${table_selector_id}-${name_id}`;
+    }
+
+    static getFindInContent(row: ItemData) {
+        let ret = '';
+
+        if (row.find_in !== undefined && row.find_in) {
+            ret += `<ul class="list-group itemlist-find-in-list">
+                        <li class="list-group-item list-group-item-info itemlist-find-in-list-title"><strong>${site.data.strings.item_list.materials.find_in_label}</strong></li>`;
+            for (let find_in of row.find_in) {
+                let find_location_time = '';
+                if (find_in.season != FindInSeason.Always) {
+                    find_location_time = site.data.strings.item_list.materials.at_season.replace('%season%', find_in.season)
+                }
+
+                ret += `<li class="list-group-item">${find_in.name} ${find_location_time}</li>`;
+            }
+            ret += `</ul>`;
+        }
+
+        return ret;
+    }
+    
+    static getEnemyDropContent(row: ItemData) {
+        let ret = '';
+
+        if (row.enemy_drops !== undefined && row.enemy_drops) {
+            ret += `<ul class="list-group itemlist-enemy-drop-list">
+                        <li class="list-group-item list-group-item-danger itemlist-enemy-drop-list-title"><strong>${site.data.strings.item_list.materials.drop_by_enemy_label}</strong></li>`;
+            for (let enemy_drop of row.enemy_drops) {
+                let drop_time = '';
+                if (enemy_drop.time != EnemyDropTime.Always) {
+                    drop_time = site.data.strings.item_list.materials.at_time.replace('%time%', enemy_drop.time)
+                }
+
+                ret += `<li class="list-group-item">${enemy_drop.name} ${drop_time}</li>`;
+            }
+            ret += `</ul>`;
+        }
+
+        return ret;
     }
 
     static renderSoilNutrientsHtml(fertilizer_bonus: FertilizerBonusData | undefined) {

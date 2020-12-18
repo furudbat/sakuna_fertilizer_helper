@@ -5,5 +5,6 @@ export interface SiteValue {
         assets_url: string,
         items: ItemData[],
         strings: any
-    }
+    },
+    version: string;
 };

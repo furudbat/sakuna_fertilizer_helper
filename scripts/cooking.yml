@@ -110,6 +110,30 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   - amount: 1
     name: Salt
@@ -175,6 +199,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer
@@ -246,6 +294,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer
@@ -321,6 +393,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer
@@ -432,14 +528,8 @@
     - level: 1
       name: Natural Healing
     fullness: 5
-  main_ingredients:
-  - amount: 3
-    name: Wheat
-    operator: or
-  - amount: 3
-    name: Foxtail Millet
-    operator: or
-  - amount: 3
+  main_ingredient:
+    amount: 3
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
@@ -477,23 +567,8 @@
   - amount: 1
     name: Salt
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Brown Rice
-    operator: or
-  - amount: 1
-    name: Mixed Rice
-    operator: or
-  - amount: 1
-    name: White Rice
-    operator: or
-  - amount: 1
-    name: Wheat
-    operator: or
-  - amount: 1
-    name: Foxtail Millet
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Porridge
@@ -515,25 +590,6 @@
     operator: and
   - amount: 1
     name: Seven Herbs
-    operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Brown Rice
-    operator: or
-  - amount: 1
-    name: Mixed Rice
-    operator: or
-  - amount: 1
-    name: White Rice
-    operator: or
-  - amount: 1
-    name: Wheat
-    operator: or
-  - amount: 1
-    name: Foxtail Millet
-    operator: or
-  - amount: 1
-    name: Sanwa Millet
     operator: ''
   name: Seven Herb Porridge
   season_buff: Spring
@@ -605,23 +661,8 @@
   - amount: 1
     name: Persimmon
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Brown Rice
-    operator: or
-  - amount: 2
-    name: Mixed Rice
-    operator: or
-  - amount: 2
-    name: White Rice
-    operator: or
-  - amount: 2
-    name: Wheat
-    operator: or
-  - amount: 2
-    name: Foxtail Millet
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Zosui
@@ -662,23 +703,8 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Brown Rice
-    operator: or
-  - amount: 2
-    name: Mixed Rice
-    operator: or
-  - amount: 2
-    name: White Rice
-    operator: or
-  - amount: 2
-    name: Wheat
-    operator: or
-  - amount: 2
-    name: Foxtail Millet
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Chazuke
@@ -850,6 +876,30 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   - amount: 1
     name: Sugar
@@ -878,68 +928,8 @@
   - amount: 3
     name: Buckwheat
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Rabbit Meat
-    operator: or
-  - amount: 2
-    name: Pork
-    operator: or
-  - amount: 2
-    name: Boar Meat
-    operator: or
-  - amount: 2
-    name: Venison
-    operator: or
-  - amount: 2
-    name: Bear Meat
-    operator: or
-  - amount: 2
-    name: Badger Meat
-    operator: or
-  - amount: 2
-    name: Turtle Meat
-    operator: or
-  - amount: 2
-    name: Sparrow Meat
-    operator: or
-  - amount: 2
-    name: Pheasant Meat
-    operator: or
-  - amount: 2
-    name: Duck Meat
-    operator: ''
-  - amount: 2
-    name: Loach
-    operator: or
-  - amount: 2
-    name: Sweetfish
-    operator: or
-  - amount: 2
-    name: Carp
-    operator: or
-  - amount: 2
-    name: Masu Salmon
-    operator: or
-  - amount: 2
-    name: Char
-    operator: or
-  - amount: 2
-    name: Crucian Carp
-    operator: or
-  - amount: 2
-    name: Salmon
-    operator: or
-  - amount: 2
-    name: Smelt
-    operator: or
-  - amount: 2
-    name: Herring
-    operator: or
-  - amount: 2
-    name: Eel
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Basket Clam
     operator: ''
   name: Basket Clam Bowl
@@ -1002,6 +992,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer
@@ -1104,6 +1118,30 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   - amount: 1
     name: Sugar
@@ -1141,119 +1179,8 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Rabbit Meat
-    operator: or
-  - amount: 2
-    name: Pork
-    operator: or
-  - amount: 2
-    name: Boar Meat
-    operator: or
-  - amount: 2
-    name: Venison
-    operator: or
-  - amount: 2
-    name: Bear Meat
-    operator: or
-  - amount: 2
-    name: Badger Meat
-    operator: or
-  - amount: 2
-    name: Turtle Meat
-    operator: or
-  - amount: 2
-    name: Sparrow Meat
-    operator: or
-  - amount: 2
-    name: Pheasant Meat
-    operator: or
-  - amount: 2
-    name: Duck Meat
-    operator: ''
-  - amount: 2
-    name: Loach
-    operator: or
-  - amount: 2
-    name: Sweetfish
-    operator: or
-  - amount: 2
-    name: Carp
-    operator: or
-  - amount: 2
-    name: Masu Salmon
-    operator: or
-  - amount: 2
-    name: Char
-    operator: or
-  - amount: 2
-    name: Crucian Carp
-    operator: or
-  - amount: 2
-    name: Salmon
-    operator: or
-  - amount: 2
-    name: Smelt
-    operator: or
-  - amount: 2
-    name: Herring
-    operator: or
-  - amount: 2
-    name: Eel
-    operator: or
-  - amount: 2
-    name: Basket Clam
-    operator: ''
-  - amount: 2
-    name: Tekusari
-    operator: or
-  - amount: 2
-    name: Acorn
-    operator: or
-  - amount: 2
-    name: Taro
-    operator: or
-  - amount: 2
-    name: Potato
-    operator: or
-  - amount: 2
-    name: Onion
-    operator: or
-  - amount: 2
-    name: Warabi
-    operator: or
-  - amount: 2
-    name: Horsetail
-    operator: or
-  - amount: 2
-    name: Mugwort
-    operator: or
-  - amount: 2
-    name: Seven Herbs
-    operator: or
-  - amount: 2
-    name: Root Crops
-    operator: or
-  - amount: 2
-    name: Cucumber
-    operator: or
-  - amount: 2
-    name: Maize
-    operator: or
-  - amount: 2
-    name: Mushroom
-    operator: or
-  - amount: 2
-    name: Matsutake
-    operator: or
-  - amount: 2
-    name: Chestnut
-    operator: or
-  - amount: 2
-    name: Ginkgo Nut
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Ten-don
@@ -1321,121 +1248,6 @@
     operator: and
   - amount: 1
     name: Egg
-    operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Pork
-    operator: or
-  - amount: 1
-    name: Boar Meat
-    operator: or
-  - amount: 1
-    name: Venison
-    operator: or
-  - amount: 1
-    name: Bear Meat
-    operator: or
-  - amount: 1
-    name: Badger Meat
-    operator: or
-  - amount: 1
-    name: Turtle Meat
-    operator: or
-  - amount: 1
-    name: Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Pheasant Meat
-    operator: or
-  - amount: 1
-    name: Duck Meat
-    operator: ''
-  - amount: 1
-    name: Loach
-    operator: or
-  - amount: 1
-    name: Sweetfish
-    operator: or
-  - amount: 1
-    name: Carp
-    operator: or
-  - amount: 1
-    name: Masu Salmon
-    operator: or
-  - amount: 1
-    name: Char
-    operator: or
-  - amount: 1
-    name: Crucian Carp
-    operator: or
-  - amount: 1
-    name: Salmon
-    operator: or
-  - amount: 1
-    name: Smelt
-    operator: or
-  - amount: 1
-    name: Herring
-    operator: or
-  - amount: 1
-    name: Eel
-    operator: or
-  - amount: 1
-    name: Basket Clam
-    operator: ''
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
-    name: Persimmon
     operator: ''
   name: Tempura Udon
 - category: Cooking
@@ -1553,121 +1365,6 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Pork
-    operator: or
-  - amount: 1
-    name: Boar Meat
-    operator: or
-  - amount: 1
-    name: Venison
-    operator: or
-  - amount: 1
-    name: Bear Meat
-    operator: or
-  - amount: 1
-    name: Badger Meat
-    operator: or
-  - amount: 1
-    name: Turtle Meat
-    operator: or
-  - amount: 1
-    name: Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Pheasant Meat
-    operator: or
-  - amount: 1
-    name: Duck Meat
-    operator: ''
-  - amount: 1
-    name: Loach
-    operator: or
-  - amount: 1
-    name: Sweetfish
-    operator: or
-  - amount: 1
-    name: Carp
-    operator: or
-  - amount: 1
-    name: Masu Salmon
-    operator: or
-  - amount: 1
-    name: Char
-    operator: or
-  - amount: 1
-    name: Crucian Carp
-    operator: or
-  - amount: 1
-    name: Salmon
-    operator: or
-  - amount: 1
-    name: Smelt
-    operator: or
-  - amount: 1
-    name: Herring
-    operator: or
-  - amount: 1
-    name: Eel
-    operator: or
-  - amount: 1
-    name: Basket Clam
-    operator: ''
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
-    name: Persimmon
-    operator: ''
   name: Tempura Soba
 - category: Cooking
   description: A beloved treat of Myrthe's native Ventania,this pancake is made by
@@ -1721,56 +1418,8 @@
 - category: Cooking
   description: A simple soup made from boiled Persimmon.While it lacks a certain culinary
     complexity,it's perfectly adequate for washing down a meal.
-  main_ingredients:
-  - amount: 2
-    name: Tekusari
-    operator: or
-  - amount: 2
-    name: Acorn
-    operator: or
-  - amount: 2
-    name: Taro
-    operator: or
-  - amount: 2
-    name: Potato
-    operator: or
-  - amount: 2
-    name: Onion
-    operator: or
-  - amount: 2
-    name: Warabi
-    operator: or
-  - amount: 2
-    name: Horsetail
-    operator: or
-  - amount: 2
-    name: Mugwort
-    operator: or
-  - amount: 2
-    name: Seven Herbs
-    operator: or
-  - amount: 2
-    name: Root Crops
-    operator: or
-  - amount: 2
-    name: Cucumber
-    operator: or
-  - amount: 2
-    name: Maize
-    operator: or
-  - amount: 2
-    name: Mushroom
-    operator: or
-  - amount: 2
-    name: Matsutake
-    operator: or
-  - amount: 2
-    name: Chestnut
-    operator: or
-  - amount: 2
-    name: Ginkgo Nut
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Broth
@@ -1842,57 +1491,33 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Persimmon
     operator: ''
   name: Persimmon Zoni
@@ -1918,86 +1543,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Pork
-    operator: or
-  - amount: 1
-    name: Boar Meat
-    operator: or
-  - amount: 1
-    name: Venison
-    operator: or
-  - amount: 1
-    name: Bear Meat
-    operator: or
-  - amount: 1
-    name: Badger Meat
-    operator: or
-  - amount: 1
-    name: Turtle Meat
-    operator: or
-  - amount: 1
-    name: Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Pheasant Meat
-    operator: or
-  - amount: 1
-    name: Duck Meat
-    operator: ''
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Persimmon
     operator: ''
   name: Persimmon Soup
@@ -2044,38 +1591,8 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Loach
-    operator: or
-  - amount: 1
-    name: Sweetfish
-    operator: or
-  - amount: 1
-    name: Carp
-    operator: or
-  - amount: 1
-    name: Masu Salmon
-    operator: or
-  - amount: 1
-    name: Char
-    operator: or
-  - amount: 1
-    name: Crucian Carp
-    operator: or
-  - amount: 1
-    name: Salmon
-    operator: or
-  - amount: 1
-    name: Smelt
-    operator: or
-  - amount: 1
-    name: Herring
-    operator: or
-  - amount: 1
-    name: Eel
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Basket Clam
     operator: ''
   name: Basket Clam Stew
@@ -2219,74 +1736,8 @@
 - category: Cooking
   description: Bee Larva roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
-  main_ingredients:
-  - amount: 2
-    name: Rabbit Meat
-    operator: or
-  - amount: 2
-    name: Pork
-    operator: or
-  - amount: 2
-    name: Boar Meat
-    operator: or
-  - amount: 2
-    name: Venison
-    operator: or
-  - amount: 2
-    name: Bear Meat
-    operator: or
-  - amount: 2
-    name: Badger Meat
-    operator: or
-  - amount: 2
-    name: Turtle Meat
-    operator: or
-  - amount: 2
-    name: Sparrow Meat
-    operator: or
-  - amount: 2
-    name: Pheasant Meat
-    operator: or
-  - amount: 2
-    name: Duck Meat
-    operator: ''
-  - amount: 2
-    name: Loach
-    operator: or
-  - amount: 2
-    name: Sweetfish
-    operator: or
-  - amount: 2
-    name: Carp
-    operator: or
-  - amount: 2
-    name: Masu Salmon
-    operator: or
-  - amount: 2
-    name: Char
-    operator: or
-  - amount: 2
-    name: Crucian Carp
-    operator: or
-  - amount: 2
-    name: Salmon
-    operator: or
-  - amount: 2
-    name: Smelt
-    operator: or
-  - amount: 2
-    name: Herring
-    operator: or
-  - amount: 2
-    name: Eel
-    operator: or
-  - amount: 2
-    name: Basket Clam
-    operator: ''
-  - amount: 2
-    name: Grasshopper
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Bee Larva
     operator: ''
   name: Roast Bee Larva
@@ -2297,56 +1748,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Tekusari
-    operator: or
-  - amount: 2
-    name: Acorn
-    operator: or
-  - amount: 2
-    name: Taro
-    operator: or
-  - amount: 2
-    name: Potato
-    operator: or
-  - amount: 2
-    name: Onion
-    operator: or
-  - amount: 2
-    name: Warabi
-    operator: or
-  - amount: 2
-    name: Horsetail
-    operator: or
-  - amount: 2
-    name: Mugwort
-    operator: or
-  - amount: 2
-    name: Seven Herbs
-    operator: or
-  - amount: 2
-    name: Root Crops
-    operator: or
-  - amount: 2
-    name: Cucumber
-    operator: or
-  - amount: 2
-    name: Maize
-    operator: or
-  - amount: 2
-    name: Mushroom
-    operator: or
-  - amount: 2
-    name: Matsutake
-    operator: or
-  - amount: 2
-    name: Chestnut
-    operator: or
-  - amount: 2
-    name: Ginkgo Nut
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Persimmon
     operator: ''
   name: Blanched Persimmon
@@ -2356,10 +1759,6 @@
   ingredients:
   - amount: 1
     name: Soup Stock
-    operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Garlic
     operator: ''
   name: Blanched Garlic
 - category: Cooking
@@ -2374,38 +1773,8 @@
   - amount: 1
     name: Salt
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Loach
-    operator: or
-  - amount: 2
-    name: Sweetfish
-    operator: or
-  - amount: 2
-    name: Carp
-    operator: or
-  - amount: 2
-    name: Masu Salmon
-    operator: or
-  - amount: 2
-    name: Char
-    operator: or
-  - amount: 2
-    name: Crucian Carp
-    operator: or
-  - amount: 2
-    name: Salmon
-    operator: or
-  - amount: 2
-    name: Smelt
-    operator: or
-  - amount: 2
-    name: Herring
-    operator: or
-  - amount: 2
-    name: Eel
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Basket Clam
     operator: ''
   name: Grilled Basket Clam
@@ -2421,56 +1790,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Tekusari
-    operator: or
-  - amount: 2
-    name: Acorn
-    operator: or
-  - amount: 2
-    name: Taro
-    operator: or
-  - amount: 2
-    name: Potato
-    operator: or
-  - amount: 2
-    name: Onion
-    operator: or
-  - amount: 2
-    name: Warabi
-    operator: or
-  - amount: 2
-    name: Horsetail
-    operator: or
-  - amount: 2
-    name: Mugwort
-    operator: or
-  - amount: 2
-    name: Seven Herbs
-    operator: or
-  - amount: 2
-    name: Root Crops
-    operator: or
-  - amount: 2
-    name: Cucumber
-    operator: or
-  - amount: 2
-    name: Maize
-    operator: or
-  - amount: 2
-    name: Mushroom
-    operator: or
-  - amount: 2
-    name: Matsutake
-    operator: or
-  - amount: 2
-    name: Chestnut
-    operator: or
-  - amount: 2
-    name: Ginkgo Nut
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Persimmon
     operator: ''
   name: Salt Persimmon
@@ -2499,35 +1820,8 @@
     magic: 1
     strength: 1
     vitality: 1
-  main_ingredients:
-  - amount: 1
-    name: Dried Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Dried Pork
-    operator: or
-  - amount: 1
-    name: Dried Boar Meat
-    operator: or
-  - amount: 1
-    name: Dried Venison
-    operator: or
-  - amount: 1
-    name: Dried Bear Meat
-    operator: or
-  - amount: 1
-    name: Dried Badger Meat
-    operator: or
-  - amount: 1
-    name: Dried Turtle Meat
-    operator: or
-  - amount: 1
-    name: Dried Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Dried Pheasant Meat
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Dried Duck Meat
     operator: ''
   name: Dried Duck Meat
@@ -2589,37 +1883,30 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Dried Rabbit Meat
     operator: or
-  - amount: 2
-    name: Dried Pork
+  - amount: 1
+    name: Kuchikami Sake
     operator: or
-  - amount: 2
-    name: Dried Boar Meat
+  - amount: 1
+    name: Doburoku
     operator: or
-  - amount: 2
-    name: Dried Venison
+  - amount: 1
+    name: Amazake
     operator: or
-  - amount: 2
-    name: Dried Bear Meat
+  - amount: 1
+    name: Refined Sake
     operator: or
-  - amount: 2
-    name: Dried Badger Meat
+  - amount: 1
+    name: Medicinal Sake
     operator: or
-  - amount: 2
-    name: Dried Turtle Meat
+  - amount: 1
+    name: Ginjo Sake
     operator: or
-  - amount: 2
-    name: Dried Sparrow Meat
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
-  - amount: 2
-    name: Dried Pheasant Meat
-    operator: or
-  - amount: 2
-    name: Dried Duck Meat
+  - amount: 1
+    name: Beer
     operator: ''
   name: Sake Soaked Stir-Fry
 - category: Cooking
@@ -2632,35 +1919,8 @@
     magic: 1
     strength: 2
     vitality: 2
-  main_ingredients:
-  - amount: 1
-    name: Smoked Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Smoked Pork
-    operator: or
-  - amount: 1
-    name: Smoked Boar Meat
-    operator: or
-  - amount: 1
-    name: Smoked Venison
-    operator: or
-  - amount: 1
-    name: Smoked Bear Meat
-    operator: or
-  - amount: 1
-    name: Smoked Badger Meat
-    operator: or
-  - amount: 1
-    name: Smoked Turtle Meat
-    operator: or
-  - amount: 1
-    name: Smoked Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Smoked Pheasant Meat
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Smoked Duck Meat
     operator: ''
   name: Smoked Duck Meat
@@ -2670,56 +1930,8 @@
   food_bonus:
     strength: 4
     vitality: 4
-  main_ingredients:
-  - amount: 1
-    name: Pickled Tekusari
-    operator: or
-  - amount: 1
-    name: Pickled Acorn
-    operator: or
-  - amount: 1
-    name: Pickled Taro
-    operator: or
-  - amount: 1
-    name: Pickled Potato
-    operator: or
-  - amount: 1
-    name: Pickled Onion
-    operator: or
-  - amount: 1
-    name: Pickled Warabi
-    operator: or
-  - amount: 1
-    name: Pickled Horsetail
-    operator: or
-  - amount: 1
-    name: Pickled Mugwort
-    operator: or
-  - amount: 1
-    name: Pickled Seven Herbs
-    operator: or
-  - amount: 1
-    name: Pickled Root Crops
-    operator: or
-  - amount: 1
-    name: Pickled Cucumber
-    operator: or
-  - amount: 1
-    name: Pickled Maize
-    operator: or
-  - amount: 1
-    name: Pickled Mushroom
-    operator: or
-  - amount: 1
-    name: Pickled Matsutake
-    operator: or
-  - amount: 1
-    name: Pickled Chestnut
-    operator: or
-  - amount: 1
-    name: Pickled Ginkgo Nut
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Pickled Persimmon
     operator: ''
   name: Pickled Persimmon
@@ -2734,68 +1946,8 @@
     magic: 4
     strength: 4
     vitality: 2
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat Sushi
-    operator: or
-  - amount: 1
-    name: Pork Sushi
-    operator: or
-  - amount: 1
-    name: Boar Meat Sushi
-    operator: or
-  - amount: 1
-    name: Venison Sushi
-    operator: or
-  - amount: 1
-    name: Bear Meat Sushi
-    operator: or
-  - amount: 1
-    name: Badger Meat Sushi
-    operator: or
-  - amount: 1
-    name: Turtle Meat Sushi
-    operator: or
-  - amount: 1
-    name: Sparrow Meat Sushi
-    operator: or
-  - amount: 1
-    name: Pheasant Meat Sushi
-    operator: or
-  - amount: 1
-    name: Duck Meat Sushi
-    operator: or
-  - amount: 1
-    name: Loach Sushi
-    operator: or
-  - amount: 1
-    name: Sweetfish Sushi
-    operator: or
-  - amount: 1
-    name: Carp Sushi
-    operator: or
-  - amount: 1
-    name: Masu Salmon Sushi
-    operator: or
-  - amount: 1
-    name: Char Sushi
-    operator: or
-  - amount: 1
-    name: Crucian Carp Sushi
-    operator: or
-  - amount: 1
-    name: Salmon Sushi
-    operator: or
-  - amount: 1
-    name: Smelt Sushi
-    operator: or
-  - amount: 1
-    name: Herring Sushi
-    operator: or
-  - amount: 1
-    name: Eel Sushi
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Basket Clam Sushi
     operator: ''
   name: Basket Clam Sushi
@@ -2856,69 +2008,33 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Pork
-    operator: or
-  - amount: 1
-    name: Boar Meat
-    operator: or
-  - amount: 1
-    name: Venison
-    operator: or
-  - amount: 1
-    name: Bear Meat
-    operator: or
-  - amount: 1
-    name: Badger Meat
-    operator: or
-  - amount: 1
-    name: Turtle Meat
-    operator: or
-  - amount: 1
-    name: Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Pheasant Meat
-    operator: or
-  - amount: 1
-    name: Duck Meat
-    operator: ''
-  - amount: 1
-    name: Loach
-    operator: or
-  - amount: 1
-    name: Sweetfish
-    operator: or
-  - amount: 1
-    name: Carp
-    operator: or
-  - amount: 1
-    name: Masu Salmon
-    operator: or
-  - amount: 1
-    name: Char
-    operator: or
-  - amount: 1
-    name: Crucian Carp
-    operator: or
-  - amount: 1
-    name: Salmon
-    operator: or
-  - amount: 1
-    name: Smelt
-    operator: or
-  - amount: 1
-    name: Herring
-    operator: or
-  - amount: 1
-    name: Eel
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Basket Clam
     operator: ''
   name: Basket Clam Jelly
@@ -3057,6 +2173,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer
@@ -3211,6 +2351,30 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   name: Dried Salmon
   price: 1
@@ -3228,56 +2392,8 @@
   - amount: 3
     name: Oil
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Persimmon
     operator: ''
   name: Fried Persimmon
@@ -3294,68 +2410,8 @@
   - amount: 1
     name: Wheat
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Rabbit Meat
-    operator: or
-  - amount: 2
-    name: Pork
-    operator: or
-  - amount: 2
-    name: Boar Meat
-    operator: or
-  - amount: 2
-    name: Venison
-    operator: or
-  - amount: 2
-    name: Bear Meat
-    operator: or
-  - amount: 2
-    name: Badger Meat
-    operator: or
-  - amount: 2
-    name: Turtle Meat
-    operator: or
-  - amount: 2
-    name: Sparrow Meat
-    operator: or
-  - amount: 2
-    name: Pheasant Meat
-    operator: or
-  - amount: 2
-    name: Duck Meat
-    operator: ''
-  - amount: 2
-    name: Loach
-    operator: or
-  - amount: 2
-    name: Sweetfish
-    operator: or
-  - amount: 2
-    name: Carp
-    operator: or
-  - amount: 2
-    name: Masu Salmon
-    operator: or
-  - amount: 2
-    name: Char
-    operator: or
-  - amount: 2
-    name: Crucian Carp
-    operator: or
-  - amount: 2
-    name: Salmon
-    operator: or
-  - amount: 2
-    name: Smelt
-    operator: or
-  - amount: 2
-    name: Herring
-    operator: or
-  - amount: 2
-    name: Eel
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Basket Clam
     operator: ''
   name: Crispy Basket Clam
@@ -3379,119 +2435,8 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredients:
-  - amount: 2
-    name: Rabbit Meat
-    operator: or
-  - amount: 2
-    name: Pork
-    operator: or
-  - amount: 2
-    name: Boar Meat
-    operator: or
-  - amount: 2
-    name: Venison
-    operator: or
-  - amount: 2
-    name: Bear Meat
-    operator: or
-  - amount: 2
-    name: Badger Meat
-    operator: or
-  - amount: 2
-    name: Turtle Meat
-    operator: or
-  - amount: 2
-    name: Sparrow Meat
-    operator: or
-  - amount: 2
-    name: Pheasant Meat
-    operator: or
-  - amount: 2
-    name: Duck Meat
-    operator: ''
-  - amount: 2
-    name: Loach
-    operator: or
-  - amount: 2
-    name: Sweetfish
-    operator: or
-  - amount: 2
-    name: Carp
-    operator: or
-  - amount: 2
-    name: Masu Salmon
-    operator: or
-  - amount: 2
-    name: Char
-    operator: or
-  - amount: 2
-    name: Crucian Carp
-    operator: or
-  - amount: 2
-    name: Salmon
-    operator: or
-  - amount: 2
-    name: Smelt
-    operator: or
-  - amount: 2
-    name: Herring
-    operator: or
-  - amount: 2
-    name: Eel
-    operator: or
-  - amount: 2
-    name: Basket Clam
-    operator: ''
-  - amount: 2
-    name: Tekusari
-    operator: or
-  - amount: 2
-    name: Acorn
-    operator: or
-  - amount: 2
-    name: Taro
-    operator: or
-  - amount: 2
-    name: Potato
-    operator: or
-  - amount: 2
-    name: Onion
-    operator: or
-  - amount: 2
-    name: Warabi
-    operator: or
-  - amount: 2
-    name: Horsetail
-    operator: or
-  - amount: 2
-    name: Mugwort
-    operator: or
-  - amount: 2
-    name: Seven Herbs
-    operator: or
-  - amount: 2
-    name: Root Crops
-    operator: or
-  - amount: 2
-    name: Cucumber
-    operator: or
-  - amount: 2
-    name: Maize
-    operator: or
-  - amount: 2
-    name: Mushroom
-    operator: or
-  - amount: 2
-    name: Matsutake
-    operator: or
-  - amount: 2
-    name: Chestnut
-    operator: or
-  - amount: 2
-    name: Ginkgo Nut
-    operator: or
-  - amount: 2
+  main_ingredient:
+    amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Tempura
@@ -3511,119 +2456,8 @@
   - amount: 1
     name: Sugar
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Pork
-    operator: or
-  - amount: 1
-    name: Boar Meat
-    operator: or
-  - amount: 1
-    name: Venison
-    operator: or
-  - amount: 1
-    name: Bear Meat
-    operator: or
-  - amount: 1
-    name: Badger Meat
-    operator: or
-  - amount: 1
-    name: Turtle Meat
-    operator: or
-  - amount: 1
-    name: Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Pheasant Meat
-    operator: or
-  - amount: 1
-    name: Duck Meat
-    operator: ''
-  - amount: 1
-    name: Loach
-    operator: or
-  - amount: 1
-    name: Sweetfish
-    operator: or
-  - amount: 1
-    name: Carp
-    operator: or
-  - amount: 1
-    name: Masu Salmon
-    operator: or
-  - amount: 1
-    name: Char
-    operator: or
-  - amount: 1
-    name: Crucian Carp
-    operator: or
-  - amount: 1
-    name: Salmon
-    operator: or
-  - amount: 1
-    name: Smelt
-    operator: or
-  - amount: 1
-    name: Herring
-    operator: or
-  - amount: 1
-    name: Eel
-    operator: or
-  - amount: 1
-    name: Basket Clam
-    operator: ''
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Persimmon
     operator: ''
   name: Stewed Persimmon
@@ -3647,119 +2481,8 @@
   - amount: 1
     name: Ginger
     operator: ''
-  main_ingredients:
-  - amount: 1
-    name: Rabbit Meat
-    operator: or
-  - amount: 1
-    name: Pork
-    operator: or
-  - amount: 1
-    name: Boar Meat
-    operator: or
-  - amount: 1
-    name: Venison
-    operator: or
-  - amount: 1
-    name: Bear Meat
-    operator: or
-  - amount: 1
-    name: Badger Meat
-    operator: or
-  - amount: 1
-    name: Turtle Meat
-    operator: or
-  - amount: 1
-    name: Sparrow Meat
-    operator: or
-  - amount: 1
-    name: Pheasant Meat
-    operator: or
-  - amount: 1
-    name: Duck Meat
-    operator: ''
-  - amount: 1
-    name: Loach
-    operator: or
-  - amount: 1
-    name: Sweetfish
-    operator: or
-  - amount: 1
-    name: Carp
-    operator: or
-  - amount: 1
-    name: Masu Salmon
-    operator: or
-  - amount: 1
-    name: Char
-    operator: or
-  - amount: 1
-    name: Crucian Carp
-    operator: or
-  - amount: 1
-    name: Salmon
-    operator: or
-  - amount: 1
-    name: Smelt
-    operator: or
-  - amount: 1
-    name: Herring
-    operator: or
-  - amount: 1
-    name: Eel
-    operator: or
-  - amount: 1
-    name: Basket Clam
-    operator: ''
-  - amount: 1
-    name: Tekusari
-    operator: or
-  - amount: 1
-    name: Acorn
-    operator: or
-  - amount: 1
-    name: Taro
-    operator: or
-  - amount: 1
-    name: Potato
-    operator: or
-  - amount: 1
-    name: Onion
-    operator: or
-  - amount: 1
-    name: Warabi
-    operator: or
-  - amount: 1
-    name: Horsetail
-    operator: or
-  - amount: 1
-    name: Mugwort
-    operator: or
-  - amount: 1
-    name: Seven Herbs
-    operator: or
-  - amount: 1
-    name: Root Crops
-    operator: or
-  - amount: 1
-    name: Cucumber
-    operator: or
-  - amount: 1
-    name: Maize
-    operator: or
-  - amount: 1
-    name: Mushroom
-    operator: or
-  - amount: 1
-    name: Matsutake
-    operator: or
-  - amount: 1
-    name: Chestnut
-    operator: or
-  - amount: 1
-    name: Ginkgo Nut
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Persimmon
     operator: ''
   name: Miso Persimmon
@@ -3800,58 +2523,6 @@
     operator: or
   - amount: 1
     name: Plum
-    operator: ''
-  main_ingredients:
-  - amount: 3
-    name: Tekusari
-    operator: or
-  - amount: 3
-    name: Acorn
-    operator: or
-  - amount: 3
-    name: Taro
-    operator: or
-  - amount: 3
-    name: Potato
-    operator: or
-  - amount: 3
-    name: Onion
-    operator: or
-  - amount: 3
-    name: Warabi
-    operator: or
-  - amount: 3
-    name: Horsetail
-    operator: or
-  - amount: 3
-    name: Mugwort
-    operator: or
-  - amount: 3
-    name: Seven Herbs
-    operator: or
-  - amount: 3
-    name: Root Crops
-    operator: or
-  - amount: 3
-    name: Cucumber
-    operator: or
-  - amount: 3
-    name: Maize
-    operator: or
-  - amount: 3
-    name: Mushroom
-    operator: or
-  - amount: 3
-    name: Matsutake
-    operator: or
-  - amount: 3
-    name: Chestnut
-    operator: or
-  - amount: 3
-    name: Ginkgo Nut
-    operator: or
-  - amount: 3
-    name: Persimmon
     operator: ''
   name: Rabbit Hot Pot
   season_buff: Winter
@@ -3897,58 +2568,6 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredients:
-  - amount: 3
-    name: Tekusari
-    operator: or
-  - amount: 3
-    name: Acorn
-    operator: or
-  - amount: 3
-    name: Taro
-    operator: or
-  - amount: 3
-    name: Potato
-    operator: or
-  - amount: 3
-    name: Onion
-    operator: or
-  - amount: 3
-    name: Warabi
-    operator: or
-  - amount: 3
-    name: Horsetail
-    operator: or
-  - amount: 3
-    name: Mugwort
-    operator: or
-  - amount: 3
-    name: Seven Herbs
-    operator: or
-  - amount: 3
-    name: Root Crops
-    operator: or
-  - amount: 3
-    name: Cucumber
-    operator: or
-  - amount: 3
-    name: Maize
-    operator: or
-  - amount: 3
-    name: Mushroom
-    operator: or
-  - amount: 3
-    name: Matsutake
-    operator: or
-  - amount: 3
-    name: Chestnut
-    operator: or
-  - amount: 3
-    name: Ginkgo Nut
-    operator: or
-  - amount: 3
-    name: Persimmon
-    operator: ''
   name: Boar Hot Pot
   season_buff: Winter
   season_food_bonus:
@@ -3992,58 +2611,6 @@
     operator: or
   - amount: 1
     name: Plum
-    operator: ''
-  main_ingredients:
-  - amount: 3
-    name: Tekusari
-    operator: or
-  - amount: 3
-    name: Acorn
-    operator: or
-  - amount: 3
-    name: Taro
-    operator: or
-  - amount: 3
-    name: Potato
-    operator: or
-  - amount: 3
-    name: Onion
-    operator: or
-  - amount: 3
-    name: Warabi
-    operator: or
-  - amount: 3
-    name: Horsetail
-    operator: or
-  - amount: 3
-    name: Mugwort
-    operator: or
-  - amount: 3
-    name: Seven Herbs
-    operator: or
-  - amount: 3
-    name: Root Crops
-    operator: or
-  - amount: 3
-    name: Cucumber
-    operator: or
-  - amount: 3
-    name: Maize
-    operator: or
-  - amount: 3
-    name: Mushroom
-    operator: or
-  - amount: 3
-    name: Matsutake
-    operator: or
-  - amount: 3
-    name: Chestnut
-    operator: or
-  - amount: 3
-    name: Ginkgo Nut
-    operator: or
-  - amount: 3
-    name: Persimmon
     operator: ''
   name: Deer Hot Pot
   season_buff: Winter
@@ -4118,58 +2685,30 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: ''
-  main_ingredients:
-  - amount: 3
-    name: Tekusari
     operator: or
-  - amount: 3
-    name: Acorn
+  - amount: 1
+    name: Kuchikami Sake
     operator: or
-  - amount: 3
-    name: Taro
+  - amount: 1
+    name: Doburoku
     operator: or
-  - amount: 3
-    name: Potato
+  - amount: 1
+    name: Amazake
     operator: or
-  - amount: 3
-    name: Onion
+  - amount: 1
+    name: Refined Sake
     operator: or
-  - amount: 3
-    name: Warabi
+  - amount: 1
+    name: Medicinal Sake
     operator: or
-  - amount: 3
-    name: Horsetail
+  - amount: 1
+    name: Ginjo Sake
     operator: or
-  - amount: 3
-    name: Mugwort
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
-  - amount: 3
-    name: Seven Herbs
-    operator: or
-  - amount: 3
-    name: Root Crops
-    operator: or
-  - amount: 3
-    name: Cucumber
-    operator: or
-  - amount: 3
-    name: Maize
-    operator: or
-  - amount: 3
-    name: Mushroom
-    operator: or
-  - amount: 3
-    name: Matsutake
-    operator: or
-  - amount: 3
-    name: Chestnut
-    operator: or
-  - amount: 3
-    name: Ginkgo Nut
-    operator: or
-  - amount: 3
-    name: Persimmon
+  - amount: 1
+    name: Beer
     operator: ''
   name: Turtle Hot Pot
   season_buff: Winter
@@ -4220,58 +2759,6 @@
     operator: or
   - amount: 1
     name: Plum
-    operator: ''
-  main_ingredients:
-  - amount: 3
-    name: Tekusari
-    operator: or
-  - amount: 3
-    name: Acorn
-    operator: or
-  - amount: 3
-    name: Taro
-    operator: or
-  - amount: 3
-    name: Potato
-    operator: or
-  - amount: 3
-    name: Onion
-    operator: or
-  - amount: 3
-    name: Warabi
-    operator: or
-  - amount: 3
-    name: Horsetail
-    operator: or
-  - amount: 3
-    name: Mugwort
-    operator: or
-  - amount: 3
-    name: Seven Herbs
-    operator: or
-  - amount: 3
-    name: Root Crops
-    operator: or
-  - amount: 3
-    name: Cucumber
-    operator: or
-  - amount: 3
-    name: Maize
-    operator: or
-  - amount: 3
-    name: Mushroom
-    operator: or
-  - amount: 3
-    name: Matsutake
-    operator: or
-  - amount: 3
-    name: Chestnut
-    operator: or
-  - amount: 3
-    name: Ginkgo Nut
-    operator: or
-  - amount: 3
-    name: Persimmon
     operator: ''
   name: Bear Hot Pot
   season_buff: Winter
@@ -4481,6 +2968,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer
@@ -4942,29 +3453,8 @@
     luck: 5
     magic: 5
     sp: 5
-  main_ingredients:
-  - amount: 1
-    name: Brown Rice Shochu
-    operator: or
-  - amount: 1
-    name: Mixed Rice Shochu
-    operator: or
-  - amount: 1
-    name: White Rice Shochu
-    operator: or
-  - amount: 1
-    name: Wheat Shochu
-    operator: or
-  - amount: 1
-    name: Foxtail Millet Shochu
-    operator: or
-  - amount: 1
-    name: Sanwa Millet Shochu
-    operator: or
-  - amount: 1
-    name: Bean Shochu
-    operator: or
-  - amount: 1
+  main_ingredient:
+    amount: 1
     name: Buckwheat Shochu
     operator: ''
   name: Buckwheat Shochu

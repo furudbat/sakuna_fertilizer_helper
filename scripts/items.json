@@ -11,46 +11,7 @@
         "description": "This is a base component of Leaf Fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
             "leaf_fertilizer": 20
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: River",
-                "percent": 25,
-                "season": "Always"
-            },
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 15,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Spring",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Cavern",
-                "percent": 15,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Foothills",
-                "percent": 15,
-                "season": "Always"
-            },
-            {
-                "name": "Hidden Crimson Spring",
-                "percent": 35,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Hillside",
-                "percent": 10,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Beast Manure",
@@ -59,35 +20,7 @@
         "description": "This is a base component of Kernel Fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
             "kernel_fertilizer": 20
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Plain",
-                "percent": 25,
-                "season": "Always"
-            },
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 15,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Stream",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Cavern",
-                "percent": 25,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Dry Moat",
-                "percent": 10,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Fallen Leaves",
@@ -96,132 +29,30 @@
         "description": "This is a base component of Root Fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
         "fertilizer_bonus": {
             "root_fertilizer": 20
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 20,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 10,
-                "season": "Autumn"
-            },
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 10,
-                "season": "Winter"
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 30,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Lake",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Lucid Falls",
-                "percent": 25,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Lucid Falls",
-                "percent": 10,
-                "season": "Autumn",
-                "try": 5
-            },
-            {
-                "name": "Hidden Crimson Spring",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Hillside",
-                "percent": 10,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Oil Cake",
         "category": "Materials",
         "sub_category": "ManureBase",
-        "description": "This is a base component for any fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
-        "fertilizer_bonus": {
-            "root_fertilizer": 8,
-            "kernel_fertilizer": 8,
-            "leaf_fertilizer": 10
-        },
         "enemy_drops": [
             {
                 "name": "Aburamushi",
                 "time": "Always"
             }
         ],
-        "time_of_day": "Always",
-        "find_in": [
-            {
-                "name": "Gathering Area: Dry Moat",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Takeribi's Gold Mine",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        "description": "This is a base component for any fertilizer.When making fertilizer,  you'll start with this before deciding what other nutrients to add.",
+        "fertilizer_bonus": {
+            "root_fertilizer": 8,
+            "kernel_fertilizer": 8,
+            "leaf_fertilizer": 10
+        }
     },
     {
         "name": "Powder of Transformation",
         "category": "Materials/Misc",
         "sub_category": "Material",
-        "description": "Ah,  how rare! This powder alters the flow of time,  allowing fertilizer to be completed immediately.",
-        "find_in": [
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 1,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 1,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Lucid Falls",
-                "percent": 2,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Hidden Crimson Spring",
-                "percent": 2,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Hillside",
-                "percent": 2,
-                "season": "Always"
-            },
-            {
-                "name": "Takeribi's Gold Mine",
-                "percent": 2,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        "description": "Ah,  how rare! This powder alters the flow of time,  allowing fertilizer to be completed immediately."
     },
     {
         "name": "Orb of Transformation",
@@ -236,20 +67,7 @@
         "description": "A chemical that revitalizes life,  returning plants from their weakened state. If you mix it in withfertilizer,  it will cure some rice disorders.",
         "fertilizer_bonus": {
             "immunity": 10
-        },
-        "find_in": [
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 5,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 5,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Reducing Remedy",
@@ -258,20 +76,7 @@
         "description": "A chemical that reduces excess,  restoring plantsto their proper balance. If you mix it in withfertilizer,  it will cure some rice disorders.",
         "fertilizer_bonus": {
             "herbicide": 10
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Stream",
-                "percent": 8,
-                "season": "Always"
-            },
-            {
-                "name": "Lucid Falls",
-                "percent": 8,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Eradicating Remedy",
@@ -280,20 +85,7 @@
         "description": "A chemical that wards off pests,  saving plants from invasive insects. If you mix it in withfertilizer,  it will cure some rice disorders.",
         "fertilizer_bonus": {
             "pesticide": 10
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Hillside",
-                "percent": 8,
-                "season": "Always"
-            },
-            {
-                "name": "Takeribi's Gold Mine",
-                "percent": 8,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Health's Bounty",
@@ -347,6 +139,12 @@
         "name": "Rotten Food",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Homusubi",
+                "time": "Night"
+            }
+        ],
         "description": "Hoho! It seems this uneaten food has spoiled.However,  we can still use this as fertilizer.",
         "fertilizer_bonus": {
             "yield_hp": 1,
@@ -355,14 +153,7 @@
             "stickiness_gusto": 1,
             "aesthetic_luck": 1,
             "armor_magic": 1
-        },
-        "enemy_drops": [
-            {
-                "name": "Homusubi",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night"
+        }
     },
     {
         "name": "Clay",
@@ -372,20 +163,7 @@
         "fertilizer_bonus": {
             "stickiness_gusto": 1,
             "toxicity": 1
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: River",
-                "percent": 5,
-                "season": "Always"
-            },
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 5,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Stone",
@@ -395,30 +173,7 @@
         "fertilizer_bonus": {
             "hardness_vitality": 1,
             "toxicity": 1
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: River",
-                "percent": 5,
-                "season": "Always"
-            },
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Cavern",
-                "percent": 20,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Dry Moat",
-                "percent": 20,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Copper Ore",
@@ -428,61 +183,23 @@
         "fertilizer_bonus": {
             "hardness_vitality": 2,
             "toxicity": 2
-        },
-        "find_in": [
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 5,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Cavern",
-                "percent": 20,
-                "season": "Always"
-            },
-            {
-                "name": "Takeribi's Gold Mine",
-                "percent": 8,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Iron Ore",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Pig",
+                "time": "Night"
+            }
+        ],
         "description": "A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves into masters of the craft.",
         "fertilizer_bonus": {
             "hardness_vitality": 5,
             "toxicity": 1
-        },
-        "enemy_drops": [
-            {
-                "name": "Buta",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night",
-        "find_in": [
-            {
-                "name": "Gathering Area: Lake",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Dry Moat",
-                "percent": 12,
-                "season": "Always"
-            },
-            {
-                "name": "Takeribi's Gold Mine",
-                "percent": 8,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Jade",
@@ -493,20 +210,7 @@
             "hardness_vitality": 3,
             "armor_magic": 5,
             "toxicity": 1
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Stream",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Lucid Falls",
-                "percent": 15,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Obsidian",
@@ -517,20 +221,7 @@
             "hardness_vitality": 5,
             "armor_magic": 3,
             "toxicity": 1
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Cavern",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Hidden Crimson Spring",
-                "percent": 12,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Gold Ore",
@@ -540,37 +231,23 @@
         "fertilizer_bonus": {
             "hardness_vitality": 10,
             "toxicity": 3
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Dry Moat",
-                "percent": 12,
-                "season": "Always"
-            },
-            {
-                "name": "Takeribi's Gold Mine",
-                "percent": 15,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Stainless Steel",
         "category": "Materials",
         "sub_category": "Material",
-        "description": "This is steel from Dharka,  a country that lies farto the west,  and it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.",
-        "fertilizer_bonus": {
-            "hardness_vitality": 25,
-            "toxicity": 5
-        },
         "enemy_drops": [
             {
                 "name": "Bossmaru",
                 "time": "Night"
             }
         ],
-        "time_of_day": "Night"
+        "description": "This is steel from Dharka,  a country that lies farto the west,  and it's supposedly impervious to rust.I must say,  its striped pattern is quite beautiful.",
+        "fertilizer_bonus": {
+            "hardness_vitality": 25,
+            "toxicity": 5
+        }
     },
     {
         "name": "Cloudy Crystal",
@@ -594,36 +271,7 @@
         "fertilizer_bonus": {
             "root_fertilizer": 5,
             "yield_hp": 1
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: River",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Bounteous Earth Grotto",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Dry Moat",
-                "percent": 10,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "High Quality Oak",
@@ -633,20 +281,7 @@
         "fertilizer_bonus": {
             "root_fertilizer": 5,
             "yield_hp": 3
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Bamboo",
@@ -656,35 +291,7 @@
         "fertilizer_bonus": {
             "root_fertilizer": 5,
             "yield_hp": 5
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Spring",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 15,
-                "season": "Always",
-                "try": 5
-            },
-            {
-                "name": "Gathering Area: Stream",
-                "percent": 10,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Lake",
-                "percent": 5,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Beach",
-                "percent": 15,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Ironwood",
@@ -711,14 +318,7 @@
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
             "armor_magic": 2
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: River",
-                "percent": 15,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Sedge",
@@ -728,25 +328,7 @@
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
             "armor_magic": 3
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 15,
-                "season": "Always"
-            },
-            {
-                "name": "Gathering Area: Spring",
-                "percent": 15,
-                "season": "Always"
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 10,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Hemp Palm",
@@ -778,20 +360,7 @@
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
             "aesthetic_luck": 2
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Forest",
-                "percent": 5,
-                "season": "Always"
-            },
-            {
-                "name": "Fruitful Hassok",
-                "percent": 5,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Murasaki Root",
@@ -801,14 +370,7 @@
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
             "aesthetic_luck": 3
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Stream",
-                "percent": 10,
-                "season": "Always"
-            }
-        ]
+        }
     },
     {
         "name": "Madder",
@@ -818,25 +380,18 @@
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
             "aesthetic_luck": 5
-        },
-        "find_in": [
-            {
-                "name": "Gathering Area: Foothills",
-                "percent": 15,
-                "season": "Always"
-            },
-            {
-                "name": "Hidden Crimson Spring",
-                "percent": 20,
-                "season": "Always",
-                "try": 5
-            }
-        ]
+        }
     },
     {
         "name": "Indigo Scale",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Ayu",
+                "time": "Always"
+            }
+        ],
         "description": "A fish scale that can be turned into a bluish-purpledye,  if it's crushed and mixed with the right plants.",
         "fertilizer_bonus": {
             "kernel_fertilizer": 5,
@@ -885,6 +440,12 @@
         "name": "Thunderous Tasuki",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Badger",
+                "time": "Always"
+            }
+        ],
         "description": "A cord that is used to tie up kimono sleeves.This one contains the power of lightning,  the ultimate expression of wood energy.",
         "fertilizer_bonus": {
             "armor_magic": 20
@@ -894,6 +455,20 @@
         "name": "Beast Hide",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Pig",
+                "time": "Always"
+            },
+            {
+                "name": "Inoshishi",
+                "time": "Always"
+            },
+            {
+                "name": "Deer",
+                "time": "Always"
+            }
+        ],
         "description": "The skinned hide of a most ferocious demon.It can be tanned into durable leather.",
         "fertilizer_bonus": {
             "yield_hp": 2
@@ -903,6 +478,12 @@
         "name": "Deer Antler",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Deer",
+                "time": "Always"
+            }
+        ],
         "description": "Taken from the skull of a deer demon. It can be usedin its current state,  or processed into an evenhigher-quality material.",
         "fertilizer_bonus": {
             "leaf_fertilizer": 10,
@@ -913,6 +494,12 @@
         "name": "Demonic Pearl",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Shijimi",
+                "time": "Always"
+            }
+        ],
         "description": "A jewel formed inside the shell of a demon clam.Apparently its devolution into demonhood has onlyserved to increase the quality of its pearl.",
         "fertilizer_bonus": {
             "armor_magic": 3
@@ -922,14 +509,13 @@
         "name": "Ashigumo Shuriken",
         "category": "Misc",
         "sub_category": "Material",
-        "description": "This is a throwing needle of the Ashigumo tribe,  who you mercifully defeated. Even now,  it holdsa lingering manifestation of their loyal spirits.",
         "enemy_drops": [
             {
                 "name": "Ashigumo",
                 "time": "Always"
             }
         ],
-        "time_of_day": "Always"
+        "description": "This is a throwing needle of the Ashigumo tribe,  who you mercifully defeated. Even now,  it holdsa lingering manifestation of their loyal spirits."
     },
     {
         "name": "Black Deer Leather",
@@ -965,6 +551,12 @@
         "name": "Badger Leaf",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Badger",
+                "time": "Always"
+            }
+        ],
         "description": "Ah,  was this attached to a demon badger's forehead?It's teeming with magical power. They must be moreselective in choosing their leaves than I thought.",
         "fertilizer_bonus": {
             "root_fertilizer": 10,
@@ -975,6 +567,12 @@
         "name": "Bear Hide",
         "category": "Materials",
         "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Bear",
+                "time": "Always"
+            }
+        ],
         "description": "Oho,  the hide of a demon bear. Even in this form,  it exudes power and seems difficult to work with.It will certainly make for a high-quality material.",
         "fertilizer_bonus": {
             "taste_strength": 4,
@@ -1016,14 +614,57 @@
         "name": "Moonlit Stone",
         "category": "Materials",
         "sub_category": "Material",
-        "description": "A stone that has been exposed to moonlightfor an incredibly long time. Perhaps we canextract its inner earth energy for ourselves.",
         "enemy_drops": [
             {
-                "name": "Buta",
+                "name": "Rabbit",
+                "time": "Night"
+            },
+            {
+                "name": "Pig",
+                "time": "Night"
+            },
+            {
+                "name": "Sparrow",
+                "time": "Night"
+            },
+            {
+                "name": "Inoshishi",
+                "time": "Night"
+            },
+            {
+                "name": "Deer",
+                "time": "Night"
+            },
+            {
+                "name": "Pheasant",
+                "time": "Night"
+            },
+            {
+                "name": "Ayu",
+                "time": "Night"
+            },
+            {
+                "name": "Shijimi",
+                "time": "Night"
+            },
+            {
+                "name": "Turtle",
+                "time": "Night"
+            },
+            {
+                "name": "Ashigumo",
+                "time": "Night"
+            },
+            {
+                "name": "Badger",
+                "time": "Night"
+            },
+            {
+                "name": "Bear",
                 "time": "Night"
             }
         ],
-        "time_of_day": "Night",
+        "description": "A stone that has been exposed to moonlightfor an incredibly long time. Perhaps we canextract its inner earth energy for ourselves.",
         "fertilizer_bonus": {
             "toxicity": -20
         }
@@ -1032,87 +673,33 @@
         "name": "Branching Flower",
         "category": "Materials",
         "sub_category": "Material",
-        "description": "This flower only blooms at night on mighty treesthat have absorbed an abundance of wood energy.",
-        "fertilizer_bonus": {
-            "immunity": 20
-        },
         "enemy_drops": [
             {
-                "name": "Shika",
+                "name": "Rabbit",
                 "time": "Night"
             },
             {
-                "name": "Kiji",
+                "name": "Pig",
                 "time": "Night"
             },
             {
-                "name": "Tsubakigama",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night"
-    },
-    {
-        "name": "Aqueous Droplet",
-        "category": "Materials",
-        "sub_category": "Material",
-        "description": "A semi-solid drop of condensed water energy,  anchored in place amidst the sundering flow.",
-        "fertilizer_bonus": {
-            "immunity": 5,
-            "herbicide": 5,
-            "pesticide": 5
-        },
-        "enemy_drops": [
-            {
-                "name": "Ayu",
+                "name": "Sparrow",
                 "time": "Night"
             },
-            {
-                "name": "Suppon",
-                "time": "Night"
-            },
-            {
-                "name": "Onamazu",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night"
-    },
-    {
-        "name": "Flaming Core",
-        "category": "Materials",
-        "sub_category": "Material",
-        "description": "A glowing red fragment of hardened lava that holdsa wealth of fire energy deep in its molten core.",
-        "fertilizer_bonus": {
-            "pesticide": 20
-        },
-        "enemy_drops": [
             {
                 "name": "Inoshishi",
                 "time": "Night"
             },
             {
-                "name": "Homusubi",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night"
-    },
-    {
-        "name": "Metallic Sand",
-        "category": "Materials",
-        "sub_category": "Material",
-        "description": "Sand that was ground down into miniscule particlesover the ages. It would take a god of the forgeto extract the metal energy radiating within it.",
-        "fertilizer_bonus": {
-            "herbicide": 20
-        },
-        "enemy_drops": [
-            {
-                "name": "Usagi",
+                "name": "Deer",
                 "time": "Night"
             },
             {
-                "name": "Suzume",
+                "name": "Pheasant",
+                "time": "Night"
+            },
+            {
+                "name": "Ayu",
                 "time": "Night"
             },
             {
@@ -1120,11 +707,210 @@
                 "time": "Night"
             },
             {
-                "name": "Mujina",
+                "name": "Turtle",
                 "time": "Night"
             },
             {
-                "name": "Kuma",
+                "name": "Ashigumo",
+                "time": "Night"
+            },
+            {
+                "name": "Badger",
+                "time": "Night"
+            },
+            {
+                "name": "Bear",
+                "time": "Night"
+            },
+            {
+                "name": "Tsubakigama",
+                "time": "Night"
+            }
+        ],
+        "description": "This flower only blooms at night on mighty treesthat have absorbed an abundance of wood energy.",
+        "fertilizer_bonus": {
+            "immunity": 20
+        }
+    },
+    {
+        "name": "Aqueous Droplet",
+        "category": "Materials",
+        "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Rabbit",
+                "time": "Night"
+            },
+            {
+                "name": "Pig",
+                "time": "Night"
+            },
+            {
+                "name": "Sparrow",
+                "time": "Night"
+            },
+            {
+                "name": "Inoshishi",
+                "time": "Night"
+            },
+            {
+                "name": "Deer",
+                "time": "Night"
+            },
+            {
+                "name": "Pheasant",
+                "time": "Night"
+            },
+            {
+                "name": "Ayu",
+                "time": "Night"
+            },
+            {
+                "name": "Shijimi",
+                "time": "Night"
+            },
+            {
+                "name": "Turtle",
+                "time": "Night"
+            },
+            {
+                "name": "Ashigumo",
+                "time": "Night"
+            },
+            {
+                "name": "Badger",
+                "time": "Night"
+            },
+            {
+                "name": "Bear",
+                "time": "Night"
+            },
+            {
+                "name": "Onamazu",
+                "time": "Night"
+            }
+        ],
+        "description": "A semi-solid drop of condensed water energy,  anchored in place amidst the sundering flow.",
+        "fertilizer_bonus": {
+            "immunity": 5,
+            "herbicide": 5,
+            "pesticide": 5
+        }
+    },
+    {
+        "name": "Flaming Core",
+        "category": "Materials",
+        "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Rabbit",
+                "time": "Night"
+            },
+            {
+                "name": "Pig",
+                "time": "Night"
+            },
+            {
+                "name": "Sparrow",
+                "time": "Night"
+            },
+            {
+                "name": "Inoshishi",
+                "time": "Night"
+            },
+            {
+                "name": "Deer",
+                "time": "Night"
+            },
+            {
+                "name": "Pheasant",
+                "time": "Night"
+            },
+            {
+                "name": "Ayu",
+                "time": "Night"
+            },
+            {
+                "name": "Shijimi",
+                "time": "Night"
+            },
+            {
+                "name": "Turtle",
+                "time": "Night"
+            },
+            {
+                "name": "Ashigumo",
+                "time": "Night"
+            },
+            {
+                "name": "Badger",
+                "time": "Night"
+            },
+            {
+                "name": "Bear",
+                "time": "Night"
+            },
+            {
+                "name": "Homusubi",
+                "time": "Night"
+            }
+        ],
+        "description": "A glowing red fragment of hardened lava that holdsa wealth of fire energy deep in its molten core.",
+        "fertilizer_bonus": {
+            "pesticide": 20
+        }
+    },
+    {
+        "name": "Metallic Sand",
+        "category": "Materials",
+        "sub_category": "Material",
+        "enemy_drops": [
+            {
+                "name": "Rabbit",
+                "time": "Night"
+            },
+            {
+                "name": "Pig",
+                "time": "Night"
+            },
+            {
+                "name": "Sparrow",
+                "time": "Night"
+            },
+            {
+                "name": "Inoshishi",
+                "time": "Night"
+            },
+            {
+                "name": "Deer",
+                "time": "Night"
+            },
+            {
+                "name": "Pheasant",
+                "time": "Night"
+            },
+            {
+                "name": "Ayu",
+                "time": "Night"
+            },
+            {
+                "name": "Shijimi",
+                "time": "Night"
+            },
+            {
+                "name": "Turtle",
+                "time": "Night"
+            },
+            {
+                "name": "Ashigumo",
+                "time": "Night"
+            },
+            {
+                "name": "Badger",
+                "time": "Night"
+            },
+            {
+                "name": "Bear",
                 "time": "Night"
             },
             {
@@ -1132,12 +918,21 @@
                 "time": "Night"
             }
         ],
-        "time_of_day": "Night"
+        "description": "Sand that was ground down into miniscule particlesover the ages. It would take a god of the forgeto extract the metal energy radiating within it.",
+        "fertilizer_bonus": {
+            "herbicide": 20
+        }
     },
     {
         "name": "Rabbit Meat",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Rabbit",
+                "time": "Always"
+            }
+        ],
         "description": "It is said that one can gain the powers of the creaturesthey consume. Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.",
         "life": 2,
         "expiable": true,
@@ -1153,6 +948,12 @@
         "name": "Pork",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Pig",
+                "time": "Always"
+            }
+        ],
         "description": "Known for its vitality, the meat of pig demons is essentialfor building muscle. I have heard pork is the most commonlyeaten meat in Ouka, a land across the sea.",
         "life": 2,
         "expiable": true,
@@ -1168,6 +969,12 @@
         "name": "Boar Meat",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Inoshishi",
+                "time": "Always"
+            }
+        ],
         "description": "Compared to other demons of its kind, a boar's strength iswithout equal. The meat has a slight gamey odor, it must begently boiled to bring out the delicate flavor.",
         "life": 2,
         "expiable": true,
@@ -1183,6 +990,12 @@
         "name": "Venison",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Deer",
+                "time": "Always"
+            }
+        ],
         "description": "Venison must be properly prepared before it is cooked,but the end result is a truly magical cut of meat thatcan be paired with any dish.",
         "life": 2,
         "expiable": true,
@@ -1198,6 +1011,12 @@
         "name": "Bear Meat",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Bear",
+                "time": "Always"
+            }
+        ],
         "description": "Even powerful gods are amazed by the strength and vitalitycontained in bear meat. Though it may prove troublesome tocook, the end result is more than worth the effort.",
         "life": 2,
         "expiable": true,
@@ -1215,6 +1034,12 @@
         "name": "Badger Meat",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Badger",
+                "time": "Always"
+            }
+        ],
         "description": "Strangely enough, badger meat can vary in flavor dependingon the type procured. Whether a morsel is palatable or notcomes down to little more than luck.",
         "life": 2,
         "expiable": true,
@@ -1231,6 +1056,12 @@
         "name": "Turtle Meat",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Turtle",
+                "time": "Always"
+            }
+        ],
         "description": "Turtle meat is oft used as medicine for its rejuvenatingproperties. I recommend eating some when your vitalityis in short supply.",
         "life": 2,
         "expiable": true,
@@ -1247,6 +1078,12 @@
         "name": "Sparrow Meat",
         "category": "Materials/Food",
         "sub_category": "Bird",
+        "enemy_drops": [
+            {
+                "name": "Sparrow",
+                "time": "Always"
+            }
+        ],
         "description": "Ah, the sparrow... The bane of rice fields everywhere.Its crispiness when cooked is simply divine. Small as itmay be, magical energy runs abundant through its meat.",
         "life": 2,
         "expiable": true,
@@ -1262,6 +1099,12 @@
         "name": "Pheasant Meat",
         "category": "Materials/Food",
         "sub_category": "Bird",
+        "enemy_drops": [
+            {
+                "name": "Pheasant",
+                "time": "Always"
+            }
+        ],
         "description": "A pheasant's cunning can be most vexing, but its meat mayhelp to bolster one's skill. Though the texture is ratherbland, the flavor is said to be utterly delicious.",
         "life": 2,
         "expiable": true,
@@ -1326,6 +1169,12 @@
         "name": "Sweetfish",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Ayu",
+                "time": "Always"
+            }
+        ],
         "description": "A fortuitous fish that has been used in divination sinceancient times. I must say, it's one of my favorites!",
         "life": 2,
         "expiable": true,
@@ -1653,6 +1502,12 @@
         "name": "Basket Clam",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Shijimi",
+                "time": "Always"
+            }
+        ],
         "description": "Shellfish suck up the spiritual energy from the mudand sand. Particularly big clams are liable to devolveinto demons if exposed to too much negative energy.",
         "life": 2,
         "expiable": true,
@@ -1943,6 +1798,12 @@
         "name": "Acorn",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Sparrow",
+                "time": "Always"
+            }
+        ],
         "description": "This is the hard-shelled fruit of a broad-leafed tree.It may be meager, but every little bit goes a long way.",
         "life": 2,
         "expiable": true,
@@ -2943,6 +2804,12 @@
         "name": "Oil",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Tsubakigama",
+                "time": "Night"
+            }
+        ],
         "description": "Refined oil, with the dregs carefully filtered out. A lifeof luxury is incomplete without this invaluable substance.",
         "price": 5,
         "ingredients": [
@@ -2957,13 +2824,6 @@
                 "operator": ""
             }
         ],
-        "enemy_drops": [
-            {
-                "name": "Tsubakigama",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night",
         "find_in": [
             {
                 "name": "Takeribi's Gold Mine",
@@ -2982,18 +2842,17 @@
         "name": "Vegetable Oil",
         "category": "Materials/Food",
         "sub_category": "",
-        "description": "A raw oil extracted from perilla seeds and the like.It contains dregs and is rather pungent, making itdifficult to use in this form.",
-        "price": 1,
-        "fertilizer_bonus": {
-            "leaf_fertilizer": 5
-        },
         "enemy_drops": [
             {
                 "name": "Aburamushi",
                 "time": "Always"
             }
         ],
-        "time_of_day": "Always",
+        "description": "A raw oil extracted from perilla seeds and the like.It contains dregs and is rather pungent, making itdifficult to use in this form.",
+        "price": 1,
+        "fertilizer_bonus": {
+            "leaf_fertilizer": 5
+        },
         "find_in": [
             {
                 "name": "Gathering Area: Spring",
@@ -3334,6 +3193,12 @@
         "name": "Medicinal Base",
         "category": "Materials/Food",
         "sub_category": "",
+        "enemy_drops": [
+            {
+                "name": "Onamazu",
+                "time": "Night"
+            }
+        ],
         "description": "When combined with flakes, this medicinal basewill increase your various capabilities.",
         "price": 20,
         "fertilizer_bonus": {
@@ -3344,13 +3209,6 @@
             "aesthetic_luck": 25,
             "armor_magic": 25
         },
-        "enemy_drops": [
-            {
-                "name": "Onamazu",
-                "time": "Night"
-            }
-        ],
-        "time_of_day": "Night",
         "find_in": [
             {
                 "name": "Gathering Area: Cavern",
@@ -3971,6 +3829,13 @@
                 "name": "Seven Herbs",
                 "amount": 2,
                 "operator": ""
+            }
+        ],
+        "find_in": [
+            {
+                "name": "Gathering Area: Plain",
+                "percent": 10,
+                "season": "Spring"
             }
         ]
     },
@@ -4990,6 +4855,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             }
         ]
@@ -5111,6 +5016,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -5763,6 +5708,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             },
             {
@@ -5869,6 +5854,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -5992,6 +6017,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             },
             {
@@ -6108,6 +6173,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -6294,23 +6399,11 @@
         "name": "Cooked Sanwa Millet",
         "category": "Cooking",
         "description": "A meal made of cooked Sanwa Millet.Satisfying, but it doesn't compareto the piquant taste of rice.",
-        "main_ingredients": [
-            {
-                "name": "Wheat",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet",
-                "amount": 3,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Sanwa Millet",
+            "amount": 3,
+            "operator": ""
+        },
         "food_bonus": {
             "fullness": 5,
             "enchant": [
@@ -6358,38 +6451,11 @@
         "name": "Sanwa Millet Porridge",
         "category": "Cooking",
         "description": "A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making ita perfect meal for the bedridden.",
-        "main_ingredients": [
-            {
-                "name": "Brown Rice",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Sanwa Millet",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Salt",
@@ -6412,38 +6478,6 @@
         "name": "Seven Herb Porridge",
         "category": "Cooking",
         "description": "Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor heralds the arrival of spring.",
-        "main_ingredients": [
-            {
-                "name": "Brown Rice",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Salt",
@@ -6482,38 +6516,11 @@
         "name": "Sanwa Millet Zosui",
         "category": "Cooking",
         "description": "A meal made of Sanwa Millet boiledwith rice. It is bound to warm youto the core on chilly evenings.",
-        "main_ingredients": [
-            {
-                "name": "Brown Rice",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Sanwa Millet",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Soup Stock",
@@ -6621,38 +6628,11 @@
         "name": "Sanwa Millet Chazuke",
         "category": "Cooking",
         "description": "White rice soaked in tea and sprinkled withsoy sauce. Silky smooth for easy digestion,with an irresistably invigorating aftertaste.",
-        "main_ingredients": [
-            {
-                "name": "Brown Rice",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Sanwa Millet",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Tea",
@@ -6882,113 +6862,11 @@
         "name": "Basket Clam Bowl",
         "category": "Cooking",
         "description": "Top a bowl of rice with a bit of sauce and someBasket Clam to create a truly delectable meal!Yanato's culinary ingenuity never ceases to amaze.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Basket Clam",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -7067,6 +6945,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -7224,6 +7142,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             },
             {
@@ -7301,198 +7259,11 @@
         "name": "Persimmon Ten-don",
         "category": "Cooking",
         "description": "Persimmon tempura atop a bowl of rice,with a heaping helping of salty-sweet sauce.I could eat this for eternity.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -7571,6 +7342,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -7726,198 +7537,6 @@
         "name": "Tempura Udon",
         "category": "Cooking",
         "description": "Ohoho, udon topped with Tempura Udon tempura?Yes please! The way the fried coating dissolvesin the broth is utterly magnificent.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Wheat",
@@ -8096,198 +7715,6 @@
         "name": "Tempura Soba",
         "category": "Cooking",
         "description": "Soba noodles adorned with Tempura Soba tempurais not a dish to be overlooked or underestimated.The texture of the noodles is perfection itself.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Buckwheat",
@@ -8408,185 +7835,21 @@
         "name": "Persimmon Broth",
         "category": "Cooking",
         "description": "A simple soup made from boiled Persimmon.While it lacks a certain culinary complexity,it's perfectly adequate for washing down a meal.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 2,
-                "operator": ""
-            }
-        ]
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 2,
+            "operator": ""
+        }
     },
     {
         "name": "Persimmon Zoni",
         "category": "Cooking",
         "description": "Soup with mochi and Persimmon. I cannot putmy finger on it, but something about the soft,broth-soaked mochi evokes a celebratory sentiment.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Mochi",
@@ -8681,6 +7944,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             }
         ],
@@ -8716,143 +8019,11 @@
         "name": "Persimmon Soup",
         "category": "Cooking",
         "description": "Miso melted in hot water along with Persimmon.Its moderate saltiness and the dashi's flavor makefor a superior dish that pairs well with cooked rice.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Miso",
@@ -8894,63 +8065,11 @@
         "name": "Basket Clam Stew",
         "category": "Cooking",
         "description": "Miso soup paired with well-boiled Basket Clam,scales and all. Just as nutritious as it tastes.",
-        "main_ingredients": [
-            {
-                "name": "Loach",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Basket Clam",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Miso",
@@ -9214,215 +8333,21 @@
         "name": "Roast Bee Larva",
         "category": "Cooking",
         "description": "Bee Larva roasted on an open fire.Cooked to a golden brown with allthe juicy flavor sealed inside.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Grasshopper",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Bee Larva",
-                "amount": 2,
-                "operator": ""
-            }
-        ]
+        "main_ingredient": {
+            "name": "Bee Larva",
+            "amount": 2,
+            "operator": ""
+        }
     },
     {
         "name": "Blanched Persimmon",
         "category": "Cooking",
         "description": "Chopped Persimmon steeped in a savory soup stock.Do not judge this simple dish by looks alone;its flavor will speak for itself.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Soup Stock",
@@ -9435,13 +8360,6 @@
         "name": "Blanched Garlic",
         "category": "Cooking",
         "description": "Chopped garlic steeped in a savory soup stock.Do not judge this simple dish by looks alone;its flavor will speak for itself.",
-        "main_ingredients": [
-            {
-                "name": "Garlic",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Soup Stock",
@@ -9454,63 +8372,11 @@
         "name": "Grilled Basket Clam",
         "category": "Cooking",
         "description": "Grilled Basket Clam that is salted to perfection.The trick is to get it to the perfect temperaturethat leaves the inside soft and the outside crispy.",
-        "main_ingredients": [
-            {
-                "name": "Loach",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Basket Clam",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Salt",
@@ -9532,93 +8398,11 @@
         "name": "Salt Persimmon",
         "category": "Cooking",
         "description": "Persimmon boiled in salt water. Its simplicitybrings out the best flavor in its ingredients.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Salt",
@@ -9661,58 +8445,11 @@
         "name": "Dried Duck Meat",
         "category": "Cooking",
         "description": "These ingredients have been dried in the sun.They might make good rations in times of need.",
-        "main_ingredients": [
-            {
-                "name": "Dried Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Duck Meat",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Dried Duck Meat",
+            "amount": 1,
+            "operator": ""
+        },
         "food_bonus": {
             "strength": 1,
             "vitality": 1,
@@ -9729,58 +8466,6 @@
         "name": "Sake Soaked Stir-Fry",
         "category": "Cooking",
         "description": "Dried ingredients are rehydrated with sakeand lightly fried, enhancing food and drinkalike! This technique is surely worth a try.",
-        "main_ingredients": [
-            {
-                "name": "Dried Rabbit Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Pork",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Boar Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Venison",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Bear Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Badger Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Turtle Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Sparrow Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Pheasant Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Dried Duck Meat",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Kuchikami Sake",
@@ -9860,6 +8545,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             }
         ],
@@ -9879,58 +8604,11 @@
         "name": "Smoked Duck Meat",
         "category": "Cooking",
         "description": "These ingredients have been salted and cookedover smoke. I can guarantee that it tastesevery bit as good as it smells. Delicious!",
-        "main_ingredients": [
-            {
-                "name": "Smoked Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smoked Duck Meat",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Smoked Duck Meat",
+            "amount": 1,
+            "operator": ""
+        },
         "food_bonus": {
             "strength": 2,
             "vitality": 2,
@@ -9947,93 +8625,11 @@
         "name": "Pickled Persimmon",
         "category": "Cooking",
         "description": "A preserved food made with pickled ingredientsfermented in rice bran. This salty addition pairswell with just about any meal.",
-        "main_ingredients": [
-            {
-                "name": "Pickled Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pickled Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Pickled Persimmon",
+            "amount": 1,
+            "operator": ""
+        },
         "food_bonus": {
             "strength": 4,
             "vitality": 4
@@ -10043,113 +8639,11 @@
         "name": "Basket Clam Sushi",
         "category": "Cooking",
         "description": "A preserved food made with salted and pickledingredients covered in rice and fermented.Potently acidic, aromatic, and flavorful.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Loach Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel Sushi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam Sushi",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Basket Clam Sushi",
+            "amount": 1,
+            "operator": ""
+        },
         "food_bonus": {
             "strength": 4,
             "vitality": 2,
@@ -10167,113 +8661,11 @@
         "name": "Basket Clam Jelly",
         "category": "Cooking",
         "description": "Basket Clam is first simmered in soy sauce,after which the broth is drained and then cooledfor a jiggly texture and scrumptious aftertaste.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Basket Clam",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -10352,6 +8744,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -10578,6 +9010,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -10826,6 +9298,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             }
         ],
@@ -10842,93 +9354,11 @@
         "name": "Fried Persimmon",
         "category": "Cooking",
         "description": "Food that's fried in naught but oil is not to beunderestimated. Truly it brings out the bestthe Persimmon has to offer.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Oil",
@@ -10945,113 +9375,11 @@
         "name": "Crispy Basket Clam",
         "category": "Cooking",
         "description": "Basket Clam covered in wheat flour and deep fried.The pleasant crunch as you bite into it is ratheraddicting, if I do say so myself.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Basket Clam",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Oil",
@@ -11073,198 +9401,11 @@
         "name": "Persimmon Tempura",
         "category": "Cooking",
         "description": "Persimmon covered in egg and wheat flour,then deep fried. I am told that this techniqueoriginally came from some western country.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 2,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 2,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 2,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 2,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Oil",
@@ -11298,198 +9439,11 @@
         "name": "Stewed Persimmon",
         "category": "Cooking",
         "description": "Persimmon stewed in soy sauce until soft.A gentle heat flows outward from the broth,warming your body and comforting your soul.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -11517,198 +9471,11 @@
         "name": "Miso Persimmon",
         "category": "Cooking",
         "description": "Persimmon boiled in miso until soft. The richmiso and fresh ginger make every ingredient sing.",
-        "main_ingredients": [
-            {
-                "name": "Rabbit Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pork",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Boar Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Venison",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bear Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Badger Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Turtle Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sparrow Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Pheasant Meat",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Duck Meat",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Loach",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sweetfish",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Masu Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Char",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Crucian Carp",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Salmon",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Smelt",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Herring",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Eel",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Basket Clam",
-                "amount": 1,
-                "operator": ""
-            },
-            {
-                "name": "Tekusari",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Persimmon",
+            "amount": 1,
+            "operator": ""
+        },
         "ingredients": [
             {
                 "name": "Miso",
@@ -11742,93 +9509,6 @@
         "name": "Rabbit Hot Pot",
         "category": "Cooking",
         "description": "Hot pot brimming with rabbit meat, cooked untiltender. The broth has absorbed the deep flavorof the meat.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 3,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Saiken ???",
@@ -11901,93 +9581,6 @@
         "name": "Boar Hot Pot",
         "category": "Cooking",
         "description": "Hot pot brimming with boar meat. The tough meatimparts a flavor that deepens with each bite.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 3,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Saiken ???",
@@ -12060,93 +9653,6 @@
         "name": "Deer Hot Pot",
         "category": "Cooking",
         "description": "Hot pot brimming with venison. The lightnessof the meat belies a deeply satisfying flavor.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 3,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Saiken ???",
@@ -12219,93 +9725,6 @@
         "name": "Turtle Hot Pot",
         "category": "Cooking",
         "description": "Hot pot brimming with turtle meat. Creates a trulyspectacular broth, and pairs well with vegetables.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 3,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Saiken ???",
@@ -12400,6 +9819,46 @@
             {
                 "name": "Beer",
                 "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
                 "operator": ""
             }
         ],
@@ -12428,93 +9887,6 @@
         "name": "Bear Hot Pot",
         "category": "Cooking",
         "description": "Hot pot brimming with bear meat. Not only is itnutritious, but the fattiness it adds is unlikeany other meat.",
-        "main_ingredients": [
-            {
-                "name": "Tekusari",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Acorn",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Taro",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Potato",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Onion",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Warabi",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Horsetail",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mugwort",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Seven Herbs",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Root Crops",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Cucumber",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Maize",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Mushroom",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Matsutake",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Chestnut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Ginkgo Nut",
-                "amount": 3,
-                "operator": "or"
-            },
-            {
-                "name": "Persimmon",
-                "amount": 3,
-                "operator": ""
-            }
-        ],
         "ingredients": [
             {
                 "name": "Saiken ???",
@@ -12904,6 +10276,46 @@
             },
             {
                 "name": "Buckwheat Shochu",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
                 "amount": 1,
                 "operator": "or"
             },
@@ -13639,48 +11051,11 @@
         "name": "Buckwheat Shochu",
         "category": "Cooking",
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains adds to its delectability.",
-        "main_ingredients": [
-            {
-                "name": "Brown Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Mixed Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "White Rice Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Wheat Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Foxtail Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Sanwa Millet Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Bean Shochu",
-                "amount": 1,
-                "operator": "or"
-            },
-            {
-                "name": "Buckwheat Shochu",
-                "amount": 1,
-                "operator": ""
-            }
-        ],
+        "main_ingredient": {
+            "name": "Buckwheat Shochu",
+            "amount": 1,
+            "operator": ""
+        },
         "food_bonus": {
             "sp": 5,
             "magic": 5,

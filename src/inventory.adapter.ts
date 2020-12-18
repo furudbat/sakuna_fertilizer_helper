@@ -16,17 +16,15 @@ export interface InventoryAdapterSettings {
 export class InventoryAdapter extends ItemListAdapter {
     private _settings: DataSubject<Settings>;
     private _fertilizer_components: FertilizerComponents;
-    private _table_selector: string;
     private _data: Inventory;
     private _table?: DataTables.Api;
     private _adapter_settings?: InventoryAdapterSettings;
 
     constructor(settings: DataSubject<Settings>, fertilizer_components: FertilizerComponents, table_selector: string, data: Inventory, adapter_settings: InventoryAdapterSettings | undefined = undefined) {
-        super(`InventoryAdapter|${table_selector}`);
+        super(`InventoryAdapter|${table_selector}`, table_selector, 'Inventory');
 
         this._settings = settings;
         this._fertilizer_components = fertilizer_components;
-        this._table_selector = table_selector;
         this._data = data;
         this._adapter_settings = adapter_settings;
     }
@@ -118,8 +116,6 @@ export class InventoryAdapter extends ItemListAdapter {
 
                             const toxicity = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.toxicity, true);
 
-                            const collapse_id = that.getCollapseId(row);
-
                             const show_yield_hp = ((item.fertilizer_bonus?.yield_hp ?? 0) === 0) ? 'd-none' : '';
                             const show_taste_strength = ((item.fertilizer_bonus?.taste_strength ?? 0) === 0) ? 'd-none' : '';
                             const show_hardness_vitality = ((item.fertilizer_bonus?.hardness_vitality ?? 0) === 0) ? 'd-none' : '';
@@ -131,7 +127,8 @@ export class InventoryAdapter extends ItemListAdapter {
                             const show_herbicide = ((item.fertilizer_bonus?.herbicide ?? 0) === 0) ? 'd-none' : '';
                             const show_toxicity = ((item.fertilizer_bonus?.toxicity ?? 0) === 0) ? 'd-none' : '';
 
-                            const data_color_class = Inventory.getStateFocusTextColor(item.fertilizer_bonus);
+                            const collapse_id = that.getCollapseId(item);
+                            const name_color = Inventory.getStateFocusTextColor(item.fertilizer_bonus);
 
                             const item_name = item.name;
                             const amount_value = row.amount ?? 1;
@@ -146,7 +143,7 @@ export class InventoryAdapter extends ItemListAdapter {
                                             <input type="number" value="${amount_value}" data-index="${index}" data-name="${item_name}" data-val="${amount_value}" class="form-control form-control-sm inventory-item-amount" placeholder="${site.data.strings.fertilizer_helper.inventory.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_INVENTORY}" max="${MAX_ITEMS_AMOUNT_INVENTORY}" ${disabled_amount}>
                                         </div>
                                         <div class="col-9 text-left">
-                                            <button class="btn btn-link text-left ${data_color_class}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                            <button class="btn btn-link text-left ${name_color}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
                                                 ${item_name}
                                             </button>
                                         </div>
@@ -430,12 +427,5 @@ export class InventoryAdapter extends ItemListAdapter {
                 }
             }
         });
-    }
-
-    private getCollapseId(row: ItemInventoryData) {
-        const table_selector_id = $(this._table_selector).attr('id') ?? '';
-        const name_id = row.item.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
-
-        return `collapseInventory-${table_selector_id}-${name_id}`;
     }
 }

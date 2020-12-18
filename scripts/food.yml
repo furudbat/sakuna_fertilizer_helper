@@ -1,6 +1,9 @@
 - category: Materials/Food
   description: It is said that one can gain the powers of the creaturesthey consume.
     Perhaps eating this meat will allow you togain the skill and cunning of a rabbit.
+  enemy_drops:
+  - name: Rabbit
+    time: Always
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 1
@@ -14,6 +17,9 @@
   description: Known for its vitality, the meat of pig demons is essentialfor building
     muscle. I have heard pork is the most commonlyeaten meat in Ouka, a land across
     the sea.
+  enemy_drops:
+  - name: Pig
+    time: Always
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 3
@@ -27,6 +33,9 @@
   description: Compared to other demons of its kind, a boar's strength iswithout equal.
     The meat has a slight gamey odor, it must begently boiled to bring out the delicate
     flavor.
+  enemy_drops:
+  - name: Inoshishi
+    time: Always
   expiable: true
   fertilizer_bonus:
     taste_strength: 3
@@ -39,6 +48,9 @@
 - category: Materials/Food
   description: Venison must be properly prepared before it is cooked,but the end result
     is a truly magical cut of meat thatcan be paired with any dish.
+  enemy_drops:
+  - name: Deer
+    time: Always
   expiable: true
   fertilizer_bonus:
     armor_magic: 2
@@ -52,6 +64,9 @@
   description: Even powerful gods are amazed by the strength and vitalitycontained
     in bear meat. Though it may prove troublesome tocook, the end result is more than
     worth the effort.
+  enemy_drops:
+  - name: Bear
+    time: Always
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 5
@@ -66,6 +81,9 @@
 - category: Materials/Food
   description: Strangely enough, badger meat can vary in flavor dependingon the type
     procured. Whether a morsel is palatable or notcomes down to little more than luck.
+  enemy_drops:
+  - name: Badger
+    time: Always
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 2
@@ -79,6 +97,9 @@
 - category: Materials/Food
   description: Turtle meat is oft used as medicine for its rejuvenatingproperties.
     I recommend eating some when your vitalityis in short supply.
+  enemy_drops:
+  - name: Turtle
+    time: Always
   expiable: true
   fertilizer_bonus:
     yield_hp: 5
@@ -93,6 +114,9 @@
   description: Ah, the sparrow... The bane of rice fields everywhere.Its crispiness
     when cooked is simply divine. Small as itmay be, magical energy runs abundant
     through its meat.
+  enemy_drops:
+  - name: Sparrow
+    time: Always
   expiable: true
   fertilizer_bonus:
     armor_magic: 1
@@ -106,6 +130,9 @@
   description: A pheasant's cunning can be most vexing, but its meat mayhelp to bolster
     one's skill. Though the texture is ratherbland, the flavor is said to be utterly
     delicious.
+  enemy_drops:
+  - name: Pheasant
+    time: Always
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 3
@@ -154,6 +181,9 @@
 - category: Materials/Food
   description: A fortuitous fish that has been used in divination sinceancient times.
     I must say, it's one of my favorites!
+  enemy_drops:
+  - name: Ayu
+    time: Always
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 1
@@ -388,6 +418,9 @@
 - category: Materials/Food
   description: Shellfish suck up the spiritual energy from the mudand sand. Particularly
     big clams are liable to devolveinto demons if exposed to too much negative energy.
+  enemy_drops:
+  - name: Shijimi
+    time: Always
   expiable: true
   fertilizer_bonus:
     armor_magic: 2
@@ -605,6 +638,9 @@
 - category: Materials/Food
   description: This is the hard-shelled fruit of a broad-leafed tree.It may be meager,
     but every little bit goes a long way.
+  enemy_drops:
+  - name: Sparrow
+    time: Always
   expiable: true
   fertilizer_bonus:
     hardness_vitality: 1
@@ -1338,7 +1374,6 @@
   name: Oil
   price: 5
   sub_category: ''
-  time_of_day: Night
 - category: Materials/Food
   description: A raw oil extracted from perilla seeds and the like.It contains dregs
     and is rather pungent, making itdifficult to use in this form.
@@ -1372,7 +1407,6 @@
   name: Vegetable Oil
   price: 1
   sub_category: ''
-  time_of_day: Always
 - category: Materials/Food
   description: A raw oil extracted from fish. It contains dregs and israther pungent,
     making it difficult to use in this form.
@@ -1612,7 +1646,6 @@
   name: Medicinal Base
   price: 20
   sub_category: ''
-  time_of_day: Night
 - category: Food
   description: A thick, syrupy substance made of steamed and fermentedrice. It is
     the basis of many recipes and seasonings.
@@ -2027,6 +2060,10 @@
 - category: Food
   description: Seven Herbs that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 10
+    season: Spring
   ingredients:
   - amount: 1
     name: Rice Bran
@@ -2721,6 +2758,30 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   name: Dried Salmon
   price: 1
@@ -2800,6 +2861,30 @@
     operator: or
   - amount: 1
     name: Buckwheat Shochu
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: or
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
     operator: or
   - amount: 1
     name: Beer

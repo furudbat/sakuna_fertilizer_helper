@@ -1,18 +1,16 @@
 import { LoggerManager } from "typescript-logger";
-import { FertilizerBonusData, FoodItemData, ItemData, MaterialOrFoodItemData } from "./item.data";
+import { Inventory } from "./inventory";
+import { FertilizerBonusData, FindInSeason, FoodItemData, ItemData, MaterialOrFoodItemData } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
 export class MaterialItemListAdapter extends ItemListAdapter {
-    private _table_selector: string;
     private _data: MaterialOrFoodItemData[];
     private _table?: DataTables.Api;
 
     public addItemToInventoryListener?: (item: MaterialOrFoodItemData, amount: number | undefined) => void;
 
     constructor(table_selector: string, data: MaterialOrFoodItemData[] = []) {
-        super(`MaterialItemListAdapter|${table_selector}`);
-
-        this._table_selector = table_selector;
+        super(`MaterialItemListAdapter|${table_selector}`, table_selector, 'MaterialItemList');
         this._data = data;
     }
 
@@ -142,7 +140,42 @@ export class MaterialItemListAdapter extends ItemListAdapter {
 
                 {
                     data: 'name',
-                    render: function (data: string, type: string) {
+                    render: function (data: string, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            const collapse_id = that.getCollapseId(row);
+                            
+                            const name_color = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
+
+                            const find_in = MaterialItemListAdapter.getFindInContent(row);
+                            const enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
+
+                            const show_find_in = (find_in)? '' : 'd-none';
+                            const show_enemy_drop = (enemy_drop)? '' : 'd-none';
+
+                            return `<div class="row no-gutters">
+                                        <div class="col text-left">
+                                            <button class="btn btn-link text-left ${name_color}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                                ${data}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col collapse" id="${collapse_id}">
+                                            <div class="row ${show_find_in}">
+                                                <div class="col">
+                                                    ${find_in}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 ${show_enemy_drop}">
+                                                <div class="col">
+                                                    ${enemy_drop}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            `;
+                        }
+
                         return data;
                     }
                 },

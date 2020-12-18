@@ -1,0 +1,764 @@
+{
+    "Usagi": [
+        {
+            "name": "Rabbit",
+            "Code": "Usagi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Usagi",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Rabbit",
+            "Code": "Usagi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Rabbit",
+            "Code": "Usagi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Rabbit",
+            "Code": "Usagi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Rabbit",
+            "Code": "Usagi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Rabbit",
+            "Code": "Usagi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        }
+    ],
+    "Buta": [
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Buta | M:Kegawa",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pig",
+            "Code": "Buta",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo | M:Tekkouseki",
+            "time_of_day": "Night"
+        }
+    ],
+    "Suzume": [
+        {
+            "name": "Sparrow",
+            "Code": "Suzume",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Suzume | F:Vegetable_Donguri",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Sparrow",
+            "Code": "Suzume",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Sparrow",
+            "Code": "Suzume",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Sparrow",
+            "Code": "Suzume",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Sparrow",
+            "Code": "Suzume",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Sparrow",
+            "Code": "Suzume",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        }
+    ],
+    "Inoshishi": [
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Shishi | M:Kegawa",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Inoshishi",
+            "Code": "Inoshishi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        }
+    ],
+    "Shika": [
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Shika | M:ShikaTsuno | M:Kegawa",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Deer",
+            "Code": "Shika",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        }
+    ],
+    "Kiji": [
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Kiji",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Pheasant",
+            "Code": "Kiji",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        }
+    ],
+    "Ayu": [
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Seafood_Ayu",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ReigyoUroko",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ayu",
+            "Code": "Ayu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        }
+    ],
+    "Shijimi": [
+        {
+            "name": "Shijimi",
+            "Code": "Shijimi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Seafood_Shijimi | M:Onishinjyu",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Shijimi",
+            "Code": "Shijimi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Shijimi",
+            "Code": "Shijimi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Shijimi",
+            "Code": "Shijimi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Shijimi",
+            "Code": "Shijimi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Shijimi",
+            "Code": "Shijimi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        }
+    ],
+    "Suppon": [
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Suppon",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Turtle",
+            "Code": "Suppon",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        }
+    ],
+    "Ashigumo": [
+        {
+            "name": "Ashigumo",
+            "Code": "Ashigumo",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ashigumo",
+            "Code": "Ashigumo",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ashigumo",
+            "Code": "Ashigumo",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ashigumo",
+            "Code": "Ashigumo",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ashigumo",
+            "Code": "Ashigumo",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Ashigumo",
+            "Code": "Ashigumo",
+            "min_level": 70,
+            "max_level": 0,
+            "Item": "M:Ashigumo",
+            "time_of_day": "Always"
+        }
+    ],
+    "Mujina": [
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Mujina | M:Mujinanoha",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 90,
+            "max_level": 0,
+            "Item": "M:Kaminarinotasuki",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:Kaminarinotasuki",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Badger",
+            "Code": "Mujina",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        }
+    ],
+    "Kuma": [
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "F:Meat_Kuma | M:Kumakawa",
+            "time_of_day": "Always"
+        },
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementDo",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Bear",
+            "Code": "Kuma",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin",
+            "time_of_day": "Night"
+        }
+    ],
+    "Tsubakigama": [
+        {
+            "name": "Tsubakigama",
+            "Code": "Tsubakigama",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku | F:Seasoning_Abura",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Tsubakigama",
+            "Code": "Tsubakigama",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementMoku | F:Seasoning_Abura",
+            "time_of_day": "Night"
+        }
+    ],
+    "Onamazu": [
+        {
+            "name": "Onamazu",
+            "Code": "Onamazu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui | F:Seasoning_Doping_Base",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Onamazu",
+            "Code": "Onamazu",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementSui | F:Seasoning_Doping_Base",
+            "time_of_day": "Night"
+        }
+    ],
+    "Homusubi": [
+        {
+            "name": "Homusubi",
+            "Code": "Homusubi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa | M:BadFood",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Homusubi",
+            "Code": "Homusubi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKa | M:BadFood",
+            "time_of_day": "Night"
+        }
+    ],
+    "Bossmaru": [
+        {
+            "name": "Bossmaru",
+            "Code": "Bossmaru",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin | M:Shimahagane",
+            "time_of_day": "Night"
+        },
+        {
+            "name": "Bossmaru",
+            "Code": "Bossmaru",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:ElementKin | M:Shimahagane",
+            "time_of_day": "Night"
+        }
+    ],
+    "Aburamushi": [
+        {
+            "name": "Aburamushi",
+            "Code": "Aburamushi",
+            "min_level": 0,
+            "max_level": 0,
+            "Item": "M:Aburakasu | F:Seasoning_Syokubutsuyu",
+            "time_of_day": "Always"
+        }
+    ]
+}

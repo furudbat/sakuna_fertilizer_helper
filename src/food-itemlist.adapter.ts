@@ -1,15 +1,14 @@
-import { FoodBonusData, FoodItemData, ItemData, MaterialItemData } from "./item.data";
+import { Inventory } from "./inventory";
+import { FoodItemData, ItemData } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
 export class FoodItemListAdapter extends ItemListAdapter {
-    private _table_selector: string;
     private _data: FoodItemData[];
     private _table?: DataTables.Api;
 
     constructor(table_selector: string, data: FoodItemData[] = []) {
-        super(`FoodItemListAdapter|${table_selector}`);
+        super(`FoodItemListAdapter|${table_selector}`, table_selector, 'FoodItemList');
 
-        this._table_selector = table_selector;
         this._data = data;
     }
 
@@ -108,23 +107,36 @@ export class FoodItemListAdapter extends ItemListAdapter {
             columns: [
                 {
                     data: 'name',
-                    render: function (data: string, type: string) {
+                    render: function (data: string, type: string, row: FoodItemData) {
                         if (type === 'display') {
                             const collapse_id = that.getCollapseId(row);
                             
-                            let ingredients = '';
+                            const name_color = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
+
+                            const find_in = FoodItemListAdapter.getFindInContent(row);
+                            const enemy_drop = FoodItemListAdapter.getEnemyDropContent(row);
+
+                            const show_find_in = (find_in)? '' : 'd-none';
+                            const show_enemy_drop = (enemy_drop)? '' : 'd-none';
 
                             return `<div class="row no-gutters">
                                         <div class="col-9 text-left">
-                                            <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                            <button class="btn btn-link text-left ${name_color}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
                                                 ${data}
                                             </button>
                                         </div>
                                     </div>
                                     <div class="row mt-1">
                                         <div class="col collapse" id="${collapse_id}">
-                                            <div class="row my-1">
-                                                ${ingredients}
+                                            <div class="row ${show_find_in}">
+                                                <div class="col">
+                                                    ${find_in}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 ${show_enemy_drop}">
+                                                <div class="col">
+                                                    ${enemy_drop}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -247,12 +259,5 @@ export class FoodItemListAdapter extends ItemListAdapter {
     }
 
     private initEvents() {
-    }
-
-    private getCollapseId(row: FoodItemData) {
-        const table_selector_id = $(this._table_selector).attr('id') ?? '';
-        const name_id = row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
-
-        return `collapseFoodItemList-${table_selector_id}-${name_id}`;
     }
 }

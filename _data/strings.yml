@@ -279,6 +279,10 @@ item_list:
   title: Item-List
   materials: 
     title: Materials
+    find_in_label: 'Find in: '
+    drop_by_enemy_label: 'Drop by: '
+    at_season: '(%season%)'
+    at_time: 'at %time%'
   ingredients: 
     title: Ingredients
     table_caption: state boost varies, depending on your Gusto

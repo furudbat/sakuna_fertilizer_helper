@@ -6,30 +6,6 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     leaf_fertilizer: 20
-  find_in:
-  - name: 'Gathering Area: River'
-    percent: 25
-    season: Always
-  - name: Bounteous Earth Grotto
-    percent: 15
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Spring'
-    percent: 10
-    season: Always
-  - name: 'Gathering Area: Cavern'
-    percent: 15
-    season: Always
-  - name: 'Gathering Area: Foothills'
-    percent: 15
-    season: Always
-  - name: Hidden Crimson Spring
-    percent: 35
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Hillside'
-    percent: 10
-    season: Always
   name: Beast Hoof
   sub_category: ManureBase
 - category: Materials
@@ -37,23 +13,6 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     kernel_fertilizer: 20
-  find_in:
-  - name: 'Gathering Area: Plain'
-    percent: 25
-    season: Always
-  - name: Bounteous Earth Grotto
-    percent: 15
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Stream'
-    percent: 10
-    season: Always
-  - name: 'Gathering Area: Cavern'
-    percent: 25
-    season: Always
-  - name: 'Gathering Area: Dry Moat'
-    percent: 10
-    season: Always
   name: Beast Manure
   sub_category: ManureBase
 - category: Materials
@@ -61,38 +20,6 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     root_fertilizer: 20
-  find_in:
-  - name: 'Gathering Area: Forest'
-    percent: 20
-    season: Always
-  - name: 'Gathering Area: Forest'
-    percent: 10
-    season: Autumn
-  - name: 'Gathering Area: Forest'
-    percent: 10
-    season: Winter
-  - name: Fruitful Hassok
-    percent: 30
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Lake'
-    percent: 10
-    season: Always
-  - name: Lucid Falls
-    percent: 25
-    season: Always
-    try: 5
-  - name: Lucid Falls
-    percent: 10
-    season: Autumn
-    try: 5
-  - name: Hidden Crimson Spring
-    percent: 10
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Hillside'
-    percent: 10
-    season: Always
   name: Fallen Leaves
   sub_category: ManureBase
 - category: Materials
@@ -105,44 +32,11 @@
     kernel_fertilizer: 8
     leaf_fertilizer: 10
     root_fertilizer: 8
-  find_in:
-  - name: 'Gathering Area: Dry Moat'
-    percent: 10
-    season: Always
-  - name: Takeribi's Gold Mine
-    percent: 10
-    season: Always
-    try: 5
   name: Oil Cake
   sub_category: ManureBase
-  time_of_day: Always
 - category: Materials/Misc
   description: Ah,  how rare! This powder alters the flow of time,  allowing fertilizer
     to be completed immediately.
-  find_in:
-  - name: Bounteous Earth Grotto
-    percent: 1
-    season: Always
-    try: 5
-  - name: Fruitful Hassok
-    percent: 1
-    season: Always
-    try: 5
-  - name: Lucid Falls
-    percent: 2
-    season: Always
-    try: 5
-  - name: Hidden Crimson Spring
-    percent: 2
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Hillside'
-    percent: 2
-    season: Always
-  - name: Takeribi's Gold Mine
-    percent: 2
-    season: Always
-    try: 5
   name: Powder of Transformation
   sub_category: Material
 - category: Materials/Misc
@@ -155,14 +49,6 @@
     state. If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     immunity: 10
-  find_in:
-  - name: Bounteous Earth Grotto
-    percent: 5
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Forest'
-    percent: 5
-    season: Always
   name: Revitalizing Remedy
   sub_category: Material
 - category: Materials
@@ -170,14 +56,6 @@
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     herbicide: 10
-  find_in:
-  - name: 'Gathering Area: Stream'
-    percent: 8
-    season: Always
-  - name: Lucid Falls
-    percent: 8
-    season: Always
-    try: 5
   name: Reducing Remedy
   sub_category: Material
 - category: Materials
@@ -185,14 +63,6 @@
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     pesticide: 10
-  find_in:
-  - name: 'Gathering Area: Hillside'
-    percent: 8
-    season: Always
-  - name: Takeribi's Gold Mine
-    percent: 8
-    season: Always
-    try: 5
   name: Eradicating Remedy
   sub_category: Material
 - category: Materials/Misc
@@ -250,20 +120,11 @@
     yield_hp: 1
   name: Rotten Food
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: This earth is soft,  viscous,  and easy to process.
   fertilizer_bonus:
     stickiness_gusto: 1
     toxicity: 1
-  find_in:
-  - name: 'Gathering Area: River'
-    percent: 5
-    season: Always
-  - name: Bounteous Earth Grotto
-    percent: 5
-    season: Always
-    try: 5
   name: Clay
   sub_category: Material
 - category: Materials
@@ -272,20 +133,6 @@
   fertilizer_bonus:
     hardness_vitality: 1
     toxicity: 1
-  find_in:
-  - name: 'Gathering Area: River'
-    percent: 5
-    season: Always
-  - name: Bounteous Earth Grotto
-    percent: 10
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Cavern'
-    percent: 20
-    season: Always
-  - name: 'Gathering Area: Dry Moat'
-    percent: 20
-    season: Always
   name: Stone
   sub_category: Material
 - category: Materials
@@ -293,43 +140,19 @@
   fertilizer_bonus:
     hardness_vitality: 2
     toxicity: 2
-  find_in:
-  - name: Bounteous Earth Grotto
-    percent: 5
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Cavern'
-    percent: 20
-    season: Always
-  - name: Takeribi's Gold Mine
-    percent: 8
-    season: Always
-    try: 5
   name: Copper Ore
   sub_category: Material
 - category: Materials
   description: A strong,  pliable metal. In shaping it,  apprenticesmiths shape themselves
     into masters of the craft.
   enemy_drops:
-  - name: Buta
+  - name: Pig
     time: Night
   fertilizer_bonus:
     hardness_vitality: 5
     toxicity: 1
-  find_in:
-  - name: 'Gathering Area: Lake'
-    percent: 10
-    season: Always
-  - name: 'Gathering Area: Dry Moat'
-    percent: 12
-    season: Always
-  - name: Takeribi's Gold Mine
-    percent: 8
-    season: Always
-    try: 5
   name: Iron Ore
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: Jade is known to have miraculous powers. Not onlyis it used as currency,  but
     it is revered by manyas a ceremonial implement as well.
@@ -337,14 +160,6 @@
     armor_magic: 5
     hardness_vitality: 3
     toxicity: 1
-  find_in:
-  - name: 'Gathering Area: Stream'
-    percent: 10
-    season: Always
-  - name: Lucid Falls
-    percent: 15
-    season: Always
-    try: 5
   name: Jade
   sub_category: Material
 - category: Materials
@@ -354,14 +169,6 @@
     armor_magic: 3
     hardness_vitality: 5
     toxicity: 1
-  find_in:
-  - name: 'Gathering Area: Cavern'
-    percent: 10
-    season: Always
-  - name: Hidden Crimson Spring
-    percent: 12
-    season: Always
-    try: 5
   name: Obsidian
   sub_category: Material
 - category: Materials
@@ -370,14 +177,6 @@
   fertilizer_bonus:
     hardness_vitality: 10
     toxicity: 3
-  find_in:
-  - name: 'Gathering Area: Dry Moat'
-    percent: 12
-    season: Always
-  - name: Takeribi's Gold Mine
-    percent: 15
-    season: Always
-    try: 5
   name: Gold Ore
   sub_category: Material
 - category: Materials
@@ -391,7 +190,6 @@
     toxicity: 5
   name: Stainless Steel
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: A jewel formed from the dense Clouds of Beginning,  which separate
     the two realms. Just one of thesecontains enough power to create a small island.
@@ -410,24 +208,6 @@
   fertilizer_bonus:
     root_fertilizer: 5
     yield_hp: 1
-  find_in:
-  - name: 'Gathering Area: River'
-    percent: 10
-    season: Always
-  - name: Bounteous Earth Grotto
-    percent: 10
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Forest'
-    percent: 10
-    season: Always
-  - name: Fruitful Hassok
-    percent: 10
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Dry Moat'
-    percent: 10
-    season: Always
   name: Wood
   sub_category: Material
 - category: Materials
@@ -436,14 +216,6 @@
   fertilizer_bonus:
     root_fertilizer: 5
     yield_hp: 3
-  find_in:
-  - name: 'Gathering Area: Forest'
-    percent: 10
-    season: Always
-  - name: Fruitful Hassok
-    percent: 10
-    season: Always
-    try: 5
   name: High Quality Oak
   sub_category: Material
 - category: Materials
@@ -452,23 +224,6 @@
   fertilizer_bonus:
     root_fertilizer: 5
     yield_hp: 5
-  find_in:
-  - name: 'Gathering Area: Spring'
-    percent: 10
-    season: Always
-  - name: Fruitful Hassok
-    percent: 15
-    season: Always
-    try: 5
-  - name: 'Gathering Area: Stream'
-    percent: 10
-    season: Always
-  - name: 'Gathering Area: Lake'
-    percent: 5
-    season: Always
-  - name: 'Gathering Area: Beach'
-    percent: 15
-    season: Always
   name: Bamboo
   sub_category: Material
 - category: Materials
@@ -490,10 +245,6 @@
   fertilizer_bonus:
     armor_magic: 2
     kernel_fertilizer: 5
-  find_in:
-  - name: 'Gathering Area: River'
-    percent: 15
-    season: Always
   name: Hemp
   sub_category: Material
 - category: Materials
@@ -502,17 +253,6 @@
   fertilizer_bonus:
     armor_magic: 3
     kernel_fertilizer: 5
-  find_in:
-  - name: 'Gathering Area: Forest'
-    percent: 15
-    season: Always
-  - name: 'Gathering Area: Spring'
-    percent: 15
-    season: Always
-  - name: Fruitful Hassok
-    percent: 10
-    season: Always
-    try: 5
   name: Sedge
   sub_category: Material
 - category: Materials
@@ -539,14 +279,6 @@
   fertilizer_bonus:
     aesthetic_luck: 2
     kernel_fertilizer: 5
-  find_in:
-  - name: 'Gathering Area: Forest'
-    percent: 5
-    season: Always
-  - name: Fruitful Hassok
-    percent: 5
-    season: Always
-    try: 5
   name: Cork Tree Branch
   sub_category: Material
 - category: Materials
@@ -555,10 +287,6 @@
   fertilizer_bonus:
     aesthetic_luck: 3
     kernel_fertilizer: 5
-  find_in:
-  - name: 'Gathering Area: Stream'
-    percent: 10
-    season: Always
   name: Murasaki Root
   sub_category: Material
 - category: Materials
@@ -567,19 +295,14 @@
   fertilizer_bonus:
     aesthetic_luck: 5
     kernel_fertilizer: 5
-  find_in:
-  - name: 'Gathering Area: Foothills'
-    percent: 15
-    season: Always
-  - name: Hidden Crimson Spring
-    percent: 20
-    season: Always
-    try: 5
   name: Madder
   sub_category: Material
 - category: Materials
   description: A fish scale that can be turned into a bluish-purpledye,  if it's crushed
     and mixed with the right plants.
+  enemy_drops:
+  - name: Ayu
+    time: Always
   fertilizer_bonus:
     aesthetic_luck: 5
     kernel_fertilizer: 5
@@ -618,6 +341,9 @@
 - category: Materials
   description: A cord that is used to tie up kimono sleeves.This one contains the
     power of lightning,  the ultimate expression of wood energy.
+  enemy_drops:
+  - name: Badger
+    time: Always
   fertilizer_bonus:
     armor_magic: 20
   name: Thunderous Tasuki
@@ -625,6 +351,13 @@
 - category: Materials
   description: The skinned hide of a most ferocious demon.It can be tanned into durable
     leather.
+  enemy_drops:
+  - name: Pig
+    time: Always
+  - name: Inoshishi
+    time: Always
+  - name: Deer
+    time: Always
   fertilizer_bonus:
     yield_hp: 2
   name: Beast Hide
@@ -632,6 +365,9 @@
 - category: Materials
   description: Taken from the skull of a deer demon. It can be usedin its current
     state,  or processed into an evenhigher-quality material.
+  enemy_drops:
+  - name: Deer
+    time: Always
   fertilizer_bonus:
     armor_magic: 5
     leaf_fertilizer: 10
@@ -640,6 +376,9 @@
 - category: Materials
   description: A jewel formed inside the shell of a demon clam.Apparently its devolution
     into demonhood has onlyserved to increase the quality of its pearl.
+  enemy_drops:
+  - name: Shijimi
+    time: Always
   fertilizer_bonus:
     armor_magic: 3
   name: Demonic Pearl
@@ -652,7 +391,6 @@
     time: Always
   name: Ashigumo Shuriken
   sub_category: Material
-  time_of_day: Always
 - category: Materials
   description: The resilient hide of a black deer demon.When I close my eyes,  I can
     still vividlysee your fierce battle with the beast!
@@ -680,6 +418,9 @@
 - category: Materials
   description: Ah,  was this attached to a demon badger's forehead?It's teeming with
     magical power. They must be moreselective in choosing their leaves than I thought.
+  enemy_drops:
+  - name: Badger
+    time: Always
   fertilizer_bonus:
     armor_magic: 5
     root_fertilizer: 10
@@ -688,6 +429,9 @@
 - category: Materials
   description: Oho,  the hide of a demon bear. Even in this form,  it exudes power
     and seems difficult to work with.It will certainly make for a high-quality material.
+  enemy_drops:
+  - name: Bear
+    time: Always
   fertilizer_bonus:
     hardness_vitality: 1
     taste_strength: 4
@@ -722,20 +466,61 @@
   description: A stone that has been exposed to moonlightfor an incredibly long time.
     Perhaps we canextract its inner earth energy for ourselves.
   enemy_drops:
-  - name: Buta
+  - name: Rabbit
+    time: Night
+  - name: Pig
+    time: Night
+  - name: Sparrow
+    time: Night
+  - name: Inoshishi
+    time: Night
+  - name: Deer
+    time: Night
+  - name: Pheasant
+    time: Night
+  - name: Ayu
+    time: Night
+  - name: Shijimi
+    time: Night
+  - name: Turtle
+    time: Night
+  - name: Ashigumo
+    time: Night
+  - name: Badger
+    time: Night
+  - name: Bear
     time: Night
   fertilizer_bonus:
     toxicity: -20
   name: Moonlit Stone
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: This flower only blooms at night on mighty treesthat have absorbed
     an abundance of wood energy.
   enemy_drops:
-  - name: Shika
+  - name: Rabbit
     time: Night
-  - name: Kiji
+  - name: Pig
+    time: Night
+  - name: Sparrow
+    time: Night
+  - name: Inoshishi
+    time: Night
+  - name: Deer
+    time: Night
+  - name: Pheasant
+    time: Night
+  - name: Ayu
+    time: Night
+  - name: Shijimi
+    time: Night
+  - name: Turtle
+    time: Night
+  - name: Ashigumo
+    time: Night
+  - name: Badger
+    time: Night
+  - name: Bear
     time: Night
   - name: Tsubakigama
     time: Night
@@ -743,14 +528,33 @@
     immunity: 20
   name: Branching Flower
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: A semi-solid drop of condensed water energy,  anchored in place amidst
     the sundering flow.
   enemy_drops:
+  - name: Rabbit
+    time: Night
+  - name: Pig
+    time: Night
+  - name: Sparrow
+    time: Night
+  - name: Inoshishi
+    time: Night
+  - name: Deer
+    time: Night
+  - name: Pheasant
+    time: Night
   - name: Ayu
     time: Night
-  - name: Suppon
+  - name: Shijimi
+    time: Night
+  - name: Turtle
+    time: Night
+  - name: Ashigumo
+    time: Night
+  - name: Badger
+    time: Night
+  - name: Bear
     time: Night
   - name: Onamazu
     time: Night
@@ -760,12 +564,33 @@
     pesticide: 5
   name: Aqueous Droplet
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: A glowing red fragment of hardened lava that holdsa wealth of fire
     energy deep in its molten core.
   enemy_drops:
+  - name: Rabbit
+    time: Night
+  - name: Pig
+    time: Night
+  - name: Sparrow
+    time: Night
   - name: Inoshishi
+    time: Night
+  - name: Deer
+    time: Night
+  - name: Pheasant
+    time: Night
+  - name: Ayu
+    time: Night
+  - name: Shijimi
+    time: Night
+  - name: Turtle
+    time: Night
+  - name: Ashigumo
+    time: Night
+  - name: Badger
+    time: Night
+  - name: Bear
     time: Night
   - name: Homusubi
     time: Night
@@ -773,20 +598,33 @@
     pesticide: 20
   name: Flaming Core
   sub_category: Material
-  time_of_day: Night
 - category: Materials
   description: Sand that was ground down into miniscule particlesover the ages. It
     would take a god of the forgeto extract the metal energy radiating within it.
   enemy_drops:
-  - name: Usagi
+  - name: Rabbit
     time: Night
-  - name: Suzume
+  - name: Pig
+    time: Night
+  - name: Sparrow
+    time: Night
+  - name: Inoshishi
+    time: Night
+  - name: Deer
+    time: Night
+  - name: Pheasant
+    time: Night
+  - name: Ayu
     time: Night
   - name: Shijimi
     time: Night
-  - name: Mujina
+  - name: Turtle
     time: Night
-  - name: Kuma
+  - name: Ashigumo
+    time: Night
+  - name: Badger
+    time: Night
+  - name: Bear
     time: Night
   - name: Bossmaru
     time: Night
@@ -794,4 +632,3 @@
     herbicide: 20
   name: Metallic Sand
   sub_category: Material
-  time_of_day: Night

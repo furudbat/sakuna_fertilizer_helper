@@ -60,9 +60,34 @@ def newItem(name, category):
         'category': category
     }
 
+def equalItemByCode(it, item_code):
+    find_item = False
+
+    find_item = it['Code'] == item_code
+    find_item = find_item or (it['Code'] == 'Seasoning_Gyoyu' and 'Seasoning_Gyoyu' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_DoburokuSeasoning_Ice' and 'Seasoning_Ice' == item_code)
+    find_item = find_item or (it['Code'] == 'GrainGrain_Mugi' and 'Grain_Mugi' == item_code)
+    find_item = find_item or (it['Code'] == 'Preserve_SushiPreserve_Cheese' and 'Preserve_Cheese' == item_code)
+    find_item = find_item or (item_code == 'Preserve_Kunsei_Meat_Buta' and it['name'] == 'Smoked Pork')
+    find_item = find_item or (it['Code'] == 'Drink_DoburokuPreserve_Imogaranawa' and 'Preserve_Imogaranawa' == item_code)
+    find_item = find_item or (it['Code'] == 'Vegetable_SyungikuVegetable_Nanakusa' and ('Vegetable_Syungiku' == item_code or 'Vegetable_Nanakusa' == item_code))
+    find_item = find_item or (it['Code'] == 'Drink_DoburokuDrink_Meisui' and 'Drink_Meisui' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_DoburokuDrink_Kiyomizu' and 'Drink_Kiyomizu' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_DoburokuPreserve_Umeboshi' and 'Preserve_Umeboshi' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Ginjyou' and 'Drink_Seisyu' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Ginjyou' and 'Drink_Ginjyou' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Daiginjyou' and 'Drink_Daiginjyou' == item_code)
+    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Beer' and 'Drink_Beer' == item_code)
+    find_item = find_item or (it['Code'] == 'PanaceaPanaceaSenshi' and 'PanaceaSenshi' in item_code)
+    find_item = find_item or (it['Code'] == 'PanaceaPanaceaHohi' and 'PanaceaHohi' in item_code)
+    find_item = find_item or (it['Code'] == 'Vegetable_SyungikuVegetable_Nanakusa' and ('Vegetable_Nanakusa' in item_code or 'Vegetable_Syungiku' in item_code))
+    
+    return find_item
+
 def parseEnchant(enchantstr, enchants_map):
     ret = []
 
+    find_enchant = False
     for enchant in enchants_map.values():
         enchant_code = enchant['Code']
         enchant_name = enchant['name']
@@ -73,6 +98,10 @@ def parseEnchant(enchantstr, enchants_map):
 
         if enchant_match:
             ret.append({ 'name': enchant_name, 'level': enchant_level })
+            find_enchant = True
+
+    if not find_enchant:
+        print("parseEnchant: enchant not found in enchants_map: {}".format(enchantstr))
         
     if not ret:
         print("parseEnchant: not found: {}".format(enchantstr))
@@ -83,20 +112,29 @@ def parseEnchant(enchantstr, enchants_map):
 def parseItemDrop(itemstr, item_names):
     ret = []
 
-    for item_code in itemstr.split('|'):
-        item_code = item_code.strip()
+    item_codes = [itemstr]
+    if '|' in itemstr:
+        item_codes = itemstr.split('|')
 
-        item_code = re.sub('^F:', '', item_code)
-        item_code = re.sub('^M:', '', item_code)
-        item_code = re.sub('^C:', '', item_code)
-        item_code = re.sub('^Ex:', '', item_code)
+    for item_code in item_codes:
+        item_code = item_code.strip()
+        item_code_match = re.search(r'(M:|F:|C:|Ex:)?(\S+)', item_code)
+        item_code = item_code_match.groups()[1] if item_code_match and item_code_match.groups()[1] else item_code
+
+        find_item=False
 
         for drop_item in item_names:
-            if item_code == drop_item['Code']:
+            if equalItemByCode(drop_item, item_code):
                 ret.append({ "name": drop_item['name'], "Code": drop_item['Code'] })
+                find_item = True
+
+        if not find_item:
+            print("parseItemDrop: {} item not found in item_names {}".format(item_code, itemstr))
 
     if len(ret) == 0:
         print("parseItemDrop: ret is empty {}".format(itemstr))
+    if len(ret) != len(itemstr.split('|')):
+        print("parseItemDrop: ret has only {}, str has {} items; {}".format(len(ret), len(itemstr.split('|')), itemstr))
 
     return ret
 
@@ -107,10 +145,13 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
     sources = [sourcestr]
     if '|' in sourcestr or '&' in sourcestr:
         sources = sourcestr.split(' ')
+    
+    result_counter = 0
 
     for i in range(0, len(sources), 2):
         operator = ''
         source = ''
+        item_added = False
 
         source = sources[i]
         if i+1 < len(sources):
@@ -126,10 +167,8 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
             item_code = source_match.groups()[0] if source_match and source_match.groups()[0] else ''
             amount = int(source_match.groups()[2]) if source_match and source_match.groups()[2] and source_match.groups()[2].isnumeric() else 1
 
-            item_code = re.sub('^F:', '', item_code)
-            item_code = re.sub('^M:', '', item_code)
-            item_code = re.sub('^C:', '', item_code)
-            item_code = re.sub('^Ex:', '', item_code)
+            item_code_match = re.search(r'(M:|F:|C:|Ex:)?(\S+)', item_code)
+            item_code = item_code_match.groups()[1] if item_code_match and item_code_match.groups()[1] else item_code
             
             if re.findall(r'^Flag_([_.:\*A-Za-z]+)$', item_code):
                 food_flag = re.search(r'^Flag_([_.:\*A-Za-z]+)$', item_code).groups()[0] if re.search(r'^Flag_([_.:\*A-Za-z]+)$', item_code) else ''
@@ -141,6 +180,7 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
                             if item_name:
                                 ret.append({"name": item_name, "amount": amount, "operator": "or"})
                                 find_items = True
+                                item_added = True
                 if find_items:
                     ret[-1]['operator'] = ''
                 else:
@@ -149,73 +189,72 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
             elif item_code == '*Auto':
                 if auto_name:
                     ret.append({"name": auto_name, "amount": amount, "operator": operator})
+                    item_added = True
                 else:
                     print("warn: auto is None but '*Auto' was found in {}".format(sourcestr))
             elif item_code == '*Ex:Saiken':
                 # TODO: what is Ex:Saiken ???
                 ret.append({"name": 'Saiken ???', "amount": amount, "operator": operator})
+                item_added = True
             elif item_code == 'Meat':
                 for meat_item in meat:
                     if meat_item['name']:
                         ret.append({"name": meat_item['name'], "amount": amount, "operator": "or"})
+                        item_added = True
                 ret[-1]['operator'] = ''
             elif item_code == 'Vegetable':
                 for vegetable_item in vegetables:
                     if vegetable_item['name']:
                         ret.append({"name": vegetable_item['name'], "amount": amount, "operator": "or"})
+                        item_added = True
                 ret[-1]['operator'] = ''
             elif item_code == 'Seafood':
                 for seafood_item in seafood:
                     if seafood_item['name']:
                         ret.append({"name": seafood_item['name'], "amount": amount, "operator": "or"})
+                        item_added = True
                 ret[-1]['operator'] = ''
             elif item_code == 'Grain':
                 for grain_item in grains:
                     if grain_item['name']:
                         ret.append({"name": grain_item['name'], "amount": amount, "operator": "or"})
+                        item_added = True
                 ret[-1]['operator'] = ''
             elif item_code == 'Insect':
                 for insect_item in insects:
                     if insect_item['name']:
                         ret.append({"name": insect_item['name'], "amount": amount, "operator": "or"})
+                        item_added = True
                 ret[-1]['operator'] = ''
             elif item_code == 'Spice':
                 for spice_item in spices:
                     if spice_item['name']:
                         ret.append({"name": spice_item['name'], "amount": amount, "operator": "or"})
+                        item_added = True
                 ret[-1]['operator'] = ''
             else:
-                find_item = False
                 for it in item_names:
-                    find_item = False
-                    find_item = it['Code'] == item_code
-                    find_item = find_item or (it['Code'] == 'Seasoning_Gyoyu' and 'Seasoning_Gyoyu' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_DoburokuSeasoning_Ice' and 'Seasoning_Ice' == item_code)
-                    find_item = find_item or (it['Code'] == 'GrainGrain_Mugi' and 'Grain_Mugi' == item_code)
-                    find_item = find_item or (it['Code'] == 'Preserve_SushiPreserve_Cheese' and 'Preserve_Cheese' == item_code)
-                    find_item = find_item or (item_code == 'Preserve_Kunsei_Meat_Buta' and it['name'] == 'Smoked Pork')
-                    find_item = find_item or (it['Code'] == 'Drink_DoburokuPreserve_Imogaranawa' and 'Preserve_Imogaranawa' == item_code)
-                    find_item = find_item or (it['Code'] == 'Vegetable_SyungikuVegetable_Nanakusa' and ('Vegetable_Syungiku' == item_code or 'Vegetable_Nanakusa' == item_code))
-                    find_item = find_item or (it['Code'] == 'Drink_DoburokuDrink_Meisui' and 'Drink_Meisui' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_DoburokuDrink_Kiyomizu' and 'Drink_Kiyomizu' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_DoburokuPreserve_Umeboshi' and 'Preserve_Umeboshi' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Ginjyou' and 'Drink_Seisyu' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Ginjyou' and 'Drink_Ginjyou' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Daiginjyou' and 'Drink_Daiginjyou' == item_code)
-                    find_item = find_item or (it['Code'] == 'Drink_SeisyuDrink_Beer' and 'Drink_Beer' == item_code)
-
-                    if find_item:
+                    if equalItemByCode(it, item_code):
                         item_name = it['name']
                         if item_name:
                             ret.append({"name": item_name, "amount": amount, "operator": operator})
-                        break
-                if not find_item:
-                    pprint(ret)
-                    print("parseSource: {} not found, {}: {}".format(item_code, item['name'], sourcestr))
+                            item_added = True
+                            break
+
+            if not item_added:
+                pprint(ret)
+                print("parseSource: {} not found, {}: {}".format(item_code, item['name'], sourcestr))
+
+            result_counter = result_counter + 1
 
     if len(ret) == 0:
         print("parseSource: {} ret is empty {}".format(item['name'], sourcestr))
 
+    if '|' in sourcestr or '&' in sourcestr:
+        sources = re.split(r'&|\|', sourcestr)
+        if result_counter != len(sources):
+            print("parseSource: ret has only {}, str has {} items; {}".format(len(ret), len(sources), sourcestr))
+    
     return ret
 
 
@@ -358,64 +397,53 @@ def setFoodWhenSpoiled(item, row, item_names):
 
     return item
 
-def setEnemyDrops(item, item_code, item_names, enemies_map):
-    if not 'enemy_drops' in item:
-        item['enemy_drops'] = []
-    
-    for enemy in enemies_map.values():
-        if enemy['Item']:
-            for drop in parseItemDrop(enemy['Item'], item_names):
-                if item_code == drop['Code']:
-                    item['enemy_drops'].append({ 'name': enemy['name'], 'time': enemy['time_of_day'] })
-                    item['time_of_day'] = enemy['time_of_day']
-
-    if not item['enemy_drops']:
-        del item['enemy_drops']
-            
-    return item
-
-def setCollectionDrops(item, item_code, item_names, worldmap_collection_map):
+def setCollectionDrops(item, item_code, worldmap_collection_map):
     if not 'find_in' in item:
         item['find_in'] = []
     
     for collection in worldmap_collection_map.values():
         if 'always' in collection:
             for drop in collection['always']:
-                if item_code == drop['Code']:
+                if equalItemByCode(drop, item_code):
                     new_find_in = { 'name': collection['name'], 'percent': drop['percent'], 'season': 'Always' }
                     if 'try' in collection:
                         new_find_in['try'] = collection['try']
-                    item['find_in'].append(new_find_in)
+                    if not next((col for col in item['find_in'] if col['name'] == new_find_in['name'] and col['season'] == new_find_in['season']), None):
+                        item['find_in'].append(new_find_in)
         if 'spring' in collection:
             for drop in collection['spring']:
-                if item_code == drop['Code']:
+                if equalItemByCode(drop, item_code):
                     new_find_in = { 'name': collection['name'], 'percent': drop['percent'], 'season': 'Spring' }
                     if 'try' in collection:
                         new_find_in['try'] = collection['try']
-                    item['find_in'].append(new_find_in)
+                    if not next((col for col in item['find_in'] if col['name'] == new_find_in['name'] and col['season'] == new_find_in['season']), None):
+                        item['find_in'].append(new_find_in)
         if 'summer' in collection:
             for drop in collection['summer']:
-                if item_code == drop['Code']:
+                if equalItemByCode(drop, item_code):
                     new_find_in = { 'name': collection['name'], 'percent': drop['percent'], 'season': 'Summer' }
                     if 'try' in collection:
                         new_find_in['try'] = collection['try']
-                    item['find_in'].append(new_find_in)
+                    if not next((col for col in item['find_in'] if col['name'] == new_find_in['name'] and col['season'] == new_find_in['season']), None):
+                        item['find_in'].append(new_find_in)
         if 'autumn' in collection:
             for drop in collection['autumn']:
-                if item_code == drop['Code']:
+                if equalItemByCode(drop, item_code):
                     new_find_in = { 'name': collection['name'], 'percent': drop['percent'], 'season': 'Autumn' }
                     if 'try' in collection:
                         new_find_in['try'] = collection['try']
-                    item['find_in'].append(new_find_in)
+                    if not next((col for col in item['find_in'] if col['name'] == new_find_in['name'] and col['season'] == new_find_in['season']), None):
+                        item['find_in'].append(new_find_in)
         if 'winter' in collection:
             for drop in collection['winter']:
-                if item_code == drop['Code']:
+                if equalItemByCode(drop, item_code):
                     new_find_in = { 'name': collection['name'], 'percent': drop['percent'], 'season': 'Winter' }
                     if 'try' in collection:
                         new_find_in['try'] = collection['try']
-                    item['find_in'].append(new_find_in)
+                    if not next((col for col in item['find_in'] if col['name'] == new_find_in['name'] and col['season'] == new_find_in['season']), None):
+                        item['find_in'].append(new_find_in)
 
-    if not item['find_in']:
+    if len(item['find_in']) == 0:
         del item['find_in']
             
     return item
@@ -448,14 +476,14 @@ def setFoodCategory(item, row):
 
     return item
 
-def getItemNames(filename, category, item_names, only_names=False):
+def getItemNames(filename, category, item_names, enchants_map, worldmap_collection_map, only_names=False):
     ret = []
     if filename == 'Material.csv' and not only_names:
-        ret = getMaterials(item_names, {}, {}, True).values()
+        ret = getMaterials(item_names, worldmap_collection_map, True).values()
     elif filename == 'Food.csv' and not only_names:
-        ret = getFood(item_names, {}, {}, {}, True).values()
+        ret = getFood(item_names, enchants_map, worldmap_collection_map, True).values()
     elif filename == 'Cooking.csv' and not only_names:
-        ret = getCooking(item_names, {}, {}, {}, True).values()
+        ret = getCooking(item_names, enchants_map, worldmap_collection_map, {}, True).values()
     else:
         with open(filename, encoding="utf8") as read_obj:
             #data = read_obj.read()
@@ -481,7 +509,7 @@ def getItemNames(filename, category, item_names, only_names=False):
     
     return ret
 
-def getMaterials(item_names, enemies_map, worldmap_collection_map, only_name=False):
+def getMaterials(item_names, worldmap_collection_map, only_name=False):
     materials_map = {}
     with open('Material.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
@@ -511,11 +539,13 @@ def getMaterials(item_names, enemies_map, worldmap_collection_map, only_name=Fal
                 if only_name:
                     new_item['Code'] = item_code
                 else:
+                    for it in item_names:
+                        if equalItemByCode(it, item_code):
+                            new_item = it.copy()
+                    
                     new_item['description'] = row['CommentEn'].replace('\\1', ', ')
 
                     new_item = setFertilizerBonus(new_item, row)
-                    new_item = setEnemyDrops(new_item, item_code, item_names, enemies_map)
-                    new_item = setCollectionDrops(new_item, item_code, item_names, worldmap_collection_map)
 
                     new_item = hotfixMaterial(name, new_item)
 
@@ -524,7 +554,7 @@ def getMaterials(item_names, enemies_map, worldmap_collection_map, only_name=Fal
     return materials_map
 
 
-def getFood(item_names, enchants_map, enemies_map, worldmap_collection_map, only_name=False):
+def getFood(item_names, enchants_map, worldmap_collection_map, only_name=False):
     food_map = {}
 
     with open('Food.csv', encoding="utf8") as read_obj:
@@ -547,6 +577,10 @@ def getFood(item_names, enchants_map, enemies_map, worldmap_collection_map, only
                 new_item = setFoodCategory(new_item, row)
 
                 if not only_name:
+                    for it in item_names:
+                        if name == it['name']:
+                            new_item = it.copy()
+                    
                     new_item['description'] = row['CommentEn'].replace('\\1', ',').replace('\n', '')
 
                     if row['Life'].isnumeric() and int(row['Life']) != 0:
@@ -606,8 +640,7 @@ def getFood(item_names, enchants_map, enemies_map, worldmap_collection_map, only
                                 if len(new_food_item['ingredients']) == 0:
                                     del new_food_item['ingredients']
                             
-                            new_food_item = setEnemyDrops(new_food_item, item_code, item_names, enemies_map)
-                            new_food_item = setCollectionDrops(new_food_item, item_code, item_names, worldmap_collection_map)
+                            new_food_item = setCollectionDrops(new_food_item, item_code, worldmap_collection_map)
                             new_food_item = setFoodWhenSpoiled(new_food_item, row, item_names)
 
                             hotfixFood(new_food_item['name'], new_food_item)
@@ -621,10 +654,9 @@ def getFood(item_names, enchants_map, enemies_map, worldmap_collection_map, only
                         if row['Source'] != '-':
                             new_item['ingredients'] = parseSource(new_item, row['Source'], item_names, name)
                             if len(new_item['ingredients']) == 0:
-                                    del new_item['ingredients']
+                                del new_item['ingredients']
 
-                        new_item = setEnemyDrops(new_item, item_code, item_names, enemies_map)
-                        new_item = setCollectionDrops(new_item, item_code, item_names, worldmap_collection_map)
+                        new_item = setCollectionDrops(new_item, item_code, worldmap_collection_map)
                         new_item = setFoodWhenSpoiled(new_item, row, item_names)
 
                         hotfixFood(new_item['name'], new_item)
@@ -633,7 +665,7 @@ def getFood(item_names, enchants_map, enemies_map, worldmap_collection_map, only
 
     return food_map
 
-def getCooking(item_names, enchants_map, food_map, worldmap_collection_map, only_names=False):
+def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only_names=False):
     cooking_map = {}
     with open('Cooking.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
@@ -652,46 +684,48 @@ def getCooking(item_names, enchants_map, food_map, worldmap_collection_map, only
                 for it in old_items:
                     if name == it['name']:
                         new_item = it.copy()
+                for it in item_names:
+                    if name == it['name']:
+                        new_item = it.copy()
                 for it in food_map.values():
                     if name == it['name']:
                         new_item = it.copy()
                         new_item['category'] = 'Cooking'
                     
-                names = [name]
+                main_sources = [{'name': name}]
                 if '~SourceMain~' in name and row['SourceMain'] != '-':
                     source_main = parseSource(new_item, row['SourceMain'], item_names)
-                    names = []
+                    main_sources = []
                     for sm in source_main:
-                        names.append(sm['name'])
+                        main_sources.append({ 'name': sm['name'], 'source_main': sm })
+                elif '~SourceMain~' in name:
+                    print('getCooking: "~SourceMain~" in name found, but no SourceMain in row')
 
-                for source in names:
+                for main_source in main_sources:
+                    source_name = main_source['name']
+
                     new_food_item = new_item.copy()
-                    name = row['NameEn'].replace('~SourceMain~', source)
-                    new_food_item['name'] = name
+                    new_food_item['name'] = row['NameEn'].replace('~SourceMain~', source_name)
 
                     if only_names:
                         new_food_item['Code'] = row['Code']
                     else:
-                        new_food_item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source)
+                        new_food_item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source_name)
 
-                        if row['SourceMain'] != '-':
-                            source_main = parseSource(new_food_item, row['SourceMain'], item_names)
-                            if source and not 'main_ingredients' in new_food_item and source_main:
-                                new_food_item['main_ingredients'] = source_main
-                                if len(new_food_item['main_ingredients']) == 0:
-                                        del new_food_item['main_ingredients']
+                        if 'source_main' in main_source:
+                            new_food_item['main_ingredient'] = main_source['source_main']
                         
                         if row['Source'] != '-':
                             source = parseSource(new_food_item, row['Source'], item_names)
                             if source and not 'ingredients' in new_food_item:
                                 new_food_item['ingredients'] = source
                                 if len(new_food_item['ingredients']) == 0:
-                                        del new_food_item['ingredients']
+                                    del new_food_item['ingredients']
 
                         new_food_item = setFoodBonus(new_food_item, row, enchants_map)
                         new_food_item = setFoodBonusFromCooking(new_food_item, row, enchants_map)
 
-                        new_food_item = hotfixCooking(name, new_food_item)
+                        new_food_item = hotfixCooking(new_food_item['name'], new_food_item)
 
                     cooking_map[row['Code']] = new_food_item
 
@@ -720,11 +754,9 @@ def getEnemies():
         # iterate over each line as a ordered dictionary
         for row in enemies_reader:
             code = row['Name']
-
-            # TODO get enemy name
             name = row['Name']
-
-            enemies_map[code] = { 
+            
+            enemy = { 
                 "name": name,
                 "Code": code,
                 "min_level": int(row['LevelMin']) if row['LevelMin'].isnumeric() else 0,
@@ -732,6 +764,13 @@ def getEnemies():
                 "Item": row['Item'],
                 "time_of_day": row['Time']
             }
+
+            hotfixEnemy(name, enemy)
+
+            if not code in enemies_map:
+                enemies_map[code] = []
+
+            enemies_map[code].append(enemy)
 
     return enemies_map
 
@@ -758,12 +797,7 @@ def parseLostGenerate(itemstr, item_names):
             item_name = item['name']
             item_code = item['Code']
 
-            find_item = item_code == lost_item_code
-            find_item = find_item or (item_code == 'PanaceaPanaceaSenshi' and 'PanaceaSenshi' in lost_item_code)
-            find_item = find_item or (item_code == 'PanaceaPanaceaHohi' and 'PanaceaHohi' in lost_item_code)
-            find_item = find_item or (item_code == 'Vegetable_SyungikuVegetable_Nanakusa' and ('Vegetable_Nanakusa' in lost_item_code or 'Vegetable_Syungiku' in lost_item_code))
-            
-            if find_item:
+            if equalItemByCode(item, lost_item_code):
                 return { 'name': item_name, 'Code': item_code }
     
     print("parseLostGenerate: {} not found: {}".format(lost_item_code, itemstr))
@@ -808,7 +842,7 @@ def getWorldmapCollection(worldmap_landmark_map, item_names):
         for row in worldmap_collect_reader:
             code = row['Place']
             name = worldmap_landmark_map[code]['name'] if worldmap_landmark_map[code] else ''
-            if code:
+            if code and name:
                 collection = { "name": name, "Code": code }
                 
                 if row['Try'].isnumeric() and int(row['Try']) != 0:
@@ -826,6 +860,8 @@ def getWorldmapCollection(worldmap_landmark_map, item_names):
                     collection['winter'] = parseWorldmapCollectionItem(row['Item_Winter'], item_names)
 
                 worldmap_collection_map[code] = collection
+            else:
+                print('getWorldmapCollection: {} place not found: {}'.format(code, name))
 
     return worldmap_collection_map
 
@@ -837,11 +873,34 @@ def hotfixCooking(name, item):
         if material == name:
             item['category'] = CATEGORY_MATERIAL_COOKING
 
-    if 'Cooking' in item['category'] and not 'main_ingredients' in item and not 'ingredients' in item and item['name'] != 'Water':
+    if 'RiceStaple_' in name:
+        item['sub_category'] = 'Main Dish'
+    elif 'SoupStaple_' in name:
+        item['sub_category'] = 'Soup'
+    elif 'NoodleStaple_' in name:
+        item['sub_category'] = 'Main Dish'
+    elif 'SoftStaple_' in name:
+        item['sub_category'] = 'Main Dish'
+    elif 'HardMainDish_' in name:
+        item['sub_category'] = 'Main Dish'
+    elif 'SoupSoup_' in name:
+        item['sub_category'] = 'Soup'
+    elif 'SoftSoup_' in name:
+        item['sub_category'] = 'Soup'
+    elif 'HardSoup_' in name:
+        item['sub_category'] = 'Soup'
+    elif 'SoftMainDish_' in name:
+        item['sub_category'] = 'Side Dish'
+    elif 'Sweets_' in name:
+        item['sub_category'] = 'Dessert'
+    elif 'Drink_' in name:
+        item['sub_category'] = 'Drink'
+
+    if 'Cooking' in item['category'] and (not 'main_ingredient' in item and not 'ingredients' in item) and item['name'] != 'Water':
         print('hotfixFood: cooking without ingredients: {}'.format(name))
     
-    if not 'Cooking' in item['category'] and ('main_ingredients' in item or 'ingredients' in item):
-            print('hotfixFood: ingredients without cooking category: {}, {}'.format(name, item['category']))
+    if not 'Cooking' in item['category'] and ('main_ingredient' in item or 'ingredients' in item):
+        print('hotfixFood: ingredients without cooking category: {}, {}'.format(name, item['category']))
 
     return item
 
@@ -963,11 +1022,37 @@ def hotfixFood(name, item):
     return item
 
 
+def hotfixEnemy(name, enemy):
+    if enemy['Code'] == 'Usagi':
+        enemy['name'] = 'Rabbit'
+    if enemy['Code'] == 'Buta':
+        enemy['name'] = 'Pig'
+    if enemy['Code'] == 'Shishi':
+        enemy['name'] = 'Boar'
+    if enemy['Code'] == 'Shika':
+        enemy['name'] = 'Deer'
+    if enemy['Code'] == 'Kuma':
+        enemy['name'] = 'Bear'
+    if enemy['Code'] == 'Mujina':
+        enemy['name'] = 'Badger'
+    if enemy['Code'] == 'Suppon':
+        enemy['name'] = 'Turtle'
+    if enemy['Code'] == 'Suzume':
+        enemy['name'] = 'Sparrow'
+    if enemy['Code'] == 'Kiji':
+        enemy['name'] = 'Pheasant'
+
+    return enemy
+
 def main():
     #with open('old_items.yml') as f:
     #    old_items = yaml.load(f, Loader=yaml.FullLoader)
 
-    for item in getItemNames('Food.csv', 'Food', True):
+    enemies_map = getEnemies()
+    enchants_map = getEnchant()
+    worldmap_landmark_map = getWorldmapLandmarks()
+
+    for item in getItemNames('Food.csv', 'Food', [], enchants_map, {}, True):
         item_name = item['name']
         item_code = item['Code']
         if 'Insect_' in item_code:
@@ -985,30 +1070,54 @@ def main():
         if 'Spice_' in item_code:
             spices.append({ "Code": item_code, "name": item_name })
 
-    enemies_map = getEnemies()
-    enchants_map = getEnchant()
-    worldmap_landmark_map = getWorldmapLandmarks()
-
     item_names = []
-    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names):
+    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names, enchants_map, {}):
         item_names.append(item)
-    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names):
+    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names, enchants_map, {}):
         item_names.append(item)
-    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names):
+    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names, enchants_map, {}):
         item_names.append(name)
 
     worldmap_collection_map = getWorldmapCollection(worldmap_landmark_map, item_names)
+        
+    with open(r'enemies.json', 'w') as file:
+        json.dump(enemies_map, file, indent=4)
 
-    materials_map = getMaterials(item_names, enemies_map, worldmap_collection_map)
-    food_map = getFood(item_names, enchants_map, enemies_map, worldmap_collection_map)
-    cooking_map = getCooking(item_names, enchants_map, food_map, worldmap_collection_map)
+    # set enemy drops
+    for item in item_names:
+        item_code = item['Code']
+        for enemy in enemies_map.values():
+            for enemy_drop in enemy:
+                if enemy_drop['Item'] and enemy_drop['Item'] != '-':
+                    for drop in parseItemDrop(enemy_drop['Item'], item_names):
+                        if equalItemByCode(drop, item_code):
+                            if not 'enemy_drops' in item:
+                                item['enemy_drops'] = []
+                            if not next((e for e in item['enemy_drops'] if e['name'] == enemy_drop['name'] and e['time'] == enemy_drop['time_of_day']), None):
+                                item['enemy_drops'].append({ 'name': enemy_drop['name'], 'time': enemy_drop['time_of_day'] })
+                else:
+                    print('no item set by enemy {}', enemy_drop['Code'])
+
+
+    with open(r'item_names.json', 'w') as file:
+        json.dump(item_names, file, indent=4)
+
+    materials_map = getMaterials(item_names, worldmap_collection_map)
+    food_map = getFood(item_names, enchants_map, worldmap_collection_map)
+    cooking_map = getCooking(item_names, enchants_map, worldmap_collection_map, food_map)
 
     items = []
     for value in materials_map.values():
+        if 'Code' in value:
+            del value['Code']
         items.append(value)
     for value in food_map.values():
+        if 'Code' in value:
+            del value['Code']
         items.append(value)
     for value in cooking_map.values():
+        if 'Code' in value:
+            del value['Code']
         items.append(value)
 
     with open(r'materials.yml', 'w') as file:
@@ -1017,10 +1126,12 @@ def main():
         yaml.safe_dump(list(food_map.values()), file, allow_unicode=True)
     with open(r'cooking.yml', 'w') as file:
         yaml.safe_dump(list(cooking_map.values()), file, allow_unicode=True)
-    with open(r'items.yml', 'w') as file:
-        yaml.safe_dump(list(items), file, allow_unicode=True)
     with open(r'items.json', 'w') as file:
         json.dump(items, file, indent=4)
+
+    # fix yaml ouput 
+    #with open(r'items.yml', 'w') as file:
+    #    yaml.safe_dump(list(items), file, allow_unicode=True)
     with open(r'items.json', 'r') as json_file:
         with open(r'items.yml', 'w') as yaml_file:
             yaml.safe_dump(json.load(json_file), yaml_file, default_flow_style=False, allow_unicode=True)
