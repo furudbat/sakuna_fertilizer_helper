@@ -560,7 +560,7 @@ def getFood(item_names, enchants_map, worldmap_collection_map, only_name=False):
                 new_item = setFoodCategory(new_item, row)
 
                 if not only_name:
-                    for it in item_names:
+                    for it in food_map:
                         if name == it['name']:
                             new_item = it.copy()
                     
