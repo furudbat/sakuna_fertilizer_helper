@@ -142,38 +142,11 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                     data: 'name',
                     render: function (data: string, type: string, row: MaterialOrFoodItemData) {
                         if (type === 'display') {
-                            const collapse_id = that.getCollapseId(row);
-                            
                             const name_color = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
 
-                            const find_in = MaterialItemListAdapter.getFindInContent(row);
-                            const enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
-
-                            const show_find_in = (find_in)? '' : 'd-none';
-                            const show_enemy_drop = (enemy_drop)? '' : 'd-none';
-
-                            return `<div class="row no-gutters">
-                                        <div class="col text-left">
-                                            <button class="btn btn-link text-left ${name_color}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
-                                                ${data}
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-1">
-                                        <div class="col collapse" id="${collapse_id}">
-                                            <div class="row ${show_find_in}">
-                                                <div class="col">
-                                                    ${find_in}
-                                                </div>
-                                            </div>
-                                            <div class="row mt-1 ${show_enemy_drop}">
-                                                <div class="col">
-                                                    ${enemy_drop}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            `;
+                            return `<button class="btn btn-link text-left ${name_color} details-control" type="button">
+                                        ${data}
+                                    </button>`;
                         }
 
                         return data;
@@ -328,5 +301,42 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                 }
             }
         });
+
+        $(this._table_selector).find('.details-control').off('click').on('click', function () {
+            let tr = $(this).closest('tr');
+            let row = that._table?.row(tr);
+
+            if (row !== undefined) {
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('details-control-shown');
+                } else {
+                    // Open this row
+                    row.child(that.renderDetails(row.data() as MaterialOrFoodItemData)).show();
+                    tr.addClass('details-control-shown');
+                }
+            }
+        });
+    }
+
+    private renderDetails(row: MaterialOrFoodItemData) {
+        const find_in = MaterialItemListAdapter.getFindInContent(row);
+        const enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
+
+        const show_find_in = (find_in)? '' : 'd-none';
+        const show_enemy_drop = (enemy_drop)? '' : 'd-none';
+
+        return `
+            <div class="row ${show_find_in}">
+                <div class="col px-2">
+                    ${find_in}
+                </div>
+            </div>
+            <div class="row mt-1 ${show_enemy_drop}">
+                <div class="col px-2">
+                    ${enemy_drop}
+                </div>
+            </div>`;
     }
 }

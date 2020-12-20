@@ -95,7 +95,7 @@ export interface CookingItemData extends FoodItemData {
     season_buff?: SeasonBuff;
     season_food_bonus?: FoodBonusData;
 
-    main_ingredients?: IngredientsData[];
+    main_ingredient?: IngredientsData;
 }
 
 export type MaterialOrFoodItemData = MaterialItemData | FoodItemData;

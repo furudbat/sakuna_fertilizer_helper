@@ -55703,7 +55703,7 @@ var Application = (function () {
     };
     Application.prototype.getCookingItemList = function () {
         return this._appData.items.filter(function (it) {
-            return it.category == 'Cooking' || it.category == 'Food/Cooking';
+            return it.category == 'Cooking' || it.category == 'Food/Cooking' || it.category == 'Materials/Cooking';
         });
     };
     Application.prototype.initItemList = function () {
@@ -56256,11 +56256,7 @@ var CookingItemListAdapter = (function (_super) {
                     data: 'name',
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            var collapse_id = that.getCollapseId(row);
-                            var is_season_buff = that.isSeasonalBuff(row);
-                            var text_color = that.getSeasonalTextColor(row) + ((is_season_buff) ? ' seasonal-buff-name' : '');
-                            var ingredients = '';
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + text_color + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row mt-1\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div class=\"row my-1\">\n                                                " + ingredients + "\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            return "<button class=\"btn btn-link text-left details-control\" type=\"button\">\n                                        " + data + "\n                                    </button>";
                         }
                         return data;
                     }
@@ -56364,6 +56360,22 @@ var CookingItemListAdapter = (function (_super) {
         this.initEvents();
     };
     CookingItemListAdapter.prototype.initEvents = function () {
+        var that = this;
+        $(this._table_selector).find('.details-control').off('click').on('click', function () {
+            var _a;
+            var tr = $(this).closest('tr');
+            var row = (_a = that._table) === null || _a === void 0 ? void 0 : _a.row(tr);
+            if (row !== undefined) {
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('details-control-shown');
+                }
+                else {
+                    row.child(that.renderDetails(row.data())).show();
+                    tr.addClass('details-control-shown');
+                }
+            }
+        });
     };
     CookingItemListAdapter.prototype.getFoodBuff = function (type, season_buff, season_value, value) {
         var is_season_buff = this.isSeasonalBuffValue(season_buff);
@@ -56413,6 +56425,15 @@ var CookingItemListAdapter = (function (_super) {
             }
         }
         return '';
+    };
+    CookingItemListAdapter.prototype.renderDetails = function (row) {
+        var find_in = CookingItemListAdapter.getFindInContent(row);
+        var enemy_drop = CookingItemListAdapter.getEnemyDropContent(row);
+        var ingredients = CookingItemListAdapter.getIngredientsContent(row);
+        var show_find_in = (find_in) ? '' : 'd-none';
+        var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
+        var show_ingredients = (ingredients) ? '' : 'd-none';
+        return "\n            <div class=\"row mt-1 " + show_ingredients + "\">\n                <div class=\"col px-2\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row " + show_find_in + "\">\n                <div class=\"col px-2\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                <div class=\"col px-2\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return CookingItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -57748,13 +57769,8 @@ var FoodItemListAdapter = (function (_super) {
                     data: 'name',
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            var collapse_id = that.getCollapseId(row);
                             var name_color = inventory_1.Inventory.getStateFocusTextColor(row.fertilizer_bonus);
-                            var find_in = FoodItemListAdapter.getFindInContent(row);
-                            var enemy_drop = FoodItemListAdapter.getEnemyDropContent(row);
-                            var show_find_in = (find_in) ? '' : 'd-none';
-                            var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + name_color + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row mt-1\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div class=\"row " + show_find_in + "\">\n                                                <div class=\"col\">\n                                                    " + find_in + "\n                                                </div>\n                                            </div>\n                                            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                                                <div class=\"col\">\n                                                    " + enemy_drop + "\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            return "<button class=\"btn btn-link text-left " + name_color + " details-control\" type=\"button\">\n                                        " + data + "\n                                    </button>";
                         }
                         return data;
                     }
@@ -57865,6 +57881,31 @@ var FoodItemListAdapter = (function (_super) {
         this.initEvents();
     };
     FoodItemListAdapter.prototype.initEvents = function () {
+        var that = this;
+        $(this._table_selector).find('.details-control').off('click').on('click', function () {
+            var _a;
+            var tr = $(this).closest('tr');
+            var row = (_a = that._table) === null || _a === void 0 ? void 0 : _a.row(tr);
+            if (row !== undefined) {
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('details-control-shown');
+                }
+                else {
+                    row.child(that.renderDetails(row.data())).show();
+                    tr.addClass('details-control-shown');
+                }
+            }
+        });
+    };
+    FoodItemListAdapter.prototype.renderDetails = function (row) {
+        var find_in = FoodItemListAdapter.getFindInContent(row);
+        var enemy_drop = FoodItemListAdapter.getEnemyDropContent(row);
+        var ingredients = FoodItemListAdapter.getIngredientsContent(row);
+        var show_find_in = (find_in) ? '' : 'd-none';
+        var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
+        var show_ingredients = (ingredients) ? '' : 'd-none';
+        return "\n            <div class=\"row mt-1 " + show_ingredients + "\">\n                <div class=\"col px-2\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row " + show_find_in + "\">\n                <div class=\"col px-2\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                <div class=\"col px-2\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return FoodItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -58530,32 +58571,60 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getFindInContent = function (row) {
         var ret = '';
         if (row.find_in !== undefined && row.find_in) {
-            ret += "<ul class=\"list-group itemlist-find-in-list\">\n                        <li class=\"list-group-item list-group-item-info itemlist-find-in-list-title\"><strong>" + site_1.site.data.strings.item_list.materials.find_in_label + "</strong></li>";
-            for (var _i = 0, _a = row.find_in; _i < _a.length; _i++) {
-                var find_in = _a[_i];
+            ret = "<strong class=\"find-in-content-title\">" + site_1.site.data.strings.item_list.materials.find_in_label + "</strong>";
+            ret += row.find_in.map(function (find_in) {
                 var find_location_time = '';
                 if (find_in.season != item_data_1.FindInSeason.Always) {
                     find_location_time = site_1.site.data.strings.item_list.materials.at_season.replace('%season%', find_in.season);
                 }
-                ret += "<li class=\"list-group-item\">" + find_in.name + " " + find_location_time + "</li>";
-            }
-            ret += "</ul>";
+                return find_in.name + " " + find_location_time;
+            }).join(', ');
         }
         return ret;
     };
     ItemListAdapter.getEnemyDropContent = function (row) {
         var ret = '';
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret += "<ul class=\"list-group itemlist-enemy-drop-list\">\n                        <li class=\"list-group-item list-group-item-danger itemlist-enemy-drop-list-title\"><strong>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</strong></li>";
-            for (var _i = 0, _a = row.enemy_drops; _i < _a.length; _i++) {
-                var enemy_drop = _a[_i];
+            ret = "<strong>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</strong>";
+            ret += row.enemy_drops.map(function (enemy_drop) {
                 var drop_time = '';
                 if (enemy_drop.time != item_data_1.EnemyDropTime.Always) {
                     drop_time = site_1.site.data.strings.item_list.materials.at_time.replace('%time%', enemy_drop.time);
                 }
-                ret += "<li class=\"list-group-item\">" + enemy_drop.name + " " + drop_time + "</li>";
-            }
-            ret += "</ul>";
+                return enemy_drop.name + " " + drop_time;
+            }).join(', ');
+        }
+        return ret;
+    };
+    ItemListAdapter.getIngredientsContent = function (row) {
+        var ret = '';
+        if ((row.ingredients !== undefined && row.ingredients) || (row.main_ingredient !== undefined && row.main_ingredient)) {
+            ret = "<strong>" + site_1.site.data.strings.item_list.ingredients.label + "</strong>";
+        }
+        var cooking_row = row;
+        if (cooking_row.main_ingredient !== undefined && cooking_row.main_ingredient) {
+            var amount = (cooking_row.main_ingredient.amount == 1) ? '' : cooking_row.main_ingredient.amount + 'x';
+            var name_1 = cooking_row.main_ingredient.name;
+            ret += "<br /><strong>" + amount + name_1 + "</strong><br />";
+        }
+        if (row.ingredients !== undefined && row.ingredients) {
+            ret += row.ingredients.map(function (ingredient) {
+                var amount = (ingredient.amount == 1) ? '' : ingredient.amount.toString() + 'x';
+                var name = ingredient.name;
+                var operator = '';
+                switch (ingredient.operator) {
+                    case 'and':
+                        operator = site_1.site.data.strings.item_list.ingredients.and + " ";
+                        break;
+                    case 'or':
+                        operator = site_1.site.data.strings.item_list.ingredients.or + " ";
+                        break;
+                    case '':
+                        operator = '<br />';
+                        break;
+                }
+                return "" + amount + name + " " + operator;
+            }).join('');
         }
         return ret;
     };
@@ -58803,13 +58872,8 @@ var MaterialItemListAdapter = (function (_super) {
                     data: 'name',
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            var collapse_id = that.getCollapseId(row);
                             var name_color = inventory_1.Inventory.getStateFocusTextColor(row.fertilizer_bonus);
-                            var find_in = MaterialItemListAdapter.getFindInContent(row);
-                            var enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
-                            var show_find_in = (find_in) ? '' : 'd-none';
-                            var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col text-left\">\n                                            <button class=\"btn btn-link text-left " + name_color + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + data + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row mt-1\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div class=\"row " + show_find_in + "\">\n                                                <div class=\"col\">\n                                                    " + find_in + "\n                                                </div>\n                                            </div>\n                                            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                                                <div class=\"col\">\n                                                    " + enemy_drop + "\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            return "<button class=\"btn btn-link text-left " + name_color + " details-control\" type=\"button\">\n                                        " + data + "\n                                    </button>";
                         }
                         return data;
                     }
@@ -58953,6 +59017,28 @@ var MaterialItemListAdapter = (function (_super) {
                 }
             }
         });
+        $(this._table_selector).find('.details-control').off('click').on('click', function () {
+            var _a;
+            var tr = $(this).closest('tr');
+            var row = (_a = that._table) === null || _a === void 0 ? void 0 : _a.row(tr);
+            if (row !== undefined) {
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('details-control-shown');
+                }
+                else {
+                    row.child(that.renderDetails(row.data())).show();
+                    tr.addClass('details-control-shown');
+                }
+            }
+        });
+    };
+    MaterialItemListAdapter.prototype.renderDetails = function (row) {
+        var find_in = MaterialItemListAdapter.getFindInContent(row);
+        var enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
+        var show_find_in = (find_in) ? '' : 'd-none';
+        var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
+        return "\n            <div class=\"row " + show_find_in + "\">\n                <div class=\"col px-2\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                <div class=\"col px-2\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return MaterialItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));

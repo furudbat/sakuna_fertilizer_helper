@@ -286,8 +286,9 @@ item_list:
   ingredients: 
     title: Ingredients
     table_caption: state boost varies, depending on your Gusto
+    label: 'Ingredients: '
     or: or
-    an: and
+    and: and
   food: 
     title: Dishes
     table_caption: state boost varies, depending on your Gusto

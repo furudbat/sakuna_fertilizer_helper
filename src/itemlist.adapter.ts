@@ -1,6 +1,6 @@
 import { Logger, LoggerManager } from "typescript-logger";
 import { ItemInventoryData } from "./inventory";
-import { EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, ItemData } from "./item.data";
+import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, ItemData } from "./item.data";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
@@ -136,17 +136,16 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.find_in !== undefined && row.find_in) {
-            ret += `<ul class="list-group itemlist-find-in-list">
-                        <li class="list-group-item list-group-item-info itemlist-find-in-list-title"><strong>${site.data.strings.item_list.materials.find_in_label}</strong></li>`;
-            for (let find_in of row.find_in) {
+            ret = `<strong class="find-in-content-title">${site.data.strings.item_list.materials.find_in_label}</strong>`;
+
+            ret += row.find_in.map(find_in => {
                 let find_location_time = '';
                 if (find_in.season != FindInSeason.Always) {
                     find_location_time = site.data.strings.item_list.materials.at_season.replace('%season%', find_in.season)
                 }
 
-                ret += `<li class="list-group-item">${find_in.name} ${find_location_time}</li>`;
-            }
-            ret += `</ul>`;
+                return `${find_in.name} ${find_location_time}`;
+            }).join(', ');
         }
 
         return ret;
@@ -156,17 +155,57 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret += `<ul class="list-group itemlist-enemy-drop-list">
-                        <li class="list-group-item list-group-item-danger itemlist-enemy-drop-list-title"><strong>${site.data.strings.item_list.materials.drop_by_enemy_label}</strong></li>`;
-            for (let enemy_drop of row.enemy_drops) {
+            ret = `<strong>${site.data.strings.item_list.materials.drop_by_enemy_label}</strong>`;
+
+            ret += row.enemy_drops.map(enemy_drop => {
                 let drop_time = '';
                 if (enemy_drop.time != EnemyDropTime.Always) {
                     drop_time = site.data.strings.item_list.materials.at_time.replace('%time%', enemy_drop.time)
                 }
 
-                ret += `<li class="list-group-item">${enemy_drop.name} ${drop_time}</li>`;
-            }
-            ret += `</ul>`;
+                return `${enemy_drop.name} ${drop_time}`;
+            }).join(', ');
+        }
+
+        return ret;
+    }
+    
+    
+    static getIngredientsContent(row: FoodItemData | CookingItemData) {
+        let ret = '';
+
+        if ((row.ingredients !== undefined && row.ingredients) || ((row as CookingItemData).main_ingredient !== undefined && (row as CookingItemData).main_ingredient)) {
+            ret = `<strong>${site.data.strings.item_list.ingredients.label}</strong>`;
+        }
+
+        const cooking_row = row as CookingItemData;
+        if (cooking_row.main_ingredient !== undefined && cooking_row.main_ingredient) {
+            const amount = (cooking_row.main_ingredient.amount == 1)? '' : cooking_row.main_ingredient.amount + 'x';
+            const name = cooking_row.main_ingredient.name;
+
+            ret += `<br /><strong>${amount}${name}</strong><br />`;
+        }
+        
+        if (row.ingredients !== undefined && row.ingredients) {
+            ret += row.ingredients.map(ingredient => {
+                const amount = (ingredient.amount == 1)? '' : ingredient.amount.toString() + 'x';
+                const name = ingredient.name;
+
+                let operator = '';
+                switch(ingredient.operator) {
+                    case 'and':
+                        operator =`${site.data.strings.item_list.ingredients.and} `;
+                        break;
+                    case 'or':
+                        operator =`${site.data.strings.item_list.ingredients.or} `;
+                        break;
+                    case '':
+                        operator ='<br />';
+                        break;
+                }
+
+                return `${amount}${name} ${operator}`;
+            }).join('');
         }
 
         return ret;
