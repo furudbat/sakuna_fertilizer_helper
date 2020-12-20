@@ -336,8 +336,8 @@
     - level: 1
       name: Natural Healing
     fullness: 5
-  main_ingredient:
-    amount: 3
+  main_ingredients:
+  - amount: 3
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
@@ -350,8 +350,14 @@
       name: Swift Recovery
     fullness: 5
   ingredients:
-  - amount: 1
-    name: Dried Boiled Rice
+  - amount: 2
+    name: Brown Rice
+    operator: or
+  - amount: 2
+    name: Mixed Rice
+    operator: or
+  - amount: 2
+    name: White Rice
     operator: ''
   name: Dried Boiled Rice
 - category: Cooking
@@ -367,8 +373,8 @@
   - amount: 1
     name: Salt
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Porridge
@@ -461,8 +467,8 @@
   - amount: 1
     name: Persimmon
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Zosui
@@ -503,8 +509,8 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Chazuke
@@ -680,8 +686,8 @@
   - amount: 3
     name: Buckwheat
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Basket Clam
     operator: ''
   name: Basket Clam Bowl
@@ -835,8 +841,8 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Ten-don
@@ -1078,8 +1084,8 @@
 - category: Cooking
   description: A simple soup made from boiled Persimmon.While it lacks a certain culinary
     complexity,it's perfectly adequate for washing down a meal.
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Broth
@@ -1128,8 +1134,8 @@
   - amount: 1
     name: Beer
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Persimmon Zoni
@@ -1155,8 +1161,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Persimmon Soup
@@ -1203,8 +1209,8 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Basket Clam
     operator: ''
   name: Basket Clam Stew
@@ -1348,8 +1354,8 @@
 - category: Cooking
   description: Bee Larva roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Bee Larva
     operator: ''
   name: Roast Bee Larva
@@ -1360,8 +1366,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Blanched Persimmon
@@ -1385,8 +1391,8 @@
   - amount: 1
     name: Salt
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Basket Clam
     operator: ''
   name: Grilled Basket Clam
@@ -1402,8 +1408,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Salt Persimmon
@@ -1432,9 +1438,9 @@
     magic: 1
     strength: 1
     vitality: 1
-  main_ingredient:
-    amount: 1
-    name: Dried Duck Meat
+  main_ingredients:
+  - amount: 3
+    name: Duck Meat
     operator: ''
   name: Dried Duck Meat
 - category: Cooking
@@ -1483,9 +1489,12 @@
     magic: 1
     strength: 2
     vitality: 2
-  main_ingredient:
-    amount: 1
-    name: Smoked Duck Meat
+  main_ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Duck Meat
     operator: ''
   name: Smoked Duck Meat
 - category: Cooking
@@ -1494,9 +1503,12 @@
   food_bonus:
     strength: 4
     vitality: 4
-  main_ingredient:
-    amount: 1
-    name: Pickled Persimmon
+  main_ingredients:
+  - amount: 1
+    name: Rice Bran
+    operator: and
+  - amount: 2
+    name: Persimmon
     operator: ''
   name: Pickled Persimmon
 - category: Cooking
@@ -1510,9 +1522,21 @@
     magic: 4
     strength: 4
     vitality: 2
-  main_ingredient:
-    amount: 1
-    name: Basket Clam Sushi
+  main_ingredients:
+  - amount: 5
+    name: Brown Rice
+    operator: or
+  - amount: 5
+    name: Mixed Rice
+    operator: or
+  - amount: 5
+    name: White Rice
+    operator: ''
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 2
+    name: Basket Clam
     operator: ''
   name: Basket Clam Sushi
 - category: Cooking
@@ -1549,8 +1573,8 @@
   - amount: 1
     name: Beer
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Basket Clam
     operator: ''
   name: Basket Clam Jelly
@@ -1643,8 +1667,32 @@
     luck: -4
     magic: 6
   ingredients:
+  - amount: 2
+    name: Wasabi
+    operator: and
   - amount: 1
-    name: Pickled Wasabi
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   name: Pickled Wasabi
   season_buff: Spring
@@ -1664,7 +1712,10 @@
     magic: 4
   ingredients:
   - amount: 1
-    name: Pickled Dried Plum
+    name: Plum
+    operator: and
+  - amount: 1
+    name: Salt
     operator: ''
   name: Pickled Dried Plum
   season_buff: Summer
@@ -1740,7 +1791,31 @@
     strength: 4
   ingredients:
   - amount: 1
-    name: Dried Salmon
+    name: Salmon
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   name: Dried Salmon
   season_buff: Winter
@@ -1756,8 +1831,8 @@
   - amount: 3
     name: Oil
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Fried Persimmon
@@ -1774,8 +1849,8 @@
   - amount: 1
     name: Wheat
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Basket Clam
     operator: ''
   name: Crispy Basket Clam
@@ -1799,8 +1874,8 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Tempura
@@ -1820,8 +1895,8 @@
   - amount: 1
     name: Sugar
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Stewed Persimmon
@@ -1845,8 +1920,8 @@
   - amount: 1
     name: Ginger
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Miso Persimmon
@@ -2096,7 +2171,16 @@
     sp: 10
   ingredients:
   - amount: 1
-    name: Dried Herring
+    name: Herring
+    operator: and
+  - amount: 1
+    name: Onion
+    operator: and
+  - amount: 1
+    name: Cucumber
+    operator: and
+  - amount: 1
+    name: Vinegar
     operator: ''
   name: Dried Herring
   season_buff: Winter
@@ -2192,8 +2276,8 @@
     hp: 2
     vitality: 4
   ingredients:
-  - amount: 1
-    name: Dried Persimmon
+  - amount: 3
+    name: Persimmon
     operator: ''
   name: Dried Persimmon
 - category: Cooking
@@ -2279,8 +2363,17 @@
     luck: 4
     magic: 4
   ingredients:
+  - amount: 2
+    name: Brown Rice
+    operator: or
+  - amount: 2
+    name: Mixed Rice
+    operator: or
+  - amount: 2
+    name: White Rice
+    operator: ''
   - amount: 1
-    name: Rice Cake
+    name: Sugar
     operator: ''
   name: Rice Cake
 - category: Cooking
@@ -2505,7 +2598,13 @@
     strength: -6
   ingredients:
   - amount: 1
-    name: Kuchikami Sake
+    name: Brown Rice
+    operator: or
+  - amount: 1
+    name: Mixed Rice
+    operator: or
+  - amount: 1
+    name: White Rice
     operator: ''
   name: Kuchikami Sake
 - category: Cooking
@@ -2519,7 +2618,16 @@
     sp: 5
   ingredients:
   - amount: 1
-    name: Doburoku
+    name: Brown Rice
+    operator: or
+  - amount: 1
+    name: Mixed Rice
+    operator: or
+  - amount: 1
+    name: White Rice
+    operator: ''
+  - amount: 1
+    name: Malt
     operator: ''
   name: Doburoku
 - category: Cooking
@@ -2534,8 +2642,8 @@
     luck: 5
     magic: 5
   ingredients:
-  - amount: 1
-    name: Amazake
+  - amount: 2
+    name: Malt
     operator: ''
   name: Amazake
 - category: Cooking
@@ -2561,8 +2669,14 @@
       name: Poison Resistance
     magic: 4
   ingredients:
+  - amount: 3
+    name: Malt
+    operator: and
   - amount: 1
-    name: Medicinal Sake
+    name: Mugwort
+    operator: and
+  - amount: 1
+    name: Plum
     operator: ''
   name: Medicinal Sake
 - category: Cooking
@@ -2576,8 +2690,14 @@
       name: Night Owl
     magic: 10
   ingredients:
-  - amount: 1
-    name: Ginjo Sake
+  - amount: 10
+    name: White Rice
+    operator: and
+  - amount: 2
+    name: Malt
+    operator: and
+  - amount: 2
+    name: Sugar
     operator: ''
   name: Ginjo Sake
 - category: Cooking
@@ -2591,8 +2711,14 @@
       name: Night Owl
     magic: 15
   ingredients:
-  - amount: 1
-    name: Daiginjo Sake
+  - amount: 25
+    name: White Rice
+    operator: and
+  - amount: 5
+    name: Malt
+    operator: and
+  - amount: 5
+    name: Sugar
     operator: ''
   name: Daiginjo Sake
 - category: Cooking
@@ -2606,9 +2732,15 @@
     luck: 5
     magic: 5
     sp: 5
-  main_ingredient:
-    amount: 1
-    name: Buckwheat Shochu
+  main_ingredients:
+  - amount: 4
+    name: Malt
+    operator: and
+  - amount: 2
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Buckwheat
     operator: ''
   name: Buckwheat Shochu
 - category: Cooking
@@ -2624,7 +2756,22 @@
     magic: 10
   ingredients:
   - amount: 1
-    name: Beer
+    name: Brown Rice
+    operator: or
+  - amount: 1
+    name: Mixed Rice
+    operator: or
+  - amount: 1
+    name: White Rice
+    operator: ''
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Maize
+    operator: and
+  - amount: 1
+    name: Renowned Water
     operator: ''
   name: Beer
   season_buff: Summer

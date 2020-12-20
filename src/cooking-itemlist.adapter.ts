@@ -374,28 +374,14 @@ export class CookingItemListAdapter extends ItemListAdapter {
     }
 
     private renderDetails(row: CookingItemData) {
-        const find_in = CookingItemListAdapter.getFindInContent(row);
-        const enemy_drop = CookingItemListAdapter.getEnemyDropContent(row);
         const ingredients = CookingItemListAdapter.getIngredientsContent(row);
 
-        const show_find_in = (find_in)? '' : 'd-none';
-        const show_enemy_drop = (enemy_drop)? '' : 'd-none';
         const show_ingredients = (ingredients)? '' : 'd-none';
 
         return `
-            <div class="row mt-1 ${show_ingredients}">
-                <div class="col px-2">
+            <div class="row mt-1 ml-3 ${show_ingredients}">
+                <div class="col">
                     ${ingredients}
-                </div>
-            </div>
-            <div class="row ${show_find_in}">
-                <div class="col px-2">
-                    ${find_in}
-                </div>
-            </div>
-            <div class="row mt-1 ${show_enemy_drop}">
-                <div class="col px-2">
-                    ${enemy_drop}
                 </div>
             </div>`;
     }

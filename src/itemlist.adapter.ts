@@ -155,7 +155,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = `<strong>${site.data.strings.item_list.materials.drop_by_enemy_label}</strong>`;
+            ret = `<h5>${site.data.strings.item_list.materials.drop_by_enemy_label}</h5>`;
 
             ret += row.enemy_drops.map(enemy_drop => {
                 let drop_time = '';
@@ -174,20 +174,14 @@ export abstract class ItemListAdapter {
     static getIngredientsContent(row: FoodItemData | CookingItemData) {
         let ret = '';
 
-        if ((row.ingredients !== undefined && row.ingredients) || ((row as CookingItemData).main_ingredient !== undefined && (row as CookingItemData).main_ingredient)) {
-            ret = `<strong>${site.data.strings.item_list.ingredients.label}</strong>`;
-        }
-
         const cooking_row = row as CookingItemData;
-        if (cooking_row.main_ingredient !== undefined && cooking_row.main_ingredient) {
-            const amount = (cooking_row.main_ingredient.amount == 1)? '' : cooking_row.main_ingredient.amount + 'x';
-            const name = cooking_row.main_ingredient.name;
-
-            ret += `<br /><strong>${amount}${name}</strong><br />`;
+        if ((row.ingredients !== undefined && row.ingredients) || (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients)) {
+            ret = `<h5>${site.data.strings.item_list.ingredients.label}</h5>`;
         }
-        
-        if (row.ingredients !== undefined && row.ingredients) {
-            ret += row.ingredients.map(ingredient => {
+
+        ret += `</ul>`
+        if (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients) {
+            cooking_row.main_ingredients.map((ingredient, index) => {
                 const amount = (ingredient.amount == 1)? '' : ingredient.amount.toString() + 'x';
                 const name = ingredient.name;
 
@@ -195,18 +189,39 @@ export abstract class ItemListAdapter {
                 switch(ingredient.operator) {
                     case 'and':
                         operator =`${site.data.strings.item_list.ingredients.and} `;
-                        break;
+                        return `${amount} ${name};`;
                     case 'or':
                         operator =`${site.data.strings.item_list.ingredients.or} `;
-                        break;
+                        return `${amount} ${name} ${operator}`;
                     case '':
-                        operator ='<br />';
-                        break;
+                        return `${amount} ${name};`;
                 }
-
-                return `${amount}${name} ${operator}`;
-            }).join('');
+            }).join('').split(';').forEach(function(ingredient_str) {
+                ret += (ingredient_str)? `<li>${ingredient_str}</li>` : '';
+            });
         }
+        
+        if (row.ingredients !== undefined && row.ingredients) {
+            row.ingredients.map((ingredient, index) => {
+                const amount = (ingredient.amount == 1)? '' : ingredient.amount.toString() + 'x';
+                const name = ingredient.name;
+
+                let operator = '';
+                switch(ingredient.operator) {
+                    case 'and':
+                        operator =`${site.data.strings.item_list.ingredients.and} `;
+                        return `${amount} ${name};`;
+                    case 'or':
+                        operator =`${site.data.strings.item_list.ingredients.or} `;
+                        return `${amount} ${name} ${operator}`;
+                    case '':
+                        return `${amount} ${name};`;
+                }
+            }).join('').split(';').forEach(function(ingredient_str) {
+                ret += (ingredient_str)? `<li>${ingredient_str}</li>` : '';
+            });
+        }
+        ret += `</ul>`;
 
         return ret;
     }

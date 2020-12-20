@@ -55697,13 +55697,12 @@ var Application = (function () {
     };
     Application.prototype.getFoodItemList = function () {
         return this._appData.items.filter(function (it) {
-            return it.category == 'Food' ||
-                it.category == 'Materials/Food';
+            return it.category == 'Food' || it.category == 'Materials/Food' || it.category == 'Cooking/Food';
         });
     };
     Application.prototype.getCookingItemList = function () {
         return this._appData.items.filter(function (it) {
-            return it.category == 'Cooking' || it.category == 'Food/Cooking' || it.category == 'Materials/Cooking';
+            return it.category == 'Cooking' || it.category == 'Materials/Cooking';
         });
     };
     Application.prototype.initItemList = function () {
@@ -56427,13 +56426,9 @@ var CookingItemListAdapter = (function (_super) {
         return '';
     };
     CookingItemListAdapter.prototype.renderDetails = function (row) {
-        var find_in = CookingItemListAdapter.getFindInContent(row);
-        var enemy_drop = CookingItemListAdapter.getEnemyDropContent(row);
         var ingredients = CookingItemListAdapter.getIngredientsContent(row);
-        var show_find_in = (find_in) ? '' : 'd-none';
-        var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
         var show_ingredients = (ingredients) ? '' : 'd-none';
-        return "\n            <div class=\"row mt-1 " + show_ingredients + "\">\n                <div class=\"col px-2\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row " + show_find_in + "\">\n                <div class=\"col px-2\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                <div class=\"col px-2\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
+        return "\n            <div class=\"row mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>";
     };
     return CookingItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -57905,7 +57900,7 @@ var FoodItemListAdapter = (function (_super) {
         var show_find_in = (find_in) ? '' : 'd-none';
         var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
         var show_ingredients = (ingredients) ? '' : 'd-none';
-        return "\n            <div class=\"row mt-1 " + show_ingredients + "\">\n                <div class=\"col px-2\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row " + show_find_in + "\">\n                <div class=\"col px-2\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                <div class=\"col px-2\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
+        return "\n            <div class=\"row mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row mt-1 ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row ml-3 " + show_enemy_drop + "\">\n                <div class=\"col px-3\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return FoodItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -58585,7 +58580,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getEnemyDropContent = function (row) {
         var ret = '';
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = "<strong>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</strong>";
+            ret = "<h5>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</h5>";
             ret += row.enemy_drops.map(function (enemy_drop) {
                 var drop_time = '';
                 if (enemy_drop.time != item_data_1.EnemyDropTime.Always) {
@@ -58598,34 +58593,50 @@ var ItemListAdapter = (function () {
     };
     ItemListAdapter.getIngredientsContent = function (row) {
         var ret = '';
-        if ((row.ingredients !== undefined && row.ingredients) || (row.main_ingredient !== undefined && row.main_ingredient)) {
-            ret = "<strong>" + site_1.site.data.strings.item_list.ingredients.label + "</strong>";
-        }
         var cooking_row = row;
-        if (cooking_row.main_ingredient !== undefined && cooking_row.main_ingredient) {
-            var amount = (cooking_row.main_ingredient.amount == 1) ? '' : cooking_row.main_ingredient.amount + 'x';
-            var name_1 = cooking_row.main_ingredient.name;
-            ret += "<br /><strong>" + amount + name_1 + "</strong><br />";
+        if ((row.ingredients !== undefined && row.ingredients) || (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients)) {
+            ret = "<h5>" + site_1.site.data.strings.item_list.ingredients.label + "</h5>";
         }
-        if (row.ingredients !== undefined && row.ingredients) {
-            ret += row.ingredients.map(function (ingredient) {
+        ret += "</ul>";
+        if (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients) {
+            cooking_row.main_ingredients.map(function (ingredient, index) {
                 var amount = (ingredient.amount == 1) ? '' : ingredient.amount.toString() + 'x';
                 var name = ingredient.name;
                 var operator = '';
                 switch (ingredient.operator) {
                     case 'and':
                         operator = site_1.site.data.strings.item_list.ingredients.and + " ";
-                        break;
+                        return amount + " " + name + ";";
                     case 'or':
                         operator = site_1.site.data.strings.item_list.ingredients.or + " ";
-                        break;
+                        return amount + " " + name + " " + operator;
                     case '':
-                        operator = '<br />';
-                        break;
+                        return amount + " " + name + ";";
                 }
-                return "" + amount + name + " " + operator;
-            }).join('');
+            }).join('').split(';').forEach(function (ingredient_str) {
+                ret += (ingredient_str) ? "<li>" + ingredient_str + "</li>" : '';
+            });
         }
+        if (row.ingredients !== undefined && row.ingredients) {
+            row.ingredients.map(function (ingredient, index) {
+                var amount = (ingredient.amount == 1) ? '' : ingredient.amount.toString() + 'x';
+                var name = ingredient.name;
+                var operator = '';
+                switch (ingredient.operator) {
+                    case 'and':
+                        operator = site_1.site.data.strings.item_list.ingredients.and + " ";
+                        return amount + " " + name + ";";
+                    case 'or':
+                        operator = site_1.site.data.strings.item_list.ingredients.or + " ";
+                        return amount + " " + name + " " + operator;
+                    case '':
+                        return amount + " " + name + ";";
+                }
+            }).join('').split(';').forEach(function (ingredient_str) {
+                ret += (ingredient_str) ? "<li>" + ingredient_str + "</li>" : '';
+            });
+        }
+        ret += "</ul>";
         return ret;
     };
     ItemListAdapter.renderSoilNutrientsHtml = function (fertilizer_bonus) {
@@ -59038,7 +59049,7 @@ var MaterialItemListAdapter = (function (_super) {
         var enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
         var show_find_in = (find_in) ? '' : 'd-none';
         var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
-        return "\n            <div class=\"row " + show_find_in + "\">\n                <div class=\"col px-2\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 " + show_enemy_drop + "\">\n                <div class=\"col px-2\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
+        return "\n            <div class=\"row ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 ml-3 " + show_enemy_drop + "\">\n                <div class=\"col\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return MaterialItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));

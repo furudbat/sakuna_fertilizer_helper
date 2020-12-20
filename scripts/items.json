@@ -3172,7 +3172,7 @@
     },
     {
         "name": "Soup Stock",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "Made from ingredients that are boiled to bring outtheir flavor. A culinary necessity in any kitchen.",
@@ -3246,7 +3246,7 @@
     },
     {
         "name": "Miso",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 6,
         "description": "A paste made by mixing and then fermenting crushed beans, malt, and salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient could not exist!",
@@ -3270,7 +3270,7 @@
     },
     {
         "name": "Soy Sauce",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 6,
         "description": "A liquid seasoning made from fermented soybean paste.Use it to enliven noodle dishes like udon and soba.",
@@ -3722,7 +3722,7 @@
     },
     {
         "name": "Malt",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "A thick, syrupy substance made of steamed and fermentedrice. It is the basis of many recipes and seasonings.",
@@ -3758,7 +3758,7 @@
     },
     {
         "name": "Mochi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "A kind of cake made by adding water to rice, pounding it, and letting it harden. It is delightful both when boiledand toasted. What's more, it's extremely easy to preserve!",
@@ -3782,7 +3782,7 @@
     },
     {
         "name": "Tofu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "This bean curd is made by combining soybean juicewith a salt solution and letting the mixture harden.",
@@ -3801,7 +3801,7 @@
     },
     {
         "name": "Rice Cake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "This rice has been mixed with water, pounded, and moldedinto a round shape. In the olden days, the children of menused to regularly present these as an offering to the gods.",
@@ -3830,7 +3830,7 @@
     },
     {
         "name": "Dried Rabbit Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Rabbit Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3844,7 +3844,7 @@
     },
     {
         "name": "Dried Pork",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Pork that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3858,7 +3858,7 @@
     },
     {
         "name": "Dried Boar Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Boar Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3872,7 +3872,7 @@
     },
     {
         "name": "Dried Venison",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Venison that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3886,7 +3886,7 @@
     },
     {
         "name": "Dried Bear Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Bear Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3900,7 +3900,7 @@
     },
     {
         "name": "Dried Badger Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Badger Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3914,7 +3914,7 @@
     },
     {
         "name": "Dried Turtle Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Turtle Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3928,7 +3928,7 @@
     },
     {
         "name": "Dried Sparrow Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Sparrow Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3942,7 +3942,7 @@
     },
     {
         "name": "Dried Pheasant Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Pheasant Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3956,7 +3956,7 @@
     },
     {
         "name": "Dried Duck Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Shiraboshi",
         "price": 1,
         "description": "Duck Meat that has been dried in the sun to preventit from rotting. Most foods will last longer whenrobbed of the water within them.",
@@ -3970,7 +3970,7 @@
     },
     {
         "name": "Smoked Rabbit Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Rabbit Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -3989,7 +3989,7 @@
     },
     {
         "name": "Smoked Pork",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Pork that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4008,7 +4008,7 @@
     },
     {
         "name": "Smoked Boar Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Boar Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4027,7 +4027,7 @@
     },
     {
         "name": "Smoked Venison",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Venison that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4046,7 +4046,7 @@
     },
     {
         "name": "Smoked Bear Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Bear Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4065,7 +4065,7 @@
     },
     {
         "name": "Smoked Badger Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Badger Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4084,7 +4084,7 @@
     },
     {
         "name": "Smoked Turtle Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Turtle Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4103,7 +4103,7 @@
     },
     {
         "name": "Smoked Sparrow Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Sparrow Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4122,7 +4122,7 @@
     },
     {
         "name": "Smoked Pheasant Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Pheasant Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4141,7 +4141,7 @@
     },
     {
         "name": "Smoked Duck Meat",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Kunsei",
         "price": 1,
         "description": "Duck Meat that has been salted, smoked, and dried.The smoky fragrance mixes well with its rich flavor.",
@@ -4160,7 +4160,7 @@
     },
     {
         "name": "Pickled Tekusari",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Tekusari that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4179,7 +4179,7 @@
     },
     {
         "name": "Pickled Acorn",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Acorn that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4198,7 +4198,7 @@
     },
     {
         "name": "Pickled Taro",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Taro that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4217,7 +4217,7 @@
     },
     {
         "name": "Pickled Potato",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Potato that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4236,7 +4236,7 @@
     },
     {
         "name": "Pickled Onion",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Onion that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4255,7 +4255,7 @@
     },
     {
         "name": "Pickled Warabi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Warabi that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4274,7 +4274,7 @@
     },
     {
         "name": "Pickled Horsetail",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Horsetail that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4293,7 +4293,7 @@
     },
     {
         "name": "Pickled Mugwort",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Mugwort that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4312,7 +4312,7 @@
     },
     {
         "name": "Pickled Seven Herbs",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Seven Herbs that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4338,7 +4338,7 @@
     },
     {
         "name": "Pickled Root Crops",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Root Crops that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4357,7 +4357,7 @@
     },
     {
         "name": "Pickled Cucumber",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Cucumber that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4376,7 +4376,7 @@
     },
     {
         "name": "Pickled Maize",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Maize that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4395,7 +4395,7 @@
     },
     {
         "name": "Pickled Mushroom",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Mushroom that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4414,7 +4414,7 @@
     },
     {
         "name": "Pickled Matsutake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Matsutake that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4433,7 +4433,7 @@
     },
     {
         "name": "Pickled Chestnut",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Chestnut that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4452,7 +4452,7 @@
     },
     {
         "name": "Pickled Ginkgo Nut",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Ginkgo Nut that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4471,7 +4471,7 @@
     },
     {
         "name": "Pickled Persimmon",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Nukazuke",
         "price": 1,
         "description": "Persimmon that has been pickled in salted rice bran.Its potent flavor will wash over you with just one bite.",
@@ -4490,7 +4490,7 @@
     },
     {
         "name": "Rabbit Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Rabbit Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4524,7 +4524,7 @@
     },
     {
         "name": "Pork Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Pork put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4558,7 +4558,7 @@
     },
     {
         "name": "Boar Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Boar Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4592,7 +4592,7 @@
     },
     {
         "name": "Venison Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Venison put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4626,7 +4626,7 @@
     },
     {
         "name": "Bear Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Bear Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4660,7 +4660,7 @@
     },
     {
         "name": "Badger Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Badger Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4694,7 +4694,7 @@
     },
     {
         "name": "Turtle Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Turtle Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4728,7 +4728,7 @@
     },
     {
         "name": "Sparrow Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Sparrow Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4762,7 +4762,7 @@
     },
     {
         "name": "Pheasant Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Pheasant Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4796,7 +4796,7 @@
     },
     {
         "name": "Duck Meat Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Duck Meat put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4830,7 +4830,7 @@
     },
     {
         "name": "Loach Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Loach put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4864,7 +4864,7 @@
     },
     {
         "name": "Sweetfish Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Sweetfish put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4898,7 +4898,7 @@
     },
     {
         "name": "Carp Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Carp put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4932,7 +4932,7 @@
     },
     {
         "name": "Masu Salmon Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Masu Salmon put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -4966,7 +4966,7 @@
     },
     {
         "name": "Char Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Char put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5000,7 +5000,7 @@
     },
     {
         "name": "Crucian Carp Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Crucian Carp put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5034,7 +5034,7 @@
     },
     {
         "name": "Salmon Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Salmon put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5068,7 +5068,7 @@
     },
     {
         "name": "Smelt Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Smelt put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5102,7 +5102,7 @@
     },
     {
         "name": "Herring Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Herring put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5136,7 +5136,7 @@
     },
     {
         "name": "Eel Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Eel put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5170,7 +5170,7 @@
     },
     {
         "name": "Basket Clam Sushi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sushi",
         "price": 1,
         "description": "Pickled and salted Basket Clam put in rice to preserve it.Some peculiar folks claim it becomes even more appealingwith every sniff, but I am not so easily convinced.",
@@ -5211,7 +5211,7 @@
     },
     {
         "name": "Dried Herring",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "This appears to be herring that was preserved with herbs, vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi.",
@@ -5240,7 +5240,7 @@
     },
     {
         "name": "Dried Boiled Rice",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "A grain that has been dried out in the sun and robbedof its water contents. It is best when soaked in boiledwater to rehydrate it before being eaten.",
@@ -5264,7 +5264,7 @@
     },
     {
         "name": "Dried Salmon",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "Salted salmon, dried in the sea breeze to preserve it.While it may keep for some time, it also happens to beincredibly salty. Take care not to gorge yourself on it.",
@@ -5318,7 +5318,7 @@
     },
     {
         "name": "Dried Taro Stem",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "The dried stem of a taro plant, woven into a cord.Often carried by soldiers headed to the battlefield.",
@@ -5337,7 +5337,7 @@
     },
     {
         "name": "Dried Persimmon",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "A persimmon hung under the eave of a house and dried untildeveloping a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is autumn's finest treasure.",
@@ -5351,7 +5351,7 @@
     },
     {
         "name": "Pickled Wasabi",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little too well. Be wary not to drink too much.",
@@ -5405,7 +5405,7 @@
     },
     {
         "name": "Pickled Dried Plum",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "",
         "price": 1,
         "description": "A plum that has been pickled in salt. Not only is it usedfor battle rations, but also as a medicine to cure poisons.",
@@ -5487,7 +5487,7 @@
     },
     {
         "name": "Kuchikami Sake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "An alcohol fermented with human saliva.It reeks to high heaven and is horribly unsanitary.Only the truly courageous are bold enough to consume it.",
@@ -5511,7 +5511,7 @@
     },
     {
         "name": "Doburoku",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust, rice-like flavor.",
@@ -5540,7 +5540,7 @@
     },
     {
         "name": "Amazake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "A drink made by saccharizing rice.Be fooled not by its name: this draught is virgin.Gently sweet and energizing.",
@@ -5554,7 +5554,7 @@
     },
     {
         "name": "Refined Sake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "A clear alcohol that has been filtered and heated.Has a rich flavor with a hint of sweetness.",
@@ -5578,7 +5578,7 @@
     },
     {
         "name": "Medicinal Sake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "Highly nutritious roots and leaves have been added to thissake to make it medicinal. As bitter as it tastes, at leastit will make you hardy enough to resist most poisons.",
@@ -5602,7 +5602,7 @@
     },
     {
         "name": "Ginjo Sake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "An alcohol made by refining polished rice and fermenting it over low heat.Smooth, palatable, and incredibly fragrant.",
@@ -5626,7 +5626,7 @@
     },
     {
         "name": "Daiginjo Sake",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "An alcohol made by carefully selecting only the best grains of riceand polishing them to perfection. Its translucence and superlativefragrance certify its status as a true work of art.",
@@ -5650,7 +5650,7 @@
     },
     {
         "name": "Brown Rice Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5674,7 +5674,7 @@
     },
     {
         "name": "Mixed Rice Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5698,7 +5698,7 @@
     },
     {
         "name": "White Rice Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5722,7 +5722,7 @@
     },
     {
         "name": "Wheat Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5746,7 +5746,7 @@
     },
     {
         "name": "Foxtail Millet Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5770,7 +5770,7 @@
     },
     {
         "name": "Sanwa Millet Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5794,7 +5794,7 @@
     },
     {
         "name": "Bean Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5818,7 +5818,7 @@
     },
     {
         "name": "Buckwheat Shochu",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "SakeSyouchu",
         "price": 1,
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains used adds to its delectability.",
@@ -5842,7 +5842,7 @@
     },
     {
         "name": "Beer",
-        "category": "Food",
+        "category": "Cooking/Food",
         "sub_category": "Sake",
         "price": 1,
         "description": "An alcohol from the far west made with wheat.Myrthe's favorite drink. It seems that her faithdoes not forbid the consumption of spirits...",
@@ -6418,11 +6418,13 @@
         "name": "Cooked Sanwa Millet",
         "category": "Cooking",
         "description": "A meal made of cooked Sanwa Millet.Satisfying, but it doesn't compareto the piquant taste of rice.",
-        "main_ingredient": {
-            "name": "Sanwa Millet",
-            "amount": 3,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Sanwa Millet",
+                "amount": 3,
+                "operator": ""
+            }
+        ],
         "food_bonus": {
             "fullness": 5,
             "enchant": [
@@ -6439,8 +6441,18 @@
         "description": "Dried cooked rice that has been rehydratedwith boiling water. It has a rather lightflavor, similar to porridge.",
         "ingredients": [
             {
-                "name": "Dried Boiled Rice",
-                "amount": 1,
+                "name": "Brown Rice",
+                "amount": 2,
+                "operator": "or"
+            },
+            {
+                "name": "Mixed Rice",
+                "amount": 2,
+                "operator": "or"
+            },
+            {
+                "name": "White Rice",
+                "amount": 2,
                 "operator": ""
             }
         ],
@@ -6458,11 +6470,13 @@
         "name": "Sanwa Millet Porridge",
         "category": "Cooking",
         "description": "A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making ita perfect meal for the bedridden.",
-        "main_ingredient": {
-            "name": "Sanwa Millet",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Sanwa Millet",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Salt",
@@ -6523,11 +6537,13 @@
         "name": "Sanwa Millet Zosui",
         "category": "Cooking",
         "description": "A meal made of Sanwa Millet boiledwith rice. It is bound to warm youto the core on chilly evenings.",
-        "main_ingredient": {
-            "name": "Sanwa Millet",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Sanwa Millet",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Soup Stock",
@@ -6635,11 +6651,13 @@
         "name": "Sanwa Millet Chazuke",
         "category": "Cooking",
         "description": "White rice soaked in tea and sprinkled withsoy sauce. Silky smooth for easy digestion,with an irresistably invigorating aftertaste.",
-        "main_ingredient": {
-            "name": "Sanwa Millet",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Sanwa Millet",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Tea",
@@ -6869,11 +6887,13 @@
         "name": "Basket Clam Bowl",
         "category": "Cooking",
         "description": "Top a bowl of rice with a bit of sauce and someBasket Clam to create a truly delectable meal!Yanato's culinary ingenuity never ceases to amaze.",
-        "main_ingredient": {
-            "name": "Basket Clam",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Basket Clam",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -7106,11 +7126,13 @@
         "name": "Persimmon Ten-don",
         "category": "Cooking",
         "description": "Persimmon tempura atop a bowl of rice,with a heaping helping of salty-sweet sauce.I could eat this for eternity.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -7607,21 +7629,25 @@
         "name": "Persimmon Broth",
         "category": "Cooking",
         "description": "A simple soup made from boiled Persimmon.While it lacks a certain culinary complexity,it's perfectly adequate for washing down a meal.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 2,
-            "operator": ""
-        }
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 2,
+                "operator": ""
+            }
+        ]
     },
     {
         "name": "Persimmon Zoni",
         "category": "Cooking",
         "description": "Soup with mochi and Persimmon. I cannot putmy finger on it, but something about the soft,broth-soaked mochi evokes a celebratory sentiment.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Mochi",
@@ -7711,11 +7737,13 @@
         "name": "Persimmon Soup",
         "category": "Cooking",
         "description": "Miso melted in hot water along with Persimmon.Its moderate saltiness and the dashi's flavor makefor a superior dish that pairs well with cooked rice.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Miso",
@@ -7757,11 +7785,13 @@
         "name": "Basket Clam Stew",
         "category": "Cooking",
         "description": "Miso soup paired with well-boiled Basket Clam,scales and all. Just as nutritious as it tastes.",
-        "main_ingredient": {
-            "name": "Basket Clam",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Basket Clam",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Miso",
@@ -8025,21 +8055,25 @@
         "name": "Roast Bee Larva",
         "category": "Cooking",
         "description": "Bee Larva roasted on an open fire.Cooked to a golden brown with allthe juicy flavor sealed inside.",
-        "main_ingredient": {
-            "name": "Bee Larva",
-            "amount": 2,
-            "operator": ""
-        }
+        "main_ingredients": [
+            {
+                "name": "Bee Larva",
+                "amount": 2,
+                "operator": ""
+            }
+        ]
     },
     {
         "name": "Blanched Persimmon",
         "category": "Cooking",
         "description": "Chopped Persimmon steeped in a savory soup stock.Do not judge this simple dish by looks alone;its flavor will speak for itself.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Soup Stock",
@@ -8064,11 +8098,13 @@
         "name": "Grilled Basket Clam",
         "category": "Cooking",
         "description": "Grilled Basket Clam that is salted to perfection.The trick is to get it to the perfect temperaturethat leaves the inside soft and the outside crispy.",
-        "main_ingredient": {
-            "name": "Basket Clam",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Basket Clam",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Salt",
@@ -8090,11 +8126,13 @@
         "name": "Salt Persimmon",
         "category": "Cooking",
         "description": "Persimmon boiled in salt water. Its simplicitybrings out the best flavor in its ingredients.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Salt",
@@ -8137,11 +8175,13 @@
         "name": "Dried Duck Meat",
         "category": "Cooking",
         "description": "These ingredients have been dried in the sun.They might make good rations in times of need.",
-        "main_ingredient": {
-            "name": "Dried Duck Meat",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Duck Meat",
+                "amount": 3,
+                "operator": ""
+            }
+        ],
         "food_bonus": {
             "strength": 1,
             "vitality": 1,
@@ -8216,11 +8256,18 @@
         "name": "Smoked Duck Meat",
         "category": "Cooking",
         "description": "These ingredients have been salted and cookedover smoke. I can guarantee that it tastesevery bit as good as it smells. Delicious!",
-        "main_ingredient": {
-            "name": "Smoked Duck Meat",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Salt",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Duck Meat",
+                "amount": 3,
+                "operator": ""
+            }
+        ],
         "food_bonus": {
             "strength": 2,
             "vitality": 2,
@@ -8237,11 +8284,18 @@
         "name": "Pickled Persimmon",
         "category": "Cooking",
         "description": "A preserved food made with pickled ingredientsfermented in rice bran. This salty addition pairswell with just about any meal.",
-        "main_ingredient": {
-            "name": "Pickled Persimmon",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Rice Bran",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Persimmon",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "food_bonus": {
             "strength": 4,
             "vitality": 4
@@ -8251,11 +8305,33 @@
         "name": "Basket Clam Sushi",
         "category": "Cooking",
         "description": "A preserved food made with salted and pickledingredients covered in rice and fermented.Potently acidic, aromatic, and flavorful.",
-        "main_ingredient": {
-            "name": "Basket Clam Sushi",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Brown Rice",
+                "amount": 5,
+                "operator": "or"
+            },
+            {
+                "name": "Mixed Rice",
+                "amount": 5,
+                "operator": "or"
+            },
+            {
+                "name": "White Rice",
+                "amount": 5,
+                "operator": ""
+            },
+            {
+                "name": "Salt",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Basket Clam",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "food_bonus": {
             "strength": 4,
             "vitality": 2,
@@ -8273,11 +8349,13 @@
         "name": "Basket Clam Jelly",
         "category": "Cooking",
         "description": "Basket Clam is first simmered in soy sauce,after which the broth is drained and then cooledfor a jiggly texture and scrumptious aftertaste.",
-        "main_ingredient": {
-            "name": "Basket Clam",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Basket Clam",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -8464,7 +8542,47 @@
         "description": "Wasabi that has been pickled in sake lees.Packed with a ripened spiciness, it impartsa satisfying crunch with each and every bite.",
         "ingredients": [
             {
-                "name": "Pickled Wasabi",
+                "name": "Wasabi",
+                "amount": 2,
+                "operator": "and"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
                 "amount": 1,
                 "operator": ""
             }
@@ -8493,7 +8611,12 @@
         "description": "Salted pickled plums that have been sun-dried andfermented. Biting into one releases a powerfularoma and a rich, bittersweet flavor.",
         "ingredients": [
             {
-                "name": "Pickled Dried Plum",
+                "name": "Plum",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Salt",
                 "amount": 1,
                 "operator": ""
             }
@@ -8618,7 +8741,47 @@
         "description": "Salmon that has been soaked in salt water and driedin the sea breeze. This pairs wondrously with sake!Though do take care not to gorge yourself.",
         "ingredients": [
             {
-                "name": "Dried Salmon",
+                "name": "Salmon",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Kuchikami Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Doburoku",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Amazake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Refined Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Medicinal Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Ginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Daiginjo Sake",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Beer",
                 "amount": 1,
                 "operator": ""
             }
@@ -8636,11 +8799,13 @@
         "name": "Fried Persimmon",
         "category": "Cooking",
         "description": "Food that's fried in naught but oil is not to beunderestimated. Truly it brings out the bestthe Persimmon has to offer.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Oil",
@@ -8657,11 +8822,13 @@
         "name": "Crispy Basket Clam",
         "category": "Cooking",
         "description": "Basket Clam covered in wheat flour and deep fried.The pleasant crunch as you bite into it is ratheraddicting, if I do say so myself.",
-        "main_ingredient": {
-            "name": "Basket Clam",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Basket Clam",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Oil",
@@ -8683,11 +8850,13 @@
         "name": "Persimmon Tempura",
         "category": "Cooking",
         "description": "Persimmon covered in egg and wheat flour,then deep fried. I am told that this techniqueoriginally came from some western country.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 2,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 2,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Oil",
@@ -8721,11 +8890,13 @@
         "name": "Stewed Persimmon",
         "category": "Cooking",
         "description": "Persimmon stewed in soy sauce until soft.A gentle heat flows outward from the broth,warming your body and comforting your soul.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Soy Sauce",
@@ -8753,11 +8924,13 @@
         "name": "Miso Persimmon",
         "category": "Cooking",
         "description": "Persimmon boiled in miso until soft. The richmiso and fresh ginger make every ingredient sing.",
-        "main_ingredient": {
-            "name": "Persimmon",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Persimmon",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "ingredients": [
             {
                 "name": "Miso",
@@ -9177,7 +9350,22 @@
         "description": "This appears to be herring that was preserved with herbs,vinegar, and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not entirely unlike sushi.",
         "ingredients": [
             {
-                "name": "Dried Herring",
+                "name": "Herring",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Onion",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Cucumber",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Vinegar",
                 "amount": 1,
                 "operator": ""
             }
@@ -9338,8 +9526,8 @@
         "description": "Persimmons that have been dried on a cord.This powerfully sweet fruit melts in your mouth,making it difficult to put down after the first bite.",
         "ingredients": [
             {
-                "name": "Dried Persimmon",
-                "amount": 1,
+                "name": "Persimmon",
+                "amount": 3,
                 "operator": ""
             }
         ],
@@ -9472,7 +9660,22 @@
         "description": "Rice softened in water, then pounded and shapedinto a ball. They have long been used as offeringsto the gods from the children of men.",
         "ingredients": [
             {
-                "name": "Rice Cake",
+                "name": "Brown Rice",
+                "amount": 2,
+                "operator": "or"
+            },
+            {
+                "name": "Mixed Rice",
+                "amount": 2,
+                "operator": "or"
+            },
+            {
+                "name": "White Rice",
+                "amount": 2,
+                "operator": ""
+            },
+            {
+                "name": "Sugar",
                 "amount": 1,
                 "operator": ""
             }
@@ -9845,7 +10048,17 @@
         "description": "Alcohol fermented with human saliva. It reeks tohigh heaven and is horribly unsanitary. Only thetruly courageous are bold enough to consume it.",
         "ingredients": [
             {
-                "name": "Kuchikami Sake",
+                "name": "Brown Rice",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Mixed Rice",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "White Rice",
                 "amount": 1,
                 "operator": ""
             }
@@ -9861,7 +10074,22 @@
         "description": "Cloudy white sake that is completely unfiltered.A blend of piercing sourness and potent rice flavor.",
         "ingredients": [
             {
-                "name": "Doburoku",
+                "name": "Brown Rice",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Mixed Rice",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "White Rice",
+                "amount": 1,
+                "operator": ""
+            },
+            {
+                "name": "Malt",
                 "amount": 1,
                 "operator": ""
             }
@@ -9883,8 +10111,8 @@
         "description": "A beverage made by converting rice into sugar.Be fooled not by its name: this draught containsno alcohol. It is gently sweet and energizing.",
         "ingredients": [
             {
-                "name": "Amazake",
-                "amount": 1,
+                "name": "Malt",
+                "amount": 2,
                 "operator": ""
             }
         ],
@@ -9930,7 +10158,17 @@
         "description": "Sake truly cures all ills. This kind in particular hashad medicinal herbs added to it. It will bolster yourfortitude and give you some resistance to poison.",
         "ingredients": [
             {
-                "name": "Medicinal Sake",
+                "name": "Malt",
+                "amount": 3,
+                "operator": "and"
+            },
+            {
+                "name": "Mugwort",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Plum",
                 "amount": 1,
                 "operator": ""
             }
@@ -9951,8 +10189,18 @@
         "description": "Sake that is made by refining polished riceand fermenting it over low heat. The resultis smooth, palatable, and incredibly fragrant.",
         "ingredients": [
             {
-                "name": "Ginjo Sake",
-                "amount": 1,
+                "name": "White Rice",
+                "amount": 10,
+                "operator": "and"
+            },
+            {
+                "name": "Malt",
+                "amount": 2,
+                "operator": "and"
+            },
+            {
+                "name": "Sugar",
+                "amount": 2,
                 "operator": ""
             }
         ],
@@ -9976,8 +10224,18 @@
         "description": "Sake made by carefully selecting the finest grainsof rice and polishing them to perfection. Translucentand fragrant, it qualifies as a true work of art!",
         "ingredients": [
             {
-                "name": "Daiginjo Sake",
-                "amount": 1,
+                "name": "White Rice",
+                "amount": 25,
+                "operator": "and"
+            },
+            {
+                "name": "Malt",
+                "amount": 5,
+                "operator": "and"
+            },
+            {
+                "name": "Sugar",
+                "amount": 5,
                 "operator": ""
             }
         ],
@@ -9999,11 +10257,23 @@
         "name": "Buckwheat Shochu",
         "category": "Cooking",
         "description": "A strong alcohol made from distilled ingredients.The flavor of the grains adds to its delectability.",
-        "main_ingredient": {
-            "name": "Buckwheat Shochu",
-            "amount": 1,
-            "operator": ""
-        },
+        "main_ingredients": [
+            {
+                "name": "Malt",
+                "amount": 4,
+                "operator": "and"
+            },
+            {
+                "name": "Sugar",
+                "amount": 2,
+                "operator": "and"
+            },
+            {
+                "name": "Buckwheat",
+                "amount": 1,
+                "operator": ""
+            }
+        ],
         "food_bonus": {
             "hp": -5,
             "sp": 5,
@@ -10023,7 +10293,32 @@
         "description": "An alcohol of the far west made from wheat.Its bitterness may be an acquired taste,but it certainly goes down smooth.",
         "ingredients": [
             {
-                "name": "Beer",
+                "name": "Brown Rice",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "Mixed Rice",
+                "amount": 1,
+                "operator": "or"
+            },
+            {
+                "name": "White Rice",
+                "amount": 1,
+                "operator": ""
+            },
+            {
+                "name": "Wheat",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Maize",
+                "amount": 1,
+                "operator": "and"
+            },
+            {
+                "name": "Renowned Water",
                 "amount": 1,
                 "operator": ""
             }

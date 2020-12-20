@@ -50,7 +50,7 @@ CATEGORY_MATERIAL_MISC = 'Materials/Misc'
 CATEGORY_MATERIAL_COOKING = 'Materials/Cooking'
 CATEGORY_FOOD = 'Food'
 CATEGORY_COOKING = 'Cooking'
-CATEGORY_FOOD_COOKING = 'Food/Cooking'
+CATEGORY_COOKING_FOOD = 'Cooking/Food'
 
 
 
@@ -473,14 +473,29 @@ def setFoodAttrs(item, row, item_names, auto_name):
 
     return item
 
-def setCookingAttr(item, row, item_names, main_source, source_name):
+def setCookingAttr(item, row, item_names, main_source, source_name, food_map):
     item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source_name)
 
     if 'source_main' in main_source:
-        item['main_ingredient'] = main_source['source_main']    
+        item['main_ingredients'] = [main_source['source_main']]
+        if main_source['source_main']['name'] == item['name']:
+            for food in food_map.values():
+                if food['name'] == main_source['source_main']['name'] and 'ingredients' in food and food['ingredients']:
+                    item['main_ingredients'] = food['ingredients']
     
     if row['Source'] != '-':
         item['ingredients'] = parseSource(item['name'], row['Source'], item_names, item['name'])
+        if 'ingredients' in item and len(item['ingredients']) > 0:
+            for i in range(len(item['ingredients'])):
+                if item['ingredients'][i]['name'] == item['name']:
+                    for food in food_map.values():
+                        if food['name'] == item['ingredients'][i]['name'] and 'ingredients' in food and food['ingredients']:
+                            if i == 0:
+                                item['ingredients'] = food['ingredients']
+                            elif i > 0 and i < len(item['ingredients'])-1:
+                                item['ingredients'] = food['ingredients'] + item['ingredients'][i+1:]
+                            elif i > 0 and i == len(item['ingredients'])-1:
+                                item['ingredients'] = item['ingredients'][:i-1] + food['ingredients']
 
     return item
 
@@ -501,14 +516,14 @@ def setEnemyDrop(item, item_code, enemies_map, item_names):
     return item
 
 
-def getItemNames(filename, category, item_names, enchants_map, worldmap_collection_map, enemies_map, only_names=False):
+def getItemNames(filename, category, item_names, enchants_map, worldmap_collection_map, enemies_map, food_map, only_names=False):
     ret = []
     if filename == 'Material.csv' and not only_names:
         ret = getMaterials(item_names, worldmap_collection_map, enemies_map, True).values()
     elif filename == 'Food.csv' and not only_names:
         ret = getFood(item_names, enchants_map, worldmap_collection_map, enemies_map, True).values()
     elif filename == 'Cooking.csv' and not only_names:
-        ret = getCooking(item_names, enchants_map, worldmap_collection_map, True).values()
+        ret = getCooking(item_names, enchants_map, worldmap_collection_map, food_map, True).values()
     else:
         with open(filename, encoding="utf8") as read_obj:
             #data = read_obj.read()
@@ -646,7 +661,7 @@ def getFood(item_names, enchants_map, worldmap_collection_map, enemies_map, only
 
     return food_map
 
-def getCooking(item_names, enchants_map, worldmap_collection_map, only_names=False):
+def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only_names=False):
     cooking_map = {}
     with open('Cooking.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
@@ -681,8 +696,8 @@ def getCooking(item_names, enchants_map, worldmap_collection_map, only_names=Fal
                         new_item['Code'] = item_code
                         #new_item['Row'] = row
                     else:
-                        setCookingAttr(new_item, row, item_names, main_source, source_name)
-                        
+                        setCookingAttr(new_item, row, item_names, main_source, source_name, food_map)
+
                         setFoodBonus(new_item, row, enchants_map)
                         setFoodBonusFromCooking(new_item, row, enchants_map)
 
@@ -895,10 +910,10 @@ def hotfixCooking(name, item):
     if 'ingredients' in item and not item['ingredients']:
         del item['ingredients']
 
-    if 'Cooking' in item['category'] and (not 'main_ingredient' in item and not 'ingredients' in item) and item['name'] != 'Water':
+    if 'Cooking' in item['category'] and (not 'main_ingredients' in item and not 'ingredients' in item) and item['name'] != 'Water':
         print('hotfixFood: cooking without ingredients: {}'.format(name))
     
-    if not 'Cooking' in item['category'] and ('main_ingredient' in item or 'ingredients' in item):
+    if not 'Cooking' in item['category'] and ('main_ingredients' in item or 'ingredients' in item):
         print('hotfixFood: ingredients without cooking category: {}, {}'.format(name, item['category']))
 
     return item
@@ -965,6 +980,10 @@ def hotfixFood(name, item):
     if 'ingredients' in item and not item['ingredients']:
         del item['ingredients']
     
+
+    if 'ingredients' in item and item['ingredients']:
+        item['category'] = CATEGORY_COOKING_FOOD
+
     if 'fertilizer_bonus' in item and item['fertilizer_bonus']:
         item['category'] = CATEGORY_MATERIAL_FOOD    
 
@@ -1009,7 +1028,7 @@ def main():
     enchants_map = getEnchant()
     worldmap_landmark_map = getWorldmapLandmarks()
 
-    for item in getItemNames('Food.csv', 'Food', [], enchants_map, {}, enemies_map,True):
+    for item in getItemNames('Food.csv', 'Food', [], enchants_map, {}, enemies_map, {}, True):
         item_name = item['name']
         item_code = item['Code']
         if 'Insect_' in item_code:
@@ -1028,11 +1047,11 @@ def main():
             spices.append({ "Code": item_code, "name": item_name })
 
     item_names = []
-    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names, enchants_map, {}, enemies_map):
+    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names, enchants_map, {}, enemies_map, {}):
         item_names.append(item)
-    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names, enchants_map, {}, enemies_map):
+    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names, enchants_map, {}, enemies_map, {}):
         item_names.append(item)
-    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names, enchants_map, {}, enemies_map):
+    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names, enchants_map, {}, enemies_map, {}):
         item_names.append(name)
 
     worldmap_collection_map = getWorldmapCollection(worldmap_landmark_map, item_names)
@@ -1045,7 +1064,7 @@ def main():
 
     materials_map = getMaterials(item_names, worldmap_collection_map, enemies_map)
     food_map = getFood(item_names, enchants_map, worldmap_collection_map, enemies_map)
-    cooking_map = getCooking(item_names, enchants_map, worldmap_collection_map)
+    cooking_map = getCooking(item_names, enchants_map, worldmap_collection_map, food_map)
 
     items = []
     for value in materials_map.values():

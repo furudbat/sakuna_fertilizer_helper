@@ -2229,7 +2229,7 @@
   name: Fish Mint
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: Made from ingredients that are boiled to bring outtheir flavor. A culinary
     necessity in any kitchen.
   ingredients:
@@ -2275,7 +2275,7 @@
   name: Soup Stock
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A paste made by mixing and then fermenting crushed beans, malt, and
     salt. It is palatable, filling, and invigorating.Truly a more perfect ingredient
     could not exist!
@@ -2292,7 +2292,7 @@
   name: Miso
   price: 6
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A liquid seasoning made from fermented soybean paste.Use it to enliven
     noodle dishes like udon and soba.
   ingredients:
@@ -2608,7 +2608,7 @@
   name: Medicinal Base
   price: 20
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A thick, syrupy substance made of steamed and fermentedrice. It is
     the basis of many recipes and seasonings.
   ingredients:
@@ -2635,7 +2635,7 @@
   name: Rice Bran
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A kind of cake made by adding water to rice, pounding it, and letting
     it harden. It is delightful both when boiledand toasted. What's more, it's extremely
     easy to preserve!
@@ -2652,7 +2652,7 @@
   name: Mochi
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: This bean curd is made by combining soybean juicewith a salt solution
     and letting the mixture harden.
   ingredients:
@@ -2665,7 +2665,7 @@
   name: Tofu
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: This rice has been mixed with water, pounded, and moldedinto a round
     shape. In the olden days, the children of menused to regularly present these as
     an offering to the gods.
@@ -2685,7 +2685,7 @@
   name: Rice Cake
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: Rabbit Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2695,7 +2695,7 @@
   name: Dried Rabbit Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Pork that has been dried in the sun to preventit from rotting. Most
     foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2705,7 +2705,7 @@
   name: Dried Pork
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Boar Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2715,7 +2715,7 @@
   name: Dried Boar Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Venison that has been dried in the sun to preventit from rotting. Most
     foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2725,7 +2725,7 @@
   name: Dried Venison
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Bear Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2735,7 +2735,7 @@
   name: Dried Bear Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Badger Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2745,7 +2745,7 @@
   name: Dried Badger Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Turtle Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2755,7 +2755,7 @@
   name: Dried Turtle Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Sparrow Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2765,7 +2765,7 @@
   name: Dried Sparrow Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Pheasant Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2775,7 +2775,7 @@
   name: Dried Pheasant Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Duck Meat that has been dried in the sun to preventit from rotting.
     Most foods will last longer whenrobbed of the water within them.
   ingredients:
@@ -2785,7 +2785,7 @@
   name: Dried Duck Meat
   price: 1
   sub_category: Shiraboshi
-- category: Food
+- category: Cooking/Food
   description: Rabbit Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2798,7 +2798,7 @@
   name: Smoked Rabbit Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Pork that has been salted, smoked, and dried.The smoky fragrance mixes
     well with its rich flavor.
   ingredients:
@@ -2811,7 +2811,7 @@
   name: Smoked Pork
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Boar Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2824,7 +2824,7 @@
   name: Smoked Boar Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Venison that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2837,7 +2837,7 @@
   name: Smoked Venison
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Bear Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2850,7 +2850,7 @@
   name: Smoked Bear Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Badger Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2863,7 +2863,7 @@
   name: Smoked Badger Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Turtle Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2876,7 +2876,7 @@
   name: Smoked Turtle Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Sparrow Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2889,7 +2889,7 @@
   name: Smoked Sparrow Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Pheasant Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2902,7 +2902,7 @@
   name: Smoked Pheasant Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Duck Meat that has been salted, smoked, and dried.The smoky fragrance
     mixes well with its rich flavor.
   ingredients:
@@ -2915,7 +2915,7 @@
   name: Smoked Duck Meat
   price: 1
   sub_category: Kunsei
-- category: Food
+- category: Cooking/Food
   description: Tekusari that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -2928,7 +2928,7 @@
   name: Pickled Tekusari
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Acorn that has been pickled in salted rice bran.Its potent flavor will
     wash over you with just one bite.
   ingredients:
@@ -2941,7 +2941,7 @@
   name: Pickled Acorn
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Taro that has been pickled in salted rice bran.Its potent flavor will
     wash over you with just one bite.
   ingredients:
@@ -2954,7 +2954,7 @@
   name: Pickled Taro
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Potato that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -2967,7 +2967,7 @@
   name: Pickled Potato
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Onion that has been pickled in salted rice bran.Its potent flavor will
     wash over you with just one bite.
   ingredients:
@@ -2980,7 +2980,7 @@
   name: Pickled Onion
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Warabi that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -2993,7 +2993,7 @@
   name: Pickled Warabi
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Horsetail that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3006,7 +3006,7 @@
   name: Pickled Horsetail
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Mugwort that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3019,7 +3019,7 @@
   name: Pickled Mugwort
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Seven Herbs that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   find_in:
@@ -3036,7 +3036,7 @@
   name: Pickled Seven Herbs
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Root Crops that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3049,7 +3049,7 @@
   name: Pickled Root Crops
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Cucumber that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3062,7 +3062,7 @@
   name: Pickled Cucumber
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Maize that has been pickled in salted rice bran.Its potent flavor will
     wash over you with just one bite.
   ingredients:
@@ -3075,7 +3075,7 @@
   name: Pickled Maize
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Mushroom that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3088,7 +3088,7 @@
   name: Pickled Mushroom
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Matsutake that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3101,7 +3101,7 @@
   name: Pickled Matsutake
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Chestnut that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3114,7 +3114,7 @@
   name: Pickled Chestnut
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Ginkgo Nut that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3127,7 +3127,7 @@
   name: Pickled Ginkgo Nut
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Persimmon that has been pickled in salted rice bran.Its potent flavor
     will wash over you with just one bite.
   ingredients:
@@ -3140,7 +3140,7 @@
   name: Pickled Persimmon
   price: 1
   sub_category: Nukazuke
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Rabbit Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3163,7 +3163,7 @@
   name: Rabbit Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Pork put in rice to preserve it.Some peculiar folks
     claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
@@ -3185,7 +3185,7 @@
   name: Pork Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Boar Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3208,7 +3208,7 @@
   name: Boar Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Venison put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3231,7 +3231,7 @@
   name: Venison Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Bear Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3254,7 +3254,7 @@
   name: Bear Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Badger Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3277,7 +3277,7 @@
   name: Badger Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Turtle Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3300,7 +3300,7 @@
   name: Turtle Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Sparrow Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3323,7 +3323,7 @@
   name: Sparrow Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Pheasant Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3346,7 +3346,7 @@
   name: Pheasant Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Duck Meat put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3369,7 +3369,7 @@
   name: Duck Meat Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Loach put in rice to preserve it.Some peculiar folks
     claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
@@ -3391,7 +3391,7 @@
   name: Loach Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Sweetfish put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3414,7 +3414,7 @@
   name: Sweetfish Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Carp put in rice to preserve it.Some peculiar folks
     claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
@@ -3436,7 +3436,7 @@
   name: Carp Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Masu Salmon put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3459,7 +3459,7 @@
   name: Masu Salmon Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Char put in rice to preserve it.Some peculiar folks
     claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
@@ -3481,7 +3481,7 @@
   name: Char Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Crucian Carp put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3504,7 +3504,7 @@
   name: Crucian Carp Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Salmon put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3527,7 +3527,7 @@
   name: Salmon Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Smelt put in rice to preserve it.Some peculiar folks
     claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
@@ -3549,7 +3549,7 @@
   name: Smelt Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Herring put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3572,7 +3572,7 @@
   name: Herring Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Eel put in rice to preserve it.Some peculiar folks
     claim it becomes even more appealingwith every sniff, but I am not so easily convinced.
   ingredients:
@@ -3594,7 +3594,7 @@
   name: Eel Sushi
   price: 1
   sub_category: Sushi
-- category: Food
+- category: Cooking/Food
   description: Pickled and salted Basket Clam put in rice to preserve it.Some peculiar
     folks claim it becomes even more appealingwith every sniff, but I am not so easily
     convinced.
@@ -3623,7 +3623,7 @@
   name: Cheese
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: This appears to be herring that was preserved with herbs, vinegar,
     and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's
     not entirely unlike sushi.
@@ -3643,7 +3643,7 @@
   name: Dried Herring
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A grain that has been dried out in the sun and robbedof its water contents.
     It is best when soaked in boiledwater to rehydrate it before being eaten.
   ingredients:
@@ -3659,7 +3659,7 @@
   name: Dried Boiled Rice
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: Salted salmon, dried in the sea breeze to preserve it.While it may
     keep for some time, it also happens to beincredibly salty. Take care not to gorge
     yourself on it.
@@ -3694,7 +3694,7 @@
   name: Dried Salmon
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: The dried stem of a taro plant, woven into a cord.Often carried by
     soldiers headed to the battlefield.
   ingredients:
@@ -3707,7 +3707,7 @@
   name: Dried Taro Stem
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A persimmon hung under the eave of a house and dried untildeveloping
     a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is
     autumn's finest treasure.
@@ -3718,7 +3718,7 @@
   name: Dried Persimmon
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little
     too well. Be wary not to drink too much.
   ingredients:
@@ -3752,7 +3752,7 @@
   name: Pickled Wasabi
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: A plum that has been pickled in salt. Not only is it usedfor battle
     rations, but also as a medicine to cure poisons.
   food_bonus:
@@ -3809,7 +3809,7 @@
   name: Renowned Water
   price: 1
   sub_category: ''
-- category: Food
+- category: Cooking/Food
   description: An alcohol fermented with human saliva.It reeks to high heaven and
     is horribly unsanitary.Only the truly courageous are bold enough to consume it.
   ingredients:
@@ -3825,7 +3825,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust,
     rice-like flavor.
   ingredients:
@@ -3844,7 +3844,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: 'A drink made by saccharizing rice.Be fooled not by its name: this
     draught is virgin.Gently sweet and energizing.'
   ingredients:
@@ -3854,7 +3854,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: A clear alcohol that has been filtered and heated.Has a rich flavor
     with a hint of sweetness.
   ingredients:
@@ -3870,7 +3870,7 @@
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: Highly nutritious roots and leaves have been added to thissake to make
     it medicinal. As bitter as it tastes, at leastit will make you hardy enough to
     resist most poisons.
@@ -3887,7 +3887,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: An alcohol made by refining polished rice and fermenting it over low
     heat.Smooth, palatable, and incredibly fragrant.
   ingredients:
@@ -3903,7 +3903,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: An alcohol made by carefully selecting only the best grains of riceand
     polishing them to perfection. Its translucence and superlativefragrance certify
     its status as a true work of art.
@@ -3920,7 +3920,7 @@
   name: Daiginjo Sake
   price: 1
   sub_category: Sake
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -3936,7 +3936,7 @@
   name: Brown Rice Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -3952,7 +3952,7 @@
   name: Mixed Rice Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -3968,7 +3968,7 @@
   name: White Rice Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -3984,7 +3984,7 @@
   name: Wheat Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -4000,7 +4000,7 @@
   name: Foxtail Millet Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -4016,7 +4016,7 @@
   name: Sanwa Millet Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -4032,7 +4032,7 @@
   name: Bean Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains used adds to its delectability.
   ingredients:
@@ -4048,7 +4048,7 @@
   name: Buckwheat Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Food
+- category: Cooking/Food
   description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
     It seems that her faithdoes not forbid the consumption of spirits...
   ingredients:
@@ -4411,8 +4411,8 @@
     - level: 1
       name: Natural Healing
     fullness: 5
-  main_ingredient:
-    amount: 3
+  main_ingredients:
+  - amount: 3
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
@@ -4425,8 +4425,14 @@
       name: Swift Recovery
     fullness: 5
   ingredients:
-  - amount: 1
-    name: Dried Boiled Rice
+  - amount: 2
+    name: Brown Rice
+    operator: or
+  - amount: 2
+    name: Mixed Rice
+    operator: or
+  - amount: 2
+    name: White Rice
     operator: ''
   name: Dried Boiled Rice
 - category: Cooking
@@ -4442,8 +4448,8 @@
   - amount: 1
     name: Salt
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Porridge
@@ -4536,8 +4542,8 @@
   - amount: 1
     name: Persimmon
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Zosui
@@ -4578,8 +4584,8 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Sanwa Millet
     operator: ''
   name: Sanwa Millet Chazuke
@@ -4755,8 +4761,8 @@
   - amount: 3
     name: Buckwheat
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Basket Clam
     operator: ''
   name: Basket Clam Bowl
@@ -4910,8 +4916,8 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Ten-don
@@ -5153,8 +5159,8 @@
 - category: Cooking
   description: A simple soup made from boiled Persimmon.While it lacks a certain culinary
     complexity,it's perfectly adequate for washing down a meal.
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Broth
@@ -5203,8 +5209,8 @@
   - amount: 1
     name: Beer
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Persimmon Zoni
@@ -5230,8 +5236,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Persimmon Soup
@@ -5278,8 +5284,8 @@
   - amount: 1
     name: Plum
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Basket Clam
     operator: ''
   name: Basket Clam Stew
@@ -5423,8 +5429,8 @@
 - category: Cooking
   description: Bee Larva roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Bee Larva
     operator: ''
   name: Roast Bee Larva
@@ -5435,8 +5441,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Blanched Persimmon
@@ -5460,8 +5466,8 @@
   - amount: 1
     name: Salt
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Basket Clam
     operator: ''
   name: Grilled Basket Clam
@@ -5477,8 +5483,8 @@
   - amount: 1
     name: Soup Stock
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Salt Persimmon
@@ -5507,9 +5513,9 @@
     magic: 1
     strength: 1
     vitality: 1
-  main_ingredient:
-    amount: 1
-    name: Dried Duck Meat
+  main_ingredients:
+  - amount: 3
+    name: Duck Meat
     operator: ''
   name: Dried Duck Meat
 - category: Cooking
@@ -5558,9 +5564,12 @@
     magic: 1
     strength: 2
     vitality: 2
-  main_ingredient:
-    amount: 1
-    name: Smoked Duck Meat
+  main_ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Duck Meat
     operator: ''
   name: Smoked Duck Meat
 - category: Cooking
@@ -5569,9 +5578,12 @@
   food_bonus:
     strength: 4
     vitality: 4
-  main_ingredient:
-    amount: 1
-    name: Pickled Persimmon
+  main_ingredients:
+  - amount: 1
+    name: Rice Bran
+    operator: and
+  - amount: 2
+    name: Persimmon
     operator: ''
   name: Pickled Persimmon
 - category: Cooking
@@ -5585,9 +5597,21 @@
     magic: 4
     strength: 4
     vitality: 2
-  main_ingredient:
-    amount: 1
-    name: Basket Clam Sushi
+  main_ingredients:
+  - amount: 5
+    name: Brown Rice
+    operator: or
+  - amount: 5
+    name: Mixed Rice
+    operator: or
+  - amount: 5
+    name: White Rice
+    operator: ''
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 2
+    name: Basket Clam
     operator: ''
   name: Basket Clam Sushi
 - category: Cooking
@@ -5624,8 +5648,8 @@
   - amount: 1
     name: Beer
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Basket Clam
     operator: ''
   name: Basket Clam Jelly
@@ -5718,8 +5742,32 @@
     luck: -4
     magic: 6
   ingredients:
+  - amount: 2
+    name: Wasabi
+    operator: and
   - amount: 1
-    name: Pickled Wasabi
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   name: Pickled Wasabi
   season_buff: Spring
@@ -5739,7 +5787,10 @@
     magic: 4
   ingredients:
   - amount: 1
-    name: Pickled Dried Plum
+    name: Plum
+    operator: and
+  - amount: 1
+    name: Salt
     operator: ''
   name: Pickled Dried Plum
   season_buff: Summer
@@ -5815,7 +5866,31 @@
     strength: 4
   ingredients:
   - amount: 1
-    name: Dried Salmon
+    name: Salmon
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
     operator: ''
   name: Dried Salmon
   season_buff: Winter
@@ -5831,8 +5906,8 @@
   - amount: 3
     name: Oil
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Fried Persimmon
@@ -5849,8 +5924,8 @@
   - amount: 1
     name: Wheat
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Basket Clam
     operator: ''
   name: Crispy Basket Clam
@@ -5874,8 +5949,8 @@
   - amount: 1
     name: Egg
     operator: ''
-  main_ingredient:
-    amount: 2
+  main_ingredients:
+  - amount: 2
     name: Persimmon
     operator: ''
   name: Persimmon Tempura
@@ -5895,8 +5970,8 @@
   - amount: 1
     name: Sugar
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Stewed Persimmon
@@ -5920,8 +5995,8 @@
   - amount: 1
     name: Ginger
     operator: ''
-  main_ingredient:
-    amount: 1
+  main_ingredients:
+  - amount: 1
     name: Persimmon
     operator: ''
   name: Miso Persimmon
@@ -6171,7 +6246,16 @@
     sp: 10
   ingredients:
   - amount: 1
-    name: Dried Herring
+    name: Herring
+    operator: and
+  - amount: 1
+    name: Onion
+    operator: and
+  - amount: 1
+    name: Cucumber
+    operator: and
+  - amount: 1
+    name: Vinegar
     operator: ''
   name: Dried Herring
   season_buff: Winter
@@ -6267,8 +6351,8 @@
     hp: 2
     vitality: 4
   ingredients:
-  - amount: 1
-    name: Dried Persimmon
+  - amount: 3
+    name: Persimmon
     operator: ''
   name: Dried Persimmon
 - category: Cooking
@@ -6354,8 +6438,17 @@
     luck: 4
     magic: 4
   ingredients:
+  - amount: 2
+    name: Brown Rice
+    operator: or
+  - amount: 2
+    name: Mixed Rice
+    operator: or
+  - amount: 2
+    name: White Rice
+    operator: ''
   - amount: 1
-    name: Rice Cake
+    name: Sugar
     operator: ''
   name: Rice Cake
 - category: Cooking
@@ -6580,7 +6673,13 @@
     strength: -6
   ingredients:
   - amount: 1
-    name: Kuchikami Sake
+    name: Brown Rice
+    operator: or
+  - amount: 1
+    name: Mixed Rice
+    operator: or
+  - amount: 1
+    name: White Rice
     operator: ''
   name: Kuchikami Sake
 - category: Cooking
@@ -6594,7 +6693,16 @@
     sp: 5
   ingredients:
   - amount: 1
-    name: Doburoku
+    name: Brown Rice
+    operator: or
+  - amount: 1
+    name: Mixed Rice
+    operator: or
+  - amount: 1
+    name: White Rice
+    operator: ''
+  - amount: 1
+    name: Malt
     operator: ''
   name: Doburoku
 - category: Cooking
@@ -6609,8 +6717,8 @@
     luck: 5
     magic: 5
   ingredients:
-  - amount: 1
-    name: Amazake
+  - amount: 2
+    name: Malt
     operator: ''
   name: Amazake
 - category: Cooking
@@ -6636,8 +6744,14 @@
       name: Poison Resistance
     magic: 4
   ingredients:
+  - amount: 3
+    name: Malt
+    operator: and
   - amount: 1
-    name: Medicinal Sake
+    name: Mugwort
+    operator: and
+  - amount: 1
+    name: Plum
     operator: ''
   name: Medicinal Sake
 - category: Cooking
@@ -6651,8 +6765,14 @@
       name: Night Owl
     magic: 10
   ingredients:
-  - amount: 1
-    name: Ginjo Sake
+  - amount: 10
+    name: White Rice
+    operator: and
+  - amount: 2
+    name: Malt
+    operator: and
+  - amount: 2
+    name: Sugar
     operator: ''
   name: Ginjo Sake
 - category: Cooking
@@ -6666,8 +6786,14 @@
       name: Night Owl
     magic: 15
   ingredients:
-  - amount: 1
-    name: Daiginjo Sake
+  - amount: 25
+    name: White Rice
+    operator: and
+  - amount: 5
+    name: Malt
+    operator: and
+  - amount: 5
+    name: Sugar
     operator: ''
   name: Daiginjo Sake
 - category: Cooking
@@ -6681,9 +6807,15 @@
     luck: 5
     magic: 5
     sp: 5
-  main_ingredient:
-    amount: 1
-    name: Buckwheat Shochu
+  main_ingredients:
+  - amount: 4
+    name: Malt
+    operator: and
+  - amount: 2
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Buckwheat
     operator: ''
   name: Buckwheat Shochu
 - category: Cooking
@@ -6699,7 +6831,22 @@
     magic: 10
   ingredients:
   - amount: 1
-    name: Beer
+    name: Brown Rice
+    operator: or
+  - amount: 1
+    name: Mixed Rice
+    operator: or
+  - amount: 1
+    name: White Rice
+    operator: ''
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Maize
+    operator: and
+  - amount: 1
+    name: Renowned Water
     operator: ''
   name: Beer
   season_buff: Summer

@@ -97,14 +97,13 @@ export class Application {
 
     private getFoodItemList() {
         return this._appData.items.filter(it => {
-            return it.category == 'Food' ||
-                it.category == 'Materials/Food';
+            return it.category == 'Food' || it.category == 'Materials/Food' || it.category == 'Cooking/Food';
         });
     }
 
     private getCookingItemList() {
         return this._appData.items.filter(it => {
-            return it.category == 'Cooking' || it.category == 'Food/Cooking' || it.category == 'Materials/Cooking';
+            return it.category == 'Cooking' || it.category == 'Materials/Cooking';
         });
     }
 
