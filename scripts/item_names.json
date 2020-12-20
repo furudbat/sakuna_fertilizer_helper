@@ -26,13 +26,7 @@
         "name": "Oil Cake",
         "category": "Materials",
         "sub_category": "ManureBase",
-        "Code": "Aburakasu",
-        "enemy_drops": [
-            {
-                "name": "Aburamushi",
-                "time": "Always"
-            }
-        ]
+        "Code": "Aburakasu"
     },
     {
         "name": "Powder of Transformation",
@@ -116,13 +110,7 @@
         "name": "Rotten Food",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "BadFood",
-        "enemy_drops": [
-            {
-                "name": "Homusubi",
-                "time": "Night"
-            }
-        ]
+        "Code": "BadFood"
     },
     {
         "name": "Clay",
@@ -146,13 +134,7 @@
         "name": "Iron Ore",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Tekkouseki",
-        "enemy_drops": [
-            {
-                "name": "Pig",
-                "time": "Night"
-            }
-        ]
+        "Code": "Tekkouseki"
     },
     {
         "name": "Jade",
@@ -176,13 +158,7 @@
         "name": "Stainless Steel",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Shimahagane",
-        "enemy_drops": [
-            {
-                "name": "Bossmaru",
-                "time": "Night"
-            }
-        ]
+        "Code": "Shimahagane"
     },
     {
         "name": "Cloudy Crystal",
@@ -266,13 +242,7 @@
         "name": "Indigo Scale",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ReigyoUroko",
-        "enemy_drops": [
-            {
-                "name": "Ayu",
-                "time": "Always"
-            }
-        ]
+        "Code": "ReigyoUroko"
     },
     {
         "name": "Silk",
@@ -302,69 +272,31 @@
         "name": "Thunderous Tasuki",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Kaminarinotasuki",
-        "enemy_drops": [
-            {
-                "name": "Badger",
-                "time": "Always"
-            }
-        ]
+        "Code": "Kaminarinotasuki"
     },
     {
         "name": "Beast Hide",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Kegawa",
-        "enemy_drops": [
-            {
-                "name": "Pig",
-                "time": "Always"
-            },
-            {
-                "name": "Inoshishi",
-                "time": "Always"
-            },
-            {
-                "name": "Deer",
-                "time": "Always"
-            }
-        ]
+        "Code": "Kegawa"
     },
     {
         "name": "Deer Antler",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ShikaTsuno",
-        "enemy_drops": [
-            {
-                "name": "Deer",
-                "time": "Always"
-            }
-        ]
+        "Code": "ShikaTsuno"
     },
     {
         "name": "Demonic Pearl",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Onishinjyu",
-        "enemy_drops": [
-            {
-                "name": "Shijimi",
-                "time": "Always"
-            }
-        ]
+        "Code": "Onishinjyu"
     },
     {
         "name": "Ashigumo Shuriken",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Ashigumo",
-        "enemy_drops": [
-            {
-                "name": "Ashigumo",
-                "time": "Always"
-            }
-        ]
+        "Code": "Ashigumo"
     },
     {
         "name": "Black Deer Leather",
@@ -388,25 +320,13 @@
         "name": "Badger Leaf",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Mujinanoha",
-        "enemy_drops": [
-            {
-                "name": "Badger",
-                "time": "Always"
-            }
-        ]
+        "Code": "Mujinanoha"
     },
     {
         "name": "Bear Hide",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "Kumakawa",
-        "enemy_drops": [
-            {
-                "name": "Bear",
-                "time": "Always"
-            }
-        ]
+        "Code": "Kumakawa"
     },
     {
         "name": "Crane Feather",
@@ -430,405 +350,85 @@
         "name": "Moonlit Stone",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ElementDo",
-        "enemy_drops": [
-            {
-                "name": "Rabbit",
-                "time": "Night"
-            },
-            {
-                "name": "Pig",
-                "time": "Night"
-            },
-            {
-                "name": "Sparrow",
-                "time": "Night"
-            },
-            {
-                "name": "Inoshishi",
-                "time": "Night"
-            },
-            {
-                "name": "Deer",
-                "time": "Night"
-            },
-            {
-                "name": "Pheasant",
-                "time": "Night"
-            },
-            {
-                "name": "Ayu",
-                "time": "Night"
-            },
-            {
-                "name": "Shijimi",
-                "time": "Night"
-            },
-            {
-                "name": "Turtle",
-                "time": "Night"
-            },
-            {
-                "name": "Ashigumo",
-                "time": "Night"
-            },
-            {
-                "name": "Badger",
-                "time": "Night"
-            },
-            {
-                "name": "Bear",
-                "time": "Night"
-            }
-        ]
+        "Code": "ElementDo"
     },
     {
         "name": "Branching Flower",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ElementMoku",
-        "enemy_drops": [
-            {
-                "name": "Rabbit",
-                "time": "Night"
-            },
-            {
-                "name": "Pig",
-                "time": "Night"
-            },
-            {
-                "name": "Sparrow",
-                "time": "Night"
-            },
-            {
-                "name": "Inoshishi",
-                "time": "Night"
-            },
-            {
-                "name": "Deer",
-                "time": "Night"
-            },
-            {
-                "name": "Pheasant",
-                "time": "Night"
-            },
-            {
-                "name": "Ayu",
-                "time": "Night"
-            },
-            {
-                "name": "Shijimi",
-                "time": "Night"
-            },
-            {
-                "name": "Turtle",
-                "time": "Night"
-            },
-            {
-                "name": "Ashigumo",
-                "time": "Night"
-            },
-            {
-                "name": "Badger",
-                "time": "Night"
-            },
-            {
-                "name": "Bear",
-                "time": "Night"
-            },
-            {
-                "name": "Tsubakigama",
-                "time": "Night"
-            }
-        ]
+        "Code": "ElementMoku"
     },
     {
         "name": "Aqueous Droplet",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ElementSui",
-        "enemy_drops": [
-            {
-                "name": "Rabbit",
-                "time": "Night"
-            },
-            {
-                "name": "Pig",
-                "time": "Night"
-            },
-            {
-                "name": "Sparrow",
-                "time": "Night"
-            },
-            {
-                "name": "Inoshishi",
-                "time": "Night"
-            },
-            {
-                "name": "Deer",
-                "time": "Night"
-            },
-            {
-                "name": "Pheasant",
-                "time": "Night"
-            },
-            {
-                "name": "Ayu",
-                "time": "Night"
-            },
-            {
-                "name": "Shijimi",
-                "time": "Night"
-            },
-            {
-                "name": "Turtle",
-                "time": "Night"
-            },
-            {
-                "name": "Ashigumo",
-                "time": "Night"
-            },
-            {
-                "name": "Badger",
-                "time": "Night"
-            },
-            {
-                "name": "Bear",
-                "time": "Night"
-            },
-            {
-                "name": "Onamazu",
-                "time": "Night"
-            }
-        ]
+        "Code": "ElementSui"
     },
     {
         "name": "Flaming Core",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ElementKa",
-        "enemy_drops": [
-            {
-                "name": "Rabbit",
-                "time": "Night"
-            },
-            {
-                "name": "Pig",
-                "time": "Night"
-            },
-            {
-                "name": "Sparrow",
-                "time": "Night"
-            },
-            {
-                "name": "Inoshishi",
-                "time": "Night"
-            },
-            {
-                "name": "Deer",
-                "time": "Night"
-            },
-            {
-                "name": "Pheasant",
-                "time": "Night"
-            },
-            {
-                "name": "Ayu",
-                "time": "Night"
-            },
-            {
-                "name": "Shijimi",
-                "time": "Night"
-            },
-            {
-                "name": "Turtle",
-                "time": "Night"
-            },
-            {
-                "name": "Ashigumo",
-                "time": "Night"
-            },
-            {
-                "name": "Badger",
-                "time": "Night"
-            },
-            {
-                "name": "Bear",
-                "time": "Night"
-            },
-            {
-                "name": "Homusubi",
-                "time": "Night"
-            }
-        ]
+        "Code": "ElementKa"
     },
     {
         "name": "Metallic Sand",
         "category": "Materials",
         "sub_category": "Material",
-        "Code": "ElementKin",
-        "enemy_drops": [
-            {
-                "name": "Rabbit",
-                "time": "Night"
-            },
-            {
-                "name": "Pig",
-                "time": "Night"
-            },
-            {
-                "name": "Sparrow",
-                "time": "Night"
-            },
-            {
-                "name": "Inoshishi",
-                "time": "Night"
-            },
-            {
-                "name": "Deer",
-                "time": "Night"
-            },
-            {
-                "name": "Pheasant",
-                "time": "Night"
-            },
-            {
-                "name": "Ayu",
-                "time": "Night"
-            },
-            {
-                "name": "Shijimi",
-                "time": "Night"
-            },
-            {
-                "name": "Turtle",
-                "time": "Night"
-            },
-            {
-                "name": "Ashigumo",
-                "time": "Night"
-            },
-            {
-                "name": "Badger",
-                "time": "Night"
-            },
-            {
-                "name": "Bear",
-                "time": "Night"
-            },
-            {
-                "name": "Bossmaru",
-                "time": "Night"
-            }
-        ]
+        "Code": "ElementKin"
     },
     {
         "name": "Rabbit Meat",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Usagi",
-        "enemy_drops": [
-            {
-                "name": "Rabbit",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Usagi"
     },
     {
         "name": "Pork",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Buta",
-        "enemy_drops": [
-            {
-                "name": "Pig",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Buta"
     },
     {
         "name": "Boar Meat",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Shishi",
-        "enemy_drops": [
-            {
-                "name": "Inoshishi",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Shishi"
     },
     {
         "name": "Venison",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Shika",
-        "enemy_drops": [
-            {
-                "name": "Deer",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Shika"
     },
     {
         "name": "Bear Meat",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Kuma",
-        "enemy_drops": [
-            {
-                "name": "Bear",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Kuma"
     },
     {
         "name": "Badger Meat",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Mujina",
-        "enemy_drops": [
-            {
-                "name": "Badger",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Mujina"
     },
     {
         "name": "Turtle Meat",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Meat_Suppon",
-        "enemy_drops": [
-            {
-                "name": "Turtle",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Suppon"
     },
     {
         "name": "Sparrow Meat",
         "category": "Materials/Food",
         "sub_category": "Bird",
-        "Code": "Meat_Suzume",
-        "enemy_drops": [
-            {
-                "name": "Sparrow",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Suzume"
     },
     {
         "name": "Pheasant Meat",
         "category": "Materials/Food",
         "sub_category": "Bird",
-        "Code": "Meat_Kiji",
-        "enemy_drops": [
-            {
-                "name": "Pheasant",
-                "time": "Always"
-            }
-        ]
+        "Code": "Meat_Kiji"
     },
     {
         "name": "Duck Meat",
@@ -846,13 +446,7 @@
         "name": "Sweetfish",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Seafood_Ayu",
-        "enemy_drops": [
-            {
-                "name": "Ayu",
-                "time": "Always"
-            }
-        ]
+        "Code": "Seafood_Ayu"
     },
     {
         "name": "Carp",
@@ -906,13 +500,7 @@
         "name": "Basket Clam",
         "category": "Materials/Food",
         "sub_category": "",
-        "Code": "Seafood_Shijimi",
-        "enemy_drops": [
-            {
-                "name": "Shijimi",
-                "time": "Always"
-            }
-        ]
+        "Code": "Seafood_Shijimi"
     },
     {
         "name": "Egg",
@@ -990,13 +578,7 @@
         "name": "Acorn",
         "category": "Materials",
         "sub_category": "",
-        "Code": "Vegetable_Donguri",
-        "enemy_drops": [
-            {
-                "name": "Sparrow",
-                "time": "Always"
-            }
-        ]
+        "Code": "Vegetable_Donguri"
     },
     {
         "name": "Taro",
@@ -1176,25 +758,13 @@
         "name": "Oil",
         "category": "Materials",
         "sub_category": "",
-        "Code": "Seasoning_Abura",
-        "enemy_drops": [
-            {
-                "name": "Tsubakigama",
-                "time": "Night"
-            }
-        ]
+        "Code": "Seasoning_Abura"
     },
     {
         "name": "Vegetable Oil",
         "category": "Materials",
         "sub_category": "",
-        "Code": "Seasoning_Syokubutsuyu",
-        "enemy_drops": [
-            {
-                "name": "Aburamushi",
-                "time": "Always"
-            }
-        ]
+        "Code": "Seasoning_Syokubutsuyu"
     },
     {
         "name": "Fish Oil",
@@ -1296,13 +866,7 @@
         "name": "Medicinal Base",
         "category": "Materials",
         "sub_category": "",
-        "Code": "Seasoning_Doping_Base",
-        "enemy_drops": [
-            {
-                "name": "Onamazu",
-                "time": "Night"
-            }
-        ]
+        "Code": "Seasoning_Doping_Base"
     },
     {
         "name": "Malt",
@@ -1896,7 +1460,6 @@
     {
         "name": "Dried Boiled Rice",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "RiceStaple_HoshiIi"
     },
     {
@@ -2152,13 +1715,11 @@
     {
         "name": "Pickled Wasabi",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "SoftMainDish_Wasabizuke"
     },
     {
         "name": "Pickled Dried Plum",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "SoftMainDish_Umeboshi"
     },
     {
@@ -2179,7 +1740,6 @@
     {
         "name": "Dried Salmon",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "SoupMainDish_Saketoba"
     },
     {
@@ -2235,7 +1795,6 @@
     {
         "name": "Dried Herring",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "SoupMainDish_Herring"
     },
     {
@@ -2261,7 +1820,6 @@
     {
         "name": "Dried Persimmon",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "SoftSweets_Hoshigaki"
     },
     {
@@ -2282,7 +1840,6 @@
     {
         "name": "Rice Cake",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "SoftSweets_Shitogi"
     },
     {
@@ -2308,19 +1865,16 @@
     {
         "name": "Spring Water",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "DrinkDrink_Kiyomizu"
     },
     {
         "name": "Renowned Water",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "DrinkDrink_Meisui"
     },
     {
         "name": "Tea",
         "category": "Cooking",
-        "sub_category": "",
         "Code": "DrinkDrink_Cha"
     },
     {
@@ -2351,43 +1905,36 @@
     {
         "name": "Kuchikami Sake",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Kuchikamizake"
     },
     {
         "name": "Doburoku",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Doburoku"
     },
     {
         "name": "Amazake",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Amazake"
     },
     {
         "name": "Refined Sake",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Seisyu"
     },
     {
         "name": "Medicinal Sake",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Yakushu"
     },
     {
         "name": "Ginjo Sake",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Ginjyou"
     },
     {
         "name": "Daiginjo Sake",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Daiginjyou"
     },
     {
@@ -2398,7 +1945,6 @@
     {
         "name": "Beer",
         "category": "Cooking",
-        "sub_category": "Sake",
         "Code": "DrinkDrink_Beer"
     },
     {

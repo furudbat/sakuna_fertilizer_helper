@@ -6,6 +6,30 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     leaf_fertilizer: 20
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 25
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 15
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Cavern'
+    percent: 15
+    season: Always
+  - name: 'Gathering Area: Foothills'
+    percent: 15
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 35
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 10
+    season: Always
   name: Beast Hoof
   sub_category: ManureBase
 - category: Materials
@@ -13,6 +37,23 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     kernel_fertilizer: 20
+  find_in:
+  - name: 'Gathering Area: Plain'
+    percent: 25
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 15
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Cavern'
+    percent: 25
+    season: Always
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Always
   name: Beast Manure
   sub_category: ManureBase
 - category: Materials
@@ -20,6 +61,38 @@
     start with this before deciding what other nutrients to add.
   fertilizer_bonus:
     root_fertilizer: 20
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 20
+    season: Always
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Autumn
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Winter
+  - name: Fruitful Hassok
+    percent: 30
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Lake'
+    percent: 10
+    season: Always
+  - name: Lucid Falls
+    percent: 25
+    season: Always
+    try: 5
+  - name: Lucid Falls
+    percent: 10
+    season: Autumn
+    try: 5
+  - name: Hidden Crimson Spring
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 10
+    season: Always
   name: Fallen Leaves
   sub_category: ManureBase
 - category: Materials
@@ -32,11 +105,43 @@
     kernel_fertilizer: 8
     leaf_fertilizer: 10
     root_fertilizer: 8
+  find_in:
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 10
+    season: Always
+    try: 5
   name: Oil Cake
   sub_category: ManureBase
 - category: Materials/Misc
   description: Ah,  how rare! This powder alters the flow of time,  allowing fertilizer
     to be completed immediately.
+  find_in:
+  - name: Bounteous Earth Grotto
+    percent: 1
+    season: Always
+    try: 5
+  - name: Fruitful Hassok
+    percent: 1
+    season: Always
+    try: 5
+  - name: Lucid Falls
+    percent: 2
+    season: Always
+    try: 5
+  - name: Hidden Crimson Spring
+    percent: 2
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Hillside'
+    percent: 2
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 2
+    season: Always
+    try: 5
   name: Powder of Transformation
   sub_category: Material
 - category: Materials/Misc
@@ -49,6 +154,14 @@
     state. If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     immunity: 10
+  find_in:
+  - name: Bounteous Earth Grotto
+    percent: 5
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Forest'
+    percent: 5
+    season: Always
   name: Revitalizing Remedy
   sub_category: Material
 - category: Materials
@@ -56,6 +169,14 @@
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     herbicide: 10
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 8
+    season: Always
+  - name: Lucid Falls
+    percent: 8
+    season: Always
+    try: 5
   name: Reducing Remedy
   sub_category: Material
 - category: Materials
@@ -63,6 +184,14 @@
     If you mix it in withfertilizer,  it will cure some rice disorders.
   fertilizer_bonus:
     pesticide: 10
+  find_in:
+  - name: 'Gathering Area: Hillside'
+    percent: 8
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 8
+    season: Always
+    try: 5
   name: Eradicating Remedy
   sub_category: Material
 - category: Materials/Misc
@@ -126,6 +255,14 @@
   fertilizer_bonus:
     stickiness_gusto: 1
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 5
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 5
+    season: Always
+    try: 5
   name: Clay
   sub_category: Material
 - category: Materials
@@ -134,6 +271,20 @@
   fertilizer_bonus:
     hardness_vitality: 1
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 5
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Cavern'
+    percent: 20
+    season: Always
+  - name: 'Gathering Area: Dry Moat'
+    percent: 20
+    season: Always
   name: Stone
   sub_category: Material
 - category: Materials
@@ -141,6 +292,18 @@
   fertilizer_bonus:
     hardness_vitality: 2
     toxicity: 2
+  find_in:
+  - name: Bounteous Earth Grotto
+    percent: 5
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Cavern'
+    percent: 20
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 8
+    season: Always
+    try: 5
   name: Copper Ore
   sub_category: Material
 - category: Materials
@@ -152,6 +315,17 @@
   fertilizer_bonus:
     hardness_vitality: 5
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: Lake'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Dry Moat'
+    percent: 12
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 8
+    season: Always
+    try: 5
   name: Iron Ore
   sub_category: Material
 - category: Materials
@@ -161,6 +335,14 @@
     armor_magic: 5
     hardness_vitality: 3
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
+  - name: Lucid Falls
+    percent: 15
+    season: Always
+    try: 5
   name: Jade
   sub_category: Material
 - category: Materials
@@ -170,6 +352,14 @@
     armor_magic: 3
     hardness_vitality: 5
     toxicity: 1
+  find_in:
+  - name: 'Gathering Area: Cavern'
+    percent: 10
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 12
+    season: Always
+    try: 5
   name: Obsidian
   sub_category: Material
 - category: Materials
@@ -178,6 +368,14 @@
   fertilizer_bonus:
     hardness_vitality: 10
     toxicity: 3
+  find_in:
+  - name: 'Gathering Area: Dry Moat'
+    percent: 12
+    season: Always
+  - name: Takeribi's Gold Mine
+    percent: 15
+    season: Always
+    try: 5
   name: Gold Ore
   sub_category: Material
 - category: Materials
@@ -210,6 +408,24 @@
     pesticide: -1
     root_fertilizer: 5
     yield_hp: 1
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 10
+    season: Always
+  - name: Bounteous Earth Grotto
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Dry Moat'
+    percent: 10
+    season: Always
   name: Wood
   sub_category: Material
 - category: Materials
@@ -219,6 +435,14 @@
     pesticide: -1
     root_fertilizer: 5
     yield_hp: 3
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
   name: High Quality Oak
   sub_category: Material
 - category: Materials
@@ -228,6 +452,23 @@
     pesticide: -1
     root_fertilizer: 5
     yield_hp: 5
+  find_in:
+  - name: 'Gathering Area: Spring'
+    percent: 10
+    season: Always
+  - name: Fruitful Hassok
+    percent: 15
+    season: Always
+    try: 5
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
+  - name: 'Gathering Area: Lake'
+    percent: 5
+    season: Always
+  - name: 'Gathering Area: Beach'
+    percent: 15
+    season: Always
   name: Bamboo
   sub_category: Material
 - category: Materials
@@ -250,6 +491,10 @@
   fertilizer_bonus:
     armor_magic: 2
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: River'
+    percent: 15
+    season: Always
   name: Hemp
   sub_category: Material
 - category: Materials
@@ -258,6 +503,17 @@
   fertilizer_bonus:
     armor_magic: 3
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 15
+    season: Always
+  - name: 'Gathering Area: Spring'
+    percent: 15
+    season: Always
+  - name: Fruitful Hassok
+    percent: 10
+    season: Always
+    try: 5
   name: Sedge
   sub_category: Material
 - category: Materials
@@ -287,6 +543,14 @@
     aesthetic_luck: 2
     immunity: -1
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Forest'
+    percent: 5
+    season: Always
+  - name: Fruitful Hassok
+    percent: 5
+    season: Always
+    try: 5
   name: Cork Tree Branch
   sub_category: Material
 - category: Materials
@@ -296,6 +560,10 @@
     aesthetic_luck: 3
     immunity: -1
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Stream'
+    percent: 10
+    season: Always
   name: Murasaki Root
   sub_category: Material
 - category: Materials
@@ -305,6 +573,14 @@
     aesthetic_luck: 5
     immunity: -1
     kernel_fertilizer: 5
+  find_in:
+  - name: 'Gathering Area: Foothills'
+    percent: 15
+    season: Always
+  - name: Hidden Crimson Spring
+    percent: 20
+    season: Always
+    try: 5
   name: Madder
   sub_category: Material
 - category: Materials
@@ -1928,7 +2204,7 @@
     season: Spring
     try: 5
   food_bonus:
-    luck: 5
+    luck: 3
   name: Tea
   price: 1
   sub_category: ''
@@ -2389,7 +2665,7 @@
   name: Tofu
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: This rice has been mixed with water, pounded, and moldedinto a round
     shape. In the olden days, the children of menused to regularly present these as
     an offering to the gods.
@@ -3347,7 +3623,7 @@
   name: Cheese
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: This appears to be herring that was preserved with herbs, vinegar,
     and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's
     not entirely unlike sushi.
@@ -3367,7 +3643,7 @@
   name: Dried Herring
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: A grain that has been dried out in the sun and robbedof its water contents.
     It is best when soaked in boiledwater to rehydrate it before being eaten.
   ingredients:
@@ -3383,7 +3659,7 @@
   name: Dried Boiled Rice
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: Salted salmon, dried in the sea breeze to preserve it.While it may
     keep for some time, it also happens to beincredibly salty. Take care not to gorge
     yourself on it.
@@ -3391,30 +3667,6 @@
   - amount: 1
     name: Salmon
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -3455,7 +3707,7 @@
   name: Dried Taro Stem
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: A persimmon hung under the eave of a house and dried untildeveloping
     a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is
     autumn's finest treasure.
@@ -3466,7 +3718,7 @@
   name: Dried Persimmon
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little
     too well. Be wary not to drink too much.
   ingredients:
@@ -3496,42 +3748,17 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   name: Pickled Wasabi
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: A plum that has been pickled in salt. Not only is it usedfor battle
     rations, but also as a medicine to cure poisons.
   food_bonus:
     enchant:
-    - level: 5
+    - level: 2
       name: Poison Resistance
-    magic: 4
   ingredients:
   - amount: 1
     name: Plum
@@ -3582,7 +3809,7 @@
   name: Renowned Water
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: An alcohol fermented with human saliva.It reeks to high heaven and
     is horribly unsanitary.Only the truly courageous are bold enough to consume it.
   ingredients:
@@ -3598,7 +3825,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust,
     rice-like flavor.
   ingredients:
@@ -3617,7 +3844,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: 'A drink made by saccharizing rice.Be fooled not by its name: this
     draught is virgin.Gently sweet and energizing.'
   ingredients:
@@ -3627,7 +3854,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: A clear alcohol that has been filtered and heated.Has a rich flavor
     with a hint of sweetness.
   ingredients:
@@ -3643,7 +3870,7 @@
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: Highly nutritious roots and leaves have been added to thissake to make
     it medicinal. As bitter as it tastes, at leastit will make you hardy enough to
     resist most poisons.
@@ -3660,7 +3887,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: An alcohol made by refining polished rice and fermenting it over low
     heat.Smooth, palatable, and incredibly fragrant.
   ingredients:
@@ -3676,7 +3903,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: An alcohol made by carefully selecting only the best grains of riceand
     polishing them to perfection. Its translucence and superlativefragrance certify
     its status as a true work of art.
@@ -3821,7 +4048,7 @@
   name: Buckwheat Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Cooking
+- category: Food
   description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
     It seems that her faithdoes not forbid the consumption of spirits...
   ingredients:
@@ -3934,30 +4161,6 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   - amount: 1
     name: Salt
@@ -3979,30 +4182,6 @@
   - amount: 3
     name: White Rice
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -4073,30 +4252,6 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   - amount: 1
     name: Salt
@@ -4125,30 +4280,6 @@
   - amount: 3
     name: White Rice
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -4285,7 +4416,7 @@
     name: Sanwa Millet
     operator: ''
   name: Cooked Sanwa Millet
-- category: Food/Cooking
+- category: Cooking
   description: Dried cooked rice that has been rehydratedwith boiling water. It has
     a rather lightflavor, similar to porridge.
   food_bonus:
@@ -4294,18 +4425,10 @@
       name: Swift Recovery
     fullness: 5
   ingredients:
-  - amount: 2
-    name: Brown Rice
-    operator: or
-  - amount: 2
-    name: Mixed Rice
-    operator: or
-  - amount: 2
-    name: White Rice
+  - amount: 1
+    name: Dried Boiled Rice
     operator: ''
   name: Dried Boiled Rice
-  price: 1
-  sub_category: ''
 - category: Cooking
   description: A meal made of boiled Sanwa Millet.It's mushy and easy to digest, making
     ita perfect meal for the bedridden.
@@ -4604,30 +4727,6 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   - amount: 1
     name: Sugar
@@ -4676,30 +4775,6 @@
   - amount: 1
     name: Soy Sauce
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -4775,30 +4850,6 @@
   - amount: 1
     name: Soy Sauce
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -5128,30 +5179,6 @@
   - amount: 1
     name: Soy Sauce
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -5519,30 +5546,6 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   name: Sake Soaked Stir-Fry
 - category: Cooking
@@ -5597,30 +5600,6 @@
   - amount: 1
     name: Soy Sauce
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -5732,66 +5711,17 @@
       name: Skill Buff
     - level: 1
       name: Summer Skill Buff
-- category: Food/Cooking
+- category: Cooking
   description: Wasabi that has been pickled in sake lees.Packed with a ripened spiciness,
     it impartsa satisfying crunch with each and every bite.
   food_bonus:
     luck: -4
     magic: 6
   ingredients:
-  - amount: 2
-    name: Wasabi
-    operator: and
   - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
+    name: Pickled Wasabi
     operator: ''
   name: Pickled Wasabi
-  price: 1
   season_buff: Spring
   season_food_bonus:
     enchant:
@@ -5799,28 +5729,22 @@
       name: Magic Buff
     - level: 1
       name: Spring Magic Buff
-  sub_category: ''
-- category: Food/Cooking
+- category: Cooking
   description: Salted pickled plums that have been sun-dried andfermented. Biting
     into one releases a powerfularoma and a rich, bittersweet flavor.
   food_bonus:
     enchant:
-    - level: 5
+    - level: 3
       name: Poison Resistance
     magic: 4
   ingredients:
   - amount: 1
-    name: Plum
-    operator: and
-  - amount: 1
-    name: Salt
+    name: Pickled Dried Plum
     operator: ''
   name: Pickled Dried Plum
-  price: 1
   season_buff: Summer
   season_food_bonus:
     magic: 2
-  sub_category: ''
 - category: Cooking
   description: Cooked eggs rolled into a cylindrical shape thencut into bite-sized
     slices. The soft texture andsweet flavor will surely put a smile on your face.
@@ -5883,7 +5807,7 @@
     enchant:
     - level: 6
       name: Water Resistance
-- category: Food/Cooking
+- category: Cooking
   description: Salmon that has been soaked in salt water and driedin the sea breeze.
     This pairs wondrously with sake!Though do take care not to gorge yourself.
   food_bonus:
@@ -5891,62 +5815,12 @@
     strength: 4
   ingredients:
   - amount: 1
-    name: Salmon
-    operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
+    name: Dried Salmon
     operator: ''
   name: Dried Salmon
-  price: 1
   season_buff: Winter
   season_food_bonus:
     magic: 3
-  sub_category: ''
 - category: Cooking
   description: Food that's fried in naught but oil is not to beunderestimated. Truly
     it brings out the bestthe Persimmon has to offer.
@@ -6226,30 +6100,6 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   name: Turtle Hot Pot
   season_buff: Winter
@@ -6309,7 +6159,7 @@
       name: Biped's Bane
     - level: 2
       name: Quadruped Calamity
-- category: Food/Cooking
+- category: Cooking
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
     entirely unlike sushi.
@@ -6321,25 +6171,14 @@
     sp: 10
   ingredients:
   - amount: 1
-    name: Herring
-    operator: and
-  - amount: 1
-    name: Onion
-    operator: and
-  - amount: 1
-    name: Cucumber
-    operator: and
-  - amount: 1
-    name: Vinegar
+    name: Dried Herring
     operator: ''
   name: Dried Herring
-  price: 1
   season_buff: Winter
   season_food_bonus:
     enchant:
     - level: 3
       name: Gill Shredder
-  sub_category: ''
 - category: Cooking
   description: A dish of Myrthe's native Ventania made fromchopped potatoes and root
     vegetables steamedand mashed. This will fill your belly right up!
@@ -6421,19 +6260,17 @@
     name: Sesame
     operator: ''
   name: Sesame Dumpling
-- category: Food/Cooking
+- category: Cooking
   description: Persimmons that have been dried on a cord.This powerfully sweet fruit
     melts in your mouth,making it difficult to put down after the first bite.
   food_bonus:
     hp: 2
     vitality: 4
   ingredients:
-  - amount: 3
-    name: Persimmon
+  - amount: 1
+    name: Dried Persimmon
     operator: ''
   name: Dried Persimmon
-  price: 1
-  sub_category: ''
 - category: Cooking
   description: Ice that has been shaved down into tiny particles.The perfect remedy
     for when you feel hot or feverish.
@@ -6488,30 +6325,6 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   name: Senbei
 - category: Cooking
@@ -6531,7 +6344,7 @@
     name: Bean
     operator: ''
   name: Soba Dumpling
-- category: Food/Cooking
+- category: Cooking
   description: Rice softened in water, then pounded and shapedinto a ball. They have
     long been used as offeringsto the gods from the children of men.
   food_bonus:
@@ -6541,21 +6354,10 @@
     luck: 4
     magic: 4
   ingredients:
-  - amount: 2
-    name: Brown Rice
-    operator: or
-  - amount: 2
-    name: Mixed Rice
-    operator: or
-  - amount: 2
-    name: White Rice
-    operator: ''
   - amount: 1
-    name: Sugar
+    name: Rice Cake
     operator: ''
   name: Rice Cake
-  price: 1
-  sub_category: ''
 - category: Cooking
   description: Steamed sweet dumplings that are knownto pair well with a variety of
     ingredients.
@@ -6623,30 +6425,6 @@
 - category: Materials/Cooking
   description: Oho! Water from the springs of the valley.It is quite clear and extremely
     refreshing.
-  fertilizer_bonus:
-    toxicity: -5
-  find_in:
-  - name: 'Gathering Area: Lake'
-    percent: 20
-    season: Spring
-  - name: 'Gathering Area: Lake'
-    percent: 20
-    season: Summer
-  - name: 'Gathering Area: Lake'
-    percent: 20
-    season: Autumn
-  - name: Lucid Falls
-    percent: 30
-    season: Spring
-    try: 5
-  - name: Lucid Falls
-    percent: 30
-    season: Summer
-    try: 5
-  - name: Lucid Falls
-    percent: 30
-    season: Autumn
-    try: 5
   food_bonus:
     luck: 2
   ingredients:
@@ -6654,18 +6432,14 @@
     name: Spring Water
     operator: ''
   name: Spring Water
-  price: 1
   season_buff: Summer
   season_food_bonus:
     enchant:
     - level: 3
       name: Fire Resistance
-  sub_category: ''
-- category: Materials/Cooking
+- category: Cooking
   description: Smooth and with a hint of sweetness. Indeed,it tastes as though one
     sip would wash awayany impurity. It's no wonder it's renowned!
-  fertilizer_bonus:
-    toxicity: -10
   food_bonus:
     luck: 3
   ingredients:
@@ -6673,36 +6447,21 @@
     name: Renowned Water
     operator: ''
   name: Renowned Water
-  price: 1
   season_buff: Summer
   season_food_bonus:
     enchant:
     - level: 6
       name: Fire Resistance
-  sub_category: ''
 - category: Materials/Cooking
   description: A drink made by pouring boiling water over driedtea leaves. No matter
     what flavor of tea is used,it always enhances the taste of any meal.
-  fertilizer_bonus:
-    herbicide: 1
-    leaf_fertilizer: 5
-    pesticide: 1
-  find_in:
-  - name: 'Gathering Area: Spring'
-    percent: 30
-    season: Spring
-  - name: Fruitful Hassok
-    percent: 30
-    season: Spring
-    try: 5
   food_bonus:
-    luck: 5
+    luck: 2
   ingredients:
   - amount: 1
     name: Tea
     operator: ''
   name: Tea
-  price: 1
   season_buff: Winter
   season_food_bonus:
     enchant:
@@ -6710,7 +6469,6 @@
       name: Skill Buff
     - level: 1
       name: Winter Skill Buff
-  sub_category: ''
 - category: Cooking
   description: The idea of combining roasted tea leaves with brownrice was truly a
     revelation. It is bound to helpcalm the nerves and relieve pent-up stress.
@@ -6814,7 +6572,7 @@
       name: Luck Boost
     - level: 1
       name: Luck Buff
-- category: Food/Cooking
+- category: Cooking
   description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
     horribly unsanitary. Only thetruly courageous are bold enough to consume it.
   food_bonus:
@@ -6822,18 +6580,10 @@
     strength: -6
   ingredients:
   - amount: 1
-    name: Brown Rice
-    operator: or
-  - amount: 1
-    name: Mixed Rice
-    operator: or
-  - amount: 1
-    name: White Rice
+    name: Kuchikami Sake
     operator: ''
   name: Kuchikami Sake
-  price: 1
-  sub_category: Sake
-- category: Food/Cooking
+- category: Cooking
   description: Cloudy white sake that is completely unfiltered.A blend of piercing
     sourness and potent rice flavor.
   food_bonus:
@@ -6844,21 +6594,10 @@
     sp: 5
   ingredients:
   - amount: 1
-    name: Brown Rice
-    operator: or
-  - amount: 1
-    name: Mixed Rice
-    operator: or
-  - amount: 1
-    name: White Rice
-    operator: ''
-  - amount: 1
-    name: Malt
+    name: Doburoku
     operator: ''
   name: Doburoku
-  price: 1
-  sub_category: Sake
-- category: Food/Cooking
+- category: Cooking
   description: 'A beverage made by converting rice into sugar.Be fooled not by its
     name: this draught containsno alcohol. It is gently sweet and energizing.'
   food_bonus:
@@ -6870,13 +6609,11 @@
     luck: 5
     magic: 5
   ingredients:
-  - amount: 2
-    name: Malt
+  - amount: 1
+    name: Amazake
     operator: ''
   name: Amazake
-  price: 1
-  sub_category: Sake
-- category: Food/Cooking
+- category: Cooking
   description: Sake that has been filtered and heated until itruns clear. It has a
     rich flavor with just a hintof sweetness to balance out the refined taste.
   food_bonus:
@@ -6889,9 +6626,7 @@
     name: Ginjo Sake
     operator: ''
   name: Refined Sake
-  price: 1
-  sub_category: Sake
-- category: Food/Cooking
+- category: Cooking
   description: Sake truly cures all ills. This kind in particular hashad medicinal
     herbs added to it. It will bolster yourfortitude and give you some resistance
     to poison.
@@ -6901,19 +6636,11 @@
       name: Poison Resistance
     magic: 4
   ingredients:
-  - amount: 3
-    name: Malt
-    operator: and
   - amount: 1
-    name: Mugwort
-    operator: and
-  - amount: 1
-    name: Plum
+    name: Medicinal Sake
     operator: ''
   name: Medicinal Sake
-  price: 1
-  sub_category: Sake
-- category: Food/Cooking
+- category: Cooking
   description: Sake that is made by refining polished riceand fermenting it over low
     heat. The resultis smooth, palatable, and incredibly fragrant.
   food_bonus:
@@ -6924,19 +6651,11 @@
       name: Night Owl
     magic: 10
   ingredients:
-  - amount: 10
-    name: White Rice
-    operator: and
-  - amount: 2
-    name: Malt
-    operator: and
-  - amount: 2
-    name: Sugar
+  - amount: 1
+    name: Ginjo Sake
     operator: ''
   name: Ginjo Sake
-  price: 1
-  sub_category: Sake
-- category: Food/Cooking
+- category: Cooking
   description: Sake made by carefully selecting the finest grainsof rice and polishing
     them to perfection. Translucentand fragrant, it qualifies as a true work of art!
   food_bonus:
@@ -6947,18 +6666,10 @@
       name: Night Owl
     magic: 15
   ingredients:
-  - amount: 25
-    name: White Rice
-    operator: and
-  - amount: 5
-    name: Malt
-    operator: and
-  - amount: 5
-    name: Sugar
+  - amount: 1
+    name: Daiginjo Sake
     operator: ''
   name: Daiginjo Sake
-  price: 1
-  sub_category: Sake
 - category: Cooking
   description: A strong alcohol made from distilled ingredients.The flavor of the
     grains adds to its delectability.
@@ -6975,7 +6686,7 @@
     name: Buckwheat Shochu
     operator: ''
   name: Buckwheat Shochu
-- category: Food/Cooking
+- category: Cooking
   description: An alcohol of the far west made from wheat.Its bitterness may be an
     acquired taste,but it certainly goes down smooth.
   food_bonus:
@@ -6988,31 +6699,14 @@
     magic: 10
   ingredients:
   - amount: 1
-    name: Brown Rice
-    operator: or
-  - amount: 1
-    name: Mixed Rice
-    operator: or
-  - amount: 1
-    name: White Rice
-    operator: ''
-  - amount: 1
-    name: Wheat
-    operator: and
-  - amount: 1
-    name: Maize
-    operator: and
-  - amount: 1
-    name: Renowned Water
+    name: Beer
     operator: ''
   name: Beer
-  price: 1
   season_buff: Summer
   season_food_bonus:
     enchant:
     - level: 5
       name: Fire Resistance
-  sub_category: Sake
 - category: Cooking
   description: Enhances the effect of an HP-boosting meal.Once you have mastered this
     miraculous water,it should prove to be a potent supplement.

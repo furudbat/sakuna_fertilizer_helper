@@ -1276,7 +1276,7 @@
     season: Spring
     try: 5
   food_bonus:
-    luck: 5
+    luck: 3
   name: Tea
   price: 1
   sub_category: ''
@@ -1737,7 +1737,7 @@
   name: Tofu
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: This rice has been mixed with water, pounded, and moldedinto a round
     shape. In the olden days, the children of menused to regularly present these as
     an offering to the gods.
@@ -2695,7 +2695,7 @@
   name: Cheese
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: This appears to be herring that was preserved with herbs, vinegar,
     and salt. Myrthe says that it is a famous productof her homeland, Ventania. It's
     not entirely unlike sushi.
@@ -2715,7 +2715,7 @@
   name: Dried Herring
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: A grain that has been dried out in the sun and robbedof its water contents.
     It is best when soaked in boiledwater to rehydrate it before being eaten.
   ingredients:
@@ -2731,7 +2731,7 @@
   name: Dried Boiled Rice
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: Salted salmon, dried in the sea breeze to preserve it.While it may
     keep for some time, it also happens to beincredibly salty. Take care not to gorge
     yourself on it.
@@ -2739,30 +2739,6 @@
   - amount: 1
     name: Salmon
     operator: and
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
-    operator: or
   - amount: 1
     name: Kuchikami Sake
     operator: or
@@ -2803,7 +2779,7 @@
   name: Dried Taro Stem
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: A persimmon hung under the eave of a house and dried untildeveloping
     a powdery exterior. Its mouthwatering sweetnessis simply divine! Truly this is
     autumn's finest treasure.
@@ -2814,7 +2790,7 @@
   name: Dried Persimmon
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: Chopped wasabi pickled in sake. Goes well with alcohol--perhaps a little
     too well. Be wary not to drink too much.
   ingredients:
@@ -2844,42 +2820,17 @@
     operator: or
   - amount: 1
     name: Beer
-    operator: or
-  - amount: 1
-    name: Kuchikami Sake
-    operator: or
-  - amount: 1
-    name: Doburoku
-    operator: or
-  - amount: 1
-    name: Amazake
-    operator: or
-  - amount: 1
-    name: Refined Sake
-    operator: or
-  - amount: 1
-    name: Medicinal Sake
-    operator: or
-  - amount: 1
-    name: Ginjo Sake
-    operator: or
-  - amount: 1
-    name: Daiginjo Sake
-    operator: or
-  - amount: 1
-    name: Beer
     operator: ''
   name: Pickled Wasabi
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: A plum that has been pickled in salt. Not only is it usedfor battle
     rations, but also as a medicine to cure poisons.
   food_bonus:
     enchant:
-    - level: 5
+    - level: 2
       name: Poison Resistance
-    magic: 4
   ingredients:
   - amount: 1
     name: Plum
@@ -2930,7 +2881,7 @@
   name: Renowned Water
   price: 1
   sub_category: ''
-- category: Cooking
+- category: Food
   description: An alcohol fermented with human saliva.It reeks to high heaven and
     is horribly unsanitary.Only the truly courageous are bold enough to consume it.
   ingredients:
@@ -2946,7 +2897,7 @@
   name: Kuchikami Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: Unfiltered, cloudy-white sake.Blends a piercing sourness with a robust,
     rice-like flavor.
   ingredients:
@@ -2965,7 +2916,7 @@
   name: Doburoku
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: 'A drink made by saccharizing rice.Be fooled not by its name: this
     draught is virgin.Gently sweet and energizing.'
   ingredients:
@@ -2975,7 +2926,7 @@
   name: Amazake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: A clear alcohol that has been filtered and heated.Has a rich flavor
     with a hint of sweetness.
   ingredients:
@@ -2991,7 +2942,7 @@
   name: Refined Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: Highly nutritious roots and leaves have been added to thissake to make
     it medicinal. As bitter as it tastes, at leastit will make you hardy enough to
     resist most poisons.
@@ -3008,7 +2959,7 @@
   name: Medicinal Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: An alcohol made by refining polished rice and fermenting it over low
     heat.Smooth, palatable, and incredibly fragrant.
   ingredients:
@@ -3024,7 +2975,7 @@
   name: Ginjo Sake
   price: 1
   sub_category: Sake
-- category: Cooking
+- category: Food
   description: An alcohol made by carefully selecting only the best grains of riceand
     polishing them to perfection. Its translucence and superlativefragrance certify
     its status as a true work of art.
@@ -3169,7 +3120,7 @@
   name: Buckwheat Shochu
   price: 1
   sub_category: SakeSyouchu
-- category: Cooking
+- category: Food
   description: An alcohol from the far west made with wheat.Myrthe's favorite drink.
     It seems that her faithdoes not forbid the consumption of spirits...
   ingredients:

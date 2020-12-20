@@ -52,7 +52,6 @@ CATEGORY_FOOD = 'Food'
 CATEGORY_COOKING = 'Cooking'
 CATEGORY_FOOD_COOKING = 'Food/Cooking'
 
-old_items = {}
 
 
 def newItem(name, category):
@@ -140,7 +139,7 @@ def parseItemDrop(itemstr, item_names):
     return ret
 
 
-def parseSource(item, sourcestr, item_names, auto_name=None):
+def parseSource(item_name, sourcestr, item_names, auto_name=None):
     ret = []
 
     sources = [sourcestr]
@@ -177,16 +176,16 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
                 for food_item in item_names:
                     if 'sub_category' in food_item and food_item['sub_category']:
                         if food_flag == food_item['sub_category'] or (food_flag == 'Syouchu' and food_item['sub_category'] == 'SakeSyouchu'):
-                            item_name = food_item['name']
-                            if item_name:
-                                ret.append({"name": item_name, "amount": amount, "operator": "or"})
+                            food_item_name = food_item['name']
+                            if food_item_name:
+                                ret.append({"name": food_item_name, "amount": amount, "operator": "or"})
                                 find_items = True
                                 item_added = True
                 if find_items:
                     ret[-1]['operator'] = ''
                 else:
                     pprint(ret)
-                    print("parseSource: flag {} not found, {}: {}".format(food_flag, item['name'], sourcestr))
+                    print("parseSource: flag {} not found, {}: {}".format(food_flag, item_name, sourcestr))
             elif item_code == '*Auto':
                 if auto_name:
                     ret.append({"name": auto_name, "amount": amount, "operator": operator})
@@ -244,12 +243,12 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
 
             if not item_added:
                 pprint(ret)
-                print("parseSource: {} not found, {}: {}".format(item_code, item['name'], sourcestr))
+                print("parseSource: {} not found, {}: {}".format(item_code, item_name, sourcestr))
 
             result_counter = result_counter + 1
 
     if len(ret) == 0:
-        print("parseSource: {} ret is empty {}".format(item['name'], sourcestr))
+        print("parseSource: {} ret is empty {}".format(item_name, sourcestr))
 
     if '|' in sourcestr or '&' in sourcestr:
         sources = re.split(r'&|\|', sourcestr)
@@ -257,6 +256,23 @@ def parseSource(item, sourcestr, item_names, auto_name=None):
             print("parseSource: ret has only {}, str has {} items; {}".format(len(ret), len(sources), sourcestr))
     
     return ret
+
+def parseLostGenerate(itemstr, item_names):
+    lost_item_match = re.search(r'(M:|F:|C:|Ex:)?(\S+)', itemstr)
+    lost_item_code = lost_item_match.groups()[1] if lost_item_match and lost_item_match.groups()[1] else ''
+
+    if lost_item_code:
+        for item in item_names:
+            item_name = item['name']
+            item_code = item['Code']
+
+            if equalItemByCode(item, lost_item_code):
+                return { 'name': item_name, 'Code': item_code }
+    
+    print("parseLostGenerate: {} not found: {}".format(lost_item_code, itemstr))
+
+    return None
+
 
 
 def setFertilizerBonusValue(item, row, col_name, property_name):
@@ -439,14 +455,60 @@ def setFoodCategory(item, row):
 
     return item
 
-def getItemNames(filename, category, item_names, enchants_map, worldmap_collection_map, only_names=False):
+def setFoodAttrs(item, row, item_names, auto_name):
+    if row['Life'].lstrip('-+').isnumeric():
+        life = int(row['Life'])
+        if life != 0:
+            item['life'] = life
+            if life > 0:
+                item['expiable'] = True
+    
+    if row['Price'].lstrip('-+').isnumeric() and int(row['Price']) != 0:
+        item['price'] = int(row['Price'])
+
+    item['description'] = row['CommentEn'].replace('~Auto~', auto_name).replace('\\1', ', ').replace(',  ', ', ').replace('\n', ' ')
+    
+    if row['Source'] != '-':
+        item['ingredients'] = parseSource(item['name'], row['Source'], item_names, auto_name)
+
+    return item
+
+def setCookingAttr(item, row, item_names, main_source, source_name):
+    item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source_name)
+
+    if 'source_main' in main_source:
+        item['main_ingredient'] = main_source['source_main']    
+    
+    if row['Source'] != '-':
+        item['ingredients'] = parseSource(item['name'], row['Source'], item_names, item['name'])
+
+    return item
+
+
+def setEnemyDrop(item, item_code, enemies_map, item_names):
+    for enemy in enemies_map.values():
+        for enemy_drop in enemy:
+            if enemy_drop['Item'] and enemy_drop['Item'] != '-':
+                for drop in parseItemDrop(enemy_drop['Item'], item_names):
+                    if equalItemByCode(drop, item_code):
+                        if not 'enemy_drops' in item:
+                            item['enemy_drops'] = []
+                        if not next((e for e in item['enemy_drops'] if e['name'] == enemy_drop['name'] and e['time'] == enemy_drop['time_of_day']), None):
+                            item['enemy_drops'].append({ 'name': enemy_drop['name'], 'time': enemy_drop['time_of_day'] })
+            else:
+                print('no item set by enemy {}', enemy_drop['Code'])
+
+    return item
+
+
+def getItemNames(filename, category, item_names, enchants_map, worldmap_collection_map, enemies_map, only_names=False):
     ret = []
     if filename == 'Material.csv' and not only_names:
-        ret = getMaterials(item_names, worldmap_collection_map, True).values()
+        ret = getMaterials(item_names, worldmap_collection_map, enemies_map, True).values()
     elif filename == 'Food.csv' and not only_names:
-        ret = getFood(item_names, enchants_map, worldmap_collection_map, True).values()
+        ret = getFood(item_names, enchants_map, worldmap_collection_map, enemies_map, True).values()
     elif filename == 'Cooking.csv' and not only_names:
-        ret = getCooking(item_names, enchants_map, worldmap_collection_map, {}, True).values()
+        ret = getCooking(item_names, enchants_map, worldmap_collection_map, True).values()
     else:
         with open(filename, encoding="utf8") as read_obj:
             #data = read_obj.read()
@@ -472,7 +534,7 @@ def getItemNames(filename, category, item_names, enchants_map, worldmap_collecti
     
     return ret
 
-def getMaterials(item_names, worldmap_collection_map, only_name=False):
+def getMaterials(item_names, worldmap_collection_map, enemies_map, only_name=False):
     materials_map = {}
     with open('Material.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
@@ -487,9 +549,6 @@ def getMaterials(item_names, worldmap_collection_map, only_name=False):
             name = row['NameEn']
             if name:
                 new_item = newItem(name, row['SubCategory'])
-                for it in old_items:
-                    if name == it['name']:
-                        new_item = it.copy()
 
                 if row['SubCategory'] == 'Material' or row['SubCategory'] == 'ManureBase':
                     new_item['category'] = CATEGORY_MATERIAL
@@ -501,43 +560,21 @@ def getMaterials(item_names, worldmap_collection_map, only_name=False):
                 item_code = row['Code']
                 if only_name:
                     new_item['Code'] = item_code
+                    #new_item['Row'] = row
                 else:
-                    for it in item_names:
-                        if equalItemByCode(it, item_code):
-                            new_item = it.copy()
-                    
                     new_item['description'] = row['CommentEn'].replace('\\1', ', ')
 
-                    new_item = setFertilizerBonus(new_item, row)
+                    setFertilizerBonus(new_item, row)
+                    setEnemyDrop(new_item, item_code, enemies_map, item_names)
+                    setCollectionDrops(new_item, item_code, worldmap_collection_map)
 
-                    new_item = hotfixMaterial(name, new_item)
+                    hotfixMaterial(name, new_item)
 
                 materials_map[item_code] = new_item
 
     return materials_map
 
-def setFoodAttrs(item, row, item_names, auto_name):
-    if row['Life'].lstrip('-+').isnumeric():
-        life = int(row['Life'])
-        if life != 0:
-            item['life'] = life
-            if life > 0:
-                item['expiable'] = True
-    
-    if row['Price'].lstrip('-+').isnumeric() and int(row['Price']) != 0:
-        item['price'] = int(row['Price'])
-
-    item['description'] = row['CommentEn'].replace('~Auto~', auto_name).replace('\\1', ', ').replace(',  ', ', ').replace('\n', ' ')
-    
-    if row['Source'] != '-' and not 'ingredients' in item:
-        item['ingredients'] = parseSource(item, row['Source'], item_names, auto_name)
-    #elif 'ingredients' in item:
-    #    pprint(item['ingredients'])
-    #    print('getFood: already had ingredients: {}'.format(item['name']))
-
-    return item
-
-def getFood(item_names, enchants_map, worldmap_collection_map, only_name=False):
+def getFood(item_names, enchants_map, worldmap_collection_map, enemies_map, only_name=False):
     food_map = {}
 
     with open('Food.csv', encoding="utf8") as read_obj:
@@ -552,19 +589,8 @@ def getFood(item_names, enchants_map, worldmap_collection_map, only_name=False):
         for row in food_reader:
             name = row['NameEn']
             if name:
-                new_item = newItem(name, row['FoodFlag'])
-                for it in old_items:
-                    if name == it['name']:
-                        new_item = it.copy()
-                
-                new_item = setFoodCategory(new_item, row)
+                auto_list = [{ 'name': name, 'Code': row['Code'] }]
 
-                if not only_name:
-                    for it in food_map:
-                        if name == it['name']:
-                            new_item = it.copy()
-                    
-                auto_list = None
                 if '_*Meat|Seafood' in row['Code']:
                     auto_list = meat_seafood
                 elif '_*Seafood' in row['Code']:
@@ -583,10 +609,10 @@ def getFood(item_names, enchants_map, worldmap_collection_map, only_name=False):
                         auto_name = auto['name']
                         auto_code = auto['Code']
 
-                        name = new_item['name'].replace('~Auto~', auto_name)
-                        new_food_item = new_item.copy()
+                        name = row['NameEn'].replace('~Auto~', auto_name)
 
-                        new_food_item['name'] = name
+                        new_item = newItem(name, row['FoodFlag'])
+                        setFoodCategory(new_item, row)
                         
                         item_code = row['Code']
                         if '_*Meat|Seafood' in row['Code']:
@@ -603,40 +629,24 @@ def getFood(item_names, enchants_map, worldmap_collection_map, only_name=False):
                             item_code = row['Code'].replace('*Insect', auto_code)
 
                         if only_name:
-                            new_food_item['Code'] = item_code
+                            new_item['Code'] = item_code
+                            #new_item['Row'] = row
                         else:
-                            new_food_item = setFoodAttrs(new_food_item, row, item_names, auto_name)
+                            setFoodAttrs(new_item, row, item_names, auto_name)
 
-                            new_food_item = setFertilizerBonus(new_food_item, row)
-                            new_food_item = setFoodBonus(new_food_item, row, enchants_map)
-                            new_food_item = setCollectionDrops(new_food_item, item_code, worldmap_collection_map)
-                            new_food_item = setFoodWhenSpoiled(new_food_item, row, item_names)
+                            setFertilizerBonus(new_item, row)
+                            setFoodBonus(new_item, row, enchants_map)
+                            setEnemyDrop(new_item, item_code, enemies_map, item_names)
+                            setCollectionDrops(new_item, item_code, worldmap_collection_map)
+                            setFoodWhenSpoiled(new_item, row, item_names)
 
-                            hotfixFood(new_food_item['name'], new_food_item)
+                            hotfixFood(new_item['name'], new_item)
                             
-                        food_map[item_code] = new_food_item
-                else:
-                    item_code = row['Code']
-                    if only_name:
-                        new_item['Code'] = item_code
-                    else:
-                        if row['Source'] != '-':
-                            new_item['ingredients'] = parseSource(new_item, row['Source'], item_names, name)
-
-                        new_item = setFoodAttrs(new_item, row, item_names, name)
-
-                        new_item = setFertilizerBonus(new_item, row)
-                        new_item = setFoodBonus(new_item, row, enchants_map)
-                        new_item = setCollectionDrops(new_item, item_code, worldmap_collection_map)
-                        new_item = setFoodWhenSpoiled(new_item, row, item_names)
-
-                        hotfixFood(new_item['name'], new_item)
-                    
-                    food_map[item_code] = new_item
+                        food_map[item_code] = new_item
 
     return food_map
 
-def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only_names=False):
+def getCooking(item_names, enchants_map, worldmap_collection_map, only_names=False):
     cooking_map = {}
     with open('Cooking.csv', encoding="utf8") as read_obj:
         #data = read_obj.read()
@@ -650,19 +660,9 @@ def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only
         for row in cooking_reader:
             name = row['NameEn']
             if name:
-                new_item = newItem(name, 'Cooking')
-
-                for it in old_items:
-                    if name == it['name']:
-                        new_item = it.copy()
-                for it in item_names:
-                    if name == it['name']:
-                        new_item = it.copy()
-                        new_item['category'] = CATEGORY_COOKING
-                    
                 main_sources = [{'name': name}]
                 if '~SourceMain~' in name and row['SourceMain'] != '-':
-                    source_main = parseSource(new_item, row['SourceMain'], item_names)
+                    source_main = parseSource(name, row['SourceMain'], item_names)
                     main_sources = []
                     for sm in source_main:
                         main_sources.append({ 'name': sm['name'], 'source_main': sm })
@@ -671,44 +671,24 @@ def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only
 
                 for main_source in main_sources:
                     source_name = main_source['name']
+                    name = row['NameEn'].replace('~SourceMain~', source_name)
 
-                    food_item = None
-                    new_food_item = new_item.copy()
-                    for it in food_map.values():
-                        if name == it['name']:
-                            food_item = it.copy()
-                            new_food_item = it.copy()
-                            new_food_item['category'] = CATEGORY_FOOD_COOKING
-                    
-                    new_food_item['name'] = row['NameEn'].replace('~SourceMain~', source_name)
+                    new_item = newItem(name, 'Cooking')
+                    new_item['name'] = name
 
+                    item_code = row['Code']
                     if only_names:
-                        new_food_item['Code'] = row['Code']
+                        new_item['Code'] = item_code
+                        #new_item['Row'] = row
                     else:
-                        new_food_item['description'] = row['CommentEn'].replace('\\1', ',').replace('~SourceMain~', source_name)
-
-                        if 'source_main' in main_source:
-                            new_food_item['main_ingredient'] = main_source['source_main']
+                        setCookingAttr(new_item, row, item_names, main_source, source_name)
                         
-                        if row['Source'] != '-':
-                            source = parseSource(new_food_item, row['Source'], item_names)
-                            if source:
-                                if not 'ingredients' in new_food_item:
-                                    new_food_item['ingredients'] = source
-                                elif 'ingredients' in new_food_item:
-                                    if food_item and not (len(source) == 1 and food_item['name'] == source[0]['name']):
-                                        new_food_item['ingredients'] = source
-                                    #elif 'ingredients' in new_food_item and len(source) == 1 and food_item['name'] == source[0]['name']:
-                                    #    pprint(new_food_item)
-                                    #    print('getCooking: ingredients already in item: {}'.format(new_food_item['name']))
+                        setFoodBonus(new_item, row, enchants_map)
+                        setFoodBonusFromCooking(new_item, row, enchants_map)
 
-                        
-                        new_food_item = setFoodBonus(new_food_item, row, enchants_map)
-                        new_food_item = setFoodBonusFromCooking(new_food_item, row, enchants_map)
+                        hotfixCooking(name, new_item)
 
-                        new_food_item = hotfixCooking(new_food_item['name'], new_food_item)
-
-                    cooking_map[row['Code']] = new_food_item
+                    cooking_map[item_code] = new_item
 
     return cooking_map
 
@@ -769,23 +749,6 @@ def getWorldmapLandmarks():
 
     return worldmap_landmark_map
 
-def parseLostGenerate(itemstr, item_names):
-    lost_item_match = re.search(r'(M:|F:|C:|Ex:)?(\S+)', itemstr)
-    lost_item_code = lost_item_match.groups()[1] if lost_item_match and lost_item_match.groups()[1] else ''
-
-    if lost_item_code:
-        for item in item_names:
-            item_name = item['name']
-            item_code = item['Code']
-
-            if equalItemByCode(item, lost_item_code):
-                return { 'name': item_name, 'Code': item_code }
-    
-    print("parseLostGenerate: {} not found: {}".format(lost_item_code, itemstr))
-
-    return None
-
-
 def parseWorldmapCollectionItem(itemsstr, item_names):
     ret = []
 
@@ -800,12 +763,7 @@ def parseWorldmapCollectionItem(itemsstr, item_names):
                 item_name = item['name']
                 item_code = item['Code']
 
-                find_item = item_code == collection_item_code
-                find_item = find_item or (item_code == 'PanaceaPanaceaSenshi' and 'PanaceaSenshi' in collection_item_code)
-                find_item = find_item or (item_code == 'PanaceaPanaceaHohi' and 'PanaceaHohi' in collection_item_code)
-                find_item = find_item or (item_code == 'Vegetable_SyungikuVegetable_Nanakusa' and ('Vegetable_Nanakusa' in collection_item_code or 'Vegetable_Syungiku' in collection_item_code))
-                
-                if find_item:
+                if equalItemByCode(item, collection_item_code):
                     ret.append({ 'name': item_name, 'Code': item_code, 'percent': collection_item_percent })
                     find_items = True
         
@@ -1045,15 +1003,13 @@ def hotfixEnemy(name, enemy):
 
     return enemy
 
-def main():
-    #with open('old_items.yml') as f:
-    #    old_items = yaml.load(f, Loader=yaml.FullLoader)
 
+def main():
     enemies_map = getEnemies()
     enchants_map = getEnchant()
     worldmap_landmark_map = getWorldmapLandmarks()
 
-    for item in getItemNames('Food.csv', 'Food', [], enchants_map, {}, True):
+    for item in getItemNames('Food.csv', 'Food', [], enchants_map, {}, enemies_map,True):
         item_name = item['name']
         item_code = item['Code']
         if 'Insect_' in item_code:
@@ -1072,11 +1028,11 @@ def main():
             spices.append({ "Code": item_code, "name": item_name })
 
     item_names = []
-    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names, enchants_map, {}):
+    for item in getItemNames('Material.csv', CATEGORY_MATERIAL, item_names, enchants_map, {}, enemies_map):
         item_names.append(item)
-    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names, enchants_map, {}):
+    for item in getItemNames('Food.csv', CATEGORY_FOOD, item_names, enchants_map, {}, enemies_map):
         item_names.append(item)
-    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names, enchants_map, {}):
+    for name in getItemNames('Cooking.csv', CATEGORY_COOKING, item_names, enchants_map, {}, enemies_map):
         item_names.append(name)
 
     worldmap_collection_map = getWorldmapCollection(worldmap_landmark_map, item_names)
@@ -1084,41 +1040,19 @@ def main():
     with open(r'enemies.json', 'w') as file:
         json.dump(enemies_map, file, indent=4)
 
-    # set enemy drops
-    for item in item_names:
-        item_code = item['Code']
-        for enemy in enemies_map.values():
-            for enemy_drop in enemy:
-                if enemy_drop['Item'] and enemy_drop['Item'] != '-':
-                    for drop in parseItemDrop(enemy_drop['Item'], item_names):
-                        if equalItemByCode(drop, item_code):
-                            if not 'enemy_drops' in item:
-                                item['enemy_drops'] = []
-                            if not next((e for e in item['enemy_drops'] if e['name'] == enemy_drop['name'] and e['time'] == enemy_drop['time_of_day']), None):
-                                item['enemy_drops'].append({ 'name': enemy_drop['name'], 'time': enemy_drop['time_of_day'] })
-                else:
-                    print('no item set by enemy {}', enemy_drop['Code'])
-
-
     with open(r'item_names.json', 'w') as file:
         json.dump(item_names, file, indent=4)
 
-    materials_map = getMaterials(item_names, worldmap_collection_map)
-    food_map = getFood(item_names, enchants_map, worldmap_collection_map)
-    cooking_map = getCooking(item_names, enchants_map, worldmap_collection_map, food_map)
+    materials_map = getMaterials(item_names, worldmap_collection_map, enemies_map)
+    food_map = getFood(item_names, enchants_map, worldmap_collection_map, enemies_map)
+    cooking_map = getCooking(item_names, enchants_map, worldmap_collection_map)
 
     items = []
     for value in materials_map.values():
-        if 'Code' in value:
-            del value['Code']
         items.append(value)
     for value in food_map.values():
-        if 'Code' in value:
-            del value['Code']
         items.append(value)
     for value in cooking_map.values():
-        if 'Code' in value:
-            del value['Code']
         items.append(value)
 
     with open(r'materials.yml', 'w') as file:

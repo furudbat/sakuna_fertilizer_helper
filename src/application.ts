@@ -104,7 +104,7 @@ export class Application {
 
     private getCookingItemList() {
         return this._appData.items.filter(it => {
-            return it.category == 'Cooking' || it.category == 'Food/Cooking';
+            return it.category == 'Cooking' || it.category == 'Food/Cooking' || it.category == 'Materials/Cooking';
         });
     }
 
