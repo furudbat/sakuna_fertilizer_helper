@@ -328,12 +328,12 @@ export class MaterialItemListAdapter extends ItemListAdapter {
         const show_enemy_drop = (enemy_drop)? '' : 'd-none';
 
         return `
-            <div class="row ml-3 ${show_find_in}">
+            <div class="row no-gutters ml-3 ${show_find_in}">
                 <div class="col">
                     ${find_in}
                 </div>
             </div>
-            <div class="row mt-1 ml-3 ${show_enemy_drop}">
+            <div class="row no-gutters mt-1 ml-3 ${show_enemy_drop}">
                 <div class="col">
                     ${enemy_drop}
                 </div>

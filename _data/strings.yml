@@ -27,6 +27,7 @@ table:
     col_expiable: Exp.
   foodlist:
     col_name: Name
+    col_type: Type
     col_season_buff: Seasonal Buff
     col_enchant: Enchant
     col_hp: HP
@@ -285,13 +286,13 @@ item_list:
     at_time: 'at %time%'
   ingredients: 
     title: Ingredients
-    table_caption: state boost varies, depending on your Gusto
+    table_caption: Different Ingredients can gives you different state boost in your meal, state boost varies, depending on your Gusto.
     label: 'Ingredients: '
     or: or
     and: and
   food: 
     title: Dishes
-    table_caption: state boost varies, depending on your Gusto
+    table_caption: State boost varies, depending on your Gusto.
     seasonal_buffs:
       label: Seasonal Buff
       label_filter: Show only Seasonal Buffs

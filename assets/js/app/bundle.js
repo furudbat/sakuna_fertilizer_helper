@@ -55691,13 +55691,12 @@ var Application = (function () {
     Application.prototype.getMaterialsItemList = function () {
         return this._appData.items.filter(function (it) {
             return it.category == 'Materials' ||
-                it.category == 'Materials/Food' ||
-                it.category == 'Materials/Cooking';
+                it.category == 'Materials/Food';
         });
     };
     Application.prototype.getFoodItemList = function () {
         return this._appData.items.filter(function (it) {
-            return it.category == 'Food' || it.category == 'Materials/Food' || it.category == 'Cooking/Food';
+            return it.category == 'Food' || it.category == 'Materials/Food';
         });
     };
     Application.prototype.getCookingItemList = function () {
@@ -56155,12 +56154,12 @@ var CookingItemListAdapter = (function (_super) {
         this.data = data;
     };
     CookingItemListAdapter.prototype.init = function (orderable, not_orderable, ordering) {
-        if (orderable === void 0) { orderable = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; }
+        if (orderable === void 0) { orderable = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; }
         if (not_orderable === void 0) { not_orderable = []; }
         if (ordering === void 0) { ordering = undefined; }
         var createdCell = function (cell, cellData, rowData, row, col) {
             switch (col) {
-                case 1:
+                case 2:
                     $(cell).addClass('text-left');
                     if (rowData.season_buff !== undefined) {
                         switch (rowData.season_buff) {
@@ -56179,43 +56178,43 @@ var CookingItemListAdapter = (function (_super) {
                         }
                     }
                     break;
-                case 3:
+                case 4:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'hp');
                     }
                     break;
-                case 4:
+                case 5:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'sp');
                     }
                     break;
-                case 5:
+                case 6:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'strength');
                     }
                     break;
-                case 6:
+                case 7:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'vitality');
                     }
                     break;
-                case 7:
+                case 8:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'magic');
                     }
                     break;
-                case 8:
+                case 9:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'luck');
                     }
                     break;
-                case 9:
+                case 10:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'fullness');
@@ -56255,9 +56254,17 @@ var CookingItemListAdapter = (function (_super) {
                     data: 'name',
                     render: function (data, type, row) {
                         if (type === 'display') {
-                            return "<button class=\"btn btn-link text-left details-control\" type=\"button\">\n                                        " + data + "\n                                    </button>";
+                            var text_color = that.getSeasonalTextColor(row);
+                            return "<button class=\"btn btn-link text-left " + text_color + " details-control\" type=\"button\">\n                                        " + data + "\n                                    </button>";
                         }
                         return data;
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        var _a;
+                        return (_a = row.sub_category) !== null && _a !== void 0 ? _a : '';
                     }
                 },
                 {
@@ -56423,12 +56430,12 @@ var CookingItemListAdapter = (function (_super) {
                 }
             }
         }
-        return '';
+        return 'text-neutral';
     };
     CookingItemListAdapter.prototype.renderDetails = function (row) {
         var ingredients = CookingItemListAdapter.getIngredientsContent(row);
         var show_ingredients = (ingredients) ? '' : 'd-none';
-        return "\n            <div class=\"row mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>";
+        return "<div class=\"row no-gutters mt-1 ml-3 " + show_ingredients + "\">\n                    <div class=\"col\">\n                        " + ingredients + "\n                    </div>\n                </div>";
     };
     return CookingItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -57900,7 +57907,7 @@ var FoodItemListAdapter = (function (_super) {
         var show_find_in = (find_in) ? '' : 'd-none';
         var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
         var show_ingredients = (ingredients) ? '' : 'd-none';
-        return "\n            <div class=\"row mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row mt-1 ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row ml-3 " + show_enemy_drop + "\">\n                <div class=\"col px-3\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
+        return "\n            <div class=\"row no-gutters mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row no-gutters mt-1 ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row no-gutters ml-3 " + show_enemy_drop + "\">\n                <div class=\"col px-3\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return FoodItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -58566,7 +58573,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getFindInContent = function (row) {
         var ret = '';
         if (row.find_in !== undefined && row.find_in) {
-            ret = "<strong class=\"find-in-content-title\">" + site_1.site.data.strings.item_list.materials.find_in_label + "</strong>";
+            ret = "<h6>" + site_1.site.data.strings.item_list.materials.find_in_label + "</h6>";
             ret += row.find_in.map(function (find_in) {
                 var find_location_time = '';
                 if (find_in.season != item_data_1.FindInSeason.Always) {
@@ -58580,7 +58587,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getEnemyDropContent = function (row) {
         var ret = '';
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = "<h5>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</h5>";
+            ret = "<h6>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</h6>";
             ret += row.enemy_drops.map(function (enemy_drop) {
                 var drop_time = '';
                 if (enemy_drop.time != item_data_1.EnemyDropTime.Always) {
@@ -58597,42 +58604,30 @@ var ItemListAdapter = (function () {
         if ((row.ingredients !== undefined && row.ingredients) || (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients)) {
             ret = "<h5>" + site_1.site.data.strings.item_list.ingredients.label + "</h5>";
         }
+        var map_ingredient = function (ingredients, ingredient, index) {
+            var amount = (ingredient.amount > 0) ? ingredient.amount.toString() + 'x' : '';
+            var name = ingredient.name;
+            var next_operator = (index + 1 < ingredients.length) ? ingredients[index + 1].operator : '';
+            var operator = '';
+            switch (ingredient.operator) {
+                case 'and':
+                    operator = (next_operator == ingredient.operator) ? site_1.site.data.strings.item_list.ingredients.and + " " : '';
+                    return amount + " " + name + ";";
+                case 'or':
+                    operator = (next_operator == ingredient.operator) ? site_1.site.data.strings.item_list.ingredients.or + " " : '';
+                    return amount + " " + name + " " + operator;
+                case '':
+                    return amount + " " + name + ";";
+            }
+        };
         ret += "</ul>";
         if (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients) {
-            cooking_row.main_ingredients.map(function (ingredient, index) {
-                var amount = (ingredient.amount == 1) ? '' : ingredient.amount.toString() + 'x';
-                var name = ingredient.name;
-                var operator = '';
-                switch (ingredient.operator) {
-                    case 'and':
-                        operator = site_1.site.data.strings.item_list.ingredients.and + " ";
-                        return amount + " " + name + ";";
-                    case 'or':
-                        operator = site_1.site.data.strings.item_list.ingredients.or + " ";
-                        return amount + " " + name + " " + operator;
-                    case '':
-                        return amount + " " + name + ";";
-                }
-            }).join('').split(';').forEach(function (ingredient_str) {
-                ret += (ingredient_str) ? "<li>" + ingredient_str + "</li>" : '';
+            cooking_row.main_ingredients.map(function (ingredient, index) { return map_ingredient(cooking_row.main_ingredients || [], ingredient, index); }).join('').split(';').forEach(function (ingredient_str) {
+                ret += (ingredient_str) ? "<li><strong class=\"text-danger\">" + ingredient_str + "</strong></li>" : '';
             });
         }
         if (row.ingredients !== undefined && row.ingredients) {
-            row.ingredients.map(function (ingredient, index) {
-                var amount = (ingredient.amount == 1) ? '' : ingredient.amount.toString() + 'x';
-                var name = ingredient.name;
-                var operator = '';
-                switch (ingredient.operator) {
-                    case 'and':
-                        operator = site_1.site.data.strings.item_list.ingredients.and + " ";
-                        return amount + " " + name + ";";
-                    case 'or':
-                        operator = site_1.site.data.strings.item_list.ingredients.or + " ";
-                        return amount + " " + name + " " + operator;
-                    case '':
-                        return amount + " " + name + ";";
-                }
-            }).join('').split(';').forEach(function (ingredient_str) {
+            row.ingredients.map(function (ingredient, index) { return map_ingredient(row.ingredients || [], ingredient, index); }).join('').split(';').forEach(function (ingredient_str) {
                 ret += (ingredient_str) ? "<li>" + ingredient_str + "</li>" : '';
             });
         }
@@ -59049,7 +59044,7 @@ var MaterialItemListAdapter = (function (_super) {
         var enemy_drop = MaterialItemListAdapter.getEnemyDropContent(row);
         var show_find_in = (find_in) ? '' : 'd-none';
         var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
-        return "\n            <div class=\"row ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row mt-1 ml-3 " + show_enemy_drop + "\">\n                <div class=\"col\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
+        return "\n            <div class=\"row no-gutters ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row no-gutters mt-1 ml-3 " + show_enemy_drop + "\">\n                <div class=\"col\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
     };
     return MaterialItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));

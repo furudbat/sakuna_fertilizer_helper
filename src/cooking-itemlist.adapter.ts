@@ -46,13 +46,13 @@ export class CookingItemListAdapter extends ItemListAdapter {
         this._table?.rows.add(show_data).draw();
     }
 
-    public init(orderable: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    public init(orderable: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         not_orderable: number[] = [],
         ordering: boolean | undefined = undefined) {
 
         const createdCell = function (cell: Node, cellData: any, rowData: CookingItemData, row: number, col: number) {
             switch (col) {
-                case 1:
+                case 2:
                     $(cell).addClass('text-left');
                     if (rowData.season_buff !== undefined) {
                         switch (rowData.season_buff) {
@@ -71,43 +71,43 @@ export class CookingItemListAdapter extends ItemListAdapter {
                         }
                     }
                     break;
-                case 3:
+                case 4:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'hp');
                     }
                     break;
-                case 4:
+                case 5:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'sp');
                     }
                     break;
-                case 5:
+                case 6:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'strength');
                     }
                     break;
-                case 6:
+                case 7:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'vitality');
                     }
                     break;
-                case 7:
+                case 8:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'magic');
                     }
                     break;
-                case 8:
+                case 9:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'luck');
                     }
                     break;
-                case 9:
+                case 10:
                     $(cell).addClass('text-center');
                     if (rowData.food_bonus !== undefined) {
                         that.addColColorClassFromSeasonFoodBonus(cell, rowData, 'fullness');
@@ -149,12 +149,20 @@ export class CookingItemListAdapter extends ItemListAdapter {
                     data: 'name',
                     render: function (data: string, type: string, row: CookingItemData) {
                         if (type === 'display') {
-                            return `<button class="btn btn-link text-left details-control" type="button">
+                            const text_color = that.getSeasonalTextColor(row);
+                            return `<button class="btn btn-link text-left ${text_color} details-control" type="button">
                                         ${data}
                                     </button>`;
                         }
 
                         return data;
+                    }
+                },
+
+                {
+                    data: null,
+                    render: function (data: any, type: string, row: CookingItemData) {
+                        return row.sub_category ?? '';
                     }
                 },
 
@@ -370,7 +378,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
             }
         }
 
-        return '';
+        return 'text-neutral';
     }
 
     private renderDetails(row: CookingItemData) {
@@ -378,12 +386,11 @@ export class CookingItemListAdapter extends ItemListAdapter {
 
         const show_ingredients = (ingredients)? '' : 'd-none';
 
-        return `
-            <div class="row mt-1 ml-3 ${show_ingredients}">
-                <div class="col">
-                    ${ingredients}
-                </div>
-            </div>`;
+        return `<div class="row no-gutters mt-1 ml-3 ${show_ingredients}">
+                    <div class="col">
+                        ${ingredients}
+                    </div>
+                </div>`;
     }
 }
 

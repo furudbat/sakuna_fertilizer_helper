@@ -1,6 +1,6 @@
 import { Logger, LoggerManager } from "typescript-logger";
 import { ItemInventoryData } from "./inventory";
-import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, ItemData } from "./item.data";
+import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, IngredientsData, ItemData } from "./item.data";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
@@ -136,7 +136,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.find_in !== undefined && row.find_in) {
-            ret = `<strong class="find-in-content-title">${site.data.strings.item_list.materials.find_in_label}</strong>`;
+            ret = `<h6>${site.data.strings.item_list.materials.find_in_label}</h6>`;
 
             ret += row.find_in.map(find_in => {
                 let find_location_time = '';
@@ -155,7 +155,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = `<h5>${site.data.strings.item_list.materials.drop_by_enemy_label}</h5>`;
+            ret = `<h6>${site.data.strings.item_list.materials.drop_by_enemy_label}</h6>`;
 
             ret += row.enemy_drops.map(enemy_drop => {
                 let drop_time = '';
@@ -179,45 +179,34 @@ export abstract class ItemListAdapter {
             ret = `<h5>${site.data.strings.item_list.ingredients.label}</h5>`;
         }
 
+        const map_ingredient = (ingredients: IngredientsData[], ingredient: IngredientsData, index: number) => {
+            const amount = (ingredient.amount > 0)? ingredient.amount.toString() + 'x' : '';
+            const name = ingredient.name;
+
+            const next_operator = (index+1 < ingredients.length)? ingredients[index+1].operator : '';
+
+            let operator = '';
+            switch(ingredient.operator) {
+                case 'and':
+                    operator = (next_operator == ingredient.operator)? `${site.data.strings.item_list.ingredients.and} ` : '';
+                    return `${amount} ${name};`;
+                case 'or':
+                    operator = (next_operator == ingredient.operator)? `${site.data.strings.item_list.ingredients.or} ` : '';
+                    return `${amount} ${name} ${operator}`;
+                case '':
+                    return `${amount} ${name};`;
+            }
+        };
+
         ret += `</ul>`
         if (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients) {
-            cooking_row.main_ingredients.map((ingredient, index) => {
-                const amount = (ingredient.amount == 1)? '' : ingredient.amount.toString() + 'x';
-                const name = ingredient.name;
-
-                let operator = '';
-                switch(ingredient.operator) {
-                    case 'and':
-                        operator =`${site.data.strings.item_list.ingredients.and} `;
-                        return `${amount} ${name};`;
-                    case 'or':
-                        operator =`${site.data.strings.item_list.ingredients.or} `;
-                        return `${amount} ${name} ${operator}`;
-                    case '':
-                        return `${amount} ${name};`;
-                }
-            }).join('').split(';').forEach(function(ingredient_str) {
-                ret += (ingredient_str)? `<li>${ingredient_str}</li>` : '';
+            cooking_row.main_ingredients.map((ingredient, index) => map_ingredient(cooking_row.main_ingredients || [], ingredient, index)).join('').split(';').forEach(function(ingredient_str) {
+                ret += (ingredient_str)? `<li><strong class="text-danger">${ingredient_str}</strong></li>` : '';
             });
         }
         
         if (row.ingredients !== undefined && row.ingredients) {
-            row.ingredients.map((ingredient, index) => {
-                const amount = (ingredient.amount == 1)? '' : ingredient.amount.toString() + 'x';
-                const name = ingredient.name;
-
-                let operator = '';
-                switch(ingredient.operator) {
-                    case 'and':
-                        operator =`${site.data.strings.item_list.ingredients.and} `;
-                        return `${amount} ${name};`;
-                    case 'or':
-                        operator =`${site.data.strings.item_list.ingredients.or} `;
-                        return `${amount} ${name} ${operator}`;
-                    case '':
-                        return `${amount} ${name};`;
-                }
-            }).join('').split(';').forEach(function(ingredient_str) {
+            row.ingredients.map((ingredient, index) => map_ingredient(row.ingredients || [], ingredient, index)).join('').split(';').forEach(function(ingredient_str) {
                 ret += (ingredient_str)? `<li>${ingredient_str}</li>` : '';
             });
         }

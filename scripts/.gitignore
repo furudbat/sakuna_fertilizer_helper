@@ -15,3 +15,9 @@ WorldmapCollect.*.csv
 WorldmapLandmark.*.csv
 
 *.xlsx
+
+cooking.yml
+enemies.json
+food.yml
+items.json
+item_names.json

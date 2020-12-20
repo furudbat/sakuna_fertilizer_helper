@@ -90,14 +90,13 @@ export class Application {
     private getMaterialsItemList() {
         return this._appData.items.filter(it => {
             return it.category == 'Materials' ||
-                it.category == 'Materials/Food' ||
-                it.category == 'Materials/Cooking';
+                it.category == 'Materials/Food';
         });
     }
 
     private getFoodItemList() {
         return this._appData.items.filter(it => {
-            return it.category == 'Food' || it.category == 'Materials/Food' || it.category == 'Cooking/Food';
+            return it.category == 'Food' || it.category == 'Materials/Food';
         });
     }
 

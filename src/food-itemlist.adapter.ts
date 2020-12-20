@@ -261,17 +261,17 @@ export class FoodItemListAdapter extends ItemListAdapter {
         const show_ingredients = (ingredients)? '' : 'd-none';
 
         return `
-            <div class="row mt-1 ml-3 ${show_ingredients}">
+            <div class="row no-gutters mt-1 ml-3 ${show_ingredients}">
                 <div class="col">
                     ${ingredients}
                 </div>
             </div>
-            <div class="row mt-1 ml-3 ${show_find_in}">
+            <div class="row no-gutters mt-1 ml-3 ${show_find_in}">
                 <div class="col">
                     ${find_in}
                 </div>
             </div>
-            <div class="row ml-3 ${show_enemy_drop}">
+            <div class="row no-gutters ml-3 ${show_enemy_drop}">
                 <div class="col px-3">
                     ${enemy_drop}
                 </div>
