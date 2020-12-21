@@ -1103,7 +1103,7 @@ def main():
     #with open(r'items.yml', 'w') as file:
     #    yaml.safe_dump(list(items), file, allow_unicode=True)
     with open(r'items.json', 'r') as json_file:
-        with open(r'items.yml', 'w') as yaml_file:
+        with open(r'../_data/items.yml', 'w') as yaml_file:
             yaml.safe_dump(json.load(json_file), yaml_file, default_flow_style=False, allow_unicode=True)
 
 

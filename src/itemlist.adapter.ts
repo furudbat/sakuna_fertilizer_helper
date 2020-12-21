@@ -1,6 +1,6 @@
 import { Logger, LoggerManager } from "typescript-logger";
 import { ItemInventoryData } from "./inventory";
-import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, IngredientsData, ItemData } from "./item.data";
+import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, IngredientsData, ItemData, MaterialOrFoodItemData } from "./item.data";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
@@ -201,7 +201,7 @@ export abstract class ItemListAdapter {
         ret += `</ul>`
         if (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients) {
             cooking_row.main_ingredients.map((ingredient, index) => map_ingredient(cooking_row.main_ingredients || [], ingredient, index)).join('').split(';').forEach(function(ingredient_str) {
-                ret += (ingredient_str)? `<li><strong class="text-danger">${ingredient_str}</strong></li>` : '';
+                ret += (ingredient_str)? `<li><strong>${ingredient_str}</strong></li>` : '';
             });
         }
         
@@ -213,6 +213,13 @@ export abstract class ItemListAdapter {
         ret += `</ul>`;
 
         return ret;
+    }
+
+    static getWhenSpoiledContent(row: FoodItemData) {
+        if (row.when_spoiled != undefined) {
+            return `<strong>${site.data.strings.item_list.food.when_spoiled_label}</strong>${row.when_spoiled}`;
+        }
+        return '';
     }
 
     static renderSoilNutrientsHtml(fertilizer_bonus: FertilizerBonusData | undefined) {

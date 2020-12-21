@@ -282,6 +282,7 @@ item_list:
     title: Materials
     find_in_label: 'Find in: '
     drop_by_enemy_label: 'Drop by: '
+    when_spoiled_label: 'When Spoiled: '
     at_season: '(%season%)'
     at_time: 'at %time%'
   ingredients: 

@@ -57904,10 +57904,12 @@ var FoodItemListAdapter = (function (_super) {
         var find_in = FoodItemListAdapter.getFindInContent(row);
         var enemy_drop = FoodItemListAdapter.getEnemyDropContent(row);
         var ingredients = FoodItemListAdapter.getIngredientsContent(row);
+        var when_spoiled = FoodItemListAdapter.getWhenSpoiledContent(row);
         var show_find_in = (find_in) ? '' : 'd-none';
         var show_enemy_drop = (enemy_drop) ? '' : 'd-none';
         var show_ingredients = (ingredients) ? '' : 'd-none';
-        return "\n            <div class=\"row no-gutters mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row no-gutters mt-1 ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row no-gutters ml-3 " + show_enemy_drop + "\">\n                <div class=\"col px-3\">\n                    " + enemy_drop + "\n                </div>\n            </div>";
+        var show_when_spoiled = (when_spoiled) ? '' : 'd-none';
+        return "\n            <div class=\"row no-gutters mt-1 ml-3 " + show_ingredients + "\">\n                <div class=\"col\">\n                    " + ingredients + "\n                </div>\n            </div>\n            <div class=\"row no-gutters mt-1 ml-3 " + show_find_in + "\">\n                <div class=\"col\">\n                    " + find_in + "\n                </div>\n            </div>\n            <div class=\"row no-gutters ml-3 " + show_enemy_drop + "\">\n                <div class=\"col\">\n                    " + enemy_drop + "\n                </div>\n            </div>\n            <div class=\"row no-gutters ml-3 " + show_when_spoiled + "\">\n                <div class=\"col\">\n                    " + show_when_spoiled + "\n                </div>\n            </div>";
     };
     return FoodItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
@@ -58623,7 +58625,7 @@ var ItemListAdapter = (function () {
         ret += "</ul>";
         if (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients) {
             cooking_row.main_ingredients.map(function (ingredient, index) { return map_ingredient(cooking_row.main_ingredients || [], ingredient, index); }).join('').split(';').forEach(function (ingredient_str) {
-                ret += (ingredient_str) ? "<li><strong class=\"text-danger\">" + ingredient_str + "</strong></li>" : '';
+                ret += (ingredient_str) ? "<li><strong>" + ingredient_str + "</strong></li>" : '';
             });
         }
         if (row.ingredients !== undefined && row.ingredients) {
@@ -58633,6 +58635,12 @@ var ItemListAdapter = (function () {
         }
         ret += "</ul>";
         return ret;
+    };
+    ItemListAdapter.getWhenSpoiledContent = function (row) {
+        if (row.when_spoiled != undefined) {
+            return "<strong>" + site_1.site.data.strings.item_list.food.when_spoiled_label + "</strong>" + row.when_spoiled;
+        }
+        return '';
     };
     ItemListAdapter.renderSoilNutrientsHtml = function (fertilizer_bonus) {
         return render_soil_nutrients_html(fertilizer_bonus);

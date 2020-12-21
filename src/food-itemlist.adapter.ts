@@ -255,10 +255,12 @@ export class FoodItemListAdapter extends ItemListAdapter {
         const find_in = FoodItemListAdapter.getFindInContent(row);
         const enemy_drop = FoodItemListAdapter.getEnemyDropContent(row);
         const ingredients = FoodItemListAdapter.getIngredientsContent(row);
+        const when_spoiled = FoodItemListAdapter.getWhenSpoiledContent(row);
 
         const show_find_in = (find_in)? '' : 'd-none';
         const show_enemy_drop = (enemy_drop)? '' : 'd-none';
         const show_ingredients = (ingredients)? '' : 'd-none';
+        const show_when_spoiled = (when_spoiled)? '' : 'd-none';
 
         return `
             <div class="row no-gutters mt-1 ml-3 ${show_ingredients}">
@@ -272,8 +274,13 @@ export class FoodItemListAdapter extends ItemListAdapter {
                 </div>
             </div>
             <div class="row no-gutters ml-3 ${show_enemy_drop}">
-                <div class="col px-3">
+                <div class="col">
                     ${enemy_drop}
+                </div>
+            </div>
+            <div class="row no-gutters ml-3 ${show_when_spoiled}">
+                <div class="col">
+                    ${show_when_spoiled}
                 </div>
             </div>`;
     }

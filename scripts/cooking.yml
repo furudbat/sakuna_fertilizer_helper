@@ -276,13 +276,13 @@
   food_bonus:
     enchant:
     - level: 2
-      name: Poison Resistance
-    - level: 2
       name: Natural Healing
     - level: 1
       name: Retribution
     - level: 2
       name: Overstuffed
+    - level: 2
+      name: Poison Resistance
     fullness: 25
     luck: 4
     magic: 6
@@ -8663,9 +8663,9 @@
   food_bonus:
     enchant:
     - level: 2
-      name: Poison Resistance
-    - level: 2
       name: Fire Resistance
+    - level: 2
+      name: Poison Resistance
     luck: 2
     magic: 5
     sp: 5
@@ -15943,10 +15943,10 @@
     red bean pasteor vegetables for an even tastier treat.
   food_bonus:
     enchant:
-    - level: 2
-      name: Poison Resistance
     - level: 3
       name: Celestial Maiden
+    - level: 2
+      name: Poison Resistance
     fullness: 10
     luck: 6
   ingredients:
@@ -16122,12 +16122,12 @@
     to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
   food_bonus:
     enchant:
-    - level: 2
-      name: Poison Resistance
     - level: 1
       name: Luck Boost
     - level: 1
       name: Luck Buff
+    - level: 2
+      name: Poison Resistance
     luck: 8
   ingredients:
   - amount: 1
