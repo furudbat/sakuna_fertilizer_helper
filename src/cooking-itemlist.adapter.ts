@@ -1,4 +1,4 @@
-import { CookingItemData, EnchantData, FoodBonusData, FoodItemData, ItemData, MaterialItemData, SeasonBuff } from "./item.data";
+import { CookingItemData, EnchantData, FoodItemData, ItemData, SeasonBuff } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
 export interface CookingItemListAdapterSettings {

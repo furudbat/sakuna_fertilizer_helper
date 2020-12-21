@@ -1,6 +1,6 @@
 import { assert } from "console";
 import { ItemInventoryData } from "./inventory";
-import { DataListSubject } from "./Observer";
+import { DataListSubject } from "./observer";
 import { clamp } from "./site";
 
 export const MAX_FERTILIZE_COMPONENTS = 8;

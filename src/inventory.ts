@@ -2,7 +2,7 @@ import { assert } from "console";
 import { FarmingFocus } from "./application.data";
 import { MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS } from "./fertilizer-components";
 import { FertilizerBonusData, ItemData } from "./item.data";
-import { DataListSubject } from "./Observer";
+import { DataListSubject } from "./observer";
 import { clamp } from "./site";
 
 export const MIN_ITEMS_AMOUNT_INVENTORY = 1;

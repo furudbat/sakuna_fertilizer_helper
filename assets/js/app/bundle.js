@@ -55111,193 +55111,6 @@ function hasOwnProperty(obj, prop) {
 
 },{"./support/isBuffer":22,"_process":15,"inherits":21}],24:[function(require,module,exports){
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DataListSubject = exports.DataSubject = void 0;
-var typescript_logger_1 = require("typescript-logger");
-var DataSubject = (function () {
-    function DataSubject(value) {
-        this.observers = [];
-        this.log = typescript_logger_1.LoggerManager.create("Observer:DataSubject");
-        this._state = value;
-    }
-    Object.defineProperty(DataSubject.prototype, "data", {
-        get: function () {
-            return this._state;
-        },
-        set: function (value) {
-            this._state = value;
-            this.notify();
-        },
-        enumerable: false,
-        configurable: true
-    });
-    DataSubject.prototype.let = function (lets) {
-        this._state = lets(this._state);
-        this.notify();
-        return this._state;
-    };
-    DataSubject.prototype.attach = function (observer) {
-        var isExist = this.observers.includes(observer);
-        if (isExist) {
-            this.log.warn('Subject: Observer has been attached already.');
-            return;
-        }
-        this.log.debug('Subject: Attached an observer.', observer);
-        this.observers.push(observer);
-    };
-    DataSubject.prototype.detach = function (observer) {
-        var observerIndex = this.observers.indexOf(observer);
-        if (observerIndex === -1) {
-            this.log.warn('Subject: Nonexistent observer.');
-            return;
-        }
-        this.observers = this.observers.splice(observerIndex, 1);
-        this.log.debug('Subject: Detached an observer.', observer);
-    };
-    DataSubject.prototype.notify = function () {
-        this.log.debug('Subject: Notifying observers...', this._state);
-        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
-            var observer = _a[_i];
-            observer.update(this);
-        }
-    };
-    return DataSubject;
-}());
-exports.DataSubject = DataSubject;
-var DataListSubject = (function () {
-    function DataListSubject(value) {
-        if (value === void 0) { value = []; }
-        this._state = [];
-        this.observers = [];
-        this.log = typescript_logger_1.LoggerManager.create("Observer:ListDataSubject");
-        this._state = value;
-    }
-    Object.defineProperty(DataListSubject.prototype, "data", {
-        get: function () {
-            return this._state;
-        },
-        set: function (value) {
-            this._state = value;
-            this.notify();
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(DataListSubject.prototype, "length", {
-        get: function () {
-            return this._state.length;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    DataListSubject.prototype.clear = function () {
-        this.data = [];
-    };
-    DataListSubject.prototype.last = function () {
-        return (this._state.length > 0) ? this._state[this._state.length - 1] : undefined;
-    };
-    DataListSubject.prototype.get = function (index) {
-        return this._state[index];
-    };
-    DataListSubject.prototype.find = function (predicate, thisArg) {
-        return this._state.find(predicate, thisArg);
-    };
-    DataListSubject.prototype.findIndex = function (predicate, thisArg) {
-        return this._state.findIndex(predicate, thisArg);
-    };
-    DataListSubject.prototype.let = function (index, lets) {
-        if (index >= 0 && index < this._state.length && this._state[index] !== undefined) {
-            var new_item = lets(this._state[index], index);
-            if (new_item !== undefined) {
-                this._state[index] = new_item;
-                this.notifyItem(new_item, index);
-            }
-            else {
-                var old_item = this._state[index];
-                this._state.splice(index, 1);
-                this.notifyRemovedItem(old_item);
-            }
-        }
-    };
-    DataListSubject.prototype.lets = function (lets) {
-        if (this._state.length > 0) {
-            this._state = this._state
-                .map(function (it, index) { return lets(it, index); })
-                .filter(function (it) { return it !== undefined; });
-            this.notify();
-        }
-    };
-    DataListSubject.prototype.forEach = function (callbackfn, thisArg) {
-        this._state.forEach(callbackfn, thisArg);
-    };
-    DataListSubject.prototype.set = function (index, value) {
-        if (index >= 0 && index < this._state.length) {
-            this._state[index] = value;
-            this.notifyItem(value, index);
-        }
-    };
-    DataListSubject.prototype.push = function (value) {
-        this._state.push(value);
-        this.notifyAddedItem(this._state[this._state.length - 1]);
-    };
-    DataListSubject.prototype.remove = function (index) {
-        if (index >= 0 && index < this._state.length) {
-            var item = this._state[index];
-            this._state.splice(index, 1);
-            this.notifyRemovedItem(item);
-        }
-    };
-    DataListSubject.prototype.attach = function (observer) {
-        var isExist = this.observers.includes(observer);
-        if (isExist) {
-            this.log.warn('Subject: Observer has been attached already.');
-            return;
-        }
-        this.log.debug('Subject: Attached an observer.', observer);
-        this.observers.push(observer);
-    };
-    DataListSubject.prototype.detach = function (observer) {
-        var observerIndex = this.observers.indexOf(observer);
-        if (observerIndex === -1) {
-            this.log.warn('Subject: Nonexistent observer.');
-            return;
-        }
-        this.observers = this.observers.splice(observerIndex, 1);
-        this.log.debug('Subject: Detached an observer.', observer);
-    };
-    DataListSubject.prototype.notify = function () {
-        this.log.debug('Subject: Notifying observers...', this._state);
-        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
-            var observer = _a[_i];
-            observer.update(this);
-        }
-    };
-    DataListSubject.prototype.notifyItem = function (item, index) {
-        this.log.debug('Subject: Notifying observers, Item...', this._state, index);
-        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
-            var observer = _a[_i];
-            observer.updateItem(this, item, index);
-        }
-    };
-    DataListSubject.prototype.notifyAddedItem = function (added) {
-        this.log.debug('Subject: Notifying observers, AddedItem...', this._state, added);
-        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
-            var observer = _a[_i];
-            observer.updateAddedItem(this, added);
-        }
-    };
-    DataListSubject.prototype.notifyRemovedItem = function (removed) {
-        this.log.debug('Subject: Notifying observers, RemovedItem...', this._state, removed);
-        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
-            var observer = _a[_i];
-            observer.updateRemovedItem(this, removed);
-        }
-    };
-    return DataListSubject;
-}());
-exports.DataListSubject = DataListSubject;
-},{"typescript-logger":17}],25:[function(require,module,exports){
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -55342,7 +55155,7 @@ exports.ApplicationData = exports.Settings = exports.Theme = exports.FarmingFocu
 var localforage_1 = __importDefault(require("localforage"));
 var fertilizer_components_1 = require("./fertilizer-components");
 var inventory_1 = require("./inventory");
-var Observer_1 = require("./Observer");
+var observer_1 = require("./observer");
 var site_1 = require("./site");
 var STORAGE_KEY_ITEMS = 'items';
 var STORAGE_KEY_ITEMS_IN_INVENTORY = 'items_in_inventory';
@@ -55378,11 +55191,11 @@ exports.Settings = Settings;
 var ApplicationData = (function () {
     function ApplicationData() {
         this._items = [];
-        this._currentLeafFertilizer = new Observer_1.DataSubject(0);
-        this._currentKernelFertilizer = new Observer_1.DataSubject(0);
-        this._currentRootFertilizer = new Observer_1.DataSubject(0);
-        this._currentGuide = new Observer_1.DataSubject(FarmingFocus.Balanced);
-        this._settings = new Observer_1.DataSubject(new Settings());
+        this._currentLeafFertilizer = new observer_1.DataSubject(0);
+        this._currentKernelFertilizer = new observer_1.DataSubject(0);
+        this._currentRootFertilizer = new observer_1.DataSubject(0);
+        this._currentGuide = new observer_1.DataSubject(FarmingFocus.Balanced);
+        this._settings = new observer_1.DataSubject(new Settings());
         this._inventory = new inventory_1.Inventory();
         this._fertilizer_components = new fertilizer_components_1.FertilizerComponents();
         this._theme = Theme.Dark;
@@ -55619,7 +55432,8 @@ var ApplicationData = (function () {
     return ApplicationData;
 }());
 exports.ApplicationData = ApplicationData;
-},{"./Observer":24,"./fertilizer-components":29,"./inventory":34,"./site":39,"localforage":12}],26:[function(require,module,exports){
+
+},{"./fertilizer-components":28,"./inventory":33,"./observer":38,"./site":39,"localforage":12}],25:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Application = void 0;
@@ -56096,7 +55910,8 @@ var RecommendedFertilizerData = (function () {
     }
     return RecommendedFertilizerData;
 }());
-},{"./application.data":25,"./cooking-itemlist.adapter":27,"./fertilize-components.adapter":28,"./fertilizer.adapter":30,"./fertilizer.data":31,"./food-itemlist.adapter":32,"./inventory":34,"./inventory.adapter":33,"./item.data":35,"./material-itemlist.adapter":38,"./site":39,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],27:[function(require,module,exports){
+
+},{"./application.data":24,"./cooking-itemlist.adapter":26,"./fertilize-components.adapter":27,"./fertilizer.adapter":29,"./fertilizer.data":30,"./food-itemlist.adapter":31,"./inventory":33,"./inventory.adapter":32,"./item.data":34,"./material-itemlist.adapter":37,"./site":39,"datatables.net-bs4":7,"datatables.net-responsive-bs4":8,"typescript-logger/build/loggerManager":20}],26:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -56440,7 +56255,8 @@ var CookingItemListAdapter = (function (_super) {
     return CookingItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
 exports.CookingItemListAdapter = CookingItemListAdapter;
-},{"./item.data":35,"./itemlist.adapter":36}],28:[function(require,module,exports){
+
+},{"./item.data":34,"./itemlist.adapter":35}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
@@ -56614,19 +56430,20 @@ var FertilizeComponentsAdapter = (function () {
     return FertilizeComponentsAdapter;
 }());
 exports.FertilizeComponentsAdapter = FertilizeComponentsAdapter;
-},{"./fertilizer-components":29,"./inventory":34,"./site":39,"typescript-logger":17}],29:[function(require,module,exports){
+
+},{"./fertilizer-components":28,"./inventory":33,"./site":39,"typescript-logger":17}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerComponents = exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = exports.MAX_FERTILIZE_COMPONENTS = void 0;
 var console_1 = require("console");
-var Observer_1 = require("./Observer");
+var observer_1 = require("./observer");
 var site_1 = require("./site");
 exports.MAX_FERTILIZE_COMPONENTS = 8;
 exports.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 1;
 exports.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS = 999;
 var FertilizerComponents = (function () {
     function FertilizerComponents() {
-        this._components = new Observer_1.DataListSubject();
+        this._components = new observer_1.DataListSubject();
     }
     Object.defineProperty(FertilizerComponents.prototype, "observable", {
         get: function () {
@@ -56752,7 +56569,8 @@ var FertilizerComponents = (function () {
     return FertilizerComponents;
 }());
 exports.FertilizerComponents = FertilizerComponents;
-},{"./Observer":24,"./site":39,"console":6}],30:[function(require,module,exports){
+
+},{"./observer":38,"./site":39,"console":6}],29:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -56762,13 +56580,13 @@ exports.FertilizerAdapter = void 0;
 var console_1 = require("console");
 var typescript_logger_1 = require("typescript-logger");
 var fertilizer_data_1 = require("./fertilizer.data");
-var Observer_1 = require("./Observer");
+var observer_1 = require("./observer");
 var chart_js_1 = __importDefault(require("chart.js"));
 var site_1 = require("./site");
 var itemlist_adapter_1 = require("./itemlist.adapter");
 var FertilizerAdapter = (function () {
     function FertilizerAdapter(appData) {
-        this._data = new Observer_1.DataSubject(new fertilizer_data_1.FertilizerData());
+        this._data = new observer_1.DataSubject(new fertilizer_data_1.FertilizerData());
         this.log = typescript_logger_1.LoggerManager.create('FertilizerAdapter');
         this._appData = appData;
     }
@@ -57236,7 +57054,8 @@ var FertilizerAdapter = (function () {
     return FertilizerAdapter;
 }());
 exports.FertilizerAdapter = FertilizerAdapter;
-},{"./Observer":24,"./fertilizer.data":31,"./itemlist.adapter":36,"./site":39,"chart.js":5,"console":6,"typescript-logger":17}],31:[function(require,module,exports){
+
+},{"./fertilizer.data":30,"./itemlist.adapter":35,"./observer":38,"./site":39,"chart.js":5,"console":6,"typescript-logger":17}],30:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizerData = exports.MAX_STATS = exports.MIN_STATS = exports.MAX_FERTILIZER = exports.MIN_FERTILIZER = void 0;
@@ -57646,7 +57465,8 @@ var FertilizerData = (function () {
     return FertilizerData;
 }());
 exports.FertilizerData = FertilizerData;
-},{"./site":39}],32:[function(require,module,exports){
+
+},{"./site":39}],31:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -57914,7 +57734,8 @@ var FoodItemListAdapter = (function (_super) {
     return FoodItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
 exports.FoodItemListAdapter = FoodItemListAdapter;
-},{"./inventory":34,"./itemlist.adapter":36}],33:[function(require,module,exports){
+
+},{"./inventory":33,"./itemlist.adapter":35}],32:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -58264,20 +58085,21 @@ var InventoryAdapter = (function (_super) {
     return InventoryAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
 exports.InventoryAdapter = InventoryAdapter;
-},{"./inventory":34,"./itemlist.adapter":36,"./site":39}],34:[function(require,module,exports){
+
+},{"./inventory":33,"./itemlist.adapter":35,"./site":39}],33:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Inventory = exports.MAX_ITEMS_AMOUNT_INVENTORY = exports.MIN_ITEMS_AMOUNT_INVENTORY = void 0;
 var console_1 = require("console");
 var application_data_1 = require("./application.data");
 var fertilizer_components_1 = require("./fertilizer-components");
-var Observer_1 = require("./Observer");
+var observer_1 = require("./observer");
 var site_1 = require("./site");
 exports.MIN_ITEMS_AMOUNT_INVENTORY = 1;
 exports.MAX_ITEMS_AMOUNT_INVENTORY = 999;
 var Inventory = (function () {
     function Inventory() {
-        this._items_in_inventory = new Observer_1.DataListSubject();
+        this._items_in_inventory = new observer_1.DataListSubject();
     }
     Object.defineProperty(Inventory.prototype, "observable", {
         get: function () {
@@ -58425,7 +58247,8 @@ var Inventory = (function () {
     return Inventory;
 }());
 exports.Inventory = Inventory;
-},{"./Observer":24,"./application.data":25,"./fertilizer-components":29,"./site":39,"console":6}],35:[function(require,module,exports){
+
+},{"./application.data":24,"./fertilizer-components":28,"./observer":38,"./site":39,"console":6}],34:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeasonBuff = exports.EnemyDropTime = exports.FindInSeason = void 0;
@@ -58450,7 +58273,8 @@ var SeasonBuff;
     SeasonBuff["Autumn"] = "Autumn";
     SeasonBuff["Winter"] = "Winter";
 })(SeasonBuff = exports.SeasonBuff || (exports.SeasonBuff = {}));
-},{}],36:[function(require,module,exports){
+
+},{}],35:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ItemListAdapter = exports.render_soil_nutrients_html = exports.render_value = exports.render_value_from_property = exports.render_buff_bonus = exports.render_buff_bonus_html = exports.render_value_html = void 0;
@@ -58719,7 +58543,8 @@ var ItemListAdapter = (function () {
     return ItemListAdapter;
 }());
 exports.ItemListAdapter = ItemListAdapter;
-},{"./item.data":35,"./site":39,"typescript-logger":17}],37:[function(require,module,exports){
+
+},{"./item.data":34,"./site":39,"typescript-logger":17}],36:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./site");
@@ -58732,7 +58557,8 @@ $(function () {
     var app = new application_1.Application();
     app.init();
 });
-},{"./application":26,"./site":39,"typescript-logger":17}],38:[function(require,module,exports){
+
+},{"./application":25,"./site":39,"typescript-logger":17}],37:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -59057,7 +58883,196 @@ var MaterialItemListAdapter = (function (_super) {
     return MaterialItemListAdapter;
 }(itemlist_adapter_1.ItemListAdapter));
 exports.MaterialItemListAdapter = MaterialItemListAdapter;
-},{"./inventory":34,"./itemlist.adapter":36}],39:[function(require,module,exports){
+
+},{"./inventory":33,"./itemlist.adapter":35}],38:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DataListSubject = exports.DataSubject = void 0;
+var typescript_logger_1 = require("typescript-logger");
+var DataSubject = (function () {
+    function DataSubject(value) {
+        this.observers = [];
+        this.log = typescript_logger_1.LoggerManager.create("Observer:DataSubject");
+        this._state = value;
+    }
+    Object.defineProperty(DataSubject.prototype, "data", {
+        get: function () {
+            return this._state;
+        },
+        set: function (value) {
+            this._state = value;
+            this.notify();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    DataSubject.prototype.let = function (lets) {
+        this._state = lets(this._state);
+        this.notify();
+        return this._state;
+    };
+    DataSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist) {
+            this.log.warn('Subject: Observer has been attached already.');
+            return;
+        }
+        this.log.debug('Subject: Attached an observer.', observer);
+        this.observers.push(observer);
+    };
+    DataSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            this.log.warn('Subject: Nonexistent observer.');
+            return;
+        }
+        this.observers = this.observers.splice(observerIndex, 1);
+        this.log.debug('Subject: Detached an observer.', observer);
+    };
+    DataSubject.prototype.notify = function () {
+        this.log.debug('Subject: Notifying observers...', this._state);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.update(this);
+        }
+    };
+    return DataSubject;
+}());
+exports.DataSubject = DataSubject;
+var DataListSubject = (function () {
+    function DataListSubject(value) {
+        if (value === void 0) { value = []; }
+        this._state = [];
+        this.observers = [];
+        this.log = typescript_logger_1.LoggerManager.create("Observer:ListDataSubject");
+        this._state = value;
+    }
+    Object.defineProperty(DataListSubject.prototype, "data", {
+        get: function () {
+            return this._state;
+        },
+        set: function (value) {
+            this._state = value;
+            this.notify();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(DataListSubject.prototype, "length", {
+        get: function () {
+            return this._state.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    DataListSubject.prototype.clear = function () {
+        this.data = [];
+    };
+    DataListSubject.prototype.last = function () {
+        return (this._state.length > 0) ? this._state[this._state.length - 1] : undefined;
+    };
+    DataListSubject.prototype.get = function (index) {
+        return this._state[index];
+    };
+    DataListSubject.prototype.find = function (predicate, thisArg) {
+        return this._state.find(predicate, thisArg);
+    };
+    DataListSubject.prototype.findIndex = function (predicate, thisArg) {
+        return this._state.findIndex(predicate, thisArg);
+    };
+    DataListSubject.prototype.let = function (index, lets) {
+        if (index >= 0 && index < this._state.length && this._state[index] !== undefined) {
+            var new_item = lets(this._state[index], index);
+            if (new_item !== undefined) {
+                this._state[index] = new_item;
+                this.notifyItem(new_item, index);
+            }
+            else {
+                var old_item = this._state[index];
+                this._state.splice(index, 1);
+                this.notifyRemovedItem(old_item);
+            }
+        }
+    };
+    DataListSubject.prototype.lets = function (lets) {
+        if (this._state.length > 0) {
+            this._state = this._state
+                .map(function (it, index) { return lets(it, index); })
+                .filter(function (it) { return it !== undefined; });
+            this.notify();
+        }
+    };
+    DataListSubject.prototype.forEach = function (callbackfn, thisArg) {
+        this._state.forEach(callbackfn, thisArg);
+    };
+    DataListSubject.prototype.set = function (index, value) {
+        if (index >= 0 && index < this._state.length) {
+            this._state[index] = value;
+            this.notifyItem(value, index);
+        }
+    };
+    DataListSubject.prototype.push = function (value) {
+        this._state.push(value);
+        this.notifyAddedItem(this._state[this._state.length - 1]);
+    };
+    DataListSubject.prototype.remove = function (index) {
+        if (index >= 0 && index < this._state.length) {
+            var item = this._state[index];
+            this._state.splice(index, 1);
+            this.notifyRemovedItem(item);
+        }
+    };
+    DataListSubject.prototype.attach = function (observer) {
+        var isExist = this.observers.includes(observer);
+        if (isExist) {
+            this.log.warn('Subject: Observer has been attached already.');
+            return;
+        }
+        this.log.debug('Subject: Attached an observer.', observer);
+        this.observers.push(observer);
+    };
+    DataListSubject.prototype.detach = function (observer) {
+        var observerIndex = this.observers.indexOf(observer);
+        if (observerIndex === -1) {
+            this.log.warn('Subject: Nonexistent observer.');
+            return;
+        }
+        this.observers = this.observers.splice(observerIndex, 1);
+        this.log.debug('Subject: Detached an observer.', observer);
+    };
+    DataListSubject.prototype.notify = function () {
+        this.log.debug('Subject: Notifying observers...', this._state);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.update(this);
+        }
+    };
+    DataListSubject.prototype.notifyItem = function (item, index) {
+        this.log.debug('Subject: Notifying observers, Item...', this._state, index);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.updateItem(this, item, index);
+        }
+    };
+    DataListSubject.prototype.notifyAddedItem = function (added) {
+        this.log.debug('Subject: Notifying observers, AddedItem...', this._state, added);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.updateAddedItem(this, added);
+        }
+    };
+    DataListSubject.prototype.notifyRemovedItem = function (removed) {
+        this.log.debug('Subject: Notifying observers, RemovedItem...', this._state, removed);
+        for (var _i = 0, _a = this.observers; _i < _a.length; _i++) {
+            var observer = _a[_i];
+            observer.updateRemovedItem(this, removed);
+        }
+    };
+    return DataListSubject;
+}());
+exports.DataListSubject = DataListSubject;
+
+},{"typescript-logger":17}],39:[function(require,module,exports){
 'use strict';
 String.prototype.format = function () {
     var args = arguments;
@@ -59140,5 +59155,6 @@ module.exports = {
     makeDoubleClick: makeDoubleClick,
     clamp: clamp
 };
-},{}]},{},[37])
+
+},{}]},{},[36])
 //# sourceMappingURL=bundle.js.map

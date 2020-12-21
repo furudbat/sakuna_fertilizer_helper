@@ -1,6 +1,5 @@
-import { LoggerManager } from "typescript-logger";
 import { Inventory } from "./inventory";
-import { FertilizerBonusData, FindInSeason, FoodItemData, ItemData, MaterialOrFoodItemData } from "./item.data";
+import { FertilizerBonusData, FoodItemData, ItemData, MaterialOrFoodItemData } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
 export class MaterialItemListAdapter extends ItemListAdapter {

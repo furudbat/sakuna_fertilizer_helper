@@ -1,6 +1,5 @@
 import { Logger, LoggerManager } from "typescript-logger";
-import { ItemInventoryData } from "./inventory";
-import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, IngredientsData, ItemData, MaterialOrFoodItemData } from "./item.data";
+import { CookingItemData, EnemyDropTime, FertilizerBonusData, FindInSeason, FoodBonusData, FoodItemData, IngredientsData, ItemData } from "./item.data";
 import { site } from "./site";
 
 function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {

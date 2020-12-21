@@ -3,7 +3,7 @@ import { LoggerManager } from "typescript-logger";
 import { ApplicationData } from "./application.data";
 import { ItemFertilizerComponentData } from "./fertilizer-components";
 import { FertilizerData, MAX_FERTILIZER, MAX_STATS, MIN_FERTILIZER, MIN_STATS } from "./fertilizer.data";
-import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./Observer";
+import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./observer";
 import Chart from "chart.js";
 import { clamp, site } from "./site";
 import { render_buff_bonus_html } from "./itemlist.adapter";
