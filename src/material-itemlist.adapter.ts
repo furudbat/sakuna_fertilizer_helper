@@ -1,6 +1,7 @@
 import { Inventory } from "./inventory";
 import { FertilizerBonusData, FoodItemData, ItemData, MaterialItemData, MaterialOrFoodItemData } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
+import { site } from "./site";
 
 export class MaterialItemListAdapter extends ItemListAdapter {
     private _data: MaterialOrFoodItemData[];
@@ -133,7 +134,10 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                 {
                     data: 'name',
                     render: function (data: string, type: string) {
-                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-inventory" data-name="${data}"><i class="fas fa-plus"></i></button>` : '';
+                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-inventory" data-name="${data}">
+                            <span class="sr-only">${site.data.strings.table.itemlist.col_add_to_inventory_long}</span>
+                            <i class="fas fa-plus"></i>
+                        </button>` : '';
                     }
                 },
 

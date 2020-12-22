@@ -93,7 +93,10 @@ export class InventoryAdapter extends ItemListAdapter {
                 {
                     data: 'item.name',
                     render: function (data: string, type: string) {
-                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}"><i class="fas fa-plus"></i></button>` : '';
+                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}">
+                            <i class="fas fa-plus"></i>
+                            <span class="sr-only">${site.data.strings.fertilizer_helper.inventory.col_add_to_fertilizer_long}</span>
+                        </button>` : '';
                     }
                 },
                 {

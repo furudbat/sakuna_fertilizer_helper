@@ -143,7 +143,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.find_in !== undefined && row.find_in) {
-            ret = `<h5>${site.data.strings.item_list.materials.find_in_label}</h5>`;
+            ret = `<p class="font-weight-bolder">${site.data.strings.item_list.materials.find_in_label}</p>`;
 
             ret += row.find_in.map(find_in => {
                 let find_location_time = '';
@@ -162,7 +162,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = `<h5>${site.data.strings.item_list.materials.drop_by_enemy_label}</h5>`;
+            ret = `<p class="font-weight-bolder">${site.data.strings.item_list.materials.drop_by_enemy_label}</p>`;
 
             ret += row.enemy_drops.map(enemy_drop => {
                 let drop_time = '';
@@ -183,7 +183,7 @@ export abstract class ItemListAdapter {
 
         const cooking_row = row as CookingItemData;
         if ((row.ingredients !== undefined && row.ingredients) || (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients)) {
-            ret = `<h5>${site.data.strings.item_list.ingredients.label}</h5>`;
+            ret = `<p class="font-weight-bolder">${site.data.strings.item_list.ingredients.label}</p>`;
         }
 
         const map_ingredient = (ingredients: IngredientsData[], ingredient: IngredientsData, index: number) => {
@@ -225,7 +225,7 @@ export abstract class ItemListAdapter {
     static getWhenSpoiledContent(row: FoodItemData) {
         let ret = '';
         if (row.when_spoiled !== undefined) {
-            ret += `<h5>${site.data.strings.item_list.food.when_spoiled_label}</h5>`;
+            ret += `<p class="font-weight-bolder">${site.data.strings.item_list.food.when_spoiled_label}</p>`;
             ret += `${row.when_spoiled}`;
         }
         return ret;

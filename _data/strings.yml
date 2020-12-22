@@ -1,6 +1,7 @@
 table:
   itemlist:
     col_add_to_inventory: Inv.
+    col_add_to_inventory_long: Add to Inventory
     col_name: Name
     col_fertilizer: Soil Nut.
     col_yield_hp: Yield/ HP
@@ -39,6 +40,7 @@ table:
     col_fullness: Full.
   inventory:
     col_add_to_fertilizer: Fer.
+    col_add_to_fertilizer_long: Add to Fertilizer
     col_name: Name
     col_immunity: Imm.
     col_pesticide: Pes.
@@ -209,9 +211,9 @@ fertilizer_helper:
     soil_nutrients:
       title: Soil nutrients
       current_fertilizer: Current Fertilizer
-      current_fertilizer_short: <i class="fas fa-poop"></i>
+      current_fertilizer_short: <i class="fas fa-poop"></i><span class="sr-only">Current Fertilizer</span>
       with_components: with Components
-      with_components_short: <i class="fas fa-poo"></i>
+      with_components_short: <i class="fas fa-poo"></i><span class="sr-only">with Components</span>
       leaf: Leaf
       kernel: Kernel
       root: Root
@@ -253,9 +255,10 @@ fertilizer_helper:
       title: Expiable
       in_days: In %life% day(s)
       in_days_unknown: In few day(s)
-      in_days_short: <i class="fas fa-skull"></i>
-      infinity: <i class="fas fa-infinity"></i>
+      in_days_short: <i class="fas fa-skull"></i><span class="sr-only">In few day(s)</span>
+      infinity: <i class="fas fa-infinity"></i><span class="sr-only">Not Expiable</span>
     remove_from_inventory: Remove from Inv.
+    remove_from_inventory_long: Remove from Inventory
     stats:
       leaf_fertilizer: 'L:'
       kernel_fertilizer: 'K:'

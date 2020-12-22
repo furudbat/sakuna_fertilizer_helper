@@ -1056,7 +1056,7 @@ def hotfixEnemy(name, enemy):
         enemy['name'] = 'Rabbit'
     if enemy['Code'] == 'Buta':
         enemy['name'] = 'Pig'
-    if enemy['Code'] == 'Shishi':
+    if enemy['Code'] == 'Inoshishi':
         enemy['name'] = 'Boar'
     if enemy['Code'] == 'Shika':
         enemy['name'] = 'Deer'
@@ -1070,6 +1070,12 @@ def hotfixEnemy(name, enemy):
         enemy['name'] = 'Sparrow'
     if enemy['Code'] == 'Kiji':
         enemy['name'] = 'Pheasant'
+    if enemy['Code'] == 'Shijimi':
+        enemy['name'] = 'Clam'
+    if enemy['Code'] == 'Ayu':
+        enemy['name'] = 'Sweetfish'
+    if enemy['Code'] == 'Aburamushi':
+        enemy['name'] = 'Aphid'
 
     return enemy
 

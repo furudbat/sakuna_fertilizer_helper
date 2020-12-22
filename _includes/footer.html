@@ -11,12 +11,12 @@
             {%- endif -%}
 
             {%- if site.twitter_username -%}
-            <span class="mx-2 p-1"><a href="https://twitter.com/{{site.twitter_username | url_encode}}"
-                target="_blank"><i class="fab fa-2x fa-twitter-square"></i></a></span>
+            <span class="mx-2 p-1"><a href="https://twitter.com/{{site.twitter_username | url_encode}}" target="_blank">
+              <i class="fab fa-2x fa-twitter-square"></i><span class="sr-only">Twitter</span></a></span>
             {%- endif -%}
             {%- if site.github_username -%}
-            <span class="mx-2 p-1"><a href="https://github.com/{{site.github_username | url_encode}}" target="_blank"><i
-                  class="fab fa-2x fa-github-square"></i></a></span>
+            <span class="mx-2 p-1"><a href="https://github.com/{{site.github_username | url_encode}}" target="_blank">
+              <i class="fab fa-2x fa-github-square"></i><span class="sr-only">GitHub</span></a></span>
             {%- endif -%}
           </li>
           {%- if site.email -%}

@@ -177,7 +177,12 @@ export class FertilizeComponentsAdapter {
                     <input type="number" value="${item.in_fertilizer}" data-index="${index}" data-name="${item.item.name}" data-val="${item.in_fertilizer}" class="form-control form-control-sm fertilizer-item-amount" placeholder="${site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}" max="${max}" ${readonly}>
                 </div>
                 <div class="col-6 py-2 pl-1 text-left ${color}">${item.item.name}</div>
-                <div class="col-3 py-1 text-right"><button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item.item.name}"><i class="fas fa-minus"></i></button></div>
+                <div class="col-3 py-1 text-right">
+                    <button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item.item.name}">
+                        <i class="fas fa-minus"></i>
+                        <span class="sr-only">${site.data.strings.fertilizer_helper.inventory.remove_from_inventory_long}</span>
+                    </button>
+                </div>
             </div>
         </li>`;
     }

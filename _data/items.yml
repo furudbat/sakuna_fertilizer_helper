@@ -99,7 +99,7 @@
   description: This is a base component for any fertilizer.When making fertilizer,  you'll
     start with this before deciding what other nutrients to add.
   enemy_drops:
-  - name: Aburamushi
+  - name: Aphid
     time: Always
   fertilizer_bonus:
     kernel_fertilizer: 8
@@ -587,7 +587,7 @@
   description: A fish scale that can be turned into a bluish-purpledye,  if it's crushed
     and mixed with the right plants.
   enemy_drops:
-  - name: Ayu
+  - name: Sweetfish
     time: Always
   fertilizer_bonus:
     aesthetic_luck: 5
@@ -646,7 +646,7 @@
   enemy_drops:
   - name: Pig
     time: Always
-  - name: Inoshishi
+  - name: Boar
     time: Always
   - name: Deer
     time: Always
@@ -669,7 +669,7 @@
   description: A jewel formed inside the shell of a demon clam.Apparently its devolution
     into demonhood has onlyserved to increase the quality of its pearl.
   enemy_drops:
-  - name: Shijimi
+  - name: Clam
     time: Always
   fertilizer_bonus:
     aroma_magic: 3
@@ -765,15 +765,15 @@
     time: Night
   - name: Sparrow
     time: Night
-  - name: Inoshishi
+  - name: Boar
     time: Night
   - name: Deer
     time: Night
   - name: Pheasant
     time: Night
-  - name: Ayu
+  - name: Sweetfish
     time: Night
-  - name: Shijimi
+  - name: Clam
     time: Night
   - name: Turtle
     time: Night
@@ -797,15 +797,15 @@
     time: Night
   - name: Sparrow
     time: Night
-  - name: Inoshishi
+  - name: Boar
     time: Night
   - name: Deer
     time: Night
   - name: Pheasant
     time: Night
-  - name: Ayu
+  - name: Sweetfish
     time: Night
-  - name: Shijimi
+  - name: Clam
     time: Night
   - name: Turtle
     time: Night
@@ -831,15 +831,15 @@
     time: Night
   - name: Sparrow
     time: Night
-  - name: Inoshishi
+  - name: Boar
     time: Night
   - name: Deer
     time: Night
   - name: Pheasant
     time: Night
-  - name: Ayu
+  - name: Sweetfish
     time: Night
-  - name: Shijimi
+  - name: Clam
     time: Night
   - name: Turtle
     time: Night
@@ -868,15 +868,15 @@
     time: Night
   - name: Sparrow
     time: Night
-  - name: Inoshishi
+  - name: Boar
     time: Night
   - name: Deer
     time: Night
   - name: Pheasant
     time: Night
-  - name: Ayu
+  - name: Sweetfish
     time: Night
-  - name: Shijimi
+  - name: Clam
     time: Night
   - name: Turtle
     time: Night
@@ -902,15 +902,15 @@
     time: Night
   - name: Sparrow
     time: Night
-  - name: Inoshishi
+  - name: Boar
     time: Night
   - name: Deer
     time: Night
   - name: Pheasant
     time: Night
-  - name: Ayu
+  - name: Sweetfish
     time: Night
-  - name: Shijimi
+  - name: Clam
     time: Night
   - name: Turtle
     time: Night
@@ -964,7 +964,7 @@
     The meat has a slight gamey odor, it must begently boiled to bring out the delicate
     flavor.
   enemy_drops:
-  - name: Inoshishi
+  - name: Boar
     time: Always
   expiable: true
   fertilizer_bonus:
@@ -1121,7 +1121,7 @@
   description: A fortuitous fish that has been used in divination sinceancient times.
     I must say, it's one of my favorites!
   enemy_drops:
-  - name: Ayu
+  - name: Sweetfish
     time: Always
   expiable: true
   fertilizer_bonus:
@@ -1367,7 +1367,7 @@
   description: Shellfish suck up the spiritual energy from the mudand sand. Particularly
     big clams are liable to devolveinto demons if exposed to too much negative energy.
   enemy_drops:
-  - name: Shijimi
+  - name: Clam
     time: Always
   expiable: true
   fertilizer_bonus:
@@ -2340,7 +2340,7 @@
   description: A raw oil extracted from perilla seeds and the like.It contains dregs
     and is rather pungent, making itdifficult to use in this form.
   enemy_drops:
-  - name: Aburamushi
+  - name: Aphid
     time: Always
   fertilizer_bonus:
     leaf_fertilizer: 5

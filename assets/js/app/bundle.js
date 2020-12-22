@@ -56493,7 +56493,7 @@ var FertilizeComponentsAdapter = (function () {
         var in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
         var max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : fertilizer_components_1.MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
         var color = inventory_1.Inventory.getStateFocusTextColor(item.item.fertilizer_bonus);
-        return "<li class=\"list-group-item list-group-item p-1\" data-index=\"" + index + "\" data-name=\"" + item.item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left " + color + "\">" + item.item.name + "</div>\n                <div class=\"col-3 py-1 text-right\"><button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.item.name + "\"><i class=\"fas fa-minus\"></i></button></div>\n            </div>\n        </li>";
+        return "<li class=\"list-group-item list-group-item p-1\" data-index=\"" + index + "\" data-name=\"" + item.item.name + "\">\n            <div class=\"row no-gutters\">\n                <div class=\"col-3 text-left py-2\">\n                    <input type=\"number\" value=\"" + item.in_fertilizer + "\" data-index=\"" + index + "\" data-name=\"" + item.item.name + "\" data-val=\"" + item.in_fertilizer + "\" class=\"form-control form-control-sm fertilizer-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + fertilizer_components_1.MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS + "\" max=\"" + max + "\" " + readonly + ">\n                </div>\n                <div class=\"col-6 py-2 pl-1 text-left " + color + "\">" + item.item.name + "</div>\n                <div class=\"col-3 py-1 text-right\">\n                    <button class=\"btn btn-danger btn-small remove-item-from-fertilizer\" data-index=\"" + index + "\" data-name=\"" + item.item.name + "\">\n                        <i class=\"fas fa-minus\"></i>\n                        <span class=\"sr-only\">" + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory_long + "</span>\n                    </button>\n                </div>\n            </div>\n        </li>";
     };
     FertilizeComponentsAdapter.prototype.renderEmptyElementHtml = function (index) {
         return "<li class=\"list-group-item list-group-item text-center\" data-index=\"" + index + "\" data-name=\"\">-</li>";
@@ -57961,7 +57961,7 @@ var InventoryAdapter = (function (_super) {
                 {
                     data: 'item.name',
                     render: function (data, type) {
-                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\"><i class=\"fas fa-plus\"></i></button>" : '';
+                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-fertilizer\" data-name=\"" + data + "\">\n                            <i class=\"fas fa-plus\"></i>\n                            <span class=\"sr-only\">" + site_1.site.data.strings.fertilizer_helper.inventory.col_add_to_fertilizer_long + "</span>\n                        </button>" : '';
                     }
                 },
                 {
@@ -58536,7 +58536,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getFindInContent = function (row) {
         var ret = '';
         if (row.find_in !== undefined && row.find_in) {
-            ret = "<h5>" + site_1.site.data.strings.item_list.materials.find_in_label + "</h5>";
+            ret = "<p class=\"font-weight-bolder\">" + site_1.site.data.strings.item_list.materials.find_in_label + "</p>";
             ret += row.find_in.map(function (find_in) {
                 var find_location_time = '';
                 if (find_in.season != item_data_1.FindInSeason.Always) {
@@ -58550,7 +58550,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getEnemyDropContent = function (row) {
         var ret = '';
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = "<h5>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</h5>";
+            ret = "<p class=\"font-weight-bolder\">" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</p>";
             ret += row.enemy_drops.map(function (enemy_drop) {
                 var drop_time = '';
                 if (enemy_drop.time != item_data_1.EnemyDropTime.Always) {
@@ -58565,7 +58565,7 @@ var ItemListAdapter = (function () {
         var ret = '';
         var cooking_row = row;
         if ((row.ingredients !== undefined && row.ingredients) || (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients)) {
-            ret = "<h5>" + site_1.site.data.strings.item_list.ingredients.label + "</h5>";
+            ret = "<p class=\"font-weight-bolder\">" + site_1.site.data.strings.item_list.ingredients.label + "</p>";
         }
         var map_ingredient = function (ingredients, ingredient, index) {
             var amount = (ingredient.amount > 0) ? ingredient.amount.toString() + 'x' : '';
@@ -58600,7 +58600,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getWhenSpoiledContent = function (row) {
         var ret = '';
         if (row.when_spoiled !== undefined) {
-            ret += "<h5>" + site_1.site.data.strings.item_list.food.when_spoiled_label + "</h5>";
+            ret += "<p class=\"font-weight-bolder\">" + site_1.site.data.strings.item_list.food.when_spoiled_label + "</p>";
             ret += "" + row.when_spoiled;
         }
         return ret;
@@ -58717,6 +58717,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MaterialItemListAdapter = void 0;
 var inventory_1 = require("./inventory");
 var itemlist_adapter_1 = require("./itemlist.adapter");
+var site_1 = require("./site");
 var MaterialItemListAdapter = (function (_super) {
     __extends(MaterialItemListAdapter, _super);
     function MaterialItemListAdapter(table_selector, data) {
@@ -58845,7 +58846,7 @@ var MaterialItemListAdapter = (function (_super) {
                 {
                     data: 'name',
                     render: function (data, type) {
-                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-inventory\" data-name=\"" + data + "\"><i class=\"fas fa-plus\"></i></button>" : '';
+                        return (type === 'display') ? "<button class=\"btn btn-primary btn-small add-item-to-inventory\" data-name=\"" + data + "\">\n                            <span class=\"sr-only\">" + site_1.site.data.strings.table.itemlist.col_add_to_inventory_long + "</span>\n                            <i class=\"fas fa-plus\"></i>\n                        </button>" : '';
                     }
                 },
                 {
@@ -59062,7 +59063,7 @@ var MaterialItemListAdapter = (function (_super) {
 }(itemlist_adapter_1.ItemListAdapter));
 exports.MaterialItemListAdapter = MaterialItemListAdapter;
 
-},{"./inventory":33,"./itemlist.adapter":35}],38:[function(require,module,exports){
+},{"./inventory":33,"./itemlist.adapter":35,"./site":39}],38:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DataListSubject = exports.DataSubject = void 0;
