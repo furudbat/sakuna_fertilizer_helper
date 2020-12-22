@@ -250,7 +250,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.magic, row.food_bonus?.magic), row.food_bonus?.magic_multiply || row.season_food_bonus?.magic_multiply;
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.magic, row.food_bonus?.magic, row.food_bonus?.magic_multiply || row.season_food_bonus?.magic_multiply);
                     }
                 },
                 {
@@ -387,7 +387,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
     }
 
 
-    private getFoodBuff(type: string, season_buff: SeasonBuff | undefined, season_value: number | undefined, value: number | undefined, multiply: boolean | undefined = false) {
+    private getFoodBuff(type: string, season_buff: SeasonBuff | undefined, season_value: number | undefined, value: number | undefined, multiply: boolean | undefined = undefined) {
         const is_season_buff = this.isSeasonalBuffValue(season_buff);
         const boost_value = this.getFoodBuffValue(season_buff, season_value, value);
 
@@ -418,7 +418,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
             return `<span data-value="${boost_value}">${content}</span>`;
             */
            const text_color = (this.getFoodBuffOnlySeasonValue(season_buff, season_value) != 0)? 'seasonal-buff-state' : ''; 
-           const boost_value_html = CookingItemListAdapter.renderBuffBonusHtml(boost_value, false, false, multiply);
+           const boost_value_html = CookingItemListAdapter.renderBuffBonusHtml(boost_value, undefined, false, multiply);
            return (is_season_buff)? `<span class="${text_color}">${boost_value_html}</span>` : boost_value_html;
         }
 

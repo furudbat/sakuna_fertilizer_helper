@@ -13,7 +13,7 @@ export function render_value_html(value: number | undefined, multiply: boolean |
     const val_number = (value !== undefined) ? value as number : 0;
     let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
     if (multiply !== undefined && multiply) {
-        val_str = `${val_str}*`;
+        val_str = `*${val_number}`;
     }
     return `<span class="text-center">${val_str}</span>`;
 };
@@ -22,7 +22,7 @@ export function render_buff_bonus_html(value: number | undefined, invert_color: 
     const val_number = (value !== undefined) ? value as number : 0;
     let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
     if (multiply !== undefined && multiply) {
-        val_str = `${val_str}*`;
+        val_str = `*${val_number}`;
     }
 
     if (invert_color !== undefined) {
@@ -54,8 +54,8 @@ export function render_buff_bonus_html(value: number | undefined, invert_color: 
 
 export function render_buff_bonus(property_name: string, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
     return function (data: any, type: string, row: any) {
-        const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
-        const multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') : undefined;
+        const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) as number : 0;
+        const multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') as boolean : undefined;
         if (type === 'display') {
             return render_buff_bonus_html(value, invert_color, overflow, multiply);
         }
@@ -68,8 +68,8 @@ export function render_buff_bonus(property_name: string, invert_color: boolean |
 
 export function render_value_from_property(property_name: string) {
     return function (data: any, type: string, row: any) {
-        const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
-        const multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') : undefined;
+        const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) as number : 0;
+        const multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') as boolean : undefined;
         if (type === 'display') {
             return render_value_html(value, multiply);
         }

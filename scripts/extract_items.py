@@ -724,7 +724,7 @@ def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only
             name = row['NameEn']
             if name:
                 main_sources = [{'name': name, 'Code': row['Code']}]
-                if '~SourceMain~' in name and row['SourceMain'] != '-':
+                if row['SourceMain'] != '-':
                     source_main = parseSource(name, row['SourceMain'], item_names)
 
                     main_sources = []

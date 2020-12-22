@@ -4602,7 +4602,40 @@
       name: Natural Healing
     - level: 2
       name: Herbalist
-    fullness: 5
+    fullness: 20
+    hp: 5
+    luck: 12
+    sp: 2
+    strength: 5
+  ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Brown Rice
+    operator: ''
+  name: Seven Herb Porridge
+  season_buff: Spring
+  season_food_bonus:
+    fullness: 2
+    luck: 5
+    sp: 1
+  sub_category: Soup
+- category: Cooking
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    - level: 2
+      name: Herbalist
+    fullness: 20
+    hp: 5
     luck: 12
     sp: 2
   ingredients:
@@ -4611,6 +4644,132 @@
     operator: and
   - amount: 1
     name: Seven Herbs
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Mixed Rice
+    operator: ''
+  name: Seven Herb Porridge
+  season_buff: Spring
+  season_food_bonus:
+    fullness: 2
+    luck: 5
+    sp: 1
+  sub_category: Soup
+- category: Cooking
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    - level: 2
+      name: Herbalist
+    fullness: 20
+    luck: 12
+    sp: 2
+  ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: White Rice
+    operator: ''
+  name: Seven Herb Porridge
+  season_buff: Spring
+  season_food_bonus:
+    fullness: 2
+    luck: 5
+    sp: 1
+  sub_category: Soup
+- category: Cooking
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    - level: 2
+      name: Herbalist
+    fullness: 15
+    luck: 12
+    sp: 2
+  ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Wheat
+    operator: ''
+  name: Seven Herb Porridge
+  season_buff: Spring
+  season_food_bonus:
+    fullness: 2
+    luck: 5
+    sp: 1
+  sub_category: Soup
+- category: Cooking
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    - level: 2
+      name: Herbalist
+    fullness: 10
+    hp: 2
+    luck: 12
+    sp: 2
+  ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Foxtail Millet
+    operator: ''
+  name: Seven Herb Porridge
+  season_buff: Spring
+  season_food_bonus:
+    fullness: 2
+    luck: 5
+    sp: 1
+  sub_category: Soup
+- category: Cooking
+  description: Porridge garnished with seven herbs,finely chopped. Its light, refreshingflavor
+    heralds the arrival of spring.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Natural Healing
+    - level: 2
+      name: Herbalist
+    fullness: 10
+    luck: 12
+    magic: 2
+    sp: 2
+  ingredients:
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Sanwa Millet
     operator: ''
   name: Seven Herb Porridge
   season_buff: Spring
@@ -10425,8 +10584,701 @@
   name: Kitsune Udon
   sub_category: Main Dish
 - category: Cooking
-  description: Ohoho, udon topped with Tempura Udon tempura?Yes please! The way the
+  description: Ohoho, udon topped with Rabbit Meat tempura?Yes please! The way the
     fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 12
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Rabbit Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Pork tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 7
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Pork
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Boar Meat tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 11
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Boar Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Venison tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 8
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Venison
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Bear Meat tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 10
+    vitality: 6
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Bear Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Badger Meat tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 7
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Badger Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Turtle Meat tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 12
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 5
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Turtle Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Sparrow Meat tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 6
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Sparrow Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Pheasant Meat tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 14
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Pheasant Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Duck Meat tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 6
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 4
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Duck Meat
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Loach tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 6
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Loach
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Sweetfish tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 5
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Sweetfish
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Carp tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 13
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Carp
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Masu Salmon tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 6
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Masu Salmon
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Char tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 6
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Char
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Crucian Carp tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 29
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Crucian Carp
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Salmon tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 6
+    sp: 8
+    strength: 10
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Salmon
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Smelt tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 6
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Smelt
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Herring tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 28
+    hp: 8
+    luck: 2
+    magic: 5
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Herring
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Eel tempura?Yes please! The way the fried coating
+    dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 13
+    strength: 11
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Eel
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Basket Clam tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 5
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Basket Clam
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Tekusari tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
   food_bonus:
     enchant:
     - level: 2
@@ -10450,6 +11302,538 @@
     operator: and
   - amount: 1
     name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Tekusari
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Acorn tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Acorn
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Taro tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 29
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Taro
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Potato tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 29
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 4
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Potato
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Onion tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 6
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Onion
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Warabi tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 12
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Warabi
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Horsetail tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 4
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Horsetail
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Mugwort tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 4
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Mugwort
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Seven Herbs tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 4
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Root Crops tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 10
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Root Crops
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Cucumber tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 4
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Cucumber
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Maize tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Maize
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Mushroom tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Mushroom
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Matsutake tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 52
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Matsutake
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Chestnut tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 2
+    magic: 6
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Chestnut
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Ginkgo Nut tempura?Yes please! The way the
+    fried coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 12
+    luck: 2
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Ginkgo Nut
+    operator: ''
+  name: Tempura Udon
+  sub_category: Main Dish
+- category: Cooking
+  description: Ohoho, udon topped with Persimmon tempura?Yes please! The way the fried
+    coating dissolvesin the broth is utterly magnificent.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    fullness: 25
+    hp: 8
+    luck: 6
+    magic: 2
+    sp: 8
+    strength: 6
+    vitality: 2
+  ingredients:
+  - amount: 4
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Salt
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Persimmon
     operator: ''
   name: Tempura Udon
   sub_category: Main Dish
@@ -10552,7 +11936,744 @@
   name: Sansai Soba
   sub_category: Main Dish
 - category: Cooking
-  description: Soba noodles adorned with Tempura Soba tempurais not a dish to be overlooked
+  description: Soba noodles adorned with Rabbit Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 6
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Rabbit Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Pork tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 7
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Pork
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Boar Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 17
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Boar Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Venison tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 18
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Venison
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Bear Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 16
+    vitality: 6
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Bear Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Badger Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 7
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Badger Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Turtle Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    hp: 4
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 5
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Turtle Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Sparrow Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 16
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Sparrow Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Pheasant Meat tempurais not a dish to be
+    overlooked or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 8
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Pheasant Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Duck Meat tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 6
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 4
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Duck Meat
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Loach tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 6
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Loach
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Sweetfish tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 5
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Sweetfish
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Carp tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    hp: 5
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Carp
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Masu Salmon tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 16
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Masu Salmon
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Char tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 6
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Char
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Crucian Carp tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 29
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Crucian Carp
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Salmon tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 16
+    sp: 2
+    strength: 16
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Salmon
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Smelt tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 6
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Smelt
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Herring tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 28
+    luck: 2
+    magic: 15
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Herring
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Eel tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 7
+    strength: 17
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Eel
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Basket Clam tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 15
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Basket Clam
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Tekusari tempurais not a dish to be overlooked
     or underestimated.The texture of the noodles is perfection itself.
   food_bonus:
     enchant:
@@ -10579,6 +12700,572 @@
     operator: and
   - amount: 1
     name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Tekusari
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Acorn tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Acorn
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Taro tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 29
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Taro
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Potato tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 29
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 4
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Potato
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Onion tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 6
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Onion
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Warabi tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 6
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Warabi
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Horsetail tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 14
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Horsetail
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Mugwort tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 4
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Mugwort
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Seven Herbs tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 4
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Seven Herbs
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Root Crops tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    hp: 2
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Root Crops
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Cucumber tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 4
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Cucumber
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Maize tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Maize
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Mushroom tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Mushroom
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Matsutake tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 52
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Matsutake
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Chestnut tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 2
+    magic: 16
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Chestnut
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Ginkgo Nut tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    hp: 4
+    luck: 2
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Ginkgo Nut
+    operator: ''
+  name: Tempura Soba
+  sub_category: Main Dish
+- category: Cooking
+  description: Soba noodles adorned with Persimmon tempurais not a dish to be overlooked
+    or underestimated.The texture of the noodles is perfection itself.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 25
+    luck: 6
+    magic: 12
+    sp: 2
+    strength: 12
+    vitality: 2
+  ingredients:
+  - amount: 3
+    name: Buckwheat
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 3
+    name: Oil
+    operator: and
+  - amount: 1
+    name: Wheat
+    operator: and
+  - amount: 1
+    name: Egg
+    operator: ''
+  main_ingredients:
+  - amount: 1
+    name: Persimmon
     operator: ''
   name: Tempura Soba
   sub_category: Main Dish
@@ -13311,9 +15998,15 @@
 - category: Cooking
   description: Chopped garlic steeped in a savory soup stock.Do not judge this simple
     dish by looks alone;its flavor will speak for itself.
+  food_bonus:
+    vitality: 2
   ingredients:
   - amount: 1
     name: Soup Stock
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Garlic
     operator: ''
   name: Blanched Garlic
   sub_category: Side Dish
@@ -14056,6 +16749,379 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Rabbit Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Pork
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Boar Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Venison
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Bear Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Badger Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Turtle Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Sparrow Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Pheasant Meat
+    operator: ''
+  name: Sake Soaked Stir-Fry
+  sub_category: Main Dish
+- category: Cooking
+  description: Dried ingredients are rehydrated with sakeand lightly fried, enhancing
+    food and drinkalike! This technique is surely worth a try.
+  food_bonus:
+    enchant:
+    - level: 2
+      name: Natural Healing
+    magic: 2
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 2
+    name: Dried Duck Meat
     operator: ''
   name: Sake Soaked Stir-Fry
   sub_category: Main Dish
@@ -19592,6 +22658,858 @@
   - amount: 1
     name: Plum
     operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Tekusari
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Acorn
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 19
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Taro
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 19
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 4
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Potato
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 14
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Onion
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 24
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Warabi
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 4
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Horsetail
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 4
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mugwort
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 12
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Seven Herbs
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 4
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Root Crops
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 12
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Cucumber
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Maize
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mushroom
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 60
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Matsutake
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 10
+    magic: 6
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Chestnut
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 6
+    luck: 10
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Ginkgo Nut
+    operator: ''
+  name: Rabbit Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with rabbit meat, cooked untiltender. The broth has
+    absorbed the deep flavorof the meat.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 15
+    hp: 2
+    luck: 14
+    magic: 2
+    sp: 20
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Rabbit Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Persimmon
+    operator: ''
   name: Rabbit Hot Pot
   season_buff: Winter
   season_food_bonus:
@@ -19640,6 +23558,847 @@
   - amount: 1
     name: Plum
     operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Tekusari
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Acorn
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 24
+    hp: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Taro
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 24
+    hp: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 9
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Potato
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 4
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Onion
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 2
+    sp: 10
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Warabi
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 4
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Horsetail
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 9
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mugwort
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Seven Herbs
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 4
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Root Crops
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Cucumber
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Maize
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mushroom
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 50
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Matsutake
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 6
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Chestnut
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 6
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Ginkgo Nut
+    operator: ''
+  name: Boar Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with boar meat. The tough meatimparts a flavor that
+    deepens with each bite.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 4
+    magic: 2
+    sp: 6
+    strength: 17
+    vitality: 7
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Boar Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Persimmon
+    operator: ''
   name: Boar Hot Pot
   season_buff: Winter
   season_food_bonus:
@@ -19687,6 +24446,847 @@
     operator: or
   - amount: 1
     name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Tekusari
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Acorn
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 24
+    hp: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Taro
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 24
+    hp: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 4
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Potato
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 4
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Onion
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 18
+    sp: 15
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Warabi
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 20
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Horsetail
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 4
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mugwort
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Seven Herbs
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 4
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Root Crops
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Cucumber
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Maize
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mushroom
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 50
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Matsutake
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    magic: 22
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Chestnut
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 6
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Ginkgo Nut
+    operator: ''
+  name: Deer Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
+    satisfying flavor.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 2
+    luck: 4
+    magic: 18
+    sp: 11
+    strength: 2
+    vitality: 2
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Venison
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soup Stock
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Persimmon
     operator: ''
   name: Deer Hot Pot
   season_buff: Winter
@@ -19738,6 +25338,898 @@
     operator: or
   - amount: 1
     name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Tekusari
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Acorn
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 24
+    hp: 19
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Taro
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 24
+    hp: 19
+    vitality: 15
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Potato
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    luck: 4
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Onion
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    sp: 4
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Warabi
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    magic: 2
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Horsetail
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    vitality: 15
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mugwort
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    luck: 2
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Seven Herbs
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 21
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Root Crops
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    luck: 2
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Cucumber
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Maize
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mushroom
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    luck: 50
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Matsutake
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    magic: 4
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Chestnut
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 23
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Ginkgo Nut
+    operator: ''
+  name: Turtle Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 4
+      name: Natural Healing
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
+    and pairs well with vegetables.
+  food_bonus:
+    enchant:
+    - level: 3
+      name: Natural Healing
+    fullness: 20
+    hp: 19
+    luck: 4
+    vitality: 13
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Turtle Meat
+    operator: and
+  - amount: 2
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Kuchikami Sake
+    operator: or
+  - amount: 1
+    name: Doburoku
+    operator: or
+  - amount: 1
+    name: Amazake
+    operator: or
+  - amount: 1
+    name: Refined Sake
+    operator: or
+  - amount: 1
+    name: Medicinal Sake
+    operator: or
+  - amount: 1
+    name: Ginjo Sake
+    operator: or
+  - amount: 1
+    name: Daiginjo Sake
+    operator: or
+  - amount: 1
+    name: Beer
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Persimmon
     operator: ''
   name: Turtle Hot Pot
   season_buff: Winter
@@ -19791,6 +26283,959 @@
     operator: or
   - amount: 1
     name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Tekusari
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Acorn
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 24
+    hp: 10
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Taro
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 24
+    hp: 10
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 18
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Potato
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    luck: 4
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Onion
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 2
+    sp: 10
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Warabi
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 4
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Horsetail
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 18
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mugwort
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    luck: 2
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Seven Herbs
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 12
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Root Crops
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    luck: 2
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Cucumber
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Maize
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Mushroom
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    luck: 50
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Matsutake
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    magic: 6
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Chestnut
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 14
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Ginkgo Nut
+    operator: ''
+  name: Bear Hot Pot
+  season_buff: Winter
+  season_food_bonus:
+    enchant:
+    - level: 2
+      name: Biped's Bane
+    - level: 2
+      name: Quadruped Calamity
+  sub_category: Side Dish
+- category: Cooking
+  description: Hot pot brimming with bear meat. Not only is itnutritious, but the
+    fattiness it adds is unlikeany other meat.
+  food_bonus:
+    enchant:
+    - level: 1
+      name: Biped's Bane
+    - level: 1
+      name: Quadruped Calamity
+    fullness: 20
+    hp: 10
+    luck: 4
+    magic: 2
+    sp: 6
+    strength: 16
+    vitality: 16
+  ingredients:
+  - amount: 1
+    name: Saiken ???
+    operator: and
+  - amount: 3
+    name: Bear Meat
+    operator: and
+  - amount: 3
+    name: Spring Water
+    operator: and
+  - amount: 1
+    name: Soy Sauce
+    operator: and
+  - amount: 1
+    name: Sugar
+    operator: and
+  - amount: 1
+    name: Garlic
+    operator: or
+  - amount: 1
+    name: Wasabi
+    operator: or
+  - amount: 1
+    name: Ginger
+    operator: or
+  - amount: 1
+    name: Green Onion
+    operator: or
+  - amount: 1
+    name: Plum
+    operator: ''
+  main_ingredients:
+  - amount: 3
+    name: Persimmon
     operator: ''
   name: Bear Hot Pot
   season_buff: Winter
