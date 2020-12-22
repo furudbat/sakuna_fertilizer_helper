@@ -353,14 +353,14 @@ export class Application {
                 (item.fertilizer_bonus?.stickiness_gusto ?? 0)) / 3;
         };
         const get_aesthetic = (item: ItemData) => item.fertilizer_bonus?.aesthetic_luck ?? 0;
-        const get_aroma = (item: ItemData) => item.fertilizer_bonus?.armor_magic ?? 0;
+        const get_aroma = (item: ItemData) => item.fertilizer_bonus?.aroma_magic ?? 0;
         const get_balanced = (item: ItemData) => {
             return (item.fertilizer_bonus?.yield_hp ?? 0) +
                 (item.fertilizer_bonus?.taste_strength ?? 0) +
                 (item.fertilizer_bonus?.hardness_vitality ?? 0) +
                 (item.fertilizer_bonus?.stickiness_gusto ?? 0) +
                 (item.fertilizer_bonus?.aesthetic_luck ?? 0) +
-                (item.fertilizer_bonus?.armor_magic ?? 0);
+                (item.fertilizer_bonus?.aroma_magic ?? 0);
         };
 
         var that = this;
@@ -473,7 +473,7 @@ export class Application {
                 ret += calcPointsStats(item.item.fertilizer_bonus?.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
                 ret += calcPointsStats(item.item.fertilizer_bonus?.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
                 ret += calcPointsStats(item.item.fertilizer_bonus?.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
-                ret += calcPointsStats(item.item.fertilizer_bonus?.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.aroma_magic, fertilizer.aroma_magic, fertilizer.is_aroma_magic_max_or_overflow);
                 break;
             case FarmingFocus.Heartiness:
                 ret += item.points_fertilizer.heartiness;
@@ -495,7 +495,7 @@ export class Application {
             case FarmingFocus.Aroma:
                 ret += item.points_fertilizer.aroma;
 
-                ret += calcPointsStats(item.item.fertilizer_bonus?.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.aroma_magic, fertilizer.aroma_magic, fertilizer.is_aroma_magic_max_or_overflow);
                 break;
         }
 

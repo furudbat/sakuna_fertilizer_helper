@@ -25,7 +25,7 @@ So I made this Site to provide you help while mixing your "optimal" fertilizer a
 
 ## Run
 
-You need [Jekyll](https://jekyllrb.com/) and to run this project on your local machine run `bundle exec jekyll serve`.  
+You need [Jekyll](https://jekyllrb.com/) and to run this project on your local machine.  
 
 
 ## Requirements (for development)
@@ -35,13 +35,13 @@ You need [Jekyll](https://jekyllrb.com/) and to run this project on your local m
 
 ### install dependencies
 
-run `npm install`
+run `npm install` and `bundle install`
 
 
 ## Build
 
 Run `npm run build` (for production code) or `npm run build-dev` (for development code).  
-You can als run `bundle exec jekyll serve` for development or just run `./build.sh`
+or just run `./build.sh` for both. _(generate both bundle.js and bundle.min.js)_
 
 
 

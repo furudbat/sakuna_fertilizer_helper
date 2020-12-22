@@ -8,7 +8,7 @@ table:
     col_hardness_vitality: Hard./ Vital.
     col_stickiness_gusto: Stick./ Gusto
     col_aesthetic_luck: Aesth./ Luck
-    col_armor_magic: Armor/ Magic
+    col_aroma_magic: aroma/ Magic
     col_immunity: Immu.
     col_pesticide: Pest.
     col_herbicide: Herb.
@@ -229,8 +229,8 @@ fertilizer_helper:
       stickiness_gusto_short: Stick./Gus.
       aesthetic_luck: Aesthetic/Luck
       aesthetic_luck_short: Aest./ Luck
-      armor_magic: Armor/Magic
-      armor_magic_short: Armor/ Magic
+      aroma_magic: Aroma/Magic
+      aroma_magic_short: Aroma/ Magic
 
       immunity: Immunity
       immunity_short: Immu.
@@ -265,7 +265,7 @@ fertilizer_helper:
       hardness_vitality: Vit.
       stickiness_gusto: Gus.
       aesthetic_luck: Luck
-      armor_magic: Magic
+      aroma_magic: Magic
       immunity: Immu.
       pesticide: Pest.
       herbicide: Herb.

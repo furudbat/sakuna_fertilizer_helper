@@ -1,3 +1,4 @@
+import { Inventory } from "./inventory";
 import { CookingItemData, EnchantData, FoodItemData, ItemData, SeasonBuff } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
@@ -262,6 +263,93 @@ export class CookingItemListAdapter extends ItemListAdapter {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
                         return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.fullness, row.food_bonus?.fullness);
+                    }
+                },
+
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data: any, type: string, row: CookingItemData) {
+                        if (type === 'display') {
+                            return '';
+                        }
+
+                        let ret = '';
+
+                        if (row.fertilizer_bonus !== undefined) {
+                            ret += (row.fertilizer_bonus?.leaf_fertilizer !== undefined)? ';Leaf: ' + row.fertilizer_bonus?.leaf_fertilizer : '';
+                            ret += (row.fertilizer_bonus?.kernel_fertilizer !== undefined)? ';Kernel: ' + row.fertilizer_bonus?.kernel_fertilizer : '';
+                            ret += (row.fertilizer_bonus?.root_fertilizer !== undefined)? ';Root: ' + row.fertilizer_bonus?.root_fertilizer : '';
+
+                            ret += (row.fertilizer_bonus?.yield_hp !== undefined)? ';Yield: ' + row.fertilizer_bonus?.yield_hp + ';HP: ' + row.fertilizer_bonus?.yield_hp : '';
+                            ret += (row.fertilizer_bonus?.taste_strength !== undefined)? ';Taste: ' + row.fertilizer_bonus?.taste_strength + ';Strength: ' + row.fertilizer_bonus?.taste_strength : '';
+                            ret += (row.fertilizer_bonus?.hardness_vitality !== undefined)? ';Hardness: ' + row.fertilizer_bonus?.hardness_vitality + ';Vitality: ' + row.fertilizer_bonus?.hardness_vitality : '';
+                            ret += (row.fertilizer_bonus?.stickiness_gusto !== undefined)? ';Stickiness: ' + row.fertilizer_bonus?.stickiness_gusto + ';Gusto: ' + row.fertilizer_bonus?.stickiness_gusto : '';
+                            ret += (row.fertilizer_bonus?.aesthetic_luck !== undefined)? ';Aesthetic: ' + row.fertilizer_bonus?.aesthetic_luck + ';Luck: ' + row.fertilizer_bonus?.aesthetic_luck : '';
+                            ret += (row.fertilizer_bonus?.aroma_magic !== undefined)? ';Aroma: ' + row.fertilizer_bonus?.aroma_magic + ';Magic: ' + row.fertilizer_bonus?.aroma_magic : '';
+
+                            ret += (row.fertilizer_bonus?.immunity !== undefined)? ';Immunity: ' + row.fertilizer_bonus?.immunity : '';
+                            ret += (row.fertilizer_bonus?.pesticide !== undefined)? ';Pesticide: ' + row.fertilizer_bonus?.pesticide : '';
+                            ret += (row.fertilizer_bonus?.herbicide !== undefined)? ';Herbicide: ' + row.fertilizer_bonus?.herbicide : '';
+
+                            ret += (row.fertilizer_bonus?.toxicity !== undefined)? ';Toxicity: ' + row.fertilizer_bonus?.toxicity : '';
+
+                            ret += ';' + Inventory.getStateFocus(row.fertilizer_bonus);
+                        }
+
+                        if (row.find_in !== undefined) {
+                            ret += ';Find In: ' + row.find_in.map( it => `${it.name} ${it.season}`).join('|');
+                        }
+
+                        if (row.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + row.enemy_drops.map( it => `${it.name} ${it.time}`).join('|');
+                        }
+
+                        if (row.expiable !== undefined && row.expiable && row.life !== undefined) {
+                            ret += ';Life: ' + row.life + ';Expirable';
+                        }
+
+                        if (row.food_bonus !== undefined) {
+                            ret += (row.food_bonus?.hp !== undefined)? ';HP: ' + row.food_bonus?.hp : '';
+                            ret += (row.food_bonus?.sp !== undefined)? ';SP: ' + row.food_bonus?.hp : '';
+                            ret += (row.food_bonus?.strength !== undefined)? ';Strength: ' + row.food_bonus?.strength : '';
+                            ret += (row.food_bonus?.vitality !== undefined)? ';Vitality: ' + row.food_bonus?.vitality : '';
+                            ret += (row.food_bonus?.magic !== undefined)? ';Magic: ' + row.food_bonus?.magic : '';
+                            ret += (row.food_bonus?.luck !== undefined)? ';Luck: ' + row.food_bonus?.luck : '';
+                            ret += (row.food_bonus?.fullness !== undefined)? ';Fullness: ' + row.food_bonus?.fullness : '';
+                        }
+
+                        if (row.main_ingredients !== undefined) {
+                            ret += ';Main Ingredients: ' + row.main_ingredients.map( it => `${it.amount}x ${it.name}`).join(', ');
+                        }
+                        if (row.ingredients !== undefined) {
+                            ret += ';Ingredients: ' + row.ingredients.map( it => `${it.amount}x ${it.name}`).join(', ');
+                        }
+
+                        if (row.price !== undefined) {
+                            ret += ';Price: ' + row.price;
+                        }
+
+                        if (row.when_spoiled !== undefined) {
+                            ret += ';When Spoiled: ' + row.when_spoiled;
+                        }
+
+
+                        if (row.season_buff !== undefined) {
+                            ret += ';Season: ' + row.season_buff + ';Season Buff: ' + row.season_buff + ';Seasonal';
+                        }
+
+                        if (row.season_food_bonus !== undefined) {
+                            ret += (row.season_food_bonus?.hp !== undefined)? ';Season HP: ' + row.season_food_bonus?.hp : '';
+                            ret += (row.season_food_bonus?.sp !== undefined)? ';Season SP: ' + row.season_food_bonus?.hp : '';
+                            ret += (row.season_food_bonus?.strength !== undefined)? ';Season Strength: ' + row.season_food_bonus?.strength : '';
+                            ret += (row.season_food_bonus?.vitality !== undefined)? ';Season Vitality: ' + row.season_food_bonus?.vitality : '';
+                            ret += (row.season_food_bonus?.magic !== undefined)? ';Season Magic: ' + row.season_food_bonus?.magic : '';
+                            ret += (row.season_food_bonus?.luck !== undefined)? ';Season Luck: ' + row.season_food_bonus?.luck : '';
+                            ret += (row.season_food_bonus?.fullness !== undefined)? ';Season Fullness: ' + row.season_food_bonus?.fullness : '';
+                        }
+
+                        return ret;
                     }
                 }
             ]

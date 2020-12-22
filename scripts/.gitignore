@@ -16,6 +16,7 @@ WorldmapLandmark.*.csv
 
 *.xlsx
 
+materials.yml
 cooking.yml
 enemies.json
 food.yml

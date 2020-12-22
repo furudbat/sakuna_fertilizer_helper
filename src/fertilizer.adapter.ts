@@ -57,7 +57,7 @@ export class FertilizerAdapter {
                 const hardness_vitality = render_buff_bonus_html(fertilizer.hardness_vitality, false, fertilizer.is_hardness_vitality_overflow);
                 const stickiness_gusto = render_buff_bonus_html(fertilizer.stickiness_gusto, false, fertilizer.is_stickiness_gusto_overflow);
                 const aesthetic_luck = render_buff_bonus_html(fertilizer.aesthetic_luck, false, fertilizer.is_aesthetic_luck_overflow);
-                const armor_magic = render_buff_bonus_html(fertilizer.armor_magic, false, fertilizer.is_armor_magic_overflow);
+                const aroma_magic = render_buff_bonus_html(fertilizer.aroma_magic, false, fertilizer.is_aroma_magic_overflow);
 
                 const immunity = render_buff_bonus_html(fertilizer.immunity, false, fertilizer.is_immunity_overflow);
                 const pesticide = render_buff_bonus_html(fertilizer.pesticide, false, fertilizer.is_pesticide_overflow);
@@ -70,7 +70,7 @@ export class FertilizerAdapter {
                 $('#fertilizerHardnessVitality').html(hardness_vitality);
                 $('#fertilizerStickinessGusto').html(stickiness_gusto);
                 $('#fertilizerAestheticLuck').html(aesthetic_luck);
-                $('#fertilizerArmorMagic').html(armor_magic);
+                $('#fertilizerAromaMagic').html(aroma_magic);
 
                 $('#fertilizerImmunity').html(immunity);
                 $('#fertilizerPesticide').html(pesticide);
@@ -147,7 +147,7 @@ export class FertilizerAdapter {
             data.hardness_vitality = this.calcComponentHardnessVitalityValue(components);
             data.stickiness_gusto = this.calcComponentStickinessGustoValue(components);
             data.aesthetic_luck = this.calcComponentAestheticLuckValue(components);
-            data.armor_magic = this.calcComponentArmorMagicValue(components);
+            data.aroma_magic = this.calcComponentAromaMagicValue(components);
 
             data.immunity = this.calcComponentImmunityValue(components);
             data.pesticide = this.calcComponentPesticideValue(components);
@@ -346,8 +346,8 @@ export class FertilizerAdapter {
         }, 0);
     }
 
-    private calcComponentArmorMagicValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => component.item.fertilizer_bonus?.armor_magic ?? 0).reduce((sum, value, index) => {
+    private calcComponentAromaMagicValue(components: ItemFertilizerComponentData[]): number {
+        return components.map(component => component.item.fertilizer_bonus?.aroma_magic ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);

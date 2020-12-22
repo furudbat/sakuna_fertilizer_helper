@@ -7,6 +7,7 @@ import re
 import io
 from csv import DictReader
 from pprint import pprint
+import xlsxwriter 
 
 insects = []
 meat = []
@@ -152,13 +153,17 @@ def parseSource(item_name, sourcestr, item_names, auto_name=None):
         operator = ''
         source = ''
         item_added = False
+        if i >= len(sources):
+            break
 
         source = sources[i]
         if i+1 < len(sources):
             if sources[i+1] == '|':
                 operator = 'or'
-            if sources[i+1] == '&':
+            elif sources[i+1] == '&':
                 operator = 'and'
+            else:
+                print("parseSource: unknown operator {}".format(sources[i+1]))
         else:
             operator = ''
 
@@ -182,7 +187,10 @@ def parseSource(item_name, sourcestr, item_names, auto_name=None):
                                 find_items = True
                                 item_added = True
                 if find_items:
-                    ret[-1]['operator'] = ''
+                    if len(ret) > 1:
+                        ret[-1]['operator'] = ''
+                    elif len(ret) == 1:
+                        ret[0]['operator'] = ''
                 else:
                     pprint(ret)
                     print("parseSource: flag {} not found, {}: {}".format(food_flag, item_name, sourcestr))
@@ -201,37 +209,55 @@ def parseSource(item_name, sourcestr, item_names, auto_name=None):
                     if meat_item['name']:
                         ret.append({"name": meat_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                ret[-1]['operator'] = ''
+                if len(ret) > 1:
+                    ret[-1]['operator'] = ''
+                elif len(ret) == 1:
+                    ret[0]['operator'] = ''
             elif item_code == 'Vegetable':
                 for vegetable_item in vegetables:
                     if vegetable_item['name']:
                         ret.append({"name": vegetable_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                ret[-1]['operator'] = ''
+                if len(ret) > 1:
+                    ret[-1]['operator'] = ''
+                elif len(ret) == 1:
+                    ret[0]['operator'] = ''
             elif item_code == 'Seafood':
                 for seafood_item in seafood:
                     if seafood_item['name']:
                         ret.append({"name": seafood_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                ret[-1]['operator'] = ''
+                if len(ret) > 1:
+                    ret[-1]['operator'] = ''
+                elif len(ret) == 1:
+                    ret[0]['operator'] = ''
             elif item_code == 'Grain':
                 for grain_item in grains:
                     if grain_item['name']:
                         ret.append({"name": grain_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                ret[-1]['operator'] = ''
+                if len(ret) > 1:
+                    ret[-1]['operator'] = ''
+                elif len(ret) == 1:
+                    ret[0]['operator'] = ''
             elif item_code == 'Insect':
                 for insect_item in insects:
                     if insect_item['name']:
                         ret.append({"name": insect_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                ret[-1]['operator'] = ''
+                if len(ret) > 1:
+                    ret[-1]['operator'] = ''
+                elif len(ret) == 1:
+                    ret[0]['operator'] = ''
             elif item_code == 'Spice':
                 for spice_item in spices:
                     if spice_item['name']:
                         ret.append({"name": spice_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                ret[-1]['operator'] = ''
+                if len(ret) > 1:
+                    ret[-1]['operator'] = ''
+                elif len(ret) == 1:
+                    ret[0]['operator'] = ''
             else:
                 for it in item_names:
                     if equalItemByCode(it, item_code):
@@ -294,9 +320,11 @@ def setFoodBonusValue(item, row, food_bonus_name, col_name, property_name):
                 item[food_bonus_name][property_name] = value
     elif col_name in row and row[col_name] == '*100':
         if property_name in item[food_bonus_name]:
-            item[food_bonus_name][property_name] = item[food_bonus_name][property_name] * 100
+            item[food_bonus_name][property_name] = item[food_bonus_name][property_name] * 100 if item[food_bonus_name][property_name] != 0 else 100
+            item[food_bonus_name][property_name + '_multiply'] = True
         else:
             item[food_bonus_name][property_name] = 100
+            item[food_bonus_name][property_name + '_multiply'] = True
 
 def setFoodBonusEnchant(item, row, food_bonus_name, col_name, enchants_map):
     if col_name in row and row[col_name] and row[col_name] != '-':
@@ -327,11 +355,12 @@ def setFertilizerBonus(item, row):
     setFertilizerBonusValue(item, row, 'Mnr_Hardness', 'hardness_vitality')
     setFertilizerBonusValue(item, row, 'Mnr_Viscose', 'stickiness_gusto')
     setFertilizerBonusValue(item, row, 'Mnr_Appearance', 'aesthetic_luck')
-    setFertilizerBonusValue(item, row, 'Mnr_Fragrance', 'armor_magic')
+    setFertilizerBonusValue(item, row, 'Mnr_Fragrance', 'aroma_magic')
 
     setFertilizerBonusValue(item, row, 'Mnr_Immunity', 'immunity')
     setFertilizerBonusValue(item, row, 'Mnr_Herbicide', 'herbicide')
     setFertilizerBonusValue(item, row, 'Mnr_Pesticide', 'pesticide')
+
     setFertilizerBonusValue(item, row, 'Mnr_Toxic', 'toxicity')
 
     return item
@@ -483,6 +512,10 @@ def setCookingAttr(item, row, item_names, main_source, source_name, food_map, en
 
     if 'source_main' in main_source:
         item['main_ingredients'] = [main_source['source_main']]
+        if len(item['main_ingredients']) > 1:
+            item['main_ingredients'][-1]['operator'] = ''
+        elif len(item['main_ingredients']) == 1:
+            item['main_ingredients'][0]['operator'] = ''
         # if main_source['source_main']['name'] == item['name']:
         #     for food in food_map.values():
         #         if food['name'] == main_source['source_main']['name'] and 'ingredients' in food and food['ingredients']:
@@ -916,6 +949,8 @@ def hotfixCooking(name, item_code, item):
         item['sub_category'] = 'Soup'
     elif 'SoftMainDish_' in item_code:
         item['sub_category'] = 'Side Dish'
+    elif 'SoupMainDish_' in item_code:
+        item['sub_category'] = 'Side Dish'
     elif 'Sweets_' in item_code:
         item['sub_category'] = 'Dessert'
     elif 'Drink_' in item_code:
@@ -985,7 +1020,7 @@ def hotfixFood(name, item):
         item['fertilizer_bonus']['hardness_vitality'] = 25
         item['fertilizer_bonus']['stickiness_gusto'] = 25
         item['fertilizer_bonus']['aesthetic_luck'] = 25
-        item['fertilizer_bonus']['armor_magic'] = 25
+        item['fertilizer_bonus']['aroma_magic'] = 25
 
 
     if 'fertilizer_bonus' in item and not item['fertilizer_bonus']:
@@ -1105,7 +1140,6 @@ def main():
     with open(r'items.json', 'r') as json_file:
         with open(r'../_data/items.yml', 'w') as yaml_file:
             yaml.safe_dump(json.load(json_file), yaml_file, default_flow_style=False, allow_unicode=True)
-
 
 if __name__ == "__main__":
     main()

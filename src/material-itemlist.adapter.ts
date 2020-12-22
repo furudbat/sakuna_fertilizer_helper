@@ -1,5 +1,5 @@
 import { Inventory } from "./inventory";
-import { FertilizerBonusData, FoodItemData, ItemData, MaterialOrFoodItemData } from "./item.data";
+import { FertilizerBonusData, FoodItemData, ItemData, MaterialItemData, MaterialOrFoodItemData } from "./item.data";
 import { ItemListAdapter } from "./itemlist.adapter";
 
 export class MaterialItemListAdapter extends ItemListAdapter {
@@ -66,7 +66,7 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                 case 8:
                     $(cell).addClass('text-center');
                     if (rowData.fertilizer_bonus !== undefined) {
-                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'armor_magic');
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'aroma_magic');
                     }
                     break;
 
@@ -221,10 +221,10 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                     data: null,
                     render: function (data: any, type: string, row: MaterialOrFoodItemData) {
                         if (type === 'display') {
-                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.armor_magic);
+                            return MaterialItemListAdapter.renderValueHtml(row.fertilizer_bonus?.aroma_magic);
                         }
 
-                        return row.fertilizer_bonus?.armor_magic ?? 0;
+                        return row.fertilizer_bonus?.aroma_magic ?? 0;
                     }
                 },
 
@@ -273,6 +273,54 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                 {
                     data: null,
                     render: MaterialItemListAdapter.renderExpiable
+                },
+
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data: any, type: string, row: MaterialOrFoodItemData) {
+                        if (type === 'display') {
+                            return '';
+                        }
+
+                        let ret = '';
+
+                        if (row.fertilizer_bonus !== undefined) {
+                            ret += (row.fertilizer_bonus?.leaf_fertilizer !== undefined)? ';Leaf: ' + row.fertilizer_bonus?.leaf_fertilizer : '';
+                            ret += (row.fertilizer_bonus?.kernel_fertilizer !== undefined)? ';Kernel: ' + row.fertilizer_bonus?.kernel_fertilizer : '';
+                            ret += (row.fertilizer_bonus?.root_fertilizer !== undefined)? ';Root: ' + row.fertilizer_bonus?.root_fertilizer : '';
+
+                            ret += (row.fertilizer_bonus?.yield_hp !== undefined)? ';Yield: ' + row.fertilizer_bonus?.yield_hp + ';HP: ' + row.fertilizer_bonus?.yield_hp : '';
+                            ret += (row.fertilizer_bonus?.taste_strength !== undefined)? ';Taste: ' + row.fertilizer_bonus?.taste_strength + ';Strength: ' + row.fertilizer_bonus?.taste_strength : '';
+                            ret += (row.fertilizer_bonus?.hardness_vitality !== undefined)? ';Hardness: ' + row.fertilizer_bonus?.hardness_vitality + ';Vitality: ' + row.fertilizer_bonus?.hardness_vitality : '';
+                            ret += (row.fertilizer_bonus?.stickiness_gusto !== undefined)? ';Stickiness: ' + row.fertilizer_bonus?.stickiness_gusto + ';Gusto: ' + row.fertilizer_bonus?.stickiness_gusto : '';
+                            ret += (row.fertilizer_bonus?.aesthetic_luck !== undefined)? ';Aesthetic: ' + row.fertilizer_bonus?.aesthetic_luck + ';Luck: ' + row.fertilizer_bonus?.aesthetic_luck : '';
+                            ret += (row.fertilizer_bonus?.aroma_magic !== undefined)? ';Aroma: ' + row.fertilizer_bonus?.aroma_magic + ';Magic: ' + row.fertilizer_bonus?.aroma_magic : '';
+
+                            ret += (row.fertilizer_bonus?.immunity !== undefined)? ';Immunity: ' + row.fertilizer_bonus?.immunity : '';
+                            ret += (row.fertilizer_bonus?.pesticide !== undefined)? ';Pesticide: ' + row.fertilizer_bonus?.pesticide : '';
+                            ret += (row.fertilizer_bonus?.herbicide !== undefined)? ';Herbicide: ' + row.fertilizer_bonus?.herbicide : '';
+
+                            ret += (row.fertilizer_bonus?.toxicity !== undefined)? ';Toxicity: ' + row.fertilizer_bonus?.toxicity : '';
+
+                            ret += ';' + Inventory.getStateFocus(row.fertilizer_bonus);
+                        }
+
+                        if (row.find_in !== undefined) {
+                            ret += ';Find in: ' + row.find_in.map( it => `${it.name} ${it.season}`).join('|');
+                        }
+
+                        if (row.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + row.enemy_drops.map( it => `${it.name} ${it.time}`).join('|');
+                        }
+
+                        const food_row = row as FoodItemData;
+                        if (food_row.expiable !== undefined && food_row.expiable && food_row.life !== undefined) {
+                            ret += ';Life: ' + food_row.life + ';Expirable';
+                        }
+
+                        return ret;
+                    }
                 }
             ]
         });

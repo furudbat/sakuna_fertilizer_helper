@@ -108,7 +108,7 @@ export class InventoryAdapter extends ItemListAdapter {
                             const hardness_vitality = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.hardness_vitality, false);
                             const stickiness_gusto = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.stickiness_gusto, false);
                             const aesthetic_luck = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.aesthetic_luck, false);
-                            const armor_magic = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.armor_magic, false);
+                            const aroma_magic = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.aroma_magic, false);
 
                             const immunity = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.immunity, false);
                             const pesticide = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.pesticide, false);
@@ -121,7 +121,7 @@ export class InventoryAdapter extends ItemListAdapter {
                             const show_hardness_vitality = ((item.fertilizer_bonus?.hardness_vitality ?? 0) === 0) ? 'd-none' : '';
                             const show_stickiness_gusto = ((item.fertilizer_bonus?.stickiness_gusto ?? 0) === 0) ? 'd-none' : '';
                             const show_aesthetic_luck = ((item.fertilizer_bonus?.aesthetic_luck ?? 0) === 0) ? 'd-none' : '';
-                            const show_armor_magic = ((item.fertilizer_bonus?.armor_magic ?? 0) === 0) ? 'd-none' : '';
+                            const show_aroma_magic = ((item.fertilizer_bonus?.aroma_magic ?? 0) === 0) ? 'd-none' : '';
                             const show_immunity = ((item.fertilizer_bonus?.immunity ?? 0) === 0) ? 'd-none' : '';
                             const show_pesticide = ((item.fertilizer_bonus?.pesticide ?? 0) === 0) ? 'd-none' : '';
                             const show_herbicide = ((item.fertilizer_bonus?.herbicide ?? 0) === 0) ? 'd-none' : '';
@@ -185,9 +185,9 @@ export class InventoryAdapter extends ItemListAdapter {
                                                 <div class="col-4 offset-1 aesthetic-luck text-left">${aesthetic_luck}</div>
                                             </div>
 
-                                            <div class="row no-gutters ${show_armor_magic}">
-                                                <div class="col-7 armor-magic-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.armor_magic}</div>
-                                                <div class="col-4 offset-1 armor-magic text-left">${armor_magic}</div>
+                                            <div class="row no-gutters ${show_aroma_magic}">
+                                                <div class="col-7 aroma-magic-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.aroma_magic}</div>
+                                                <div class="col-4 offset-1 aroma-magic text-left">${aroma_magic}</div>
                                             </div>
 
 

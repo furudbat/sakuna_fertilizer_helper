@@ -242,7 +242,7 @@
     time: Night
   fertilizer_bonus:
     aesthetic_luck: 1
-    armor_magic: 1
+    aroma_magic: 1
     hardness_vitality: 1
     pesticide: -2
     stickiness_gusto: 1
@@ -332,7 +332,7 @@
   description: Jade is known to have miraculous powers. Not onlyis it used as currency,  but
     it is revered by manyas a ceremonial implement as well.
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
     hardness_vitality: 3
     toxicity: 1
   find_in:
@@ -349,7 +349,7 @@
   description: Iridescent obsidian such as this is said to beexceptionally rare. No
     doubt it would make for finecrafting material.
   fertilizer_bonus:
-    armor_magic: 3
+    aroma_magic: 3
     hardness_vitality: 5
     toxicity: 1
   find_in:
@@ -394,7 +394,7 @@
     the two realms. Just one of thesecontains enough power to create a small island.
   fertilizer_bonus:
     aesthetic_luck: 25
-    armor_magic: 25
+    aroma_magic: 25
     hardness_vitality: 25
     stickiness_gusto: 25
     taste_strength: 25
@@ -489,7 +489,7 @@
 - category: Materials
   description: This grass fiber is indispensable for weaving.
   fertilizer_bonus:
-    armor_magic: 2
+    aroma_magic: 2
     kernel_fertilizer: 5
   find_in:
   - name: 'Gathering Area: River'
@@ -501,7 +501,7 @@
   description: This plant is often used to craft straw hats and raincoats. I have
     heard that it is easierto raise in humid climes.
   fertilizer_bonus:
-    armor_magic: 3
+    aroma_magic: 3
     kernel_fertilizer: 5
   find_in:
   - name: 'Gathering Area: Forest'
@@ -520,7 +520,7 @@
   description: Bark imported from a southern country.It rivals straw in its ease of
     use.
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
     kernel_fertilizer: 5
   name: Hemp Palm
   sub_category: Material
@@ -600,7 +600,7 @@
   description: This is a fiber produced by the thread of silkworms,  which were brought
     over from the country of Ouka.
   fertilizer_bonus:
-    armor_magic: 10
+    aroma_magic: 10
     pesticide: -2
   name: Silk
   sub_category: Material
@@ -608,7 +608,7 @@
   description: A miraculous thread selected from the finest silk.It is both a delight
     to the eyes and strong enoughto repel blades. It should make an excellent outfit.
   fertilizer_bonus:
-    armor_magic: 20
+    aroma_magic: 20
     pesticide: -5
   name: Spirit Thread
   sub_category: Material
@@ -616,7 +616,7 @@
   description: Yanato's highest quality paper,  said to lastfor a thousand years.
     In fact,  it's strongenough you can even make clothes out if it.
   fertilizer_bonus:
-    armor_magic: 8
+    aroma_magic: 8
     hardness_vitality: 8
     pesticide: -3
   name: Washi Paper
@@ -625,7 +625,7 @@
   description: How ominous... This cord appears to have been wovenwith the accursed
     power of a multitude of demons.May we find a way to bring some good out of it.
   fertilizer_bonus:
-    armor_magic: -10
+    aroma_magic: -10
     taste_strength: 20
   name: Demonic Braid
   sub_category: Material
@@ -636,7 +636,7 @@
   - name: Badger
     time: Always
   fertilizer_bonus:
-    armor_magic: 20
+    aroma_magic: 20
     hardness_vitality: -10
   name: Thunderous Tasuki
   sub_category: Material
@@ -661,7 +661,7 @@
   - name: Deer
     time: Always
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
     leaf_fertilizer: 10
   name: Deer Antler
   sub_category: Material
@@ -672,7 +672,7 @@
   - name: Shijimi
     time: Always
   fertilizer_bonus:
-    armor_magic: 3
+    aroma_magic: 3
   name: Demonic Pearl
   sub_category: Material
 - category: Misc
@@ -687,7 +687,7 @@
   description: The resilient hide of a black deer demon.When I close my eyes,  I can
     still vividlysee your fierce battle with the beast!
   fertilizer_bonus:
-    armor_magic: 1
+    aroma_magic: 1
     taste_strength: 4
   name: Black Deer Leather
   sub_category: Material
@@ -714,7 +714,7 @@
   - name: Badger
     time: Always
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
     root_fertilizer: 10
   name: Badger Leaf
   sub_category: Material
@@ -733,7 +733,7 @@
   description: A feather belonging to Yui,  an exceptionally rarespirit crane. If
     turned into thread,  it could be woveninto an unparalleled garment.
   fertilizer_bonus:
-    armor_magic: 50
+    aroma_magic: 50
     toxicity: -50
   name: Crane Feather
   sub_category: Material
@@ -984,7 +984,7 @@
     time: Always
   expiable: true
   fertilizer_bonus:
-    armor_magic: 2
+    aroma_magic: 2
     pesticide: -1
   food_bonus:
     magic: 6
@@ -1020,7 +1020,7 @@
   expiable: true
   fertilizer_bonus:
     aesthetic_luck: 2
-    armor_magic: 2
+    aroma_magic: 2
     pesticide: -1
   food_bonus:
     luck: 5
@@ -1054,7 +1054,7 @@
     time: Always
   expiable: true
   fertilizer_bonus:
-    armor_magic: 1
+    aroma_magic: 1
     pesticide: -1
   food_bonus:
     magic: 4
@@ -1166,7 +1166,7 @@
     forms.
   expiable: true
   fertilizer_bonus:
-    armor_magic: 3
+    aroma_magic: 3
     pesticide: -1
   find_in:
   - name: 'Gathering Area: Stream'
@@ -1272,7 +1272,7 @@
     swim upstream.
   expiable: true
   fertilizer_bonus:
-    armor_magic: 3
+    aroma_magic: 3
     pesticide: -1
     taste_strength: 3
   find_in:
@@ -1371,7 +1371,7 @@
     time: Always
   expiable: true
   fertilizer_bonus:
-    armor_magic: 2
+    aroma_magic: 2
     pesticide: -1
   food_bonus:
     magic: 3
@@ -1520,7 +1520,7 @@
     Yanato, thanks to its ability to grow even inpoor soil. It also contains a hint
     of spiritual energy.
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
   find_in:
   - name: 'Gathering Area: Plain'
     percent: 30
@@ -1687,7 +1687,7 @@
     memories of springtime.
   expiable: true
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
     herbicide: -1
   find_in:
   - name: 'Gathering Area: Plain'
@@ -1902,7 +1902,7 @@
     of it may strengthen your spiritual powers.
   expiable: true
   fertilizer_bonus:
-    armor_magic: 3
+    aroma_magic: 3
     herbicide: -1
   find_in:
   - name: 'Gathering Area: Forest'
@@ -2037,7 +2037,7 @@
     pumping.
   expiable: true
   fertilizer_bonus:
-    armor_magic: 5
+    aroma_magic: 5
     pesticide: 5
   find_in:
   - name: 'Gathering Area: Spring'
@@ -2492,7 +2492,7 @@
   description: A powdered medicine that will temporarily increase yourmagic. Dissolve
     it in water to partake of it.
   fertilizer_bonus:
-    armor_magic: 20
+    aroma_magic: 20
   find_in:
   - name: 'Gathering Area: Foothills'
     percent: 2
@@ -2564,7 +2564,7 @@
   description: When combined with a medicinal base, these flakeswill serve to increase
     your base magic.
   fertilizer_bonus:
-    armor_magic: 50
+    aroma_magic: 50
   name: Magic Flakes
   price: 1
   sub_category: ''
@@ -2592,7 +2592,7 @@
     time: Night
   fertilizer_bonus:
     aesthetic_luck: 25
-    armor_magic: 25
+    aroma_magic: 25
     hardness_vitality: 25
     stickiness_gusto: 25
     taste_strength: 25
@@ -4351,13 +4351,13 @@
   food_bonus:
     enchant:
     - level: 2
-      name: Poison Resistance
-    - level: 2
       name: Natural Healing
     - level: 1
       name: Retribution
     - level: 2
       name: Overstuffed
+    - level: 2
+      name: Poison Resistance
     fullness: 25
     luck: 4
     magic: 6
@@ -4427,7 +4427,7 @@
   main_ingredients:
   - amount: 3
     name: Wheat
-    operator: or
+    operator: ''
   name: Cooked Wheat
   sub_category: Main Dish
 - category: Cooking
@@ -4442,7 +4442,7 @@
   main_ingredients:
   - amount: 3
     name: Foxtail Millet
-    operator: or
+    operator: ''
   name: Cooked Foxtail Millet
   sub_category: Main Dish
 - category: Cooking
@@ -4492,7 +4492,7 @@
   main_ingredients:
   - amount: 1
     name: Brown Rice
-    operator: or
+    operator: ''
   name: Brown Rice Porridge
   sub_category: Main Dish
 - category: Cooking
@@ -4512,7 +4512,7 @@
   main_ingredients:
   - amount: 1
     name: Mixed Rice
-    operator: or
+    operator: ''
   name: Mixed Rice Porridge
   sub_category: Main Dish
 - category: Cooking
@@ -4531,7 +4531,7 @@
   main_ingredients:
   - amount: 1
     name: White Rice
-    operator: or
+    operator: ''
   name: White Rice Porridge
   sub_category: Main Dish
 - category: Cooking
@@ -4550,7 +4550,7 @@
   main_ingredients:
   - amount: 1
     name: Wheat
-    operator: or
+    operator: ''
   name: Wheat Porridge
   sub_category: Main Dish
 - category: Cooking
@@ -4570,7 +4570,7 @@
   main_ingredients:
   - amount: 1
     name: Foxtail Millet
-    operator: or
+    operator: ''
   name: Foxtail Millet Porridge
   sub_category: Main Dish
 - category: Cooking
@@ -4691,7 +4691,7 @@
   main_ingredients:
   - amount: 2
     name: Brown Rice
-    operator: or
+    operator: ''
   name: Brown Rice Zosui
   sub_category: Soup
 - category: Cooking
@@ -4765,7 +4765,7 @@
   main_ingredients:
   - amount: 2
     name: Mixed Rice
-    operator: or
+    operator: ''
   name: Mixed Rice Zosui
   sub_category: Soup
 - category: Cooking
@@ -4839,7 +4839,7 @@
   main_ingredients:
   - amount: 2
     name: White Rice
-    operator: or
+    operator: ''
   name: White Rice Zosui
   sub_category: Soup
 - category: Cooking
@@ -4913,7 +4913,7 @@
   main_ingredients:
   - amount: 2
     name: Wheat
-    operator: or
+    operator: ''
   name: Wheat Zosui
   sub_category: Soup
 - category: Cooking
@@ -4987,7 +4987,7 @@
   main_ingredients:
   - amount: 2
     name: Foxtail Millet
-    operator: or
+    operator: ''
   name: Foxtail Millet Zosui
   sub_category: Soup
 - category: Cooking
@@ -5107,7 +5107,7 @@
   main_ingredients:
   - amount: 2
     name: Brown Rice
-    operator: or
+    operator: ''
   name: Brown Rice Chazuke
   sub_category: Soup
 - category: Cooking
@@ -5153,7 +5153,7 @@
   main_ingredients:
   - amount: 2
     name: Mixed Rice
-    operator: or
+    operator: ''
   name: Mixed Rice Chazuke
   sub_category: Soup
 - category: Cooking
@@ -5199,7 +5199,7 @@
   main_ingredients:
   - amount: 2
     name: White Rice
-    operator: or
+    operator: ''
   name: White Rice Chazuke
   sub_category: Soup
 - category: Cooking
@@ -5245,7 +5245,7 @@
   main_ingredients:
   - amount: 2
     name: Wheat
-    operator: or
+    operator: ''
   name: Wheat Chazuke
   sub_category: Soup
 - category: Cooking
@@ -5291,7 +5291,7 @@
   main_ingredients:
   - amount: 2
     name: Foxtail Millet
-    operator: or
+    operator: ''
   name: Foxtail Millet Chazuke
   sub_category: Soup
 - category: Cooking
@@ -5521,7 +5521,7 @@
   main_ingredients:
   - amount: 2
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Rabbit Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -5597,7 +5597,7 @@
   main_ingredients:
   - amount: 2
     name: Pork
-    operator: or
+    operator: ''
   name: Pork Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -5672,7 +5672,7 @@
   main_ingredients:
   - amount: 2
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Boar Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -5747,7 +5747,7 @@
   main_ingredients:
   - amount: 2
     name: Venison
-    operator: or
+    operator: ''
   name: Venison Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -5823,7 +5823,7 @@
   main_ingredients:
   - amount: 2
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Bear Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -5899,7 +5899,7 @@
   main_ingredients:
   - amount: 2
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Badger Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -5975,7 +5975,7 @@
   main_ingredients:
   - amount: 2
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Turtle Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6050,7 +6050,7 @@
   main_ingredients:
   - amount: 2
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Sparrow Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6125,7 +6125,7 @@
   main_ingredients:
   - amount: 2
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Pheasant Meat Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6278,7 +6278,7 @@
   main_ingredients:
   - amount: 2
     name: Loach
-    operator: or
+    operator: ''
   name: Loach Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6354,7 +6354,7 @@
   main_ingredients:
   - amount: 2
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Sweetfish Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6429,7 +6429,7 @@
   main_ingredients:
   - amount: 2
     name: Carp
-    operator: or
+    operator: ''
   name: Carp Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6504,7 +6504,7 @@
   main_ingredients:
   - amount: 2
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Masu Salmon Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6580,7 +6580,7 @@
   main_ingredients:
   - amount: 2
     name: Char
-    operator: or
+    operator: ''
   name: Char Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6655,7 +6655,7 @@
   main_ingredients:
   - amount: 2
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Crucian Carp Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6730,7 +6730,7 @@
   main_ingredients:
   - amount: 2
     name: Salmon
-    operator: or
+    operator: ''
   name: Salmon Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6806,7 +6806,7 @@
   main_ingredients:
   - amount: 2
     name: Smelt
-    operator: or
+    operator: ''
   name: Smelt Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6881,7 +6881,7 @@
   main_ingredients:
   - amount: 2
     name: Herring
-    operator: or
+    operator: ''
   name: Herring Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -6956,7 +6956,7 @@
   main_ingredients:
   - amount: 2
     name: Eel
-    operator: or
+    operator: ''
   name: Eel Bowl
   sub_category: Main Dish
 - category: Cooking
@@ -7196,7 +7196,7 @@
   main_ingredients:
   - amount: 2
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Rabbit Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7282,7 +7282,7 @@
   main_ingredients:
   - amount: 2
     name: Pork
-    operator: or
+    operator: ''
   name: Pork Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7368,7 +7368,7 @@
   main_ingredients:
   - amount: 2
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Boar Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7454,7 +7454,7 @@
   main_ingredients:
   - amount: 2
     name: Venison
-    operator: or
+    operator: ''
   name: Venison Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7540,7 +7540,7 @@
   main_ingredients:
   - amount: 2
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Bear Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7626,7 +7626,7 @@
   main_ingredients:
   - amount: 2
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Badger Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7712,7 +7712,7 @@
   main_ingredients:
   - amount: 2
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Turtle Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7798,7 +7798,7 @@
   main_ingredients:
   - amount: 2
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Sparrow Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -7884,7 +7884,7 @@
   main_ingredients:
   - amount: 2
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Pheasant Meat Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8056,7 +8056,7 @@
   main_ingredients:
   - amount: 2
     name: Loach
-    operator: or
+    operator: ''
   name: Loach Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8142,7 +8142,7 @@
   main_ingredients:
   - amount: 2
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Sweetfish Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8228,7 +8228,7 @@
   main_ingredients:
   - amount: 2
     name: Carp
-    operator: or
+    operator: ''
   name: Carp Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8314,7 +8314,7 @@
   main_ingredients:
   - amount: 2
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Masu Salmon Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8400,7 +8400,7 @@
   main_ingredients:
   - amount: 2
     name: Char
-    operator: or
+    operator: ''
   name: Char Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8486,7 +8486,7 @@
   main_ingredients:
   - amount: 2
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Crucian Carp Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8572,7 +8572,7 @@
   main_ingredients:
   - amount: 2
     name: Salmon
-    operator: or
+    operator: ''
   name: Salmon Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8658,7 +8658,7 @@
   main_ingredients:
   - amount: 2
     name: Smelt
-    operator: or
+    operator: ''
   name: Smelt Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8744,7 +8744,7 @@
   main_ingredients:
   - amount: 2
     name: Herring
-    operator: or
+    operator: ''
   name: Herring Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -8830,7 +8830,7 @@
   main_ingredients:
   - amount: 2
     name: Eel
-    operator: or
+    operator: ''
   name: Eel Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9002,7 +9002,7 @@
   main_ingredients:
   - amount: 2
     name: Tekusari
-    operator: or
+    operator: ''
   name: Tekusari Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9088,7 +9088,7 @@
   main_ingredients:
   - amount: 2
     name: Acorn
-    operator: or
+    operator: ''
   name: Acorn Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9174,7 +9174,7 @@
   main_ingredients:
   - amount: 2
     name: Taro
-    operator: or
+    operator: ''
   name: Taro Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9260,7 +9260,7 @@
   main_ingredients:
   - amount: 2
     name: Potato
-    operator: or
+    operator: ''
   name: Potato Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9346,7 +9346,7 @@
   main_ingredients:
   - amount: 2
     name: Onion
-    operator: or
+    operator: ''
   name: Onion Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9432,7 +9432,7 @@
   main_ingredients:
   - amount: 2
     name: Warabi
-    operator: or
+    operator: ''
   name: Warabi Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9518,7 +9518,7 @@
   main_ingredients:
   - amount: 2
     name: Horsetail
-    operator: or
+    operator: ''
   name: Horsetail Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9604,7 +9604,7 @@
   main_ingredients:
   - amount: 2
     name: Mugwort
-    operator: or
+    operator: ''
   name: Mugwort Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9690,7 +9690,7 @@
   main_ingredients:
   - amount: 2
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Seven Herbs Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9776,7 +9776,7 @@
   main_ingredients:
   - amount: 2
     name: Root Crops
-    operator: or
+    operator: ''
   name: Root Crops Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9862,7 +9862,7 @@
   main_ingredients:
   - amount: 2
     name: Cucumber
-    operator: or
+    operator: ''
   name: Cucumber Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -9948,7 +9948,7 @@
   main_ingredients:
   - amount: 2
     name: Maize
-    operator: or
+    operator: ''
   name: Maize Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -10034,7 +10034,7 @@
   main_ingredients:
   - amount: 2
     name: Mushroom
-    operator: or
+    operator: ''
   name: Mushroom Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -10120,7 +10120,7 @@
   main_ingredients:
   - amount: 2
     name: Matsutake
-    operator: or
+    operator: ''
   name: Matsutake Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -10206,7 +10206,7 @@
   main_ingredients:
   - amount: 2
     name: Chestnut
-    operator: or
+    operator: ''
   name: Chestnut Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -10292,7 +10292,7 @@
   main_ingredients:
   - amount: 2
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Ginkgo Nut Ten-don
   sub_category: Main Dish
 - category: Cooking
@@ -10645,7 +10645,7 @@
   main_ingredients:
   - amount: 2
     name: Tekusari
-    operator: or
+    operator: ''
   name: Tekusari Broth
   sub_category: Soup
 - category: Cooking
@@ -10654,7 +10654,7 @@
   main_ingredients:
   - amount: 2
     name: Acorn
-    operator: or
+    operator: ''
   name: Acorn Broth
   sub_category: Soup
 - category: Cooking
@@ -10665,7 +10665,7 @@
   main_ingredients:
   - amount: 2
     name: Taro
-    operator: or
+    operator: ''
   name: Taro Broth
   sub_category: Soup
 - category: Cooking
@@ -10677,7 +10677,7 @@
   main_ingredients:
   - amount: 2
     name: Potato
-    operator: or
+    operator: ''
   name: Potato Broth
   sub_category: Soup
 - category: Cooking
@@ -10688,7 +10688,7 @@
   main_ingredients:
   - amount: 2
     name: Onion
-    operator: or
+    operator: ''
   name: Onion Broth
   sub_category: Soup
 - category: Cooking
@@ -10699,7 +10699,7 @@
   main_ingredients:
   - amount: 2
     name: Warabi
-    operator: or
+    operator: ''
   name: Warabi Broth
   sub_category: Soup
 - category: Cooking
@@ -10710,7 +10710,7 @@
   main_ingredients:
   - amount: 2
     name: Horsetail
-    operator: or
+    operator: ''
   name: Horsetail Broth
   sub_category: Soup
 - category: Cooking
@@ -10721,7 +10721,7 @@
   main_ingredients:
   - amount: 2
     name: Mugwort
-    operator: or
+    operator: ''
   name: Mugwort Broth
   sub_category: Soup
 - category: Cooking
@@ -10732,7 +10732,7 @@
   main_ingredients:
   - amount: 2
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Seven Herbs Broth
   sub_category: Soup
 - category: Cooking
@@ -10743,7 +10743,7 @@
   main_ingredients:
   - amount: 2
     name: Root Crops
-    operator: or
+    operator: ''
   name: Root Crops Broth
   sub_category: Soup
 - category: Cooking
@@ -10754,7 +10754,7 @@
   main_ingredients:
   - amount: 2
     name: Cucumber
-    operator: or
+    operator: ''
   name: Cucumber Broth
   sub_category: Soup
 - category: Cooking
@@ -10763,7 +10763,7 @@
   main_ingredients:
   - amount: 2
     name: Maize
-    operator: or
+    operator: ''
   name: Maize Broth
   sub_category: Soup
 - category: Cooking
@@ -10772,7 +10772,7 @@
   main_ingredients:
   - amount: 2
     name: Mushroom
-    operator: or
+    operator: ''
   name: Mushroom Broth
   sub_category: Soup
 - category: Cooking
@@ -10783,7 +10783,7 @@
   main_ingredients:
   - amount: 2
     name: Matsutake
-    operator: or
+    operator: ''
   name: Matsutake Broth
   sub_category: Soup
 - category: Cooking
@@ -10794,7 +10794,7 @@
   main_ingredients:
   - amount: 2
     name: Chestnut
-    operator: or
+    operator: ''
   name: Chestnut Broth
   sub_category: Soup
 - category: Cooking
@@ -10805,7 +10805,7 @@
   main_ingredients:
   - amount: 2
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Ginkgo Nut Broth
   sub_category: Soup
 - category: Cooking
@@ -10867,7 +10867,7 @@
   main_ingredients:
   - amount: 1
     name: Tekusari
-    operator: or
+    operator: ''
   name: Tekusari Zoni
   sub_category: Soup
 - category: Cooking
@@ -10918,7 +10918,7 @@
   main_ingredients:
   - amount: 1
     name: Acorn
-    operator: or
+    operator: ''
   name: Acorn Zoni
   sub_category: Soup
 - category: Cooking
@@ -10969,7 +10969,7 @@
   main_ingredients:
   - amount: 1
     name: Taro
-    operator: or
+    operator: ''
   name: Taro Zoni
   sub_category: Soup
 - category: Cooking
@@ -11021,7 +11021,7 @@
   main_ingredients:
   - amount: 1
     name: Potato
-    operator: or
+    operator: ''
   name: Potato Zoni
   sub_category: Soup
 - category: Cooking
@@ -11073,7 +11073,7 @@
   main_ingredients:
   - amount: 1
     name: Onion
-    operator: or
+    operator: ''
   name: Onion Zoni
   sub_category: Soup
 - category: Cooking
@@ -11124,7 +11124,7 @@
   main_ingredients:
   - amount: 1
     name: Warabi
-    operator: or
+    operator: ''
   name: Warabi Zoni
   sub_category: Soup
 - category: Cooking
@@ -11175,7 +11175,7 @@
   main_ingredients:
   - amount: 1
     name: Horsetail
-    operator: or
+    operator: ''
   name: Horsetail Zoni
   sub_category: Soup
 - category: Cooking
@@ -11227,7 +11227,7 @@
   main_ingredients:
   - amount: 1
     name: Mugwort
-    operator: or
+    operator: ''
   name: Mugwort Zoni
   sub_category: Soup
 - category: Cooking
@@ -11279,7 +11279,7 @@
   main_ingredients:
   - amount: 1
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Seven Herbs Zoni
   sub_category: Soup
 - category: Cooking
@@ -11330,7 +11330,7 @@
   main_ingredients:
   - amount: 1
     name: Root Crops
-    operator: or
+    operator: ''
   name: Root Crops Zoni
   sub_category: Soup
 - category: Cooking
@@ -11382,7 +11382,7 @@
   main_ingredients:
   - amount: 1
     name: Cucumber
-    operator: or
+    operator: ''
   name: Cucumber Zoni
   sub_category: Soup
 - category: Cooking
@@ -11433,7 +11433,7 @@
   main_ingredients:
   - amount: 1
     name: Maize
-    operator: or
+    operator: ''
   name: Maize Zoni
   sub_category: Soup
 - category: Cooking
@@ -11484,7 +11484,7 @@
   main_ingredients:
   - amount: 1
     name: Mushroom
-    operator: or
+    operator: ''
   name: Mushroom Zoni
   sub_category: Soup
 - category: Cooking
@@ -11536,7 +11536,7 @@
   main_ingredients:
   - amount: 1
     name: Matsutake
-    operator: or
+    operator: ''
   name: Matsutake Zoni
   sub_category: Soup
 - category: Cooking
@@ -11587,7 +11587,7 @@
   main_ingredients:
   - amount: 1
     name: Chestnut
-    operator: or
+    operator: ''
   name: Chestnut Zoni
   sub_category: Soup
 - category: Cooking
@@ -11638,7 +11638,7 @@
   main_ingredients:
   - amount: 1
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Ginkgo Nut Zoni
   sub_category: Soup
 - category: Cooking
@@ -11719,7 +11719,7 @@
   main_ingredients:
   - amount: 1
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Rabbit Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11738,7 +11738,7 @@
   main_ingredients:
   - amount: 1
     name: Pork
-    operator: or
+    operator: ''
   name: Pork Soup
   sub_category: Soup
 - category: Cooking
@@ -11757,7 +11757,7 @@
   main_ingredients:
   - amount: 1
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Boar Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11776,7 +11776,7 @@
   main_ingredients:
   - amount: 1
     name: Venison
-    operator: or
+    operator: ''
   name: Venison Soup
   sub_category: Soup
 - category: Cooking
@@ -11796,7 +11796,7 @@
   main_ingredients:
   - amount: 1
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Bear Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11815,7 +11815,7 @@
   main_ingredients:
   - amount: 1
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Badger Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11835,7 +11835,7 @@
   main_ingredients:
   - amount: 1
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Turtle Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11854,7 +11854,7 @@
   main_ingredients:
   - amount: 1
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Sparrow Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11872,7 +11872,7 @@
   main_ingredients:
   - amount: 1
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Pheasant Meat Soup
   sub_category: Soup
 - category: Cooking
@@ -11910,7 +11910,7 @@
   main_ingredients:
   - amount: 1
     name: Tekusari
-    operator: or
+    operator: ''
   name: Tekusari Soup
   sub_category: Soup
 - category: Cooking
@@ -11928,7 +11928,7 @@
   main_ingredients:
   - amount: 1
     name: Acorn
-    operator: or
+    operator: ''
   name: Acorn Soup
   sub_category: Soup
 - category: Cooking
@@ -11947,7 +11947,7 @@
   main_ingredients:
   - amount: 1
     name: Taro
-    operator: or
+    operator: ''
   name: Taro Soup
   sub_category: Soup
 - category: Cooking
@@ -11967,7 +11967,7 @@
   main_ingredients:
   - amount: 1
     name: Potato
-    operator: or
+    operator: ''
   name: Potato Soup
   sub_category: Soup
 - category: Cooking
@@ -11986,7 +11986,7 @@
   main_ingredients:
   - amount: 1
     name: Onion
-    operator: or
+    operator: ''
   name: Onion Soup
   sub_category: Soup
 - category: Cooking
@@ -12004,7 +12004,7 @@
   main_ingredients:
   - amount: 1
     name: Warabi
-    operator: or
+    operator: ''
   name: Warabi Soup
   sub_category: Soup
 - category: Cooking
@@ -12023,7 +12023,7 @@
   main_ingredients:
   - amount: 1
     name: Horsetail
-    operator: or
+    operator: ''
   name: Horsetail Soup
   sub_category: Soup
 - category: Cooking
@@ -12042,7 +12042,7 @@
   main_ingredients:
   - amount: 1
     name: Mugwort
-    operator: or
+    operator: ''
   name: Mugwort Soup
   sub_category: Soup
 - category: Cooking
@@ -12061,7 +12061,7 @@
   main_ingredients:
   - amount: 1
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Seven Herbs Soup
   sub_category: Soup
 - category: Cooking
@@ -12080,7 +12080,7 @@
   main_ingredients:
   - amount: 1
     name: Root Crops
-    operator: or
+    operator: ''
   name: Root Crops Soup
   sub_category: Soup
 - category: Cooking
@@ -12099,7 +12099,7 @@
   main_ingredients:
   - amount: 1
     name: Cucumber
-    operator: or
+    operator: ''
   name: Cucumber Soup
   sub_category: Soup
 - category: Cooking
@@ -12117,7 +12117,7 @@
   main_ingredients:
   - amount: 1
     name: Maize
-    operator: or
+    operator: ''
   name: Maize Soup
   sub_category: Soup
 - category: Cooking
@@ -12135,7 +12135,7 @@
   main_ingredients:
   - amount: 1
     name: Mushroom
-    operator: or
+    operator: ''
   name: Mushroom Soup
   sub_category: Soup
 - category: Cooking
@@ -12154,7 +12154,7 @@
   main_ingredients:
   - amount: 1
     name: Matsutake
-    operator: or
+    operator: ''
   name: Matsutake Soup
   sub_category: Soup
 - category: Cooking
@@ -12173,7 +12173,7 @@
   main_ingredients:
   - amount: 1
     name: Chestnut
-    operator: or
+    operator: ''
   name: Chestnut Soup
   sub_category: Soup
 - category: Cooking
@@ -12192,7 +12192,7 @@
   main_ingredients:
   - amount: 1
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Ginkgo Nut Soup
   sub_category: Soup
 - category: Cooking
@@ -12264,7 +12264,7 @@
   main_ingredients:
   - amount: 1
     name: Loach
-    operator: or
+    operator: ''
   name: Loach Stew
   sub_category: Soup
 - category: Cooking
@@ -12302,7 +12302,7 @@
   main_ingredients:
   - amount: 1
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Sweetfish Stew
   sub_category: Soup
 - category: Cooking
@@ -12340,7 +12340,7 @@
   main_ingredients:
   - amount: 1
     name: Carp
-    operator: or
+    operator: ''
   name: Carp Stew
   sub_category: Soup
 - category: Cooking
@@ -12378,7 +12378,7 @@
   main_ingredients:
   - amount: 1
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Masu Salmon Stew
   sub_category: Soup
 - category: Cooking
@@ -12416,7 +12416,7 @@
   main_ingredients:
   - amount: 1
     name: Char
-    operator: or
+    operator: ''
   name: Char Stew
   sub_category: Soup
 - category: Cooking
@@ -12455,7 +12455,7 @@
   main_ingredients:
   - amount: 1
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Crucian Carp Stew
   sub_category: Soup
 - category: Cooking
@@ -12493,7 +12493,7 @@
   main_ingredients:
   - amount: 1
     name: Salmon
-    operator: or
+    operator: ''
   name: Salmon Stew
   sub_category: Soup
 - category: Cooking
@@ -12531,7 +12531,7 @@
   main_ingredients:
   - amount: 1
     name: Smelt
-    operator: or
+    operator: ''
   name: Smelt Stew
   sub_category: Soup
 - category: Cooking
@@ -12570,7 +12570,7 @@
   main_ingredients:
   - amount: 1
     name: Herring
-    operator: or
+    operator: ''
   name: Herring Stew
   sub_category: Soup
 - category: Cooking
@@ -12608,7 +12608,7 @@
   main_ingredients:
   - amount: 1
     name: Eel
-    operator: or
+    operator: ''
   name: Eel Stew
   sub_category: Soup
 - category: Cooking
@@ -12738,9 +12738,9 @@
   food_bonus:
     enchant:
     - level: 2
-      name: Poison Resistance
-    - level: 2
       name: Fire Resistance
+    - level: 2
+      name: Poison Resistance
     luck: 2
     magic: 5
     sp: 5
@@ -12808,8 +12808,9 @@
   main_ingredients:
   - amount: 2
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Roast Rabbit Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Pork roasted on an open fire.Cooked to a golden brown with allthe juicy
     flavor sealed inside.
@@ -12818,8 +12819,9 @@
   main_ingredients:
   - amount: 2
     name: Pork
-    operator: or
+    operator: ''
   name: Roast Pork
+  sub_category: Side Dish
 - category: Cooking
   description: Boar Meat roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12828,8 +12830,9 @@
   main_ingredients:
   - amount: 2
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Roast Boar Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Venison roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12838,8 +12841,9 @@
   main_ingredients:
   - amount: 2
     name: Venison
-    operator: or
+    operator: ''
   name: Roast Venison
+  sub_category: Side Dish
 - category: Cooking
   description: Bear Meat roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12849,8 +12853,9 @@
   main_ingredients:
   - amount: 2
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Roast Bear Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Badger Meat roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12859,8 +12864,9 @@
   main_ingredients:
   - amount: 2
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Roast Badger Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Turtle Meat roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12870,8 +12876,9 @@
   main_ingredients:
   - amount: 2
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Roast Turtle Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Sparrow Meat roasted on an open fire.Cooked to a golden brown with
     allthe juicy flavor sealed inside.
@@ -12880,8 +12887,9 @@
   main_ingredients:
   - amount: 2
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Roast Sparrow Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Pheasant Meat roasted on an open fire.Cooked to a golden brown with
     allthe juicy flavor sealed inside.
@@ -12890,8 +12898,9 @@
   main_ingredients:
   - amount: 2
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Roast Pheasant Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Duck Meat roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12903,6 +12912,7 @@
     name: Duck Meat
     operator: ''
   name: Roast Duck Meat
+  sub_category: Side Dish
 - category: Cooking
   description: Loach roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12911,8 +12921,9 @@
   main_ingredients:
   - amount: 2
     name: Loach
-    operator: or
+    operator: ''
   name: Roast Loach
+  sub_category: Side Dish
 - category: Cooking
   description: Sweetfish roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12921,8 +12932,9 @@
   main_ingredients:
   - amount: 2
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Roast Sweetfish
+  sub_category: Side Dish
 - category: Cooking
   description: Carp roasted on an open fire.Cooked to a golden brown with allthe juicy
     flavor sealed inside.
@@ -12931,8 +12943,9 @@
   main_ingredients:
   - amount: 2
     name: Carp
-    operator: or
+    operator: ''
   name: Roast Carp
+  sub_category: Side Dish
 - category: Cooking
   description: Masu Salmon roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12941,8 +12954,9 @@
   main_ingredients:
   - amount: 2
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Roast Masu Salmon
+  sub_category: Side Dish
 - category: Cooking
   description: Char roasted on an open fire.Cooked to a golden brown with allthe juicy
     flavor sealed inside.
@@ -12951,8 +12965,9 @@
   main_ingredients:
   - amount: 2
     name: Char
-    operator: or
+    operator: ''
   name: Roast Char
+  sub_category: Side Dish
 - category: Cooking
   description: Crucian Carp roasted on an open fire.Cooked to a golden brown with
     allthe juicy flavor sealed inside.
@@ -12961,8 +12976,9 @@
   main_ingredients:
   - amount: 2
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Roast Crucian Carp
+  sub_category: Side Dish
 - category: Cooking
   description: Salmon roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12972,8 +12988,9 @@
   main_ingredients:
   - amount: 2
     name: Salmon
-    operator: or
+    operator: ''
   name: Roast Salmon
+  sub_category: Side Dish
 - category: Cooking
   description: Smelt roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12982,8 +12999,9 @@
   main_ingredients:
   - amount: 2
     name: Smelt
-    operator: or
+    operator: ''
   name: Roast Smelt
+  sub_category: Side Dish
 - category: Cooking
   description: Herring roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -12993,8 +13011,9 @@
   main_ingredients:
   - amount: 2
     name: Herring
-    operator: or
+    operator: ''
   name: Roast Herring
+  sub_category: Side Dish
 - category: Cooking
   description: Eel roasted on an open fire.Cooked to a golden brown with allthe juicy
     flavor sealed inside.
@@ -13004,8 +13023,9 @@
   main_ingredients:
   - amount: 2
     name: Eel
-    operator: or
+    operator: ''
   name: Roast Eel
+  sub_category: Side Dish
 - category: Cooking
   description: Basket Clam roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -13016,6 +13036,7 @@
     name: Basket Clam
     operator: ''
   name: Roast Basket Clam
+  sub_category: Side Dish
 - category: Cooking
   description: Grasshopper roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -13024,8 +13045,9 @@
   main_ingredients:
   - amount: 2
     name: Grasshopper
-    operator: or
+    operator: ''
   name: Roast Grasshopper
+  sub_category: Side Dish
 - category: Cooking
   description: Bee Larva roasted on an open fire.Cooked to a golden brown with allthe
     juicy flavor sealed inside.
@@ -13037,6 +13059,7 @@
     name: Bee Larva
     operator: ''
   name: Roast Bee Larva
+  sub_category: Side Dish
 - category: Cooking
   description: Chopped Tekusari steeped in a savory soup stock.Do not judge this simple
     dish by looks alone;its flavor will speak for itself.
@@ -13047,7 +13070,7 @@
   main_ingredients:
   - amount: 2
     name: Tekusari
-    operator: or
+    operator: ''
   name: Blanched Tekusari
   sub_category: Main Dish
 - category: Cooking
@@ -13060,7 +13083,7 @@
   main_ingredients:
   - amount: 2
     name: Acorn
-    operator: or
+    operator: ''
   name: Blanched Acorn
   sub_category: Main Dish
 - category: Cooking
@@ -13075,7 +13098,7 @@
   main_ingredients:
   - amount: 2
     name: Taro
-    operator: or
+    operator: ''
   name: Blanched Taro
   sub_category: Main Dish
 - category: Cooking
@@ -13091,7 +13114,7 @@
   main_ingredients:
   - amount: 2
     name: Potato
-    operator: or
+    operator: ''
   name: Blanched Potato
   sub_category: Main Dish
 - category: Cooking
@@ -13106,7 +13129,7 @@
   main_ingredients:
   - amount: 2
     name: Onion
-    operator: or
+    operator: ''
   name: Blanched Onion
   sub_category: Main Dish
 - category: Cooking
@@ -13121,7 +13144,7 @@
   main_ingredients:
   - amount: 2
     name: Warabi
-    operator: or
+    operator: ''
   name: Blanched Warabi
   sub_category: Main Dish
 - category: Cooking
@@ -13136,7 +13159,7 @@
   main_ingredients:
   - amount: 2
     name: Horsetail
-    operator: or
+    operator: ''
   name: Blanched Horsetail
   sub_category: Main Dish
 - category: Cooking
@@ -13151,7 +13174,7 @@
   main_ingredients:
   - amount: 2
     name: Mugwort
-    operator: or
+    operator: ''
   name: Blanched Mugwort
   sub_category: Main Dish
 - category: Cooking
@@ -13166,7 +13189,7 @@
   main_ingredients:
   - amount: 2
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Blanched Seven Herbs
   sub_category: Main Dish
 - category: Cooking
@@ -13181,7 +13204,7 @@
   main_ingredients:
   - amount: 2
     name: Root Crops
-    operator: or
+    operator: ''
   name: Blanched Root Crops
   sub_category: Main Dish
 - category: Cooking
@@ -13196,7 +13219,7 @@
   main_ingredients:
   - amount: 2
     name: Cucumber
-    operator: or
+    operator: ''
   name: Blanched Cucumber
   sub_category: Main Dish
 - category: Cooking
@@ -13209,7 +13232,7 @@
   main_ingredients:
   - amount: 2
     name: Maize
-    operator: or
+    operator: ''
   name: Blanched Maize
   sub_category: Main Dish
 - category: Cooking
@@ -13222,7 +13245,7 @@
   main_ingredients:
   - amount: 2
     name: Mushroom
-    operator: or
+    operator: ''
   name: Blanched Mushroom
   sub_category: Main Dish
 - category: Cooking
@@ -13237,7 +13260,7 @@
   main_ingredients:
   - amount: 2
     name: Matsutake
-    operator: or
+    operator: ''
   name: Blanched Matsutake
   sub_category: Main Dish
 - category: Cooking
@@ -13252,7 +13275,7 @@
   main_ingredients:
   - amount: 2
     name: Chestnut
-    operator: or
+    operator: ''
   name: Blanched Chestnut
   sub_category: Main Dish
 - category: Cooking
@@ -13267,7 +13290,7 @@
   main_ingredients:
   - amount: 2
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Blanched Ginkgo Nut
   sub_category: Main Dish
 - category: Cooking
@@ -13310,7 +13333,7 @@
   main_ingredients:
   - amount: 2
     name: Loach
-    operator: or
+    operator: ''
   name: Grilled Loach
   sub_category: Side Dish
 - category: Cooking
@@ -13329,7 +13352,7 @@
   main_ingredients:
   - amount: 2
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Grilled Sweetfish
   sub_category: Side Dish
 - category: Cooking
@@ -13347,7 +13370,7 @@
   main_ingredients:
   - amount: 2
     name: Carp
-    operator: or
+    operator: ''
   name: Grilled Carp
   sub_category: Side Dish
 - category: Cooking
@@ -13366,7 +13389,7 @@
   main_ingredients:
   - amount: 2
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Grilled Masu Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -13385,7 +13408,7 @@
   main_ingredients:
   - amount: 2
     name: Char
-    operator: or
+    operator: ''
   name: Grilled Char
   sub_category: Side Dish
 - category: Cooking
@@ -13404,7 +13427,7 @@
   main_ingredients:
   - amount: 2
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Grilled Crucian Carp
   sub_category: Side Dish
 - category: Cooking
@@ -13424,7 +13447,7 @@
   main_ingredients:
   - amount: 2
     name: Salmon
-    operator: or
+    operator: ''
   name: Grilled Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -13443,7 +13466,7 @@
   main_ingredients:
   - amount: 2
     name: Smelt
-    operator: or
+    operator: ''
   name: Grilled Smelt
   sub_category: Side Dish
 - category: Cooking
@@ -13463,7 +13486,7 @@
   main_ingredients:
   - amount: 2
     name: Herring
-    operator: or
+    operator: ''
   name: Grilled Herring
   sub_category: Side Dish
 - category: Cooking
@@ -13483,7 +13506,7 @@
   main_ingredients:
   - amount: 2
     name: Eel
-    operator: or
+    operator: ''
   name: Grilled Eel
   sub_category: Side Dish
 - category: Cooking
@@ -13520,7 +13543,7 @@
   main_ingredients:
   - amount: 2
     name: Tekusari
-    operator: or
+    operator: ''
   name: Salt Tekusari
   sub_category: Side Dish
 - category: Cooking
@@ -13538,7 +13561,7 @@
   main_ingredients:
   - amount: 2
     name: Acorn
-    operator: or
+    operator: ''
   name: Salt Acorn
   sub_category: Side Dish
 - category: Cooking
@@ -13557,7 +13580,7 @@
   main_ingredients:
   - amount: 2
     name: Taro
-    operator: or
+    operator: ''
   name: Salt Taro
   sub_category: Side Dish
 - category: Cooking
@@ -13577,7 +13600,7 @@
   main_ingredients:
   - amount: 2
     name: Potato
-    operator: or
+    operator: ''
   name: Salt Potato
   sub_category: Side Dish
 - category: Cooking
@@ -13596,7 +13619,7 @@
   main_ingredients:
   - amount: 2
     name: Onion
-    operator: or
+    operator: ''
   name: Salt Onion
   sub_category: Side Dish
 - category: Cooking
@@ -13615,7 +13638,7 @@
   main_ingredients:
   - amount: 2
     name: Warabi
-    operator: or
+    operator: ''
   name: Salt Warabi
   sub_category: Side Dish
 - category: Cooking
@@ -13634,7 +13657,7 @@
   main_ingredients:
   - amount: 2
     name: Horsetail
-    operator: or
+    operator: ''
   name: Salt Horsetail
   sub_category: Side Dish
 - category: Cooking
@@ -13653,7 +13676,7 @@
   main_ingredients:
   - amount: 2
     name: Mugwort
-    operator: or
+    operator: ''
   name: Salt Mugwort
   sub_category: Side Dish
 - category: Cooking
@@ -13672,7 +13695,7 @@
   main_ingredients:
   - amount: 2
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Salt Seven Herbs
   sub_category: Side Dish
 - category: Cooking
@@ -13690,7 +13713,7 @@
   main_ingredients:
   - amount: 2
     name: Root Crops
-    operator: or
+    operator: ''
   name: Salt Root Crops
   sub_category: Side Dish
 - category: Cooking
@@ -13709,7 +13732,7 @@
   main_ingredients:
   - amount: 2
     name: Cucumber
-    operator: or
+    operator: ''
   name: Salt Cucumber
   sub_category: Side Dish
 - category: Cooking
@@ -13727,7 +13750,7 @@
   main_ingredients:
   - amount: 2
     name: Maize
-    operator: or
+    operator: ''
   name: Salt Maize
   sub_category: Side Dish
 - category: Cooking
@@ -13745,7 +13768,7 @@
   main_ingredients:
   - amount: 2
     name: Mushroom
-    operator: or
+    operator: ''
   name: Salt Mushroom
   sub_category: Side Dish
 - category: Cooking
@@ -13764,7 +13787,7 @@
   main_ingredients:
   - amount: 2
     name: Matsutake
-    operator: or
+    operator: ''
   name: Salt Matsutake
   sub_category: Side Dish
 - category: Cooking
@@ -13783,7 +13806,7 @@
   main_ingredients:
   - amount: 2
     name: Chestnut
-    operator: or
+    operator: ''
   name: Salt Chestnut
   sub_category: Side Dish
 - category: Cooking
@@ -13801,7 +13824,7 @@
   main_ingredients:
   - amount: 2
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Salt Ginkgo Nut
   sub_category: Side Dish
 - category: Cooking
@@ -13852,7 +13875,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Rabbit Meat
-    operator: or
+    operator: ''
   name: Dried Rabbit Meat
   sub_category: Side Dish
 - category: Cooking
@@ -13868,7 +13891,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Pork
-    operator: or
+    operator: ''
   name: Dried Pork
   sub_category: Side Dish
 - category: Cooking
@@ -13884,7 +13907,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Boar Meat
-    operator: or
+    operator: ''
   name: Dried Boar Meat
   sub_category: Side Dish
 - category: Cooking
@@ -13900,7 +13923,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Venison
-    operator: or
+    operator: ''
   name: Dried Venison
   sub_category: Side Dish
 - category: Cooking
@@ -13916,7 +13939,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Bear Meat
-    operator: or
+    operator: ''
   name: Dried Bear Meat
   sub_category: Side Dish
 - category: Cooking
@@ -13932,7 +13955,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Badger Meat
-    operator: or
+    operator: ''
   name: Dried Badger Meat
   sub_category: Side Dish
 - category: Cooking
@@ -13948,7 +13971,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Turtle Meat
-    operator: or
+    operator: ''
   name: Dried Turtle Meat
   sub_category: Side Dish
 - category: Cooking
@@ -13964,7 +13987,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Sparrow Meat
-    operator: or
+    operator: ''
   name: Dried Sparrow Meat
   sub_category: Side Dish
 - category: Cooking
@@ -13980,7 +14003,7 @@
   main_ingredients:
   - amount: 1
     name: Dried Pheasant Meat
-    operator: or
+    operator: ''
   name: Dried Pheasant Meat
   sub_category: Side Dish
 - category: Cooking
@@ -14049,7 +14072,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Rabbit Meat
-    operator: or
+    operator: ''
   name: Smoked Rabbit Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14065,7 +14088,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Pork
-    operator: or
+    operator: ''
   name: Smoked Pork
   sub_category: Main Dish
 - category: Cooking
@@ -14081,7 +14104,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Boar Meat
-    operator: or
+    operator: ''
   name: Smoked Boar Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14097,7 +14120,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Venison
-    operator: or
+    operator: ''
   name: Smoked Venison
   sub_category: Main Dish
 - category: Cooking
@@ -14113,7 +14136,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Bear Meat
-    operator: or
+    operator: ''
   name: Smoked Bear Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14129,7 +14152,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Badger Meat
-    operator: or
+    operator: ''
   name: Smoked Badger Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14145,7 +14168,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Turtle Meat
-    operator: or
+    operator: ''
   name: Smoked Turtle Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14161,7 +14184,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Sparrow Meat
-    operator: or
+    operator: ''
   name: Smoked Sparrow Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14177,7 +14200,7 @@
   main_ingredients:
   - amount: 1
     name: Smoked Pheasant Meat
-    operator: or
+    operator: ''
   name: Smoked Pheasant Meat
   sub_category: Main Dish
 - category: Cooking
@@ -14205,7 +14228,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Tekusari
-    operator: or
+    operator: ''
   name: Pickled Tekusari
   sub_category: Main Dish
 - category: Cooking
@@ -14217,7 +14240,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Acorn
-    operator: or
+    operator: ''
   name: Pickled Acorn
   sub_category: Main Dish
 - category: Cooking
@@ -14229,7 +14252,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Taro
-    operator: or
+    operator: ''
   name: Pickled Taro
   sub_category: Main Dish
 - category: Cooking
@@ -14241,7 +14264,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Potato
-    operator: or
+    operator: ''
   name: Pickled Potato
   sub_category: Main Dish
 - category: Cooking
@@ -14253,7 +14276,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Onion
-    operator: or
+    operator: ''
   name: Pickled Onion
   sub_category: Main Dish
 - category: Cooking
@@ -14265,7 +14288,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Warabi
-    operator: or
+    operator: ''
   name: Pickled Warabi
   sub_category: Main Dish
 - category: Cooking
@@ -14277,7 +14300,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Horsetail
-    operator: or
+    operator: ''
   name: Pickled Horsetail
   sub_category: Main Dish
 - category: Cooking
@@ -14289,7 +14312,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Mugwort
-    operator: or
+    operator: ''
   name: Pickled Mugwort
   sub_category: Main Dish
 - category: Cooking
@@ -14301,7 +14324,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Seven Herbs
-    operator: or
+    operator: ''
   name: Pickled Seven Herbs
   sub_category: Main Dish
 - category: Cooking
@@ -14313,7 +14336,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Root Crops
-    operator: or
+    operator: ''
   name: Pickled Root Crops
   sub_category: Main Dish
 - category: Cooking
@@ -14325,7 +14348,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Cucumber
-    operator: or
+    operator: ''
   name: Pickled Cucumber
   sub_category: Main Dish
 - category: Cooking
@@ -14337,7 +14360,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Maize
-    operator: or
+    operator: ''
   name: Pickled Maize
   sub_category: Main Dish
 - category: Cooking
@@ -14349,7 +14372,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Mushroom
-    operator: or
+    operator: ''
   name: Pickled Mushroom
   sub_category: Main Dish
 - category: Cooking
@@ -14361,7 +14384,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Matsutake
-    operator: or
+    operator: ''
   name: Pickled Matsutake
   sub_category: Main Dish
 - category: Cooking
@@ -14373,7 +14396,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Chestnut
-    operator: or
+    operator: ''
   name: Pickled Chestnut
   sub_category: Main Dish
 - category: Cooking
@@ -14385,7 +14408,7 @@
   main_ingredients:
   - amount: 1
     name: Pickled Ginkgo Nut
-    operator: or
+    operator: ''
   name: Pickled Ginkgo Nut
   sub_category: Main Dish
 - category: Cooking
@@ -14414,7 +14437,7 @@
   main_ingredients:
   - amount: 1
     name: Rabbit Meat Sushi
-    operator: or
+    operator: ''
   name: Rabbit Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14431,7 +14454,7 @@
   main_ingredients:
   - amount: 1
     name: Pork Sushi
-    operator: or
+    operator: ''
   name: Pork Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14448,7 +14471,7 @@
   main_ingredients:
   - amount: 1
     name: Boar Meat Sushi
-    operator: or
+    operator: ''
   name: Boar Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14465,7 +14488,7 @@
   main_ingredients:
   - amount: 1
     name: Venison Sushi
-    operator: or
+    operator: ''
   name: Venison Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14482,7 +14505,7 @@
   main_ingredients:
   - amount: 1
     name: Bear Meat Sushi
-    operator: or
+    operator: ''
   name: Bear Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14499,7 +14522,7 @@
   main_ingredients:
   - amount: 1
     name: Badger Meat Sushi
-    operator: or
+    operator: ''
   name: Badger Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14516,7 +14539,7 @@
   main_ingredients:
   - amount: 1
     name: Turtle Meat Sushi
-    operator: or
+    operator: ''
   name: Turtle Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14533,7 +14556,7 @@
   main_ingredients:
   - amount: 1
     name: Sparrow Meat Sushi
-    operator: or
+    operator: ''
   name: Sparrow Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14550,7 +14573,7 @@
   main_ingredients:
   - amount: 1
     name: Pheasant Meat Sushi
-    operator: or
+    operator: ''
   name: Pheasant Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14567,7 +14590,7 @@
   main_ingredients:
   - amount: 1
     name: Duck Meat Sushi
-    operator: or
+    operator: ''
   name: Duck Meat Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14584,7 +14607,7 @@
   main_ingredients:
   - amount: 1
     name: Loach Sushi
-    operator: or
+    operator: ''
   name: Loach Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14601,7 +14624,7 @@
   main_ingredients:
   - amount: 1
     name: Sweetfish Sushi
-    operator: or
+    operator: ''
   name: Sweetfish Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14618,7 +14641,7 @@
   main_ingredients:
   - amount: 1
     name: Carp Sushi
-    operator: or
+    operator: ''
   name: Carp Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14635,7 +14658,7 @@
   main_ingredients:
   - amount: 1
     name: Masu Salmon Sushi
-    operator: or
+    operator: ''
   name: Masu Salmon Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14652,7 +14675,7 @@
   main_ingredients:
   - amount: 1
     name: Char Sushi
-    operator: or
+    operator: ''
   name: Char Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14669,7 +14692,7 @@
   main_ingredients:
   - amount: 1
     name: Crucian Carp Sushi
-    operator: or
+    operator: ''
   name: Crucian Carp Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14686,7 +14709,7 @@
   main_ingredients:
   - amount: 1
     name: Salmon Sushi
-    operator: or
+    operator: ''
   name: Salmon Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14703,7 +14726,7 @@
   main_ingredients:
   - amount: 1
     name: Smelt Sushi
-    operator: or
+    operator: ''
   name: Smelt Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14720,7 +14743,7 @@
   main_ingredients:
   - amount: 1
     name: Herring Sushi
-    operator: or
+    operator: ''
   name: Herring Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14737,7 +14760,7 @@
   main_ingredients:
   - amount: 1
     name: Eel Sushi
-    operator: or
+    operator: ''
   name: Eel Sushi
   sub_category: Side Dish
 - category: Cooking
@@ -14795,7 +14818,7 @@
   main_ingredients:
   - amount: 1
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Rabbit Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -14835,7 +14858,7 @@
   main_ingredients:
   - amount: 1
     name: Pork
-    operator: or
+    operator: ''
   name: Pork Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -14876,7 +14899,7 @@
   main_ingredients:
   - amount: 1
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Boar Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -14916,7 +14939,7 @@
   main_ingredients:
   - amount: 1
     name: Venison
-    operator: or
+    operator: ''
   name: Venison Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -14957,7 +14980,7 @@
   main_ingredients:
   - amount: 1
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Bear Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -14998,7 +15021,7 @@
   main_ingredients:
   - amount: 1
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Badger Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15039,7 +15062,7 @@
   main_ingredients:
   - amount: 1
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Turtle Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15079,7 +15102,7 @@
   main_ingredients:
   - amount: 1
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Sparrow Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15120,7 +15143,7 @@
   main_ingredients:
   - amount: 1
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Pheasant Meat Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15201,7 +15224,7 @@
   main_ingredients:
   - amount: 1
     name: Loach
-    operator: or
+    operator: ''
   name: Loach Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15242,7 +15265,7 @@
   main_ingredients:
   - amount: 1
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Sweetfish Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15283,7 +15306,7 @@
   main_ingredients:
   - amount: 1
     name: Carp
-    operator: or
+    operator: ''
   name: Carp Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15323,7 +15346,7 @@
   main_ingredients:
   - amount: 1
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Masu Salmon Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15363,7 +15386,7 @@
   main_ingredients:
   - amount: 1
     name: Char
-    operator: or
+    operator: ''
   name: Char Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15404,7 +15427,7 @@
   main_ingredients:
   - amount: 1
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Crucian Carp Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15445,7 +15468,7 @@
   main_ingredients:
   - amount: 1
     name: Salmon
-    operator: or
+    operator: ''
   name: Salmon Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15486,7 +15509,7 @@
   main_ingredients:
   - amount: 1
     name: Smelt
-    operator: or
+    operator: ''
   name: Smelt Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15527,7 +15550,7 @@
   main_ingredients:
   - amount: 1
     name: Herring
-    operator: or
+    operator: ''
   name: Herring Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15569,7 +15592,7 @@
   main_ingredients:
   - amount: 1
     name: Eel
-    operator: or
+    operator: ''
   name: Eel Jelly
   sub_category: Side Dish
 - category: Cooking
@@ -15808,6 +15831,7 @@
     enchant:
     - level: 6
       name: Water Resistance
+  sub_category: Side Dish
 - category: Cooking
   description: Salmon that has been soaked in salt water and driedin the sea breeze.
     This pairs wondrously with sake!Though do take care not to gorge yourself.
@@ -15822,6 +15846,7 @@
   season_buff: Winter
   season_food_bonus:
     magic: 3
+  sub_category: Side Dish
 - category: Cooking
   description: Food that's fried in naught but oil is not to beunderestimated. Truly
     it brings out the bestthe Tekusari has to offer.
@@ -15835,7 +15860,7 @@
   main_ingredients:
   - amount: 1
     name: Tekusari
-    operator: or
+    operator: ''
   name: Fried Tekusari
   sub_category: Side Dish
 - category: Cooking
@@ -15851,7 +15876,7 @@
   main_ingredients:
   - amount: 1
     name: Acorn
-    operator: or
+    operator: ''
   name: Fried Acorn
   sub_category: Side Dish
 - category: Cooking
@@ -15868,7 +15893,7 @@
   main_ingredients:
   - amount: 1
     name: Taro
-    operator: or
+    operator: ''
   name: Fried Taro
   sub_category: Side Dish
 - category: Cooking
@@ -15885,7 +15910,7 @@
   main_ingredients:
   - amount: 1
     name: Potato
-    operator: or
+    operator: ''
   name: Fried Potato
   sub_category: Side Dish
 - category: Cooking
@@ -15902,7 +15927,7 @@
   main_ingredients:
   - amount: 1
     name: Onion
-    operator: or
+    operator: ''
   name: Fried Onion
   sub_category: Side Dish
 - category: Cooking
@@ -15919,7 +15944,7 @@
   main_ingredients:
   - amount: 1
     name: Warabi
-    operator: or
+    operator: ''
   name: Fried Warabi
   sub_category: Side Dish
 - category: Cooking
@@ -15936,7 +15961,7 @@
   main_ingredients:
   - amount: 1
     name: Horsetail
-    operator: or
+    operator: ''
   name: Fried Horsetail
   sub_category: Side Dish
 - category: Cooking
@@ -15952,7 +15977,7 @@
   main_ingredients:
   - amount: 1
     name: Mugwort
-    operator: or
+    operator: ''
   name: Fried Mugwort
   sub_category: Side Dish
 - category: Cooking
@@ -15969,7 +15994,7 @@
   main_ingredients:
   - amount: 1
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Fried Seven Herbs
   sub_category: Side Dish
 - category: Cooking
@@ -15986,7 +16011,7 @@
   main_ingredients:
   - amount: 1
     name: Root Crops
-    operator: or
+    operator: ''
   name: Fried Root Crops
   sub_category: Side Dish
 - category: Cooking
@@ -16003,7 +16028,7 @@
   main_ingredients:
   - amount: 1
     name: Cucumber
-    operator: or
+    operator: ''
   name: Fried Cucumber
   sub_category: Side Dish
 - category: Cooking
@@ -16019,7 +16044,7 @@
   main_ingredients:
   - amount: 1
     name: Maize
-    operator: or
+    operator: ''
   name: Fried Maize
   sub_category: Side Dish
 - category: Cooking
@@ -16035,7 +16060,7 @@
   main_ingredients:
   - amount: 1
     name: Mushroom
-    operator: or
+    operator: ''
   name: Fried Mushroom
   sub_category: Side Dish
 - category: Cooking
@@ -16052,7 +16077,7 @@
   main_ingredients:
   - amount: 1
     name: Matsutake
-    operator: or
+    operator: ''
   name: Fried Matsutake
   sub_category: Side Dish
 - category: Cooking
@@ -16069,7 +16094,7 @@
   main_ingredients:
   - amount: 1
     name: Chestnut
-    operator: or
+    operator: ''
   name: Fried Chestnut
   sub_category: Side Dish
 - category: Cooking
@@ -16086,7 +16111,7 @@
   main_ingredients:
   - amount: 1
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Fried Ginkgo Nut
   sub_category: Side Dish
 - category: Cooking
@@ -16124,7 +16149,7 @@
   main_ingredients:
   - amount: 2
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Crispy Rabbit Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16144,7 +16169,7 @@
   main_ingredients:
   - amount: 2
     name: Pork
-    operator: or
+    operator: ''
   name: Crispy Pork
   sub_category: Side Dish
 - category: Cooking
@@ -16164,7 +16189,7 @@
   main_ingredients:
   - amount: 2
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Crispy Boar Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16185,7 +16210,7 @@
   main_ingredients:
   - amount: 2
     name: Venison
-    operator: or
+    operator: ''
   name: Crispy Venison
   sub_category: Side Dish
 - category: Cooking
@@ -16205,7 +16230,7 @@
   main_ingredients:
   - amount: 2
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Crispy Bear Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16226,7 +16251,7 @@
   main_ingredients:
   - amount: 2
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Crispy Badger Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16247,7 +16272,7 @@
   main_ingredients:
   - amount: 2
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Crispy Turtle Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16268,7 +16293,7 @@
   main_ingredients:
   - amount: 2
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Crispy Sparrow Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16289,7 +16314,7 @@
   main_ingredients:
   - amount: 2
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Crispy Pheasant Meat
   sub_category: Side Dish
 - category: Cooking
@@ -16330,7 +16355,7 @@
   main_ingredients:
   - amount: 2
     name: Loach
-    operator: or
+    operator: ''
   name: Crispy Loach
   sub_category: Side Dish
 - category: Cooking
@@ -16351,7 +16376,7 @@
   main_ingredients:
   - amount: 2
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Crispy Sweetfish
   sub_category: Side Dish
 - category: Cooking
@@ -16372,7 +16397,7 @@
   main_ingredients:
   - amount: 2
     name: Carp
-    operator: or
+    operator: ''
   name: Crispy Carp
   sub_category: Side Dish
 - category: Cooking
@@ -16393,7 +16418,7 @@
   main_ingredients:
   - amount: 2
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Crispy Masu Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -16413,7 +16438,7 @@
   main_ingredients:
   - amount: 2
     name: Char
-    operator: or
+    operator: ''
   name: Crispy Char
   sub_category: Side Dish
 - category: Cooking
@@ -16433,7 +16458,7 @@
   main_ingredients:
   - amount: 2
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Crispy Crucian Carp
   sub_category: Side Dish
 - category: Cooking
@@ -16454,7 +16479,7 @@
   main_ingredients:
   - amount: 2
     name: Salmon
-    operator: or
+    operator: ''
   name: Crispy Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -16475,7 +16500,7 @@
   main_ingredients:
   - amount: 2
     name: Smelt
-    operator: or
+    operator: ''
   name: Crispy Smelt
   sub_category: Side Dish
 - category: Cooking
@@ -16496,7 +16521,7 @@
   main_ingredients:
   - amount: 2
     name: Herring
-    operator: or
+    operator: ''
   name: Crispy Herring
   sub_category: Side Dish
 - category: Cooking
@@ -16517,7 +16542,7 @@
   main_ingredients:
   - amount: 2
     name: Eel
-    operator: or
+    operator: ''
   name: Crispy Eel
   sub_category: Side Dish
 - category: Cooking
@@ -16567,7 +16592,7 @@
   main_ingredients:
   - amount: 2
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Rabbit Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16595,7 +16620,7 @@
   main_ingredients:
   - amount: 2
     name: Pork
-    operator: or
+    operator: ''
   name: Pork Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16623,7 +16648,7 @@
   main_ingredients:
   - amount: 2
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Boar Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16651,7 +16676,7 @@
   main_ingredients:
   - amount: 2
     name: Venison
-    operator: or
+    operator: ''
   name: Venison Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16679,7 +16704,7 @@
   main_ingredients:
   - amount: 2
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Bear Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16707,7 +16732,7 @@
   main_ingredients:
   - amount: 2
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Badger Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16736,7 +16761,7 @@
   main_ingredients:
   - amount: 2
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Turtle Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16764,7 +16789,7 @@
   main_ingredients:
   - amount: 2
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Sparrow Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16793,7 +16818,7 @@
   main_ingredients:
   - amount: 2
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Pheasant Meat Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16849,7 +16874,7 @@
   main_ingredients:
   - amount: 2
     name: Loach
-    operator: or
+    operator: ''
   name: Loach Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16877,7 +16902,7 @@
   main_ingredients:
   - amount: 2
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Sweetfish Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16906,7 +16931,7 @@
   main_ingredients:
   - amount: 2
     name: Carp
-    operator: or
+    operator: ''
   name: Carp Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16934,7 +16959,7 @@
   main_ingredients:
   - amount: 2
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Masu Salmon Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16962,7 +16987,7 @@
   main_ingredients:
   - amount: 2
     name: Char
-    operator: or
+    operator: ''
   name: Char Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -16990,7 +17015,7 @@
   main_ingredients:
   - amount: 2
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Crucian Carp Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17018,7 +17043,7 @@
   main_ingredients:
   - amount: 2
     name: Salmon
-    operator: or
+    operator: ''
   name: Salmon Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17046,7 +17071,7 @@
   main_ingredients:
   - amount: 2
     name: Smelt
-    operator: or
+    operator: ''
   name: Smelt Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17074,7 +17099,7 @@
   main_ingredients:
   - amount: 2
     name: Herring
-    operator: or
+    operator: ''
   name: Herring Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17103,7 +17128,7 @@
   main_ingredients:
   - amount: 2
     name: Eel
-    operator: or
+    operator: ''
   name: Eel Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17159,7 +17184,7 @@
   main_ingredients:
   - amount: 2
     name: Tekusari
-    operator: or
+    operator: ''
   name: Tekusari Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17187,7 +17212,7 @@
   main_ingredients:
   - amount: 2
     name: Acorn
-    operator: or
+    operator: ''
   name: Acorn Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17215,7 +17240,7 @@
   main_ingredients:
   - amount: 2
     name: Taro
-    operator: or
+    operator: ''
   name: Taro Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17243,7 +17268,7 @@
   main_ingredients:
   - amount: 2
     name: Potato
-    operator: or
+    operator: ''
   name: Potato Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17271,7 +17296,7 @@
   main_ingredients:
   - amount: 2
     name: Onion
-    operator: or
+    operator: ''
   name: Onion Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17300,7 +17325,7 @@
   main_ingredients:
   - amount: 2
     name: Warabi
-    operator: or
+    operator: ''
   name: Warabi Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17328,7 +17353,7 @@
   main_ingredients:
   - amount: 2
     name: Horsetail
-    operator: or
+    operator: ''
   name: Horsetail Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17356,7 +17381,7 @@
   main_ingredients:
   - amount: 2
     name: Mugwort
-    operator: or
+    operator: ''
   name: Mugwort Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17384,7 +17409,7 @@
   main_ingredients:
   - amount: 2
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Seven Herbs Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17413,7 +17438,7 @@
   main_ingredients:
   - amount: 2
     name: Root Crops
-    operator: or
+    operator: ''
   name: Root Crops Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17441,7 +17466,7 @@
   main_ingredients:
   - amount: 2
     name: Cucumber
-    operator: or
+    operator: ''
   name: Cucumber Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17469,7 +17494,7 @@
   main_ingredients:
   - amount: 2
     name: Maize
-    operator: or
+    operator: ''
   name: Maize Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17497,7 +17522,7 @@
   main_ingredients:
   - amount: 2
     name: Mushroom
-    operator: or
+    operator: ''
   name: Mushroom Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17525,7 +17550,7 @@
   main_ingredients:
   - amount: 2
     name: Matsutake
-    operator: or
+    operator: ''
   name: Matsutake Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17553,7 +17578,7 @@
   main_ingredients:
   - amount: 2
     name: Chestnut
-    operator: or
+    operator: ''
   name: Chestnut Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17582,7 +17607,7 @@
   main_ingredients:
   - amount: 2
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Ginkgo Nut Tempura
   sub_category: Side Dish
 - category: Cooking
@@ -17633,7 +17658,7 @@
   main_ingredients:
   - amount: 1
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Stewed Rabbit Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17655,7 +17680,7 @@
   main_ingredients:
   - amount: 1
     name: Pork
-    operator: or
+    operator: ''
   name: Stewed Pork
   sub_category: Side Dish
 - category: Cooking
@@ -17677,7 +17702,7 @@
   main_ingredients:
   - amount: 1
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Stewed Boar Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17700,7 +17725,7 @@
   main_ingredients:
   - amount: 1
     name: Venison
-    operator: or
+    operator: ''
   name: Stewed Venison
   sub_category: Side Dish
 - category: Cooking
@@ -17722,7 +17747,7 @@
   main_ingredients:
   - amount: 1
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Stewed Bear Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17745,7 +17770,7 @@
   main_ingredients:
   - amount: 1
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Stewed Badger Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17768,7 +17793,7 @@
   main_ingredients:
   - amount: 1
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Stewed Turtle Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17791,7 +17816,7 @@
   main_ingredients:
   - amount: 1
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Stewed Sparrow Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17814,7 +17839,7 @@
   main_ingredients:
   - amount: 1
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Stewed Pheasant Meat
   sub_category: Side Dish
 - category: Cooking
@@ -17859,7 +17884,7 @@
   main_ingredients:
   - amount: 1
     name: Loach
-    operator: or
+    operator: ''
   name: Stewed Loach
   sub_category: Side Dish
 - category: Cooking
@@ -17882,7 +17907,7 @@
   main_ingredients:
   - amount: 1
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Stewed Sweetfish
   sub_category: Side Dish
 - category: Cooking
@@ -17905,7 +17930,7 @@
   main_ingredients:
   - amount: 1
     name: Carp
-    operator: or
+    operator: ''
   name: Stewed Carp
   sub_category: Side Dish
 - category: Cooking
@@ -17928,7 +17953,7 @@
   main_ingredients:
   - amount: 1
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Stewed Masu Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -17950,7 +17975,7 @@
   main_ingredients:
   - amount: 1
     name: Char
-    operator: or
+    operator: ''
   name: Stewed Char
   sub_category: Side Dish
 - category: Cooking
@@ -17973,7 +17998,7 @@
   main_ingredients:
   - amount: 1
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Stewed Crucian Carp
   sub_category: Side Dish
 - category: Cooking
@@ -17996,7 +18021,7 @@
   main_ingredients:
   - amount: 1
     name: Salmon
-    operator: or
+    operator: ''
   name: Stewed Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -18019,7 +18044,7 @@
   main_ingredients:
   - amount: 1
     name: Smelt
-    operator: or
+    operator: ''
   name: Stewed Smelt
   sub_category: Side Dish
 - category: Cooking
@@ -18043,7 +18068,7 @@
   main_ingredients:
   - amount: 1
     name: Herring
-    operator: or
+    operator: ''
   name: Stewed Herring
   sub_category: Side Dish
 - category: Cooking
@@ -18066,7 +18091,7 @@
   main_ingredients:
   - amount: 1
     name: Eel
-    operator: or
+    operator: ''
   name: Stewed Eel
   sub_category: Side Dish
 - category: Cooking
@@ -18111,7 +18136,7 @@
   main_ingredients:
   - amount: 1
     name: Tekusari
-    operator: or
+    operator: ''
   name: Stewed Tekusari
   sub_category: Side Dish
 - category: Cooking
@@ -18133,7 +18158,7 @@
   main_ingredients:
   - amount: 1
     name: Acorn
-    operator: or
+    operator: ''
   name: Stewed Acorn
   sub_category: Side Dish
 - category: Cooking
@@ -18156,7 +18181,7 @@
   main_ingredients:
   - amount: 1
     name: Taro
-    operator: or
+    operator: ''
   name: Stewed Taro
   sub_category: Side Dish
 - category: Cooking
@@ -18179,7 +18204,7 @@
   main_ingredients:
   - amount: 1
     name: Potato
-    operator: or
+    operator: ''
   name: Stewed Potato
   sub_category: Side Dish
 - category: Cooking
@@ -18202,7 +18227,7 @@
   main_ingredients:
   - amount: 1
     name: Onion
-    operator: or
+    operator: ''
   name: Stewed Onion
   sub_category: Side Dish
 - category: Cooking
@@ -18225,7 +18250,7 @@
   main_ingredients:
   - amount: 1
     name: Warabi
-    operator: or
+    operator: ''
   name: Stewed Warabi
   sub_category: Side Dish
 - category: Cooking
@@ -18248,7 +18273,7 @@
   main_ingredients:
   - amount: 1
     name: Horsetail
-    operator: or
+    operator: ''
   name: Stewed Horsetail
   sub_category: Side Dish
 - category: Cooking
@@ -18270,7 +18295,7 @@
   main_ingredients:
   - amount: 1
     name: Mugwort
-    operator: or
+    operator: ''
   name: Stewed Mugwort
   sub_category: Side Dish
 - category: Cooking
@@ -18293,7 +18318,7 @@
   main_ingredients:
   - amount: 1
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Stewed Seven Herbs
   sub_category: Side Dish
 - category: Cooking
@@ -18316,7 +18341,7 @@
   main_ingredients:
   - amount: 1
     name: Root Crops
-    operator: or
+    operator: ''
   name: Stewed Root Crops
   sub_category: Side Dish
 - category: Cooking
@@ -18339,7 +18364,7 @@
   main_ingredients:
   - amount: 1
     name: Cucumber
-    operator: or
+    operator: ''
   name: Stewed Cucumber
   sub_category: Side Dish
 - category: Cooking
@@ -18361,7 +18386,7 @@
   main_ingredients:
   - amount: 1
     name: Maize
-    operator: or
+    operator: ''
   name: Stewed Maize
   sub_category: Side Dish
 - category: Cooking
@@ -18383,7 +18408,7 @@
   main_ingredients:
   - amount: 1
     name: Mushroom
-    operator: or
+    operator: ''
   name: Stewed Mushroom
   sub_category: Side Dish
 - category: Cooking
@@ -18406,7 +18431,7 @@
   main_ingredients:
   - amount: 1
     name: Matsutake
-    operator: or
+    operator: ''
   name: Stewed Matsutake
   sub_category: Side Dish
 - category: Cooking
@@ -18429,7 +18454,7 @@
   main_ingredients:
   - amount: 1
     name: Chestnut
-    operator: or
+    operator: ''
   name: Stewed Chestnut
   sub_category: Side Dish
 - category: Cooking
@@ -18452,7 +18477,7 @@
   main_ingredients:
   - amount: 1
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Stewed Ginkgo Nut
   sub_category: Side Dish
 - category: Cooking
@@ -18502,7 +18527,7 @@
   main_ingredients:
   - amount: 1
     name: Rabbit Meat
-    operator: or
+    operator: ''
   name: Miso Rabbit Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18529,7 +18554,7 @@
   main_ingredients:
   - amount: 1
     name: Pork
-    operator: or
+    operator: ''
   name: Miso Pork
   sub_category: Side Dish
 - category: Cooking
@@ -18556,7 +18581,7 @@
   main_ingredients:
   - amount: 1
     name: Boar Meat
-    operator: or
+    operator: ''
   name: Miso Boar Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18584,7 +18609,7 @@
   main_ingredients:
   - amount: 1
     name: Venison
-    operator: or
+    operator: ''
   name: Miso Venison
   sub_category: Side Dish
 - category: Cooking
@@ -18611,7 +18636,7 @@
   main_ingredients:
   - amount: 1
     name: Bear Meat
-    operator: or
+    operator: ''
   name: Miso Bear Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18639,7 +18664,7 @@
   main_ingredients:
   - amount: 1
     name: Badger Meat
-    operator: or
+    operator: ''
   name: Miso Badger Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18666,7 +18691,7 @@
   main_ingredients:
   - amount: 1
     name: Turtle Meat
-    operator: or
+    operator: ''
   name: Miso Turtle Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18694,7 +18719,7 @@
   main_ingredients:
   - amount: 1
     name: Sparrow Meat
-    operator: or
+    operator: ''
   name: Miso Sparrow Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18721,7 +18746,7 @@
   main_ingredients:
   - amount: 1
     name: Pheasant Meat
-    operator: or
+    operator: ''
   name: Miso Pheasant Meat
   sub_category: Side Dish
 - category: Cooking
@@ -18776,7 +18801,7 @@
   main_ingredients:
   - amount: 1
     name: Loach
-    operator: or
+    operator: ''
   name: Miso Loach
   sub_category: Side Dish
 - category: Cooking
@@ -18804,7 +18829,7 @@
   main_ingredients:
   - amount: 1
     name: Sweetfish
-    operator: or
+    operator: ''
   name: Miso Sweetfish
   sub_category: Side Dish
 - category: Cooking
@@ -18831,7 +18856,7 @@
   main_ingredients:
   - amount: 1
     name: Carp
-    operator: or
+    operator: ''
   name: Miso Carp
   sub_category: Side Dish
 - category: Cooking
@@ -18859,7 +18884,7 @@
   main_ingredients:
   - amount: 1
     name: Masu Salmon
-    operator: or
+    operator: ''
   name: Miso Masu Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -18886,7 +18911,7 @@
   main_ingredients:
   - amount: 1
     name: Char
-    operator: or
+    operator: ''
   name: Miso Char
   sub_category: Side Dish
 - category: Cooking
@@ -18914,7 +18939,7 @@
   main_ingredients:
   - amount: 1
     name: Crucian Carp
-    operator: or
+    operator: ''
   name: Miso Crucian Carp
   sub_category: Side Dish
 - category: Cooking
@@ -18942,7 +18967,7 @@
   main_ingredients:
   - amount: 1
     name: Salmon
-    operator: or
+    operator: ''
   name: Miso Salmon
   sub_category: Side Dish
 - category: Cooking
@@ -18970,7 +18995,7 @@
   main_ingredients:
   - amount: 1
     name: Smelt
-    operator: or
+    operator: ''
   name: Miso Smelt
   sub_category: Side Dish
 - category: Cooking
@@ -18999,7 +19024,7 @@
   main_ingredients:
   - amount: 1
     name: Herring
-    operator: or
+    operator: ''
   name: Miso Herring
   sub_category: Side Dish
 - category: Cooking
@@ -19026,7 +19051,7 @@
   main_ingredients:
   - amount: 1
     name: Eel
-    operator: or
+    operator: ''
   name: Miso Eel
   sub_category: Side Dish
 - category: Cooking
@@ -19081,7 +19106,7 @@
   main_ingredients:
   - amount: 1
     name: Tekusari
-    operator: or
+    operator: ''
   name: Miso Tekusari
   sub_category: Side Dish
 - category: Cooking
@@ -19108,7 +19133,7 @@
   main_ingredients:
   - amount: 1
     name: Acorn
-    operator: or
+    operator: ''
   name: Miso Acorn
   sub_category: Side Dish
 - category: Cooking
@@ -19136,7 +19161,7 @@
   main_ingredients:
   - amount: 1
     name: Taro
-    operator: or
+    operator: ''
   name: Miso Taro
   sub_category: Side Dish
 - category: Cooking
@@ -19164,7 +19189,7 @@
   main_ingredients:
   - amount: 1
     name: Potato
-    operator: or
+    operator: ''
   name: Miso Potato
   sub_category: Side Dish
 - category: Cooking
@@ -19192,7 +19217,7 @@
   main_ingredients:
   - amount: 1
     name: Onion
-    operator: or
+    operator: ''
   name: Miso Onion
   sub_category: Side Dish
 - category: Cooking
@@ -19219,7 +19244,7 @@
   main_ingredients:
   - amount: 1
     name: Warabi
-    operator: or
+    operator: ''
   name: Miso Warabi
   sub_category: Side Dish
 - category: Cooking
@@ -19247,7 +19272,7 @@
   main_ingredients:
   - amount: 1
     name: Horsetail
-    operator: or
+    operator: ''
   name: Miso Horsetail
   sub_category: Side Dish
 - category: Cooking
@@ -19274,7 +19299,7 @@
   main_ingredients:
   - amount: 1
     name: Mugwort
-    operator: or
+    operator: ''
   name: Miso Mugwort
   sub_category: Side Dish
 - category: Cooking
@@ -19302,7 +19327,7 @@
   main_ingredients:
   - amount: 1
     name: Seven Herbs
-    operator: or
+    operator: ''
   name: Miso Seven Herbs
   sub_category: Side Dish
 - category: Cooking
@@ -19329,7 +19354,7 @@
   main_ingredients:
   - amount: 1
     name: Root Crops
-    operator: or
+    operator: ''
   name: Miso Root Crops
   sub_category: Side Dish
 - category: Cooking
@@ -19357,7 +19382,7 @@
   main_ingredients:
   - amount: 1
     name: Cucumber
-    operator: or
+    operator: ''
   name: Miso Cucumber
   sub_category: Side Dish
 - category: Cooking
@@ -19384,7 +19409,7 @@
   main_ingredients:
   - amount: 1
     name: Maize
-    operator: or
+    operator: ''
   name: Miso Maize
   sub_category: Side Dish
 - category: Cooking
@@ -19411,7 +19436,7 @@
   main_ingredients:
   - amount: 1
     name: Mushroom
-    operator: or
+    operator: ''
   name: Miso Mushroom
   sub_category: Side Dish
 - category: Cooking
@@ -19439,7 +19464,7 @@
   main_ingredients:
   - amount: 1
     name: Matsutake
-    operator: or
+    operator: ''
   name: Miso Matsutake
   sub_category: Side Dish
 - category: Cooking
@@ -19467,7 +19492,7 @@
   main_ingredients:
   - amount: 1
     name: Chestnut
-    operator: or
+    operator: ''
   name: Miso Chestnut
   sub_category: Side Dish
 - category: Cooking
@@ -19494,7 +19519,7 @@
   main_ingredients:
   - amount: 1
     name: Ginkgo Nut
-    operator: or
+    operator: ''
   name: Miso Ginkgo Nut
   sub_category: Side Dish
 - category: Cooking
@@ -19621,6 +19646,7 @@
     enchant:
     - level: 4
       name: Natural Healing
+  sub_category: Side Dish
 - category: Cooking
   description: Hot pot brimming with venison. The lightnessof the meat belies a deeply
     satisfying flavor.
@@ -19668,6 +19694,7 @@
     enchant:
     - level: 4
       name: Natural Healing
+  sub_category: Side Dish
 - category: Cooking
   description: Hot pot brimming with turtle meat. Creates a trulyspectacular broth,
     and pairs well with vegetables.
@@ -19718,6 +19745,7 @@
     enchant:
     - level: 4
       name: Natural Healing
+  sub_category: Side Dish
 - category: Cooking
   description: Hot pot brimming with bear meat. Not only is itnutritious, but the
     fattiness it adds is unlikeany other meat.
@@ -19772,6 +19800,7 @@
       name: Biped's Bane
     - level: 2
       name: Quadruped Calamity
+  sub_category: Side Dish
 - category: Cooking
   description: This appears to be herring that was preserved with herbs,vinegar, and
     salt. Myrthe says that it is a famous productof her homeland, Ventania. It's not
@@ -19792,6 +19821,7 @@
     enchant:
     - level: 3
       name: Gill Shredder
+  sub_category: Side Dish
 - category: Cooking
   description: A dish of Myrthe's native Ventania made fromchopped potatoes and root
     vegetables steamedand mashed. This will fill your belly right up!
@@ -20018,10 +20048,10 @@
     red bean pasteor vegetables for an even tastier treat.
   food_bonus:
     enchant:
-    - level: 2
-      name: Poison Resistance
     - level: 3
       name: Celestial Maiden
+    - level: 2
+      name: Poison Resistance
     fullness: 10
     luck: 6
   ingredients:
@@ -20197,12 +20227,12 @@
     to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
   food_bonus:
     enchant:
-    - level: 2
-      name: Poison Resistance
     - level: 1
       name: Luck Boost
     - level: 1
       name: Luck Buff
+    - level: 2
+      name: Poison Resistance
     luck: 8
   ingredients:
   - amount: 1
@@ -20345,7 +20375,7 @@
   main_ingredients:
   - amount: 1
     name: Brown Rice Shochu
-    operator: or
+    operator: ''
   name: Brown Rice Shochu
   sub_category: Drink
 - category: Cooking
@@ -20362,7 +20392,7 @@
   main_ingredients:
   - amount: 1
     name: Mixed Rice Shochu
-    operator: or
+    operator: ''
   name: Mixed Rice Shochu
   sub_category: Drink
 - category: Cooking
@@ -20379,7 +20409,7 @@
   main_ingredients:
   - amount: 1
     name: White Rice Shochu
-    operator: or
+    operator: ''
   name: White Rice Shochu
   sub_category: Drink
 - category: Cooking
@@ -20396,7 +20426,7 @@
   main_ingredients:
   - amount: 1
     name: Wheat Shochu
-    operator: or
+    operator: ''
   name: Wheat Shochu
   sub_category: Drink
 - category: Cooking
@@ -20413,7 +20443,7 @@
   main_ingredients:
   - amount: 1
     name: Foxtail Millet Shochu
-    operator: or
+    operator: ''
   name: Foxtail Millet Shochu
   sub_category: Drink
 - category: Cooking
@@ -20430,7 +20460,7 @@
   main_ingredients:
   - amount: 1
     name: Sanwa Millet Shochu
-    operator: or
+    operator: ''
   name: Sanwa Millet Shochu
   sub_category: Drink
 - category: Cooking
@@ -20447,7 +20477,7 @@
   main_ingredients:
   - amount: 1
     name: Bean Shochu
-    operator: or
+    operator: ''
   name: Bean Shochu
   sub_category: Drink
 - category: Cooking
@@ -20494,6 +20524,7 @@
     miraculous water,it should prove to be a potent supplement.
   food_bonus:
     hp: 100
+    hp_multiply: true
   ingredients:
   - amount: 2
     name: Health Powder
@@ -20505,6 +20536,7 @@
     miraculous water,it should prove to be a potent supplement.
   food_bonus:
     sp: 100
+    sp_multiply: true
   ingredients:
   - amount: 2
     name: Skill Powder
@@ -20516,6 +20548,7 @@
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
     strength: 100
+    strength_multiply: true
   ingredients:
   - amount: 2
     name: Strength Powder
@@ -20527,6 +20560,7 @@
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
     vitality: 100
+    vitality_multiply: true
   ingredients:
   - amount: 2
     name: Vitality Powder
@@ -20538,6 +20572,7 @@
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
     magic: 100
+    magic_multiply: true
   ingredients:
   - amount: 2
     name: Magic Powder
@@ -20549,6 +20584,7 @@
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
     luck: 100
+    luck_multiply: true
   ingredients:
   - amount: 2
     name: Luck Powder
@@ -20560,6 +20596,7 @@
     this miraculous water,it should prove to be a potent supplement.
   food_bonus:
     fullness: 100
+    fullness_multiply: true
   ingredients:
   - amount: 2
     name: Fullness Powder

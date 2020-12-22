@@ -133,7 +133,7 @@ export class Inventory {
             }
         }
 
-        return '';
+        return 'text-neutral';
     }
 
     static getStateFocus(fertilizer_bonus: FertilizerBonusData) {
@@ -142,27 +142,27 @@ export class Inventory {
             fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 &&
             fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 &&
             fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 &&
-            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            fertilizer_bonus.aroma_magic !== undefined && fertilizer_bonus.aroma_magic !== 0) {
             return FarmingFocus.Balanced;
         } else if ((fertilizer_bonus.yield_hp === undefined || fertilizer_bonus.yield_hp === 0) &&
             (fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
                 fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
                 fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0) &&
             (fertilizer_bonus.aesthetic_luck === undefined || fertilizer_bonus.aesthetic_luck === 0) &&
-            (fertilizer_bonus.armor_magic === undefined || fertilizer_bonus.armor_magic === 0)) {
+            (fertilizer_bonus.aroma_magic === undefined || fertilizer_bonus.aroma_magic === 0)) {
             return FarmingFocus.Heartiness;
         } else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0) {
             return FarmingFocus.Yield;
         } else if (fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0) {
             return FarmingFocus.Aesthetic;
-        } else if (fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+        } else if (fertilizer_bonus.aroma_magic !== undefined && fertilizer_bonus.aroma_magic !== 0) {
             return FarmingFocus.Aroma;
         } else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 ||
             fertilizer_bonus.taste_strength !== undefined && fertilizer_bonus.taste_strength !== 0 ||
             fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
             fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 ||
             fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 ||
-            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            fertilizer_bonus.aroma_magic !== undefined && fertilizer_bonus.aroma_magic !== 0) {
             return FarmingFocus.Balanced;
         }
 

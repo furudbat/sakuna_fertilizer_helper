@@ -1,5 +1,8 @@
 <div class="table-item-list table-responsive">
   <table class="table table-bordered table-striped dt-responsive" id="{{include.id}}">
+    {% if include.caption %}
+      <caption>{{ include.caption }}</caption>
+    {% endif %}
     <thead>
       <tr>
         <th scope="col" data-priority="10" data-class-name="name">{{ site.data.strings.table.foodlist.col_name }}</th>

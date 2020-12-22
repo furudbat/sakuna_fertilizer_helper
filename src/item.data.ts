@@ -9,7 +9,7 @@ export interface FertilizerBonusData {
     hardness_vitality?: number;
     stickiness_gusto?: number;
     aesthetic_luck?: number;
-    armor_magic?: number;
+    aroma_magic?: number;
 
     immunity?: number;
     pesticide?: number;
@@ -32,6 +32,14 @@ export interface FoodBonusData {
     magic?: number;
     luck?: number;
     fullness?: number;
+
+    hp_multiply?: boolean;
+    sp_multiply?: boolean;
+    strength_multiply?: boolean;
+    vitality_multiply?: boolean;
+    magic_multiply?: boolean;
+    luck_multiply?: boolean;
+    fullness_multiply?: boolean;
 }
 
 export interface BaseItemData {

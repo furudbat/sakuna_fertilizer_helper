@@ -9,15 +9,21 @@ function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] | undefi
     return (o[propertyName] !== undefined) ? o[propertyName] : undefined; // o[propertyName] is of type T[K]
 }
 
-export function render_value_html(value: number | undefined) {
+export function render_value_html(value: number | undefined, multiply: boolean | undefined = undefined) {
     const val_number = (value) ? value as number : 0;
     let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
+    if (multiply !== undefined && multiply) {
+        val_str = `${val_str}*`;
+    }
     return `<span class="text-center">${val_str}</span>`;
 };
 
-export function render_buff_bonus_html(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
+export function render_buff_bonus_html(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false, multiply: boolean | undefined = undefined) {
     const val_number = (value) ? value as number : 0;
     let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
+    if (multiply !== undefined && multiply) {
+        val_str = `${val_str}*`;
+    }
 
     if (invert_color !== undefined) {
         if (!invert_color) {
@@ -49,8 +55,9 @@ export function render_buff_bonus_html(value: number | undefined, invert_color: 
 export function render_buff_bonus(property_name: string, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
     return function (data: any, type: string, row: any) {
         const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        const multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') : undefined;
         if (type === 'display') {
-            return render_buff_bonus_html(value, invert_color, overflow);
+            return render_buff_bonus_html(value, invert_color, overflow, multiply);
         }
 
         // Search, order and type can use the original data
@@ -62,8 +69,9 @@ export function render_buff_bonus(property_name: string, invert_color: boolean |
 export function render_value_from_property(property_name: string) {
     return function (data: any, type: string, row: any) {
         const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        const multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') : undefined;
         if (type === 'display') {
-            return render_value_html(value);
+            return render_value_html(value, multiply);
         }
 
         // Search, order and type can use the original data
@@ -71,10 +79,10 @@ export function render_value_from_property(property_name: string) {
     };
 };
 
-export function render_value(value: number | undefined) {
+export function render_value(value: number | undefined, multiply: boolean | undefined = undefined) {
     return function (data: any, type: string, row: any) {
         if (type === 'display') {
-            return render_value_html(value);
+            return render_value_html(value, multiply);
         }
 
         // Search, order and type can use the original data
@@ -135,7 +143,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.find_in !== undefined && row.find_in) {
-            ret = `<h6>${site.data.strings.item_list.materials.find_in_label}</h6>`;
+            ret = `<h5>${site.data.strings.item_list.materials.find_in_label}</h5>`;
 
             ret += row.find_in.map(find_in => {
                 let find_location_time = '';
@@ -154,7 +162,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = `<h6>${site.data.strings.item_list.materials.drop_by_enemy_label}</h6>`;
+            ret = `<h5>${site.data.strings.item_list.materials.drop_by_enemy_label}</h5>`;
 
             ret += row.enemy_drops.map(enemy_drop => {
                 let drop_time = '';
@@ -215,10 +223,12 @@ export abstract class ItemListAdapter {
     }
 
     static getWhenSpoiledContent(row: FoodItemData) {
-        if (row.when_spoiled != undefined) {
-            return `<strong>${site.data.strings.item_list.food.when_spoiled_label}</strong>${row.when_spoiled}`;
+        let ret = '';
+        if (row.when_spoiled !== undefined) {
+            ret += `<h5>${site.data.strings.item_list.food.when_spoiled_label}</h5>`;
+            ret += `${row.when_spoiled}`;
         }
-        return '';
+        return ret;
     }
 
     static renderSoilNutrientsHtml(fertilizer_bonus: FertilizerBonusData | undefined) {
@@ -237,8 +247,8 @@ export abstract class ItemListAdapter {
         return render_value_from_property(property_name);
     }
 
-    static renderValueHtml(value: number | undefined) {
-        return render_value_html(value);
+    static renderValueHtml(value: number | undefined, multiply: boolean | undefined = undefined) {
+        return render_value_html(value, multiply);
     }
 
     static renderShortExpiable(data: any, type: any, row: FoodItemData): string | boolean {
@@ -269,7 +279,7 @@ export abstract class ItemListAdapter {
         return (row.expiable) ? true : false;
     }
 
-    static addColColorClassFromFertilizerBonus(cell: Node, fertilizer_bonus: FertilizerBonusData, property_name: "leaf_fertilizer" | "kernel_fertilizer" | "root_fertilizer" | "yield_hp" | "taste_strength" | "hardness_vitality" | "stickiness_gusto" | "aesthetic_luck" | "armor_magic" | "immunity" | "pesticide" | "herbicide" | "toxicity", invert_color: boolean = false) {
+    static addColColorClassFromFertilizerBonus(cell: Node, fertilizer_bonus: FertilizerBonusData, property_name: "leaf_fertilizer" | "kernel_fertilizer" | "root_fertilizer" | "yield_hp" | "taste_strength" | "hardness_vitality" | "stickiness_gusto" | "aesthetic_luck" | "aroma_magic" | "immunity" | "pesticide" | "herbicide" | "toxicity", invert_color: boolean = false) {
         const value = (hasProperty(fertilizer_bonus, property_name)) ? getProperty(fertilizer_bonus, property_name) : 0;
 
         ItemListAdapter.addColColorClassFromValue(cell, value, invert_color)

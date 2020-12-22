@@ -55755,7 +55755,7 @@ var Application = (function () {
                 ((_f = (_e = item.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.stickiness_gusto) !== null && _f !== void 0 ? _f : 0)) / 3;
         };
         var get_aesthetic = function (item) { var _a, _b; return (_b = (_a = item.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.aesthetic_luck) !== null && _b !== void 0 ? _b : 0; };
-        var get_aroma = function (item) { var _a, _b; return (_b = (_a = item.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.armor_magic) !== null && _b !== void 0 ? _b : 0; };
+        var get_aroma = function (item) { var _a, _b; return (_b = (_a = item.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.aroma_magic) !== null && _b !== void 0 ? _b : 0; };
         var get_balanced = function (item) {
             var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
             return ((_b = (_a = item.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.yield_hp) !== null && _b !== void 0 ? _b : 0) +
@@ -55763,7 +55763,7 @@ var Application = (function () {
                 ((_f = (_e = item.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.hardness_vitality) !== null && _f !== void 0 ? _f : 0) +
                 ((_h = (_g = item.fertilizer_bonus) === null || _g === void 0 ? void 0 : _g.stickiness_gusto) !== null && _h !== void 0 ? _h : 0) +
                 ((_k = (_j = item.fertilizer_bonus) === null || _j === void 0 ? void 0 : _j.aesthetic_luck) !== null && _k !== void 0 ? _k : 0) +
-                ((_m = (_l = item.fertilizer_bonus) === null || _l === void 0 ? void 0 : _l.armor_magic) !== null && _m !== void 0 ? _m : 0);
+                ((_m = (_l = item.fertilizer_bonus) === null || _l === void 0 ? void 0 : _l.aroma_magic) !== null && _m !== void 0 ? _m : 0);
         };
         var that = this;
         return items.map(function (it) {
@@ -55867,7 +55867,7 @@ var Application = (function () {
                 ret += calcPointsStats((_c = item.item.fertilizer_bonus) === null || _c === void 0 ? void 0 : _c.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
                 ret += calcPointsStats((_d = item.item.fertilizer_bonus) === null || _d === void 0 ? void 0 : _d.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
                 ret += calcPointsStats((_e = item.item.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
-                ret += calcPointsStats((_f = item.item.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats((_f = item.item.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.aroma_magic, fertilizer.aroma_magic, fertilizer.is_aroma_magic_max_or_overflow);
                 break;
             case application_data_1.FarmingFocus.Heartiness:
                 ret += item.points_fertilizer.heartiness;
@@ -55885,7 +55885,7 @@ var Application = (function () {
                 break;
             case application_data_1.FarmingFocus.Aroma:
                 ret += item.points_fertilizer.aroma;
-                ret += calcPointsStats((_m = item.item.fertilizer_bonus) === null || _m === void 0 ? void 0 : _m.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats((_m = item.item.fertilizer_bonus) === null || _m === void 0 ? void 0 : _m.aroma_magic, fertilizer.aroma_magic, fertilizer.is_aroma_magic_max_or_overflow);
                 break;
         }
         return ret;
@@ -55928,6 +55928,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CookingItemListAdapter = void 0;
+var inventory_1 = require("./inventory");
 var item_data_1 = require("./item.data");
 var itemlist_adapter_1 = require("./itemlist.adapter");
 var CookingItemListAdapter = (function (_super) {
@@ -56168,6 +56169,76 @@ var CookingItemListAdapter = (function (_super) {
                         var _a, _b;
                         return that.getFoodBuff(type, row.season_buff, (_a = row.season_food_bonus) === null || _a === void 0 ? void 0 : _a.fullness, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.fullness);
                     }
+                },
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data, type, row) {
+                        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35;
+                        if (type === 'display') {
+                            return '';
+                        }
+                        var ret = '';
+                        if (row.fertilizer_bonus !== undefined) {
+                            ret += (((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.leaf_fertilizer) !== undefined) ? ';Leaf: ' + ((_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.leaf_fertilizer) : '';
+                            ret += (((_c = row.fertilizer_bonus) === null || _c === void 0 ? void 0 : _c.kernel_fertilizer) !== undefined) ? ';Kernel: ' + ((_d = row.fertilizer_bonus) === null || _d === void 0 ? void 0 : _d.kernel_fertilizer) : '';
+                            ret += (((_e = row.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.root_fertilizer) !== undefined) ? ';Root: ' + ((_f = row.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.root_fertilizer) : '';
+                            ret += (((_g = row.fertilizer_bonus) === null || _g === void 0 ? void 0 : _g.yield_hp) !== undefined) ? ';Yield: ' + ((_h = row.fertilizer_bonus) === null || _h === void 0 ? void 0 : _h.yield_hp) + ';HP: ' + ((_j = row.fertilizer_bonus) === null || _j === void 0 ? void 0 : _j.yield_hp) : '';
+                            ret += (((_k = row.fertilizer_bonus) === null || _k === void 0 ? void 0 : _k.taste_strength) !== undefined) ? ';Taste: ' + ((_l = row.fertilizer_bonus) === null || _l === void 0 ? void 0 : _l.taste_strength) + ';Strength: ' + ((_m = row.fertilizer_bonus) === null || _m === void 0 ? void 0 : _m.taste_strength) : '';
+                            ret += (((_o = row.fertilizer_bonus) === null || _o === void 0 ? void 0 : _o.hardness_vitality) !== undefined) ? ';Hardness: ' + ((_p = row.fertilizer_bonus) === null || _p === void 0 ? void 0 : _p.hardness_vitality) + ';Vitality: ' + ((_q = row.fertilizer_bonus) === null || _q === void 0 ? void 0 : _q.hardness_vitality) : '';
+                            ret += (((_r = row.fertilizer_bonus) === null || _r === void 0 ? void 0 : _r.stickiness_gusto) !== undefined) ? ';Stickiness: ' + ((_s = row.fertilizer_bonus) === null || _s === void 0 ? void 0 : _s.stickiness_gusto) + ';Gusto: ' + ((_t = row.fertilizer_bonus) === null || _t === void 0 ? void 0 : _t.stickiness_gusto) : '';
+                            ret += (((_u = row.fertilizer_bonus) === null || _u === void 0 ? void 0 : _u.aesthetic_luck) !== undefined) ? ';Aesthetic: ' + ((_v = row.fertilizer_bonus) === null || _v === void 0 ? void 0 : _v.aesthetic_luck) + ';Luck: ' + ((_w = row.fertilizer_bonus) === null || _w === void 0 ? void 0 : _w.aesthetic_luck) : '';
+                            ret += (((_x = row.fertilizer_bonus) === null || _x === void 0 ? void 0 : _x.aroma_magic) !== undefined) ? ';Aroma: ' + ((_y = row.fertilizer_bonus) === null || _y === void 0 ? void 0 : _y.aroma_magic) + ';Magic: ' + ((_z = row.fertilizer_bonus) === null || _z === void 0 ? void 0 : _z.aroma_magic) : '';
+                            ret += (((_0 = row.fertilizer_bonus) === null || _0 === void 0 ? void 0 : _0.immunity) !== undefined) ? ';Immunity: ' + ((_1 = row.fertilizer_bonus) === null || _1 === void 0 ? void 0 : _1.immunity) : '';
+                            ret += (((_2 = row.fertilizer_bonus) === null || _2 === void 0 ? void 0 : _2.pesticide) !== undefined) ? ';Pesticide: ' + ((_3 = row.fertilizer_bonus) === null || _3 === void 0 ? void 0 : _3.pesticide) : '';
+                            ret += (((_4 = row.fertilizer_bonus) === null || _4 === void 0 ? void 0 : _4.herbicide) !== undefined) ? ';Herbicide: ' + ((_5 = row.fertilizer_bonus) === null || _5 === void 0 ? void 0 : _5.herbicide) : '';
+                            ret += (((_6 = row.fertilizer_bonus) === null || _6 === void 0 ? void 0 : _6.toxicity) !== undefined) ? ';Toxicity: ' + ((_7 = row.fertilizer_bonus) === null || _7 === void 0 ? void 0 : _7.toxicity) : '';
+                            ret += ';' + inventory_1.Inventory.getStateFocus(row.fertilizer_bonus);
+                        }
+                        if (row.find_in !== undefined) {
+                            ret += ';Find In: ' + row.find_in.map(function (it) { return it.name + " " + it.season; }).join('|');
+                        }
+                        if (row.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + row.enemy_drops.map(function (it) { return it.name + " " + it.time; }).join('|');
+                        }
+                        if (row.expiable !== undefined && row.expiable && row.life !== undefined) {
+                            ret += ';Life: ' + row.life + ';Expirable';
+                        }
+                        if (row.food_bonus !== undefined) {
+                            ret += (((_8 = row.food_bonus) === null || _8 === void 0 ? void 0 : _8.hp) !== undefined) ? ';HP: ' + ((_9 = row.food_bonus) === null || _9 === void 0 ? void 0 : _9.hp) : '';
+                            ret += (((_10 = row.food_bonus) === null || _10 === void 0 ? void 0 : _10.sp) !== undefined) ? ';SP: ' + ((_11 = row.food_bonus) === null || _11 === void 0 ? void 0 : _11.hp) : '';
+                            ret += (((_12 = row.food_bonus) === null || _12 === void 0 ? void 0 : _12.strength) !== undefined) ? ';Strength: ' + ((_13 = row.food_bonus) === null || _13 === void 0 ? void 0 : _13.strength) : '';
+                            ret += (((_14 = row.food_bonus) === null || _14 === void 0 ? void 0 : _14.vitality) !== undefined) ? ';Vitality: ' + ((_15 = row.food_bonus) === null || _15 === void 0 ? void 0 : _15.vitality) : '';
+                            ret += (((_16 = row.food_bonus) === null || _16 === void 0 ? void 0 : _16.magic) !== undefined) ? ';Magic: ' + ((_17 = row.food_bonus) === null || _17 === void 0 ? void 0 : _17.magic) : '';
+                            ret += (((_18 = row.food_bonus) === null || _18 === void 0 ? void 0 : _18.luck) !== undefined) ? ';Luck: ' + ((_19 = row.food_bonus) === null || _19 === void 0 ? void 0 : _19.luck) : '';
+                            ret += (((_20 = row.food_bonus) === null || _20 === void 0 ? void 0 : _20.fullness) !== undefined) ? ';Fullness: ' + ((_21 = row.food_bonus) === null || _21 === void 0 ? void 0 : _21.fullness) : '';
+                        }
+                        if (row.main_ingredients !== undefined) {
+                            ret += ';Main Ingredients: ' + row.main_ingredients.map(function (it) { return it.amount + "x " + it.name; }).join(', ');
+                        }
+                        if (row.ingredients !== undefined) {
+                            ret += ';Ingredients: ' + row.ingredients.map(function (it) { return it.amount + "x " + it.name; }).join(', ');
+                        }
+                        if (row.price !== undefined) {
+                            ret += ';Price: ' + row.price;
+                        }
+                        if (row.when_spoiled !== undefined) {
+                            ret += ';When Spoiled: ' + row.when_spoiled;
+                        }
+                        if (row.season_buff !== undefined) {
+                            ret += ';Season: ' + row.season_buff + ';Season Buff: ' + row.season_buff + ';Seasonal';
+                        }
+                        if (row.season_food_bonus !== undefined) {
+                            ret += (((_22 = row.season_food_bonus) === null || _22 === void 0 ? void 0 : _22.hp) !== undefined) ? ';Season HP: ' + ((_23 = row.season_food_bonus) === null || _23 === void 0 ? void 0 : _23.hp) : '';
+                            ret += (((_24 = row.season_food_bonus) === null || _24 === void 0 ? void 0 : _24.sp) !== undefined) ? ';Season SP: ' + ((_25 = row.season_food_bonus) === null || _25 === void 0 ? void 0 : _25.hp) : '';
+                            ret += (((_26 = row.season_food_bonus) === null || _26 === void 0 ? void 0 : _26.strength) !== undefined) ? ';Season Strength: ' + ((_27 = row.season_food_bonus) === null || _27 === void 0 ? void 0 : _27.strength) : '';
+                            ret += (((_28 = row.season_food_bonus) === null || _28 === void 0 ? void 0 : _28.vitality) !== undefined) ? ';Season Vitality: ' + ((_29 = row.season_food_bonus) === null || _29 === void 0 ? void 0 : _29.vitality) : '';
+                            ret += (((_30 = row.season_food_bonus) === null || _30 === void 0 ? void 0 : _30.magic) !== undefined) ? ';Season Magic: ' + ((_31 = row.season_food_bonus) === null || _31 === void 0 ? void 0 : _31.magic) : '';
+                            ret += (((_32 = row.season_food_bonus) === null || _32 === void 0 ? void 0 : _32.luck) !== undefined) ? ';Season Luck: ' + ((_33 = row.season_food_bonus) === null || _33 === void 0 ? void 0 : _33.luck) : '';
+                            ret += (((_34 = row.season_food_bonus) === null || _34 === void 0 ? void 0 : _34.fullness) !== undefined) ? ';Season Fullness: ' + ((_35 = row.season_food_bonus) === null || _35 === void 0 ? void 0 : _35.fullness) : '';
+                        }
+                        return ret;
+                    }
                 }
             ]
         });
@@ -56256,7 +56327,7 @@ var CookingItemListAdapter = (function (_super) {
 }(itemlist_adapter_1.ItemListAdapter));
 exports.CookingItemListAdapter = CookingItemListAdapter;
 
-},{"./item.data":34,"./itemlist.adapter":35}],27:[function(require,module,exports){
+},{"./inventory":33,"./item.data":34,"./itemlist.adapter":35}],27:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FertilizeComponentsAdapter = void 0;
@@ -56630,7 +56701,7 @@ var FertilizerAdapter = (function () {
                 var hardness_vitality = itemlist_adapter_1.render_buff_bonus_html(fertilizer.hardness_vitality, false, fertilizer.is_hardness_vitality_overflow);
                 var stickiness_gusto = itemlist_adapter_1.render_buff_bonus_html(fertilizer.stickiness_gusto, false, fertilizer.is_stickiness_gusto_overflow);
                 var aesthetic_luck = itemlist_adapter_1.render_buff_bonus_html(fertilizer.aesthetic_luck, false, fertilizer.is_aesthetic_luck_overflow);
-                var armor_magic = itemlist_adapter_1.render_buff_bonus_html(fertilizer.armor_magic, false, fertilizer.is_armor_magic_overflow);
+                var aroma_magic = itemlist_adapter_1.render_buff_bonus_html(fertilizer.aroma_magic, false, fertilizer.is_aroma_magic_overflow);
                 var immunity = itemlist_adapter_1.render_buff_bonus_html(fertilizer.immunity, false, fertilizer.is_immunity_overflow);
                 var pesticide = itemlist_adapter_1.render_buff_bonus_html(fertilizer.pesticide, false, fertilizer.is_pesticide_overflow);
                 var herbicide = itemlist_adapter_1.render_buff_bonus_html(fertilizer.herbicide, false, fertilizer.is_herbicide_overflow);
@@ -56640,7 +56711,7 @@ var FertilizerAdapter = (function () {
                 $('#fertilizerHardnessVitality').html(hardness_vitality);
                 $('#fertilizerStickinessGusto').html(stickiness_gusto);
                 $('#fertilizerAestheticLuck').html(aesthetic_luck);
-                $('#fertilizerArmorMagic').html(armor_magic);
+                $('#fertilizerAromaMagic').html(aroma_magic);
                 $('#fertilizerImmunity').html(immunity);
                 $('#fertilizerPesticide').html(pesticide);
                 $('#fertilizerHerbicide').html(herbicide);
@@ -56724,7 +56795,7 @@ var FertilizerAdapter = (function () {
             data.hardness_vitality = _this.calcComponentHardnessVitalityValue(components);
             data.stickiness_gusto = _this.calcComponentStickinessGustoValue(components);
             data.aesthetic_luck = _this.calcComponentAestheticLuckValue(components);
-            data.armor_magic = _this.calcComponentArmorMagicValue(components);
+            data.aroma_magic = _this.calcComponentAromaMagicValue(components);
             data.immunity = _this.calcComponentImmunityValue(components);
             data.pesticide = _this.calcComponentPesticideValue(components);
             data.herbicide = _this.calcComponentHerbicideValue(components);
@@ -56907,9 +56978,9 @@ var FertilizerAdapter = (function () {
             return sum + _this.calcStatComponentValue(component, value);
         }, 0);
     };
-    FertilizerAdapter.prototype.calcComponentArmorMagicValue = function (components) {
+    FertilizerAdapter.prototype.calcComponentAromaMagicValue = function (components) {
         var _this = this;
-        return components.map(function (component) { var _a, _b; return (_b = (_a = component.item.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.armor_magic) !== null && _b !== void 0 ? _b : 0; }).reduce(function (sum, value, index) {
+        return components.map(function (component) { var _a, _b; return (_b = (_a = component.item.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.aroma_magic) !== null && _b !== void 0 ? _b : 0; }).reduce(function (sum, value, index) {
             var component = components[index];
             return sum + _this.calcStatComponentValue(component, value);
         }, 0);
@@ -57074,7 +57145,7 @@ var FertilizerData = (function () {
         this._hardness_vitality = 0;
         this._stickiness_gusto = 0;
         this._aesthetic_luck = 0;
-        this._armor_magic = 0;
+        this._aroma_magic = 0;
         this._immunity = 0;
         this._pesticide = 0;
         this._herbicide = 0;
@@ -57306,29 +57377,29 @@ var FertilizerData = (function () {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(FertilizerData.prototype, "armor_magic", {
+    Object.defineProperty(FertilizerData.prototype, "aroma_magic", {
         get: function () {
-            return site_1.clamp(this._armor_magic, exports.MIN_STATS, exports.MAX_STATS);
+            return site_1.clamp(this._aroma_magic, exports.MIN_STATS, exports.MAX_STATS);
         },
         set: function (value) {
-            this._armor_magic = value;
+            this._aroma_magic = value;
         },
         enumerable: false,
         configurable: true
     });
-    FertilizerData.prototype.add_armor_magic = function (value) {
-        this.armor_magic = this.armor_magic + value;
+    FertilizerData.prototype.add_aroma_magic = function (value) {
+        this.aroma_magic = this.aroma_magic + value;
     };
-    Object.defineProperty(FertilizerData.prototype, "is_armor_magic_overflow", {
+    Object.defineProperty(FertilizerData.prototype, "is_aroma_magic_overflow", {
         get: function () {
-            return this._armor_magic < exports.MIN_STATS || this._armor_magic > exports.MAX_STATS;
+            return this._aroma_magic < exports.MIN_STATS || this._aroma_magic > exports.MAX_STATS;
         },
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(FertilizerData.prototype, "is_armor_magic_max_or_overflow", {
+    Object.defineProperty(FertilizerData.prototype, "is_aroma_magic_max_or_overflow", {
         get: function () {
-            return this._armor_magic === exports.MAX_STATS || this.is_armor_magic_overflow;
+            return this._aroma_magic === exports.MAX_STATS || this.is_aroma_magic_overflow;
         },
         enumerable: false,
         configurable: true
@@ -57448,7 +57519,7 @@ var FertilizerData = (function () {
                 this.is_hardness_vitality_overflow ||
                 this.is_stickiness_gusto_overflow ||
                 this.is_aesthetic_luck_overflow ||
-                this.is_armor_magic_overflow;
+                this.is_aroma_magic_overflow;
         },
         enumerable: false,
         configurable: true
@@ -57620,76 +57691,131 @@ var FoodItemListAdapter = (function (_super) {
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.hp);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.hp, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.hp_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.hp) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.hp) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.sp);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.sp, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.sp_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.sp) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.sp) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.strength);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.strength, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.strength_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.strength) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.strength) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.vitality);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.vitality, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.vitality_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.vitality) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.vitality) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.magic);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.magic, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.magic_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.magic) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.magic) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.luck);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.luck, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.luck_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.luck) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.luck) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: function (data, type, row) {
-                        var _a, _b, _c;
+                        var _a, _b, _c, _d;
                         if (type === 'display') {
-                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.fullness);
+                            return FoodItemListAdapter.renderValueHtml((_a = row.food_bonus) === null || _a === void 0 ? void 0 : _a.fullness, (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.fullness_multiply);
                         }
-                        return (_c = (_b = row.food_bonus) === null || _b === void 0 ? void 0 : _b.fullness) !== null && _c !== void 0 ? _c : 0;
+                        return (_d = (_c = row.food_bonus) === null || _c === void 0 ? void 0 : _c.fullness) !== null && _d !== void 0 ? _d : 0;
                     }
                 },
                 {
                     data: null,
                     render: FoodItemListAdapter.renderExpiable
+                },
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data, type, row) {
+                        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21;
+                        if (type === 'display') {
+                            return '';
+                        }
+                        var ret = '';
+                        if (row.fertilizer_bonus !== undefined) {
+                            ret += (((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.leaf_fertilizer) !== undefined) ? ';Leaf: ' + ((_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.leaf_fertilizer) : '';
+                            ret += (((_c = row.fertilizer_bonus) === null || _c === void 0 ? void 0 : _c.kernel_fertilizer) !== undefined) ? ';Kernel: ' + ((_d = row.fertilizer_bonus) === null || _d === void 0 ? void 0 : _d.kernel_fertilizer) : '';
+                            ret += (((_e = row.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.root_fertilizer) !== undefined) ? ';Root: ' + ((_f = row.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.root_fertilizer) : '';
+                            ret += (((_g = row.fertilizer_bonus) === null || _g === void 0 ? void 0 : _g.yield_hp) !== undefined) ? ';Yield: ' + ((_h = row.fertilizer_bonus) === null || _h === void 0 ? void 0 : _h.yield_hp) + ';HP: ' + ((_j = row.fertilizer_bonus) === null || _j === void 0 ? void 0 : _j.yield_hp) : '';
+                            ret += (((_k = row.fertilizer_bonus) === null || _k === void 0 ? void 0 : _k.taste_strength) !== undefined) ? ';Taste: ' + ((_l = row.fertilizer_bonus) === null || _l === void 0 ? void 0 : _l.taste_strength) + ';Strength: ' + ((_m = row.fertilizer_bonus) === null || _m === void 0 ? void 0 : _m.taste_strength) : '';
+                            ret += (((_o = row.fertilizer_bonus) === null || _o === void 0 ? void 0 : _o.hardness_vitality) !== undefined) ? ';Hardness: ' + ((_p = row.fertilizer_bonus) === null || _p === void 0 ? void 0 : _p.hardness_vitality) + ';Vitality: ' + ((_q = row.fertilizer_bonus) === null || _q === void 0 ? void 0 : _q.hardness_vitality) : '';
+                            ret += (((_r = row.fertilizer_bonus) === null || _r === void 0 ? void 0 : _r.stickiness_gusto) !== undefined) ? ';Stickiness: ' + ((_s = row.fertilizer_bonus) === null || _s === void 0 ? void 0 : _s.stickiness_gusto) + ';Gusto: ' + ((_t = row.fertilizer_bonus) === null || _t === void 0 ? void 0 : _t.stickiness_gusto) : '';
+                            ret += (((_u = row.fertilizer_bonus) === null || _u === void 0 ? void 0 : _u.aesthetic_luck) !== undefined) ? ';Aesthetic: ' + ((_v = row.fertilizer_bonus) === null || _v === void 0 ? void 0 : _v.aesthetic_luck) + ';Luck: ' + ((_w = row.fertilizer_bonus) === null || _w === void 0 ? void 0 : _w.aesthetic_luck) : '';
+                            ret += (((_x = row.fertilizer_bonus) === null || _x === void 0 ? void 0 : _x.aroma_magic) !== undefined) ? ';Aroma: ' + ((_y = row.fertilizer_bonus) === null || _y === void 0 ? void 0 : _y.aroma_magic) + ';Magic: ' + ((_z = row.fertilizer_bonus) === null || _z === void 0 ? void 0 : _z.aroma_magic) : '';
+                            ret += (((_0 = row.fertilizer_bonus) === null || _0 === void 0 ? void 0 : _0.immunity) !== undefined) ? ';Immunity: ' + ((_1 = row.fertilizer_bonus) === null || _1 === void 0 ? void 0 : _1.immunity) : '';
+                            ret += (((_2 = row.fertilizer_bonus) === null || _2 === void 0 ? void 0 : _2.pesticide) !== undefined) ? ';Pesticide: ' + ((_3 = row.fertilizer_bonus) === null || _3 === void 0 ? void 0 : _3.pesticide) : '';
+                            ret += (((_4 = row.fertilizer_bonus) === null || _4 === void 0 ? void 0 : _4.herbicide) !== undefined) ? ';Herbicide: ' + ((_5 = row.fertilizer_bonus) === null || _5 === void 0 ? void 0 : _5.herbicide) : '';
+                            ret += (((_6 = row.fertilizer_bonus) === null || _6 === void 0 ? void 0 : _6.toxicity) !== undefined) ? ';Toxicity: ' + ((_7 = row.fertilizer_bonus) === null || _7 === void 0 ? void 0 : _7.toxicity) : '';
+                            ret += ';' + inventory_1.Inventory.getStateFocus(row.fertilizer_bonus);
+                        }
+                        if (row.find_in !== undefined) {
+                            ret += ';Find In: ' + row.find_in.map(function (it) { return it.name + " " + it.season; }).join('|');
+                        }
+                        if (row.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + row.enemy_drops.map(function (it) { return it.name + " " + it.time; }).join('|');
+                        }
+                        if (row.expiable !== undefined && row.expiable && row.life !== undefined) {
+                            ret += ';Life: ' + row.life + ';Expirable';
+                        }
+                        if (row.food_bonus !== undefined) {
+                            ret += (((_8 = row.food_bonus) === null || _8 === void 0 ? void 0 : _8.hp) !== undefined) ? ';HP: ' + ((_9 = row.food_bonus) === null || _9 === void 0 ? void 0 : _9.hp) : '';
+                            ret += (((_10 = row.food_bonus) === null || _10 === void 0 ? void 0 : _10.sp) !== undefined) ? ';SP: ' + ((_11 = row.food_bonus) === null || _11 === void 0 ? void 0 : _11.hp) : '';
+                            ret += (((_12 = row.food_bonus) === null || _12 === void 0 ? void 0 : _12.strength) !== undefined) ? ';Strength: ' + ((_13 = row.food_bonus) === null || _13 === void 0 ? void 0 : _13.strength) : '';
+                            ret += (((_14 = row.food_bonus) === null || _14 === void 0 ? void 0 : _14.vitality) !== undefined) ? ';Vitality: ' + ((_15 = row.food_bonus) === null || _15 === void 0 ? void 0 : _15.vitality) : '';
+                            ret += (((_16 = row.food_bonus) === null || _16 === void 0 ? void 0 : _16.magic) !== undefined) ? ';Magic: ' + ((_17 = row.food_bonus) === null || _17 === void 0 ? void 0 : _17.magic) : '';
+                            ret += (((_18 = row.food_bonus) === null || _18 === void 0 ? void 0 : _18.luck) !== undefined) ? ';Luck: ' + ((_19 = row.food_bonus) === null || _19 === void 0 ? void 0 : _19.luck) : '';
+                            ret += (((_20 = row.food_bonus) === null || _20 === void 0 ? void 0 : _20.fullness) !== undefined) ? ';Fullness: ' + ((_21 = row.food_bonus) === null || _21 === void 0 ? void 0 : _21.fullness) : '';
+                        }
+                        if (row.ingredients !== undefined) {
+                            ret += ';Ingredients: ' + row.ingredients.map(function (it) { return it.amount + "x " + it.name; }).join(', ');
+                        }
+                        if (row.price !== undefined) {
+                            ret += ';Price: ' + row.price;
+                        }
+                        if (row.when_spoiled !== undefined) {
+                            ret += ';When Spoiled: ' + row.when_spoiled;
+                        }
+                        return ret;
+                    }
                 }
             ]
         });
@@ -57850,7 +57976,7 @@ var InventoryAdapter = (function (_super) {
                             var hardness_vitality = InventoryAdapter.renderBuffBonusHtml((_c = item.fertilizer_bonus) === null || _c === void 0 ? void 0 : _c.hardness_vitality, false);
                             var stickiness_gusto = InventoryAdapter.renderBuffBonusHtml((_d = item.fertilizer_bonus) === null || _d === void 0 ? void 0 : _d.stickiness_gusto, false);
                             var aesthetic_luck = InventoryAdapter.renderBuffBonusHtml((_e = item.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.aesthetic_luck, false);
-                            var armor_magic = InventoryAdapter.renderBuffBonusHtml((_f = item.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.armor_magic, false);
+                            var aroma_magic = InventoryAdapter.renderBuffBonusHtml((_f = item.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.aroma_magic, false);
                             var immunity = InventoryAdapter.renderBuffBonusHtml((_g = item.fertilizer_bonus) === null || _g === void 0 ? void 0 : _g.immunity, false);
                             var pesticide = InventoryAdapter.renderBuffBonusHtml((_h = item.fertilizer_bonus) === null || _h === void 0 ? void 0 : _h.pesticide, false);
                             var herbicide = InventoryAdapter.renderBuffBonusHtml((_j = item.fertilizer_bonus) === null || _j === void 0 ? void 0 : _j.herbicide, false);
@@ -57860,7 +57986,7 @@ var InventoryAdapter = (function (_super) {
                             var show_hardness_vitality = (((_r = (_q = item.fertilizer_bonus) === null || _q === void 0 ? void 0 : _q.hardness_vitality) !== null && _r !== void 0 ? _r : 0) === 0) ? 'd-none' : '';
                             var show_stickiness_gusto = (((_t = (_s = item.fertilizer_bonus) === null || _s === void 0 ? void 0 : _s.stickiness_gusto) !== null && _t !== void 0 ? _t : 0) === 0) ? 'd-none' : '';
                             var show_aesthetic_luck = (((_v = (_u = item.fertilizer_bonus) === null || _u === void 0 ? void 0 : _u.aesthetic_luck) !== null && _v !== void 0 ? _v : 0) === 0) ? 'd-none' : '';
-                            var show_armor_magic = (((_x = (_w = item.fertilizer_bonus) === null || _w === void 0 ? void 0 : _w.armor_magic) !== null && _x !== void 0 ? _x : 0) === 0) ? 'd-none' : '';
+                            var show_aroma_magic = (((_x = (_w = item.fertilizer_bonus) === null || _w === void 0 ? void 0 : _w.aroma_magic) !== null && _x !== void 0 ? _x : 0) === 0) ? 'd-none' : '';
                             var show_immunity = (((_z = (_y = item.fertilizer_bonus) === null || _y === void 0 ? void 0 : _y.immunity) !== null && _z !== void 0 ? _z : 0) === 0) ? 'd-none' : '';
                             var show_pesticide = (((_1 = (_0 = item.fertilizer_bonus) === null || _0 === void 0 ? void 0 : _0.pesticide) !== null && _1 !== void 0 ? _1 : 0) === 0) ? 'd-none' : '';
                             var show_herbicide = (((_3 = (_2 = item.fertilizer_bonus) === null || _2 === void 0 ? void 0 : _2.herbicide) !== null && _3 !== void 0 ? _3 : 0) === 0) ? 'd-none' : '';
@@ -57873,7 +57999,7 @@ var InventoryAdapter = (function (_super) {
                             var hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
                             var disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
                             var show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false) ? 'd-none' : '';
-                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name_1 + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + name_color + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + item_name_1 + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row mt-1\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div class=\"row my-1 mt-2 " + show_remove_from_inventory + "\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + item_name_1 + "\" data-index=\"" + index + "\">\n                                                    " + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "\n                                                </button>\n                                            </div>\n\n                                            <div class=\"row my-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_armor_magic + "\">\n                                                <div class=\"col-7 armor-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.armor_magic + "</div>\n                                                <div class=\"col-4 offset-1 armor-magic text-left\">" + armor_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
+                            return "<div class=\"row no-gutters\">\n                                        <div class=\"col-3 text-left inventory-item-amount-container " + hide_amount + "\">\n                                            <input type=\"number\" value=\"" + amount_value + "\" data-index=\"" + index + "\" data-name=\"" + item_name_1 + "\" data-val=\"" + amount_value + "\" class=\"form-control form-control-sm inventory-item-amount\" placeholder=\"" + site_1.site.data.strings.fertilizer_helper.inventory.amount_placeholder + "\" aria-label=\"Item-Amount\" min=\"" + inventory_1.MIN_ITEMS_AMOUNT_INVENTORY + "\" max=\"" + inventory_1.MAX_ITEMS_AMOUNT_INVENTORY + "\" " + disabled_amount + ">\n                                        </div>\n                                        <div class=\"col-9 text-left\">\n                                            <button class=\"btn btn-link text-left " + name_color + "\" type=\"button\" data-toggle=\"collapse\" data-target=\"#" + collapse_id + "\" aria-expanded=\"false\" aria-controls=\"" + collapse_id + "\">\n                                                " + item_name_1 + "\n                                            </button>\n                                        </div>\n                                    </div>\n                                    <div class=\"row mt-1\">\n                                        <div class=\"col collapse\" id=\"" + collapse_id + "\">\n                                            <div class=\"row my-1 mt-2 " + show_remove_from_inventory + "\">\n                                                <button class=\"btn btn-danger btn-small remove-item-from-inventory\" data-name=\"" + item_name_1 + "\" data-index=\"" + index + "\">\n                                                    " + site_1.site.data.strings.fertilizer_helper.inventory.remove_from_inventory + "\n                                                </button>\n                                            </div>\n\n                                            <div class=\"row my-1\">\n                                                " + fertilizer_bonus + "\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_yield_hp + "\">\n                                                <div class=\"col-7 yield_hp-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.yield_hp + "</div>\n                                                <div class=\"col-4 offset-1 yield_hp text-left\">" + yield_hp + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_taste_strength + "\">\n                                                <div class=\"col-7 taste-strength-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.taste_strength + "</div>\n                                                <div class=\"col-4 offset-1 taste-strength text-left\">" + taste_strength + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_hardness_vitality + "\">\n                                                <div class=\"col-7 hardness-vitality-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.hardness_vitality + "</div>\n                                                <div class=\"col-4 offset-1 hardness-vitality text-left\">" + hardness_vitality + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_stickiness_gusto + "\">\n                                                <div class=\"col-7 stickiness-gusto-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.stickiness_gusto + "</div>\n                                                <div class=\"col-4 offset-1 stickiness-gusto text-left\">" + stickiness_gusto + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aesthetic_luck + "\">\n                                                <div class=\"col-7 aesthetic-luck-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aesthetic_luck + "</div>\n                                                <div class=\"col-4 offset-1 aesthetic-luck text-left\">" + aesthetic_luck + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_aroma_magic + "\">\n                                                <div class=\"col-7 aroma-magic-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.aroma_magic + "</div>\n                                                <div class=\"col-4 offset-1 aroma-magic text-left\">" + aroma_magic + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_immunity + "\">\n                                                <div class=\"col-7 immunity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.immunity + "</div>\n                                                <div class=\"col-4 offset-1 immunity text-left\">" + immunity + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_pesticide + "\">\n                                                <div class=\"col-7 pesticide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.pesticide + "</div>\n                                                <div class=\"col-4 offset-1 pesticide text-left\">" + pesticide + "</div>\n                                            </div>\n\n                                            <div class=\"row no-gutters " + show_herbicide + "\">\n                                                <div class=\"col-7 herbicide-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.herbicide + "</div>\n                                                <div class=\"col-4 offset-1 herbicide text-left\">" + herbicide + "</div>\n                                            </div>\n\n\n                                            <div class=\"row no-gutters mt-1 " + show_toxicity + "\">\n                                                <div class=\"col-7 toxicity-label text-left\">" + site_1.site.data.strings.fertilizer_helper.inventory.stats.toxicity + "</div>\n                                                <div class=\"col-4 offset-1 toxicity text-left\">" + toxicity + "</div>\n                                            </div>\n                                        </div>\n                                    </div>\n                            ";
                         }
                         return data;
                     }
@@ -58206,7 +58332,7 @@ var Inventory = (function () {
                     return 'text-neutral';
             }
         }
-        return '';
+        return 'text-neutral';
     };
     Inventory.getStateFocus = function (fertilizer_bonus) {
         if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 &&
@@ -58214,7 +58340,7 @@ var Inventory = (function () {
             fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 &&
             fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 &&
             fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 &&
-            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            fertilizer_bonus.aroma_magic !== undefined && fertilizer_bonus.aroma_magic !== 0) {
             return application_data_1.FarmingFocus.Balanced;
         }
         else if ((fertilizer_bonus.yield_hp === undefined || fertilizer_bonus.yield_hp === 0) &&
@@ -58222,7 +58348,7 @@ var Inventory = (function () {
                 fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
                 fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0) &&
             (fertilizer_bonus.aesthetic_luck === undefined || fertilizer_bonus.aesthetic_luck === 0) &&
-            (fertilizer_bonus.armor_magic === undefined || fertilizer_bonus.armor_magic === 0)) {
+            (fertilizer_bonus.aroma_magic === undefined || fertilizer_bonus.aroma_magic === 0)) {
             return application_data_1.FarmingFocus.Heartiness;
         }
         else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0) {
@@ -58231,7 +58357,7 @@ var Inventory = (function () {
         else if (fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0) {
             return application_data_1.FarmingFocus.Aesthetic;
         }
-        else if (fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+        else if (fertilizer_bonus.aroma_magic !== undefined && fertilizer_bonus.aroma_magic !== 0) {
             return application_data_1.FarmingFocus.Aroma;
         }
         else if (fertilizer_bonus.yield_hp !== undefined && fertilizer_bonus.yield_hp !== 0 ||
@@ -58239,7 +58365,7 @@ var Inventory = (function () {
             fertilizer_bonus.hardness_vitality !== undefined && fertilizer_bonus.hardness_vitality !== 0 ||
             fertilizer_bonus.stickiness_gusto !== undefined && fertilizer_bonus.stickiness_gusto !== 0 ||
             fertilizer_bonus.aesthetic_luck !== undefined && fertilizer_bonus.aesthetic_luck !== 0 ||
-            fertilizer_bonus.armor_magic !== undefined && fertilizer_bonus.armor_magic !== 0) {
+            fertilizer_bonus.aroma_magic !== undefined && fertilizer_bonus.aroma_magic !== 0) {
             return application_data_1.FarmingFocus.Balanced;
         }
         return application_data_1.FarmingFocus.Neutral;
@@ -58287,18 +58413,26 @@ function hasProperty(o, propertyName) {
 function getProperty(o, propertyName) {
     return (o[propertyName] !== undefined) ? o[propertyName] : undefined;
 }
-function render_value_html(value) {
+function render_value_html(value, multiply) {
+    if (multiply === void 0) { multiply = undefined; }
     var val_number = (value) ? value : 0;
     var val_str = (val_number > 0) ? "+" + val_number : "" + val_number;
+    if (multiply !== undefined && multiply) {
+        val_str = val_str + "*";
+    }
     return "<span class=\"text-center\">" + val_str + "</span>";
 }
 exports.render_value_html = render_value_html;
 ;
-function render_buff_bonus_html(value, invert_color, overflow) {
+function render_buff_bonus_html(value, invert_color, overflow, multiply) {
     if (invert_color === void 0) { invert_color = undefined; }
     if (overflow === void 0) { overflow = false; }
+    if (multiply === void 0) { multiply = undefined; }
     var val_number = (value) ? value : 0;
     var val_str = (val_number > 0) ? "+" + val_number : "" + val_number;
+    if (multiply !== undefined && multiply) {
+        val_str = val_str + "*";
+    }
     if (invert_color !== undefined) {
         if (!invert_color) {
             if (overflow) {
@@ -58332,8 +58466,9 @@ function render_buff_bonus(property_name, invert_color, overflow) {
     if (overflow === void 0) { overflow = false; }
     return function (data, type, row) {
         var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        var multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') : undefined;
         if (type === 'display') {
-            return render_buff_bonus_html(value, invert_color, overflow);
+            return render_buff_bonus_html(value, invert_color, overflow, multiply);
         }
         return value;
     };
@@ -58343,18 +58478,20 @@ exports.render_buff_bonus = render_buff_bonus;
 function render_value_from_property(property_name) {
     return function (data, type, row) {
         var value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
+        var multiply = (hasProperty(data, property_name + '_multiply')) ? getProperty(data, property_name + '_multiply') : undefined;
         if (type === 'display') {
-            return render_value_html(value);
+            return render_value_html(value, multiply);
         }
         return value;
     };
 }
 exports.render_value_from_property = render_value_from_property;
 ;
-function render_value(value) {
+function render_value(value, multiply) {
+    if (multiply === void 0) { multiply = undefined; }
     return function (data, type, row) {
         if (type === 'display') {
-            return render_value_html(value);
+            return render_value_html(value, multiply);
         }
         return value;
     };
@@ -58399,7 +58536,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getFindInContent = function (row) {
         var ret = '';
         if (row.find_in !== undefined && row.find_in) {
-            ret = "<h6>" + site_1.site.data.strings.item_list.materials.find_in_label + "</h6>";
+            ret = "<h5>" + site_1.site.data.strings.item_list.materials.find_in_label + "</h5>";
             ret += row.find_in.map(function (find_in) {
                 var find_location_time = '';
                 if (find_in.season != item_data_1.FindInSeason.Always) {
@@ -58413,7 +58550,7 @@ var ItemListAdapter = (function () {
     ItemListAdapter.getEnemyDropContent = function (row) {
         var ret = '';
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = "<h6>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</h6>";
+            ret = "<h5>" + site_1.site.data.strings.item_list.materials.drop_by_enemy_label + "</h5>";
             ret += row.enemy_drops.map(function (enemy_drop) {
                 var drop_time = '';
                 if (enemy_drop.time != item_data_1.EnemyDropTime.Always) {
@@ -58461,10 +58598,12 @@ var ItemListAdapter = (function () {
         return ret;
     };
     ItemListAdapter.getWhenSpoiledContent = function (row) {
-        if (row.when_spoiled != undefined) {
-            return "<strong>" + site_1.site.data.strings.item_list.food.when_spoiled_label + "</strong>" + row.when_spoiled;
+        var ret = '';
+        if (row.when_spoiled !== undefined) {
+            ret += "<h5>" + site_1.site.data.strings.item_list.food.when_spoiled_label + "</h5>";
+            ret += "" + row.when_spoiled;
         }
-        return '';
+        return ret;
     };
     ItemListAdapter.renderSoilNutrientsHtml = function (fertilizer_bonus) {
         return render_soil_nutrients_html(fertilizer_bonus);
@@ -58482,8 +58621,9 @@ var ItemListAdapter = (function () {
     ItemListAdapter.renderValueFromProperty = function (property_name) {
         return render_value_from_property(property_name);
     };
-    ItemListAdapter.renderValueHtml = function (value) {
-        return render_value_html(value);
+    ItemListAdapter.renderValueHtml = function (value, multiply) {
+        if (multiply === void 0) { multiply = undefined; }
+        return render_value_html(value, multiply);
     };
     ItemListAdapter.renderShortExpiable = function (data, type, row) {
         if (type === 'display') {
@@ -58642,7 +58782,7 @@ var MaterialItemListAdapter = (function (_super) {
                 case 8:
                     $(cell).addClass('text-center');
                     if (rowData.fertilizer_bonus !== undefined) {
-                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'armor_magic');
+                        MaterialItemListAdapter.addColColorClassFromFertilizerBonus(cell, rowData.fertilizer_bonus, 'aroma_magic');
                     }
                     break;
                 case 9:
@@ -58786,9 +58926,9 @@ var MaterialItemListAdapter = (function (_super) {
                     render: function (data, type, row) {
                         var _a, _b, _c;
                         if (type === 'display') {
-                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.armor_magic);
+                            return MaterialItemListAdapter.renderValueHtml((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.aroma_magic);
                         }
-                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.armor_magic) !== null && _c !== void 0 ? _c : 0;
+                        return (_c = (_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.aroma_magic) !== null && _c !== void 0 ? _c : 0;
                     }
                 },
                 {
@@ -58834,6 +58974,44 @@ var MaterialItemListAdapter = (function (_super) {
                 {
                     data: null,
                     render: MaterialItemListAdapter.renderExpiable
+                },
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data, type, row) {
+                        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7;
+                        if (type === 'display') {
+                            return '';
+                        }
+                        var ret = '';
+                        if (row.fertilizer_bonus !== undefined) {
+                            ret += (((_a = row.fertilizer_bonus) === null || _a === void 0 ? void 0 : _a.leaf_fertilizer) !== undefined) ? ';Leaf: ' + ((_b = row.fertilizer_bonus) === null || _b === void 0 ? void 0 : _b.leaf_fertilizer) : '';
+                            ret += (((_c = row.fertilizer_bonus) === null || _c === void 0 ? void 0 : _c.kernel_fertilizer) !== undefined) ? ';Kernel: ' + ((_d = row.fertilizer_bonus) === null || _d === void 0 ? void 0 : _d.kernel_fertilizer) : '';
+                            ret += (((_e = row.fertilizer_bonus) === null || _e === void 0 ? void 0 : _e.root_fertilizer) !== undefined) ? ';Root: ' + ((_f = row.fertilizer_bonus) === null || _f === void 0 ? void 0 : _f.root_fertilizer) : '';
+                            ret += (((_g = row.fertilizer_bonus) === null || _g === void 0 ? void 0 : _g.yield_hp) !== undefined) ? ';Yield: ' + ((_h = row.fertilizer_bonus) === null || _h === void 0 ? void 0 : _h.yield_hp) + ';HP: ' + ((_j = row.fertilizer_bonus) === null || _j === void 0 ? void 0 : _j.yield_hp) : '';
+                            ret += (((_k = row.fertilizer_bonus) === null || _k === void 0 ? void 0 : _k.taste_strength) !== undefined) ? ';Taste: ' + ((_l = row.fertilizer_bonus) === null || _l === void 0 ? void 0 : _l.taste_strength) + ';Strength: ' + ((_m = row.fertilizer_bonus) === null || _m === void 0 ? void 0 : _m.taste_strength) : '';
+                            ret += (((_o = row.fertilizer_bonus) === null || _o === void 0 ? void 0 : _o.hardness_vitality) !== undefined) ? ';Hardness: ' + ((_p = row.fertilizer_bonus) === null || _p === void 0 ? void 0 : _p.hardness_vitality) + ';Vitality: ' + ((_q = row.fertilizer_bonus) === null || _q === void 0 ? void 0 : _q.hardness_vitality) : '';
+                            ret += (((_r = row.fertilizer_bonus) === null || _r === void 0 ? void 0 : _r.stickiness_gusto) !== undefined) ? ';Stickiness: ' + ((_s = row.fertilizer_bonus) === null || _s === void 0 ? void 0 : _s.stickiness_gusto) + ';Gusto: ' + ((_t = row.fertilizer_bonus) === null || _t === void 0 ? void 0 : _t.stickiness_gusto) : '';
+                            ret += (((_u = row.fertilizer_bonus) === null || _u === void 0 ? void 0 : _u.aesthetic_luck) !== undefined) ? ';Aesthetic: ' + ((_v = row.fertilizer_bonus) === null || _v === void 0 ? void 0 : _v.aesthetic_luck) + ';Luck: ' + ((_w = row.fertilizer_bonus) === null || _w === void 0 ? void 0 : _w.aesthetic_luck) : '';
+                            ret += (((_x = row.fertilizer_bonus) === null || _x === void 0 ? void 0 : _x.aroma_magic) !== undefined) ? ';Aroma: ' + ((_y = row.fertilizer_bonus) === null || _y === void 0 ? void 0 : _y.aroma_magic) + ';Magic: ' + ((_z = row.fertilizer_bonus) === null || _z === void 0 ? void 0 : _z.aroma_magic) : '';
+                            ret += (((_0 = row.fertilizer_bonus) === null || _0 === void 0 ? void 0 : _0.immunity) !== undefined) ? ';Immunity: ' + ((_1 = row.fertilizer_bonus) === null || _1 === void 0 ? void 0 : _1.immunity) : '';
+                            ret += (((_2 = row.fertilizer_bonus) === null || _2 === void 0 ? void 0 : _2.pesticide) !== undefined) ? ';Pesticide: ' + ((_3 = row.fertilizer_bonus) === null || _3 === void 0 ? void 0 : _3.pesticide) : '';
+                            ret += (((_4 = row.fertilizer_bonus) === null || _4 === void 0 ? void 0 : _4.herbicide) !== undefined) ? ';Herbicide: ' + ((_5 = row.fertilizer_bonus) === null || _5 === void 0 ? void 0 : _5.herbicide) : '';
+                            ret += (((_6 = row.fertilizer_bonus) === null || _6 === void 0 ? void 0 : _6.toxicity) !== undefined) ? ';Toxicity: ' + ((_7 = row.fertilizer_bonus) === null || _7 === void 0 ? void 0 : _7.toxicity) : '';
+                            ret += ';' + inventory_1.Inventory.getStateFocus(row.fertilizer_bonus);
+                        }
+                        if (row.find_in !== undefined) {
+                            ret += ';Find in: ' + row.find_in.map(function (it) { return it.name + " " + it.season; }).join('|');
+                        }
+                        if (row.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + row.enemy_drops.map(function (it) { return it.name + " " + it.time; }).join('|');
+                        }
+                        var food_row = row;
+                        if (food_row.expiable !== undefined && food_row.expiable && food_row.life !== undefined) {
+                            ret += ';Life: ' + food_row.life + ';Expirable';
+                        }
+                        return ret;
+                    }
                 }
             ]
         });
