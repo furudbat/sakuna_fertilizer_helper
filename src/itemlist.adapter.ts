@@ -10,7 +10,7 @@ function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] | undefi
 }
 
 export function render_value_html(value: number | undefined, multiply: boolean | undefined = undefined) {
-    const val_number = (value) ? value as number : 0;
+    const val_number = (value !== undefined) ? value as number : 0;
     let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
     if (multiply !== undefined && multiply) {
         val_str = `${val_str}*`;
@@ -19,7 +19,7 @@ export function render_value_html(value: number | undefined, multiply: boolean |
 };
 
 export function render_buff_bonus_html(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false, multiply: boolean | undefined = undefined) {
-    const val_number = (value) ? value as number : 0;
+    const val_number = (value !== undefined) ? value as number : 0;
     let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
     if (multiply !== undefined && multiply) {
         val_str = `${val_str}*`;
@@ -143,7 +143,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.find_in !== undefined && row.find_in) {
-            ret = `<p class="font-weight-bolder">${site.data.strings.item_list.materials.find_in_label}</p>`;
+            ret = `<p class="my-1 mt-2 font-weight-bolder">${site.data.strings.item_list.materials.find_in_label}</p>`;
 
             ret += row.find_in.map(find_in => {
                 let find_location_time = '';
@@ -162,7 +162,7 @@ export abstract class ItemListAdapter {
         let ret = '';
 
         if (row.enemy_drops !== undefined && row.enemy_drops) {
-            ret = `<p class="font-weight-bolder">${site.data.strings.item_list.materials.drop_by_enemy_label}</p>`;
+            ret = `<p class="my-1 mt-2 font-weight-bolder">${site.data.strings.item_list.materials.drop_by_enemy_label}</p>`;
 
             ret += row.enemy_drops.map(enemy_drop => {
                 let drop_time = '';
@@ -183,7 +183,7 @@ export abstract class ItemListAdapter {
 
         const cooking_row = row as CookingItemData;
         if ((row.ingredients !== undefined && row.ingredients) || (cooking_row.main_ingredients !== undefined && cooking_row.main_ingredients)) {
-            ret = `<p class="font-weight-bolder">${site.data.strings.item_list.ingredients.label}</p>`;
+            ret = `<p class="my-1 mt-2 font-weight-bolder">${site.data.strings.item_list.ingredients.label}</p>`;
         }
 
         const map_ingredient = (ingredients: IngredientsData[], ingredient: IngredientsData, index: number) => {
@@ -225,7 +225,7 @@ export abstract class ItemListAdapter {
     static getWhenSpoiledContent(row: FoodItemData) {
         let ret = '';
         if (row.when_spoiled !== undefined) {
-            ret += `<p class="font-weight-bolder">${site.data.strings.item_list.food.when_spoiled_label}</p>`;
+            ret += `<p class="my-1 mt-2 font-weight-bolder">${site.data.strings.item_list.food.when_spoiled_label}</p>`;
             ret += `${row.when_spoiled}`;
         }
         return ret;
@@ -235,8 +235,8 @@ export abstract class ItemListAdapter {
         return render_soil_nutrients_html(fertilizer_bonus);
     }
 
-    static renderBuffBonusHtml(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
-        return render_buff_bonus_html(value, invert_color, overflow);
+    static renderBuffBonusHtml(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false, multiply: boolean | undefined = undefined) {
+        return render_buff_bonus_html(value, invert_color, overflow, multiply);
     }
 
     static renderBuffBonus(property_name: string, invert_color: boolean | undefined = undefined, overflow: boolean = false) {

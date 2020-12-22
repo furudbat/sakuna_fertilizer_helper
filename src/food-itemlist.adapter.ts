@@ -332,7 +332,7 @@ export class FoodItemListAdapter extends ItemListAdapter {
         const show_when_spoiled = (when_spoiled)? '' : 'd-none';
 
         return `
-            <div class="row no-gutters mt-1 ml-3 ${show_ingredients}">
+            <div class="row no-gutters ml-3 ${show_ingredients}">
                 <div class="col">
                     ${ingredients}
                 </div>

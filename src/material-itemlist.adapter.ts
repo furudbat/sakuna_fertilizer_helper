@@ -384,7 +384,7 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                     ${find_in}
                 </div>
             </div>
-            <div class="row no-gutters mt-1 ml-3 ${show_enemy_drop}">
+            <div class="row no-gutters ml-3 ${show_enemy_drop}">
                 <div class="col">
                     ${enemy_drop}
                 </div>

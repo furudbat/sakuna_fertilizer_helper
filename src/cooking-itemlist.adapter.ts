@@ -226,43 +226,43 @@ export class CookingItemListAdapter extends ItemListAdapter {
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.hp, row.food_bonus?.hp);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.hp, row.food_bonus?.hp, row.food_bonus?.hp_multiply || row.season_food_bonus?.hp_multiply);
                     }
                 },
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.sp, row.food_bonus?.sp);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.sp, row.food_bonus?.sp, row.food_bonus?.sp_multiply || row.season_food_bonus?.sp_multiply);
                     }
                 },
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.strength, row.food_bonus?.strength);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.strength, row.food_bonus?.strength, row.food_bonus?.strength_multiply || row.season_food_bonus?.strength_multiply);
                     }
                 },
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.vitality, row.food_bonus?.vitality);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.vitality, row.food_bonus?.vitality, row.food_bonus?.vitality_multiply || row.season_food_bonus?.vitality_multiply);
                     }
                 },
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.magic, row.food_bonus?.magic);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.magic, row.food_bonus?.magic), row.food_bonus?.magic_multiply || row.season_food_bonus?.magic_multiply;
                     }
                 },
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.luck, row.food_bonus?.luck);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.luck, row.food_bonus?.luck, row.food_bonus?.luck_multiply || row.season_food_bonus?.luck_multiply);
                     }
                 },
                 {
                     data: null,
                     render: function (data: any, type: string, row: CookingItemData) {
-                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.fullness, row.food_bonus?.fullness);
+                        return that.getFoodBuff(type, row.season_buff, row.season_food_bonus?.fullness, row.food_bonus?.fullness, row.food_bonus?.fullness_multiply || row.season_food_bonus?.fullness_multiply);
                     }
                 },
 
@@ -387,7 +387,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
     }
 
 
-    private getFoodBuff(type: string, season_buff: SeasonBuff | undefined, season_value: number | undefined, value: number | undefined) {
+    private getFoodBuff(type: string, season_buff: SeasonBuff | undefined, season_value: number | undefined, value: number | undefined, multiply: boolean | undefined = false) {
         const is_season_buff = this.isSeasonalBuffValue(season_buff);
         const boost_value = this.getFoodBuffValue(season_buff, season_value, value);
 
@@ -418,7 +418,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
             return `<span data-value="${boost_value}">${content}</span>`;
             */
            const text_color = (this.getFoodBuffOnlySeasonValue(season_buff, season_value) != 0)? 'seasonal-buff-state' : ''; 
-           const boost_value_html = CookingItemListAdapter.renderBuffBonusHtml(boost_value);
+           const boost_value_html = CookingItemListAdapter.renderBuffBonusHtml(boost_value, false, false, multiply);
            return (is_season_buff)? `<span class="${text_color}">${boost_value_html}</span>` : boost_value_html;
         }
 
@@ -474,7 +474,7 @@ export class CookingItemListAdapter extends ItemListAdapter {
 
         const show_ingredients = (ingredients)? '' : 'd-none';
 
-        return `<div class="row no-gutters mt-1 ml-3 ${show_ingredients}">
+        return `<div class="row no-gutters ml-3 ${show_ingredients}">
                     <div class="col">
                         ${ingredients}
                     </div>
