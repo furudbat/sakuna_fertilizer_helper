@@ -130,12 +130,26 @@ ul.pagination {
         background-color: $winter-color;
     }
 }
+.table-winter {
+    color: $black;
+    background-color: $winter-color;
+}
+.text-winter {
+    color: $winter-color;
+}
 .farming-guide-spring { 
     background-color: $spring-color;
     .card-header {
         color: $black;
         background-color: $spring-color;
     }
+}
+.table-spring {
+    color: $black;
+    background-color: $spring-color;
+}
+.text-spring {
+    color: $spring-color;
 }
 .farming-guide-summer { 
     background-color: $summer-color;
@@ -144,12 +158,26 @@ ul.pagination {
         background-color: $summer-color;
     }
 }
+.table-summer {
+    color: $black;
+    background-color: $summer-color;
+}
+.text-summer {
+    color: $summer-color;
+}
 .farming-guide-autumn { 
     background-color: $autumn-color;
     .card-header {
         color: $black;
         background-color: $autumn-color;
     }
+}
+.table-autumn {
+    color: $black;
+    background-color: $autumn-color;
+}
+.text-autumn {
+    color: $autumn-color;
 }
 
 .farming-guild-pills-balanced-nav-link {
@@ -217,12 +245,12 @@ ul.pagination {
 .text-aroma {
     color: $aroma-color !important;
 }
-.armor-magic-label {
+.aroma-magic-label {
     color: $aroma-color;
 }
 
 .text-neutral {
-    color: $body-color;
+    color: $body-color !important;
 }
 
 .text-placements-1-1-color {
@@ -291,5 +319,14 @@ ul.pagination {
     .list-group-item {
         color: $card-color;
         background-color: $card-bg;
+    }
+}
+.btn-seasonal-buff.active {
+    font-weight: bolder;
+}
+.seasonal-buff-item {
+    .seasonal-buff-name,
+    .seasonal-buff-state {
+        font-weight: bold;
     }
 }

@@ -1,34 +1,51 @@
 table:
   itemlist:
     col_add_to_inventory: Inv.
+    col_add_to_inventory_long: Add to Inventory
     col_name: Name
-
     col_fertilizer: Soil Nut.
-
     col_yield_hp: Yield/ HP
     col_taste_strength: Taste/ Str.
     col_hardness_vitality: Hard./ Vital.
     col_stickiness_gusto: Stick./ Gusto
     col_aesthetic_luck: Aesth./ Luck
-    col_armor_magic: Armor/ Magic
-
+    col_aroma_magic: aroma/ Magic
     col_immunity: Immu.
     col_pesticide: Pest.
     col_herbicide: Herb.
-
     col_toxicity: Toxi.
-
     col_expiable: Exp.
+  ingredientslist:
+    col_name: Name
+    col_enchant: Enchant
+    col_hp: HP
+    col_sp: SP
+    col_strength: Str.
+    col_vitality: Vital.
+    col_magic: Magic
+    col_luck: Luck
+    col_fullness: Full.
+    col_expiable: Exp.
+  foodlist:
+    col_name: Name
+    col_type: Type
+    col_season_buff: Seasonal Buff
+    col_enchant: Enchant
+    col_hp: HP
+    col_sp: SP
+    col_strength: Str.
+    col_vitality: Vital.
+    col_magic: Magic
+    col_luck: Luck
+    col_fullness: Full.
   inventory:
     col_add_to_fertilizer: Fer.
+    col_add_to_fertilizer_long: Add to Fertilizer
     col_name: Name
-
     col_immunity: Imm.
     col_pesticide: Pes.
     col_herbicide: Her.
-
     col_toxicity: Tox.
-
     col_expiable: Ex.
 guide:
   title: Farming Guide
@@ -194,9 +211,9 @@ fertilizer_helper:
     soil_nutrients:
       title: Soil nutrients
       current_fertilizer: Current Fertilizer
-      current_fertilizer_short: <i class="fas fa-poop"></i>
+      current_fertilizer_short: <i class="fas fa-poop"></i><span class="sr-only">Current Fertilizer</span>
       with_components: with Components
-      with_components_short: <i class="fas fa-poo"></i>
+      with_components_short: <i class="fas fa-poo"></i><span class="sr-only">with Components</span>
       leaf: Leaf
       kernel: Kernel
       root: Root
@@ -214,8 +231,8 @@ fertilizer_helper:
       stickiness_gusto_short: Stick./Gus.
       aesthetic_luck: Aesthetic/Luck
       aesthetic_luck_short: Aest./ Luck
-      armor_magic: Armor/Magic
-      armor_magic_short: Armor/ Magic
+      aroma_magic: Aroma/Magic
+      aroma_magic_short: Aroma/ Magic
 
       immunity: Immunity
       immunity_short: Immu.
@@ -236,10 +253,12 @@ fertilizer_helper:
       title: Recommended
     expiable:
       title: Expiable
-      in_days: In %life% day(s) <i class="fas fa-skull"></i>
-      in_days_unknown: In few day(s) <i class="fas fa-skull"></i>
-      infinity: <i class="fas fa-infinity"></i>
+      in_days: In %life% day(s)
+      in_days_unknown: In few day(s)
+      in_days_short: <i class="fas fa-skull"></i><span class="sr-only">In few day(s)</span>
+      infinity: <i class="fas fa-infinity"></i><span class="sr-only">Not Expiable</span>
     remove_from_inventory: Remove from Inv.
+    remove_from_inventory_long: Remove from Inventory
     stats:
       leaf_fertilizer: 'L:'
       kernel_fertilizer: 'K:'
@@ -249,7 +268,7 @@ fertilizer_helper:
       hardness_vitality: Vit.
       stickiness_gusto: Gus.
       aesthetic_luck: Luck
-      armor_magic: Magic
+      aroma_magic: Magic
       immunity: Immu.
       pesticide: Pest.
       herbicide: Herb.
@@ -264,10 +283,32 @@ item_list:
   title: Item-List
   materials: 
     title: Materials
+    find_in_label: 'Find in: '
+    drop_by_enemy_label: 'Drop by: '
+    when_spoiled_label: 'When Spoiled: '
+    at_season: '(%season%)'
+    at_time: 'at %time%'
   ingredients: 
     title: Ingredients
+    table_caption: Different Ingredients can gives you different state boost in your meal, state boost varies, depending on your Gusto.
+    label: 'Ingredients: '
+    or: or
+    and: and
   food: 
-    title: Food
+    title: Dishes
+    table_caption: State boost varies, depending on your Gusto.
+    seasonal_buffs:
+      label: Seasonal Buff
+      label_filter: Show only Seasonal Buffs
+      none: None
+      spring: Spring
+      summer: Summer
+      autumn: Autumn
+      winter: Winter
+misc:
+  title: Misc
+  clear_session: Clear Session
+  clear_session_help: Clear you Inventory and Fertilizer Components
 goto: go to
 footer: >-
   I'm not affiliated with <a href="http://sakunaofriceandruin.com/">Sakuna: Of Rice and Ruin</a>, this is a free fansite and makes no profit.

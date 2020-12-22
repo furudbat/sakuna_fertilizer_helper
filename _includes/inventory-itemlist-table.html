@@ -1,5 +1,8 @@
 <div class="table-inventory table-responsive">
   <table class="table table-striped dt-responsive" id="{{include.id}}">
+    {% if include.caption %}
+      <caption>{{ include.caption }}</caption>
+    {% endif %}
     <thead>
       <tr>
         <th scope="col" class="w-item-icon" data-priority="0" data-class-name="add-to-fertilizer">{{ site.data.strings.table.inventory.col_add_to_fertilizer }}</th>

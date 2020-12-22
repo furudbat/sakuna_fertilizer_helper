@@ -68,26 +68,26 @@ export class FertilizeComponentsAdapter {
         this._inventory.observable.attach(new class implements DataListObserver<ItemInventoryData> {
             update(subject: DataListSubject<ItemInventoryData>): void {
                 subject.data.forEach((item_inventory) => {
-                    const component_index = that._data.components.findIndex(it => it.name == item_inventory.name);
+                    const component_index = that._data.components.findIndex(it => it.item.name == item_inventory.item.name);
                     if (component_index >= 0 && that._data.components[component_index].amount !== item_inventory.amount) {
                         that._data.setInInventoryAmount(component_index, item_inventory.amount);
                     }
                 });
             }
             updateItem(subject: DataListSubject<ItemInventoryData>, updated: ItemInventoryData, index: number): void {
-                const component_index = that._data.components.findIndex(it => it.name == updated.name);
+                const component_index = that._data.components.findIndex(it => it.item.name == updated.item.name);
                 if (component_index >= 0 && that._data.components[component_index].amount !== updated.amount) {
                     that._data.setInInventoryAmount(component_index, updated.amount);
                 }
             }
             updateAddedItem(subject: DataListSubject<ItemInventoryData>, added: ItemInventoryData): void {
-                const component_index = that._data.components.findIndex(it => it.name == added.name);
+                const component_index = that._data.components.findIndex(it => it.item.name == added.item.name);
                 if (component_index >= 0 && that._data.components[component_index].amount !== added.amount) {
                     that._data.setInInventoryAmount(component_index, added.amount);
                 }
             }
             updateRemovedItem(subject: DataListSubject<ItemInventoryData>, removed: ItemInventoryData): void {
-                const component_index = that._data.components.findIndex(it => it.name == removed.name);
+                const component_index = that._data.components.findIndex(it => it.item.name == removed.item.name);
                 if (component_index >= 0 && that._data.components[component_index].amount !== removed.amount) {
                     that._data.setInInventoryAmount(component_index, removed.amount);
                 }
@@ -135,7 +135,7 @@ export class FertilizeComponentsAdapter {
             const readonly = !that._settings.data.no_inventory_restriction && item.in_fertilizer === undefined;
             const in_inventory = (!that._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
             const max = (!that._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
-            
+
             $(this).attr('max', max);
             $(this).prop('readonly', readonly);
         });
@@ -150,7 +150,7 @@ export class FertilizeComponentsAdapter {
             const index = parseInt($(this).data('index') as string);
             const amount = parseInt($(this).val() as string);
 
-            that.log.debug('.fertilizer-item-amount change', {index, item_name, amount, parent});
+            that.log.debug('.fertilizer-item-amount change', { index, item_name, amount, parent });
 
             if (amount > 0 && that._data.components[index] !== undefined) {
                 that._data.setItemAmount(index, amount, that._inventory.getItemByName(item_name));
@@ -168,16 +168,21 @@ export class FertilizeComponentsAdapter {
         const readonly = (!this._settings.data.no_inventory_restriction && item.in_fertilizer === undefined) ? 'readonly' : '';
         const in_inventory = (!this._settings.data.no_inventory_restriction && item.amount !== undefined) ? Math.min(item.amount, MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS) : undefined;
         const max = (!this._settings.data.no_inventory_restriction && in_inventory !== undefined) ? in_inventory : MAX_ITEMS_AMOUNT_FERTILIZE_COMPONENTS;
-        
-        const color = Inventory.getStateFocusTextColor(item.fertilizer_bonus);
 
-        return `<li class="list-group-item list-group-item p-1" data-index="${index}" data-name="${item.name}">
+        const color = Inventory.getStateFocusTextColor(item.item.fertilizer_bonus);
+
+        return `<li class="list-group-item list-group-item p-1" data-index="${index}" data-name="${item.item.name}">
             <div class="row no-gutters">
                 <div class="col-3 text-left py-2">
-                    <input type="number" value="${item.in_fertilizer}" data-index="${index}" data-name="${item.name}" data-val="${item.in_fertilizer}" class="form-control form-control-sm fertilizer-item-amount" placeholder="${site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}" max="${max}" ${readonly}>
+                    <input type="number" value="${item.in_fertilizer}" data-index="${index}" data-name="${item.item.name}" data-val="${item.in_fertilizer}" class="form-control form-control-sm fertilizer-item-amount" placeholder="${site.data.strings.fertilizer_helper.fertilizer.components.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_FERTILIZE_COMPONENTS}" max="${max}" ${readonly}>
                 </div>
-                <div class="col-6 py-2 pl-1 text-left ${color}">${item.name}</div>
-                <div class="col-3 py-1 text-right"><button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item.name}"><i class="fas fa-minus"></i></button></div>
+                <div class="col-6 py-2 pl-1 text-left ${color}">${item.item.name}</div>
+                <div class="col-3 py-1 text-right">
+                    <button class="btn btn-danger btn-small remove-item-from-fertilizer" data-index="${index}" data-name="${item.item.name}">
+                        <i class="fas fa-minus"></i>
+                        <span class="sr-only">${site.data.strings.fertilizer_helper.inventory.remove_from_inventory_long}</span>
+                    </button>
+                </div>
             </div>
         </li>`;
     }

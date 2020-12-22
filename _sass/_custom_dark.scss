@@ -15,3 +15,36 @@
         color: $white
     }
 }
+
+.table-success,
+.table-warning {
+    color: $gray-800;
+}
+
+.table-danger {
+    color: $black;
+}
+
+.list-group-item-primary,
+.list-group-item-secondary,
+.list-group-item-success,
+.list-group-item-danger,
+.list-group-item-warning,
+.list-group-item-info {
+    color: $black;
+}
+
+.text-primary {
+    //color: #f8483f !important;
+    color: lighten($primary, 30%) !important;
+}
+
+.text-secondary {
+    //color: #af7e7c  !important;
+    color: lighten($secondary, 20%) !important;
+}
+
+.text-danger {
+    //color: #ff3e3d !important;
+    color: lighten($danger, 30%) !important;
+}

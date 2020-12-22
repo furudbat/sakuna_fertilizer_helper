@@ -11,12 +11,12 @@
             {%- endif -%}
 
             {%- if site.twitter_username -%}
-            <span class="mx-2 p-1"><a href="https://twitter.com/{{site.twitter_username | url_encode}}"
-                target="_blank"><i class="fab fa-2x fa-twitter-square"></i></a></span>
+            <span class="mx-2 p-1"><a href="https://twitter.com/{{site.twitter_username | url_encode}}" target="_blank" rel="noopener">
+              <i class="fab fa-2x fa-twitter-square"></i><span class="sr-only">Twitter</span></a></span>
             {%- endif -%}
             {%- if site.github_username -%}
-            <span class="mx-2 p-1"><a href="https://github.com/{{site.github_username | url_encode}}" target="_blank"><i
-                  class="fab fa-2x fa-github-square"></i></a></span>
+            <span class="mx-2 p-1"><a href="https://github.com/{{site.github_username | url_encode}}" target="_blank" rel="noopener">
+              <i class="fab fa-2x fa-github-square"></i><span class="sr-only">GitHub</span></a></span>
             {%- endif -%}
           </li>
           {%- if site.email -%}
@@ -29,9 +29,9 @@
         </ul>
       </div>
       <div class="col-sm text-right">
-        <p><a href="{{ site.github_link }}"" target="_blank">{{- site.description | escape -}}</a><span class="ml-2 text-monospace">{{- site.version | escape -}}</span></p>
+        <p><a href="{{ site.github_link }}"" target="_blank" rel="noopener">{{- site.description | escape -}}</a><span class="ml-2 text-monospace">{{- site.version | escape -}}</span></p>
         <p>
-          <a href="https://nicolas-van.github.io/bootstrap-4-github-pages/" target="_blank">Powered by Bootstrap 4 Github Pages</a>
+          <a href="https://nicolas-van.github.io/bootstrap-4-github-pages/" target="_blank" rel="noopener">Powered by Bootstrap 4 Github Pages</a>
         </p>
       </div>
     </div>
@@ -45,7 +45,7 @@
           {%- if dep.disabled -%}
             {%- continue -%}
           {%- endif -%}
-        <span class="mx-2 text-monospace"><a href="{{dep.link}}" target="_blank">{{ dep.name | escape }}</a></span> -
+        <span class="mx-2 text-monospace"><a href="{{dep.link}}" target="_blank" rel="noopener">{{ dep.name | escape }}</a></span> -
         {%- endfor -%}
       </div>
     </div>

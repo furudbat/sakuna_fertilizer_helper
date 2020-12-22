@@ -11,7 +11,8 @@
           assets_url: '{{ "assets/" | absolute_url }}',
           strings: {{ site.data.strings | jsonify }},
           items: {{ site.data.items | jsonify }}
-        }
+        },
+        version: '{{ site.version }}'
       };
     </script>
 

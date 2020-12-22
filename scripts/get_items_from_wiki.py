@@ -212,7 +212,7 @@ def main():
                                     'hardness_vitality':  r'Hardness/Vitality\s+(\+?-?\d+)',
                                     'stickiness_gusto':  r'Stickiness/Gusto\s+(\+?-?\d+)',
                                     'aesthetic_luck':  r'Aesthetic/Luck\s+(\+?-?\d+)',
-                                    'armor_magic':  r'Aroma/Magic\s+(\+?-?\d+)',
+                                    'aroma_magic':  r'Aroma/Magic\s+(\+?-?\d+)',
 
                                     'immunity':  r'Immunity\s+(\+?-?\d+)',
                                     'pesticide':  r'Pesticide\s+(\+?-?\d+)',

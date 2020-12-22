@@ -1,5 +1,8 @@
 <div class="table-item-list table-responsive">
   <table class="table table-bordered table-striped dt-responsive" id="{{include.id}}">
+    {% if include.caption %}
+      <caption>{{ include.caption }}</caption>
+    {% endif %}
     <thead>
       <tr>
         <th scope="col" data-priority="0" data-class-name="add-to-inventory">{{ site.data.strings.table.itemlist.col_add_to_inventory }}</th>
@@ -12,7 +15,7 @@
         <th scope="col" data-priority="8" data-class-name="hardness-vitality">{{ site.data.strings.table.itemlist.col_hardness_vitality }}</th>
         <th scope="col" data-priority="9" data-class-name="stickiness-gusto">{{ site.data.strings.table.itemlist.col_stickiness_gusto }}</th>
         <th scope="col" data-priority="10" data-class-name="aesthetic-luck">{{ site.data.strings.table.itemlist.col_aesthetic_luck }}</th>
-        <th scope="col" data-priority="11" data-class-name="armor-magic">{{ site.data.strings.table.itemlist.col_armor_magic }}</th>
+        <th scope="col" data-priority="11" data-class-name="aroma-magic">{{ site.data.strings.table.itemlist.col_aroma_magic }}</th>
 
         <th scope="col" data-priority="3" data-class-name="immunity">{{ site.data.strings.table.itemlist.col_immunity }}</th>
         <th scope="col" data-priority="4" data-class-name="pesticide">{{ site.data.strings.table.itemlist.col_pesticide }}</th>
@@ -24,21 +27,6 @@
       </tr>
     </thead>
     <tbody>
-      {% if include.items %}
-      {% include itemlist-table-content.html items=include.items %}
-      {% endif %}
-
-      {% if include.items2 %}
-      {% include itemlist-table-content.html items=include.items2 %}
-      {% endif %}
-
-      {% if include.items3 %}
-      {% include itemlist-table-content.html items=include.items3 %}
-      {% endif %}
-
-      {% if include.items4 %}
-      {% include itemlist-table-content.html items=include.items4 %}
-      {% endif %}
     </tbody>
   </table>
 </div>

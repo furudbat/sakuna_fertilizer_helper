@@ -1,4 +1,4 @@
-import { site, USE_CACHE } from './site'
+import { site } from './site'
 import { ApplicationData, FarmingFocus, Theme } from './application.data'
 import 'datatables.net-bs4'
 import 'datatables.net-responsive-bs4'
@@ -6,15 +6,22 @@ import { FertilizerData, MAX_STATS } from './fertilizer.data'
 import { FertilizerAdapter } from './fertilizer.adapter'
 import { FertilizeComponentsAdapter } from './fertilize-components.adapter'
 import { InventoryAdapter } from './inventory.adapter'
-import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY } from './inventory'
+import { Inventory, ItemInventoryData } from './inventory'
 import { LoggerManager } from 'typescript-logger/build/loggerManager'
-import { DataListObserver, DataListSubject, DataObserver, DataSubject } from './Observer'
+import { DataListObserver, DataListSubject, DataObserver, DataSubject } from './observer'
 import { ItemFertilizerComponentData } from './fertilizer-components'
+import { MaterialItemListAdapter } from './material-itemlist.adapter'
+import { FoodItemListAdapter } from './food-itemlist.adapter'
+import { FoodItemData, ItemData, SeasonBuff } from './item.data'
+import { CookingItemListAdapter } from './cooking-itemlist.adapter'
 
 const MAX_SHOW_RECOMMENDED_ITEMS = 12;
 export class Application {
 
     private _appData: ApplicationData = new ApplicationData();
+    private _materialItemListAdapter?: MaterialItemListAdapter;
+    private _foodItemListAdapter?: FoodItemListAdapter;
+    private _cookingItemListAdapter?: CookingItemListAdapter;
     private _recommendedInventory = new Inventory();
     private _expiablesInventory = new Inventory();
     private _fertilizerAdapter?: FertilizerAdapter;
@@ -22,23 +29,47 @@ export class Application {
     private _inventoryAdapter?: InventoryAdapter;
     private _recommendedInventoryAdapter?: InventoryAdapter;
     private _expiablesInventoryAdapter?: InventoryAdapter;
-    private _itemList?: DataTables.Api;
 
     private log = LoggerManager.create('Application');
 
     public init() {
         var that = this;
         this._appData.loadFromStorage().then(function () {
-            if (that._appData.items.length <= 0 || !USE_CACHE) {
-                that._appData.items = site.data.items;
-            }
+            //if (that._appData.items.length <= 0 || !USE_CACHE) {
+            //    that._appData.items = site.data.items;
+            //}
+            that._appData.items = site.data.items;
             that.initSite();
         });
     }
 
-    private initSite() {
-        this.log.debug('init items', this._appData.items);
+    private async initSite() {
+        //this.log.debug('init items', this._appData.items);
 
+        this.initTheme();
+        this.initFarmingGuide();
+
+        this._materialItemListAdapter = new MaterialItemListAdapter('#tblMaterialItemsList');
+        this._foodItemListAdapter = new FoodItemListAdapter('#tblIngredientsItemsList');
+        this._cookingItemListAdapter = new CookingItemListAdapter('#tblFoodItemsList');
+        this._fertilizerAdapter = new FertilizerAdapter(this._appData);
+        this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
+        this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
+        this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
+        this._expiablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryexpiables', this._expiablesInventory, { can_remove_from_inventory: false });
+
+        this.initSettings();
+        this.initItemList();
+        this.initInventory();
+
+        this._fertilizerAdapter?.init();
+        this._fertilizeComponentsAdapter?.init();
+        this.updateRecommendedItems(this._fertilizerAdapter.data);
+
+        this.initObservers();
+    }
+
+    private async initFarmingGuide() {
         var that = this;
         $('#farming-guild-pills-tab a').each(function () {
             if (that._appData.currentGuide === $(this).data('name')) {
@@ -59,64 +90,122 @@ export class Application {
 
             that._appData.currentGuide = $(this).data('name');
         });
-
-        this._fertilizerAdapter = new FertilizerAdapter(this._appData);
-        this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
-        this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
-        this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
-        this._expiablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryexpiables', this._expiablesInventory, { can_remove_from_inventory: false });
-
-        this.initItemList();
-        this.initSettings();
-
-        this.initInventory();
-        this._fertilizerAdapter?.init();
-        this._fertilizeComponentsAdapter?.init();
-        this.updateRecommendedItems(this._fertilizerAdapter.data);
-        
-        this.initObservers();
     }
 
-    private initItemList() {
-        this._itemList = $('#tblItemsList').DataTable({
-            order: [[1, "asc"]],
-            responsive: true,
-            columnDefs: [
-                { orderable: false, targets: [0] },
-                { orderable: true, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }
-            ]
+    private getMaterialsItemList() {
+        return this._appData.items.filter(it => {
+            return it.category == 'Materials' ||
+                it.category == 'Materials/Food';
         });
+    }
 
-        var that = this;
-        this._itemList.on('draw.dt', function () {
-            that.updateItemListEvents();
+    private getFoodItemList() {
+        return this._appData.items.filter(it => {
+            return it.category == 'Food' || it.category == 'Materials/Food';
         });
+    }
+
+    private getCookingItemList() {
+        return this._appData.items.filter(it => {
+            return it.category == 'Cooking' || it.category == 'Materials/Cooking';
+        });
+    }
+
+    private async initMaterialItemList() {
+        if (this._materialItemListAdapter) {
+            this._materialItemListAdapter.init();
+
+            const material_item_list = this.getMaterialsItemList().filter(it => it.fertilizer_bonus !== undefined);
+
+            this.log.debug('initItemList material_item_list:', material_item_list);
+
+            this._materialItemListAdapter.data = material_item_list;
+
+            this._materialItemListAdapter.addItemToInventoryListener = (item, amount) => {
+                this._inventoryAdapter?.add(item, amount);
+            };
+        }
+    }
+
+    private async initFoodItemList() {
+        if (this._foodItemListAdapter) {
+            this._foodItemListAdapter.init();
+
+            const food_item_list = this.getFoodItemList();
+
+            this.log.debug('initItemList food_item_list:', food_item_list);
+
+            this._foodItemListAdapter.data = food_item_list;
+        }
+    }
+
+    private async initCookingItemList() {
+        if (this._cookingItemListAdapter) {
+            this._cookingItemListAdapter.init();
+
+            const cooking_item_list = this.getCookingItemList();
+
+            this.log.debug('initItemList cooking_item_list:', cooking_item_list);
+
+            this._cookingItemListAdapter.data = cooking_item_list;
+        }
+    }
+
+    private async initItemList() {
+        this.initMaterialItemList();
+        this.initFoodItemList();
+        this.initCookingItemList();
 
         this.updateItemListEvents();
     }
 
     private updateItemListEvents() {
         var that = this;
-        $('.add-item-to-inventory').off('click').on('click', function () {
-            const item_name = $(this).data('name');
-            const item = that._appData.getItemByName(item_name);
 
-            if (item !== undefined) {
-                that._inventoryAdapter?.add(item, 1);
-            }
+        $('#btnSeasonalBuffNone').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(undefined, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
         });
+        $('#btnSeasonalBuffSpring').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Spring, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffSummer').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Summer, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffAutumn').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Autumn, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#btnSeasonalBuffWinter').off('click').on('click', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonData(SeasonBuff.Winter, cooking_item_list);
+
+            $('.btn-seasonal-buff').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#chbSeasonalBuffFilter').off('change').on('change', function () {
+            const cooking_item_list = that.getCookingItemList();
+            that._cookingItemListAdapter?.setSeasonFilter($(this).prop('checked'), cooking_item_list);
+        })
     }
 
-    private initSettings() {
-        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
-
-        var that = this;
-        $('#chbSettingsNoInventoryRestriction').on('change', function() {
-            that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
-        });
-
+    private initTheme() {
         $('body').removeAttr('data-theme');
-        switch(that._appData.theme) {
+        switch (this._appData.theme) {
             case Theme.Dark:
                 $('#chbDarkTheme').bootstrapToggle('on');
                 $('body').attr('data-theme', 'dark');
@@ -127,10 +216,23 @@ export class Application {
                 $('body').attr('data-theme', 'light');
                 break;
         }
+    }
 
-        $('#chbDarkTheme').on('change', function() {
+    private async initSettings() {
+        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
+
+        var that = this;
+        $('#chbSettingsNoInventoryRestriction').on('change', function () {
+            that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
+        });
+
+        $('#btnClearSession').on('click', function () {
+            that._appData.clearSessionStorage();
+        });
+
+        $('#chbDarkTheme').on('change', function () {
             $('body').removeAttr('data-theme');
-            if($(this).prop('checked')) {
+            if ($(this).prop('checked')) {
                 $('body').attr('data-theme', 'dark');
                 that._appData.theme = Theme.Dark;
             } else {
@@ -215,33 +317,33 @@ export class Application {
 
     private updateRecommendedItems(fertilizer: FertilizerData) {
         const inventory_items = this._appData.inventory.items.filter(it => {
-            const item_name = it.name;
+            const item_name = it.item.name;
             const findItemInInventory = this._appData.inventory.getItemByName(item_name);
             const findItemInComponents = this._appData.fertilizer_components.getItemByName(item_name);
 
             if (findItemInInventory != undefined && findItemInComponents !== undefined) {
                 if (!this._appData.settings.no_inventory_restriction) {
-                    if(findItemInComponents.in_fertilizer === undefined) {
+                    if (findItemInComponents.in_fertilizer === undefined) {
                         return false;
                     }
 
-                    if (findItemInComponents.in_fertilizer !== undefined && 
+                    if (findItemInComponents.in_fertilizer !== undefined &&
                         findItemInInventory.amount !== undefined) {
                         if (findItemInComponents.in_fertilizer >= findItemInInventory.amount) {
                             return false;
                         }
                     }
                 } else {
-                    if (findItemInComponents !== undefined && 
+                    if (findItemInComponents !== undefined &&
                         findItemInInventory !== undefined) {
-                            return false;
+                        return false;
                     }
                 }
             }
 
             return true;
         });
-        let expiables_inventory_items = inventory_items.filter(it => it.expiable);
+        let expiables_inventory_items = inventory_items.filter(it => (it.item as FoodItemData).expiable);
         let recommended_inventory_items = inventory_items;
 
         expiables_inventory_items = this.sortRecommendedItems(fertilizer, expiables_inventory_items);
@@ -254,25 +356,25 @@ export class Application {
     }
 
     private sortRecommendedItems(fertilizer: FertilizerData, items: ItemInventoryData[], expiable: boolean = false): ItemInventoryData[] {
-        const get_leaf_fertilizer = (item: ItemInventoryData) => (item.fertilizer_bonus.leaf_fertilizer) ? item.fertilizer_bonus.leaf_fertilizer : 0;
-        const get_kernel_fertilizer = (item: ItemInventoryData) => (item.fertilizer_bonus.kernel_fertilizer) ? item.fertilizer_bonus.kernel_fertilizer : 0;
-        const get_root_fertilizer = (item: ItemInventoryData) => (item.fertilizer_bonus.root_fertilizer) ? item.fertilizer_bonus.root_fertilizer : 0;
+        const get_leaf_fertilizer = (item: ItemData) => item.fertilizer_bonus?.leaf_fertilizer ?? 0;
+        const get_kernel_fertilizer = (item: ItemData) => item.fertilizer_bonus?.kernel_fertilizer ?? 0;
+        const get_root_fertilizer = (item: ItemData) => item.fertilizer_bonus?.root_fertilizer ?? 0;
 
-        const get_yield = (item: ItemInventoryData) => (item.fertilizer_bonus.yield_hp) ? item.fertilizer_bonus.yield_hp : 0;
-        const get_heartiness = (item: ItemInventoryData) => {
-            return (((item.fertilizer_bonus.taste_strength) ? item.fertilizer_bonus.taste_strength : 0) +
-                ((item.fertilizer_bonus.hardness_vitality) ? item.fertilizer_bonus.hardness_vitality : 0) +
-                ((item.fertilizer_bonus.stickiness_gusto) ? item.fertilizer_bonus.stickiness_gusto : 0)) / 3;
+        const get_yield = (item: ItemData) => item.fertilizer_bonus?.yield_hp ?? 0;
+        const get_heartiness = (item: ItemData) => {
+            return ((item.fertilizer_bonus?.taste_strength ?? 0) +
+                (item.fertilizer_bonus?.hardness_vitality ?? 0) +
+                (item.fertilizer_bonus?.stickiness_gusto ?? 0)) / 3;
         };
-        const get_aesthetic = (item: ItemInventoryData) => (item.fertilizer_bonus.aesthetic_luck) ? item.fertilizer_bonus.aesthetic_luck : 0;
-        const get_aroma = (item: ItemInventoryData) => (item.fertilizer_bonus.armor_magic) ? item.fertilizer_bonus.armor_magic : 0;
-        const get_balanced = (item: ItemInventoryData) => {
-            return ((item.fertilizer_bonus.yield_hp) ? item.fertilizer_bonus.yield_hp : 0) +
-                ((item.fertilizer_bonus.taste_strength) ? item.fertilizer_bonus.taste_strength : 0) +
-                ((item.fertilizer_bonus.hardness_vitality) ? item.fertilizer_bonus.hardness_vitality : 0) +
-                ((item.fertilizer_bonus.stickiness_gusto) ? item.fertilizer_bonus.stickiness_gusto : 0) +
-                ((item.fertilizer_bonus.aesthetic_luck) ? item.fertilizer_bonus.aesthetic_luck : 0) +
-                ((item.fertilizer_bonus.armor_magic) ? item.fertilizer_bonus.armor_magic : 0);
+        const get_aesthetic = (item: ItemData) => item.fertilizer_bonus?.aesthetic_luck ?? 0;
+        const get_aroma = (item: ItemData) => item.fertilizer_bonus?.aroma_magic ?? 0;
+        const get_balanced = (item: ItemData) => {
+            return (item.fertilizer_bonus?.yield_hp ?? 0) +
+                (item.fertilizer_bonus?.taste_strength ?? 0) +
+                (item.fertilizer_bonus?.hardness_vitality ?? 0) +
+                (item.fertilizer_bonus?.stickiness_gusto ?? 0) +
+                (item.fertilizer_bonus?.aesthetic_luck ?? 0) +
+                (item.fertilizer_bonus?.aroma_magic ?? 0);
         };
 
         var that = this;
@@ -281,21 +383,21 @@ export class Application {
             item.points = 0;
             item.points_fertilizer = new RecommendedFertilizerData();
 
-            item.points_fertilizer.leaf_fertilizer = get_leaf_fertilizer(item);
-            item.points_fertilizer.kernel_fertilizer = get_kernel_fertilizer(item);
-            item.points_fertilizer.root_fertilizer = get_root_fertilizer(item);
+            item.points_fertilizer.leaf_fertilizer = get_leaf_fertilizer(item.item);
+            item.points_fertilizer.kernel_fertilizer = get_kernel_fertilizer(item.item);
+            item.points_fertilizer.root_fertilizer = get_root_fertilizer(item.item);
 
-            item.points_fertilizer.yield = get_yield(item);
-            item.points_fertilizer.heartiness = get_heartiness(item);
-            item.points_fertilizer.aesthetic = get_aesthetic(item);
-            item.points_fertilizer.aroma = get_aroma(item);
-            item.points_fertilizer.balanced = get_balanced(item);
+            item.points_fertilizer.yield = get_yield(item.item);
+            item.points_fertilizer.heartiness = get_heartiness(item.item);
+            item.points_fertilizer.aesthetic = get_aesthetic(item.item);
+            item.points_fertilizer.aroma = get_aroma(item.item);
+            item.points_fertilizer.balanced = get_balanced(item.item);
 
-            item.points_fertilizer.immunity = (item.fertilizer_bonus.immunity) ? item.fertilizer_bonus.immunity : 0;
-            item.points_fertilizer.pesticide = (item.fertilizer_bonus.pesticide) ? item.fertilizer_bonus.pesticide : 0;
-            item.points_fertilizer.herbicide = (item.fertilizer_bonus.herbicide) ? item.fertilizer_bonus.herbicide : 0;
+            item.points_fertilizer.immunity = item.item.fertilizer_bonus?.immunity ?? 0;
+            item.points_fertilizer.pesticide = item.item.fertilizer_bonus?.pesticide ?? 0;
+            item.points_fertilizer.herbicide = item.item.fertilizer_bonus?.herbicide ?? 0;
 
-            item.points_fertilizer.toxicity = (item.fertilizer_bonus.toxicity) ? -item.fertilizer_bonus.toxicity : 0;
+            item.points_fertilizer.toxicity = item.item.fertilizer_bonus?.toxicity ?? 0;
 
             item.points = that.calcOrderItemPoints(fertilizer, item, expiable);
 
@@ -308,7 +410,7 @@ export class Application {
     private calcOrderItemPoints(fertilizer: FertilizerData, item: RecommendedItemInventoryData, expiable: boolean = false) {
         let ret = 0;
 
-        ret += (expiable && item.expiable) ? 1 : 0;
+        ret += (expiable && (item.item as FoodItemData).expiable !== undefined && (item.item as FoodItemData).expiable) ? 1 : 0;
 
         const calcPointsFer = (points_fertilizer: number, current_fertilizer: number, max_or_overflow: boolean, invert_value: boolean = false) => {
             current_fertilizer = current_fertilizer * ((invert_value) ? -1 : 1);
@@ -380,34 +482,34 @@ export class Application {
                 ret += item.points_fertilizer.balanced;
 
                 /// @TODO: refactor with "getPropertybyName" or something
-                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, fertilizer.yield_hp, fertilizer.is_yield_hp_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, fertilizer.taste_strength, fertilizer.is_taste_strength_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.yield_hp, fertilizer.yield_hp, fertilizer.is_yield_hp_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.taste_strength, fertilizer.taste_strength, fertilizer.is_taste_strength_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.aroma_magic, fertilizer.aroma_magic, fertilizer.is_aroma_magic_max_or_overflow);
                 break;
             case FarmingFocus.Heartiness:
                 ret += item.points_fertilizer.heartiness;
 
-                ret += calcPointsStats(item.fertilizer_bonus.taste_strength, fertilizer.taste_strength, fertilizer.is_taste_strength_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
-                ret += calcPointsStats(item.fertilizer_bonus.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.taste_strength, fertilizer.taste_strength, fertilizer.is_taste_strength_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.hardness_vitality, fertilizer.hardness_vitality, fertilizer.is_hardness_vitality_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.stickiness_gusto, fertilizer.stickiness_gusto, fertilizer.is_stickiness_gusto_max_or_overflow);
                 break;
             case FarmingFocus.Yield:
                 ret += item.points_fertilizer.yield;
 
-                ret += calcPointsStats(item.fertilizer_bonus.yield_hp, fertilizer.yield_hp, fertilizer.is_yield_hp_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.yield_hp, fertilizer.yield_hp, fertilizer.is_yield_hp_max_or_overflow);
                 break;
             case FarmingFocus.Aesthetic:
                 ret += item.points_fertilizer.aesthetic;
 
-                ret += calcPointsStats(item.fertilizer_bonus.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.aesthetic_luck, fertilizer.aesthetic_luck, fertilizer.is_aesthetic_luck_max_or_overflow);
                 break;
             case FarmingFocus.Aroma:
                 ret += item.points_fertilizer.aroma;
 
-                ret += calcPointsStats(item.fertilizer_bonus.armor_magic, fertilizer.armor_magic, fertilizer.is_armor_magic_max_or_overflow);
+                ret += calcPointsStats(item.item.fertilizer_bonus?.aroma_magic, fertilizer.aroma_magic, fertilizer.is_aroma_magic_max_or_overflow);
                 break;
         }
 

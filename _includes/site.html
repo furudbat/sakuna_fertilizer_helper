@@ -23,29 +23,55 @@
 <section id="sectionItemList">
     <h2>{{ site.data.strings.item_list.materials.title }}</h2>
     <section id="sectionItemListMaterials">
-        {% assign materials_items = site.data.items | where: "category", "Materials" %}
-        {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
-        {% assign material_items = site.data.items | where: "category", "Material" %}
-        {% assign material_food_items = site.data.items | where: "category", "Material/Food" %}
-        
-        {% include itemlist-table.html id='tblItemsList' items=materials_items items2=materials_ingredients_items items3=material_items items4=material_food_items %}
+        {% include material-itemlist-table.html id='tblMaterialItemsList' %}
     </section>
 
-    
-    <h2>{{ site.data.strings.item_list.ingredients.title }}</h2>
+
+    <h2 class="mt-5">{{ site.data.strings.item_list.ingredients.title }}</h2>
     <section id="sectionItemListIngredients">
-        {% assign materials_ingredients_items = site.data.items | where: "category", "Materials/Ingredients" %}
-        {% assign ingredients_items = site.data.items | where: "category", "Ingredients" %}
-        {% assign food_items = site.data.items | where: "category", "Food" %}
-
-        Coming Soon
+        {% include ingredients-itemlist-table.html id='tblIngredientsItemsList' caption=site.data.strings.item_list.ingredients.table_caption %}
     </section>
-    
 
-    <h2>{{ site.data.strings.item_list.food.title }}</h2>
+    <h2 class="mt-3">{{ site.data.strings.item_list.food.title }}</h2>
     <section id="sectionItemListFood">
-        {% assign food_items = site.data.items | where: "category", "Cooking" %}
-
-        Coming Soon
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-group">
+                    <label for="btnSeasonalBuff">{{ site.data.strings.item_list.food.seasonal_buffs.label }}</label>
+                    <div class="btn-group btn-group-seasonal-buff" role="group"
+                        aria-label="{{ site.data.strings.item_list.food.seasonal_buffs.label }}">
+                        <button type="button" id="btnSeasonalBuffNone"
+                            class="btn btn-seasonal-buff btn-seasonal-buff-none btn-secondary active">{{ site.data.strings.item_list.food.seasonal_buffs.none}}</button>
+                        <button type="button" id="btnSeasonalBuffSpring"
+                            class="btn btn-seasonal-buff btn-seasonal-buff-spring table-spring">{{ site.data.strings.item_list.food.seasonal_buffs.spring }}</button>
+                        <button type="button" id="btnSeasonalBuffSummer"
+                            class="btn btn-seasonal-buff btn-seasonal-buff-summer table-summer">{{ site.data.strings.item_list.food.seasonal_buffs.summer }}</button>
+                        <button type="button" id="btnSeasonalBuffAutumn"
+                            class="btn btn-seasonal-buff btn-seasonal-buff-autumn table-autumn">{{ site.data.strings.item_list.food.seasonal_buffs.autumn }}</button>
+                        <button type="button" id="btnSeasonalBuffWinter"
+                            class="btn btn-seasonal-buff btn-seasonal-buff-winter table-winter">{{ site.data.strings.item_list.food.seasonal_buffs.winter }}</button>
+                    </div>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="chbSeasonalBuffFilter">
+                    <label class="form-check-label" for="chbSeasonalBuffFilter">
+                        {{ site.data.strings.item_list.food.seasonal_buffs.label_filter }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        {% include food-itemlist-table.html id='tblFoodItemsList' caption=site.data.strings.item_list.food.table_caption %}
     </section>
+</section>
+
+<section id="sectionMisc" class="mt-5">
+    <h2>{{ site.data.strings.misc.title }}</h2>
+    <div class="row mx-1">
+        <div class="col-4">
+            <div class="form-group">
+                <button id="btnClearSession" class="btn btn-warning">{{ site.data.strings.misc.clear_session }}</button>
+                <small id="btnClearSessionHelp" class="form-text text-muted">{{site.data.strings.misc.clear_session_help }}</small>
+            </div>
+        </div>
+    </div>
 </section>

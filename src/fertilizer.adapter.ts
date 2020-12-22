@@ -3,10 +3,10 @@ import { LoggerManager } from "typescript-logger";
 import { ApplicationData } from "./application.data";
 import { ItemFertilizerComponentData } from "./fertilizer-components";
 import { FertilizerData, MAX_FERTILIZER, MAX_STATS, MIN_FERTILIZER, MIN_STATS } from "./fertilizer.data";
-import { render_buff_bonus_html } from "./inventory.adapter";
-import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./Observer";
+import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./observer";
 import Chart from "chart.js";
 import { clamp, site } from "./site";
+import { render_buff_bonus_html } from "./itemlist.adapter";
 
 export class FertilizerAdapter {
     private _appData: ApplicationData;
@@ -36,7 +36,7 @@ export class FertilizerAdapter {
 
         this.initEvents();
         this.initObservers();
-        
+
         this.updateFromComponents(this._appData.fertilizer_components.components);
     }
 
@@ -52,25 +52,25 @@ export class FertilizerAdapter {
                 that.updateSoilNutrientsChartRootFertilizer();
                 that._soilNutrientsChart?.update();
 
-                const yield_hp = render_buff_bonus_html((fertilizer.yield_hp) ? fertilizer.yield_hp : 0, false, fertilizer.is_yield_hp_overflow);
-                const taste_strength = render_buff_bonus_html((fertilizer.taste_strength) ? fertilizer.taste_strength : 0, false, fertilizer.is_taste_strength_overflow);
-                const hardness_vitality = render_buff_bonus_html((fertilizer.hardness_vitality) ? fertilizer.hardness_vitality : 0, false, fertilizer.is_hardness_vitality_overflow);
-                const stickiness_gusto = render_buff_bonus_html((fertilizer.stickiness_gusto) ? fertilizer.stickiness_gusto : 0, false, fertilizer.is_stickiness_gusto_overflow);
-                const aesthetic_luck = render_buff_bonus_html((fertilizer.aesthetic_luck) ? fertilizer.aesthetic_luck : 0, false, fertilizer.is_aesthetic_luck_overflow);
-                const armor_magic = render_buff_bonus_html((fertilizer.armor_magic) ? fertilizer.armor_magic : 0, false, fertilizer.is_armor_magic_overflow);
+                const yield_hp = render_buff_bonus_html(fertilizer.yield_hp, false, fertilizer.is_yield_hp_overflow);
+                const taste_strength = render_buff_bonus_html(fertilizer.taste_strength, false, fertilizer.is_taste_strength_overflow);
+                const hardness_vitality = render_buff_bonus_html(fertilizer.hardness_vitality, false, fertilizer.is_hardness_vitality_overflow);
+                const stickiness_gusto = render_buff_bonus_html(fertilizer.stickiness_gusto, false, fertilizer.is_stickiness_gusto_overflow);
+                const aesthetic_luck = render_buff_bonus_html(fertilizer.aesthetic_luck, false, fertilizer.is_aesthetic_luck_overflow);
+                const aroma_magic = render_buff_bonus_html(fertilizer.aroma_magic, false, fertilizer.is_aroma_magic_overflow);
 
-                const immunity = render_buff_bonus_html((fertilizer.immunity) ? fertilizer.immunity : 0, false, fertilizer.is_immunity_overflow);
-                const pesticide = render_buff_bonus_html((fertilizer.pesticide) ? fertilizer.pesticide : 0, false, fertilizer.is_pesticide_overflow);
-                const herbicide = render_buff_bonus_html((fertilizer.herbicide) ? fertilizer.herbicide : 0, false, fertilizer.is_herbicide_overflow);
+                const immunity = render_buff_bonus_html(fertilizer.immunity, false, fertilizer.is_immunity_overflow);
+                const pesticide = render_buff_bonus_html(fertilizer.pesticide, false, fertilizer.is_pesticide_overflow);
+                const herbicide = render_buff_bonus_html(fertilizer.herbicide, false, fertilizer.is_herbicide_overflow);
 
-                const toxicity = render_buff_bonus_html((fertilizer.toxicity) ? fertilizer.toxicity : 0, true, fertilizer.is_toxicity_overflow);
+                const toxicity = render_buff_bonus_html(fertilizer.toxicity, true, fertilizer.is_toxicity_overflow);
 
                 $('#fertilizerYieldHp').html(yield_hp);
                 $('#fertilizerTasteStrength').html(taste_strength);
                 $('#fertilizerHardnessVitality').html(hardness_vitality);
                 $('#fertilizerStickinessGusto').html(stickiness_gusto);
                 $('#fertilizerAestheticLuck').html(aesthetic_luck);
-                $('#fertilizerArmorMagic').html(armor_magic);
+                $('#fertilizerAromaMagic').html(aroma_magic);
 
                 $('#fertilizerImmunity').html(immunity);
                 $('#fertilizerPesticide').html(pesticide);
@@ -147,7 +147,7 @@ export class FertilizerAdapter {
             data.hardness_vitality = this.calcComponentHardnessVitalityValue(components);
             data.stickiness_gusto = this.calcComponentStickinessGustoValue(components);
             data.aesthetic_luck = this.calcComponentAestheticLuckValue(components);
-            data.armor_magic = this.calcComponentArmorMagicValue(components);
+            data.aroma_magic = this.calcComponentAromaMagicValue(components);
 
             data.immunity = this.calcComponentImmunityValue(components);
             data.pesticide = this.calcComponentPesticideValue(components);
@@ -244,12 +244,12 @@ export class FertilizerAdapter {
         this.updateSoilNutrientsChartLeafFertilizer();
         this.updateSoilNutrientsChartKernelFertilizer();
         this.updateSoilNutrientsChartRootFertilizer();
-        
+
         this._soilNutrientsChart.update();
     }
 
     private updateHints() {
-        const renderHint = function(text: string) {
+        const renderHint = function (text: string) {
             return `<li class="list-group-item list-group-item text-left p-2">${text}</li>`;
         };
 
@@ -290,21 +290,21 @@ export class FertilizerAdapter {
     }
 
     private calcComponentLeafFertilizerValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.leaf_fertilizer) ? component.fertilizer_bonus.leaf_fertilizer : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.leaf_fertilizer ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcNutrientComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentKernelFertilizerValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.kernel_fertilizer) ? component.fertilizer_bonus.kernel_fertilizer : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.kernel_fertilizer ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcNutrientComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentRootFertilizerValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.root_fertilizer) ? component.fertilizer_bonus.root_fertilizer : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.root_fertilizer ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcNutrientComponentValue(component, value);
         }, 0);
@@ -312,42 +312,42 @@ export class FertilizerAdapter {
 
 
     private calcComponentYieldHPValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.yield_hp) ? component.fertilizer_bonus.yield_hp : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.yield_hp ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentTasteStrengthValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.taste_strength) ? component.fertilizer_bonus.taste_strength : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.taste_strength ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentHardnessVitalityValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.hardness_vitality) ? component.fertilizer_bonus.hardness_vitality : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.hardness_vitality ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentStickinessGustoValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.stickiness_gusto) ? component.fertilizer_bonus.stickiness_gusto : 0).reduce((sum, value, index) => {
-            const component = components[index];
-            return sum + this.calcStatComponentValue(component, value);
-        }, 0);
-    } 
-
-    private calcComponentAestheticLuckValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.aesthetic_luck) ? component.fertilizer_bonus.aesthetic_luck : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.stickiness_gusto ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
     }
 
-    private calcComponentArmorMagicValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.armor_magic) ? component.fertilizer_bonus.armor_magic : 0).reduce((sum, value, index) => {
+    private calcComponentAestheticLuckValue(components: ItemFertilizerComponentData[]): number {
+        return components.map(component => component.item.fertilizer_bonus?.aesthetic_luck ?? 0).reduce((sum, value, index) => {
+            const component = components[index];
+            return sum + this.calcStatComponentValue(component, value);
+        }, 0);
+    }
+
+    private calcComponentAromaMagicValue(components: ItemFertilizerComponentData[]): number {
+        return components.map(component => component.item.fertilizer_bonus?.aroma_magic ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
@@ -355,21 +355,21 @@ export class FertilizerAdapter {
 
 
     private calcComponentImmunityValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.immunity) ? component.fertilizer_bonus.immunity : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.immunity ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentPesticideValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.pesticide) ? component.fertilizer_bonus.pesticide : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.pesticide ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
     }
 
     private calcComponentHerbicideValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.herbicide) ? component.fertilizer_bonus.herbicide : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.herbicide ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);
@@ -377,7 +377,7 @@ export class FertilizerAdapter {
 
 
     private calcComponentToxicityValue(components: ItemFertilizerComponentData[]): number {
-        return components.map(component => (component.fertilizer_bonus.toxicity) ? component.fertilizer_bonus.toxicity : 0).reduce((sum, value, index) => {
+        return components.map(component => component.item.fertilizer_bonus?.toxicity ?? 0).reduce((sum, value, index) => {
             const component = components[index];
             return sum + this.calcStatComponentValue(component, value);
         }, 0);

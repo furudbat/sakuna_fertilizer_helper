@@ -2,8 +2,24 @@ Food.csv
 Material.csv
 Cooking.csv
 Enchant.csv
+EnemyDrop.csv
+WorldmapCollect.csv
+WorldmapLandmark.csv
 
 Enchant.*.csv
 Food.*.csv
 Material.*.csv
 Cooking.*.csv
+EnemyDrop.*.csv
+WorldmapCollect.*.csv
+WorldmapLandmark.*.csv
+
+*.xlsx
+
+materials.yml
+cooking.yml
+enemies.json
+food.yml
+items.json
+item_names.json
+enchants.json

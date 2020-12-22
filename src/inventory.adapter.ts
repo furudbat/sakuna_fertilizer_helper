@@ -1,80 +1,30 @@
-import { LoggerManager } from "typescript-logger";
-import { FarmingFocus, Settings } from "./application.data";
+import { Settings } from "./application.data";
 import { Inventory, ItemInventoryData, MAX_ITEMS_AMOUNT_INVENTORY, MIN_ITEMS_AMOUNT_INVENTORY } from "./inventory";
 import { site } from "./site";
 import { DataListObserver, DataListSubject, DataObserver, DataSubject } from "./observer";
 import { FertilizerComponents, ItemFertilizerComponentData } from "./fertilizer-components";
+import { ItemListAdapter } from "./itemlist.adapter";
+import { FoodItemData, ItemData } from "./item.data";
 
-function hasProperty<T, K extends keyof T>(o: T, propertyName: K): boolean {
-    return o[propertyName] !== undefined;
-}
-function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] | null {
-    return (o[propertyName] !== undefined) ? o[propertyName] : null; // o[propertyName] is of type T[K]
-}
 
-export function render_buff_bonus_html(value: number | undefined, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
-    const val_number = (value) ? value as number : 0;
-    let val_str = (val_number > 0) ? `+${val_number}` : `${val_number}`;
-
-    if (invert_color !== undefined) {
-        if (!invert_color) {
-            if (overflow) {
-                val_str = `<span class="text-warning">${val_str}*</span>`;
-            } else if (val_number > 0) {
-                val_str = `<span class="text-success">${val_str}</span>`;
-            }
-
-            if (val_number < 0) {
-                val_str = `<span class="text-danger">${val_str}</span>`;
-            }
-        } else {
-            if (overflow) {
-                val_str = `<span class="text-warning">${val_str}*</span>`;
-            } else if (val_number < 0) {
-                val_str = `<span class="text-success">${val_str}</span>`;
-            }
-
-            if (val_number > 0) {
-                val_str = `<span class="text-danger">${val_str}</span>`;
-            }
-        }
-    }
-
-    return `<span class="text-center">${val_str}</span>`;
-};
-
-export function render_buff_bonus(property_name: string, invert_color: boolean | undefined = undefined, overflow: boolean = false) {
-    return function (data: any, type: string, row: ItemInventoryData) {
-        const value = (hasProperty(data, property_name)) ? getProperty(data, property_name) : 0;
-        if (type === 'display') {
-            return render_buff_bonus_html(value, invert_color, overflow);
-        }
-
-        // Search, order and type can use the original data
-        return value;
-    };
-};
-
-const INVENTORY_PAGE_LENGTH = 7;
+const INVENTORY_PAGE_LENGTH = 8;
 
 export interface InventoryAdapterSettings {
     can_remove_from_inventory: boolean;
 }
 
-export class InventoryAdapter {
+export class InventoryAdapter extends ItemListAdapter {
     private _settings: DataSubject<Settings>;
     private _fertilizer_components: FertilizerComponents;
-    private _table_selector: string;
     private _data: Inventory;
     private _table?: DataTables.Api;
     private _adapter_settings?: InventoryAdapterSettings;
 
-    private log = LoggerManager.create('InventoryAdapter');
-
     constructor(settings: DataSubject<Settings>, fertilizer_components: FertilizerComponents, table_selector: string, data: Inventory, adapter_settings: InventoryAdapterSettings | undefined = undefined) {
+        super(`InventoryAdapter|${table_selector}`, table_selector, 'Inventory');
+
         this._settings = settings;
         this._fertilizer_components = fertilizer_components;
-        this._table_selector = table_selector;
         this._data = data;
         this._adapter_settings = adapter_settings;
     }
@@ -84,48 +34,30 @@ export class InventoryAdapter {
     }
 
     public init(orderable: number[] = [1, 2, 3, 4, 5, 6], not_orderable: number[] = [0], ordering: boolean | undefined = undefined) {
-        const createdCell = function (cell: Node, cellData: any, rowData: any, row: number, col: number) {
-            $(cell).removeClass('table-success').removeClass('table-danger').removeClass('table-warning').addClass('text-center');
+        const createdCell = function (cell: Node, cellData: any, rowData: ItemInventoryData, row: number, col: number) {
 
             switch (col) {
                 case 2:
-                    if (cellData.immunity) {
-                        if (cellData.immunity > 0) {
-                            $(cell).addClass('table-success');
-                        } else if (cellData.immunity < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    $(cell).addClass('text-center');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'immunity');
                     break;
                 case 3:
-                    if (cellData.pesticide) {
-                        if (cellData.pesticide > 0) {
-                            $(cell).addClass('table-success');
-                        } else if (cellData.pesticide < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    $(cell).addClass('text-center');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'pesticide');
                     break;
                 case 4:
-                    if (cellData.herbicide) {
-                        if (cellData.herbicide > 0) {
-                            $(cell).addClass('table-success');
-                        } else if (cellData.herbicide < 0) {
-                            $(cell).addClass('table-danger');
-                        }
-                    }
+                    $(cell).addClass('text-center');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'herbicide');
                     break;
                 case 5:
-                    if (cellData.toxicity) {
-                        if (cellData.toxicity > 0) {
-                            $(cell).addClass('table-danger');
-                        } else if (cellData.toxicity < 0) {
-                            $(cell).addClass('table-success');
-                        }
-                    }
+                    $(cell).addClass('text-center');
+                    InventoryAdapter.addColColorClassFromFertilizerBonus(cell, cellData, 'toxicity', true);
                     break;
                 case 6:
-                    if (rowData.expiable) {
+                    $(cell).addClass('text-center');
+                    const item = rowData.item;
+                    const food_item = item as FoodItemData;
+                    if (food_item?.expiable !== undefined && food_item?.expiable) {
                         $(cell).addClass('table-warning');
                     }
                     break;
@@ -141,7 +73,7 @@ export class InventoryAdapter {
             responsive: true,
             lengthChange: false,
             createdRow: function (row: Node, data: any[] | object, dataIndex: number) {
-                $(row).attr('data-name', (data as ItemInventoryData).name);
+                $(row).attr('data-name', (data as ItemInventoryData).item.name);
                 $(row).attr('data-index', dataIndex);
             },
             columnDefs: [
@@ -159,80 +91,62 @@ export class InventoryAdapter {
             data: this._data.items,
             columns: [
                 {
-                    data: 'name',
+                    data: 'item.name',
                     render: function (data: string, type: string) {
-                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}"><i class="fas fa-plus"></i></button>` : '';
+                        return (type === 'display') ? `<button class="btn btn-primary btn-small add-item-to-fertilizer" data-name="${data}">
+                            <i class="fas fa-plus"></i>
+                            <span class="sr-only">${site.data.strings.fertilizer_helper.inventory.col_add_to_fertilizer_long}</span>
+                        </button>` : '';
                     }
                 },
                 {
-                    data: 'name',
-                    render: function (data: string, type: string, row: ItemInventoryData, meta: any) {
+                    data: 'item.name',
+                    render: function (data: string, type: string, row: ItemInventoryData) {
+                        const item = row.item;
                         if (type === 'display') {
-                            let fertilizer_bonus = '';
-                            if (row.fertilizer_bonus.leaf_fertilizer) {
-                                const text_color = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '' : 'text-danger';
-                                const sign = (row.fertilizer_bonus.leaf_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.leaf_fertilizer}</strong> 
-                                    ${sign}${row.fertilizer_bonus.leaf_fertilizer}
-                                </p>`;
-                            }
-                            if (row.fertilizer_bonus.kernel_fertilizer) {
-                                const text_color = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '' : 'text-danger';
-                                const sign = (row.fertilizer_bonus.kernel_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.kernel_fertilizer}</strong> 
-                                    ${sign}${row.fertilizer_bonus.kernel_fertilizer}
-                                </p>`;
-                            }
-                            if (row.fertilizer_bonus.root_fertilizer) {
-                                const text_color = (row.fertilizer_bonus.root_fertilizer > 0) ? '' : 'text-danger';
-                                const sign = (row.fertilizer_bonus.root_fertilizer > 0) ? '+' : '';
-                                fertilizer_bonus += `<p class="text-left ${text_color}"><strong>${site.data.strings.fertilizer_helper.inventory.stats.root_fertilizer}</strong> 
-                                    ${sign}${row.fertilizer_bonus.root_fertilizer}
-                                </p>`;
-                            }
+                            const fertilizer_bonus = InventoryAdapter.renderSoilNutrientsHtml(item.fertilizer_bonus);
 
-                            const yield_hp = render_buff_bonus_html(row.fertilizer_bonus.yield_hp, false);
-                            const taste_strength = render_buff_bonus_html(row.fertilizer_bonus.taste_strength, false);
-                            const hardness_vitality = render_buff_bonus_html(row.fertilizer_bonus.hardness_vitality, false);
-                            const stickiness_gusto = render_buff_bonus_html(row.fertilizer_bonus.stickiness_gusto, false);
-                            const aesthetic_luck = render_buff_bonus_html(row.fertilizer_bonus.aesthetic_luck, false);
-                            const armor_magic = render_buff_bonus_html(row.fertilizer_bonus.armor_magic, false);
+                            const yield_hp = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.yield_hp, false);
+                            const taste_strength = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.taste_strength, false);
+                            const hardness_vitality = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.hardness_vitality, false);
+                            const stickiness_gusto = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.stickiness_gusto, false);
+                            const aesthetic_luck = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.aesthetic_luck, false);
+                            const aroma_magic = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.aroma_magic, false);
 
-                            const immunity = render_buff_bonus_html(row.fertilizer_bonus.immunity, false);
-                            const pesticide = render_buff_bonus_html(row.fertilizer_bonus.pesticide, false);
-                            const herbicide = render_buff_bonus_html(row.fertilizer_bonus.herbicide, false);
+                            const immunity = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.immunity, false);
+                            const pesticide = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.pesticide, false);
+                            const herbicide = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.herbicide, false);
 
-                            const toxicity = render_buff_bonus_html(row.fertilizer_bonus.toxicity, true);
+                            const toxicity = InventoryAdapter.renderBuffBonusHtml(item.fertilizer_bonus?.toxicity, true);
 
-                            const collapse_id = 'collapseInventory' + row.name.replace(/\s+/g, '-').replace(/\.+/g, '-').replace(/'+/g, '');
+                            const show_yield_hp = ((item.fertilizer_bonus?.yield_hp ?? 0) === 0) ? 'd-none' : '';
+                            const show_taste_strength = ((item.fertilizer_bonus?.taste_strength ?? 0) === 0) ? 'd-none' : '';
+                            const show_hardness_vitality = ((item.fertilizer_bonus?.hardness_vitality ?? 0) === 0) ? 'd-none' : '';
+                            const show_stickiness_gusto = ((item.fertilizer_bonus?.stickiness_gusto ?? 0) === 0) ? 'd-none' : '';
+                            const show_aesthetic_luck = ((item.fertilizer_bonus?.aesthetic_luck ?? 0) === 0) ? 'd-none' : '';
+                            const show_aroma_magic = ((item.fertilizer_bonus?.aroma_magic ?? 0) === 0) ? 'd-none' : '';
+                            const show_immunity = ((item.fertilizer_bonus?.immunity ?? 0) === 0) ? 'd-none' : '';
+                            const show_pesticide = ((item.fertilizer_bonus?.pesticide ?? 0) === 0) ? 'd-none' : '';
+                            const show_herbicide = ((item.fertilizer_bonus?.herbicide ?? 0) === 0) ? 'd-none' : '';
+                            const show_toxicity = ((item.fertilizer_bonus?.toxicity ?? 0) === 0) ? 'd-none' : '';
 
-                            const show_yield_hp = ((row.fertilizer_bonus.yield_hp ?? 0) === 0) ? 'd-none' : 0;
-                            const show_taste_strength = ((row.fertilizer_bonus.taste_strength ?? 0) === 0) ? 'd-none' : 0;
-                            const show_hardness_vitality = ((row.fertilizer_bonus.hardness_vitality ?? 0) === 0) ? 'd-none' : 0;
-                            const show_stickiness_gusto = ((row.fertilizer_bonus.stickiness_gusto ?? 0) === 0) ? 'd-none' : 0;
-                            const show_aesthetic_luck = ((row.fertilizer_bonus.aesthetic_luck ?? 0) === 0) ? 'd-none' : 0;
-                            const show_armor_magic = ((row.fertilizer_bonus.armor_magic ?? 0) === 0) ? 'd-none' : 0;
-                            const show_immunity = ((row.fertilizer_bonus.immunity ?? 0) === 0) ? 'd-none' : 0;
-                            const show_pesticide = ((row.fertilizer_bonus.pesticide ?? 0) === 0) ? 'd-none' : 0;
-                            const show_herbicide = ((row.fertilizer_bonus.herbicide ?? 0) === 0) ? 'd-none' : 0;
-                            const show_toxicity = ((row.fertilizer_bonus.toxicity ?? 0) === 0) ? 'd-none' : 0;
+                            const collapse_id = that.getCollapseId(item);
+                            const name_color = Inventory.getStateFocusTextColor(item.fertilizer_bonus);
 
-                            const data_color_class = Inventory.getStateFocusTextColor(row.fertilizer_bonus);
-
-                            const item_name = row.name;
+                            const item_name = item.name;
                             const amount_value = row.amount ?? 1;
-                            const index = that._data.items.findIndex(it => it.name == item_name);
+                            const index = that._data.items.findIndex(it => it.item.name == item_name);
                             const hide_amount = (that._settings.data.no_inventory_restriction) ? 'd-none' : '';
                             const disabled_amount = (that._settings.data.no_inventory_restriction) ? 'disabled' : '';
-                            
-                            const show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false)? 'd-none' : '';
+
+                            const show_remove_from_inventory = (that._adapter_settings !== undefined && that._adapter_settings.can_remove_from_inventory === false) ? 'd-none' : '';
 
                             return `<div class="row no-gutters">
                                         <div class="col-3 text-left inventory-item-amount-container ${hide_amount}">
                                             <input type="number" value="${amount_value}" data-index="${index}" data-name="${item_name}" data-val="${amount_value}" class="form-control form-control-sm inventory-item-amount" placeholder="${site.data.strings.fertilizer_helper.inventory.amount_placeholder}" aria-label="Item-Amount" min="${MIN_ITEMS_AMOUNT_INVENTORY}" max="${MAX_ITEMS_AMOUNT_INVENTORY}" ${disabled_amount}>
                                         </div>
                                         <div class="col-9 text-left">
-                                            <button class="btn btn-link text-left ${data_color_class}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
+                                            <button class="btn btn-link text-left ${name_color}" type="button" data-toggle="collapse" data-target="#${collapse_id}" aria-expanded="false" aria-controls="${collapse_id}">
                                                 ${item_name}
                                             </button>
                                         </div>
@@ -274,9 +188,9 @@ export class InventoryAdapter {
                                                 <div class="col-4 offset-1 aesthetic-luck text-left">${aesthetic_luck}</div>
                                             </div>
 
-                                            <div class="row no-gutters ${show_armor_magic}">
-                                                <div class="col-7 armor-magic-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.armor_magic}</div>
-                                                <div class="col-4 offset-1 armor-magic text-left">${armor_magic}</div>
+                                            <div class="row no-gutters ${show_aroma_magic}">
+                                                <div class="col-7 aroma-magic-label text-left">${site.data.strings.fertilizer_helper.inventory.stats.aroma_magic}</div>
+                                                <div class="col-4 offset-1 aroma-magic text-left">${aroma_magic}</div>
                                             </div>
 
 
@@ -309,30 +223,69 @@ export class InventoryAdapter {
                     }
                 },
                 {
-                    data: 'fertilizer_bonus',
-                    render: render_buff_bonus('immunity')
+                    data: 'item.fertilizer_bonus',
+                    render: InventoryAdapter.renderBuffBonus('immunity')
                 }, {
-                    data: 'fertilizer_bonus',
-                    render: render_buff_bonus('pesticide')
+                    data: 'item.fertilizer_bonus',
+                    render: InventoryAdapter.renderBuffBonus('pesticide')
                 }, {
-                    data: 'fertilizer_bonus',
-                    render: render_buff_bonus('herbicide')
+                    data: 'item.fertilizer_bonus',
+                    render: InventoryAdapter.renderBuffBonus('herbicide')
                 }, {
-                    data: 'fertilizer_bonus',
-                    render: render_buff_bonus('toxicity')
+                    data: 'item.fertilizer_bonus',
+                    render: InventoryAdapter.renderBuffBonus('toxicity')
                 },
                 {
                     data: null,
-                    render: function (data, type, row) {
-                        if (type === 'display') {
-                            if (row.expiable) {
-                                return '<i class="fas fa-skull"></i>';
-                            }
+                    render: InventoryAdapter.renderShortExpiable
+                },
 
-                            return '<i class="fas fa-infinity"></i>';
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data: any, type: string, row: ItemInventoryData) {
+                        if (type === 'display') {
+                            return '';
+                        }
+                        const item = row.item;
+
+                        let ret = `Name: ${item.name}`;
+
+                        if (item.fertilizer_bonus !== undefined) {
+                            ret += (item.fertilizer_bonus?.leaf_fertilizer !== undefined)? `;Leaf: ${item.fertilizer_bonus?.leaf_fertilizer}` : '';
+                            ret += (item.fertilizer_bonus?.kernel_fertilizer !== undefined)? `;Kernel: ${item.fertilizer_bonus?.kernel_fertilizer}` : '';
+                            ret += (item.fertilizer_bonus?.root_fertilizer !== undefined)? `;Root: ' + ${item.fertilizer_bonus?.root_fertilizer}` : '';
+
+                            ret += (item.fertilizer_bonus?.yield_hp !== undefined)? `;Yield: ${item.fertilizer_bonus?.yield_hp};HP: ${item.fertilizer_bonus?.yield_hp}` : '';
+                            ret += (item.fertilizer_bonus?.taste_strength !== undefined)? `;Taste: ${item.fertilizer_bonus?.taste_strength};Strength: ${item.fertilizer_bonus?.taste_strength}` : '';
+                            ret += (item.fertilizer_bonus?.hardness_vitality !== undefined)? `;Hardness: ${item.fertilizer_bonus?.hardness_vitality};Vitality: ${item.fertilizer_bonus?.hardness_vitality}` : '';
+                            ret += (item.fertilizer_bonus?.stickiness_gusto !== undefined)? `;Stickiness: ${item.fertilizer_bonus?.stickiness_gusto};Gusto: ${item.fertilizer_bonus?.stickiness_gusto}` : '';
+                            ret += (item.fertilizer_bonus?.aesthetic_luck !== undefined)? `;Aesthetic: ${item.fertilizer_bonus?.aesthetic_luck};Luck: ${item.fertilizer_bonus?.aesthetic_luck}` : '';
+                            ret += (item.fertilizer_bonus?.aroma_magic !== undefined)? `;Aroma: ${item.fertilizer_bonus?.aroma_magic};Magic: ${item.fertilizer_bonus?.aroma_magic}` : '';
+
+                            ret += (item.fertilizer_bonus?.immunity !== undefined)? `;Immunity: ${item.fertilizer_bonus?.immunity}` : '';
+                            ret += (item.fertilizer_bonus?.pesticide !== undefined)? `;Pesticide: ${item.fertilizer_bonus?.pesticide}` : '';
+                            ret += (item.fertilizer_bonus?.herbicide !== undefined)? `;Herbicide: ${item.fertilizer_bonus?.herbicide}` : '';
+
+                            ret += (item.fertilizer_bonus?.toxicity !== undefined)? `;Toxicity: ${item.fertilizer_bonus?.toxicity}` : '';
+
+                            ret += ';' + Inventory.getStateFocus(item.fertilizer_bonus);
                         }
 
-                        return (row.expiable) ? true : false;
+                        if (item.find_in !== undefined) {
+                            ret += ';Find in: ' + item.find_in.map( it => `${it.name} ${it.season}`).join('|');
+                        }
+
+                        if (item.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + item.enemy_drops.map( it => `${it.name} ${it.time}`).join('|');
+                        }
+
+                        const food_item = item as FoodItemData;
+                        if (food_item.expiable !== undefined && food_item.expiable && food_item.life !== undefined) {
+                            ret += `;Life: ${food_item.life};Expirable`;
+                        }
+
+                        return ret;
                     }
                 }
             ]
@@ -362,7 +315,7 @@ export class InventoryAdapter {
         this._data.observable.attach(new class implements DataListObserver<ItemInventoryData> {
             update(subject: DataListSubject<ItemInventoryData>): void {
                 that._fertilizer_components.observable.forEach((item_component: ItemInventoryData, index: number) => {
-                    const item_inventory = subject.find(it => it.name == item_component.name);
+                    const item_inventory = subject.find(it => it.item.name == item_component.item.name);
                     if (item_inventory !== undefined && item_component.amount !== item_inventory.amount) {
                         that._fertilizer_components.setInInventoryAmount(index, item_inventory.amount);
                     }
@@ -408,7 +361,7 @@ export class InventoryAdapter {
                 that._table?.rows.add([added]).draw(false);
             }
             updateRemovedItem(subject: DataListSubject<ItemInventoryData>, removed: ItemInventoryData): void {
-                that._table?.row(`[data-name='${removed.name}']`).remove();
+                that._table?.row(`[data-name='${removed.item.name}']`).remove();
                 that._table?.draw(false);
             }
         });
@@ -522,7 +475,7 @@ export class InventoryAdapter {
                 that._data.setItemAmount(index, amount);
             } else {
                 if (that._data.items[index] !== undefined) {
-                    that._data.remove(that._data.items[index], undefined);
+                    that._data.remove(that._data.items[index].item, undefined);
                 }
             }
         });

@@ -1,33 +1,43 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" rel="author" href="{{ '/' | relative_url }}">
-      <i class="fas fa-scroll"></i><span class="mx-1">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="mx-1 d-none d-sm-flex"> - {{ site.short_description | escape }}</span> {%- endif -%}
-    </a>
+  <a class="navbar-brand mx-lg-2" rel="author" href="{{ '/' | relative_url }}">
+    <i class="fas fa-scroll"></i><span class="ml-2">{{ site.title | escape }}</span> {%- if site.short_description -%} <span class="d-none d-sm-inline"> - {{ site.short_description | escape }}</span> {%- endif -%}
+  </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#sectionFarmingGuide">{{ site.data.strings.guide.title }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#sectionFertilizerHelper">{{ site.data.strings.fertilizer_helper.title }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#sectionItemList">{{ site.data.strings.item_list.title }}</a>
-        </li>
-        <li class="nav-item">
-          <div class="checkbox mx-3 mt-1">
-            <input type="checkbox" data-toggle="toggle" id="chbDarkTheme" 
-              data-on='<i class="fas fa-moon"></i>' 
-              data-off='<i class="fas fa-sun"></i>'
-              data-onstyle="dark" data-offstyle="light">
-          </div>
-        </li>
-      </ul>
-    </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionFarmingGuide">{{ site.data.strings.guide.title }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionFertilizerHelper">{{ site.data.strings.fertilizer_helper.title }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionItemList">{{ site.data.strings.item_list.title }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionItemListMaterials">{{ site.data.strings.item_list.materials.title }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionItemListIngredients">{{ site.data.strings.item_list.ingredients.title }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionItemListFood">{{ site.data.strings.item_list.food.title }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sectionMisc">{{ site.data.strings.misc.title }}</a>
+      </li>
+      <li class="nav-item">
+        <div class="checkbox mx-3 mt-1">
+          <input type="checkbox" data-toggle="toggle" id="chbDarkTheme" 
+            data-on='<i class="fas fa-moon"></i>' 
+            data-off='<i class="fas fa-sun"></i>'
+            data-onstyle="dark" data-offstyle="light">
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

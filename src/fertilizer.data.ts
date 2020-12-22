@@ -16,7 +16,7 @@ export class FertilizerData {
     private _hardness_vitality: number = 0;
     private _stickiness_gusto: number = 0;
     private _aesthetic_luck: number = 0;
-    private _armor_magic: number = 0;
+    private _aroma_magic: number = 0;
 
     private _immunity: number = 0;
     private _pesticide: number = 0;
@@ -160,20 +160,20 @@ export class FertilizerData {
         return this._aesthetic_luck === MAX_STATS || this.is_aesthetic_luck_overflow;
     }
 
-    get armor_magic() {
-        return clamp(this._armor_magic, MIN_STATS, MAX_STATS);
+    get aroma_magic() {
+        return clamp(this._aroma_magic, MIN_STATS, MAX_STATS);
     }
-    set armor_magic(value: number) {
-        this._armor_magic = value;
+    set aroma_magic(value: number) {
+        this._aroma_magic = value;
     }
-    public add_armor_magic(value: number) {
-        this.armor_magic = this.armor_magic + value;
+    public add_aroma_magic(value: number) {
+        this.aroma_magic = this.aroma_magic + value;
     }
-    get is_armor_magic_overflow() {
-        return this._armor_magic < MIN_STATS || this._armor_magic > MAX_STATS;
+    get is_aroma_magic_overflow() {
+        return this._aroma_magic < MIN_STATS || this._aroma_magic > MAX_STATS;
     }
-    get is_armor_magic_max_or_overflow() {
-        return this._armor_magic === MAX_STATS || this.is_armor_magic_overflow;
+    get is_aroma_magic_max_or_overflow() {
+        return this._aroma_magic === MAX_STATS || this.is_aroma_magic_overflow;
     }
 
 
@@ -242,13 +242,13 @@ export class FertilizerData {
         return this._toxicity === MAX_STATS || this.is_toxicity_overflow;
     }
 
-    get are_state_overflow(){
+    get are_state_overflow() {
         return this.is_yield_hp_overflow ||
             this.is_taste_strength_overflow ||
             this.is_hardness_vitality_overflow ||
             this.is_stickiness_gusto_overflow ||
             this.is_aesthetic_luck_overflow ||
-            this.is_armor_magic_overflow;
+            this.is_aroma_magic_overflow;
     }
 
     get are_soil_nutrients_max_or_overflow() {
