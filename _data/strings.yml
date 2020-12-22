@@ -306,6 +306,7 @@ item_list:
       autumn: Autumn
       winter: Winter
 misc:
+  title: Misc
   clear_session: Clear Session
   clear_session_help: Clear you Inventory and Fertilizer Components
 goto: go to

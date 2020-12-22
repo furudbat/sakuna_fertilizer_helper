@@ -287,25 +287,25 @@ export class MaterialItemListAdapter extends ItemListAdapter {
                             return '';
                         }
 
-                        let ret = '';
+                        let ret = `Name: ${row.name}`;
 
                         if (row.fertilizer_bonus !== undefined) {
-                            ret += (row.fertilizer_bonus?.leaf_fertilizer !== undefined)? ';Leaf: ' + row.fertilizer_bonus?.leaf_fertilizer : '';
-                            ret += (row.fertilizer_bonus?.kernel_fertilizer !== undefined)? ';Kernel: ' + row.fertilizer_bonus?.kernel_fertilizer : '';
-                            ret += (row.fertilizer_bonus?.root_fertilizer !== undefined)? ';Root: ' + row.fertilizer_bonus?.root_fertilizer : '';
+                            ret += (row.fertilizer_bonus?.leaf_fertilizer !== undefined)? `;Leaf: ${row.fertilizer_bonus?.leaf_fertilizer}` : '';
+                            ret += (row.fertilizer_bonus?.kernel_fertilizer !== undefined)? `;Kernel: ${row.fertilizer_bonus?.kernel_fertilizer}` : '';
+                            ret += (row.fertilizer_bonus?.root_fertilizer !== undefined)? `;Root: ' + ${row.fertilizer_bonus?.root_fertilizer}` : '';
 
-                            ret += (row.fertilizer_bonus?.yield_hp !== undefined)? ';Yield: ' + row.fertilizer_bonus?.yield_hp + ';HP: ' + row.fertilizer_bonus?.yield_hp : '';
-                            ret += (row.fertilizer_bonus?.taste_strength !== undefined)? ';Taste: ' + row.fertilizer_bonus?.taste_strength + ';Strength: ' + row.fertilizer_bonus?.taste_strength : '';
-                            ret += (row.fertilizer_bonus?.hardness_vitality !== undefined)? ';Hardness: ' + row.fertilizer_bonus?.hardness_vitality + ';Vitality: ' + row.fertilizer_bonus?.hardness_vitality : '';
-                            ret += (row.fertilizer_bonus?.stickiness_gusto !== undefined)? ';Stickiness: ' + row.fertilizer_bonus?.stickiness_gusto + ';Gusto: ' + row.fertilizer_bonus?.stickiness_gusto : '';
-                            ret += (row.fertilizer_bonus?.aesthetic_luck !== undefined)? ';Aesthetic: ' + row.fertilizer_bonus?.aesthetic_luck + ';Luck: ' + row.fertilizer_bonus?.aesthetic_luck : '';
-                            ret += (row.fertilizer_bonus?.aroma_magic !== undefined)? ';Aroma: ' + row.fertilizer_bonus?.aroma_magic + ';Magic: ' + row.fertilizer_bonus?.aroma_magic : '';
+                            ret += (row.fertilizer_bonus?.yield_hp !== undefined)? `;Yield: ${row.fertilizer_bonus?.yield_hp};HP: ${row.fertilizer_bonus?.yield_hp}` : '';
+                            ret += (row.fertilizer_bonus?.taste_strength !== undefined)? `;Taste: ${row.fertilizer_bonus?.taste_strength};Strength: ${row.fertilizer_bonus?.taste_strength}` : '';
+                            ret += (row.fertilizer_bonus?.hardness_vitality !== undefined)? `;Hardness: ${row.fertilizer_bonus?.hardness_vitality};Vitality: ${row.fertilizer_bonus?.hardness_vitality}` : '';
+                            ret += (row.fertilizer_bonus?.stickiness_gusto !== undefined)? `;Stickiness: ${row.fertilizer_bonus?.stickiness_gusto};Gusto: ${row.fertilizer_bonus?.stickiness_gusto}` : '';
+                            ret += (row.fertilizer_bonus?.aesthetic_luck !== undefined)? `;Aesthetic: ${row.fertilizer_bonus?.aesthetic_luck};Luck: ${row.fertilizer_bonus?.aesthetic_luck}` : '';
+                            ret += (row.fertilizer_bonus?.aroma_magic !== undefined)? `;Aroma: ${row.fertilizer_bonus?.aroma_magic};Magic: ${row.fertilizer_bonus?.aroma_magic}` : '';
 
-                            ret += (row.fertilizer_bonus?.immunity !== undefined)? ';Immunity: ' + row.fertilizer_bonus?.immunity : '';
-                            ret += (row.fertilizer_bonus?.pesticide !== undefined)? ';Pesticide: ' + row.fertilizer_bonus?.pesticide : '';
-                            ret += (row.fertilizer_bonus?.herbicide !== undefined)? ';Herbicide: ' + row.fertilizer_bonus?.herbicide : '';
+                            ret += (row.fertilizer_bonus?.immunity !== undefined)? `;Immunity: ${row.fertilizer_bonus?.immunity}` : '';
+                            ret += (row.fertilizer_bonus?.pesticide !== undefined)? `;Pesticide: ${row.fertilizer_bonus?.pesticide}` : '';
+                            ret += (row.fertilizer_bonus?.herbicide !== undefined)? `;Herbicide: ${row.fertilizer_bonus?.herbicide}` : '';
 
-                            ret += (row.fertilizer_bonus?.toxicity !== undefined)? ';Toxicity: ' + row.fertilizer_bonus?.toxicity : '';
+                            ret += (row.fertilizer_bonus?.toxicity !== undefined)? `;Toxicity: ${row.fertilizer_bonus?.toxicity}` : '';
 
                             ret += ';' + Inventory.getStateFocus(row.fertilizer_bonus);
                         }
@@ -320,7 +320,7 @@ export class MaterialItemListAdapter extends ItemListAdapter {
 
                         const food_row = row as FoodItemData;
                         if (food_row.expiable !== undefined && food_row.expiable && food_row.life !== undefined) {
-                            ret += ';Life: ' + food_row.life + ';Expirable';
+                            ret += `;Life: ${food_row.life};Expirable`;
                         }
 
                         return ret;

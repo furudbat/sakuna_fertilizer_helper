@@ -4351,13 +4351,13 @@
   food_bonus:
     enchant:
     - level: 2
+      name: Poison Resistance
+    - level: 2
       name: Natural Healing
     - level: 1
       name: Retribution
     - level: 2
       name: Overstuffed
-    - level: 2
-      name: Poison Resistance
     fullness: 25
     luck: 4
     magic: 6
@@ -15425,9 +15425,9 @@
   food_bonus:
     enchant:
     - level: 2
-      name: Fire Resistance
-    - level: 2
       name: Poison Resistance
+    - level: 2
+      name: Fire Resistance
     luck: 2
     magic: 5
     sp: 5
@@ -18787,8 +18787,6 @@
   season_food_bonus:
     enchant:
     - level: 1
-      name: Skill Buff
-    - level: 1
       name: Summer Skill Buff
   sub_category: Side Dish
 - category: Cooking
@@ -18806,8 +18804,6 @@
   season_food_bonus:
     enchant:
     - level: 1
-      name: Magic Buff
-    - level: 1
       name: Spring Magic Buff
   sub_category: Side Dish
 - category: Cooking
@@ -18815,7 +18811,7 @@
     into one releases a powerfularoma and a rich, bittersweet flavor.
   food_bonus:
     enchant:
-    - level: 3
+    - level: 2
       name: Poison Resistance
     magic: 4
   ingredients:
@@ -27342,7 +27338,7 @@
     of sesame. I am impressed theymanaged to make such a jelly out of sesame alone.
   food_bonus:
     enchant:
-    - level: 3
+    - level: 2
       name: Poison Resistance
     fullness: 17
     strength: 2
@@ -27493,10 +27489,10 @@
     red bean pasteor vegetables for an even tastier treat.
   food_bonus:
     enchant:
-    - level: 3
-      name: Celestial Maiden
     - level: 2
       name: Poison Resistance
+    - level: 3
+      name: Celestial Maiden
     fullness: 10
     luck: 6
   ingredients:
@@ -27583,8 +27579,6 @@
   season_food_bonus:
     enchant:
     - level: 1
-      name: Skill Buff
-    - level: 1
       name: Winter Skill Buff
   sub_category: Drink
 - category: Cooking
@@ -27607,8 +27601,6 @@
   season_food_bonus:
     enchant:
     - level: 1
-      name: Skill Buff
-    - level: 1
       name: Winter Skill Buff
   sub_category: Drink
 - category: Cooking
@@ -27616,7 +27608,7 @@
     is saidto grant protection from poisonous mist.
   food_bonus:
     enchant:
-    - level: 3
+    - level: 2
       name: Poison Resistance
     strength: -3
     vitality: -3
@@ -27639,8 +27631,6 @@
   season_buff: Winter
   season_food_bonus:
     enchant:
-    - level: 1
-      name: Skill Buff
     - level: 1
       name: Winter Skill Buff
   sub_category: Drink
@@ -27672,12 +27662,10 @@
     to the common wisdom of the LowlyRealm, it wards off evil. Here's hoping it works!
   food_bonus:
     enchant:
-    - level: 1
-      name: Luck Boost
-    - level: 1
-      name: Luck Buff
     - level: 2
       name: Poison Resistance
+    - level: 1
+      name: Luck Boost
     luck: 8
   ingredients:
   - amount: 1
@@ -27698,8 +27686,6 @@
     enchant:
     - level: 2
       name: Luck Boost
-    - level: 1
-      name: Luck Buff
   sub_category: Drink
 - category: Cooking
   description: Alcohol fermented with human saliva. It reeks tohigh heaven and is
@@ -27733,8 +27719,6 @@
     name: this draught containsno alcohol. It is gently sweet and energizing.'
   food_bonus:
     enchant:
-    - level: 1
-      name: Magic Buff
     - level: 2
       name: Summer Magic Buff
     luck: 5

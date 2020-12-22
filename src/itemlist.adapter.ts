@@ -198,7 +198,7 @@ export abstract class ItemListAdapter {
                     operator = (next_operator == ingredient.operator)? `${site.data.strings.item_list.ingredients.and} ` : '';
                     return `${amount} ${name};`;
                 case 'or':
-                    operator = (next_operator == ingredient.operator)? `${site.data.strings.item_list.ingredients.or} ` : '';
+                    operator = `${site.data.strings.item_list.ingredients.or} `;
                     return `${amount} ${name} ${operator}`;
                 case '':
                     return `${amount} ${name};`;

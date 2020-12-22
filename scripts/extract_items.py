@@ -92,13 +92,16 @@ def parseEnchant(enchantstr, enchants_map):
     for enchant in enchants_map.values():
         enchant_code = enchant['Code']
         enchant_name = enchant['name']
+
+        enchant_regex_str = r'\d?({})(\/(\d+))?'.format(enchant_code)
+        if not '_' in enchant_code:
+            enchant_regex_str = r'\d?({})(?![A-Za-z_])(\/(\d+))?'.format(enchant_code)
         
-        enchant_regex_str = "({})(\\/(\\d+))?".format(enchant_code)
         enchant_match = re.search(enchant_regex_str, enchantstr)
-        enchant_level = int(enchant_match.groups()[2]) + 1 if enchant_match and enchant_match.groups()[2] and enchant_match.groups()[2].lstrip('-+').isnumeric() else 1
+        enchant_level = int(enchant_match.groups()[2]) if enchant_match and len(enchant_match.groups()) >= 2 and enchant_match.groups()[2] and enchant_match.groups()[2].lstrip('-+').isnumeric() else 0
 
         if enchant_match:
-            ret.append({ 'name': enchant_name, 'level': enchant_level })
+            ret.append({ 'name': enchant_name, 'level': enchant_level + 1 })
             find_enchant = True
 
     if not find_enchant:
@@ -187,10 +190,7 @@ def parseSource(item_name, sourcestr, item_names, auto_name=None):
                                 find_items = True
                                 item_added = True
                 if find_items:
-                    if len(ret) > 1:
-                        ret[-1]['operator'] = ''
-                    elif len(ret) == 1:
-                        ret[0]['operator'] = ''
+                    ret[-1]['operator'] = ''
                 else:
                     pprint(ret)
                     print("parseSource: flag {} not found, {}: {}".format(food_flag, item_name, sourcestr))
@@ -209,55 +209,37 @@ def parseSource(item_name, sourcestr, item_names, auto_name=None):
                     if meat_item['name']:
                         ret.append({"name": meat_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                if len(ret) > 1:
-                    ret[-1]['operator'] = ''
-                elif len(ret) == 1:
-                    ret[0]['operator'] = ''
+                ret[-1]['operator'] = ''
             elif item_code == 'Vegetable':
                 for vegetable_item in vegetables:
                     if vegetable_item['name']:
                         ret.append({"name": vegetable_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                if len(ret) > 1:
-                    ret[-1]['operator'] = ''
-                elif len(ret) == 1:
-                    ret[0]['operator'] = ''
+                ret[-1]['operator'] = ''
             elif item_code == 'Seafood':
                 for seafood_item in seafood:
                     if seafood_item['name']:
                         ret.append({"name": seafood_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                if len(ret) > 1:
-                    ret[-1]['operator'] = ''
-                elif len(ret) == 1:
-                    ret[0]['operator'] = ''
+                ret[-1]['operator'] = ''
             elif item_code == 'Grain':
                 for grain_item in grains:
                     if grain_item['name']:
                         ret.append({"name": grain_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                if len(ret) > 1:
-                    ret[-1]['operator'] = ''
-                elif len(ret) == 1:
-                    ret[0]['operator'] = ''
+                ret[-1]['operator'] = ''
             elif item_code == 'Insect':
                 for insect_item in insects:
                     if insect_item['name']:
                         ret.append({"name": insect_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                if len(ret) > 1:
-                    ret[-1]['operator'] = ''
-                elif len(ret) == 1:
-                    ret[0]['operator'] = ''
+                ret[-1]['operator'] = ''
             elif item_code == 'Spice':
                 for spice_item in spices:
                     if spice_item['name']:
                         ret.append({"name": spice_item['name'], "amount": amount, "operator": "or"})
                         item_added = True
-                if len(ret) > 1:
-                    ret[-1]['operator'] = ''
-                elif len(ret) == 1:
-                    ret[0]['operator'] = ''
+                ret[-1]['operator'] = ''
             else:
                 for it in item_names:
                     if equalItemByCode(it, item_code):
@@ -335,9 +317,8 @@ def setFoodBonusEnchant(item, row, food_bonus_name, col_name, enchants_map):
                 item[food_bonus_name]['enchant'].append(enchant)
             else:
                 for i in range(len(item[food_bonus_name]['enchant'])):
-                    if item[food_bonus_name]['enchant'][i]['name'] == enchant['name']:
-                        if enchant['level'] >= item[food_bonus_name]['enchant'][i]['level']:
-                            item[food_bonus_name]['enchant'][i]['level'] = enchant['level']
+                    if item[food_bonus_name]['enchant'][i]['name'] == enchant['name'] and item[food_bonus_name]['enchant'][i]['level'] >= enchant['level']:
+                        item[food_bonus_name]['enchant'][i]['level'] = enchant['level']
 
     if food_bonus_name in item and 'enchant' in item[food_bonus_name] and not item[food_bonus_name]['enchant']:
         del item[food_bonus_name]['enchant']
@@ -695,13 +676,13 @@ def getFood(item_names, enchants_map, worldmap_collection_map, enemies_map, only
                             new_item['Code'] = item_code
                             new_item['Row'] = row
                         else:
-                            setFoodAttrs(new_item, row, item_names, enchants_map, auto_name)
-
                             setFertilizerBonus(new_item, row)
                             setFoodBonus(new_item, row, enchants_map)
                             setEnemyDrop(new_item, item_code, enemies_map, item_names)
                             setCollectionDrops(new_item, item_code, worldmap_collection_map)
                             setFoodWhenSpoiled(new_item, row, item_names)
+
+                            setFoodAttrs(new_item, row, item_names, enchants_map, auto_name)
 
                             hotfixFood(new_item['name'], new_item)
                             
@@ -749,10 +730,11 @@ def getCooking(item_names, enchants_map, worldmap_collection_map, food_map, only
                         new_item['Code'] = item_code
                         new_item['Row'] = row
                     else:
+    
+                        setCookingAttr(new_item, row, item_names, main_source, source_name, food_map, enchants_map)
+
                         setFoodBonus(new_item, row, enchants_map)
                         setFoodBonusFromCooking(new_item, row, enchants_map)
-
-                        setCookingAttr(new_item, row, item_names, main_source, source_name, food_map, enchants_map)
 
                         hotfixCooking(name, item_code, new_item)
 
@@ -770,8 +752,9 @@ def getEnchant():
         # iterate over each line as a ordered dictionary
         for row in enchant_reader:
             name = row['NameEn']
+            code = row['Code']
             if name:
-                enchant_map[name] = { "name": name, "Code": row['Code'] }
+                enchant_map[code] = { "name": name, "Code": code }
 
     return enchant_map
 
@@ -1115,6 +1098,8 @@ def main():
         
     with open(r'enemies.json', 'w') as file:
         json.dump(enemies_map, file, indent=4)
+    with open(r'enchants.json', 'w') as file:
+        json.dump(enchants_map, file, indent=4)
 
     #with open(r'item_names.json', 'w') as file:
     #    json.dump(item_names, file, indent=4)

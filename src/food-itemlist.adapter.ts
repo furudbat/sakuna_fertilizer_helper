@@ -226,25 +226,25 @@ export class FoodItemListAdapter extends ItemListAdapter {
                             return '';
                         }
 
-                        let ret = '';
+                        let ret = `Name: ${row.name}`;
 
                         if (row.fertilizer_bonus !== undefined) {
-                            ret += (row.fertilizer_bonus?.leaf_fertilizer !== undefined)? ';Leaf: ' + row.fertilizer_bonus?.leaf_fertilizer : '';
-                            ret += (row.fertilizer_bonus?.kernel_fertilizer !== undefined)? ';Kernel: ' + row.fertilizer_bonus?.kernel_fertilizer : '';
-                            ret += (row.fertilizer_bonus?.root_fertilizer !== undefined)? ';Root: ' + row.fertilizer_bonus?.root_fertilizer : '';
+                            ret += (row.fertilizer_bonus?.leaf_fertilizer !== undefined)? `;Leaf: ${row.fertilizer_bonus?.leaf_fertilizer}` : '';
+                            ret += (row.fertilizer_bonus?.kernel_fertilizer !== undefined)? `;Kernel: ${row.fertilizer_bonus?.kernel_fertilizer}` : '';
+                            ret += (row.fertilizer_bonus?.root_fertilizer !== undefined)? `;Root: ${row.fertilizer_bonus?.root_fertilizer}` : '';
 
-                            ret += (row.fertilizer_bonus?.yield_hp !== undefined)? ';Yield: ' + row.fertilizer_bonus?.yield_hp + ';HP: ' + row.fertilizer_bonus?.yield_hp : '';
-                            ret += (row.fertilizer_bonus?.taste_strength !== undefined)? ';Taste: ' + row.fertilizer_bonus?.taste_strength + ';Strength: ' + row.fertilizer_bonus?.taste_strength : '';
-                            ret += (row.fertilizer_bonus?.hardness_vitality !== undefined)? ';Hardness: ' + row.fertilizer_bonus?.hardness_vitality + ';Vitality: ' + row.fertilizer_bonus?.hardness_vitality : '';
-                            ret += (row.fertilizer_bonus?.stickiness_gusto !== undefined)? ';Stickiness: ' + row.fertilizer_bonus?.stickiness_gusto + ';Gusto: ' + row.fertilizer_bonus?.stickiness_gusto : '';
-                            ret += (row.fertilizer_bonus?.aesthetic_luck !== undefined)? ';Aesthetic: ' + row.fertilizer_bonus?.aesthetic_luck + ';Luck: ' + row.fertilizer_bonus?.aesthetic_luck : '';
-                            ret += (row.fertilizer_bonus?.aroma_magic !== undefined)? ';Aroma: ' + row.fertilizer_bonus?.aroma_magic + ';Magic: ' + row.fertilizer_bonus?.aroma_magic : '';
+                            ret += (row.fertilizer_bonus?.yield_hp !== undefined)? `;Yield: ${row.fertilizer_bonus?.yield_hp};HP: ${row.fertilizer_bonus?.yield_hp}` : '';
+                            ret += (row.fertilizer_bonus?.taste_strength !== undefined)? `;Taste: ${row.fertilizer_bonus?.taste_strength};Strength: ${row.fertilizer_bonus?.taste_strength}` : '';
+                            ret += (row.fertilizer_bonus?.hardness_vitality !== undefined)? `;Hardness: ${row.fertilizer_bonus?.hardness_vitality};Vitality: ${row.fertilizer_bonus?.hardness_vitality}` : '';
+                            ret += (row.fertilizer_bonus?.stickiness_gusto !== undefined)? `;Stickiness: ${row.fertilizer_bonus?.stickiness_gusto};Gusto: ${row.fertilizer_bonus?.stickiness_gusto}` : '';
+                            ret += (row.fertilizer_bonus?.aesthetic_luck !== undefined)? `;Aesthetic: ${row.fertilizer_bonus?.aesthetic_luck};Luck: ${row.fertilizer_bonus?.aesthetic_luck}` : '';
+                            ret += (row.fertilizer_bonus?.aroma_magic !== undefined)? `;Aroma: ${row.fertilizer_bonus?.aroma_magic};Magic: ${row.fertilizer_bonus?.aroma_magic}` : '';
 
-                            ret += (row.fertilizer_bonus?.immunity !== undefined)? ';Immunity: ' + row.fertilizer_bonus?.immunity : '';
-                            ret += (row.fertilizer_bonus?.pesticide !== undefined)? ';Pesticide: ' + row.fertilizer_bonus?.pesticide : '';
-                            ret += (row.fertilizer_bonus?.herbicide !== undefined)? ';Herbicide: ' + row.fertilizer_bonus?.herbicide : '';
+                            ret += (row.fertilizer_bonus?.immunity !== undefined)? `;Immunity: ${row.fertilizer_bonus?.immunity}` : '';
+                            ret += (row.fertilizer_bonus?.pesticide !== undefined)? `;Pesticide: ${row.fertilizer_bonus?.pesticide}` : '';
+                            ret += (row.fertilizer_bonus?.herbicide !== undefined)? `;Herbicide: ${row.fertilizer_bonus?.herbicide}` : '';
 
-                            ret += (row.fertilizer_bonus?.toxicity !== undefined)? ';Toxicity: ' + row.fertilizer_bonus?.toxicity : '';
+                            ret += (row.fertilizer_bonus?.toxicity !== undefined)? `;Toxicity: ${row.fertilizer_bonus?.toxicity}` : '';
 
                             ret += ';' + Inventory.getStateFocus(row.fertilizer_bonus);
                         }
@@ -258,17 +258,17 @@ export class FoodItemListAdapter extends ItemListAdapter {
                         }
 
                         if (row.expiable !== undefined && row.expiable && row.life !== undefined) {
-                            ret += ';Life: ' + row.life + ';Expirable';
+                            ret += `;Life: ${row.life};Expirable`;
                         }
 
                         if (row.food_bonus !== undefined) {
-                            ret += (row.food_bonus?.hp !== undefined)? ';HP: ' + row.food_bonus?.hp : '';
-                            ret += (row.food_bonus?.sp !== undefined)? ';SP: ' + row.food_bonus?.hp : '';
-                            ret += (row.food_bonus?.strength !== undefined)? ';Strength: ' + row.food_bonus?.strength : '';
-                            ret += (row.food_bonus?.vitality !== undefined)? ';Vitality: ' + row.food_bonus?.vitality : '';
-                            ret += (row.food_bonus?.magic !== undefined)? ';Magic: ' + row.food_bonus?.magic : '';
-                            ret += (row.food_bonus?.luck !== undefined)? ';Luck: ' + row.food_bonus?.luck : '';
-                            ret += (row.food_bonus?.fullness !== undefined)? ';Fullness: ' + row.food_bonus?.fullness : '';
+                            ret += (row.food_bonus?.hp !== undefined)? `;HP: ${row.food_bonus?.hp}` : '';
+                            ret += (row.food_bonus?.sp !== undefined)? `;SP: ${row.food_bonus?.sp}` : '';
+                            ret += (row.food_bonus?.strength !== undefined)? `;Strength: ${row.food_bonus?.strength}` : '';
+                            ret += (row.food_bonus?.vitality !== undefined)? `;Vitality: ${row.food_bonus?.vitality}` : '';
+                            ret += (row.food_bonus?.magic !== undefined)? `;Magic: ${row.food_bonus?.magic}` : '';
+                            ret += (row.food_bonus?.luck !== undefined)? `;Luck: ${row.food_bonus?.luck}` : '';
+                            ret += (row.food_bonus?.fullness !== undefined)? `;Fullness: ${row.food_bonus?.fullness}` : '';
                         }
 
                         if (row.ingredients !== undefined) {
@@ -276,11 +276,11 @@ export class FoodItemListAdapter extends ItemListAdapter {
                         }
 
                         if (row.price !== undefined) {
-                            ret += ';Price: ' + row.price;
+                            ret += `;Price: ${row.price}`;
                         }
 
                         if (row.when_spoiled !== undefined) {
-                            ret += ';When Spoiled: ' + row.when_spoiled;
+                            ret += `;When Spoiled: ${row.when_spoiled}`;
                         }
 
                         return ret;

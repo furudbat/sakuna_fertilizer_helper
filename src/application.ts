@@ -43,9 +43,33 @@ export class Application {
         });
     }
 
-    private initSite() {
+    private async initSite() {
         //this.log.debug('init items', this._appData.items);
 
+        this.initTheme();
+        this.initFarmingGuide();
+
+        this._materialItemListAdapter = new MaterialItemListAdapter('#tblMaterialItemsList');
+        this._foodItemListAdapter = new FoodItemListAdapter('#tblIngredientsItemsList');
+        this._cookingItemListAdapter = new CookingItemListAdapter('#tblFoodItemsList');
+        this._fertilizerAdapter = new FertilizerAdapter(this._appData);
+        this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
+        this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
+        this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
+        this._expiablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryexpiables', this._expiablesInventory, { can_remove_from_inventory: false });
+
+        this.initSettings();
+        this.initItemList();
+        this.initInventory();
+
+        this._fertilizerAdapter?.init();
+        this._fertilizeComponentsAdapter?.init();
+        this.updateRecommendedItems(this._fertilizerAdapter.data);
+
+        this.initObservers();
+    }
+
+    private async initFarmingGuide() {
         var that = this;
         $('#farming-guild-pills-tab a').each(function () {
             if (that._appData.currentGuide === $(this).data('name')) {
@@ -66,25 +90,6 @@ export class Application {
 
             that._appData.currentGuide = $(this).data('name');
         });
-
-        this._materialItemListAdapter = new MaterialItemListAdapter('#tblMaterialItemsList');
-        this._foodItemListAdapter = new FoodItemListAdapter('#tblIngredientsItemsList');
-        this._cookingItemListAdapter = new CookingItemListAdapter('#tblFoodItemsList');
-        this._fertilizerAdapter = new FertilizerAdapter(this._appData);
-        this._fertilizeComponentsAdapter = new FertilizeComponentsAdapter(this._appData.settingsObservable, this._appData.inventory, '#lstFertilizeComponents', this._appData.fertilizer_components);
-        this._inventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventory', this._appData.inventory);
-        this._recommendedInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryRecommended', this._recommendedInventory, { can_remove_from_inventory: false });
-        this._expiablesInventoryAdapter = new InventoryAdapter(this._appData.settingsObservable, this._appData.fertilizer_components, '#tblInventoryexpiables', this._expiablesInventory, { can_remove_from_inventory: false });
-
-        this.initSettings();
-        this.initItemList();
-
-        this.initInventory();
-        this._fertilizerAdapter?.init();
-        this._fertilizeComponentsAdapter?.init();
-        this.updateRecommendedItems(this._fertilizerAdapter.data);
-
-        this.initObservers();
     }
 
     private getMaterialsItemList() {
@@ -106,7 +111,7 @@ export class Application {
         });
     }
 
-    private initItemList() {
+    private async initMaterialItemList() {
         if (this._materialItemListAdapter) {
             this._materialItemListAdapter.init();
 
@@ -115,8 +120,14 @@ export class Application {
             this.log.debug('initItemList material_item_list:', material_item_list);
 
             this._materialItemListAdapter.data = material_item_list;
-        }
 
+            this._materialItemListAdapter.addItemToInventoryListener = (item, amount) => {
+                this._inventoryAdapter?.add(item, amount);
+            };
+        }
+    }
+
+    private async initFoodItemList() {
         if (this._foodItemListAdapter) {
             this._foodItemListAdapter.init();
 
@@ -126,8 +137,9 @@ export class Application {
 
             this._foodItemListAdapter.data = food_item_list;
         }
+    }
 
-
+    private async initCookingItemList() {
         if (this._cookingItemListAdapter) {
             this._cookingItemListAdapter.init();
 
@@ -137,18 +149,18 @@ export class Application {
 
             this._cookingItemListAdapter.data = cooking_item_list;
         }
+    }
+
+    private async initItemList() {
+        this.initMaterialItemList();
+        this.initFoodItemList();
+        this.initCookingItemList();
 
         this.updateItemListEvents();
     }
 
     private updateItemListEvents() {
         var that = this;
-
-        if (this._materialItemListAdapter) {
-            this._materialItemListAdapter.addItemToInventoryListener = (item, amount) => {
-                that._inventoryAdapter?.add(item, amount);
-            };
-        }
 
         $('#btnSeasonalBuffNone').off('click').on('click', function () {
             const cooking_item_list = that.getCookingItemList();
@@ -191,20 +203,9 @@ export class Application {
         })
     }
 
-    private initSettings() {
-        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
-
-        var that = this;
-        $('#chbSettingsNoInventoryRestriction').on('change', function () {
-            that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
-        });
-
-        $('#btnClearSession').on('click', function () {
-            that._appData.clearSessionStorage();
-        });
-
+    private initTheme() {
         $('body').removeAttr('data-theme');
-        switch (that._appData.theme) {
+        switch (this._appData.theme) {
             case Theme.Dark:
                 $('#chbDarkTheme').bootstrapToggle('on');
                 $('body').attr('data-theme', 'dark');
@@ -215,6 +216,19 @@ export class Application {
                 $('body').attr('data-theme', 'light');
                 break;
         }
+    }
+
+    private async initSettings() {
+        $('#chbSettingsNoInventoryRestriction').prop('checked', this._appData.settings.no_inventory_restriction);
+
+        var that = this;
+        $('#chbSettingsNoInventoryRestriction').on('change', function () {
+            that._appData.setSettingNoInventoryRestriction((this as HTMLInputElement).checked);
+        });
+
+        $('#btnClearSession').on('click', function () {
+            that._appData.clearSessionStorage();
+        });
 
         $('#chbDarkTheme').on('change', function () {
             $('body').removeAttr('data-theme');

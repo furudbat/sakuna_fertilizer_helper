@@ -7,7 +7,7 @@ import { ItemListAdapter } from "./itemlist.adapter";
 import { FoodItemData, ItemData } from "./item.data";
 
 
-const INVENTORY_PAGE_LENGTH = 7;
+const INVENTORY_PAGE_LENGTH = 8;
 
 export interface InventoryAdapterSettings {
     can_remove_from_inventory: boolean;
@@ -238,6 +238,55 @@ export class InventoryAdapter extends ItemListAdapter {
                 {
                     data: null,
                     render: InventoryAdapter.renderShortExpiable
+                },
+
+                {
+                    data: null,
+                    visible: false,
+                    render: function (data: any, type: string, row: ItemInventoryData) {
+                        if (type === 'display') {
+                            return '';
+                        }
+                        const item = row.item;
+
+                        let ret = `Name: ${item.name}`;
+
+                        if (item.fertilizer_bonus !== undefined) {
+                            ret += (item.fertilizer_bonus?.leaf_fertilizer !== undefined)? `;Leaf: ${item.fertilizer_bonus?.leaf_fertilizer}` : '';
+                            ret += (item.fertilizer_bonus?.kernel_fertilizer !== undefined)? `;Kernel: ${item.fertilizer_bonus?.kernel_fertilizer}` : '';
+                            ret += (item.fertilizer_bonus?.root_fertilizer !== undefined)? `;Root: ' + ${item.fertilizer_bonus?.root_fertilizer}` : '';
+
+                            ret += (item.fertilizer_bonus?.yield_hp !== undefined)? `;Yield: ${item.fertilizer_bonus?.yield_hp};HP: ${item.fertilizer_bonus?.yield_hp}` : '';
+                            ret += (item.fertilizer_bonus?.taste_strength !== undefined)? `;Taste: ${item.fertilizer_bonus?.taste_strength};Strength: ${item.fertilizer_bonus?.taste_strength}` : '';
+                            ret += (item.fertilizer_bonus?.hardness_vitality !== undefined)? `;Hardness: ${item.fertilizer_bonus?.hardness_vitality};Vitality: ${item.fertilizer_bonus?.hardness_vitality}` : '';
+                            ret += (item.fertilizer_bonus?.stickiness_gusto !== undefined)? `;Stickiness: ${item.fertilizer_bonus?.stickiness_gusto};Gusto: ${item.fertilizer_bonus?.stickiness_gusto}` : '';
+                            ret += (item.fertilizer_bonus?.aesthetic_luck !== undefined)? `;Aesthetic: ${item.fertilizer_bonus?.aesthetic_luck};Luck: ${item.fertilizer_bonus?.aesthetic_luck}` : '';
+                            ret += (item.fertilizer_bonus?.aroma_magic !== undefined)? `;Aroma: ${item.fertilizer_bonus?.aroma_magic};Magic: ${item.fertilizer_bonus?.aroma_magic}` : '';
+
+                            ret += (item.fertilizer_bonus?.immunity !== undefined)? `;Immunity: ${item.fertilizer_bonus?.immunity}` : '';
+                            ret += (item.fertilizer_bonus?.pesticide !== undefined)? `;Pesticide: ${item.fertilizer_bonus?.pesticide}` : '';
+                            ret += (item.fertilizer_bonus?.herbicide !== undefined)? `;Herbicide: ${item.fertilizer_bonus?.herbicide}` : '';
+
+                            ret += (item.fertilizer_bonus?.toxicity !== undefined)? `;Toxicity: ${item.fertilizer_bonus?.toxicity}` : '';
+
+                            ret += ';' + Inventory.getStateFocus(item.fertilizer_bonus);
+                        }
+
+                        if (item.find_in !== undefined) {
+                            ret += ';Find in: ' + item.find_in.map( it => `${it.name} ${it.season}`).join('|');
+                        }
+
+                        if (item.enemy_drops !== undefined) {
+                            ret += ';Enemy Drop: ' + item.enemy_drops.map( it => `${it.name} ${it.time}`).join('|');
+                        }
+
+                        const food_item = item as FoodItemData;
+                        if (food_item.expiable !== undefined && food_item.expiable && food_item.life !== undefined) {
+                            ret += `;Life: ${food_item.life};Expirable`;
+                        }
+
+                        return ret;
+                    }
                 }
             ]
         });
